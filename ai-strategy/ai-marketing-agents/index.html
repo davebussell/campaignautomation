@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How AI Marketing Agents Work — A Guide for Business Leaders | Campaign Automation AI</title>
+<meta name="description" content="A non-technical guide to AI marketing agents — what they are, how they make decisions, and what separates an agent from a chatbot or a dashboard.">
+<link rel="canonical" href="https://campaignautomation.ai/ai-strategy/ai-marketing-agents">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/"><span style="color:var(--bone)">CA</span><span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item"><a href="/solutions">Solutions</a>
+      <div class="dropdown">
+        <a href="/paid-advertising-automation">Paid advertising automation</a>
+        <a href="/ai-strategy">AI strategy & agentic intelligence</a>
+        <a href="/workflow-automation">Workflow & operations automation</a>
+        <a href="/revenue-operations">Revenue operations</a>
+        <div class="dropdown-divider"></div><a href="/solutions/integrations">Integrations →</a>
+      </div>
+    </div>
+    <a href="/training">Training</a><a href="/results">Results</a>
+    <div class="nav-item"><a href="/resources">Resources</a>
+      <div class="dropdown">
+        <a href="/resources">Blog</a><a href="/resources/glossary">Glossary</a>
+        <a href="/solutions/integrations">Integrations</a><a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/get-started" class="nav-cta">Get started →</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-section"><h6>Solutions</h6>
+    <a href="/paid-advertising-automation">Paid advertising automation</a>
+    <a href="/ai-strategy">AI strategy</a><a href="/workflow-automation">Workflow automation</a>
+  </div>
+  <a href="/get-started" class="mobile-cta">Get started →</a>
+</div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>/</span><a href="/ai-strategy">AI strategy</a><span>/</span>
+    <span class="current">How AI marketing agents work</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:0;min-height:80vh">
+    <div class="article-wrap">
+      <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:16px">AI strategy · 30 vol CA · $5.49 CPC</div>
+      <h1 style="font-family:var(--f-display);font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px">How AI marketing agents work.</h1>
+      <p class="intro">An AI marketing agent is a software system that perceives its environment, makes decisions, and takes actions — autonomously, within defined guardrails. This guide explains how agents work without requiring a technical background to understand.</p>
+
+      <h2>What makes something an "agent"</h2>
+      <p>The word "agent" is overused in AI marketing. A chatbot is not an agent. A dashboard that highlights anomalies is not an agent. An AI that generates ad copy suggestions is not an agent. An agent is specifically a system that <em>takes actions in the world</em> — not just generates outputs for humans to evaluate.</p>
+      <p>The four properties of a true marketing agent:</p>
+      <ul>
+        <li><strong>Perception</strong> — it reads live data from your ad platforms, CRM, or other connected systems</li>
+        <li><strong>Decision-making</strong> — it evaluates what it perceives against its objectives and guardrails</li>
+        <li><strong>Action</strong> — it executes changes directly: adjusting bids, pausing campaigns, reallocating budget</li>
+        <li><strong>Learning</strong> — it logs outcomes and refines future decisions based on what worked</li>
+      </ul>
+
+      <h2>The decision loop</h2>
+      <p>Every AI marketing agent runs on a continuous decision loop. In a paid advertising context, this looks like:</p>
+      <ol>
+        <li><strong>Observe</strong> — agent reads current performance data (CPA, CTR, spend, conversions) across all connected accounts</li>
+        <li><strong>Evaluate</strong> — agent compares current state against objectives and configured thresholds</li>
+        <li><strong>Decide</strong> — agent selects action from available action set (pause, reallocate, adjust bid, expand negative list)</li>
+        <li><strong>Check</strong> — proposed action is validated against all guardrails before execution</li>
+        <li><strong>Act</strong> — if guardrails pass, action executes via platform API</li>
+        <li><strong>Log</strong> — trigger, action, and impact window are recorded in the agent log</li>
+        <li><strong>Return to step 1</strong> — loop continues</li>
+      </ol>
+      <p>This loop runs continuously — every few minutes for high-frequency decisions like bid adjustments, every few hours for budget reallocation decisions with longer evaluation windows.</p>
+
+      <h2>How agents connect to your platforms</h2>
+      <p>AI marketing agents connect to your platforms via APIs — the same programmatic interfaces used by any authorised third-party tool. For Google Ads, this is the Google Ads API. For Meta, the Marketing API. Connections are established via OAuth, meaning no credentials are shared and access can be revoked at any time.</p>
+      <p>The agent reads performance data through these connections and writes actions (bid changes, budget adjustments, pause/resume) back through the same channels. All actions are logged both in the agent's own audit trail and in the platform's native change history.</p>
+
+      <h2>What agents can and cannot do</h2>
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card" style="border-color:var(--signal)">
+          <div class="card-tag">Agents excel at</div>
+          <h4>High-frequency, rules-governed decisions</h4>
+          <p>Bid adjustments, budget reallocation, negative keyword expansion, creative rotation, anomaly detection, performance reporting, lead routing, data enrichment.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Agents cannot replace</div>
+          <h4>Judgement and strategy</h4>
+          <p>Brand positioning, creative evaluation, client relationship management, strategic channel selection, interpreting performance in business context, setting the guardrails themselves.</p>
+        </div>
+      </div>
+
+      <h2>The role of guardrails</h2>
+      <p>An AI marketing agent without guardrails is a liability. The <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail configuration</a> defines the exact boundaries within which the agent can act. Every action is checked against these constraints before execution. Actions that would violate a guardrail are blocked, logged, and — depending on configuration — flagged for human review.</p>
+      <p>This is the key distinction between our approach and generic AI automation tools: the guardrails are explicit, auditable, and controlled by your team — not set by the vendor and invisible to you.</p>
+
+      <h2>Multi-agent architectures</h2>
+      <p>More sophisticated deployments use multiple coordinated agents — one managing paid search, one managing Meta, one monitoring pipeline health, one generating performance summaries. Each agent operates within its own guardrail set. A coordination layer ensures agents don't conflict (e.g., two agents trying to allocate the same budget simultaneously).</p>
+      <p>This is the architecture behind our <a href="/paid-advertising-automation/agency-automation" style="color:var(--signal)">multi-tenant agency platform</a> — where individual agents run per client account, coordinated under a single management interface.</p>
+
+      <div style="border:1px solid var(--border);padding:32px;margin-top:40px">
+        <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:16px">See an agent running on your accounts</div>
+        <p style="font-size:14px;color:var(--mist2);line-height:1.6;margin-bottom:20px">30-minute diagnostic call. We walk through what an agent would observe, decide, and do in your specific account — before any commitment.</p>
+        <a href="/get-started" class="btn-primary">Book a call →</a>
+      </div>
+    </div>
+
+    <div style="border-left:1px solid var(--border);padding:40px 32px;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;align-self:start">
+      <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:20px">Related</div>
+      <a href="/ai-strategy/agentic-marketing" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">What is agentic marketing? →</a>
+      <a href="/ai-strategy/guardrail-driven-automation" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">Guardrail-driven automation →</a>
+      <a href="/paid-advertising-automation" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">Paid advertising automation →</a>
+      <a href="/results" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">Case studies →</a>
+      <div style="margin-top:32px;padding:24px;border:1px solid var(--border);background:var(--slate)">
+        <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:12px">Get started</div>
+        <p style="font-size:13px;color:var(--mist2);line-height:1.6;margin-bottom:16px">See an agent in action on your accounts. 30 minutes.</p>
+        <a href="/get-started" class="btn-primary btn-sm" style="display:block;text-align:center">Book a call →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+      <div class="footer-desc">AI marketing agents built for teams that need to get it done.</div>
+      <div class="footer-copy">© 2025 campaignautomation.ai</div>
+    </div>
+    <div class="footer-col"><h5>AI strategy</h5>
+      <a href="/ai-strategy">Overview</a><a href="/ai-strategy/agentic-marketing">Agentic marketing</a>
+      <a href="/ai-strategy/guardrail-driven-automation">Guardrail-driven AI</a>
+    </div>
+    <div class="footer-col"><h5>Learn</h5>
+      <a href="/resources/glossary">Glossary</a><a href="/results">Case studies</a>
+    </div>
+    <div class="footer-col"><h5>Company</h5>
+      <a href="/about">About</a><a href="/get-started">Get started</a>
+    </div>
+  </footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
