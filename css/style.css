@@ -1188,6 +1188,12 @@ footer{
 .rc-next-action p{font-size:15px;color:var(--mist2);margin-bottom:24px;line-height:1.55}
 
 /* ── NAV SCORE BADGE ─────────────────────────────────────── */
+/* Funnel next-step nav highlight */
+nav[aria-label="Main navigation"] a.nav-next-step{color:var(--signal)!important;position:relative}
+nav[aria-label="Main navigation"] a.nav-next-step::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--signal);opacity:.6}
+nav.mobile-menu a.nav-next-step{color:var(--signal)!important}
+nav.mobile-menu a.nav-next-step::before{content:"→ ";font-size:.9em}
+
 .nav-score{display:inline-flex;flex-direction:column;align-items:center;padding:5px 12px;border:1px solid currentColor;border-radius:3px;text-decoration:none;gap:1px;line-height:1;transition:opacity .2s}
 .nav-score:hover{opacity:.75}
 .nav-score-num{font-weight:800;font-size:15px;font-family:var(--f-display);letter-spacing:-.02em}

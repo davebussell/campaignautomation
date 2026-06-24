@@ -238,6 +238,54 @@ const RSCORE = {
   clear() { try { localStorage.removeItem(this.KEY); } catch(e){} }
 };
 
+/* ── FUNNEL TRACKER ──────────────────────────────────── */
+const FUNNEL = {
+  KEY: 'ca_funnel',
+  load()  { try { return JSON.parse(localStorage.getItem(this.KEY) || 'null') || {visited:[]}; } catch(e){ return {visited:[]}; } },
+  save(d) { try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch(e){} },
+  track(slug) {
+    const d = this.load();
+    if (!d.visited.includes(slug)) { d.visited.push(slug); this.save(d); }
+  },
+  setFlag(flag, val=true) { const d=this.load(); d[flag]=val; this.save(d); },
+  /* Determine stage name based on score + visit history */
+  stage() {
+    const score = RSCORE.load();
+    const d = this.load();
+    const v = d.visited || [];
+    if (!score || score.score === undefined) return 'audit';
+    const tier = getTierKey(score.score);
+    if (d.proposalSubmitted)                              return 'contractor';
+    if (v.includes('request-proposals')||d.sprintsSelected) return 'proposals';
+    if (v.includes('automation-sprints'))                 return 'proposals';
+    if (v.includes('sprint-prep')||v.includes('training')) return 'sprints';
+    if (tier==='siloed')                                  return 'training';
+    return 'prep';
+  },
+  /* CTA config per stage, optionally influenced by score tier */
+  cta(stg, tier) {
+    const map = {
+      audit:       { label:'Get Audit →',               href:'/tools/readiness-score',        next:null },
+      training:    { label:'Explore Training →',         href:'/training',                     next:'training' },
+      prep:        { label:'Build Sprint Foundation →',  href:'/resources/sprint-prep',        next:'sprint-prep' },
+      sprints:     { label:'Browse Sprints →',           href:'/solutions/automation-sprints', next:'automation-sprints' },
+      proposals:   { label:'Get Proposals →',            href:'/request-proposals',            next:'request-proposals' },
+      contractor:  { label:'Track Proposals →',          href:'/request-proposals',            next:null },
+    };
+    // Siloed tier gets training before sprint-prep
+    if (stg==='prep' && tier==='siloed') return map.training;
+    // Agentic/Operational can skip straight to proposals
+    if (stg==='training' && (tier==='agentic'||tier==='operational')) return map.prep;
+    return map[stg] || map.audit;
+  }
+};
+
+/* Track current page slug on load */
+(function trackCurrentPage(){
+  const slug = window.location.pathname.replace(/^\/|\/$/g,'').split('/').pop() || 'home';
+  FUNNEL.track(slug);
+})();
+
 /* Floating score chip — injects on every page if score exists */
 (function injectScoreChip() {
   const data = RSCORE.load();
@@ -263,21 +311,48 @@ const RSCORE = {
   document.body.appendChild(chip);
 })();
 
-/* Nav CTA → colored score badge when score exists */
-(function injectNavScore() {
-  const data = RSCORE.load();
-  if (!data || data.score === undefined) return;
-  const score = data.score;
-  const tierClass = score>=85?'agentic':score>=70?'operational':score>=50?'emerging':'siloed';
-  const tierName  = score>=85?'Agentic':score>=70?'Operational':score>=50?'Emerging':'Siloed';
+/* Nav — score badge + funnel-aware CTA + next-step highlight */
+(function updateNavFunnel() {
+  const scoreData = RSCORE.load();
+  const hasScore  = scoreData && scoreData.score !== undefined;
+  const tier      = hasScore ? getTierKey(scoreData.score) : 'siloed';
+  const stg       = FUNNEL.stage();
+  const ctaCfg    = FUNNEL.cta(stg, tier);
+
+  /* 1 — Replace .nav-cta with score badge (if scored) or updated CTA text */
   document.querySelectorAll('a.nav-cta').forEach(el => {
-    const badge = document.createElement('a');
-    badge.href = '/tools/readiness-score';
-    badge.className = `nav-score nav-score--${tierClass}`;
-    badge.setAttribute('aria-label', `Your Readiness Score: ${score} — ${tierName}. View results.`);
-    badge.innerHTML = `<span class="nav-score-num">${score}</span><span class="nav-score-label">${tierName}</span>`;
-    el.replaceWith(badge);
+    if (hasScore) {
+      const score = scoreData.score;
+      const tierClass = tier;
+      const tierName  = score>=85?'Agentic':score>=70?'Operational':score>=50?'Emerging':'Siloed';
+      const badge = document.createElement('a');
+      badge.href = '/tools/readiness-score';
+      badge.className = `nav-score nav-score--${tierClass}`;
+      badge.setAttribute('aria-label', `Your Readiness Score: ${score} — ${tierName}. View results.`);
+      badge.innerHTML = `<span class="nav-score-num">${score}</span><span class="nav-score-label">${tierName}</span>`;
+      el.replaceWith(badge);
+    } else if (stg !== 'audit') {
+      /* No score but funnel stage changed — update CTA link/text */
+      el.href = ctaCfg.href;
+      el.textContent = ctaCfg.label;
+    }
   });
+
+  /* 2 — Update mobile CTA */
+  document.querySelectorAll('a.mobile-cta').forEach(el => {
+    el.href = ctaCfg.href;
+    el.textContent = ctaCfg.label;
+  });
+
+  /* 3 — Highlight recommended next nav link */
+  if (ctaCfg.next) {
+    document.querySelectorAll('nav[aria-label="Main navigation"] a, nav.mobile-menu a').forEach(a => {
+      const path = (a.getAttribute('href') || '').replace(/^\/|\/$/g,'');
+      if (path === ctaCfg.next || path.endsWith('/'+ctaCfg.next)) {
+        a.classList.add('nav-next-step');
+      }
+    });
+  }
 })();
 
 /* Apply score gating to any page with [data-min-score] elements */
@@ -514,6 +589,7 @@ const SPRINT_META = {
     tray.querySelector('.pt-names').textContent = names;
     const ids = Array.from(selected).join(',');
     tray.querySelector('.pt-cta').href = `/request-proposals/?sprints=${ids}`;
+    if (count > 0) FUNNEL.setFlag('sprintsSelected', true);
   }
 })();
 

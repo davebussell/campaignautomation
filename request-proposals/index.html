@@ -370,6 +370,9 @@ function submitProposal() {
     localStorage.setItem('ca_readiness', JSON.stringify({ ...existing, name, email, company, lastProposalRequest: payload.submittedAt }));
   } catch(e) {}
 
+  // Mark proposal submitted in funnel tracker
+  if (typeof FUNNEL !== 'undefined') FUNNEL.setFlag('proposalSubmitted', true);
+
   // Show confirmation
   document.getElementById('pr-form-wrapper').style.display = 'none';
   const confirm = document.getElementById('pr-confirm');
