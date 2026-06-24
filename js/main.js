@@ -338,7 +338,73 @@ const FUNNEL = {
     el.textContent = ctaCfg.label;
   });
 
-  /* 3 — Highlight recommended next nav link */
+  /* 3 — Personalize Solutions dropdown based on tier/stage */
+  (function() {
+    const solutionsLink = document.querySelector('.nav-links a[href="/solutions"]');
+    if (!solutionsLink) return;
+    const dropdown = solutionsLink.closest('.nav-item')?.querySelector('.dropdown');
+    if (!dropdown) return;
+
+    function lnk(text, href, tag) {
+      return `<a href="${href}" role="menuitem">${text}${tag?`<span class="dd-tag">${tag}</span>`:''}</a>`;
+    }
+
+    const scoreLabel = hasScore ? ` — Score ${scoreData.score}/100` : '';
+    let html = '';
+
+    if (!hasScore || tier === 'siloed') {
+      html =
+        `<span class="dropdown-label">Diagnostic</span>`+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
+        `<span class="dropdown-label">Sprints — No Score Required</span>`+
+        lnk('AI Brief Machine','/solutions/automation-sprints','WEB · PPC')+
+        lnk('Search Term Intelligence','/solutions/automation-sprints','PPC · SEO')+
+        lnk('Content Atomization System','/solutions/automation-sprints','WEB · SEO')+
+        `<span class="dropdown-label">Programs</span>`+
+        lnk('AI Marketing Training','/training')+
+        lnk('Campaign Strategy Portal','/platform')+
+        `<div class="dropdown-divider"></div>`+
+        lnk('Browse full catalog →','/solutions/automation-sprints');
+    } else if (tier === 'emerging') {
+      html =
+        `<span class="dropdown-label">Recommended${scoreLabel}</span>`+
+        lnk('PPC Intelligence Sprint','/solutions/automation-sprints','PPC')+
+        lnk('Content Brief Sprint','/solutions/automation-sprints','SEO · WEB')+
+        lnk('Campaign Launch Kit','/solutions/automation-sprints','WEB · PPC')+
+        `<span class="dropdown-label">More</span>`+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
+        lnk('AI Marketing Training','/training')+
+        lnk('Campaign Strategy Portal','/platform')+
+        `<div class="dropdown-divider"></div>`+
+        lnk('Browse full catalog →','/solutions/automation-sprints');
+    } else if (tier === 'operational') {
+      html =
+        `<span class="dropdown-label">Recommended${scoreLabel}</span>`+
+        lnk('SEO/PPC Opportunity Sprint','/solutions/automation-sprints','SEO · PPC')+
+        lnk('Lead Reactivation Sprint','/solutions/automation-sprints','ABM')+
+        lnk('PPC Intelligence Sprint','/solutions/automation-sprints','PPC')+
+        `<span class="dropdown-label">Intelligence</span>`+
+        lnk('Campaign Strategy Portal','/platform')+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
+        `<div class="dropdown-divider"></div>`+
+        lnk('Browse full catalog →','/solutions/automation-sprints');
+    } else {
+      html =
+        `<span class="dropdown-label">Intelligence${scoreLabel}</span>`+
+        lnk('Campaign Strategy Portal','/platform')+
+        `<span class="dropdown-label">Advanced Sprints</span>`+
+        lnk('Event Follow-Up Sprint','/solutions/automation-sprints','ABM · LOCAL')+
+        lnk('Lead Reactivation Sprint','/solutions/automation-sprints','ABM')+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
+        `<div class="dropdown-divider"></div>`+
+        lnk('Browse full catalog →','/solutions/automation-sprints');
+    }
+
+    dropdown.innerHTML = html;
+    dropdown.style.minWidth = '300px';
+  })();
+
+  /* 4 — Highlight recommended next nav link */
   if (ctaCfg.next) {
     document.querySelectorAll('nav[aria-label="Main navigation"] a, nav.mobile-menu a').forEach(a => {
       const path = (a.getAttribute('href') || '').replace(/^\/|\/$/g,'');
