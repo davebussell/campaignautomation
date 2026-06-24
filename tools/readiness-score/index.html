@@ -110,9 +110,52 @@
 .retake-btn:hover{color:var(--mist2)}
 @keyframes fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .animate-in{animation:fade-up .35s ease both}
+
+/* ── WEIGHT SIMULATOR ── */
+.weight-sim{margin:40px 0;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.wsim-header{padding:24px 24px 20px;border-bottom:1px solid var(--border)}
+.wsim-header h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.wsim-header p{font-size:14px;color:var(--mist2);line-height:1.55;margin:0}
+.wsim-row{padding:18px 24px;border-bottom:1px solid var(--border)}
+.wsim-row:last-of-type{border-bottom:none}
+.wsim-row-top{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.wsim-dim-name{font-size:14px;font-weight:600;flex:1;min-width:120px}
+.wsim-dim-raw{font-family:var(--f-mono);font-size:12px;color:var(--mist2)}
+.wsim-dim-pct{font-family:var(--f-mono);font-size:11px;color:var(--mist);padding:2px 7px;border:1px solid var(--border);border-radius:2px}
+.wsim-contrib-pts{font-family:var(--f-mono);font-size:12px;color:var(--signal);margin-left:auto}
+.wsim-slider-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.wsim-slider{flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+.wsim-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--signal);cursor:pointer;border:2px solid var(--ink);box-shadow:0 0 0 1px rgba(200,241,53,.4)}
+.wsim-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--signal);cursor:pointer;border:2px solid var(--ink)}
+.wsim-weight-val{font-family:var(--f-mono);font-size:12px;color:var(--mist2);min-width:54px;text-align:right}
+.wsim-contrib-bar-bg{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:8px}
+.wsim-contrib-bar-fill{height:100%;background:var(--signal);border-radius:2px;transition:width .25s ease}
+.wsim-why{font-size:12px;color:var(--mist);line-height:1.5;font-style:italic}
+.wsim-footer{background:var(--slate);padding:20px 24px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;border-top:1px solid var(--border)}
+.wsim-adj-score{min-width:140px}
+.wsim-adj-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:8px}
+.wsim-score-line{display:flex;align-items:baseline;gap:6px}
+.wsim-score-big{font-size:40px;font-weight:800;color:var(--signal);font-family:var(--f-display);line-height:1;transition:color .25s}
+.wsim-score-big.up{color:#C8F135}
+.wsim-score-big.down{color:#FFE200}
+.wsim-denom{font-size:16px;color:var(--mist)}
+.wsim-delta{font-family:var(--f-mono);font-size:13px;padding:2px 8px;border-radius:2px;font-weight:600}
+.wsim-delta.pos{background:rgba(200,241,53,.15);color:var(--signal)}
+.wsim-delta.neg{background:rgba(255,226,0,.12);color:#FFE200}
+.wsim-delta.zero{display:none}
+.wsim-tier-line{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-top:8px}
+.wsim-insight{flex:1;min-width:220px}
+.wsim-insight-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:8px;display:block}
+.wsim-insight-body{font-size:14px;color:var(--mist2);line-height:1.55}
+.wsim-insight-body strong{color:var(--bone);display:block;font-size:14px;margin-bottom:4px}
+.wsim-reset{background:transparent;border:none;font-family:var(--f-mono);font-size:11px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:12px 24px;display:block;letter-spacing:.04em}
+.wsim-reset:hover{color:var(--mist2)}
+.wsim-gate-note{font-family:var(--f-mono);font-size:11px;color:#FFE200;margin-top:6px;letter-spacing:.04em}
+
 @media(max-width:600px){
   .intake-row{flex-direction:column}
   .intake-submit{width:100%}
+  .wsim-footer{flex-direction:column;gap:16px}
 }
 </style>
 </head>
@@ -528,7 +571,9 @@ function showScorecard() {
       ${dimRows}
     </div>
 
-    <div class="constraint-box animate-in">
+    <div id="wsim-container" class="animate-in"></div>
+
+    <div class="constraint-box animate-in" id="wsim-constraint">
       <div class="constraint-label">${con.label}</div>
       <h3>${con.title}</h3>
       <p>${con.body}</p>
@@ -536,8 +581,9 @@ function showScorecard() {
 
     ${modHtml}
 
-    <div class="roadmap animate-in">
+    <div class="roadmap animate-in" id="wsim-roadmap">
       <h3>Your prioritised roadmap</h3>
+      <p style="font-size:13px;color:var(--mist);margin-bottom:20px;font-family:var(--f-mono);letter-spacing:.03em">Priority order updates when you adjust dimension weights above.</p>
       ${road.map((r,i)=>`<div class="roadmap-item"><div class="roadmap-num">0${i+1}</div><div class="roadmap-body"><strong>${r.title}</strong><p>${r.body}</p><div class="r-impact">${r.impact}</div></div></div>`).join("")}
     </div>
 
@@ -635,6 +681,7 @@ function showScorecard() {
     sc.querySelectorAll(".dim-bar-fill").forEach(b=>{ b.style.width=b.dataset.w; });
     applyRefParam();
     updateIntakeForTier(finalScore);
+    initWeightSim(dims, finalScore, gated);
   },120);
 
   window.scrollTo({top:0,behavior:"smooth"});
@@ -726,6 +773,213 @@ function retake() {
   document.getElementById("intake").style.display="block";
   renderStep(0);
   window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// ─────────────────────────────────────────────
+// WEIGHT SIMULATOR
+// ─────────────────────────────────────────────
+const DIM_DEFAULTS = {demo:30, instr:20, std:20, gov:20, tooling:10};
+const DIM_WHY = {
+  demo: "Democratization is the strongest single predictor of automation success. If only 1–2 people can read campaign data, every automation you build creates a human bottleneck.",
+  instr: "Automation optimises toward whatever signal it's given. If your tracking is broken or stale, Smart Bidding and custom rules optimise toward noise — not revenue.",
+  std: "Automation scripts need consistent structure to know what to act on. An ad group named 'Test 3 - Dave - old' can't be automated reliably. A naming convention can.",
+  gov: "Without a named owner and approval process, automation rules multiply, conflict, and go unreviewed. One unchecked rule can burn a week of budget.",
+  tooling: "Your ceiling is what your tools can see. Manual exports and siloed platforms limit what any automation can act on — regardless of how well you score elsewhere."
+};
+const DIM_ORDER = ['demo','instr','std','gov','tooling'];
+
+function getRoadmapForDim(dimKey, dims) {
+  const map = {
+    demo: {title:"Build self-serve data access for every channel owner", body:`Your democratization score is ${dims.demo.raw}/30. Set up live dashboards in Looker Studio or GA4 that channel owners can use without analyst support. Connect Google Ads, Meta, and your CRM in a single view.`, impact:"Highest impact · 2–4 weeks"},
+    instr: {title:"Audit and repair conversion tracking", body:"Run a full tracking audit across GA4, Google Ads, and Meta pixel. Verify events fire correctly with GA4 DebugView and Meta Pixel Helper. Document every conversion action and its verification status.", impact:"High impact · 1–2 weeks"},
+    std: {title:"Document and enforce a campaign naming convention", body:"Define a naming structure for campaigns, ad sets, and ads. Include: objective, channel, audience, date, and variant. Build it into your launch template so it's the path of least resistance.", impact:"High impact · 1 week"},
+    gov: {title:"Assign a named automation owner", body:"Designate one person responsible for all automation rules — who builds them, who approves changes, and who reviews fires. Create a simple log of every active rule and when it last fired.", impact:"Medium impact · 2 days"},
+    tooling: {title:"Integrate your data sources before adding more tools", body:"Your current tools limit what automation can see. The next step is connecting your ad platforms, CRM, and analytics into a unified export layer so automation has a complete signal to act on.", impact:"Strategic · 4–6 weeks"}
+  };
+  return map[dimKey];
+}
+
+function computeWeightedScore(dims, weights) {
+  const total = DIM_ORDER.reduce((s,k)=>s+(weights[k]||0),0);
+  if(total===0) return {score:0, gated:false, contribs:{}};
+  const norm = {};
+  DIM_ORDER.forEach(k=>{ norm[k] = (weights[k]||0)/total*100; });
+  let score = 0;
+  const contribs = {};
+  DIM_ORDER.forEach(k=>{
+    const d = dims[k];
+    const pct = d.raw/d.max;
+    const contrib = Math.round(pct * norm[k]);
+    contribs[k] = {contrib};
+    score += contrib;
+  });
+  score = Math.min(100, Math.round(score));
+  const demoGated = dims.demo.raw < 18 && score > 49;
+  return {score: demoGated ? Math.min(score,49) : score, gated: demoGated, contribs};
+}
+
+function getWeakestByWeight(dims, weights) {
+  const total = DIM_ORDER.reduce((s,k)=>s+(weights[k]||0),0)||100;
+  return DIM_ORDER.slice().sort((a,b)=>{
+    const wa=(weights[a]||0)/total, wb=(weights[b]||0)/total;
+    const pa=dims[a].raw/dims[a].max, pb=dims[b].raw/dims[b].max;
+    return (pa*wa)-(pb*wb);
+  })[0];
+}
+
+let _simWeights={...DIM_DEFAULTS}, _simDims=null, _simOrigScore=0;
+
+function initWeightSim(dims, originalScore, gated) {
+  _simDims=dims; _simOrigScore=originalScore;
+  _simWeights={...DIM_DEFAULTS};
+  const container=document.getElementById('wsim-container');
+  if(!container) return;
+
+  const rows=DIM_ORDER.map(k=>{
+    const d=dims[k];
+    const pct=Math.round(d.raw/d.max*100);
+    const defaultW=DIM_DEFAULTS[k];
+    const contrib=Math.round(pct/100*defaultW);
+    return `<div class="wsim-row" data-dim="${k}">
+      <div class="wsim-row-top">
+        <span class="wsim-dim-name">${d.label}</span>
+        <span class="wsim-dim-raw">${d.raw}/${d.max}</span>
+        <span class="wsim-dim-pct">${pct}% achieved</span>
+        <span class="wsim-contrib-pts" id="wsim-pts-${k}">${contrib} pts</span>
+      </div>
+      <div class="wsim-slider-row">
+        <input type="range" class="wsim-slider" id="wsim-sl-${k}" min="0" max="50" step="5" value="${defaultW}" aria-label="${d.label} weight" oninput="onSimSlider('${k}',this.value)">
+        <span class="wsim-weight-val" id="wsim-wv-${k}">Weight: ${defaultW}</span>
+      </div>
+      <div class="wsim-contrib-bar-bg"><div class="wsim-contrib-bar-fill" id="wsim-bar-${k}" style="width:${contrib}%"></div></div>
+      <p class="wsim-why">${DIM_WHY[k]}</p>
+    </div>`;
+  }).join('');
+
+  const tier=getTier(originalScore);
+  container.innerHTML=`<div class="weight-sim">
+    <div class="wsim-header">
+      <h3>What drives your score — and what changes if you re-weight it</h3>
+      <p>The default weights reflect what research says about automation success. Adjust them to reflect your organisation's priorities — the score, constraint, and roadmap all update live.</p>
+    </div>
+    ${rows}
+    <div class="wsim-footer">
+      <div class="wsim-adj-score">
+        <span class="wsim-adj-label">Adjusted score</span>
+        <div class="wsim-score-line">
+          <span class="wsim-score-big" id="wsim-score-big">${originalScore}</span>
+          <span class="wsim-denom">/100</span>
+          <span class="wsim-delta zero" id="wsim-delta"></span>
+        </div>
+        <div class="wsim-tier-line" id="wsim-tier-line" style="color:var(--signal)">${tier.name} · ${tier.range}</div>
+        <p class="wsim-gate-note" id="wsim-gate-note" style="display:${gated?'block':'none'}">↑ Democratization gate active</p>
+      </div>
+      <div class="wsim-insight">
+        <span class="wsim-insight-label">Top priority with these weights</span>
+        <div class="wsim-insight-body" id="wsim-insight-body"></div>
+      </div>
+    </div>
+    <button class="wsim-reset" type="button" onclick="resetWeightSim()">Reset to default weights</button>
+  </div>`;
+
+  updateSimInsight(dims,_simWeights);
+}
+
+function onSimSlider(dimKey,val) {
+  _simWeights[dimKey]=parseInt(val,10);
+  document.getElementById(`wsim-wv-${dimKey}`).textContent=`Weight: ${val}`;
+  renderSimState();
+}
+
+function renderSimState() {
+  const {score,gated,contribs}=computeWeightedScore(_simDims,_simWeights);
+  const tier=getTier(score);
+  const delta=score-_simOrigScore;
+
+  const bigEl=document.getElementById('wsim-score-big');
+  if(bigEl){ bigEl.textContent=score; bigEl.className='wsim-score-big'+(delta>0?' up':delta<0?' down':''); }
+
+  const deltaEl=document.getElementById('wsim-delta');
+  if(deltaEl){
+    if(delta===0){deltaEl.className='wsim-delta zero';deltaEl.textContent='';}
+    else if(delta>0){deltaEl.className='wsim-delta pos';deltaEl.textContent=`+${delta}`;}
+    else{deltaEl.className='wsim-delta neg';deltaEl.textContent=`${delta}`;}
+  }
+
+  const tierEl=document.getElementById('wsim-tier-line');
+  if(tierEl){tierEl.textContent=`${tier.name} · ${tier.range}`;tierEl.style.color=score>=70?'var(--signal)':score>=50?'var(--mist2)':'var(--mist)';}
+
+  const gateEl=document.getElementById('wsim-gate-note');
+  if(gateEl) gateEl.style.display=gated?'block':'none';
+
+  DIM_ORDER.forEach(k=>{
+    const c=contribs[k];
+    if(!c) return;
+    const ptsEl=document.getElementById(`wsim-pts-${k}`);
+    const barEl=document.getElementById(`wsim-bar-${k}`);
+    if(ptsEl) ptsEl.textContent=`${c.contrib} pts`;
+    if(barEl) barEl.style.width=`${c.contrib}%`;
+  });
+
+  updateSimConstraintBox(_simDims,_simWeights);
+  updateSimInsight(_simDims,_simWeights);
+  updateSimRoadmap(_simDims,_simWeights,score);
+}
+
+function updateSimConstraintBox(dims,weights) {
+  const weakest=getWeakestByWeight(dims,weights);
+  const conMap={
+    demo:{label:"Binding Constraint — Democratization",title:"Data access is your ceiling",body:"Until your full team can interpret and act on campaign data without bottlenecks, every automation you build will underperform. The algorithm optimises; humans steer. If humans can't read the instruments, you can't steer."},
+    instr:{label:"Binding Constraint — Instrumentation",title:"Measurement gaps are blocking automation quality",body:"Automation is only as good as the signals it's trained on. If your conversion tracking has gaps or hasn't been audited recently, Smart Bidding and any custom rules are optimising against noise."},
+    std:{label:"Binding Constraint — Standardization",title:"Inconsistent structure limits what automation can touch",body:"Without consistent naming and launch processes, automation scripts can't reliably identify what to act on. Standardisation isn't bureaucracy — it's what makes automation possible at scale."},
+    gov:{label:"Binding Constraint — Governance",title:"No clear ownership means automation drifts",body:"When no one owns automation, rules pile up, overlap, and conflict. The first governance action is naming a single accountable person — not building a committee."},
+    tooling:{label:"Binding Constraint — Team & Tooling",title:"Tooling gaps limit automation ceiling",body:"Your team's current tools cap what's achievable. The next investment is integrating your data sources so automation has a complete signal to act on."}
+  };
+  const con=conMap[weakest];
+  const box=document.getElementById('wsim-constraint');
+  if(box&&con){
+    box.querySelector('.constraint-label').textContent=con.label;
+    box.querySelector('h3').textContent=con.title;
+    box.querySelector('p').textContent=con.body;
+  }
+}
+
+function updateSimInsight(dims,weights) {
+  const weakest=getWeakestByWeight(dims,weights);
+  const item=getRoadmapForDim(weakest,dims);
+  const el=document.getElementById('wsim-insight-body');
+  if(el&&item) el.innerHTML=`<strong>${item.title}</strong>${item.body}`;
+}
+
+function updateSimRoadmap(dims,weights,score) {
+  const roadmapEl=document.getElementById('wsim-roadmap');
+  if(!roadmapEl) return;
+  const total=DIM_ORDER.reduce((s,k)=>s+(weights[k]||0),0)||100;
+  const ordered=DIM_ORDER.slice().sort((a,b)=>{
+    const wa=(weights[a]||0)/total, wb=(weights[b]||0)/total;
+    const pa=dims[a].raw/dims[a].max, pb=dims[b].raw/dims[b].max;
+    return (pa*wa)-(pb*wb);
+  });
+  const items=ordered.map(k=>getRoadmapForDim(k,dims)).filter(Boolean).slice(0,4);
+  if(score>=70) items.push({title:"Build a cross-platform performance dashboard",body:"With your foundation solid, the highest-value next layer is a unified dashboard comparing CPA across Google, Meta, and LinkedIn weekly — with documented rules for when and how to shift budget.",impact:"Strategic · 4–6 weeks"});
+  roadmapEl.querySelectorAll('.roadmap-item').forEach(el=>el.remove());
+  items.slice(0,5).forEach((r,i)=>{
+    const div=document.createElement('div');
+    div.className='roadmap-item';
+    div.innerHTML=`<div class="roadmap-num">0${i+1}</div><div class="roadmap-body"><strong>${r.title}</strong><p>${r.body}</p><div class="r-impact">${r.impact}</div></div>`;
+    roadmapEl.appendChild(div);
+  });
+}
+
+function resetWeightSim() {
+  _simWeights={...DIM_DEFAULTS};
+  DIM_ORDER.forEach(k=>{
+    const sl=document.getElementById(`wsim-sl-${k}`);
+    const wv=document.getElementById(`wsim-wv-${k}`);
+    if(sl) sl.value=DIM_DEFAULTS[k];
+    if(wv) wv.textContent=`Weight: ${DIM_DEFAULTS[k]}`;
+  });
+  renderSimState();
 }
 
 renderStep(0);
