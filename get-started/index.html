@@ -1,20 +1,46 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-CA">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book a Strategy Call | Campaign Automation AI</title>
-<meta name="description" content="A 30-minute diagnostic call. We map your current state, identify the highest-value automation opportunity, and give you a concrete next step.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started — Campaign Automation AI</title>
+<meta name="description" content="All engagements start with your free Readiness Score. 4 minutes. 14 questions. You'll know your tier, your binding constraint, and your recommended starting point.">
 <link rel="canonical" href="https://campaignautomation.ai/get-started">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://campaignautomation.ai/get-started">
-<meta property="og:title" content="Get Started — Book a Strategy Call or Join the Waitlist">
-<meta property="og:description" content="Book a 30-minute strategy call or join the Campaign Strategy Portal waitlist. Tell us about your campaign and we will recommend the right starting point.">
+<meta property="og:title" content="Get Started — Campaign Automation AI">
+<meta property="og:description" content="All engagements start with your free Readiness Score. 4 minutes. You'll know your tier and your recommended next step.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Get Started — Book a Strategy Call or Join the Waitlist">
-<meta name="twitter:description" content="Book a 30-minute strategy call or join the Campaign Strategy Portal waitlist. Tell us about your campaign and we will recommend the right starting point.">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+.gs-wrap{max-width:680px;margin:0 auto;padding:0 24px 80px}
+.gs-hero{padding:48px 0 40px;text-align:center}
+.gs-hero h1{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.2;margin-bottom:16px}
+.gs-hero p{font-size:18px;color:var(--mist2);line-height:1.6;max-width:520px;margin:0 auto 32px}
+.gs-steps{display:flex;flex-direction:column;gap:0;margin:48px 0}
+.gs-step{display:flex;gap:24px;padding:28px 0;border-top:1px solid var(--border)}
+.gs-step:last-child{border-bottom:1px solid var(--border)}
+.gs-step-num{font-family:var(--f-mono);font-size:11px;color:var(--signal);min-width:28px;padding-top:4px;letter-spacing:.06em}
+.gs-step-body strong{font-size:17px;font-weight:600;display:block;margin-bottom:6px}
+.gs-step-body p{font-size:15px;color:var(--mist2);margin:0;line-height:1.55}
+.gs-step-body .step-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.07em;text-transform:uppercase;margin-top:8px}
+.gs-cta-block{margin:48px 0;padding:36px;border:2px solid var(--signal);border-radius:4px;text-align:center}
+.gs-cta-block h2{font-size:24px;font-weight:700;margin-bottom:10px}
+.gs-cta-block p{font-size:15px;color:var(--mist2);margin-bottom:28px;line-height:1.55}
+.gs-cta-block .score-meta{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.06em;margin-top:14px}
+.gs-services{margin:48px 0}
+.gs-services h2{font-size:20px;font-weight:700;margin-bottom:24px}
+.gs-service-card{display:flex;gap:20px;padding:20px 0;border-top:1px solid var(--border);align-items:flex-start}
+.gs-service-card:last-child{border-bottom:1px solid var(--border)}
+.gs-service-card .svc-name{font-size:15px;font-weight:600;margin-bottom:4px}
+.gs-service-card .svc-desc{font-size:14px;color:var(--mist2);line-height:1.5;margin:0}
+.gs-service-card .svc-price{font-family:var(--f-mono);font-size:12px;color:var(--mist);white-space:nowrap;padding-top:3px;min-width:90px}
+@keyframes fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fade-up .35s ease both}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -44,12 +70,12 @@
       <a href="/resources" aria-haspopup="true">Resources</a>
       <div class="dropdown" role="menu">
         <a href="/resources" role="menuitem">Blog</a>
-        <a href="/tools/readiness-score" role="menuitem">Readiness Score &#10022; Free</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
         <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
         <a href="/resources/glossary" role="menuitem">Glossary</a>
       </div>
     </div>
-    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit &#8594;</a>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit →</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
     <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
@@ -68,39 +94,105 @@
     <a href="/revenue-operations">Revenue Operations</a>
   </div>
   <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
-    <a href="/training">Training</a>
-    <a href="/results">Results</a>
-    <a href="/tools/readiness-score">Readiness Score</a>
-    <a href="/about">About</a>
+    <a href="/training">Training</a><a href="/results">Results</a>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
   </div>
-  <a href="/solutions/campaign-audit" class="mobile-cta">Get a Campaign Automation Audit &#8594;</a>
+  <a href="/tools/readiness-score" class="mobile-cta">Take the free Readiness Score →</a>
 </nav>
+
+<main id="main-content">
+<div class="gs-wrap">
+
+  <div class="breadcrumb" style="margin-bottom:32px">
+    <a href="/">Home</a><span aria-hidden="true">›</span>
+    <span aria-current="page">Get Started</span>
+  </div>
+
+  <div class="gs-hero animate-in">
+    <div class="signal-badge" style="margin-bottom:20px">Step 1 of 3</div>
+    <h1>Every engagement starts<br>with your Readiness Score.</h1>
+    <p>The score tells us where you are, what's blocking you, and which service will move you fastest. It takes 4 minutes and it's free — no login required.</p>
+    <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
+    <p class="gs-cta-block" style="border:none;padding:0;margin:0;background:none;text-align:center">
+      <span style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em">14 questions · 4 minutes · No login</span>
+    </p>
+  </div>
+
+  <div class="gs-steps animate-in">
+    <div class="gs-step">
+      <div class="gs-step-num">01</div>
+      <div class="gs-step-body">
+        <strong>Complete the Readiness Score</strong>
+        <p>14 questions across 5 dimensions. You get a score out of 100, a tier placement, your binding constraint, and a prioritised roadmap — immediately.</p>
+        <span class="step-tag">Free · 4 minutes</span>
+      </div>
+    </div>
+    <div class="gs-step">
+      <div class="gs-step-num">02</div>
+      <div class="gs-step-body">
+        <strong>Submit your intake at the end of the score</strong>
+        <p>After your scorecard, you'll see a short intake form. Tell us which service you're interested in and your biggest campaign challenge. We review every submission personally.</p>
+        <span class="step-tag">2 business day response</span>
+      </div>
+    </div>
+    <div class="gs-step">
+      <div class="gs-step-num">03</div>
+      <div class="gs-step-body">
+        <strong>We scope the right engagement</strong>
+        <p>We'll respond with a concrete recommendation — which service fits your score, what it costs, and what the first 30 days look like. If it's a fit, we schedule a 30-minute alignment call.</p>
+        <span class="step-tag">No pitch · Just clarity</span>
+      </div>
     </div>
   </div>
 
-  <div class="tagline-footer">
-    <p>There is a smarter<br>way to work<span>.</span><span class="cursor"></span></p>
+  <div class="gs-services animate-in">
+    <h2>What you can request after scoring</h2>
+    <div class="gs-service-card">
+      <div class="svc-price">From $750</div>
+      <div>
+        <div class="svc-name">Campaign Automation Audit</div>
+        <p class="svc-desc">A one-time diagnostic: PPC waste analysis, SEO gaps, and a 30-day AI automation roadmap. Best for scores 40–69 where you need clarity before building.</p>
+      </div>
+    </div>
+    <div class="gs-service-card">
+      <div class="svc-price">From $3,500</div>
+      <div>
+        <div class="svc-name">Automation Sprint</div>
+        <p class="svc-desc">A focused 2-week build: one automation workflow, fully implemented and measured. Best for scores 60+ where you know what to build but want it done right.</p>
+      </div>
+    </div>
+    <div class="gs-service-card">
+      <div class="svc-price">From $500/mo</div>
+      <div>
+        <div class="svc-name">Campaign Strategy Portal</div>
+        <p class="svc-desc">Monthly AI-generated strategy, recommendations, and assets — your campaign intelligence layer. Best for scores 55+ with an active campaign programme.</p>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
-      <div class="footer-desc">From strategy to execution. The first automation win is 30 minutes away.</div>
-      <div class="footer-copy">© 2025 campaignautomation.ai</div>
-    </div>
-    <div class="footer-col"><h5>Solutions</h5>
-      <a href="/paid-advertising-automation">Paid advertising</a><a href="/ai-strategy">AI strategy</a>
-      <a href="/workflow-automation">Workflow automation</a><a href="/revenue-operations">Revenue operations</a>
-    </div>
-    <div class="footer-col"><h5>Learn</h5>
-      <a href="/training">Training hub</a><a href="/results">Case studies</a>
-      <a href="/resources">Resources</a><a href="/resources/glossary">Glossary</a>
-    </div>
-    <div class="footer-col"><h5>Company</h5>
-      <a href="/about">About</a><a href="/get-started">Get started</a>
-      <a href="mailto:hello@campaignautomation.ai">Contact</a>
-    </div>
-  </footer>
+  <div style="text-align:center;margin-top:48px">
+    <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
+    <p style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em;margin-top:12px">Already completed it? <a href="mailto:hello@campaignautomation.ai" style="color:var(--mist2);text-decoration:underline">Email us directly</a></p>
+  </div>
+
 </div>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer">
+  <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
+  </div>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a>
+  </nav>
+  <nav aria-label="Learn"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
+    <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
 <script src="/js/main.js"></script>
 </body>
 </html>

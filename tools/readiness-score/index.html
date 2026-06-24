@@ -78,16 +78,30 @@
 .guardrails h3{font-size:16px;font-weight:600;margin-bottom:16px}
 .guardrail-item{font-family:var(--f-mono);font-size:13px;padding:12px 16px;border-left:3px solid var(--signal);background:rgba(200,241,53,.04);margin-bottom:10px;line-height:1.5;color:var(--mist2)}
 .guardrail-item strong{color:var(--bone)}
-.email-gate{margin:48px 0;padding:32px;border:2px solid var(--border);text-align:center}
-.email-gate h3{font-size:20px;font-weight:700;margin-bottom:8px}
-.email-gate p{font-size:15px;color:var(--mist2);margin-bottom:24px;line-height:1.55}
-.email-form{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.email-form input{flex:1;min-width:240px;padding:14px 16px;background:var(--slate2);border:1px solid var(--border);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px;outline:none}
-.email-form input:focus{border-color:var(--signal)}
-.email-form button{background:var(--signal);color:var(--ink);font-family:var(--f-body);font-size:15px;font-weight:700;padding:14px 24px;border:none;cursor:pointer;border-radius:4px;white-space:nowrap}
-.email-form button:hover{opacity:.9}
-.email-note{font-size:12px;color:var(--mist);margin-top:12px;margin-bottom:0}
-.email-sent{display:none;font-family:var(--f-mono);font-size:13px;color:var(--signal);margin-top:16px;text-align:center;letter-spacing:.04em}
+.intake-gate{margin:48px 0;padding:36px;border:2px solid var(--signal);border-radius:4px}
+.intake-gate h3{font-size:22px;font-weight:700;margin-bottom:8px}
+.intake-gate .intake-sub{font-size:15px;color:var(--mist2);margin-bottom:28px;line-height:1.55}
+.intake-form{display:flex;flex-direction:column;gap:16px;max-width:560px}
+.intake-row{display:flex;gap:12px}
+.intake-row .intake-field{flex:1}
+.intake-field label{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mist);margin-bottom:6px}
+.intake-field input,.intake-field textarea,.intake-field select{width:100%;padding:13px 15px;background:var(--slate2);border:1px solid var(--border);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px;outline:none;box-sizing:border-box}
+.intake-field input:focus,.intake-field textarea:focus,.intake-field select:focus{border-color:var(--signal)}
+.intake-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.intake-field select option{background:var(--ink);color:var(--bone)}
+.intake-field textarea{resize:vertical;min-height:90px;line-height:1.5}
+.intake-submit{background:var(--signal);color:var(--ink);font-family:var(--f-body);font-size:16px;font-weight:700;padding:16px 28px;border:none;cursor:pointer;border-radius:4px;align-self:flex-start;letter-spacing:.01em;transition:opacity .2s,transform .2s}
+.intake-submit:hover{opacity:.9;transform:translateY(-1px)}
+.intake-note{font-size:12px;color:var(--mist);margin-top:4px;line-height:1.5}
+.intake-sent{display:none}
+.intake-sent-inner{text-align:center;padding:32px 0}
+.intake-sent-inner .sent-score{font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.intake-sent-inner h3{font-size:22px;font-weight:700;margin-bottom:10px}
+.intake-sent-inner p{font-size:15px;color:var(--mist2);line-height:1.6;margin-bottom:8px}
+.next-steps{margin-top:24px;text-align:left;border-top:1px solid var(--border);padding-top:24px}
+.next-steps h4{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:14px}
+.next-step-item{display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:var(--mist2);line-height:1.5}
+.next-step-item .ns-num{font-family:var(--f-mono);font-size:11px;color:var(--signal);min-width:20px;padding-top:1px}
 .score-cta{text-align:center;margin:48px 0 0;padding-top:40px;border-top:1px solid var(--border)}
 .score-cta h3{font-size:22px;font-weight:700;margin-bottom:8px}
 .score-cta p{font-size:15px;color:var(--mist2);margin-bottom:24px;line-height:1.55}
@@ -97,8 +111,8 @@
 @keyframes fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .animate-in{animation:fade-up .35s ease both}
 @media(max-width:600px){
-  .email-form{flex-direction:column}
-  .email-form input,.email-form button{width:100%;min-width:0}
+  .intake-row{flex-direction:column}
+  .intake-submit{width:100%}
 }
 </style>
 </head>
@@ -533,23 +547,53 @@ function showScorecard() {
       ${guards.map(g=>`<div class="guardrail-item">${g}</div>`).join("")}
     </div>
 
-    <div class="email-gate animate-in">
-      <h3>Get this scorecard by email</h3>
-      <p>We'll send you a formatted PDF of your results — plus a one-page implementation checklist matched to your tier.</p>
-      <div class="email-form">
-        <input type="email" id="score-email" placeholder="you@company.com" aria-label="Email address">
-        <button type="button" onclick="submitEmail()">Send my results →</button>
+    <div class="intake-gate animate-in" id="intake-gate">
+      <h3 id="intake-title">Ready to act on this?</h3>
+      <p class="intake-sub" id="intake-sub">Tell us where you want to go and we'll scope the right engagement based on your score. We'll be in touch within 2 business days.</p>
+      <div class="intake-form" id="intake-form-el">
+        <div class="intake-row">
+          <div class="intake-field">
+            <label for="i-name">Your name</label>
+            <input type="text" id="i-name" placeholder="Jane Smith" autocomplete="name">
+          </div>
+          <div class="intake-field">
+            <label for="i-company">Company</label>
+            <input type="text" id="i-company" placeholder="Acme Co." autocomplete="organization">
+          </div>
+        </div>
+        <div class="intake-field">
+          <label for="i-email">Work email</label>
+          <input type="email" id="i-email" placeholder="jane@acme.com" autocomplete="email">
+        </div>
+        <div class="intake-field">
+          <label for="i-service">I'm interested in</label>
+          <select id="i-service">
+            <option value="">Select a service…</option>
+            <option value="audit">Campaign Automation Audit — $750 to start</option>
+            <option value="sprint">Automation Sprint — focused 2-week build</option>
+            <option value="portal">Campaign Strategy Portal — monthly intelligence layer</option>
+            <option value="unsure">Not sure yet — let's talk</option>
+          </select>
+        </div>
+        <div class="intake-field">
+          <label for="i-challenge">Biggest campaign challenge right now</label>
+          <textarea id="i-challenge" placeholder="e.g. We're spending $40k/mo on Google Ads but can't tell what's actually working…"></textarea>
+        </div>
+        <button type="button" class="intake-submit" id="intake-submit-btn" onclick="submitIntake()">Submit request →</button>
+        <p class="intake-note">No spam. No hard sell. We review every submission and respond with a concrete next step.</p>
       </div>
-      <p class="email-note">No spam. One email. Unsubscribe any time.</p>
-      <p class="email-sent" id="email-sent">✓ Sent — check your inbox</p>
-    </div>
-
-    <div class="score-cta animate-in">
-      <h3>Ready to close the gap?</h3>
-      <p>A Campaign Automation Audit maps your full stack against this framework, identifies the highest-ROI automation opportunities, and delivers a 90-day implementation plan.</p>
-      <div class="cta-row">
-        <a href="/solutions/campaign-audit" class="btn-primary">Get a Campaign Automation Audit →</a>
-        <a href="/solutions/automation-sprints" class="btn-ghost">See Automation Sprints →</a>
+      <div class="intake-sent" id="intake-sent">
+        <div class="intake-sent-inner">
+          <div class="sent-score" id="sent-score-line"></div>
+          <h3>Request received — we'll be in touch.</h3>
+          <p>We review every submission personally. Expect a response within 2 business days with a proposed next step based on your score and what you're trying to accomplish.</p>
+          <div class="next-steps">
+            <h4>What happens next</h4>
+            <div class="next-step-item"><span class="ns-num">01</span><span>We review your Readiness Score and answers</span></div>
+            <div class="next-step-item"><span class="ns-num">02</span><span>We send a short email with our recommended starting point and why</span></div>
+            <div class="next-step-item"><span class="ns-num">03</span><span>If it's a fit, we schedule a 30-minute scoping call — no pitch, just alignment</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -558,17 +602,81 @@ function showScorecard() {
 
   setTimeout(()=>{
     sc.querySelectorAll(".dim-bar-fill").forEach(b=>{ b.style.width=b.dataset.w; });
+    applyRefParam();
+    updateIntakeForTier(finalScore);
   },120);
 
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function submitEmail() {
-  const email = document.getElementById("score-email").value.trim();
-  if(!email || !email.includes("@")) { document.getElementById("score-email").focus(); return; }
-  console.log("Readiness score email capture:", email);
-  document.querySelector(".email-form").style.display="none";
-  document.getElementById("email-sent").style.display="block";
+// Pre-select service from ?ref= URL param and customise intake header
+function applyRefParam() {
+  const ref = new URLSearchParams(window.location.search).get("ref") || "";
+  const sel = document.getElementById("i-service");
+  const title = document.getElementById("intake-title");
+  const sub = document.getElementById("intake-sub");
+  if(!sel) return;
+  if(ref==="audit") {
+    sel.value="audit";
+    title.textContent="Book your Campaign Automation Audit";
+    sub.textContent="Your score gives us the context we need to scope your audit accurately. Fill in the details below and we'll confirm your booking within 2 business days.";
+  } else if(ref==="sprint") {
+    sel.value="sprint";
+    title.textContent="Request an Automation Sprint";
+    sub.textContent="Your score helps us scope the right sprint. Tell us a bit more about your situation and we'll propose the best starting point.";
+  } else if(ref==="portal") {
+    sel.value="portal";
+    title.textContent="Request Campaign Strategy Portal access";
+    sub.textContent="Portal access is currently invite-only. Your score tells us whether the fit is right. We'll review and respond within 2 business days.";
+  } else {
+    // Dynamic based on tier
+  }
+}
+
+function updateIntakeForTier(score) {
+  const ref = new URLSearchParams(window.location.search).get("ref") || "";
+  if(ref) return; // ref param already handled
+  const title = document.getElementById("intake-title");
+  const sub = document.getElementById("intake-sub");
+  const sel = document.getElementById("i-service");
+  if(!title) return;
+  if(score >= 70) {
+    title.textContent="Your score qualifies for an Automation Sprint";
+    sub.textContent="At your level, the highest-leverage move is a focused 2-week build. Tell us what you want to automate first and we'll scope the sprint.";
+    if(sel) sel.value="sprint";
+  } else if(score >= 50) {
+    title.textContent="An Audit will map your fastest path forward";
+    sub.textContent="Your score shows clear opportunities but also gaps that need diagnosis before building. A Campaign Automation Audit will identify exactly where to start.";
+    if(sel) sel.value="audit";
+  } else {
+    title.textContent="Let's talk before we scope anything";
+    sub.textContent="Your score tells us there's foundational work to do first. Submit your details and we'll send you a concrete recommended starting point — no pitch, just clarity.";
+    if(sel) sel.value="unsure";
+  }
+}
+
+function submitIntake() {
+  const name = document.getElementById("i-name").value.trim();
+  const email = document.getElementById("i-email").value.trim();
+  const company = document.getElementById("i-company").value.trim();
+  const service = document.getElementById("i-service").value;
+  const challenge = document.getElementById("i-challenge").value.trim();
+
+  if(!name){ document.getElementById("i-name").focus(); return; }
+  if(!email || !email.includes("@")){ document.getElementById("i-email").focus(); return; }
+  if(!service){ document.getElementById("i-service").focus(); return; }
+
+  const {finalScore} = computeScore();
+  const tier = getTier(finalScore);
+
+  // Phase 1 — log to console; wire to form backend in Phase 2
+  console.log("Intake submission:", {name, email, company, service, challenge, score: finalScore, tier: tier.name});
+
+  document.getElementById("sent-score-line").textContent = `Score: ${finalScore}/100 · ${tier.name}`;
+  document.getElementById("intake-form-el").style.display="none";
+  document.getElementById("intake-sent").style.display="block";
+  document.querySelector(".intake-sub").style.display="none";
+  document.getElementById("intake-title").style.display="none";
 }
 
 function retake() {
