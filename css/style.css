@@ -150,19 +150,19 @@ nav[aria-label="Main navigation"].scrolled{
   color:var(--mist);padding:10px 24px 4px;display:block;
 }
 
-.nav-cta{
-  background:#FFE200;color:var(--ink);font-family:var(--f-body);
-  font-size:14px;font-weight:600;padding:10px 20px;border:none;cursor:pointer;
+.nav-links > a.nav-cta{
+  background:#D52B1E;color:#fff;font-family:var(--f-body);
+  font-size:14px;font-weight:600;padding:12px;border:none;cursor:pointer;
   letter-spacing:.02em;
   text-decoration:none;display:inline-flex;align-items:center;
   white-space:nowrap;min-height:44px;
-  box-shadow:0 0 16px rgba(255,226,0,.45),0 0 32px rgba(255,226,0,.2);
+  box-shadow:0 0 16px rgba(213,43,30,.5),0 0 32px rgba(213,43,30,.25);
   transition:transform .2s,box-shadow .2s,background .2s;
 }
-.nav-cta:hover{
-  background:#FFD000;
+.nav-links > a.nav-cta:hover{
+  background:#B82318;color:#fff;
   transform:translateY(-1px);
-  box-shadow:0 0 24px rgba(255,226,0,.7),0 0 48px rgba(255,226,0,.35),0 4px 12px rgba(0,0,0,.3);
+  box-shadow:0 0 24px rgba(213,43,30,.75),0 0 48px rgba(213,43,30,.4),0 4px 12px rgba(0,0,0,.3);
 }
 
 /* Hamburger button */
