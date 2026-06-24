@@ -3,18 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Campaign Automation Sprints — Build One Workflow with AI in 2–4 Weeks</title>
-<meta name="description" content="Pick one campaign workflow, automate it with AI, and own the output. Leapfrog sprints require zero data integration. Integration sprints are score-gated. All include full handover and training.">
+<title>Sprints, Programs & Guides — Campaign Automation Catalog</title>
+<meta name="description" content="Every sprint, training program, and readiness guide in one place. Filter by application: PPC, SEO, WEB, COMMERCE, AIO, ABM, LOCAL, INTEGRATION, or FOUNDATIONAL.">
 <link rel="canonical" href="https://campaignautomation.ai/solutions/automation-sprints">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://campaignautomation.ai/solutions/automation-sprints">
-<meta property="og:title" content="Campaign Automation Sprints — Build One AI Workflow in 2–4 Weeks">
-<meta property="og:description" content="Pick one campaign workflow. We build it with you in 2–4 weeks. You own the result. Leapfrog sprints start at any score.">
+<meta property="og:title" content="Sprints, Programs & Guides — Campaign Automation Catalog">
+<meta property="og:description" content="Every sprint, training program, and readiness guide — filterable by application.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+/* ── FILTER TABS ───────────────────────────────────────── */
+.cat-filter-wrap{margin:32px 0 40px}
+.cat-filter-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:12px}
+.cat-filter-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.cat-tab{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--border);background:transparent;color:var(--mist);cursor:pointer;border-radius:2px;transition:all .15s;white-space:nowrap}
+.cat-tab:hover{border-color:var(--mist);color:var(--bone)}
+.cat-tab.active{background:var(--signal);border-color:var(--signal);color:var(--ink);font-weight:600}
+
+/* ── CATALOG GRID ──────────────────────────────────────── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:8px}
+.cat-card{background:var(--slate);border:1px solid var(--border);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:0;transition:border-color .2s}
+.cat-card:hover{border-color:rgba(200,241,53,.35)}
+
+.cat-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:14px}
+.cat-type{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:2px;white-space:nowrap;font-weight:600}
+.cat-type.sprint{background:rgba(200,241,53,.12);color:var(--signal);border:1px solid rgba(200,241,53,.25)}
+.cat-type.program{background:rgba(242,240,235,.07);color:var(--bone);border:1px solid rgba(242,240,235,.15)}
+.cat-type.guide{background:rgba(136,136,136,.1);color:var(--mist2);border:1px solid var(--border)}
+
+.cat-apps{display:flex;flex-wrap:wrap;gap:5px}
+.cat-app-tag{font-family:var(--f-mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist);border:1px solid var(--border);padding:2px 7px;border-radius:2px}
+
+.cat-card h3{font-size:16px;font-weight:700;line-height:1.3;margin:0 0 8px;color:var(--bone)}
+.cat-card p{font-size:14px;color:var(--mist2);line-height:1.6;margin:0 0 16px;flex:1}
+.cat-card-meta{font-family:var(--f-mono);font-size:11px;color:var(--mist);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px}
+.cat-dep{font-size:12px;color:var(--mist);border-top:1px solid var(--border);padding-top:12px;margin-top:auto;margin-bottom:10px;display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.dep-dot-sig{width:6px;height:6px;border-radius:50%;background:var(--signal);flex-shrink:0;margin-top:3px}
+.dep-dot-yel{width:6px;height:6px;border-radius:50%;background:#FFE200;flex-shrink:0;margin-top:3px}
+.dep-dot-red{width:6px;height:6px;border-radius:50%;background:#FF4444;flex-shrink:0;margin-top:3px}
+.cat-cta{font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;color:var(--signal);text-decoration:none;margin-top:auto;display:inline-flex;align-items:center;gap:4px}
+.cat-cta:hover{opacity:.75}
+
+.cat-no-results{font-size:15px;color:var(--mist);margin-top:32px;display:none}
+.cat-no-results a{color:var(--signal)}
+
+/* ── SECTION DIVIDER LABEL ─────────────────────────────── */
+.cat-section-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+/* ── WIDE AUDIT CARD ───────────────────────────────────── */
+.audit-card{background:var(--slate);border:2px solid var(--signal);border-radius:4px;padding:28px 32px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:32px}
+.audit-card h3{font-size:20px;font-weight:700;margin:0 0 6px}
+.audit-card p{font-size:14px;color:var(--mist2);margin:0;line-height:1.6}
+.audit-card-badge{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
+@media(max-width:640px){.audit-card{grid-template-columns:1fr}.audit-card .btn-primary{width:100%;text-align:center}}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -43,14 +89,13 @@
     <div class="nav-item" role="listitem">
       <a href="/resources" aria-haspopup="true">Resources</a>
       <div class="dropdown" role="menu">
-        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/resources" role="menuitem">All Resources</a>
         <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
-        <a href="/resources/sprint-prep" role="menuitem">Sprint Prep Resources</a>
         <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
         <a href="/resources/glossary" role="menuitem">Glossary</a>
       </div>
     </div>
-    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit →</a>
+    <a href="/tools/readiness-score/?ref=audit" class="nav-cta" role="listitem">Get Audit →</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
     <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
@@ -66,217 +111,372 @@
     <a href="/paid-advertising-automation">Paid Advertising Automation</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Operations</a>
   </div>
   <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
-    <a href="/training">Training</a><a href="/results">Results</a><a href="/tools/readiness-score">Readiness Score</a><a href="/resources/sprint-prep">Sprint Prep</a><a href="/about">About</a>
+    <a href="/training">Training</a><a href="/results">Results</a><a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
   </div>
-  <a href="/solutions/campaign-audit" class="mobile-cta">Get a Campaign Automation Audit →</a>
+  <a href="/tools/readiness-score/?ref=audit" class="mobile-cta">Get a Campaign Automation Audit →</a>
 </nav>
 
 <main id="main-content">
 
   <div class="breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">›</span><a href="/solutions">Solutions</a><span aria-hidden="true">›</span><span aria-current="page">Automation Sprints</span>
+    <a href="/">Home</a><span aria-hidden="true">›</span><a href="/solutions">Solutions</a><span aria-hidden="true">›</span><span aria-current="page">Catalog</span>
   </div>
 
   <section class="page-hero reveal">
-    <div class="signal-badge">2–4 weeks · Fixed scope · You own the output</div>
-    <h1>Pick one workflow.<br>Build it. Own it<span class="blink-dot" aria-hidden="true">.</span></h1>
-    <p class="tagline-footer">Two sprint types. One rule: you own everything we build. Leapfrog Sprints run on AI alone — no data integrations, no org-wide rollout, available at any score. Integration Sprints connect to your live stack and require a minimum Readiness Score.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a href="#leapfrog" class="btn-primary">See Leapfrog Sprints →</a>
-      <a href="/resources/sprint-prep" class="btn-ghost">Build your sprint foundation</a>
-    </div>
+    <div class="signal-badge">Sprints · Programs · Guides</div>
+    <h1>Everything in one place<span class="blink-dot" aria-hidden="true">.</span></h1>
+    <p class="tagline-footer">Every automation sprint, training program, and readiness guide — organized around what you're trying to build. Filter by application to find what fits your stack.</p>
   </section>
 
-  <!-- ── LEAPFROG SPRINTS ────────────────────────────────── -->
-  <section id="leapfrog" class="section reveal" style="background:var(--slate)">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px">
-      <div>
-        <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:10px">No integration required · Any score · Any stage</div>
-        <h2 style="margin-bottom:10px">Complex automation.<br>Zero dependencies.</h2>
-        <p style="max-width:560px;color:var(--mist2);font-size:16px;line-height:1.6">These sprints build sophisticated AI workflows that run independently of your data stack. No API connections, no CRM access, no org-wide enablement required. Build real capability from day one — regardless of where your Readiness Score lands.</p>
-      </div>
-      <div style="border:1px solid var(--border);padding:16px 20px;border-radius:4px;min-width:200px">
-        <div style="font-family:var(--f-mono);font-size:10px;color:var(--mist);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">What leapfrog means</div>
-        <div style="font-size:13px;color:var(--mist2);line-height:1.6">
-          <div style="margin-bottom:6px;display:flex;gap:8px"><span style="color:var(--signal)">✓</span> Works from inputs you provide per run</div>
-          <div style="margin-bottom:6px;display:flex;gap:8px"><span style="color:var(--signal)">✓</span> No live API or platform access</div>
-          <div style="margin-bottom:6px;display:flex;gap:8px"><span style="color:var(--signal)">✓</span> No organizational change required</div>
-          <div style="display:flex;gap:8px"><span style="color:var(--signal)">✓</span> Full complexity — not a template kit</div>
-        </div>
+  <section class="section reveal">
+
+    <!-- Filter -->
+    <div class="cat-filter-wrap">
+      <div class="cat-filter-label">Filter by application</div>
+      <div class="cat-filter-tabs" role="group" aria-label="Filter catalog by application">
+        <button class="cat-tab active" data-app="all">All</button>
+        <button class="cat-tab" data-app="WEB">Web</button>
+        <button class="cat-tab" data-app="COMMERCE">Commerce</button>
+        <button class="cat-tab" data-app="SEO">SEO</button>
+        <button class="cat-tab" data-app="PPC">PPC</button>
+        <button class="cat-tab" data-app="AIO">AIO</button>
+        <button class="cat-tab" data-app="ABM">ABM</button>
+        <button class="cat-tab" data-app="LOCAL">Local</button>
+        <button class="cat-tab" data-app="INTEGRATION">Integration</button>
+        <button class="cat-tab" data-app="FOUNDATIONAL">Foundational</button>
       </div>
     </div>
 
-    <div class="sprint-grid">
+    <!-- Audit card — always shown -->
+    <div class="audit-card" id="audit-anchor">
+      <div>
+        <div class="audit-card-badge">Start here · Required before integration sprints</div>
+        <h3>Campaign Automation Audit</h3>
+        <p>The diagnostic that scopes every integration sprint. Maps your stack, identifies the highest-ROI opportunity, and tells you exactly which sprint to build — and in what order. $750–$2,500 · One-time.</p>
+      </div>
+      <a href="/solutions/campaign-audit" class="btn-primary" style="white-space:nowrap">Learn more →</a>
+    </div>
 
-      <div class="sprint-card leapfrog" data-min-score="0" data-sprint-id="ai-brief" data-sprint-type="leapfrog" data-stage="pre early growth scale">
-        <div class="sprint-badge">
-          <span class="leapfrog-badge">Leapfrog</span>
-          <span class="price-tag">$4k–$6k · 2 weeks</span>
+    <!-- Catalog grid -->
+    <div class="cat-grid" id="cat-grid">
+
+      <!-- ── SPRINTS ─────────────────────────────────────── -->
+
+      <div class="cat-card" data-app="WEB PPC AIO FOUNDATIONAL">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Leapfrog</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">WEB</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">AIO</span><span class="cat-app-tag">FOUNDATIONAL</span>
+          </div>
         </div>
         <h3>AI Brief Machine</h3>
-        <p>A multi-step prompt pipeline built in Claude that turns any campaign objective, keyword, or product into a structured creative brief — audience definition, angle, format, messaging hierarchy, and distribution notes — in under five minutes. Built as a reusable prompt chain your team owns, not a subscription to a brief tool.</p>
-        <div class="dep-tag"><span class="dep-dot"></span>Input per run — no external connections</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <p>A multi-step prompt pipeline built in Claude that turns any campaign objective, keyword, or product into a structured creative brief — audience definition, angle, format, messaging hierarchy, and distribution notes — in under five minutes. Reusable prompt chain your team owns.</p>
+        <div class="cat-card-meta">
+          <span>$4k–$6k</span><span>2 weeks</span><span>Any score</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Input per run — no external connections</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <div class="sprint-card leapfrog" data-min-score="0" data-sprint-id="search-term-intel" data-sprint-type="leapfrog" data-stage="pre early growth scale">
-        <div class="sprint-badge">
-          <span class="leapfrog-badge">Leapfrog</span>
-          <span class="price-tag">$4k–$6k · 2 weeks</span>
+      <div class="cat-card" data-app="PPC SEO FOUNDATIONAL">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Leapfrog</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">PPC</span><span class="cat-app-tag">SEO</span><span class="cat-app-tag">FOUNDATIONAL</span>
+          </div>
         </div>
         <h3>Search Term Intelligence</h3>
-        <p>A weekly workflow that turns a raw Google Ads search term CSV into a structured intelligence report: negative keyword candidates ranked by wasted spend pattern, match type efficiency gaps, and emerging opportunity signals — all processed through a structured Claude pipeline. No API access, no platform login.</p>
-        <div class="dep-tag"><span class="dep-dot"></span>Google Ads CSV export only — no platform access</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <p>A weekly workflow that turns a raw Google Ads search term CSV into a structured intelligence report: negative keyword candidates ranked by wasted spend, match type efficiency gaps, and emerging opportunity signals — processed through a structured Claude pipeline. No API access needed.</p>
+        <div class="cat-card-meta">
+          <span>$4k–$6k</span><span>2 weeks</span><span>Any score</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Google Ads CSV export only — no platform access</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <div class="sprint-card leapfrog" data-min-score="0" data-sprint-id="competitive-intel" data-sprint-type="leapfrog" data-stage="early growth scale">
-        <div class="sprint-badge">
-          <span class="leapfrog-badge">Leapfrog</span>
-          <span class="price-tag">$5k–$8k · 2–3 weeks</span>
+      <div class="cat-card" data-app="PPC SEO AIO WEB">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Leapfrog</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">PPC</span><span class="cat-app-tag">SEO</span><span class="cat-app-tag">AIO</span><span class="cat-app-tag">WEB</span>
+          </div>
         </div>
         <h3>Competitive Intelligence Engine</h3>
-        <p>A structured research-to-analysis pipeline in Claude. Feed it competitor URLs, ad library screenshots, job postings, or landing pages — it outputs gap analysis, keyword angle opportunities, and creative positioning briefs on a defined weekly cadence. Entirely from public data. No proprietary access required.</p>
-        <div class="dep-tag"><span class="dep-dot"></span>Public web data only — no proprietary connections</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <p>A structured research-to-analysis pipeline in Claude. Feed it competitor URLs, ad library screenshots, job postings, or landing pages — it outputs gap analysis, keyword angle opportunities, and creative positioning briefs on a defined weekly cadence. Entirely from public data.</p>
+        <div class="cat-card-meta">
+          <span>$5k–$8k</span><span>2–3 weeks</span><span>Any score</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Public web data only — no proprietary connections</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <div class="sprint-card leapfrog" data-min-score="0" data-sprint-id="content-atomization" data-sprint-type="leapfrog" data-stage="early growth scale">
-        <div class="sprint-badge">
-          <span class="leapfrog-badge">Leapfrog</span>
-          <span class="price-tag">$5k–$8k · 2–3 weeks</span>
+      <div class="cat-card" data-app="WEB SEO AIO">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Leapfrog</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">WEB</span><span class="cat-app-tag">SEO</span><span class="cat-app-tag">AIO</span>
+          </div>
         </div>
         <h3>Content Atomization System</h3>
-        <p>A production-ready prompt pipeline that turns one long-form piece — blog post, case study, customer interview — into 12+ channel-specific assets: social posts, email copy, ad creative variants, video scripts, and landing page bullets. Structured as a decision tree with quality gates, not a template dump.</p>
-        <div class="dep-tag"><span class="dep-dot"></span>Content you provide per run — no CMS integration</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── INTEGRATION SPRINT CATALOG ─────────────────────── -->
-  <section class="section bone reveal">
-    <h2>Integration sprint catalog</h2>
-    <p style="max-width:600px;margin-bottom:0">These sprints connect to your live data stack — conversion tracking, CRM, ad platforms, and search data. Your Readiness Score determines eligibility. The Audit narrows it to the highest-ROI option for your industry and stage.</p>
-
-    <div class="sprint-filter-wrap">
-      <div class="sprint-filter-label">Filter by company stage</div>
-      <div class="sprint-filter-tabs" role="group" aria-label="Filter sprints by stage">
-        <button class="sprint-filter-tab active" data-filter="all">All sprints</button>
-        <button class="sprint-filter-tab" data-filter="early">Pre / Early stage</button>
-        <button class="sprint-filter-tab" data-filter="growth">Growth ($1M–$10M)</button>
-        <button class="sprint-filter-tab" data-filter="scale">Scale ($10M+)</button>
-      </div>
-    </div>
-
-    <div id="sprint-hero-insert-target"></div>
-
-    <div class="sprint-grid">
-
-      <!-- Score 0+ — always visible, no filter -->
-      <div class="sprint-card" data-min-score="0" data-sprint-id="audit-first" style="border-color:var(--signal);grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center">
-        <div>
-          <div class="sprint-badge" style="margin-bottom:10px">
-            <span class="signal-badge">Step 1 — Always first</span>
-            <span class="price-tag">$750–$2,500 · One-time</span>
-          </div>
-          <h3 style="font-size:20px">Campaign Automation Audit</h3>
-          <p style="margin:8px 0 0">The diagnostic that scopes every integration sprint. It maps your stack, identifies your highest-ROI automation opportunity, and tells us exactly which sprint to build — and in what order. No audit, no integration sprint.</p>
+        <p>A production-ready prompt pipeline that turns one long-form piece — blog post, case study, customer interview — into 12+ channel-specific assets: social posts, email copy, ad creative variants, video scripts, and landing page bullets. Structured as a decision tree with quality gates.</p>
+        <div class="cat-card-meta">
+          <span>$5k–$8k</span><span>2–3 weeks</span><span>Any score</span>
         </div>
-        <a href="/solutions/campaign-audit" class="btn-primary" style="white-space:nowrap;align-self:center">Learn more →</a>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Content you provide per run — no CMS integration</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <!-- Score 40+ — Content Brief -->
-      <div class="sprint-card" data-min-score="40" data-sprint-id="content-brief" data-stage="early growth scale">
-        <div class="sprint-badge">
-          <span class="price-tag">$5k–$8k · 2 weeks</span>
-          <span class="min-score-tag">Score 40+</span>
+      <div class="cat-card" data-app="SEO WEB AIO">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Integration</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">SEO</span><span class="cat-app-tag">WEB</span><span class="cat-app-tag">AIO</span>
+          </div>
         </div>
         <h3>Content Brief</h3>
         <p>A structured AI workflow that turns a keyword or topic into a full content brief — audience, angle, outline, and internal linking suggestions — in under five minutes. Integrates with your keyword research tool and content workflow. The fastest ROI in the integration catalog.</p>
-        <div class="dep-tag"><span class="dep-dot dep-yellow"></span>Requires keyword tool + documented content process</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <div class="cat-card-meta">
+          <span>$5k–$8k</span><span>2 weeks</span><span>Score 40+</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-yel"></span>Requires keyword tool + documented content process</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <!-- Score 50+ — Campaign Launch Kit -->
-      <div class="sprint-card" data-min-score="50" data-sprint-id="launch-kit" data-stage="early growth scale">
-        <div class="sprint-badge">
-          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
-          <span class="min-score-tag">Score 50+</span>
+      <div class="cat-card" data-app="WEB PPC FOUNDATIONAL">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Integration</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">WEB</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">FOUNDATIONAL</span>
+          </div>
         </div>
         <h3>Campaign Launch Kit</h3>
         <p>An AI-powered launch checklist, asset brief generator, and QA workflow that cuts campaign setup time from days to hours. Integrates with your project management and asset workflow. Requires consistent naming conventions and a documented launch process.</p>
-        <div class="dep-tag"><span class="dep-dot dep-yellow"></span>Requires documented launch process + PM tool</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <div class="cat-card-meta">
+          <span>$5k–$10k</span><span>2–3 weeks</span><span>Score 50+</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-yel"></span>Requires documented launch process + PM tool</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <!-- Score 50+ — PPC Intelligence -->
-      <div class="sprint-card" data-min-score="50" data-sprint-id="ppc-intelligence" data-stage="early growth scale">
-        <div class="sprint-badge">
-          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
-          <span class="min-score-tag">Score 50+</span>
+      <div class="cat-card" data-app="PPC INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Integration</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">PPC</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
         </div>
         <h3>PPC Intelligence</h3>
         <p>Automated search term classification, negative keyword workflows, and weekly performance digest — built with live API access to your ad platform. Unlike the Leapfrog version, this runs on a schedule and pushes outputs directly into your account. Requires clean conversion tracking.</p>
-        <div class="dep-tag"><span class="dep-dot dep-red"></span>Requires Google Ads API access + clean conversion tracking</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <div class="cat-card-meta">
+          <span>$5k–$10k</span><span>2–3 weeks</span><span>Score 50+</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-red"></span>Requires Google Ads API access + clean conversion tracking</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <!-- Score 55+ — SEO/PPC Opportunity -->
-      <div class="sprint-card" data-min-score="55" data-sprint-id="seo-ppc" data-stage="growth scale">
-        <div class="sprint-badge">
-          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
-          <span class="min-score-tag">Score 55+</span>
+      <div class="cat-card" data-app="SEO PPC INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Integration</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">SEO</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
         </div>
         <h3>SEO/PPC Opportunity</h3>
         <p>Recurring gap analysis across paid and organic — surfaces cannibalization, missed keywords, and budget reallocation opportunities on a defined cadence. Requires live Search Console + GA4 data connections and a cross-channel reporting baseline.</p>
-        <div class="dep-tag"><span class="dep-dot dep-red"></span>Requires Search Console API + GA4 + cross-channel baseline</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <div class="cat-card-meta">
+          <span>$5k–$10k</span><span>2–3 weeks</span><span>Score 55+</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-red"></span>Requires Search Console API + GA4 + cross-channel baseline</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <!-- Score 55+ — Event Follow-Up -->
-      <div class="sprint-card" data-min-score="55" data-sprint-id="event-followup" data-stage="growth scale">
-        <div class="sprint-badge">
-          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
-          <span class="min-score-tag">Score 55+</span>
+      <div class="cat-card" data-app="ABM LOCAL COMMERCE INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Integration</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">ABM</span><span class="cat-app-tag">LOCAL</span><span class="cat-app-tag">COMMERCE</span>
+          </div>
         </div>
         <h3>Event Follow-Up</h3>
         <p>Post-event segmentation, personalised follow-up sequence generation, and lead routing — automated from attendee list to first touch within 24 hours. Requires CRM integration, email platform API access, and a defined lead routing process.</p>
-        <div class="dep-tag"><span class="dep-dot dep-red"></span>Requires CRM + email platform API + lead routing process</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+        <div class="cat-card-meta">
+          <span>$5k–$10k</span><span>2–3 weeks</span><span>Score 55+</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-red"></span>Requires CRM + email platform API + lead routing process</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
 
-      <!-- Score 60+ — Lead Reactivation -->
-      <div class="sprint-card" data-min-score="60" data-sprint-id="lead-reactivation" data-stage="growth scale">
-        <div class="sprint-badge">
-          <span class="price-tag">$8k–$15k · 3–4 weeks</span>
-          <span class="min-score-tag">Score 60+</span>
+      <div class="cat-card" data-app="ABM INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type sprint">Sprint · Integration</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">ABM</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
         </div>
         <h3>Lead Reactivation</h3>
         <p>AI-scored lead list, personalised outreach sequences, and CRM tagging workflow — designed for teams with stale pipeline and limited SDR capacity. Requires structured CRM data, a defined ICP, and CRM write access to push scoring results back.</p>
-        <div class="dep-tag"><span class="dep-dot dep-red"></span>Requires CRM read/write access + structured data + defined ICP</div>
-        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── SPRINT PREP CALLOUT ─────────────────────────────── -->
-  <section class="section reveal">
-    <div class="sprint-prep-callout">
-      <div class="spc-body">
-        <strong>Not sure which sprint is right for you?</strong>
-        <p>The Sprint Prep Resource Center walks you through exactly what to have in place before your first sprint — organized by your Readiness Score tier and company stage. Templates, checklists, and a clear next action.</p>
-        <div class="spc-tags">
-          <span class="spc-tag">Tier-specific checklists</span>
-          <span class="spc-tag">Prompt packs</span>
-          <span class="spc-tag">Stack audit templates</span>
-          <span class="spc-tag">Next action guidance</span>
+        <div class="cat-card-meta">
+          <span>$8k–$15k</span><span>3–4 weeks</span><span>Score 60+</span>
         </div>
+        <div class="cat-dep"><span class="dep-dot-red"></span>Requires CRM read/write access + structured data + defined ICP</div>
+        <a href="/tools/readiness-score?ref=sprint" class="cat-cta">Request this sprint →</a>
       </div>
-      <a href="/resources/sprint-prep" class="btn-ghost" style="white-space:nowrap;align-self:center">View sprint prep resources →</a>
+
+      <!-- ── PROGRAMS ─────────────────────────────────────── -->
+
+      <div class="cat-card" data-app="FOUNDATIONAL AIO">
+        <div class="cat-card-top">
+          <span class="cat-type program">Program</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">AIO</span>
+          </div>
+        </div>
+        <h3>AI for Business Leaders</h3>
+        <p>A half-day executive workshop that moves leadership from "we should do something with AI" to a concrete, approved strategy. Covers AI use cases in campaign operations, governance, risk posture, and what to actually fund first.</p>
+        <div class="cat-card-meta">
+          <span>Contact for pricing</span><span>Half day</span>
+        </div>
+        <a href="/training" class="cat-cta">View program →</a>
+      </div>
+
+      <div class="cat-card" data-app="FOUNDATIONAL AIO PPC WEB">
+        <div class="cat-card-top">
+          <span class="cat-type program">Program</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">AIO</span><span class="cat-app-tag">PPC</span>
+          </div>
+        </div>
+        <h3>AI Marketing Certification</h3>
+        <p>A structured 6-week training program for marketing teams. Covers prompt engineering for campaigns, guardrail-driven automation, AI workflow design, and hands-on build sessions. Certified completion credential included.</p>
+        <div class="cat-card-meta">
+          <span>Contact for pricing</span><span>6 weeks</span>
+        </div>
+        <a href="/training" class="cat-cta">View program →</a>
+      </div>
+
+      <div class="cat-card" data-app="FOUNDATIONAL INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type program">Program</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
+        </div>
+        <h3>Guardrail Setup &amp; Automation Governance</h3>
+        <p>A 1-week engagement that installs the automation guardrail set every team should have running before any campaign automation goes live. Budget caps, conversion thresholds, change log, and approval process — documented and activated.</p>
+        <div class="cat-card-meta">
+          <span>Contact for pricing</span><span>1 week</span>
+        </div>
+        <a href="/training" class="cat-cta">View program →</a>
+      </div>
+
+      <div class="cat-card" data-app="PPC WEB FOUNDATIONAL">
+        <div class="cat-card-top">
+          <span class="cat-type program">Program</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">PPC</span><span class="cat-app-tag">WEB</span><span class="cat-app-tag">FOUNDATIONAL</span>
+          </div>
+        </div>
+        <h3>Marketing Automation Training</h3>
+        <p>Hands-on training for marketing teams covering automated bidding strategy, campaign rules, ad scheduling, and the foundation for integrating AI into campaign operations. Customized to your platform stack and current automation maturity.</p>
+        <div class="cat-card-meta">
+          <span>Contact for pricing</span><span>2 days</span>
+        </div>
+        <a href="/training" class="cat-cta">View program →</a>
+      </div>
+
+      <div class="cat-card" data-app="INTEGRATION FOUNDATIONAL">
+        <div class="cat-card-top">
+          <span class="cat-type program">Program</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">INTEGRATION</span><span class="cat-app-tag">FOUNDATIONAL</span>
+          </div>
+        </div>
+        <h3>Workflow Automation Training</h3>
+        <p>Technical training for marketing ops and RevOps teams covering Make, Zapier, and n8n workflow design. Build, test, and document your first 3 production workflows during the engagement. Includes platform-agnostic patterns for scalability.</p>
+        <div class="cat-card-meta">
+          <span>Contact for pricing</span><span>2 days</span>
+        </div>
+        <a href="/training" class="cat-cta">View program →</a>
+      </div>
+
+      <!-- ── GUIDES ───────────────────────────────────────── -->
+
+      <div class="cat-card" data-app="FOUNDATIONAL PPC WEB">
+        <div class="cat-card-top">
+          <span class="cat-type guide">Guide</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">WEB</span>
+          </div>
+        </div>
+        <h3>Data Democratization Guide</h3>
+        <p>The single biggest predictor of automation success. How to build self-serve data access for every channel owner — and why it gates every sprint above it. Includes the bottleneck test, score table, and 4 steps to close the gap.</p>
+        <a href="/resources/democratization" class="cat-cta">Read guide →</a>
+      </div>
+
+      <div class="cat-card" data-app="PPC WEB FOUNDATIONAL INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type guide">Guide</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">PPC</span><span class="cat-app-tag">WEB</span><span class="cat-app-tag">FOUNDATIONAL</span>
+          </div>
+        </div>
+        <h3>Measurement &amp; Instrumentation Guide</h3>
+        <p>Broken tracking is silent and expensive. How to audit your conversion setup, fix deduplication issues, and validate attribution before automating anything. Includes the 30-conversion rule and a step-by-step tracking audit methodology.</p>
+        <a href="/resources/instrumentation" class="cat-cta">Read guide →</a>
+      </div>
+
+      <div class="cat-card" data-app="PPC WEB FOUNDATIONAL">
+        <div class="cat-card-top">
+          <span class="cat-type guide">Guide</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">PPC</span><span class="cat-app-tag">WEB</span><span class="cat-app-tag">FOUNDATIONAL</span>
+          </div>
+        </div>
+        <h3>Campaign Standardization Guide</h3>
+        <p>Automation scripts need consistent structure to act on. How to build a naming convention and launch process that makes every rule, script, and AI workflow more reliable. Includes naming structure template and QA launch checklist.</p>
+        <a href="/resources/standardization" class="cat-cta">Read guide →</a>
+      </div>
+
+      <div class="cat-card" data-app="FOUNDATIONAL INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type guide">Guide</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
+        </div>
+        <h3>Automation Governance Framework</h3>
+        <p>One unchecked rule can burn a week of budget. Who owns automation, how changes get approved, and the guardrail set every team should have running. Includes a starter guardrail configuration and governance process template.</p>
+        <a href="/resources/governance" class="cat-cta">Read guide →</a>
+      </div>
+
+      <div class="cat-card" data-app="FOUNDATIONAL INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type guide">Guide</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
+        </div>
+        <h3>Team &amp; Tooling Guide</h3>
+        <p>Your ceiling is what your tools can see. The five layers of automation tooling — in the right order — and how to know which layer to invest in next. Covers Google Ads Scripts, Make/Zapier, BI tools, CRM sync, and AI-assisted tooling.</p>
+        <a href="/resources/team-tooling" class="cat-cta">Read guide →</a>
+      </div>
+
+      <div class="cat-card" data-app="WEB PPC SEO FOUNDATIONAL">
+        <div class="cat-card-top">
+          <span class="cat-type guide">Guide</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">WEB</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">SEO</span>
+          </div>
+        </div>
+        <h3>Templates &amp; Prompt Packs</h3>
+        <p>AGENTS.md starters, prompt packs for PPC briefing, SEO brief generators, and campaign planning templates. Production-ready — tested in real campaigns. Download and adapt to your stack.</p>
+        <a href="/resources/templates" class="cat-cta">View templates →</a>
+      </div>
+
     </div>
+
+    <p class="cat-no-results" id="cat-no-results">No items match that filter. <a href="/tools/readiness-score">Take the Readiness Score</a> to get a personalized recommendation.</p>
+
   </section>
 
   <!-- ── DELIVERABLES ────────────────────────────────────── -->
@@ -297,40 +497,20 @@
   <section class="section reveal">
     <h2>How a sprint works</h2>
     <div class="grid-2" style="max-width:860px">
-      <div class="step"><div class="step-num" aria-hidden="true">01</div><strong>Score + prep</strong><p>Your Readiness Score determines which sprints you're eligible for. The Sprint Prep Resource Center gets your stack and documentation ready before we scope anything.</p></div>
-      <div class="step"><div class="step-num" aria-hidden="true">02</div><strong>Scope &amp; kickoff</strong><p>We agree on inputs, outputs, guardrails, and success criteria before a single line of prompt is written. Integration sprints are scoped from your Audit findings. Leapfrog sprints go straight to build.</p></div>
+      <div class="step"><div class="step-num" aria-hidden="true">01</div><strong>Score + prep</strong><p>Your Readiness Score determines which sprints you're eligible for. Leapfrog sprints start at any score. Integration sprints are scoped after the Audit.</p></div>
+      <div class="step"><div class="step-num" aria-hidden="true">02</div><strong>Scope &amp; kickoff</strong><p>We agree on inputs, outputs, guardrails, and success criteria before a single line of prompt is written. No undefined scope, no scope creep.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">03</div><strong>Build sprint (2–4 weeks)</strong><p>Weekly check-ins, shared working files, and staged delivery — you see progress throughout, not just at the end.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">04</div><strong>Handover + training</strong><p>Half-day training session with your team, full documentation, and a 30-day check-in call included in every sprint.</p></div>
     </div>
   </section>
 
-  <!-- ── COMPARE ────────────────────────────────────────── -->
-  <section class="section bone reveal">
-    <h2>How sprints compare</h2>
-    <div class="compare-table" role="region" aria-label="Comparison table">
-      <table>
-        <thead>
-          <tr><th scope="col"></th><th scope="col">Leapfrog Sprint</th><th scope="col">Integration Sprint</th><th scope="col">Typical Agency</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Readiness Score required</td><td>None — start now</td><td>40–60+ depending on sprint</td><td>N/A</td></tr>
-          <tr><td>Data integration required</td><td>No</td><td>Yes</td><td>Usually</td></tr>
-          <tr><td>Time to value</td><td>2 weeks</td><td>2–4 weeks</td><td>2–3 months</td></tr>
-          <tr><td>You own the output</td><td>Yes — fully</td><td>Yes — fully</td><td>Rarely</td></tr>
-          <tr><td>Human training included</td><td>Yes — half day</td><td>Yes — half day</td><td>Sometimes</td></tr>
-          <tr><td>Guardrail-driven</td><td>Yes</td><td>Yes</td><td>Rarely</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <!-- ── FINAL CTA ──────────────────────────────────────── -->
   <section class="section reveal" style="text-align:center">
-    <h2>Ready to build?</h2>
-    <p>Leapfrog Sprints start at any score. Integration Sprints start after the Audit. Either way, the first step is your Readiness Score.</p>
+    <h2>Not sure where to start?</h2>
+    <p>The Readiness Score takes 4 minutes and tells you exactly which sprint fits your current score, stage, and industry.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px">
       <a href="/tools/readiness-score?ref=sprint" class="btn-primary">Get your Readiness Score →</a>
-      <a href="/resources/sprint-prep" class="btn-ghost">Sprint prep resources →</a>
+      <a href="/solutions/campaign-audit" class="btn-ghost">Book the Audit →</a>
     </div>
   </section>
 
@@ -348,9 +528,36 @@
     <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
   </nav>
   <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
-    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/sprint-prep">Sprint Prep</a><a href="/resources/templates">Templates</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/templates">Templates</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
   </nav>
 </footer>
+
 <script src="/js/main.js"></script>
+<script>
+(function(){
+  const tabs = document.querySelectorAll('.cat-tab');
+  const cards = document.querySelectorAll('#cat-grid .cat-card');
+  const noResults = document.getElementById('cat-no-results');
+
+  function filterCatalog(app) {
+    let visible = 0;
+    cards.forEach(function(card) {
+      const apps = (card.dataset.app || '').split(' ');
+      const show = app === 'all' || apps.includes(app);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      this.classList.add('active');
+      filterCatalog(this.dataset.app);
+    });
+  });
+})();
+</script>
 </body>
 </html>
