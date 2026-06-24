@@ -11,9 +11,9 @@
   --mist2:#B0B0B0;    /* upgraded from #999 — passes WCAG AA 4.5:1 on --ink */
   --border:#2A2A2A;
   --border-bone:#D8D5CF;
-  --f-display:'Syne',sans-serif;
-  --f-body:'Inter',sans-serif;
-  --f-mono:'JetBrains Mono',monospace;
+  --f-display:'Geist',sans-serif;
+  --f-body:'Geist',sans-serif;
+  --f-mono:'Geist Mono',monospace;
   --focus-ring:0 0 0 3px rgba(200,241,53,.6);
 }
 html{scroll-behavior:smooth}
