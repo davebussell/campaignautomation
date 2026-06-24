@@ -758,3 +758,122 @@ footer{
   .breadcrumb,.page-hero,.tagline-footer{padding-left:16px;padding-right:16px}
   .hero-eyebrow{font-size:10px}
 }
+
+/* ══════════════════════════════════════════════════════════
+   ENHANCED VISUAL SYSTEM — v2.0
+═══════════════════════════════════════════════════════════ */
+
+/* ── WORD-BY-WORD HERO REVEAL ────────────────────────── */
+.word-reveal-h1{overflow:visible;line-height:1.0}
+.hero-word{
+  display:inline-block;
+  clip-path:inset(0 100% 0 0);
+  opacity:0;
+  transition:clip-path 280ms ease-out,opacity 280ms ease-out;
+}
+.hero-word.revealed{clip-path:inset(0 0% 0 0);opacity:1}
+.hero-word.signal{color:var(--signal)}
+
+/* ── GRADIENT ORBS ───────────────────────────────────── */
+.orb{
+  position:absolute;border-radius:50%;
+  pointer-events:none;will-change:transform;
+  filter:blur(120px);z-index:0;
+}
+.orb-lime{
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(200,241,53,.055) 0%,transparent 70%);
+  top:-100px;right:-80px;
+}
+.orb-bone{
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(242,240,235,.035) 0%,transparent 70%);
+  bottom:-80px;left:10%;
+}
+@media(max-width:899px){.orb{display:none!important}}
+@media(prefers-reduced-motion:no-preference){
+  .orb-lime{animation:orb-drift-1 22s ease-in-out infinite}
+  .orb-bone{animation:orb-drift-2 28s ease-in-out infinite}
+}
+@keyframes orb-drift-1{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(-30px,20px) scale(1.04)}
+  66%{transform:translate(20px,-15px) scale(0.96)}
+}
+@keyframes orb-drift-2{
+  0%,100%{transform:translate(0,0) scale(1)}
+  40%{transform:translate(25px,-20px) scale(1.03)}
+  70%{transform:translate(-15px,15px) scale(0.97)}
+}
+
+/* ── TERMINAL FLOAT ──────────────────────────────────── */
+@keyframes terminal-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+@media(min-width:900px) and (prefers-reduced-motion:no-preference){
+  .terminal-float{animation:terminal-float 7s ease-in-out infinite}
+}
+
+/* ── SCROLL SNAP (desktop only) ──────────────────────── */
+@media(min-width:900px){
+  html{scroll-snap-type:y mandatory}
+  .snap-sec{
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    scroll-margin-top:64px;
+    min-height:100vh;
+  }
+  .snap-sec.tagline-footer{
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+  }
+}
+
+/* ── SCROLL INDICATOR DOTS ───────────────────────────── */
+.snap-indicator{
+  position:fixed;right:20px;top:50%;
+  transform:translateY(-50%);
+  z-index:50;display:flex;flex-direction:column;gap:10px;
+}
+.snap-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--mist);cursor:pointer;
+  border:none;padding:0;
+  transition:background .2s,transform .2s;
+}
+.snap-dot.active{background:var(--signal);transform:scale(1.5)}
+@media(max-width:899px){.snap-indicator{display:none!important}}
+
+/* ── NAV LINK HOVER UNDERLINE ────────────────────────── */
+.nav-links > a:not(.nav-cta){position:relative}
+.nav-links > a:not(.nav-cta)::before{
+  content:'';
+  position:absolute;bottom:10px;left:0;right:0;
+  height:1px;background:var(--signal);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform 160ms ease;
+}
+.nav-links > a:not(.nav-cta):hover::before,
+.nav-links > a:not(.nav-cta)[aria-current]::before{
+  transform:scaleX(1);transform-origin:left;
+}
+
+/* ── PAGE TRANSITIONS ────────────────────────────────── */
+@keyframes page-exit-anim{to{opacity:0;transform:translateY(-16px)}}
+@keyframes page-enter-anim{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:no-preference){
+  body.page-entering{animation:page-enter-anim 200ms ease forwards}
+}
+
+/* ── CARD BORDER SWEEP (extended to .card) ───────────── */
+.card{position:relative;overflow:hidden}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--signal);transform:scaleX(0);transform-origin:left;
+  transition:transform 180ms cubic-bezier(.4,0,.2,1);z-index:2;
+}
+.card:hover::before{transform:scaleX(1)}
