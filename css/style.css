@@ -95,7 +95,7 @@ a:focus-visible,button:focus-visible{
 .reveal-delay-5{transition-delay:.5s}
 
 /* ── NAV ─────────────────────────────────────────────────── */
-nav{
+nav[aria-label="Main navigation"]{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 48px;height:64px;
@@ -104,7 +104,7 @@ nav{
   backdrop-filter:blur(16px);
   transition:background .3s,border-color .3s,box-shadow .3s;
 }
-nav.scrolled{
+nav[aria-label="Main navigation"].scrolled{
   background:rgba(13,13,13,0.96);
   border-bottom-color:rgba(200,241,53,.15);
   box-shadow:0 1px 40px rgba(0,0,0,.4);
