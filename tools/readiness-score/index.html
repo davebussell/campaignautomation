@@ -16,12 +16,18 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/css/style.css">
 <style>
-.tool-wrap{max-width:760px;margin:0 auto;padding:0 24px 80px}
-.progress-bar{display:flex;gap:6px;margin-bottom:48px;margin-top:8px}
-.progress-bar .step-dot{flex:1;height:3px;background:var(--border);border-radius:2px;transition:background .3s}
-.progress-bar .step-dot.done{background:var(--signal)}
-.progress-bar .step-dot.active{background:var(--signal);opacity:.6}
-.progress-label{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.06em;margin-bottom:12px}
+.tool-wrap{max-width:760px;margin:0 auto;padding:0 24px 0}
+/* ── SNAP LAYOUT ── */
+.rs-progress-bar{position:sticky;top:64px;z-index:50;background:rgba(13,13,13,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:10px 24px;margin:0 -24px}
+.rs-snap{min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;padding:60px 0 80px}
+.rs-snap-inner{max-width:640px}
+.rs-intro-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center}
+.btn-tldr{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;padding:12px 20px;cursor:pointer;border-radius:3px;transition:all .2s;text-decoration:none}
+.btn-tldr:hover{border-color:var(--signal);color:var(--bone)}
+.btn-tldr .tldr-chip{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--signal);color:var(--ink);padding:2px 6px;border-radius:2px}
+.rs-tldr-note{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.04em;margin-top:12px}
+.rs-q-nav{display:flex;align-items:center;gap:12px;margin-top:36px;padding-top:24px;border-top:1px solid var(--border)}
+.rs-step-inner{display:flex;flex-direction:column;width:100%}
 .q-block{margin-bottom:32px}
 .q-block h3{font-size:18px;font-weight:600;margin-bottom:16px;line-height:1.45}
 .q-block .q-hint{font-size:14px;color:var(--mist2);margin-top:-10px;margin-bottom:16px;line-height:1.5}
@@ -273,46 +279,61 @@
   </div>
 
   <!-- INTAKE -->
-  <div id="intake" class="animate-in">
-    <div class="step-header">
-      <div class="signal-badge" style="margin-bottom:16px">Free · 4 minutes · No login</div>
-      <h1 style="font-size:clamp(26px,5vw,42px);font-weight:800;line-height:1.2;margin-bottom:12px">Campaign Automation<br>Readiness Score</h1>
-      <p style="font-size:17px;color:var(--mist2);line-height:1.6;max-width:580px">Answer 14 questions across 5 dimensions. Get a score out of 100, a tier placement, your binding constraint, and a prioritised roadmap — built from your actual answers.</p>
+  <div id="intake">
+
+    <!-- Sticky step progress nav -->
+    <div class="rs-progress-bar">
+      <nav class="step-nav" id="step-nav" aria-label="Assessment steps">
+        <button class="sni active" data-step="0" type="button" aria-label="Step 1: Context">
+          <span class="sni-num" aria-hidden="true">01</span>
+          <span class="sni-label">Context</span>
+        </button>
+        <div class="sni-line" id="sni-line-0" aria-hidden="true"></div>
+        <button class="sni" data-step="1" type="button" disabled aria-label="Step 2: Data Access">
+          <span class="sni-num" aria-hidden="true">02</span>
+          <span class="sni-label">Data Access</span>
+        </button>
+        <div class="sni-line" id="sni-line-1" aria-hidden="true"></div>
+        <button class="sni" data-step="2" type="button" disabled aria-label="Step 3: Measurement">
+          <span class="sni-num" aria-hidden="true">03</span>
+          <span class="sni-label">Measurement</span>
+        </button>
+        <div class="sni-line" id="sni-line-2" aria-hidden="true"></div>
+        <button class="sni" data-step="3" type="button" disabled aria-label="Step 4: Standards">
+          <span class="sni-num" aria-hidden="true">04</span>
+          <span class="sni-label">Standards</span>
+        </button>
+        <div class="sni-line" id="sni-line-3" aria-hidden="true"></div>
+        <button class="sni" data-step="4" type="button" disabled aria-label="Step 5: Governance">
+          <span class="sni-num" aria-hidden="true">05</span>
+          <span class="sni-label">Governance</span>
+        </button>
+      </nav>
     </div>
 
-    <nav class="step-nav" id="step-nav" aria-label="Assessment steps">
-      <button class="sni active" data-step="0" type="button" aria-label="Step 1: Context">
-        <span class="sni-num" aria-hidden="true">01</span>
-        <span class="sni-label">Context</span>
-      </button>
-      <div class="sni-line" id="sni-line-0" aria-hidden="true"></div>
-      <button class="sni" data-step="1" type="button" disabled aria-label="Step 2: Democratization">
-        <span class="sni-num" aria-hidden="true">02</span>
-        <span class="sni-label">Data Access</span>
-      </button>
-      <div class="sni-line" id="sni-line-1" aria-hidden="true"></div>
-      <button class="sni" data-step="2" type="button" disabled aria-label="Step 3: Instrumentation">
-        <span class="sni-num" aria-hidden="true">03</span>
-        <span class="sni-label">Measurement</span>
-      </button>
-      <div class="sni-line" id="sni-line-2" aria-hidden="true"></div>
-      <button class="sni" data-step="3" type="button" disabled aria-label="Step 4: Standardization">
-        <span class="sni-num" aria-hidden="true">04</span>
-        <span class="sni-label">Standards</span>
-      </button>
-      <div class="sni-line" id="sni-line-3" aria-hidden="true"></div>
-      <button class="sni" data-step="4" type="button" disabled aria-label="Step 5: Governance & Team">
-        <span class="sni-num" aria-hidden="true">05</span>
-        <span class="sni-label">Governance</span>
-      </button>
-    </nav>
+    <!-- Intro snap section -->
+    <section class="rs-snap snap-sec" id="rs-intro" aria-labelledby="rs-heading">
+      <div class="rs-snap-inner animate-in">
+        <div class="signal-badge" style="margin-bottom:20px">Free · 4 minutes · No login</div>
+        <h1 id="rs-heading" style="font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.15;margin-bottom:16px">Campaign Automation<br>Readiness Score</h1>
+        <p style="font-size:17px;color:var(--mist2);line-height:1.65;max-width:560px;margin:0">Answer 14 questions across 5 dimensions. Get a score out of 100, a tier, your binding constraint, and a prioritised roadmap — built from your actual answers.</p>
+        <div class="rs-intro-btns">
+          <button class="btn-primary" onclick="scrollToStep(0)" type="button" style="font-size:15px;padding:14px 28px">Start Assessment →</button>
+          <button class="btn-tldr" onclick="tldrFill()" type="button">
+            <span class="tldr-chip">TLDR</span>Auto-fill &amp; score instantly
+          </button>
+        </div>
+        <p class="rs-tldr-note">TLDR uses typical defaults. Score in under 5 seconds — retake anytime.</p>
+      </div>
+    </section>
 
-    <div id="steps-container"></div>
+    <!-- Step snap sections (filled by renderAllSteps) -->
+    <section class="rs-snap snap-sec" id="rs-step-0" aria-label="Step 1"></section>
+    <section class="rs-snap snap-sec" id="rs-step-1" aria-label="Step 2"></section>
+    <section class="rs-snap snap-sec" id="rs-step-2" aria-label="Step 3"></section>
+    <section class="rs-snap snap-sec" id="rs-step-3" aria-label="Step 4"></section>
+    <section class="rs-snap snap-sec" id="rs-step-4" aria-label="Step 5"></section>
 
-    <div class="q-nav">
-      <button class="btn-back" id="btn-back" style="visibility:hidden" onclick="prevStep()" type="button">← Back</button>
-      <button class="btn-next" id="btn-next" onclick="nextStep()" disabled type="button">Continue →</button>
-    </div>
   </div>
 
   <!-- SCORECARD -->
@@ -453,99 +474,137 @@ const STEPS = [
 let currentStep = 0;
 const answers = {};
 
-function renderStep(idx) {
-  const step = STEPS[idx];
-  const container = document.getElementById("steps-container");
-  container.innerHTML = "";
-
-  const hdr = document.createElement("div");
-  hdr.className = "step-header animate-in";
-  hdr.innerHTML = `<h2>${step.title}</h2><p>${step.subtitle}</p>`;
-  container.appendChild(hdr);
-
-  step.questions.forEach(q => {
-    const block = document.createElement("div");
-    block.className = "q-block animate-in";
-    block.innerHTML = `<h3>${q.text}</h3>${q.hint ? `<p class="q-hint">${q.hint}</p>` : ""}<div class="options" role="radiogroup" aria-label="${q.text}"></div>`;
-    container.appendChild(block);
-
-    const opts = block.querySelector(".options");
-    q.options.forEach(opt => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "opt-btn";
-      btn.setAttribute("role","radio");
-      btn.setAttribute("aria-checked","false");
-      btn.innerHTML = `<span class="opt-key">${opt.key}</span><div><div class="opt-label">${opt.label}</div>${opt.desc?`<div class="opt-desc">${opt.desc}</div>`:""}</div>`;
-      if (answers[q.id] !== undefined && answers[q.id].value === opt.value) {
-        btn.classList.add("selected"); btn.setAttribute("aria-checked","true");
-      }
-      btn.addEventListener("click", () => {
-        opts.querySelectorAll(".opt-btn").forEach(b => { b.classList.remove("selected"); b.setAttribute("aria-checked","false"); });
-        btn.classList.add("selected"); btn.setAttribute("aria-checked","true");
-        answers[q.id] = {value:opt.value, dim:q.dim, label:opt.label};
-        updateNav();
-      });
-      opts.appendChild(btn);
-    });
-  });
-  updateNav();
-}
-
 function isStepComplete(idx) {
   return STEPS[idx].questions.every(q => answers[q.id] !== undefined);
 }
 
-function updateNav() {
-  const step = STEPS[currentStep];
-  const allAnswered = step.questions.every(q => answers[q.id] !== undefined);
-  document.getElementById("btn-next").disabled = !allAnswered;
-  document.getElementById("btn-back").style.visibility = currentStep === 0 ? "hidden" : "visible";
-  document.getElementById("btn-next").textContent = currentStep === STEPS.length-1 ? "Get my score →" : "Continue →";
+function renderAllSteps() {
+  STEPS.forEach((step, idx) => {
+    const sec = document.getElementById(`rs-step-${idx}`);
+    if (!sec) return;
+    let html = `<div class="rs-step-inner animate-in">
+      <div class="step-header"><h2>${step.title}</h2><p>${step.subtitle}</p></div>`;
+    step.questions.forEach(q => {
+      html += `<div class="q-block" id="qblock-${q.id}">
+        <h3>${q.text}</h3>${q.hint?`<p class="q-hint">${q.hint}</p>`:''}
+        <div class="options" id="opts-${q.id}" role="radiogroup" aria-label="${q.text}">
+          ${q.options.map(opt=>`<button type="button" class="opt-btn${answers[q.id]?.value===opt.value?' selected':''}"
+            data-qid="${q.id}" data-dim="${q.dim}" data-val="${opt.value}" data-label="${opt.label.replace(/"/g,'&quot;')}"
+            role="radio" aria-checked="${answers[q.id]?.value===opt.value?'true':'false'}">
+            <span class="opt-key">${opt.key}</span>
+            <div><div class="opt-label">${opt.label}</div>${opt.desc?`<div class="opt-desc">${opt.desc}</div>`:''}</div>
+          </button>`).join('')}
+        </div>
+      </div>`;
+    });
+    const isLast = idx === STEPS.length - 1;
+    html += `<div class="rs-q-nav">
+      <button class="btn-back" onclick="scrollToStep(${idx-1})" type="button" style="${idx===0?'visibility:hidden':''}">← Back</button>
+      <button class="btn-next" id="rs-cont-${idx}" type="button" onclick="${isLast?'showScorecard()':'scrollToStep('+(idx+1)+')'}"
+        ${isStepComplete(idx)?'':'disabled'}>${isLast?'Get my score →':'Continue →'}</button>
+    </div></div>`;
+    sec.innerHTML = html;
 
+    // Attach option click handlers
+    sec.querySelectorAll('.opt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const qid = btn.dataset.qid;
+        const dim = btn.dataset.dim;
+        const val = parseInt(btn.dataset.val, 10);
+        const label = btn.dataset.label;
+        document.querySelectorAll(`.opt-btn[data-qid="${qid}"]`).forEach(b => {
+          b.classList.remove('selected'); b.setAttribute('aria-checked','false');
+        });
+        btn.classList.add('selected'); btn.setAttribute('aria-checked','true');
+        answers[qid] = {value:val, dim, label};
+        updateNav();
+        // Auto-advance when step fully answered
+        if (isStepComplete(idx)) {
+          setTimeout(() => { if (!isLast) scrollToStep(idx+1); else showScorecard(); }, 420);
+        }
+      });
+    });
+  });
+}
+
+function updateNav() {
   document.querySelectorAll(".sni").forEach((btn, i) => {
     const complete = isStepComplete(i);
     btn.classList.remove("active","done");
     btn.disabled = true;
     const numEl = btn.querySelector(".sni-num");
-
     if (i === currentStep) {
-      btn.classList.add("active");
-      btn.disabled = false;
+      btn.classList.add("active"); btn.disabled = false;
       if (numEl) numEl.textContent = String(i+1).padStart(2,"0");
     } else if (complete) {
-      btn.classList.add("done");
-      btn.disabled = false;
+      btn.classList.add("done"); btn.disabled = false;
       if (numEl) numEl.textContent = "✓";
     } else {
       if (numEl) numEl.textContent = String(i+1).padStart(2,"0");
     }
-
-    // Connector line between step i and i+1 goes done when step i is complete
     const line = document.getElementById(`sni-line-${i}`);
     if (line) line.classList.toggle("done", complete);
+    // Update this step's continue button
+    const cont = document.getElementById(`rs-cont-${i}`);
+    if (cont) cont.disabled = !complete;
   });
+}
+
+function scrollToStep(idx) {
+  if (idx < 0) { document.getElementById('rs-intro')?.scrollIntoView({behavior:'smooth',block:'start'}); return; }
+  if (idx >= STEPS.length) { showScorecard(); return; }
+  currentStep = idx;
+  updateNav();
+  document.getElementById(`rs-step-${idx}`)?.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function initStepNav() {
   document.querySelectorAll(".sni").forEach((btn, i) => {
-    btn.addEventListener("click", () => {
-      if (!btn.disabled && i !== currentStep) {
-        currentStep = i;
-        renderStep(currentStep);
-        window.scrollTo({top:0, behavior:"smooth"});
-      }
-    });
+    btn.addEventListener("click", () => { if (!btn.disabled) scrollToStep(i); });
   });
 }
 
-function nextStep() {
-  if (currentStep < STEPS.length-1) { currentStep++; renderStep(currentStep); window.scrollTo({top:0,behavior:"smooth"}); }
-  else showScorecard();
+function initScrollObserver() {
+  if (!('IntersectionObserver' in window)) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = parseInt(e.target.dataset.stepIdx, 10);
+        if (!isNaN(idx) && idx !== currentStep) { currentStep = idx; updateNav(); }
+      }
+    });
+  }, {rootMargin:'-45% 0px -45% 0px'});
+  STEPS.forEach((_, i) => {
+    const sec = document.getElementById(`rs-step-${i}`);
+    if (sec) { sec.dataset.stepIdx = i; obs.observe(sec); }
+  });
 }
-function prevStep() {
-  if (currentStep > 0) { currentStep--; renderStep(currentStep); window.scrollTo({top:0,behavior:"smooth"}); }
+
+const TLDR_DEFAULTS = {
+  team_size:          {value:2, label:"6–15 people",                               dim:"context"},
+  ad_spend:           {value:2, label:"$25k–$100k/mo",                             dim:"context"},
+  demo_access:        {value:8, label:"Most channel owners can pull their own data",dim:"demo"},
+  demo_tools:         {value:6, label:"Live dashboards reviewed regularly",         dim:"demo"},
+  demo_frequency:     {value:6, label:"Daily",                                     dim:"demo"},
+  instr_tracking:     {value:7, label:"Mostly working — minor issues",             dim:"instr"},
+  instr_attribution:  {value:5, label:"Unified view in GA4 or BI tool",            dim:"instr"},
+  instr_audit:        {value:5, label:"3–12 months ago",                           dim:"instr"},
+  std_naming:         {value:8, label:"Mostly followed with some drift",           dim:"std"},
+  std_process:        {value:6, label:"Documented SOP that team follows",          dim:"std"},
+  gov_owner:          {value:6, label:"One person owns it informally",             dim:"gov"},
+  gov_approval:       {value:7, label:"Peer review + test environment",            dim:"gov"},
+  tooling:            {value:5, label:"Integrated stack",                          dim:"tooling"},
+};
+
+function tldrFill() {
+  Object.assign(answers, TLDR_DEFAULTS);
+  renderAllSteps(); // re-render to show selected state
+  updateNav();
+  showScorecard();
 }
+
+function nextStep() { scrollToStep(currentStep + 1); }
+function prevStep() { scrollToStep(currentStep - 1); }
 
 /* ── SCORING ── */
 function computeScore() {
@@ -1075,8 +1134,9 @@ function retake() {
   document.getElementById("scorecard").style.display="none";
   document.getElementById("scorecard").innerHTML="";
   document.getElementById("intake").style.display="block";
-  renderStep(0);
-  window.scrollTo({top:0,behavior:"smooth"});
+  renderAllSteps();
+  updateNav();
+  document.getElementById('rs-intro')?.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 // ─────────────────────────────────────────────
@@ -1297,9 +1357,10 @@ function resetWeightSim() {
       return;
     }
   } catch(e){}
-  renderStep(0);
+  renderAllSteps();
 })();
 initStepNav();
+initScrollObserver();
 </script>
 </body>
 </html>
