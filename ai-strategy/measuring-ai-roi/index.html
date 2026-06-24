@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,103 +10,64 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<nav>
-  <a class="nav-logo" href="/"><span style="color:var(--bone)">CA</span><span>.</span>AI</a>
-  <div class="nav-links">
-    <div class="nav-item"><a href="/solutions">Solutions</a>
-      <div class="dropdown">
-        <a href="/paid-advertising-automation">Paid advertising automation</a>
-        <a href="/ai-strategy">AI strategy & agentic intelligence</a>
-        <a href="/workflow-automation">Workflow & operations automation</a>
-        <a href="/revenue-operations">Revenue operations</a>
-        <div class="dropdown-divider"></div><a href="/solutions/integrations">Integrations →</a>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
       </div>
     </div>
-    <a href="/training">Training</a><a href="/results">Results</a>
-    <div class="nav-item"><a href="/resources">Resources</a>
-      <div class="dropdown">
-        <a href="/resources">Blog</a><a href="/resources/glossary">Glossary</a>
-        <a href="/solutions/integrations">Integrations</a><a href="/resources/ai-automation-pricing">Pricing guide</a>
+    <div class="nav-item" role="listitem">
+      <a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
       </div>
     </div>
-    <a href="/get-started" class="nav-cta">Get started →</a>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score &#10022; Free</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit &#8594;</a>
   </div>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-section"><h6>Solutions</h6>
-    <a href="/paid-advertising-automation">Paid advertising automation</a>
-    <a href="/ai-strategy">AI strategy</a><a href="/workflow-automation">Workflow automation</a>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
   </div>
-  <a href="/get-started" class="mobile-cta">Get started →</a>
-</div>
-
-<div class="page-wrap">
-  <div class="breadcrumb">
-    <a href="/">Home</a><span>/</span><a href="/ai-strategy">AI strategy</a><span>/</span>
-    <span class="current">Measuring AI automation ROI</span>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
   </div>
-
-  <div style="display:grid;grid-template-columns:1fr 300px;gap:0;min-height:80vh">
-    <div class="article-wrap">
-      <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:16px">AI strategy · CFO & board-level content</div>
-      <h1 style="font-family:var(--f-display);font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px">Measuring AI automation ROI. What to track, what to ignore.</h1>
-      <p class="intro">The biggest barrier to AI automation investment isn't the technology — it's the absence of a credible measurement framework. This guide covers the trigger/action/impact schema we build into every engagement, what metrics matter, and how to present results that your CFO and board will trust.</p>
-
-      <h2>Why AI ROI is hard to measure (and why it doesn't have to be)</h2>
-      <p>The measurement problem with AI automation has two root causes. First, most organisations don't instrument their automation from day one — they deploy the system and then try to attribute outcomes retrospectively. Second, they measure the wrong things: activity metrics (number of actions taken, hours saved on paper) instead of outcome metrics (CPA reduction, revenue per account, budget efficiency).</p>
-      <p>The solution is to build measurement into the architecture before the first action runs. Every agent action generates a structured log entry with three required fields: what triggered it, what action was taken, and what the measured outcome was over a defined window. This is the trigger/action/impact schema.</p>
-
-      <h2>The trigger/action/impact schema</h2>
-      <p>Every agent action in our platform produces a log entry with exactly three data points:</p>
-      <ul>
-        <li><strong>Trigger</strong> — the specific condition that caused the agent to act (CPA breached threshold, budget pacing off track, creative frequency exceeded limit)</li>
-        <li><strong>Action</strong> — what the agent did in response (paused ad group, reallocated budget, rotated creative, adjusted bid)</li>
-        <li><strong>Impact</strong> — the measured outcome over the defined evaluation window (CPA change, ROAS change, CTR change over 72 hours)</li>
-      </ul>
-      <div class="terminal" style="margin:24px 0">
-        <div><span class="t-dim"># Trigger / Action / Impact log — example entry</span></div>
-        <div style="margin-top:12px"><span class="t-green">TRIGGER</span>  Ad group "Enterprise-SaaS" CPA > $85 for 72h (actual: $94)</div>
-        <div><span class="t-green">ACTION</span>   Paused 2 keywords with 0 conversions in 30 days</div>
-        <div><span class="t-green">ACTION</span>   Reallocated $340 to "Mid-Market-SaaS" (CPA $42)</div>
-        <div><span class="t-green">IMPACT</span>   Ad group CPA: $94 → $61 over next 72h window</div>
-        <div><span class="t-green">IMPACT</span>   Account blended CPA: $71 → $58 over same window</div>
-        <div style="margin-top:8px"><span class="t-dim">Guardrails respected: ✓  Human approvals: 0</span><span class="cursor"></span></div>
-      </div>
-      <p>This structure makes ROI measurement trivial: aggregate the impact across all actions over a period, compare to a baseline, and the number speaks for itself.</p>
-
-      <h2>The three ROI categories that matter</h2>
-
-      <h3>1. Cost efficiency (the fastest win)</h3>
-      <p>CPA reduction and ROAS improvement are the most immediate and cleanest measures of paid advertising automation ROI. They're directly attributable to agent actions, measurable within the first 30–90 days, and easy to present to finance stakeholders.</p>
-      <p>Typical first-90-day outcomes: 20–40% CPA reduction on actively managed accounts. The range depends on how inefficient the account was before automation — accounts with infrequent manual optimisation tend to show the largest initial gains.</p>
-
-      <h3>2. Time efficiency (the ongoing win)</h3>
-      <p>Hours previously spent on manual campaign management, reporting, and optimisation reviews are freed for higher-value work. This is harder to put a dollar figure on but straightforward to measure: track hours spent on campaign operations before and after automation deployment.</p>
-      <p>Typical outcome: 50–70% reduction in manual campaign management time within 60 days. For agencies, this directly translates to account capacity — the same team managing 2–3× more accounts.</p>
-
-      <h3>3. Decision quality (the compounding win)</h3>
-      <p>Over time, the agent log becomes a dataset of decisions and their outcomes. Guardrail refinement based on this data improves the quality of future decisions. This compounding effect is harder to quantify in early months but becomes the primary value driver after 6–12 months of operation.</p>
-
-      <h2>What not to measure</h2>
-      <ul>
-        <li><strong>Number of actions taken</strong> — a high action count is not inherently good. What matters is the outcome of those actions.</li>
-        <li><strong>Time saved on paper</strong> — hours-saved calculations based on assumed task times are not credible to CFOs. Measure actual time allocation before and after.</li>
-        <li><strong>Platform-native metrics only</strong> — Google and Meta's attribution models give themselves credit for performance improvements. Use independent measurement: compare performance periods with consistent attribution windows.</li>
-      </ul>
-
-      <h2>Presenting AI ROI to your board</h2>
-      <p>Board-level AI ROI presentations fail when they present activity metrics as outcomes. The questions a CFO will ask: What did we invest? What did we get back? How confident are we that the AI caused it (not something else)? Can we repeat and scale it?</p>
-      <p>The trigger/action/impact schema answers all four: the log shows exactly what the system did (investment in action), the impact fields show the measured outcome, the specificity of the trigger/action relationship supports attribution confidence, and the guardrail architecture makes the system repeatable and scalable.</p>
-
-      <div style="border:1px solid var(--border);padding:32px;margin-top:40px">
-        <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:16px">See the measurement framework in action</div>
-        <p style="font-size:14px;color:var(--mist2);line-height:1.6;margin-bottom:20px">Every engagement is instrumented from day one. Book a diagnostic call to see how we'd measure ROI on your specific accounts and workflows.</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap">
-          <a href="/get-started" class="btn-primary">Book a diagnostic call →</a>
-          <a href="/results/trigger-action-impact" class="btn-ghost">Full schema explainer →</a>
-        </div>
-      </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/solutions/campaign-audit" class="mobile-cta">Get a Campaign Automation Audit &#8594;</a>
+</nav>
     </div>
 
     <div style="border-left:1px solid var(--border);padding:40px 32px;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;align-self:start">

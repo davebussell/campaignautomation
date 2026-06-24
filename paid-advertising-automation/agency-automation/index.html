@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,131 +10,64 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<nav>
-  <a class="nav-logo" href="/"><span style="color:var(--bone)">CA</span><span>.</span>AI</a>
-  <div class="nav-links">
-    <div class="nav-item"><a href="/solutions">Solutions</a>
-      <div class="dropdown">
-        <a href="/paid-advertising-automation">Paid advertising automation</a>
-        <a href="/ai-strategy">AI strategy & agentic intelligence</a>
-        <a href="/workflow-automation">Workflow & operations automation</a>
-        <a href="/revenue-operations">Revenue operations</a>
-        <div class="dropdown-divider"></div><a href="/solutions/integrations">Integrations →</a>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
       </div>
     </div>
-    <a href="/training">Training</a><a href="/results">Results</a>
-    <div class="nav-item"><a href="/resources">Resources</a>
-      <div class="dropdown">
-        <a href="/resources">Blog</a><a href="/resources/glossary">Glossary</a>
-        <a href="/solutions/integrations">Integrations</a><a href="/resources/ai-automation-pricing">Pricing guide</a>
+    <div class="nav-item" role="listitem">
+      <a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
       </div>
     </div>
-    <a href="/get-started" class="nav-cta">Get started →</a>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score &#10022; Free</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit &#8594;</a>
   </div>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-section"><h6>Solutions</h6>
-    <a href="/paid-advertising-automation">Paid advertising automation</a>
-    <a href="/ai-strategy">AI strategy</a><a href="/workflow-automation">Workflow automation</a>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
   </div>
-  <a href="/get-started" class="mobile-cta">Get started →</a>
-</div>
-
-<div class="page-wrap">
-  <div class="breadcrumb">
-    <a href="/">Home</a><span>/</span>
-    <a href="/paid-advertising-automation">Paid advertising automation</a><span>/</span>
-    <span class="current">Agency automation & white-label</span>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
   </div>
-
-  <div class="page-hero">
-    <div class="eyebrow">Agency automation & white-label</div>
-    <h1>Scale your agency without scaling headcount.</h1>
-    <p>Multi-tenant AI automation platform with per-client guardrail configuration, white-label dashboards, and full agent audit trails. Your clients see your brand. The AI works underneath.</p>
-    <div class="page-meta"><span>40 vol CA</span><span>$13.80 CPC CA</span><span>$8.48 CPC US</span></div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
   </div>
-
-  <div class="section">
-    <div class="section-label"><span class="label-signal">The agency problem</span></div>
-    <div class="grid-2">
-      <div>
-        <h2 class="display">The math doesn't work. Until now.</h2>
-        <p class="lead">To grow revenue, agencies need more accounts. More accounts need more account managers. Margins stay flat. The only way to break the model is to change the denominator — accounts per person.</p>
-        <p style="color:var(--mist2);font-size:15px;line-height:1.7;margin-top:20px">The agencies winning right now are deploying AI agents to handle the optimisation cadence — bid management, budget reallocation, performance monitoring, and reporting — while their human team focuses on strategy, creative, and client relationships. The result: the same team managing 2.5–3× more accounts at the same or higher performance level.</p>
-        <div style="margin-top:32px;padding:24px;border:1px solid var(--border)">
-          <div class="kw-row"><div class="kw-term">Average accounts per AM before automation</div><div class="kw-vol">6–8</div></div>
-          <div class="kw-row"><div class="kw-term">Average accounts per AM after automation</div><div class="kw-vol">16–22</div></div>
-          <div class="kw-row"><div class="kw-term">Manual hours eliminated per account/week</div><div class="kw-vol">8–12h</div></div>
-          <div class="kw-row" style="border-bottom:none"><div class="kw-term">Performance improvement (blended CPA)</div><div class="kw-vol">-28%</div></div>
-        </div>
-      </div>
-      <div class="terminal" style="align-self:center">
-        <div><span class="t-dim"># Multi-tenant agent dashboard</span></div>
-        <div style="margin-top:12px"><span class="t-green">CLIENT</span>  Acme Corp           <span class="t-green">ACTIVE</span>  $4,200/mo</div>
-        <div><span class="t-green">CLIENT</span>  Northline Media     <span class="t-green">ACTIVE</span>  $12,800/mo</div>
-        <div><span class="t-green">CLIENT</span>  Vantage B2B         <span class="t-green">ACTIVE</span>  $7,500/mo</div>
-        <div><span class="t-green">CLIENT</span>  Sunrise Health      <span class="t-green">ACTIVE</span>  $3,200/mo</div>
-        <div><span class="t-dim">CLIENT</span>  Redwood Commerce     PAUSED  $8,000/mo</div>
-        <div style="margin-top:12px"><span class="t-dim">Actions today:     </span><span class="t-green">312</span></div>
-        <div><span class="t-dim">Approvals needed:  </span><span class="t-green">0</span></div>
-        <div><span class="t-dim">Guardrail blocks:  </span>4</div>
-        <div><span class="t-dim">Avg CPA delta:     </span><span class="t-green">-24% vs baseline</span></div>
-        <div style="margin-top:12px"><span class="t-dim">All clients nominal</span><span class="cursor"></span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section bone">
-    <div class="section-label"><span>How it works</span></div>
-    <h2 class="display" style="color:var(--ink);margin-bottom:48px">Three steps from signup to running automation.</h2>
-    <div class="grid-3">
-      <div class="card bone-card">
-        <div class="card-tag">Step 1</div>
-        <h4>Connect client accounts</h4>
-        <p>Google Ads and Meta accounts connect via OAuth. No credentials shared. No manual exports. Access is scoped to the actions the agent is permitted to take — no more.</p>
-      </div>
-      <div class="card bone-card">
-        <div class="card-tag">Step 2</div>
-        <h4>Configure per-client guardrails</h4>
-        <p>Each client gets their own guardrail set — spend caps, CPA thresholds, brand exclusions, approval requirements. Config is documented, versioned, and editable at any time.</p>
-      </div>
-      <div class="card bone-card">
-        <div class="card-tag">Step 3</div>
-        <h4>Run. Review. Scale.</h4>
-        <p>Agents run continuously. Your team reviews the trigger/action/impact log, refines guardrails, and takes on more accounts. The system improves with each cycle.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label"><span class="label-signal">White-label</span></div>
-    <div class="grid-2">
-      <div>
-        <h2 class="display">Your brand. Your dashboard. Your margin.</h2>
-        <p class="lead">The client-facing dashboard runs under your agency brand. Your clients see your name, your colours, your reporting. The AI infrastructure is ours — the relationship is yours.</p>
-        <ul style="margin-top:24px;padding-left:0;list-style:none">
-          <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--mist2)"><span style="color:var(--signal)">→</span> Branded dashboard URL (yourагency.campaignautomation.ai or custom domain)</li>
-          <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--mist2)"><span style="color:var(--signal)">→</span> Client-facing agent log with your branding on every report</li>
-          <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--mist2)"><span style="color:var(--signal)">→</span> Performance summaries generated in your voice and format</li>
-          <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--mist2)"><span style="color:var(--signal)">→</span> No Campaign Automation AI branding visible to clients</li>
-          <li style="display:flex;gap:12px;padding:12px 0;font-size:14px;color:var(--mist2)"><span style="color:var(--signal)">→</span> Agency-controlled access levels per client user</li>
-        </ul>
-      </div>
-      <div>
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-tag">Agency pricing model</div>
-          <h4>Platform fee + per-account</h4>
-          <p>Flat platform fee covers the infrastructure. Per-account fee scales with your client base. As you add accounts, the unit economics improve — margin expands automatically.</p>
-        </div>
-        <div class="card">
-          <div class="card-tag">Revenue impact</div>
-          <h4>Charge for what you deliver</h4>
-          <p>AI-managed accounts delivering measurably better CPA performance justify premium retainer rates. The platform gives you the data to prove the improvement — and the case to price for it.</p>
-        </div>
-        <a href="/resources/ai-automation-pricing" style="color:var(--signal);text-decoration:none;font-size:13px;margin-top:12px;display:block">See pricing guide →</a>
-      </div>
-    </div>
+  <a href="/solutions/campaign-audit" class="mobile-cta">Get a Campaign Automation Audit &#8594;</a>
+</nav>
   </div>
 
   <div class="section bone">

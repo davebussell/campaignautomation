@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,116 +10,64 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<nav>
-  <a class="nav-logo" href="/"><span style="color:var(--bone)">CA</span><span>.</span>AI</a>
-  <div class="nav-links">
-    <div class="nav-item"><a href="/solutions">Solutions</a>
-      <div class="dropdown">
-        <a href="/paid-advertising-automation">Paid advertising automation</a>
-        <a href="/ai-strategy">AI strategy & agentic intelligence</a>
-        <a href="/workflow-automation">Workflow & operations automation</a>
-        <a href="/revenue-operations">Revenue operations</a>
-        <div class="dropdown-divider"></div><a href="/solutions/integrations">Integrations →</a>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
       </div>
     </div>
-    <a href="/training">Training</a><a href="/results">Results</a>
-    <div class="nav-item"><a href="/resources">Resources</a>
-      <div class="dropdown">
-        <a href="/resources">Blog</a><a href="/resources/glossary">Glossary</a>
-        <a href="/solutions/integrations">Integrations</a><a href="/resources/ai-automation-pricing">Pricing guide</a>
+    <div class="nav-item" role="listitem">
+      <a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
       </div>
     </div>
-    <a href="/get-started" class="nav-cta">Get started →</a>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score &#10022; Free</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit &#8594;</a>
   </div>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-section"><h6>Solutions</h6>
-    <a href="/paid-advertising-automation">Paid advertising automation</a>
-    <a href="/ai-strategy">AI strategy</a><a href="/workflow-automation">Workflow automation</a>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
   </div>
-  <a href="/get-started" class="mobile-cta">Get started →</a>
-</div>
-
-<div class="page-wrap">
-  <div class="breadcrumb">
-    <a href="/">Home</a><span>/</span>
-    <a href="/paid-advertising-automation">Paid advertising automation</a><span>/</span>
-    <span class="current">AI budget allocation best practices</span>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
   </div>
-
-  <div style="display:grid;grid-template-columns:1fr 300px;gap:0;min-height:80vh">
-    <div class="article-wrap">
-      <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:16px">Paid advertising automation · 720 vol US · Updated June 2025</div>
-      <h1 style="font-family:var(--f-display);font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px">AI budget allocation for paid advertising: what actually works in 2025.</h1>
-      <p class="intro">AI-driven budget allocation is one of the highest-leverage applications of automation in paid advertising — and one of the most commonly misconfigured. This guide covers the five guardrail rules that determine whether your allocation works or destroys performance, and the mistakes most teams make before they get there.</p>
-
-      <h2>Why budget allocation is the right first automation</h2>
-      <p>Of all the optimisation tasks in paid advertising, budget allocation is the most time-sensitive and the most rules-governed. A campaign that's outperforming should get more budget today — not next week when someone reviews the report. And the rules for when to reallocate (CPA threshold breached, ROAS target hit, impression share declining) are explicit enough to be codified as guardrails.</p>
-      <p>This combination — time-sensitive execution plus explicit rules — makes budget allocation the ideal first use case for <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a>. It produces measurable results quickly (typically within the first 72 hours), builds organisational trust in AI-managed campaigns, and frees up the human time that was previously spent on manual pacing reviews.</p>
-
-      <h2>The 5 guardrail rules for AI budget allocation</h2>
-
-      <h3>Rule 1: Set ceiling guardrails before anything else</h3>
-      <p>Before the agent makes a single budget decision, define the non-negotiable limits: maximum daily spend per account, maximum single-campaign allocation as a percentage of total budget, and minimum floor budgets for brand campaigns that must never be paused regardless of performance.</p>
-      <p>These ceiling guardrails are not conservative defaults — they are the business rules your finance team and client agreements require. Setting them first means the agent can never violate them, regardless of what the performance data says.</p>
-      <div class="terminal" style="margin:16px 0 24px">
-        <div><span class="t-green">guardrail</span>  account_daily_cap = $2,400</div>
-        <div><span class="t-green">guardrail</span>  max_single_campaign_pct = 60</div>
-        <div><span class="t-green">guardrail</span>  brand_campaign_floor = $200</div>
-        <div><span class="t-dim">  # These are inviolable — agent cannot exceed or override</span></div>
-      </div>
-
-      <h3>Rule 2: Use 72-hour performance windows, not daily</h3>
-      <p>This is the single most common misconfiguration in AI budget allocation: using too-short evaluation windows. A campaign that looks underperforming at 24 hours may be in a low-volume day, a seasonal trough, or a conversion lag window. Reallocation decisions based on single-day data produce false signals that compound into worse performance.</p>
-      <p>The agent should evaluate rolling 72-hour windows for reallocation triggers. For accounts with longer conversion cycles (B2B, high-consideration purchases), extend this to 7 or 14-day windows before making structural budget moves.</p>
-
-      <h3>Rule 3: Separate budget rules from bid rules</h3>
-      <p>Budget allocation and bid management are distinct automation layers with different trigger conditions and different risk profiles. Budget allocation moves money between campaigns — a higher-stakes action with slower feedback loops. Bid management adjusts CPCs within campaigns — a lower-stakes action with faster feedback.</p>
-      <p>Conflating the two produces an agent that's either too slow to optimise bids or too aggressive in reallocating budgets. Define separate guardrails for each layer.</p>
-
-      <h3>Rule 4: Log every allocation action with its trigger</h3>
-      <p>The trigger/action/impact schema is not a reporting feature — it's a quality control mechanism. If you can't see what triggered a budget move, you cannot evaluate whether the guardrail that permitted it was correctly set. Over time, the agent log becomes the primary input for guardrail refinement.</p>
-      <div class="terminal" style="margin:16px 0 24px">
-        <div><span class="t-dim"># Example allocation log entry</span></div>
-        <div style="margin-top:8px"><span class="t-green">TRIGGER</span>  Campaign "B2B-Search-Brand" CPA > $65 (72h avg: $71)</div>
-        <div><span class="t-green">ACTION</span>   Reduced daily budget from $400 to $280 (-30%)</div>
-        <div><span class="t-green">ACTION</span>   Reallocated $120 to "B2B-Search-Competitor" (CPA $38)</div>
-        <div><span class="t-green">IMPACT</span>   Account CPA: $58 → $47 over next 72h window</div>
-        <div><span class="t-dim">  Guardrail check: floor respected · cap respected · no violations</span></div>
-      </div>
-
-      <h3>Rule 5: Build in a human review checkpoint for structural moves</h3>
-      <p>Tactical budget shifts (moving 10–20% between campaigns based on CPA) should run autonomously. Structural moves (pausing an entire campaign, reallocating more than 40% of account budget to a single campaign, adding a new channel) should trigger a human review flag rather than executing automatically.</p>
-      <p>This distinction — tactical autonomy, structural review — is what makes <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a> trustworthy rather than risky. The agent does the fast, frequent work. Humans review the big bets.</p>
-
-      <h2>Common mistakes that kill AI budget allocation</h2>
-      <ul>
-        <li><strong>No floor budgets on brand campaigns.</strong> The agent sees low CPA potential and kills brand spend. Protect it with a floor guardrail.</li>
-        <li><strong>Daily evaluation windows.</strong> Produces constant churn between campaigns as the agent reacts to noise rather than signal.</li>
-        <li><strong>Allocation and bidding in the same loop.</strong> The compounding effect of both running simultaneously without separation produces unpredictable account behaviour.</li>
-        <li><strong>No impact measurement window.</strong> If you don't define how long after an action to measure impact, you can't evaluate whether the guardrail worked.</li>
-        <li><strong>Treating platform automation as equivalent.</strong> Google's Smart Bidding and Meta's Advantage+ are budget optimisation tools within their own platforms. They do not allocate across campaigns or accounts, cannot be constrained with custom guardrails, and provide no audit trail you can act on.</li>
-      </ul>
-
-      <h2>What good allocation performance looks like</h2>
-      <p>Within the first 90 days of guardrail-driven budget allocation, well-configured accounts typically see:</p>
-      <ul>
-        <li>20–35% reduction in blended CPA across the account</li>
-        <li>8–15% improvement in ROAS on performance campaigns</li>
-        <li>Elimination of the "Monday morning review" as a budget decision checkpoint</li>
-        <li>Significant reduction in end-of-month budget pacing variance</li>
-      </ul>
-      <p>The longest-term benefit is compounding: as the agent log accumulates, guardrail refinement becomes more precise, and the allocation logic improves with each cycle.</p>
-
-      <div style="border:1px solid var(--border);padding:32px;margin-top:40px">
-        <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:16px">Ready to configure?</div>
-        <p style="font-size:14px;color:var(--mist2);line-height:1.6;margin-bottom:20px">Book a guardrail setup session. We configure your allocation rules live in your accounts — typically 90 minutes for a 3–5 campaign setup.</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap">
-          <a href="/get-started" class="btn-primary">Book a setup session →</a>
-          <a href="/training/guardrail-setup" class="btn-ghost">Guardrail workshop →</a>
-        </div>
-      </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/solutions/campaign-audit" class="mobile-cta">Get a Campaign Automation Audit &#8594;</a>
+</nav>
     </div>
 
     <div style="border-left:1px solid var(--border);padding:40px 32px;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;align-self:start">
