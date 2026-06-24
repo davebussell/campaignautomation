@@ -670,18 +670,38 @@ function showScorecard() {
     <button class="retake-btn" type="button" onclick="retake()">Retake the assessment</button>
   `;
 
-  // Persist score to localStorage so chip + gating work site-wide
-  if(typeof RSCORE !== 'undefined') {
-    RSCORE.save({score: finalScore, tier: tier.name, dims: Object.fromEntries(Object.entries(dims).map(([k,d])=>[k,{raw:d.raw,max:d.max}]))});
-  } else {
-    try { localStorage.setItem('ca_readiness', JSON.stringify({score:finalScore, tier:tier.name, savedAt:Date.now()})); } catch(e){}
-  }
+  // Persist full session to localStorage — score, dims, answers, plus any existing intake fields
+  try {
+    const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
+    const savedDims = Object.fromEntries(Object.entries(dims).map(([k,d])=>[k,{raw:d.raw,max:d.max,weighted:d.weighted}]));
+    const savedAnswers = Object.fromEntries(Object.entries(answers).map(([k,v])=>[k,{value:v.value,dim:v.dim,label:v.label}]));
+    localStorage.setItem('ca_readiness', JSON.stringify({
+      ...existing,
+      score: finalScore, tier: tier.name, gated,
+      dims: savedDims,
+      answers: savedAnswers,
+      savedAt: Date.now()
+    }));
+  } catch(e){}
 
   setTimeout(()=>{
     sc.querySelectorAll(".dim-bar-fill").forEach(b=>{ b.style.width=b.dataset.w; });
     applyRefParam();
     updateIntakeForTier(finalScore);
     initWeightSim(dims, finalScore, gated);
+    // Pre-fill intake form from saved data
+    try {
+      const saved = JSON.parse(localStorage.getItem('ca_readiness') || 'null');
+      if (saved) {
+        if (saved.name)      { const el=document.getElementById('i-name');    if(el && !el.value) el.value=saved.name; }
+        if (saved.email)     { const el=document.getElementById('i-email');   if(el && !el.value) el.value=saved.email; }
+        if (saved.company)   { const el=document.getElementById('i-company'); if(el && !el.value) el.value=saved.company; }
+        if (saved.challenge) { const el=document.getElementById('i-challenge'); if(el && !el.value) el.value=saved.challenge; }
+        if (saved.industry)  { const el=document.getElementById('i-industry'); if(el && !el.value) el.value=saved.industry; }
+        if (saved.stage)     { const el=document.getElementById('i-stage');   if(el && !el.value) el.value=saved.stage; }
+        if (saved.service)   { const el=document.getElementById('i-service'); if(el && !el.value) el.value=saved.service; }
+      }
+    } catch(e){}
   },120);
 
   window.scrollTo({top:0,behavior:"smooth"});
@@ -749,10 +769,10 @@ function submitIntake() {
   const {finalScore} = computeScore();
   const tier = getTier(finalScore);
 
-  // Persist industry + stage so sprint recommendations work site-wide
+  // Persist all intake fields + keep existing score/dims/answers
   try {
     const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
-    localStorage.setItem('ca_readiness', JSON.stringify({...existing, industry, stage}));
+    localStorage.setItem('ca_readiness', JSON.stringify({...existing, name, email, company, industry, stage, service, challenge, savedAt: Date.now()}));
   } catch(e){}
 
   // Phase 1 — log to console; wire to form backend in Phase 2
@@ -766,6 +786,12 @@ function submitIntake() {
 }
 
 function retake() {
+  // Wipe score/dims/answers but keep intake fields
+  try {
+    const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
+    const {name, email, company, industry, stage, service, challenge} = existing;
+    localStorage.setItem('ca_readiness', JSON.stringify({name, email, company, industry, stage, service, challenge}));
+  } catch(e){}
   Object.keys(answers).forEach(k=>delete answers[k]);
   currentStep=0;
   document.getElementById("scorecard").style.display="none";
@@ -982,7 +1008,19 @@ function resetWeightSim() {
   renderSimState();
 }
 
-renderStep(0);
+// Auto-load scorecard if a full session exists in localStorage
+(function checkSavedScore() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('ca_readiness') || 'null');
+    if (saved && saved.score !== undefined && saved.dims && saved.answers) {
+      // Restore answers so computeScore() can run if needed
+      Object.assign(answers, saved.answers);
+      showScorecard();
+      return;
+    }
+  } catch(e){}
+  renderStep(0);
+})();
 </script>
 </body>
 </html>

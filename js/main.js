@@ -223,6 +223,23 @@ const RSCORE = {
   document.body.appendChild(chip);
 })();
 
+/* Nav CTA → colored score badge when score exists */
+(function injectNavScore() {
+  const data = RSCORE.load();
+  if (!data || data.score === undefined) return;
+  const score = data.score;
+  const tierClass = score>=85?'agentic':score>=70?'operational':score>=50?'emerging':'siloed';
+  const tierName  = score>=85?'Agentic':score>=70?'Operational':score>=50?'Emerging':'Siloed';
+  document.querySelectorAll('a.nav-cta').forEach(el => {
+    const badge = document.createElement('a');
+    badge.href = '/tools/readiness-score';
+    badge.className = `nav-score nav-score--${tierClass}`;
+    badge.setAttribute('aria-label', `Your Readiness Score: ${score} — ${tierName}. View results.`);
+    badge.innerHTML = `<span class="nav-score-num">${score}</span><span class="nav-score-label">${tierName}</span>`;
+    el.replaceWith(badge);
+  });
+})();
+
 /* Apply score gating to any page with [data-min-score] elements */
 function applyScoreGating() {
   const cards = document.querySelectorAll('[data-min-score]');
