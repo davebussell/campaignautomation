@@ -15,7 +15,67 @@
 <meta name="twitter:title" content="Campaign Automation Solutions — Audit, Sprints &amp; Strategy Portal">
 <meta name="twitter:description" content="Three ways to automate your campaigns with AI. Start with an Audit, run a focused Sprint, or subscribe to the Campaign Strategy Portal.">
 <link rel="stylesheet" href="/css/style.css">
-<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+<style>
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── AI MANIFESTO ── */
+.ai-manifesto{background:var(--slate);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.manifesto-inner{max-width:680px}
+.manifesto-quote{font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.3;color:var(--bone);border-left:3px solid var(--signal);padding-left:24px;margin:0 0 12px}
+.manifesto-attr{font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.08em;margin:0 0 28px;padding-left:27px}
+.manifesto-body{font-size:16px;color:var(--mist2);line-height:1.7;margin:0 0 16px;max-width:620px}
+.manifesto-body:last-of-type{margin-bottom:0}
+
+/* ── READINESS LADDER ── */
+.readiness-ladder{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.rl-row{display:grid;grid-template-columns:120px 1fr auto;gap:0;border-bottom:1px solid var(--border);transition:background .2s}
+.rl-row:last-child{border-bottom:none}
+.rl-row:hover{background:rgba(255,255,255,.02)}
+.rl-tier{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:28px 16px;border-right:1px solid var(--border);text-align:center}
+.rl-badge{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:2px;display:inline-block}
+.rl-tier-name{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist)}
+.rl-agentic .rl-badge{background:rgba(200,241,53,.15);color:var(--signal);border:1px solid rgba(200,241,53,.3)}
+.rl-operational .rl-badge{background:rgba(200,241,53,.08);color:var(--signal);border:1px solid rgba(200,241,53,.2)}
+.rl-emerging .rl-badge{background:rgba(255,200,0,.08);color:#FFD700;border:1px solid rgba(255,200,0,.2)}
+.rl-siloed .rl-badge{background:rgba(213,43,30,.08);color:#E05A4E;border:1px solid rgba(213,43,30,.2)}
+.rl-body{padding:24px 28px;display:flex;flex-direction:column;gap:8px}
+.rl-body h3{font-size:16px;font-weight:700;color:var(--bone);margin:0}
+.rl-body p{font-size:14px;color:var(--mist2);line-height:1.6;margin:0}
+.rl-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.rl-tags span{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:var(--mist);border:1px solid var(--border);padding:3px 8px;border-radius:2px}
+.rl-offer{display:flex;flex-direction:column;justify-content:center;padding:24px 20px;border-left:1px solid var(--border);min-width:160px}
+.rl-link{font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.04em;display:block;padding:4px 0;transition:opacity .15s}
+.rl-link:hover{opacity:.7}
+@media(max-width:700px){.rl-row{grid-template-columns:1fr}.rl-tier{flex-direction:row;justify-content:flex-start;border-right:none;border-bottom:1px solid var(--border);padding:16px 20px}.rl-offer{border-left:none;border-top:1px solid var(--border);padding:16px 20px}}
+
+/* ── WHO MATRIX ── */
+.who-matrix{display:grid;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.wm-header{display:grid;grid-template-columns:160px 1fr 1fr;gap:0;background:var(--slate);border-bottom:1px solid var(--border)}
+.wm-header span{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mist);padding:14px 20px;border-right:1px solid var(--border)}
+.wm-header span:first-child{color:transparent} /* empty corner */
+.wm-header span:last-child{border-right:none}
+.wm-range{color:var(--mist);opacity:.6}
+.wm-row{display:grid;grid-template-columns:160px 1fr 1fr;border-bottom:1px solid var(--border)}
+.wm-row:last-child{border-bottom:none}
+.wm-row-label{display:flex;flex-direction:column;justify-content:center;gap:4px;padding:24px 20px;border-right:1px solid var(--border);background:var(--slate)}
+.wm-row-label{font-size:14px;font-weight:700;color:var(--bone)}
+.wm-row-sub{font-family:var(--f-mono);font-size:10px;color:var(--mist);letter-spacing:.05em;text-transform:uppercase;font-weight:400}
+.wm-cell{padding:24px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+.wm-cell:last-child{border-right:none}
+.wm-cell p{font-size:13px;color:var(--mist2);line-height:1.6;margin:0;flex:1}
+.wm-cell-tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;display:inline-block;align-self:flex-start}
+.wm-yes .wm-cell-tag{background:rgba(200,241,53,.1);color:var(--signal);border:1px solid rgba(200,241,53,.25)}
+.wm-not-yet .wm-cell-tag{background:rgba(213,43,30,.08);color:#E05A4E;border:1px solid rgba(213,43,30,.2)}
+.wm-cta{font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.04em;transition:opacity .15s;align-self:flex-start}
+.wm-cta:hover{opacity:.7}
+.ai-advantage-note{border-left:3px solid var(--border);padding:20px 24px;max-width:680px}
+.ai-advantage-note p{font-size:14px;color:var(--mist);line-height:1.7;margin:0}
+@media(max-width:700px){.wm-header,.wm-row{grid-template-columns:1fr}.wm-header{display:none}.wm-cell,.wm-row-label{border-right:none;border-bottom:1px solid var(--border)}}
+
+/* ── TIER 0 SCORE STATE ── */
+.tier0-scored .result-tag{color:var(--signal);border-color:rgba(200,241,53,.3)}
+.tier0-next-steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -80,33 +140,138 @@
 
   <section class="page-hero" aria-labelledby="sol-heading">
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Solutions</div>
-    <h1 id="sol-heading">Three ways to automate<br>your campaigns with AI.</h1>
-    <p>Every engagement starts with understanding where automation creates the most value in your specific workflow — then we build it, hand it over, and make it compound.</p>
+    <h1 id="sol-heading">Your readiness determines<br>your path<span class="blink-dot" aria-hidden="true">.</span></h1>
+    <p>Every engagement is scoped to where you actually are — not where you wish you were. Your Readiness Score tells us what to build, how to support you, and what you can run independently when we're done.</p>
   </section>
 
+  <!-- AI Company Manifesto -->
+  <section class="section ai-manifesto" aria-labelledby="manifesto-heading">
+    <div class="section-label reveal"><span class="label-signal">The AI advantage</span></div>
+    <div class="manifesto-inner reveal">
+      <blockquote class="manifesto-quote">"A fully AI company will outperform a company that is not — at any stage, any size."</blockquote>
+      <p class="manifesto-attr">— Elon Musk</p>
+      <p class="manifesto-body">In marketing, this isn't about replacing people with software. It's about connecting AI, data, and workflow automation so that every decision, brief, budget call, and campaign compounds automatically — without every action requiring a human in the loop.</p>
+      <p class="manifesto-body">The question isn't whether to automate. It's whether you'll be the operation that's ahead or behind when it matters. Your Readiness Score tells you exactly where you stand — and what to do next.</p>
+      <a href="/tools/readiness-score" class="btn-ghost" id="manifesto-cta" style="margin-top:28px;display:inline-flex">Get your Readiness Score — free →</a>
+    </div>
+  </section>
+
+  <!-- Readiness Ladder -->
+  <section class="section" aria-labelledby="ladder-heading">
+    <div class="section-label reveal"><span class="label-signal">The readiness ladder</span></div>
+    <h2 class="display reveal" id="ladder-heading" style="margin-bottom:12px">Higher readiness. Less support needed.</h2>
+    <p class="lead reveal" style="max-width:600px;margin-bottom:48px">The highest level of readiness means you're enabled, you know the idea, and you can communicate it. At that point, execution and management need minimal support. The further behind, the more training, coaching, and cost required to build the same foundation.</p>
+
+    <div class="readiness-ladder reveal" role="list">
+      <div class="rl-row rl-agentic" role="listitem">
+        <div class="rl-tier"><span class="rl-badge">85–100</span><span class="rl-tier-name">Agentic</span></div>
+        <div class="rl-body">
+          <h3>Self-directed execution + consulting</h3>
+          <p>You have the idea, the data access, and the team to execute. We validate your approach, review your guardrail config, and support edge cases. You run it. We advise when needed.</p>
+          <div class="rl-tags"><span>Minimal support</span><span>Consulting rate</span><span>Fastest outcomes</span></div>
+        </div>
+        <div class="rl-offer"><a href="/solutions/automation-sprints" class="rl-link">Leapfrog & Integration Sprints →</a></div>
+      </div>
+      <div class="rl-row rl-operational" role="listitem">
+        <div class="rl-tier"><span class="rl-badge">70–84</span><span class="rl-tier-name">Operational</span></div>
+        <div class="rl-body">
+          <h3>Sprint + light oversight</h3>
+          <p>Your infrastructure is solid. You can move fast with a structured sprint. We scope the workflow, build it alongside your team, and hand it over with full documentation. Minimal hand-holding required.</p>
+          <div class="rl-tags"><span>Co-build model</span><span>Team training included</span><span>2–4 weeks</span></div>
+        </div>
+        <div class="rl-offer"><a href="/solutions/automation-sprints" class="rl-link">Integration Sprints →</a></div>
+      </div>
+      <div class="rl-row rl-emerging" role="listitem">
+        <div class="rl-tier"><span class="rl-badge">50–69</span><span class="rl-tier-name">Emerging</span></div>
+        <div class="rl-body">
+          <h3>Sprint + foundation coaching</h3>
+          <p>You have enough infrastructure to start building — but gaps will slow you down without guidance. We build the first sprint together and use it to close the foundational gaps in parallel.</p>
+          <div class="rl-tags"><span>Coaching embedded</span><span>Audit recommended first</span><span>4–6 weeks</span></div>
+        </div>
+        <div class="rl-offer"><a href="/solutions/campaign-audit" class="rl-link">Start with the Audit →</a></div>
+      </div>
+      <div class="rl-row rl-siloed" role="listitem">
+        <div class="rl-tier"><span class="rl-badge">0–49</span><span class="rl-tier-name">Siloed</span></div>
+        <div class="rl-body">
+          <h3>Enablement + training first</h3>
+          <p>Automation built on a broken foundation will fail — or worse, silently optimise the wrong thing. The first investment is data access, measurement, and structure. We build these alongside you before a single workflow is automated.</p>
+          <div class="rl-tags"><span>Training required</span><span>Higher cost per outcome</span><span>Longer timeline</span></div>
+        </div>
+        <div class="rl-offer"><a href="/training" class="rl-link">Explore Training →</a><a href="/resources/sprint-prep" class="rl-link" style="margin-top:8px">Sprint Prep Resources →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who we work with matrix -->
+  <section class="section" aria-labelledby="who-heading">
+    <div class="section-label reveal"><span class="label-signal">Who we work with</span></div>
+    <h2 class="display reveal" id="who-heading" style="margin-bottom:12px">Company size changes<br>who's in the room.</h2>
+    <p class="lead reveal" style="max-width:600px;margin-bottom:48px">Readiness and company scale together determine the engagement model. Large companies can work with us at any readiness level. Small and early-stage companies generally need a higher readiness score before a sprint delivers real ROI.</p>
+
+    <div class="who-matrix reveal" role="list">
+      <div class="wm-header wm-col-header">
+        <span>Low Readiness <span class="wm-range">(0–69)</span></span>
+        <span>High Readiness <span class="wm-range">(70–100)</span></span>
+      </div>
+      <div class="wm-row" role="listitem">
+        <div class="wm-row-label">Large Company<span class="wm-row-sub">Enterprise / Scale</span></div>
+        <div class="wm-cell wm-yes">
+          <div class="wm-cell-tag">Executives + Front Lines</div>
+          <p>We engage at two levels simultaneously: leadership to align on strategy and investment, and frontline teams to build the capability and workflows. High-readiness infrastructure isn't a prerequisite — we build it with you.</p>
+          <a href="/solutions/campaign-audit" class="wm-cta">Start with an Audit →</a>
+        </div>
+        <div class="wm-cell wm-yes">
+          <div class="wm-cell-tag">Team-led + Consulting</div>
+          <p>Your teams can move fast and own the work. We scope sprints, validate approach, and consult on edge cases. The goal is full independence — the engagement ends with you not needing us.</p>
+          <a href="/solutions/automation-sprints" class="wm-cta">Browse Sprints →</a>
+        </div>
+      </div>
+      <div class="wm-row" role="listitem">
+        <div class="wm-row-label">Small Company<span class="wm-row-sub">Startup / Early / SMB</span></div>
+        <div class="wm-cell wm-not-yet">
+          <div class="wm-cell-tag">Foundation First</div>
+          <p>A sprint built on fragmented data and no naming convention will fail silently. The first move is building the infrastructure that makes automation work. Once that's in place, the sprint ROI compounds fast.</p>
+          <a href="/tools/readiness-score" class="wm-cta">Check your score →</a>
+        </div>
+        <div class="wm-cell wm-yes">
+          <div class="wm-cell-tag">Owner / Executor + Light Support</div>
+          <p>A small, AI-enabled company outperforms a larger, un-automated one. At this stage, you — the owner or operator — are the executor. We work with you directly. Lean engagements, high output, you own everything.</p>
+          <a href="/solutions/automation-sprints" class="wm-cta">Browse Sprints →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-advantage-note reveal" style="margin-top:48px">
+      <p>Musk's point about AI companies applies directly here: a small, fully AI-enabled marketing operation will outperform a large, manual one — at any revenue stage. In marketing, this means connecting AI to data to workflow so the entire operation compounds automatically. The owner/executor of a small company who achieves this has a structurally unfair advantage. That's the point.</p>
+    </div>
+  </section>
+
+  <!-- Offer Stack -->
   <section class="section" aria-labelledby="tiers-heading">
     <div class="section-label reveal"><span class="label-signal">The offer stack</span></div>
-    <h2 class="display reveal" id="tiers-heading" style="margin-bottom:48px">Four tiers. One ladder.</h2>
+    <h2 class="display reveal" id="tiers-heading" style="margin-bottom:48px">One ladder. Start where you are.</h2>
 
-    <div class="result-card reveal" style="margin-bottom:24px;cursor:default">
-      <div>
-        <div class="result-tag">Tier 0 — Free</div>
+    <div class="result-card reveal" id="tier0-card" style="margin-bottom:24px;cursor:default">
+      <div class="tier0-content">
+        <div class="result-tag">Foundation — Free</div>
         <h3 style="color:var(--bone)">Campaign Automation Readiness Score</h3>
-        <p>12 questions. 5 minutes. You get a score (0–100), your top 3 bottlenecks, and a recommended sprint. No obligation — just clarity on where to start.</p>
-        <a href="/tools/readiness-score" class="btn-ghost btn-sm" style="margin-top:20px;display:inline-flex">Take the score — free →</a>
+        <p>14 questions across 5 dimensions. You get a score (0–100), your tier, your binding constraint, a prioritised roadmap, and a boss-pitch built from your actual answers.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+          <a href="/tools/readiness-score" class="btn-ghost btn-sm">Take the score — free →</a>
+        </div>
       </div>
       <div class="result-stat">
         <div class="result-n">Free</div>
-        <div class="result-nl">5 min · email capture</div>
+        <div class="result-nl">5 min · no login</div>
       </div>
     </div>
 
     <a class="result-card reveal" href="/solutions/campaign-audit">
       <div>
-        <div class="result-tag">Tier 1 — Entry offer</div>
+        <div class="result-tag">Tier 1 — Entry offer · Score 40+</div>
         <h3>Campaign Automation Audit</h3>
-        <p>Upload your data. Get a full diagnostic: PPC waste analysis, SEO/PPC opportunity map, AI automation roadmap, and a 30-day action plan. No ad account OAuth required — CSV exports only.</p>
-        <div style="margin-top:20px"><span class="signal-badge"><span class="dot" aria-hidden="true"></span>Most popular starting point</span></div>
+        <p>A full diagnostic of your current campaign infrastructure. PPC waste analysis, SEO/PPC opportunity map, AI automation roadmap, and a 30-day action plan. No ad account access required — CSV exports only.</p>
+        <div style="margin-top:20px"><span class="signal-badge"><span class="dot" aria-hidden="true"></span>Recommended first step for most teams</span></div>
       </div>
       <div class="result-stat">
         <div class="result-n" style="font-size:36px">$750–<br>$2,500</div>
@@ -116,9 +281,9 @@
 
     <a class="result-card reveal" href="/solutions/automation-sprints">
       <div>
-        <div class="result-tag">Tier 2 — Core offer</div>
+        <div class="result-tag">Tier 2 — Core offer · Score 50+</div>
         <h3>Campaign Automation Sprints</h3>
-        <p>Pick one campaign workflow. We build it with you in 2–4 weeks. You get the automated workflow, guardrail config, prompt packs, AGENTS.md, and a team training session. You own it when we're done.</p>
+        <p>Pick one workflow. We build it with your team in 2–4 weeks. You get the automated workflow, guardrail config, prompt packs, AGENTS.md, and a training session. You own it when we're done — no retainer, no lock-in.</p>
       </div>
       <div class="result-stat">
         <div class="result-n" style="font-size:36px">$5k–<br>$15k</div>
@@ -128,40 +293,15 @@
 
     <a class="result-card reveal" href="/platform">
       <div>
-        <div class="result-tag">Tier 3 — Recurring</div>
+        <div class="result-tag">Tier 3 — Recurring · Score 70+</div>
         <h3>Campaign Strategy Portal</h3>
-        <p>A lightweight campaign intelligence layer above your existing tools. Monthly strategy refresh, prioritized recommendations, AI-generated briefs and prompt packs. Your campaigns compound month over month.</p>
+        <p>An ongoing AI intelligence layer above your existing tools. Monthly strategy refresh, prioritised recommendations, AI-generated briefs and prompt packs. For teams that are ready to compound month over month.</p>
       </div>
       <div class="result-stat">
         <div class="result-n" style="font-size:36px">$500–<br>$2,500</div>
         <div class="result-nl">Per month · cancel anytime</div>
       </div>
     </a>
-  </section>
-
-  <section class="section" aria-labelledby="who-heading">
-    <div class="section-label reveal"><span class="label-signal">Which path fits you</span></div>
-    <h2 class="display reveal" id="who-heading" style="margin-bottom:40px">Pick your starting point.</h2>
-    <div class="buyer-router" data-stagger role="list">
-      <a class="buyer-card" href="/solutions/campaign-audit" role="listitem">
-        <div class="buyer-tag">Executive / CMO</div>
-        <h3>Start with the Audit</h3>
-        <p>If you want a clear picture of where AI automation fits your business before committing to a sprint — the audit gives you that plus a 30-day action plan.</p>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="buyer-card" href="/solutions/automation-sprints" role="listitem">
-        <div class="buyer-tag">In-house team</div>
-        <h3>Pick a Sprint</h3>
-        <p>If you already know what's costing you time — pick the sprint that targets that workflow. Two to four weeks to a fully running automation.</p>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="buyer-card" href="/platform" role="listitem">
-        <div class="buyer-tag">Agency</div>
-        <h3>Request Portal Access</h3>
-        <p>If you manage multiple client accounts — the portal has a white-label option built for agencies running five or more clients.</p>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
   </section>
 
   <section class="section bone" aria-labelledby="dont-heading">
@@ -181,20 +321,20 @@
           <p style="font-size:14px;color:#555;margin-top:6px">Every engagement produces a deliverable. Audits produce reports. Sprints produce running workflows.</p>
         </div>
         <div style="border-bottom:1px solid var(--border-bone);padding:20px 0">
-          <strong style="color:var(--ink);font-family:var(--f-display);font-size:16px">Live write access to your ad accounts (yet)</strong>
-          <p style="font-size:14px;color:#555;margin-top:6px">File uploads only at this stage. No OAuth, no live API connections, no automated changes pushed to ad platforms.</p>
+          <strong style="color:var(--ink);font-family:var(--f-display);font-size:16px">An engagement that never ends</strong>
+          <p style="font-size:14px;color:#555;margin-top:6px">Every sprint ends with you owning the workflow, prompt packs, and guardrail config. You can run it without us. That's the goal.</p>
         </div>
         <div style="padding:20px 0">
-          <strong style="color:var(--ink);font-family:var(--f-display);font-size:16px">A dependency that never ends</strong>
-          <p style="font-size:14px;color:#555;margin-top:6px">Every sprint ends with you owning the workflow, the prompt packs, and the guardrail config. You can run it without us.</p>
+          <strong style="color:var(--ink);font-family:var(--f-display);font-size:16px">Automation before readiness</strong>
+          <p style="font-size:14px;color:#555;margin-top:6px">We won't build automation on a broken foundation. If your score says the infrastructure isn't there yet, we'll tell you — and show you how to fix it before we engage.</p>
         </div>
       </div>
     </div>
   </section>
 
   <div class="tagline-footer">
-    <p class="reveal">Start with the Audit.<br>Build one sprint.<br><span>Scale from there.</span></p>
-    <a href="/solutions/campaign-audit" class="btn-primary reveal reveal-delay-2" style="margin-top:40px;font-size:15px;padding:16px 36px">Get a Campaign Automation Audit →</a>
+    <p class="reveal">Start where you are.<br>Build what compounds<span class="blink-dot" aria-hidden="true">.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary reveal reveal-delay-2" id="footer-cta" style="margin-top:40px;font-size:15px;padding:16px 36px">Get your Readiness Score — free →</a>
   </div>
 </main>
 <footer role="contentinfo" aria-label="Site footer">
@@ -214,5 +354,64 @@
 </footer>
 </div>
 <script src="/js/main.js"></script>
+<script>
+(function dynamicSolutionsPage() {
+  try {
+    const d = JSON.parse(localStorage.getItem('ca_readiness') || 'null');
+    if (!d || d.score === undefined) return;
+    const score = d.score;
+    const tierName = score>=85?'Agentic':score>=70?'Operational':score>=50?'Emerging':'Siloed';
+    const tierClass = tierName.toLowerCase();
+
+    // Update Tier 0 card to show completed state + next steps
+    const card = document.getElementById('tier0-card');
+    if (card) {
+      card.classList.add('tier0-scored');
+      const content = card.querySelector('.tier0-content');
+      if (content) {
+        // Next step links based on score
+        const nextLinks = score >= 70
+          ? `<a href="/solutions/automation-sprints" class="btn-primary btn-sm">Browse Sprints →</a>
+             <a href="/resources/sprint-prep" class="btn-ghost btn-sm">Sprint Resources →</a>`
+          : score >= 50
+          ? `<a href="/resources/sprint-prep" class="btn-primary btn-sm">Explore Resources →</a>
+             <a href="/solutions/automation-sprints" class="btn-ghost btn-sm">Browse Sprints →</a>`
+          : `<a href="/training" class="btn-primary btn-sm">Explore Training →</a>
+             <a href="/resources/sprint-prep" class="btn-ghost btn-sm">Build Foundation →</a>`;
+
+        content.innerHTML = `
+          <div class="result-tag">Assessment Complete</div>
+          <h3 style="color:var(--bone)">Your Score: ${score}/100 — ${tierName}</h3>
+          <p>Based on your score, here's your recommended path. You can retake the assessment anytime to see how your score changes.</p>
+          <div class="tier0-next-steps">${nextLinks}</div>
+          <a href="/tools/readiness-score" style="display:inline-block;margin-top:12px;font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.05em;text-decoration:none">View full scorecard →</a>
+        `;
+      }
+    }
+
+    // Update manifesto CTA
+    const mCta = document.getElementById('manifesto-cta');
+    if (mCta) {
+      mCta.href = '/tools/readiness-score';
+      mCta.textContent = `View your scorecard (${score}/100 — ${tierName}) →`;
+    }
+
+    // Update footer CTA
+    const fCta = document.getElementById('footer-cta');
+    if (fCta) {
+      if (score >= 70) {
+        fCta.href = '/solutions/automation-sprints';
+        fCta.textContent = 'Browse Automation Sprints →';
+      } else if (score >= 50) {
+        fCta.href = '/resources/sprint-prep';
+        fCta.textContent = 'Build your Sprint Foundation →';
+      } else {
+        fCta.href = '/training';
+        fCta.textContent = 'Explore Training →';
+      }
+    }
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
