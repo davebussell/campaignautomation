@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campaign Measurement & Instrumentation Guide</title>
+<meta name="description" content="Conversion tracking gaps are the most expensive silent problem in paid media. Learn how to audit, fix, and validate your measurement foundation before automating anything.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/instrumentation">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.rg-wrap{max-width:720px;margin:0 auto;padding:0 24px 80px}
+.rg-hero{padding:48px 0 40px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.rg-eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
+.rg-hero h1{font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.2;margin-bottom:16px}
+.rg-hero .lead{font-size:17px;color:var(--mist2);line-height:1.65;max-width:580px}
+.rg-score-note{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em;background:var(--slate);padding:10px 16px;border-radius:3px;border:1px solid var(--border)}
+.rg-body h2{font-size:22px;font-weight:700;margin:48px 0 12px;line-height:1.3}
+.rg-body h3{font-size:17px;font-weight:600;margin:32px 0 10px;color:var(--bone)}
+.rg-body p{font-size:16px;color:var(--mist2);line-height:1.7;margin-bottom:16px}
+.rg-body ul{margin:0 0 20px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.rg-body ul li{font-size:15px;color:var(--mist2);line-height:1.55;padding-left:20px;position:relative}
+.rg-body ul li::before{content:"—";position:absolute;left:0;color:var(--mist);font-size:12px;top:3px}
+.rg-callout{border-left:3px solid var(--signal);padding:18px 20px;background:rgba(200,241,53,.04);margin:28px 0;border-radius:0 4px 4px 0}
+.rg-callout p{font-size:15px;color:var(--bone);margin:0;line-height:1.6}
+.rg-callout strong{color:var(--signal)}
+.rg-warning{border-left:3px solid #FFE200;padding:18px 20px;background:rgba(255,226,0,.04);margin:28px 0;border-radius:0 4px 4px 0}
+.rg-warning p{font-size:15px;color:var(--bone);margin:0;line-height:1.6}
+.rg-score-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+.rg-score-table th{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.rg-score-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--mist2);line-height:1.45;vertical-align:top}
+.rg-score-table td:first-child{font-family:var(--f-mono);font-size:12px;color:var(--signal);white-space:nowrap}
+.rg-cta-box{margin:56px 0 0;padding:36px;border:2px solid var(--signal);border-radius:4px;text-align:center}
+.rg-cta-box h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.rg-cta-box p{font-size:15px;color:var(--mist2);margin-bottom:24px;line-height:1.55}
+.rg-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.07em;color:var(--mist);border:1px solid var(--border);padding:3px 9px;border-radius:2px}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem"><a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item" role="listitem"><a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem"><a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">All Resources</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a></div>
+  <a href="/tools/readiness-score" class="mobile-cta">Take the free Readiness Score →</a>
+</nav>
+
+<main id="main-content">
+<div class="rg-wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/resources">Resources</a><span>›</span><span aria-current="page">Instrumentation</span></nav>
+
+  <div class="rg-hero animate-in">
+    <div class="rg-eyebrow">Readiness Dimension · 20% weight</div>
+    <h1>Measurement &amp; Instrumentation<span class="blink-dot" aria-hidden="true">.</span></h1>
+    <p class="lead">Automation is only as good as the signals it's trained on. If your conversion tracking has gaps or hasn't been audited recently, Smart Bidding and every custom rule you build is optimising toward noise — not revenue.</p>
+    <div class="tag-row">
+      <span class="tag">GA4</span><span class="tag">GTM</span><span class="tag">Conversion tracking</span><span class="tag">Attribution</span><span class="tag">Pixel auditing</span>
+    </div>
+    <div class="rg-score-note">📊 Readiness Score weight: 20% — second most important dimension</div>
+  </div>
+
+  <div class="rg-body animate-in">
+
+    <h2>Why measurement is a prerequisite — not a nice-to-have</h2>
+    <p>Every automated bidding strategy in Google Ads and Meta Ads is a machine learning model trained on conversion signals. If those signals are broken, duplicated, or missing entire event types, the model learns to optimize toward the wrong outcomes — and it does so efficiently and at scale.</p>
+    <p>The cost isn't just misreported numbers. It's that Smart Bidding actively steers your budget toward traffic that doesn't convert, at a rate proportional to your spend. The higher your budget, the more expensive broken tracking becomes.</p>
+
+    <div class="rg-warning">
+      <p><strong>The silent waste problem:</strong> Broken tracking doesn't throw an error. Campaigns still spend. Reports still fill in. The algorithm still "works." You only discover the problem when you audit — or when a competitor overtakes you and you can't explain why.</p>
+    </div>
+
+    <h2>What the score measures</h2>
+    <table class="rg-score-table">
+      <thead><tr><th>Pts</th><th>Question</th><th>Best answer</th></tr></thead>
+      <tbody>
+        <tr><td>0–10</td><td>How reliable is your conversion tracking?</td><td>Clean and validated — all key conversions cross-checked regularly (10 pts)</td></tr>
+        <tr><td>0–10</td><td>How do you attribute conversions across channels?</td><td>Full MTA or MMM in place (10 pts)</td></tr>
+        <tr><td>0–10</td><td>When did you last audit your tracking for accuracy?</td><td>Within the last 3 months (10 pts)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The tracking audit checklist</h2>
+    <p>A tracking audit doesn't require a developer or a specialist — it requires a methodology and the tools that already exist in your ad accounts and analytics platform.</p>
+
+    <h3>Step 1: Inventory every conversion action</h3>
+    <p>List every conversion action in Google Ads, every pixel event in Meta, and every key event in GA4. Include: what it tracks, when it fires, the value assigned, and who set it up. Most accounts have between 5 and 20 conversion actions — many of which are duplicates or no longer reflect business goals.</p>
+
+    <h3>Step 2: Verify each one fires correctly</h3>
+    <p>Use GA4 DebugView to watch events fire in real time as you navigate your site. Use Meta Pixel Helper in Chrome to verify pixel events on thank-you pages and product pages. Use Google Tag Assistant to confirm GTM tags are triggering correctly. Complete a real purchase or form submission if possible — don't assume, verify.</p>
+
+    <h3>Step 3: Check for deduplication</h3>
+    <p>A common issue: the same conversion fires from GTM and from the Google Ads tag directly, doubling the reported count. Compare conversions reported in Google Ads against actual CRM leads or transactions. A ratio above 1.2:1 usually indicates deduplication failure.</p>
+
+    <h3>Step 4: Audit attribution settings</h3>
+    <p>If you're running last-click attribution in Google Ads but data-driven attribution in GA4, you're making budget decisions on different universes of truth. Document which model you're using, why, and what it means for how you interpret reports.</p>
+
+    <div class="rg-callout">
+      <p><strong>The 30-conversion rule:</strong> No automated bidding strategy should run on fewer than 30 verified conversions in a 30-day window. Below this threshold, the algorithm has insufficient signal and will allocate budget inconsistently. This is the guardrail the Readiness Score recommends for every team below 70/100.</p>
+    </div>
+
+    <h2>Services that fix this</h2>
+    <ul>
+      <li><strong><a href="/solutions/campaign-audit" style="color:var(--bone)">Campaign Automation Audit →</a></strong> — includes a full tracking audit as part of the engagement. We map every conversion action, verify it fires correctly, check for deduplication issues, and document attribution settings. Delivered within 5 business days.</li>
+      <li><strong><a href="/solutions/automation-sprints" style="color:var(--bone)">Automation Sprint — Measurement Foundation →</a></strong> — for teams that need a clean measurement stack built from scratch or repaired. Includes GA4 setup, GTM configuration, and cross-channel attribution documentation.</li>
+    </ul>
+
+    <div class="rg-cta-box">
+      <h3>Know your instrumentation score.</h3>
+      <p>The Readiness Score breaks down your measurement maturity across three questions and tells you exactly what to fix first. Free, no login required.</p>
+      <div class="rg-cta-row">
+        <a href="/tools/readiness-score" class="btn-primary" style="font-size:15px;padding:14px 28px">Take the Readiness Score →</a>
+        <a href="/solutions/campaign-audit" class="btn-secondary" style="font-size:15px;padding:14px 28px">Book an Audit →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer">
+  <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
+  </div>
+  <nav aria-label="Guides"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Readiness Guides</h3>
+    <a href="/resources/democratization">Democratization</a>
+    <a href="/resources/instrumentation" aria-current="page">Instrumentation</a>
+    <a href="/resources/standardization">Standardization</a>
+    <a href="/resources/governance">Governance</a>
+    <a href="/resources/team-tooling">Team &amp; Tooling</a>
+  </nav>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a><a href="/training">Training</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>

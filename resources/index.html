@@ -79,33 +79,71 @@
 
   <section class="section snap-sec" aria-labelledby="res-cards-heading">
     <div class="section-label reveal"><span class="label-signal">All resources</span></div>
-    <h2 class="display reveal" id="res-cards-heading" style="margin-bottom:48px">Pick where to start.</h2>
-    <div class="grid-2" data-stagger>
-      <a class="pillar-card reveal" href="/tools/readiness-score">
+    <h2 class="display reveal" id="res-cards-heading" style="margin-bottom:16px">Pick where to start.</h2>
+
+    <!-- Search -->
+    <div style="margin-bottom:40px" class="reveal">
+      <input type="search" id="res-search" placeholder="Search resources… e.g. 'tracking', 'naming convention', 'governance'" aria-label="Search resources"
+        style="width:100%;max-width:540px;padding:13px 16px;background:var(--slate2);border:1px solid var(--border);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px;outline:none;box-sizing:border-box">
+    </div>
+
+    <div class="grid-2" data-stagger id="res-grid">
+      <a class="pillar-card reveal" href="/tools/readiness-score" data-tags="readiness score assessment audit free tool dimensions">
         <div class="pillar-tag">Free tool</div>
         <h3>Campaign Automation Readiness Score</h3>
-        <p>12 questions. 5 minutes. Get your score, top 3 bottlenecks, and recommended next step.</p>
+        <p>14 questions. 4 minutes. Get your score, tier, binding constraint, guardrail set, and a prioritised roadmap.</p>
         <div class="url">tools/readiness-score · free</div>
       </a>
-      <a class="pillar-card reveal reveal-delay-1" href="/resources/templates">
+      <a class="pillar-card reveal reveal-delay-1" href="/resources/democratization" data-tags="democratization data access dashboards self-serve analytics channel owners literacy">
+        <div class="pillar-tag">Readiness guide</div>
+        <h3>Data Democratization Guide</h3>
+        <p>The single biggest predictor of automation success. How to build self-serve data access for every channel owner — and why it gates everything else.</p>
+        <div class="url">resources/democratization</div>
+      </a>
+      <a class="pillar-card reveal reveal-delay-2" href="/resources/instrumentation" data-tags="instrumentation tracking conversion GA4 GTM pixel attribution measurement audit">
+        <div class="pillar-tag">Readiness guide</div>
+        <h3>Measurement &amp; Instrumentation Guide</h3>
+        <p>Broken tracking is silent and expensive. How to audit your conversion setup, fix deduplication issues, and validate attribution before automating anything.</p>
+        <div class="url">resources/instrumentation</div>
+      </a>
+      <a class="pillar-card reveal reveal-delay-3" href="/resources/standardization" data-tags="standardization naming convention launch SOP template QA checklist campaign structure">
+        <div class="pillar-tag">Readiness guide</div>
+        <h3>Campaign Standardization Guide</h3>
+        <p>Automation scripts need consistent structure to act on. Build a naming convention and launch process that makes every rule more reliable.</p>
+        <div class="url">resources/standardization</div>
+      </a>
+      <a class="pillar-card reveal" href="/resources/governance" data-tags="governance automation ownership approval change control guardrails audit log accountability">
+        <div class="pillar-tag">Readiness guide</div>
+        <h3>Automation Governance Framework</h3>
+        <p>One unchecked rule can burn a week of budget. Who owns automation, how changes get approved, and the guardrail set every team should have running.</p>
+        <div class="url">resources/governance</div>
+      </a>
+      <a class="pillar-card reveal reveal-delay-1" href="/resources/team-tooling" data-tags="tooling stack google ads scripts make zapier BI looker studio bigquery CRM integration">
+        <div class="pillar-tag">Readiness guide</div>
+        <h3>Team &amp; Tooling Guide</h3>
+        <p>Your ceiling is what your tools can see. The five layers of automation tooling — in the right order — and how to know which layer to invest in next.</p>
+        <div class="url">resources/team-tooling</div>
+      </a>
+      <a class="pillar-card reveal reveal-delay-2" href="/resources/templates" data-tags="templates prompts AGENTS.md brief generator PPC SEO campaign planning">
         <div class="pillar-tag">Templates</div>
         <h3>Templates &amp; Prompt Packs</h3>
         <p>AGENTS.md starters, prompt packs for PPC briefing, SEO brief generators, and campaign planning templates.</p>
         <div class="url">resources/templates</div>
       </a>
-      <a class="pillar-card reveal reveal-delay-2" href="/resources/glossary">
+      <a class="pillar-card reveal reveal-delay-3" href="/resources/glossary" data-tags="glossary definitions agentic guardrail trigger action automation terminology">
         <div class="pillar-tag">Glossary</div>
         <h3>AI Automation Glossary</h3>
         <p>Definitions for guardrail-driven automation, trigger/action/impact, agentic marketing, and 30+ other terms.</p>
         <div class="url">resources/glossary</div>
       </a>
-      <a class="pillar-card reveal reveal-delay-3" href="/resources/ai-automation-pricing">
+      <a class="pillar-card reveal" href="/resources/ai-automation-pricing" data-tags="pricing cost audit sprint portal agency in-house budget">
         <div class="pillar-tag">Pricing</div>
         <h3>AI Automation Pricing Guide</h3>
         <p>What AI automation actually costs. Audits, sprints, portals, and in-house vs. agency tradeoffs — with real numbers.</p>
         <div class="url">resources/ai-automation-pricing</div>
       </a>
     </div>
+    <p id="res-no-results" style="display:none;font-size:15px;color:var(--mist);margin-top:24px">No results for that search. Try a different term or <a href="/tools/readiness-score" style="color:var(--signal)">take the Readiness Score</a> to see what's most relevant to you.</p>
   </section>
 
   <div class="snap-sec tagline-footer">
@@ -130,5 +168,25 @@
 </footer>
 </div>
 <script src="/js/main.js"></script>
+<script>
+(function(){
+  const input = document.getElementById('res-search');
+  const grid  = document.getElementById('res-grid');
+  const none  = document.getElementById('res-no-results');
+  if (!input || !grid) return;
+  input.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    const cards = grid.querySelectorAll('.pillar-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const text = ((card.textContent || '') + ' ' + (card.dataset.tags || '')).toLowerCase();
+      const show = !q || text.includes(q);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    none.style.display = (q && visible === 0) ? 'block' : 'none';
+  });
+})();
+</script>
 </body>
 </html>

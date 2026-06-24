@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Democratization for Campaign Teams — Guide</title>
+<meta name="description" content="Why data democratization is the single biggest predictor of automation success — and how to build self-serve access for every channel owner on your team.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/democratization">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.rg-wrap{max-width:720px;margin:0 auto;padding:0 24px 80px}
+.rg-hero{padding:48px 0 40px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.rg-eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
+.rg-hero h1{font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.2;margin-bottom:16px}
+.rg-hero .lead{font-size:17px;color:var(--mist2);line-height:1.65;max-width:580px}
+.rg-score-note{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em;background:var(--slate);padding:10px 16px;border-radius:3px;border:1px solid var(--border)}
+.rg-body h2{font-size:22px;font-weight:700;margin:48px 0 12px;line-height:1.3}
+.rg-body h3{font-size:17px;font-weight:600;margin:32px 0 10px;color:var(--bone)}
+.rg-body p{font-size:16px;color:var(--mist2);line-height:1.7;margin-bottom:16px}
+.rg-body ul{margin:0 0 20px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.rg-body ul li{font-size:15px;color:var(--mist2);line-height:1.55;padding-left:20px;position:relative}
+.rg-body ul li::before{content:"—";position:absolute;left:0;color:var(--mist);font-size:12px;top:3px}
+.rg-callout{border-left:3px solid var(--signal);padding:18px 20px;background:rgba(200,241,53,.04);margin:28px 0;border-radius:0 4px 4px 0}
+.rg-callout p{font-size:15px;color:var(--bone);margin:0;line-height:1.6}
+.rg-callout strong{color:var(--signal)}
+.rg-score-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+.rg-score-table th{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.rg-score-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--mist2);line-height:1.45;vertical-align:top}
+.rg-score-table td:first-child{font-family:var(--f-mono);font-size:12px;color:var(--signal);white-space:nowrap}
+.rg-cta-box{margin:56px 0 0;padding:36px;border:2px solid var(--signal);border-radius:4px;text-align:center}
+.rg-cta-box h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.rg-cta-box p{font-size:15px;color:var(--mist2);margin-bottom:24px;line-height:1.55}
+.rg-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.07em;color:var(--mist);border:1px solid var(--border);padding:3px 9px;border-radius:2px}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem"><a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item" role="listitem"><a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem"><a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">All Resources</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a></div>
+  <a href="/tools/readiness-score" class="mobile-cta">Take the free Readiness Score →</a>
+</nav>
+
+<main id="main-content">
+<div class="rg-wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/resources">Resources</a><span>›</span><span aria-current="page">Data Democratization</span></nav>
+
+  <div class="rg-hero animate-in">
+    <div class="rg-eyebrow">Readiness Dimension · 30% weight</div>
+    <h1>Data Democratization<span class="blink-dot" aria-hidden="true">.</span></h1>
+    <p class="lead">The single biggest predictor of automation success. If only one or two people on your team can read campaign data, every automation you build creates a human bottleneck instead of removing one.</p>
+    <div class="tag-row">
+      <span class="tag">GA4</span><span class="tag">Looker Studio</span><span class="tag">Self-serve dashboards</span><span class="tag">Data literacy</span><span class="tag">Automated alerts</span>
+    </div>
+    <div class="rg-score-note">📊 Readiness Score weight: 30% — highest of all five dimensions</div>
+  </div>
+
+  <div class="rg-body animate-in">
+
+    <h2>Why democratization carries the most weight</h2>
+    <p>Automation amplifies whatever humans decide to do with data — it doesn't replace the decision. If data lives inside an analyst, an agency, or a monthly report that someone sends when asked, then every automation you build runs on delayed inputs from a single point of failure.</p>
+    <p>The Readiness Score weights democratization at 30% because research consistently shows that teams with self-serve data access adapt faster, catch problems sooner, and get more ROI from every automation layer built on top.</p>
+
+    <div class="rg-callout">
+      <p><strong>The bottleneck test:</strong> If your Google Ads account manager goes on vacation, who can tell whether performance dropped because of a creative issue, a bidding anomaly, a tracking break, or seasonality? If the answer is "no one," you have a democratization problem — and no automation will fix it until you do.</p>
+    </div>
+
+    <h2>What the score measures</h2>
+    <p>The Readiness Score assesses democratization across three questions, each weighted for impact:</p>
+    <table class="rg-score-table">
+      <thead><tr><th>Pts</th><th>Question</th><th>Best answer</th></tr></thead>
+      <tbody>
+        <tr><td>0–12</td><td>Who on your team can pull and interpret campaign data without help?</td><td>Everyone operates self-sufficiently (12 pts)</td></tr>
+        <tr><td>0–9</td><td>How is campaign data surfaced to decision-makers?</td><td>Proactive alerts + live dashboards (9 pts)</td></tr>
+        <tr><td>0–9</td><td>How often does your team review and act on campaign data?</td><td>Real-time with automated alerts (9 pts)</td></tr>
+      </tbody>
+    </table>
+    <p>Maximum democratization score: 30 points. If you scored below 18, the <strong>democratization gate</strong> caps your total score at 49 regardless of other dimensions — because the research is unambiguous: the other dimensions don't matter until this one is functional.</p>
+
+    <h2>How to close the gap</h2>
+    <h3>1. Build self-serve dashboards before adding any other automation</h3>
+    <p>Set up live dashboards in Looker Studio or GA4 that channel owners can use without analyst support. Connect Google Ads, Meta Ads, and your CRM in a single view. The goal is that any channel owner can open a URL and answer their own questions without asking anyone.</p>
+
+    <h3>2. Replace manual reporting emails with proactive alerts</h3>
+    <p>Manual report emails create a dependency loop: someone has to send them, someone has to read them, and they're always slightly stale. Replace them with Google Ads automated alerts or GA4 intelligence events that push anomalies to Slack or email the moment they happen.</p>
+
+    <h3>3. Establish a data review cadence with clear ownership</h3>
+    <p>Self-serve data access without a review cadence just means data is available but not used. Define who reviews what, how often, and what they're looking for. Daily for spend and pacing. Weekly for performance trend. Monthly for strategic review.</p>
+
+    <h3>4. Train every channel owner on reading their own data</h3>
+    <p>This is the hardest part to skip. A dashboard no one knows how to read is ornamental. A 2-hour training session per channel type — what to look at, what's normal, what's a signal — has higher ROI than most technology investments.</p>
+
+    <div class="rg-callout">
+      <p><strong>Rule of thumb:</strong> Before you automate any workflow, ask whether every person affected by the output can read the inputs. If they can't, the automation will create questions no one can answer and decisions no one can make. Build the data literacy first.</p>
+    </div>
+
+    <h2>Services that fix this</h2>
+    <ul>
+      <li><strong><a href="/solutions/campaign-audit" style="color:var(--bone)">Campaign Automation Audit →</a></strong> — we map exactly where your data access bottlenecks are, what dashboards need to exist, and who needs to be able to read what. Delivered within 5 business days.</li>
+      <li><strong><a href="/training" style="color:var(--bone)">AI Marketing Training Programme →</a></strong> — closes the data literacy gap that caps every other automation. Team-wide or role-specific depending on your situation.</li>
+      <li><strong><a href="/solutions/automation-sprints" style="color:var(--bone)">Automation Sprint — Data Access Build →</a></strong> — we build the dashboards, configure the alerts, and set up the reporting infrastructure in a 2-week sprint.</li>
+    </ul>
+
+    <div class="rg-cta-box">
+      <h3>Not sure where you stand?</h3>
+      <p>Your democratization score — and every other dimension — is in your free Readiness Score. 14 questions. 4 minutes. No login required.</p>
+      <div class="rg-cta-row">
+        <a href="/tools/readiness-score" class="btn-primary" style="font-size:15px;padding:14px 28px">Take the Readiness Score — free →</a>
+        <a href="/solutions/campaign-audit" class="btn-secondary" style="font-size:15px;padding:14px 28px">Book an Audit →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer">
+  <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
+  </div>
+  <nav aria-label="Guides"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Readiness Guides</h3>
+    <a href="/resources/democratization" aria-current="page">Democratization</a>
+    <a href="/resources/instrumentation">Instrumentation</a>
+    <a href="/resources/standardization">Standardization</a>
+    <a href="/resources/governance">Governance</a>
+    <a href="/resources/team-tooling">Team &amp; Tooling</a>
+  </nav>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a><a href="/training">Training</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>
