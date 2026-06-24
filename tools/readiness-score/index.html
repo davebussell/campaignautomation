@@ -1033,15 +1033,7 @@ function showScorecard() {
 
   window.scrollTo({top:0,behavior:"smooth"});
 
-  // Switch nav CTA from "Get Audit" to next step now that score is visible
-  document.querySelectorAll('a.nav-cta').forEach(function(el){
-    el.href = '/solutions/automation-sprints';
-    el.textContent = 'Plan Sprints →';
-  });
-  document.querySelectorAll('a.mobile-cta').forEach(function(el){
-    el.href = '/solutions/automation-sprints';
-    el.textContent = 'Plan Sprints →';
-  });
+  // Both buttons are already wired by main.js; nothing extra needed here
 }
 
 // Pre-select service from ?ref= URL param and customise intake header

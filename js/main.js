@@ -326,10 +326,22 @@ const FUNNEL = {
   const stg       = FUNNEL.stage();
   const ctaCfg    = FUNNEL.cta(stg, tier);
 
-  /* 1 — Update .nav-cta to next funnel step (score badge lives in the floating chip instead) */
+  /* 1 — Replace single nav-cta with two buttons: Plan Sprints (yellow) + Audit Results */
   document.querySelectorAll('a.nav-cta').forEach(el => {
-    el.href = ctaCfg.href;
-    el.textContent = ctaCfg.label;
+    // Button 1: Plan Sprints (yellow)
+    el.href = '/solutions/automation-sprints';
+    el.textContent = 'Plan Sprints →';
+    el.className = 'nav-cta-yellow';
+    el.removeAttribute('role');
+
+    // Button 2: Audit Results — inject once
+    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('nav-cta-audit')) {
+      const audit = document.createElement('a');
+      audit.href = '/tools/readiness-score';
+      audit.className = 'nav-cta-audit';
+      audit.textContent = 'Audit Results →';
+      el.parentNode.insertBefore(audit, el.nextSibling);
+    }
   });
 
   /* 2 — Update mobile CTA */
