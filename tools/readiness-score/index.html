@@ -888,6 +888,9 @@ function showScorecard() {
   const modHtml = mods.length ? `<div class="modifier-flags"><h3 style="font-size:16px;font-weight:600;margin-bottom:16px">Flags to address</h3>${mods.map(m=>`<div class="modifier-flag"><div class="mf-icon" aria-hidden="true">${m.icon}</div><div class="mf-body"><strong>${m.title}</strong><p>${m.body}</p></div></div>`).join("")}</div>` : "";
 
   sc.innerHTML = `
+    <div style="display:flex;justify-content:flex-end;padding:16px 0 0">
+      <button type="button" onclick="clearReadinessScore()" style="background:none;border:1px solid var(--border);color:var(--mist);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:7px 14px;cursor:pointer;border-radius:3px;transition:all .2s" onmouseover="this.style.borderColor='#888';this.style.color='var(--bone)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--mist)'">↺ Reset score</button>
+    </div>
     <div class="score-reveal animate-in">
       <div class="score-number">${finalScore}<span class="score-denom">/100</span></div>
       ${gated?`<p style="font-size:13px;color:#FFE200;font-family:var(--f-mono);margin-top:8px;letter-spacing:.04em">↑ Capped at 49 — democratization gate active</p>`:""}
