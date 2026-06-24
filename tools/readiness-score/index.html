@@ -1,22 +1,106 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-CA">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Campaign Automation Readiness Score — Find Your Biggest Automation Opportunity</title>
-<meta name="description" content="A free 12-question assessment that scores your team's automation readiness, surfaces your top three bottlenecks, and recommends the right sprint to start with.">
+<title>Campaign Automation Readiness Score — Free Assessment</title>
+<meta name="description" content="Assess your team's campaign automation readiness across 5 dimensions. Get a personalised score, tier placement, and a prioritised roadmap in under 5 minutes.">
 <link rel="canonical" href="https://campaignautomation.ai/tools/readiness-score">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://campaignautomation.ai/tools/readiness-score">
-<meta property="og:title" content="Campaign Automation Readiness Score — Free Assessment Tool">
-<meta property="og:description" content="12 questions. 5 minutes. Find out how ready your team is for AI campaign automation and get your top 3 bottlenecks identified.">
+<meta property="og:title" content="Campaign Automation Readiness Score — Free Assessment">
+<meta property="og:description" content="Assess your team's campaign automation readiness in under 5 minutes. Get a score, tier, and prioritised roadmap.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Campaign Automation Readiness Score — Free Assessment Tool">
-<meta name="twitter:description" content="12 questions. 5 minutes. Find out how ready your team is for AI campaign automation and get your top 3 bottlenecks identified.">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+.tool-wrap{max-width:760px;margin:0 auto;padding:0 24px 80px}
+.progress-bar{display:flex;gap:6px;margin-bottom:48px;margin-top:8px}
+.progress-bar .step-dot{flex:1;height:3px;background:var(--border);border-radius:2px;transition:background .3s}
+.progress-bar .step-dot.done{background:var(--signal)}
+.progress-bar .step-dot.active{background:var(--signal);opacity:.6}
+.progress-label{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.06em;margin-bottom:12px}
+.q-block{margin-bottom:32px}
+.q-block h3{font-size:18px;font-weight:600;margin-bottom:16px;line-height:1.45}
+.q-block .q-hint{font-size:14px;color:var(--mist2);margin-top:-10px;margin-bottom:16px;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:10px}
+.opt-btn{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border);background:transparent;color:var(--bone);font-family:var(--f-body);font-size:15px;text-align:left;cursor:pointer;border-radius:4px;transition:border-color .2s,background .2s;line-height:1.45;width:100%}
+.opt-btn .opt-label{font-weight:500}
+.opt-btn .opt-desc{font-size:13px;color:var(--mist2);margin-top:2px;line-height:1.4}
+.opt-btn .opt-key{font-family:var(--f-mono);font-size:11px;color:var(--mist);min-width:18px;margin-top:2px}
+.opt-btn:hover{border-color:var(--mist);background:rgba(255,255,255,.03)}
+.opt-btn.selected{border-color:var(--signal);background:rgba(200,241,53,.06)}
+.opt-btn.selected .opt-key{color:var(--signal)}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;gap:16px}
+.btn-back{background:transparent;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-body);font-size:14px;padding:10px 20px;cursor:pointer;border-radius:4px;transition:border-color .2s,color .2s}
+.btn-back:hover{border-color:var(--mist2);color:var(--bone)}
+.btn-next{background:var(--signal);color:var(--ink);font-family:var(--f-body);font-size:15px;font-weight:700;padding:14px 32px;border:none;cursor:pointer;border-radius:4px;transition:opacity .2s,transform .2s;letter-spacing:.01em}
+.btn-next:hover{opacity:.9;transform:translateY(-1px)}
+.btn-next:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.step-header{margin-bottom:32px}
+.step-header h2{font-size:clamp(22px,4vw,30px);font-weight:700;margin-bottom:8px;line-height:1.3}
+.step-header p{font-size:16px;color:var(--mist2);line-height:1.6;max-width:600px}
+/* Scorecard */
+#scorecard{display:none}
+.score-reveal{text-align:center;padding:48px 0 32px}
+.score-number{font-size:clamp(64px,12vw,100px);font-weight:800;line-height:1;font-family:var(--f-display);color:var(--signal);letter-spacing:-.03em}
+.score-denom{font-size:24px;color:var(--mist);font-weight:400}
+.tier-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:2px solid var(--signal);margin:16px auto;font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}
+.score-tagline{font-size:18px;color:var(--mist2);max-width:500px;margin:12px auto 0;line-height:1.55}
+.dim-grid{margin:40px 0}
+.dim-grid-label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:20px}
+.dim-row{margin-bottom:20px}
+.dim-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.dim-name{font-size:15px;font-weight:500}
+.dim-score{font-family:var(--f-mono);font-size:13px;color:var(--mist2)}
+.dim-bar-bg{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.dim-bar-fill{height:100%;border-radius:3px;background:var(--signal);transition:width 1s cubic-bezier(.4,0,.2,1)}
+.constraint-box{border:2px solid #FFE200;padding:24px;margin:32px 0;border-radius:4px}
+.constraint-label{font-family:var(--f-mono);font-size:11px;color:#FFE200;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.constraint-box h3{font-size:17px;font-weight:600;margin-bottom:8px}
+.constraint-box p{font-size:15px;color:var(--mist2);line-height:1.55;margin:0}
+.modifier-flags{margin:32px 0}
+.modifier-flag{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid #FFE200;margin-bottom:10px;border-radius:4px}
+.mf-icon{font-size:18px;line-height:1}
+.mf-body strong{font-size:14px;font-weight:600;display:block;margin-bottom:3px;color:#FFE200}
+.mf-body p{font-size:13px;color:var(--mist2);margin:0;line-height:1.4}
+.roadmap{margin:40px 0}
+.roadmap h3{font-size:16px;font-weight:600;margin-bottom:20px}
+.roadmap-item{display:flex;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.roadmap-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.roadmap-num{font-family:var(--f-mono);font-size:11px;color:var(--mist);min-width:24px;padding-top:3px}
+.roadmap-body strong{font-size:15px;font-weight:600;display:block;margin-bottom:4px}
+.roadmap-body p{font-size:14px;color:var(--mist2);margin:0;line-height:1.5}
+.r-impact{font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+.guardrails{margin:40px 0}
+.guardrails h3{font-size:16px;font-weight:600;margin-bottom:16px}
+.guardrail-item{font-family:var(--f-mono);font-size:13px;padding:12px 16px;border-left:3px solid var(--signal);background:rgba(200,241,53,.04);margin-bottom:10px;line-height:1.5;color:var(--mist2)}
+.guardrail-item strong{color:var(--bone)}
+.email-gate{margin:48px 0;padding:32px;border:2px solid var(--border);text-align:center}
+.email-gate h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.email-gate p{font-size:15px;color:var(--mist2);margin-bottom:24px;line-height:1.55}
+.email-form{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.email-form input{flex:1;min-width:240px;padding:14px 16px;background:var(--slate2);border:1px solid var(--border);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px;outline:none}
+.email-form input:focus{border-color:var(--signal)}
+.email-form button{background:var(--signal);color:var(--ink);font-family:var(--f-body);font-size:15px;font-weight:700;padding:14px 24px;border:none;cursor:pointer;border-radius:4px;white-space:nowrap}
+.email-form button:hover{opacity:.9}
+.email-note{font-size:12px;color:var(--mist);margin-top:12px;margin-bottom:0}
+.email-sent{display:none;font-family:var(--f-mono);font-size:13px;color:var(--signal);margin-top:16px;text-align:center;letter-spacing:.04em}
+.score-cta{text-align:center;margin:48px 0 0;padding-top:40px;border-top:1px solid var(--border)}
+.score-cta h3{font-size:22px;font-weight:700;margin-bottom:8px}
+.score-cta p{font-size:15px;color:var(--mist2);margin-bottom:24px;line-height:1.55}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.retake-btn{background:transparent;border:none;color:var(--mist);font-family:var(--f-mono);font-size:12px;cursor:pointer;text-decoration:underline;margin-top:24px;display:block;margin-left:auto;margin-right:auto;letter-spacing:.04em}
+.retake-btn:hover{color:var(--mist2)}
+@keyframes fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fade-up .35s ease both}
+@media(max-width:600px){
+  .email-form{flex-direction:column}
+  .email-form input,.email-form button{width:100%;min-width:0}
+}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -64,103 +148,56 @@
     <a href="/platform">Campaign Strategy Portal</a>
   </div>
   <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
-    <a href="/paid-advertising-automation">Paid Advertising Automation</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Operations</a>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
   </div>
   <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
-    <a href="/training">Training</a><a href="/results">Results</a><a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
+    <a href="/training">Training</a><a href="/results">Results</a>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
   </div>
   <a href="/solutions/campaign-audit" class="mobile-cta">Get a Campaign Automation Audit →</a>
 </nav>
 
 <main id="main-content">
+<div class="tool-wrap">
 
-  <div class="breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">›</span><a href="/tools">Tools</a><span aria-hidden="true">›</span><span aria-current="page">Readiness Score</span>
+  <div class="breadcrumb" style="margin-bottom:32px">
+    <a href="/">Home</a><span aria-hidden="true">›</span>
+    <a href="/resources">Resources</a><span aria-hidden="true">›</span>
+    <span aria-current="page">Readiness Score</span>
   </div>
 
-  <section class="page-hero reveal">
-    <div class="signal-badge">Free · Takes 5 minutes · Score in 24 hours</div>
-    <h1>How ready is your team to automate campaign execution?</h1>
-    <p class="tagline-footer">The Campaign Automation Readiness Score assesses 12 areas of your campaign operation and returns a 0–100 score, your top three bottlenecks, and a recommended sprint — so you know exactly where to start.</p>
-  </section>
-
-  <section class="section bone reveal">
-    <h2>What you'll learn</h2>
-    <div class="grid-2" style="max-width:860px">
-      <div class="card"><strong>Your score (0–100)</strong><p>A single number that reflects how mature your campaign automation capability is across planning, execution, reporting, and tooling.</p></div>
-      <div class="card"><strong>Top 3 bottlenecks</strong><p>The specific areas where your team is losing the most time or leaving the most automation opportunity on the table.</p></div>
-      <div class="card"><strong>Recommended sprint</strong><p>Based on your score and bottleneck profile, we'll recommend the Automation Sprint most likely to generate the fastest return.</p></div>
-      <div class="card"><strong>Claude/Cursor setup guide</strong><p>A personalised quickstart guide for getting your team using AI tools on campaigns — matched to your current toolstack and skill level.</p></div>
+  <!-- INTAKE -->
+  <div id="intake" class="animate-in">
+    <div class="step-header">
+      <div class="signal-badge" style="margin-bottom:16px">Free · 4 minutes · No login</div>
+      <h1 style="font-size:clamp(26px,5vw,42px);font-weight:800;line-height:1.2;margin-bottom:12px">Campaign Automation<br>Readiness Score</h1>
+      <p style="font-size:17px;color:var(--mist2);line-height:1.6;max-width:580px">Answer 14 questions across 5 dimensions. Get a score out of 100, a tier placement, your binding constraint, and a prioritised roadmap — built from your actual answers.</p>
     </div>
-  </section>
 
-  <section class="section reveal">
-    <h2>The 12 question areas</h2>
-    <p>The questionnaire covers every layer of your campaign operation — from strategy through execution and measurement.</p>
-    <div class="terminal" role="region" aria-label="Questionnaire areas">
-      <div class="kw-row"><span>Campaign planning process</span><span style="color:var(--mist2);font-size:12px">Strategy → brief → launch</span></div>
-      <div class="kw-row"><span>Creative production speed</span><span style="color:var(--mist2);font-size:12px">Copy, design, and asset turnaround</span></div>
-      <div class="kw-row"><span>PPC optimisation cadence</span><span style="color:var(--mist2);font-size:12px">How and when paid campaigns are reviewed</span></div>
-      <div class="kw-row"><span>SEO workflow maturity</span><span style="color:var(--mist2);font-size:12px">Briefing, publishing, and measurement</span></div>
-      <div class="kw-row"><span>Reporting and data quality</span><span style="color:var(--mist2);font-size:12px">Accuracy, frequency, and accessibility</span></div>
-      <div class="kw-row"><span>AI tool adoption</span><span style="color:var(--mist2);font-size:12px">Current usage across your team</span></div>
-      <div class="kw-row"><span>Budget approval workflow</span><span style="color:var(--mist2);font-size:12px">Speed and friction in spend decisions</span></div>
-      <div class="kw-row"><span>Creative briefing process</span><span style="color:var(--mist2);font-size:12px">How briefs are created and handed over</span></div>
-      <div class="kw-row"><span>Landing page production</span><span style="color:var(--mist2);font-size:12px">Speed from brief to live page</span></div>
-      <div class="kw-row"><span>Analytics setup</span><span style="color:var(--mist2);font-size:12px">GA4, conversion tracking, and attribution</span></div>
-      <div class="kw-row"><span>Team capacity</span><span style="color:var(--mist2);font-size:12px">Headcount, skills, and available hours</span></div>
-      <div class="kw-row"><span>Current automation stack</span><span style="color:var(--mist2);font-size:12px">Tools in use and their integration depth</span></div>
+    <div class="progress-label" id="progress-label">Step 1 of 5 — Context</div>
+    <div class="progress-bar" id="progress-bar">
+      <div class="step-dot active" data-step="0"></div>
+      <div class="step-dot" data-step="1"></div>
+      <div class="step-dot" data-step="2"></div>
+      <div class="step-dot" data-step="3"></div>
+      <div class="step-dot" data-step="4"></div>
     </div>
-  </section>
 
-  <section class="section bone reveal">
-    <h2>What your score means</h2>
-    <div class="compare-table" role="region" aria-label="Score range breakdown">
-      <table>
-        <thead>
-          <tr><th scope="col">Score range</th><th scope="col">Stage</th><th scope="col">What it means</th><th scope="col">Where to start</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>0–40</td><td>Early stage</td><td>Manual workflows dominate. High friction across planning and execution. Significant time lost to repetitive tasks.</td><td>Campaign Automation Audit + foundational sprint</td></tr>
-          <tr><td>41–70</td><td>Building momentum</td><td>Some tools in place, inconsistent usage. Clear automation opportunities in 2–3 workflow areas.</td><td>Targeted sprint based on top bottleneck</td></tr>
-          <tr><td>71–100</td><td>Ready to scale</td><td>Strong foundations. Automation is in place in most areas. Ready for advanced workflows and multi-channel coordination.</td><td>Campaign Strategy Portal + advanced sprint</td></tr>
-        </tbody>
-      </table>
+    <div id="steps-container"></div>
+
+    <div class="q-nav">
+      <button class="btn-back" id="btn-back" style="visibility:hidden" onclick="prevStep()" type="button">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="nextStep()" disabled type="button">Continue →</button>
     </div>
-  </section>
+  </div>
 
-  <section class="section reveal">
-    <h2>Get your Readiness Score</h2>
-    <p>Enter your details below. We'll send the full questionnaire to your email — takes about 5 minutes to complete.</p>
-    <form style="max-width:480px;display:flex;flex-direction:column;gap:20px;margin-top:32px" action="/get-started" method="POST" novalidate>
-      <div class="form-group">
-        <label for="rs-name">Your name</label>
-        <input type="text" id="rs-name" name="name" placeholder="Alex Johnson" autocomplete="name" required>
-      </div>
-      <div class="form-group">
-        <label for="rs-email">Work email</label>
-        <input type="email" id="rs-email" name="email" placeholder="alex@yourcompany.com" autocomplete="email" required>
-      </div>
-      <p style="font-size:13px;color:var(--mist);margin:0">The full questionnaire will be sent to your email. No spam — just your score and recommendations within 24 hours.</p>
-      <button type="submit" class="btn-primary" style="align-self:flex-start">Get my Readiness Score →</button>
-    </form>
-  </section>
+  <!-- SCORECARD -->
+  <div id="scorecard"></div>
 
-  <section class="section bone reveal">
-    <h2>What happens next</h2>
-    <div class="grid-3">
-      <div class="step"><div class="step-num" aria-hidden="true">01</div><strong>You receive the questionnaire by email</strong><p>A structured 12-question form arrives in your inbox within a few minutes of submitting your details.</p></div>
-      <div class="step"><div class="step-num" aria-hidden="true">02</div><strong>Complete it in ~5 minutes</strong><p>Multiple choice questions about your current workflows. No data export required — just your honest assessment of how things work today.</p></div>
-      <div class="step"><div class="step-num" aria-hidden="true">03</div><strong>Get your score + recommended sprint within 24 hours</strong><p>Your 0–100 score, top three bottlenecks, sprint recommendation, and Claude/Cursor setup guide delivered by email.</p></div>
-    </div>
-  </section>
-
-  <section class="section reveal" style="text-align:center">
-    <h2>Ready to skip straight to action?</h2>
-    <p>If you already know your campaigns have room for improvement, the audit will confirm exactly where — and how much it's costing you.</p>
-    <a href="/solutions/campaign-audit" class="btn-primary" style="margin-top:24px;display:inline-block">Book the Campaign Automation Audit →</a>
-  </section>
-
+</div>
 </main>
 
 <footer role="contentinfo" aria-label="Site footer">
@@ -175,9 +212,376 @@
     <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
   </nav>
   <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
-    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/templates">Templates</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
   </nav>
 </footer>
+
 <script src="/js/main.js"></script>
+<script>
+const STEPS = [
+  {
+    title:"Context",
+    subtitle:"Help us calibrate the score to your situation.",
+    questions:[
+      {id:"team_size",dim:"context",text:"How large is your marketing team?",hint:"Include in-house staff and any embedded agency staff.",type:"radio",options:[
+        {label:"Solo operator",desc:"Just me — no dedicated team",value:0,key:"A"},
+        {label:"2–5 people",desc:"Small team, everyone wears multiple hats",value:1,key:"B"},
+        {label:"6–15 people",desc:"Mid-size team with some specialisation",value:2,key:"C"},
+        {label:"16+ people",desc:"Large team with dedicated channel owners",value:3,key:"D"}
+      ]},
+      {id:"ad_spend",dim:"context",text:"What is your monthly paid media spend?",type:"radio",options:[
+        {label:"Under $5k/mo",desc:"Early-stage or test budgets",value:0,key:"A"},
+        {label:"$5k–$25k/mo",desc:"Growing spend across 1–2 platforms",value:1,key:"B"},
+        {label:"$25k–$100k/mo",desc:"Meaningful multi-platform spend",value:2,key:"C"},
+        {label:"$100k+/mo",desc:"High-volume spend where efficiency gaps are expensive",value:3,key:"D"}
+      ]}
+    ]
+  },
+  {
+    title:"Democratization",
+    subtitle:"Can your team act on data without waiting for an analyst?",
+    questions:[
+      {id:"demo_access",dim:"demo",text:"Who on your team can pull and interpret campaign data without help?",hint:"Democratization is the single biggest predictor of automation success. Without self-serve data access, every automation you build creates a bottleneck.",type:"radio",options:[
+        {label:"No one — we rely on a single analyst or agency",desc:"Data is a black box for most of the team",value:0,key:"A"},
+        {label:"1–2 people can do it",desc:"Fragile dependency on specific individuals",value:4,key:"B"},
+        {label:"Most channel owners can pull their own data",desc:"Some gaps but generally self-sufficient",value:8,key:"C"},
+        {label:"Everyone operates self-sufficiently",desc:"Data literacy is a team baseline",value:12,key:"D"}
+      ]},
+      {id:"demo_tools",dim:"demo",text:"How is campaign data surfaced to decision-makers?",type:"radio",options:[
+        {label:"Manual exports and emails",desc:"Someone sends a spreadsheet when asked",value:0,key:"A"},
+        {label:"Static dashboards that are often stale",desc:"Looker Studio or similar, updated occasionally",value:3,key:"B"},
+        {label:"Live dashboards reviewed regularly",desc:"Real-time or daily-refresh data, actively used",value:6,key:"C"},
+        {label:"Proactive alerts + live dashboards",desc:"Team is notified when something breaks or spikes",value:9,key:"D"}
+      ]},
+      {id:"demo_frequency",dim:"demo",text:"How often does your team review and act on campaign data?",type:"radio",options:[
+        {label:"Monthly or less",desc:"Slow cycle — issues compound before they're caught",value:0,key:"A"},
+        {label:"Weekly",desc:"Reasonable cadence for most campaign types",value:3,key:"B"},
+        {label:"Daily",desc:"Active management with fast feedback loops",value:6,key:"C"},
+        {label:"Real-time with automated alerts",desc:"Immediate response capability",value:9,key:"D"}
+      ]}
+    ]
+  },
+  {
+    title:"Instrumentation",
+    subtitle:"Is your measurement infrastructure reliable?",
+    questions:[
+      {id:"instr_tracking",dim:"instr",text:"How reliable is your conversion tracking?",type:"radio",options:[
+        {label:"Broken or absent",desc:"We don't know if campaigns are converting",value:0,key:"A"},
+        {label:"Partially set up with known gaps",desc:"Some conversions tracked but significant gaps",value:4,key:"B"},
+        {label:"Mostly working — minor issues",desc:"Core conversions tracked, occasional discrepancies",value:7,key:"C"},
+        {label:"Clean and validated",desc:"All key conversions tracked, cross-checked regularly",value:10,key:"D"}
+      ]},
+      {id:"instr_attribution",dim:"instr",text:"How do you attribute conversions across channels?",type:"radio",options:[
+        {label:"Last-click only",desc:"Most common, but blinds you to upper-funnel contribution",value:0,key:"A"},
+        {label:"Platform-native models (e.g. Google data-driven)",desc:"Better than last-click but siloed per platform",value:3,key:"B"},
+        {label:"Unified view in GA4 or BI tool",desc:"Cross-channel view in a central place",value:5,key:"C"},
+        {label:"Full MTA or MMM in place",desc:"Statistically rigorous multi-touch or media mix model",value:10,key:"D"}
+      ]},
+      {id:"instr_audit",dim:"instr",text:"When did you last audit your tracking for accuracy?",type:"radio",options:[
+        {label:"Never",desc:"We've never formally audited it",value:0,key:"A"},
+        {label:"More than 12 months ago",desc:"",value:2,key:"B"},
+        {label:"3–12 months ago",desc:"",value:5,key:"C"},
+        {label:"Within the last 3 months",desc:"",value:10,key:"D"}
+      ]}
+    ]
+  },
+  {
+    title:"Standardization",
+    subtitle:"Does your team follow consistent campaign structures and naming?",
+    questions:[
+      {id:"std_naming",dim:"std",text:"Do you have a campaign naming convention and do people follow it?",type:"radio",options:[
+        {label:"No naming convention",desc:"Campaign names are ad hoc and inconsistent",value:0,key:"A"},
+        {label:"Convention exists but isn't followed",desc:"Documented but ignored in practice",value:4,key:"B"},
+        {label:"Mostly followed with some drift",desc:"Used consistently by most people",value:8,key:"C"},
+        {label:"Enforced and audited regularly",desc:"Naming is a non-negotiable — checked in QA",value:10,key:"D"}
+      ]},
+      {id:"std_process",dim:"std",text:"How are campaigns launched?",type:"radio",options:[
+        {label:"Different every time — no standard process",desc:"Each campaign is built from scratch",value:0,key:"A"},
+        {label:"Informal checklist or tribal knowledge",desc:"Some consistency but depends on who's launching",value:3,key:"B"},
+        {label:"Documented SOP that team follows",desc:"Written process, consistently used",value:6,key:"C"},
+        {label:"Templated + QA reviewed before launch",desc:"Structured templates and a pre-launch QA step",value:10,key:"D"}
+      ]}
+    ]
+  },
+  {
+    title:"Governance & Team",
+    subtitle:"Who owns automation and what tools does your team use?",
+    questions:[
+      {id:"gov_owner",dim:"gov",text:"Who owns campaign automation decisions at your organisation?",type:"radio",options:[
+        {label:"No one — it's unowned",desc:"Automation is ad hoc with no clear accountability",value:0,key:"A"},
+        {label:"It floats between people",desc:"Whoever has time, whenever",value:3,key:"B"},
+        {label:"One person owns it informally",desc:"Accountability exists but isn't formalised",value:6,key:"C"},
+        {label:"Clear owner with defined authority",desc:"Dedicated role or formal responsibility",value:10,key:"D"}
+      ]},
+      {id:"gov_approval",dim:"gov",text:"How are automation changes approved before going live?",type:"radio",options:[
+        {label:"No approval process",desc:"Changes go live without review",value:0,key:"A"},
+        {label:"Informal sign-off from a manager",desc:"Someone reviews but no structured process",value:3,key:"B"},
+        {label:"Peer review + test environment",desc:"Structured review before production",value:7,key:"C"},
+        {label:"Documented change control with rollback plan",desc:"Formal governance with audit trail",value:10,key:"D"}
+      ]},
+      {id:"tooling",dim:"tooling",text:"Which tools does your team use today?",hint:"Select the option that best matches your current stack.",type:"radio",options:[
+        {label:"Platform native only",desc:"Google Ads + Meta Ads manager — no additional tools",value:0,key:"A"},
+        {label:"Native + basic automation",desc:"Plus Google Ads Scripts or simple Zapier/Make flows",value:2,key:"B"},
+        {label:"Integrated stack",desc:"BI tool, CRM sync, automated reporting, and some custom automation",value:5,key:"C"},
+        {label:"Advanced / custom stack",desc:"Custom API integrations, data warehouse, or AI-assisted tooling",value:8,key:"D"}
+      ]}
+    ]
+  }
+];
+
+let currentStep = 0;
+const answers = {};
+
+function renderStep(idx) {
+  const step = STEPS[idx];
+  const container = document.getElementById("steps-container");
+  container.innerHTML = "";
+
+  const hdr = document.createElement("div");
+  hdr.className = "step-header animate-in";
+  hdr.innerHTML = `<h2>${step.title}</h2><p>${step.subtitle}</p>`;
+  container.appendChild(hdr);
+
+  step.questions.forEach(q => {
+    const block = document.createElement("div");
+    block.className = "q-block animate-in";
+    block.innerHTML = `<h3>${q.text}</h3>${q.hint ? `<p class="q-hint">${q.hint}</p>` : ""}<div class="options" role="radiogroup" aria-label="${q.text}"></div>`;
+    container.appendChild(block);
+
+    const opts = block.querySelector(".options");
+    q.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "opt-btn";
+      btn.setAttribute("role","radio");
+      btn.setAttribute("aria-checked","false");
+      btn.innerHTML = `<span class="opt-key">${opt.key}</span><div><div class="opt-label">${opt.label}</div>${opt.desc?`<div class="opt-desc">${opt.desc}</div>`:""}</div>`;
+      if (answers[q.id] !== undefined && answers[q.id].value === opt.value) {
+        btn.classList.add("selected"); btn.setAttribute("aria-checked","true");
+      }
+      btn.addEventListener("click", () => {
+        opts.querySelectorAll(".opt-btn").forEach(b => { b.classList.remove("selected"); b.setAttribute("aria-checked","false"); });
+        btn.classList.add("selected"); btn.setAttribute("aria-checked","true");
+        answers[q.id] = {value:opt.value, dim:q.dim, label:opt.label};
+        updateNav();
+      });
+      opts.appendChild(btn);
+    });
+  });
+  updateNav();
+}
+
+function updateNav() {
+  const step = STEPS[currentStep];
+  const allAnswered = step.questions.every(q => answers[q.id] !== undefined);
+  document.getElementById("btn-next").disabled = !allAnswered;
+  document.getElementById("btn-back").style.visibility = currentStep === 0 ? "hidden" : "visible";
+  document.querySelectorAll(".step-dot").forEach((d, i) => {
+    d.classList.remove("active","done");
+    if (i < currentStep) d.classList.add("done");
+    else if (i === currentStep) d.classList.add("active");
+  });
+  const labels = ["Context","Democratization","Instrumentation","Standardization","Governance & Team"];
+  document.getElementById("progress-label").textContent = `Step ${currentStep+1} of 5 — ${labels[currentStep]}`;
+  document.getElementById("btn-next").textContent = currentStep === STEPS.length-1 ? "Get my score →" : "Continue →";
+}
+
+function nextStep() {
+  if (currentStep < STEPS.length-1) { currentStep++; renderStep(currentStep); window.scrollTo({top:0,behavior:"smooth"}); }
+  else showScorecard();
+}
+function prevStep() {
+  if (currentStep > 0) { currentStep--; renderStep(currentStep); window.scrollTo({top:0,behavior:"smooth"}); }
+}
+
+/* ── SCORING ── */
+function computeScore() {
+  let demo=0, instr=0, std=0, gov=0, tooling=0;
+  Object.values(answers).forEach(a => {
+    if(a.dim==="demo") demo+=a.value;
+    if(a.dim==="instr") instr+=a.value;
+    if(a.dim==="std") std+=a.value;
+    if(a.dim==="gov") gov+=a.value;
+    if(a.dim==="tooling") tooling+=a.value;
+  });
+  // Normalise: instr raw max=30→20, tooling raw max=8→10
+  const instrN = Math.round((instr/30)*20);
+  const toolN = Math.round((tooling/8)*10);
+  const raw = demo + instrN + std + gov + toolN;
+  const total = Math.min(100, raw);
+  const gated = demo < 18 && total > 49;
+  return {
+    finalScore: gated ? Math.min(total,49) : total,
+    gated,
+    dims:{
+      demo:{raw:demo,max:30,label:"Democratization"},
+      instr:{raw:instrN,max:20,label:"Instrumentation"},
+      std:{raw:std,max:20,label:"Standardization"},
+      gov:{raw:gov,max:20,label:"Governance"},
+      tooling:{raw:toolN,max:10,label:"Team & Tooling"}
+    }
+  };
+}
+
+function getTier(s) {
+  if(s>=85) return {name:"Agentic",range:"85–100",desc:"Your foundation can support autonomous campaign workflows. The risk now is moving too fast without guardrails."};
+  if(s>=70) return {name:"Operational",range:"70–84",desc:"You have the infrastructure to automate meaningfully. Focus on scaling proven systems and tightening governance."};
+  if(s>=50) return {name:"Emerging",range:"50–69",desc:"Automation is possible but will be inconsistent without fixing foundational gaps first."};
+  return {name:"Siloed",range:"0–49",desc:"Automation attempts will underperform until the core infrastructure is in place. Start with data access and measurement."};
+}
+
+function getModifiers() {
+  const flags=[];
+  const govRaw=(answers.gov_owner?.value||0)+(answers.gov_approval?.value||0);
+  const spend=answers.ad_spend?.value||0;
+  if(govRaw<6 && spend>=2) flags.push({icon:"⚠️",title:"High-Risk Configuration",body:"You're running significant spend with limited governance. One runaway automation rule can burn budget fast. Establish an approval process before expanding automation."});
+  if((answers.instr_tracking?.value||0)<=4) flags.push({icon:"📉",title:"Data Quality Risk",body:"Your conversion tracking has significant gaps. Any automation trained on this data will optimise toward the wrong signals. Fix tracking before automating bidding or budgets."});
+  if((answers.gov_approval?.value||0)===0) flags.push({icon:"🔓",title:"No Change Control",body:"Automation changes are going live without review. You have no rollback mechanism. Add a peer-review step before any automation touches live spend."});
+  if((answers.team_size?.value||0)===0) flags.push({icon:"👤",title:"Solo Operator",body:"Automation ROI is highest here — you have no team to absorb manual work. Prioritise alerts and decision-support tools over fully autonomous systems."});
+  const toolV=answers.tooling?.value||0;
+  const demoV=(answers.demo_access?.value||0)+(answers.demo_tools?.value||0)+(answers.demo_frequency?.value||0);
+  if(toolV>=5 && demoV<12) flags.push({icon:"🔧",title:"Tool Sophistication Mismatch",body:"Your tooling is ahead of your team's ability to use it. Advanced tools with low data literacy create shelfware. Invest in training before adding more tools."});
+  return flags;
+}
+
+function getConstraint(dims) {
+  const pcts=Object.entries(dims).map(([k,d])=>({key:k,label:d.label,pct:d.raw/d.max}));
+  pcts.sort((a,b)=>a.pct-b.pct);
+  const w=pcts[0];
+  const map={
+    demo:{label:"Binding Constraint — Democratization",title:"Data access is your ceiling",body:"Until your full team can interpret and act on campaign data without bottlenecks, every automation you build will underperform. The algorithm optimises; humans steer. If humans can't read the instruments, you can't steer."},
+    instr:{label:"Binding Constraint — Instrumentation",title:"Measurement gaps are blocking automation quality",body:"Automation is only as good as the signals it's trained on. If your conversion tracking has gaps or hasn't been audited recently, Smart Bidding and any custom rules are optimising against noise."},
+    std:{label:"Binding Constraint — Standardization",title:"Inconsistent structure limits what automation can touch",body:"Without consistent naming and launch processes, automation scripts can't reliably identify what to act on. Standardisation isn't bureaucracy — it's what makes automation possible at scale."},
+    gov:{label:"Binding Constraint — Governance",title:"No clear ownership means automation drifts",body:"When no one owns automation, rules pile up, overlap, and conflict. The first governance action is naming a single accountable person — not building a committee."},
+    tooling:{label:"Binding Constraint — Team & Tooling",title:"Tooling gaps limit automation ceiling",body:"Your team's current tools cap what's achievable. The next investment is integrating your data sources so automation has a complete signal to act on."}
+  };
+  return map[w.key];
+}
+
+function getRoadmap(dims, score) {
+  const items=[];
+  if(dims.demo.raw<20) items.push({title:"Build self-serve data access for every channel owner",body:`Your democratization score is ${dims.demo.raw}/30. Set up live dashboards in Looker Studio or GA4 that channel owners can use without analyst support. Connect Google Ads, Meta, and your CRM in a single view.`,impact:"Highest impact · 2–4 weeks"});
+  if(dims.instr.raw<14) items.push({title:"Audit and repair conversion tracking",body:"Run a full tracking audit across GA4, Google Ads, and Meta pixel. Verify events fire correctly with GA4 DebugView and Meta Pixel Helper. Document every conversion action and its verification status.",impact:"High impact · 1–2 weeks"});
+  if(dims.std.raw<12) items.push({title:"Document and enforce a campaign naming convention",body:"Define a naming structure for campaigns, ad sets, and ads. Include: objective, channel, audience, date, and variant. Build it into your launch template so it's the path of least resistance.",impact:"High impact · 1 week"});
+  if(dims.gov.raw<12) items.push({title:"Assign a named automation owner",body:"Designate one person responsible for all automation rules — who builds them, who approves changes, and who reviews fires. Create a simple log of every active rule and when it last fired.",impact:"Medium impact · 2 days"});
+  if((answers.tooling?.value||0)<5 && score>=50) items.push({title:"Implement budget pacing alerts and zero-conversion pauses",body:"Your first automation rules should be budget pacing alerts (notify when daily spend is >20% over pace by noon) and ad group pauses when spend hits 2× CPA with zero conversions.",impact:"High impact · 1–2 weeks"});
+  if(score>=70) items.push({title:"Build a cross-platform performance dashboard with reallocation rules",body:"With your foundation solid, the highest-value next layer is a unified dashboard that compares CPA performance across Google, Meta, and LinkedIn weekly — and a documented rule for when and how to shift budget.",impact:"Strategic · 4–6 weeks"});
+  if(items.length===0) items.push({title:"Tighten guardrails and document automation logic",body:"At your score level, the risk is over-automation without documentation. Audit every active rule: what triggers it, what it does, what its limit is, and when it last fired.",impact:"Maintenance · Ongoing"});
+  return items.slice(0,5);
+}
+
+function getGuardrails(score, dims) {
+  const g=[];
+  if((answers.ad_spend?.value||0)>=2) g.push(`<strong>Budget cap:</strong> No automation rule may increase daily budget by more than 20% in any 24-hour window without human approval.`);
+  if(dims.instr.raw<14) g.push(`<strong>Data validation gate:</strong> No automated bidding strategy to run on fewer than 30 verified conversions in a 30-day window.`);
+  g.push(`<strong>Zero-conversion pause:</strong> Pause any ad group that spends 2× target CPA with zero conversions. Maximum 3 pauses per campaign per week before escalating to human review.`);
+  if(dims.demo.raw<20) g.push(`<strong>Change log:</strong> Every automation action logged with timestamp, trigger condition, spend at time of trigger, and who approved the rule.`);
+  g.push(`<strong>Frequency cap (Meta):</strong> Pause any ad set where 7-day frequency exceeds 4.0. Alert channel owner before pausing.`);
+  if(score<70) g.push(`<strong>Scope limit:</strong> No fully autonomous actions on campaigns spending more than $500/day. Alert-and-recommend only above that threshold.`);
+  return g.slice(0,4);
+}
+
+function showScorecard() {
+  const {finalScore,gated,dims} = computeScore();
+  const tier = getTier(finalScore);
+  const mods = getModifiers();
+  const con = getConstraint(dims);
+  const road = getRoadmap(dims,finalScore);
+  const guards = getGuardrails(finalScore,dims);
+
+  document.getElementById("intake").style.display="none";
+  const sc = document.getElementById("scorecard");
+  sc.style.display="block";
+
+  const dimRows = Object.values(dims).map(d=>`
+    <div class="dim-row">
+      <div class="dim-top"><span class="dim-name">${d.label}</span><span class="dim-score">${d.raw} / ${d.max}</span></div>
+      <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:0%" data-w="${Math.round(d.raw/d.max*100)}%"></div></div>
+    </div>`).join("");
+
+  const modHtml = mods.length ? `<div class="modifier-flags"><h3 style="font-size:16px;font-weight:600;margin-bottom:16px">Flags to address</h3>${mods.map(m=>`<div class="modifier-flag"><div class="mf-icon" aria-hidden="true">${m.icon}</div><div class="mf-body"><strong>${m.title}</strong><p>${m.body}</p></div></div>`).join("")}</div>` : "";
+
+  sc.innerHTML = `
+    <div class="score-reveal animate-in">
+      <div class="score-number">${finalScore}<span class="score-denom">/100</span></div>
+      ${gated?`<p style="font-size:13px;color:#FFE200;font-family:var(--f-mono);margin-top:8px;letter-spacing:.04em">↑ Capped at 49 — democratization gate active</p>`:""}
+      <div class="tier-badge">${tier.name} · ${tier.range}</div>
+      <p class="score-tagline">${tier.desc}</p>
+    </div>
+
+    <div class="dim-grid animate-in">
+      <div class="dim-grid-label">Dimension breakdown</div>
+      ${dimRows}
+    </div>
+
+    <div class="constraint-box animate-in">
+      <div class="constraint-label">${con.label}</div>
+      <h3>${con.title}</h3>
+      <p>${con.body}</p>
+    </div>
+
+    ${modHtml}
+
+    <div class="roadmap animate-in">
+      <h3>Your prioritised roadmap</h3>
+      ${road.map((r,i)=>`<div class="roadmap-item"><div class="roadmap-num">0${i+1}</div><div class="roadmap-body"><strong>${r.title}</strong><p>${r.body}</p><div class="r-impact">${r.impact}</div></div></div>`).join("")}
+    </div>
+
+    <div class="guardrails animate-in">
+      <h3>Starter guardrail set</h3>
+      <p style="font-size:14px;color:var(--mist2);margin-bottom:16px;line-height:1.5">These rules are calibrated to your score. Copy them into your automation documentation as a starting constraint layer.</p>
+      ${guards.map(g=>`<div class="guardrail-item">${g}</div>`).join("")}
+    </div>
+
+    <div class="email-gate animate-in">
+      <h3>Get this scorecard by email</h3>
+      <p>We'll send you a formatted PDF of your results — plus a one-page implementation checklist matched to your tier.</p>
+      <div class="email-form">
+        <input type="email" id="score-email" placeholder="you@company.com" aria-label="Email address">
+        <button type="button" onclick="submitEmail()">Send my results →</button>
+      </div>
+      <p class="email-note">No spam. One email. Unsubscribe any time.</p>
+      <p class="email-sent" id="email-sent">✓ Sent — check your inbox</p>
+    </div>
+
+    <div class="score-cta animate-in">
+      <h3>Ready to close the gap?</h3>
+      <p>A Campaign Automation Audit maps your full stack against this framework, identifies the highest-ROI automation opportunities, and delivers a 90-day implementation plan.</p>
+      <div class="cta-row">
+        <a href="/solutions/campaign-audit" class="btn-primary">Get a Campaign Automation Audit →</a>
+        <a href="/solutions/automation-sprints" class="btn-ghost">See Automation Sprints →</a>
+      </div>
+    </div>
+
+    <button class="retake-btn" type="button" onclick="retake()">Retake the assessment</button>
+  `;
+
+  setTimeout(()=>{
+    sc.querySelectorAll(".dim-bar-fill").forEach(b=>{ b.style.width=b.dataset.w; });
+  },120);
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function submitEmail() {
+  const email = document.getElementById("score-email").value.trim();
+  if(!email || !email.includes("@")) { document.getElementById("score-email").focus(); return; }
+  console.log("Readiness score email capture:", email);
+  document.querySelector(".email-form").style.display="none";
+  document.getElementById("email-sent").style.display="block";
+}
+
+function retake() {
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  currentStep=0;
+  document.getElementById("scorecard").style.display="none";
+  document.getElementById("scorecard").innerHTML="";
+  document.getElementById("intake").style.display="block";
+  renderStep(0);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderStep(0);
+</script>
 </body>
 </html>
