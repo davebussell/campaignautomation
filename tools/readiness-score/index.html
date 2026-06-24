@@ -328,6 +328,10 @@
           </button>
         </div>
         <p class="rs-tldr-note">TLDR uses typical defaults. Score in under 5 seconds — retake anytime.</p>
+        <div id="rs-reset-row" style="display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+          <p style="font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.04em;margin:0 0 10px">You have a saved score from a previous session.</p>
+          <button type="button" onclick="clearReadinessScore()" style="background:none;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:8px 16px;cursor:pointer;border-radius:3px;transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='#888';this.style.color='var(--bone)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--mist2)'">↺ Reset saved score &amp; start fresh</button>
+        </div>
       </div>
     </section>
 
@@ -1354,6 +1358,17 @@ function resetWeightSim() {
 })();
 initStepNav();
 initScrollObserver();
+
+// Show reset row if a prior score is saved
+(function(){
+  try {
+    const s = JSON.parse(localStorage.getItem('ca_readiness') || 'null');
+    if (s && s.score !== undefined) {
+      const row = document.getElementById('rs-reset-row');
+      if (row) row.style.display = 'block';
+    }
+  } catch(e){}
+})();
 </script>
 </body>
 </html>
