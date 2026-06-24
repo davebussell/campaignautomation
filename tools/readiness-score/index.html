@@ -157,6 +157,52 @@
   .intake-submit{width:100%}
   .wsim-footer{flex-direction:column;gap:16px}
 }
+
+/* ── STEP NAV ── */
+.step-nav{display:flex;align-items:center;margin-bottom:36px;overflow-x:auto;scrollbar-width:none;gap:0;padding-bottom:4px}
+.step-nav::-webkit-scrollbar{display:none}
+.sni{display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:none;cursor:default;padding:8px 10px;min-width:72px;flex-shrink:0;transition:opacity .2s}
+.sni-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:11px;font-weight:600;border:1.5px solid var(--border);color:var(--mist);transition:all .2s;flex-shrink:0}
+.sni-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist);text-align:center;transition:color .2s;line-height:1.3;white-space:nowrap}
+.sni.active .sni-num{border-color:var(--signal);background:var(--signal);color:var(--ink);font-weight:700}
+.sni.active .sni-label{color:var(--bone)}
+.sni.done{cursor:pointer}
+.sni.done .sni-num{border-color:var(--signal);color:var(--signal);background:rgba(200,241,53,.12)}
+.sni.done .sni-label{color:var(--mist2)}
+.sni.done:hover .sni-num{background:rgba(200,241,53,.22)}
+.sni.done:hover .sni-label{color:var(--bone)}
+.sni-line{flex:1;height:1.5px;background:var(--border);min-width:12px;max-width:36px;margin-bottom:22px;transition:background .3s;flex-shrink:0}
+.sni-line.done{background:rgba(200,241,53,.5)}
+@media(max-width:560px){.sni{padding:6px 6px;min-width:54px}.sni-label{font-size:9px}}
+
+/* ── DIM ANSWER BREAKDOWN ── */
+.dim-weight-tag{font-family:var(--f-mono);font-size:10px;color:var(--mist);letter-spacing:.05em;margin-left:8px;vertical-align:middle}
+.dim-answers{margin-top:12px;border-top:1px solid rgba(255,255,255,.06);padding-top:10px;display:flex;flex-direction:column;gap:0}
+.dar{display:flex;align-items:baseline;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);flex-wrap:wrap}
+.dar:last-child{border-bottom:none}
+.dar-q{font-size:12px;color:var(--mist);flex:1.2;min-width:120px;line-height:1.4}
+.dar-a{font-size:12px;color:var(--mist2);flex:1.5;min-width:100px;line-height:1.4}
+.dar-pts{font-family:var(--f-mono);font-size:11px;color:var(--signal);min-width:44px;text-align:right;white-space:nowrap;flex-shrink:0}
+
+/* ── PITCH YOUR BOSS ── */
+.pitch-boss{margin:40px 0;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.pitch-boss-header{padding:20px 24px;background:var(--slate);border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.pitch-eyebrow{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
+.pitch-boss-header h3{font-size:18px;font-weight:700;margin-bottom:4px;line-height:1.3}
+.pitch-boss-sub{font-size:12px;color:var(--mist);font-family:var(--f-mono);letter-spacing:.03em}
+.pitch-copy-btn{background:none;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:8px 14px;cursor:pointer;border-radius:3px;white-space:nowrap;transition:all .2s;align-self:flex-start;flex-shrink:0}
+.pitch-copy-btn:hover{border-color:var(--signal);color:var(--signal)}
+.pitch-body{padding:24px;display:flex;flex-direction:column;gap:0}
+.pitch-sec{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.pitch-sec:last-child{border-bottom:none;padding-bottom:0}
+.pitch-sec-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px}
+.pitch-sec p{font-size:14px;color:var(--mist2);line-height:1.65;margin:0}
+.pitch-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px}
+.pitch-list li{font-size:14px;color:var(--mist2);line-height:1.55;padding-left:18px;position:relative}
+.pitch-list li::before{content:"—";position:absolute;left:0;color:var(--mist);font-size:12px}
+.pitch-sec.pitch-ask{background:rgba(200,241,53,.03);padding:20px;margin:0 -24px -24px;border-top:1px solid rgba(200,241,53,.2);border-bottom:none}
+.pitch-sec.pitch-ask .pitch-sec-label{color:var(--signal)}
+.pitch-sec.pitch-ask p{color:var(--bone);font-size:15px;font-weight:500;line-height:1.6}
 </style>
 </head>
 <body>
@@ -234,14 +280,32 @@
       <p style="font-size:17px;color:var(--mist2);line-height:1.6;max-width:580px">Answer 14 questions across 5 dimensions. Get a score out of 100, a tier placement, your binding constraint, and a prioritised roadmap — built from your actual answers.</p>
     </div>
 
-    <div class="progress-label" id="progress-label">Step 1 of 5 — Context</div>
-    <div class="progress-bar" id="progress-bar">
-      <div class="step-dot active" data-step="0"></div>
-      <div class="step-dot" data-step="1"></div>
-      <div class="step-dot" data-step="2"></div>
-      <div class="step-dot" data-step="3"></div>
-      <div class="step-dot" data-step="4"></div>
-    </div>
+    <nav class="step-nav" id="step-nav" aria-label="Assessment steps">
+      <button class="sni active" data-step="0" type="button" aria-label="Step 1: Context">
+        <span class="sni-num" aria-hidden="true">01</span>
+        <span class="sni-label">Context</span>
+      </button>
+      <div class="sni-line" id="sni-line-0" aria-hidden="true"></div>
+      <button class="sni" data-step="1" type="button" disabled aria-label="Step 2: Democratization">
+        <span class="sni-num" aria-hidden="true">02</span>
+        <span class="sni-label">Data Access</span>
+      </button>
+      <div class="sni-line" id="sni-line-1" aria-hidden="true"></div>
+      <button class="sni" data-step="2" type="button" disabled aria-label="Step 3: Instrumentation">
+        <span class="sni-num" aria-hidden="true">03</span>
+        <span class="sni-label">Measurement</span>
+      </button>
+      <div class="sni-line" id="sni-line-2" aria-hidden="true"></div>
+      <button class="sni" data-step="3" type="button" disabled aria-label="Step 4: Standardization">
+        <span class="sni-num" aria-hidden="true">04</span>
+        <span class="sni-label">Standards</span>
+      </button>
+      <div class="sni-line" id="sni-line-3" aria-hidden="true"></div>
+      <button class="sni" data-step="4" type="button" disabled aria-label="Step 5: Governance & Team">
+        <span class="sni-num" aria-hidden="true">05</span>
+        <span class="sni-label">Governance</span>
+      </button>
+    </nav>
 
     <div id="steps-container"></div>
 
@@ -428,19 +492,51 @@ function renderStep(idx) {
   updateNav();
 }
 
+function isStepComplete(idx) {
+  return STEPS[idx].questions.every(q => answers[q.id] !== undefined);
+}
+
 function updateNav() {
   const step = STEPS[currentStep];
   const allAnswered = step.questions.every(q => answers[q.id] !== undefined);
   document.getElementById("btn-next").disabled = !allAnswered;
   document.getElementById("btn-back").style.visibility = currentStep === 0 ? "hidden" : "visible";
-  document.querySelectorAll(".step-dot").forEach((d, i) => {
-    d.classList.remove("active","done");
-    if (i < currentStep) d.classList.add("done");
-    else if (i === currentStep) d.classList.add("active");
-  });
-  const labels = ["Context","Democratization","Instrumentation","Standardization","Governance & Team"];
-  document.getElementById("progress-label").textContent = `Step ${currentStep+1} of 5 — ${labels[currentStep]}`;
   document.getElementById("btn-next").textContent = currentStep === STEPS.length-1 ? "Get my score →" : "Continue →";
+
+  document.querySelectorAll(".sni").forEach((btn, i) => {
+    const complete = isStepComplete(i);
+    btn.classList.remove("active","done");
+    btn.disabled = true;
+    const numEl = btn.querySelector(".sni-num");
+
+    if (i === currentStep) {
+      btn.classList.add("active");
+      btn.disabled = false;
+      if (numEl) numEl.textContent = String(i+1).padStart(2,"0");
+    } else if (complete) {
+      btn.classList.add("done");
+      btn.disabled = false;
+      if (numEl) numEl.textContent = "✓";
+    } else {
+      if (numEl) numEl.textContent = String(i+1).padStart(2,"0");
+    }
+
+    // Connector line between step i and i+1 goes done when step i is complete
+    const line = document.getElementById(`sni-line-${i}`);
+    if (line) line.classList.toggle("done", complete);
+  });
+}
+
+function initStepNav() {
+  document.querySelectorAll(".sni").forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      if (!btn.disabled && i !== currentStep) {
+        currentStep = i;
+        renderStep(currentStep);
+        window.scrollTo({top:0, behavior:"smooth"});
+      }
+    });
+  });
 }
 
 function nextStep() {
@@ -538,6 +634,172 @@ function getGuardrails(score, dims) {
   return g.slice(0,4);
 }
 
+const DIM_WEIGHTS = {demo:'30%', instr:'20%', std:'20%', gov:'20%', tooling:'10%'};
+
+function getAnswersForDim(dimKey) {
+  const rows = [];
+  STEPS.forEach(step => {
+    step.questions.forEach(q => {
+      if (q.dim === dimKey && answers[q.id] !== undefined) {
+        rows.push({
+          text: q.text.length > 55 ? q.text.slice(0,52)+'…' : q.text,
+          answer: answers[q.id].label,
+          value: answers[q.id].value
+        });
+      }
+    });
+  });
+  return rows;
+}
+
+function getPitchContent(finalScore, tier, dims) {
+  let industry='', stage='', company='';
+  try { const s=JSON.parse(localStorage.getItem('ca_readiness')||'null'); if(s){industry=s.industry||'';stage=s.stage||'';company=s.company||'';} } catch(e){}
+  const indL={ecom:'e-commerce/DTC',b2b_saas:'B2B SaaS',b2b_svc:'B2B services',agency:'agency',local:'local business',other:'business'};
+  const stgL={pre:'pre-revenue',early:'early-stage',growth:'growth-stage ($1M–$10M)',scale:'scale-stage ($10M+)'};
+  const ind=indL[industry]||'business'; const stg=stgL[stage]||'';
+  const spendV=answers.ad_spend?.value||0; const teamV=answers.team_size?.value||0;
+  const spendL={0:'under $5k/mo',1:'$5k–$25k/mo',2:'$25k–$100k/mo',3:'$100k+/mo'}[spendV];
+  const teamL={0:'solo operator',1:'small team',2:'mid-size team',3:'larger team'}[teamV];
+  const who=company||'We'; const whos=company?`${company} needs`:'We need';
+
+  // Find weakest dims for pain framing
+  const weakest=Object.entries(dims).sort((a,b)=>(a[1].raw/a[1].max)-(b[1].raw/b[1].max)).map(([k,d])=>d.label);
+
+  const byTier={
+    Siloed:{
+      situation:`Our Readiness Score of ${finalScore}/100 places us in the Siloed tier — meaning our campaign data, tools, and processes aren't connected in ways that allow automation to function reliably. For a ${teamL} ${ind} organisation running ${spendL} in paid media, this fragmentation is creating measurable drag on everything we do.`,
+      costs:[
+        `Our weakest area is ${weakest[0]} — without it, every automation we build creates a human bottleneck instead of removing one`,
+        `Manual reporting cycles mean decisions are made on yesterday's numbers while budget runs today`,
+        `Inconsistent campaign structure means scripts and rules can't reliably identify what to act on`,
+        `At ${spendL} in paid media, undiagnosed waste compounds silently every week`,
+      ],
+      solution:`AI campaign automation for ${whos} a ${teamL} ${ind} team starts with structure — not with flashy tools. The first layer is connecting our data so the team can act without waiting for an analyst, then automating the decisions that are currently happening manually, inconsistently, or not at all.`,
+      value:[
+        'Break the analyst bottleneck — automated digests surface what matters without someone assembling a spreadsheet',
+        'Catch campaign issues in hours, not at end-of-week — automated alerts on spend pacing, conversion drops, and frequency spikes',
+        'Standardized launch templates mean every campaign follows the same proven structure, every time',
+        'A documented automation foundation that scales with headcount instead of fragmenting further',
+      ],
+      ask:`A Campaign Automation Audit ($750–$2,500) maps our current state, identifies the highest-ROI automation opportunity, and delivers a 30-day action plan we can execute immediately — without account access, and within 5 business days.`,
+    },
+    Emerging:{
+      situation:`Our Readiness Score of ${finalScore}/100 places us in the Emerging tier — we have the foundation for meaningful automation, but ${whos} systematize what's working before the manual overhead compounds. For a ${teamL} ${ind} organisation, the gap between where we are and where automation becomes a real competitive advantage is smaller than it looks.`,
+      costs:[
+        `High-value workflows — brief writing, search term analysis, performance narrative — are still done manually when they don't have to be`,
+        `Campaign launches still depend on tribal knowledge rather than documented, repeatable templates`,
+        `We can't scale output without scaling headcount if every workflow is manual`,
+        `Competitors with automated content and intelligence pipelines are publishing faster and optimising more frequently`,
+      ],
+      solution:`AI campaign automation for ${whos} a ${teamL} ${ind} team means systematizing the workflows we already run manually. The first layer doesn't require new integrations — just structured AI workflows that handle brief generation, performance analysis, and search term intelligence from the data exports we already produce.`,
+      value:[
+        'Campaign brief production drops from hours to minutes — consistent, structured, and reviewable by anyone on the team',
+        'Weekly performance analysis that used to take a half-day runs from a CSV export automatically',
+        'Every new team member gets the same playbook — no more onboarding bottleneck or knowledge transfer risk',
+        'Leapfrog Sprints available immediately: no new integrations, no organizational change required',
+      ],
+      ask:`A Leapfrog Sprint ($4k–$6k, 2 weeks) builds one of these workflows with our team — fully documented, tested, and handed over. We own the output. No retainer, no lock-in.`,
+    },
+    Operational:{
+      situation:`Our Readiness Score of ${finalScore}/100 places us in the Operational tier — we have solid infrastructure and ${whos} compound it. For a ${teamL} ${ind} organisation running ${spendL} in paid media, the next layer of automation is cross-channel integration: connecting our data stack so automated workflows can act on complete signals rather than platform snapshots.`,
+      costs:[
+        `Budget reallocation decisions between channels still happen in spreadsheets — we're optimising platforms individually when the real opportunity is cross-channel`,
+        `Performance reporting still requires human assembly even though the data exists in live systems`,
+        `At ${spendL}, every week of suboptimal cross-channel allocation is measurable waste`,
+        `Integration sprints — PPC Intelligence, SEO/PPC Opportunity, Lead Reactivation — are within reach but not yet deployed`,
+      ],
+      solution:`AI campaign automation for ${whos} a ${teamL} ${ind} team means connecting GA4, Search Console, CRM, and ad platforms so automated workflows can act on complete signals, push outputs directly to accounts, and surface cross-channel opportunities on a defined cadence — without analyst involvement.`,
+      value:[
+        'Cross-channel budget reallocation recommendations surfaced weekly, automatically — not assembled by an analyst',
+        'Search term intelligence that pushes negative keywords directly to accounts on a schedule',
+        'Campaign launch kits that QA every element before it goes live — consistent, fast, error-free',
+        'A measurement baseline that makes automation ROI provable and reportable to leadership',
+      ],
+      ask:`A Campaign Automation Audit ($750–$2,500) identifies which integration sprint delivers the highest ROI given our current stack and workflow gaps. The Audit takes 5 business days and the first integration sprint follows within 2–4 weeks.`,
+    },
+    Agentic:{
+      situation:`Our Readiness Score of ${finalScore}/100 places us in the Agentic tier — we're ahead of most teams on automation infrastructure. The question isn't whether ${whos} automate — it's whether we're deploying intelligence at the right layer, at the right speed, with the right guardrails. For a ${teamL} ${ind} organisation, first-mover advantage in agentic AI automation is compressing fast.`,
+      costs:[
+        `Manual campaign strategy cycles still exist where AI-generated intelligence could run ahead of us`,
+        `Performance analysis is still backward-looking when it could be prescriptive and forward-scheduled`,
+        `We use AI tools individually but don't orchestrate them — each channel owner has their own setup with no shared intelligence layer`,
+        `Competitors are building agentic infrastructure now. The window for differentiation is open but not permanent`,
+      ],
+      solution:`For ${whos} a ${teamL} ${ind} team, the opportunity is an ongoing intelligence layer — agentic systems that plan, adjust, and report without intervention, operating within documented guardrails that keep humans in the loop for decisions above a defined threshold.`,
+      value:[
+        'Monthly AI-generated campaign strategy and recommendations that run ahead of the planning cycle, not behind it',
+        'Agentic performance monitoring that alerts, adjusts, and logs — with a human escalation path built in',
+        'A documented AGENTS.md and CLAUDE.md infrastructure that makes our AI operations reviewable, auditable, and transferable to new team members',
+        'Campaign Strategy Portal: ongoing AI-generated strategy and assets generated from our live data, every month',
+      ],
+      ask:`The Campaign Strategy Portal ($500/mo) gives our team an ongoing AI intelligence layer. Advanced integration sprints — Lead Reactivation, Event Follow-Up — are available immediately at our score. We can start with one sprint this month and layer in the Portal alongside it.`,
+    },
+  };
+
+  const c=byTier[tier.name]||byTier['Siloed'];
+  return {
+    title:`Why ${who} Need${company?'s':''} AI Campaign Automation`,
+    subtitle:`Internal brief · Score ${finalScore}/100 · ${tier.name} tier${stg?' · '+stg:''}`,
+    situation:{label:'The situation', body:c.situation},
+    costs:{label:'What this is costing us', items:c.costs},
+    solution:{label:`What AI campaign automation means for ${company?'us':'us'}`, body:c.solution},
+    value:{label:'What we get back', items:c.value},
+    ask:{label:'The recommended first step', body:c.ask},
+  };
+}
+
+function renderPitch(pitch) {
+  return `
+    <div class="pitch-boss animate-in">
+      <div class="pitch-boss-header">
+        <div class="pitch-boss-meta">
+          <div class="pitch-eyebrow">Pitch your boss</div>
+          <h3>${pitch.title}</h3>
+          <div class="pitch-boss-sub">${pitch.subtitle}</div>
+        </div>
+        <button class="pitch-copy-btn" onclick="copyPitch()" type="button">Copy to clipboard →</button>
+      </div>
+      <div class="pitch-body">
+        <div class="pitch-sec">
+          <div class="pitch-sec-label">${pitch.situation.label}</div>
+          <p>${pitch.situation.body}</p>
+        </div>
+        <div class="pitch-sec">
+          <div class="pitch-sec-label">${pitch.costs.label}</div>
+          <ul class="pitch-list">${pitch.costs.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div class="pitch-sec">
+          <div class="pitch-sec-label">${pitch.solution.label}</div>
+          <p>${pitch.solution.body}</p>
+        </div>
+        <div class="pitch-sec">
+          <div class="pitch-sec-label">${pitch.value.label}</div>
+          <ul class="pitch-list">${pitch.value.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div class="pitch-sec pitch-ask">
+          <div class="pitch-sec-label">${pitch.ask.label}</div>
+          <p>${pitch.ask.body}</p>
+        </div>
+      </div>
+    </div>`;
+}
+
+function copyPitch() {
+  const btn = document.querySelector('.pitch-copy-btn');
+  const header = document.querySelector('.pitch-boss-header h3');
+  let text = (header ? header.textContent : '') + '\n\n';
+  document.querySelectorAll('.pitch-sec').forEach(sec => {
+    const label = sec.querySelector('.pitch-sec-label')?.textContent || '';
+    const body = sec.querySelector('p')?.textContent || '';
+    const items = Array.from(sec.querySelectorAll('li')).map(li => '• ' + li.textContent).join('\n');
+    text += label.toUpperCase() + '\n' + (body || items) + '\n\n';
+  });
+  navigator.clipboard.writeText(text.trim()).then(() => {
+    if(btn){ btn.textContent='Copied ✓'; setTimeout(()=>{ btn.textContent='Copy to clipboard →'; }, 2500); }
+  }).catch(() => { if(btn) btn.textContent='Select text above to copy'; });
+}
+
 function showScorecard() {
   const {finalScore,gated,dims} = computeScore();
   const tier = getTier(finalScore);
@@ -550,11 +812,25 @@ function showScorecard() {
   const sc = document.getElementById("scorecard");
   sc.style.display="block";
 
-  const dimRows = Object.values(dims).map(d=>`
+  const dimRows = Object.entries(dims).map(([key,d])=>{
+    const wt = DIM_WEIGHTS[key]||'';
+    const qa = getAnswersForDim(key);
+    const qaHtml = qa.map(a=>`
+      <div class="dar">
+        <span class="dar-q">${a.text}</span>
+        <span class="dar-a">${a.answer}</span>
+        <span class="dar-pts">+${a.value} pts</span>
+      </div>`).join('');
+    return `
     <div class="dim-row">
-      <div class="dim-top"><span class="dim-name">${d.label}</span><span class="dim-score">${d.raw} / ${d.max}</span></div>
+      <div class="dim-top">
+        <span class="dim-name">${d.label}<span class="dim-weight-tag">${wt}</span></span>
+        <span class="dim-score">${d.raw} / ${d.max}</span>
+      </div>
       <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:0%" data-w="${Math.round(d.raw/d.max*100)}%"></div></div>
-    </div>`).join("");
+      ${qaHtml?`<div class="dim-answers">${qaHtml}</div>`:''}
+    </div>`;
+  }).join("");
 
   const modHtml = mods.length ? `<div class="modifier-flags"><h3 style="font-size:16px;font-weight:600;margin-bottom:16px">Flags to address</h3>${mods.map(m=>`<div class="modifier-flag"><div class="mf-icon" aria-hidden="true">${m.icon}</div><div class="mf-body"><strong>${m.title}</strong><p>${m.body}</p></div></div>`).join("")}</div>` : "";
 
@@ -592,6 +868,8 @@ function showScorecard() {
       <p style="font-size:14px;color:var(--mist2);margin-bottom:16px;line-height:1.5">These rules are calibrated to your score. Copy them into your automation documentation as a starting constraint layer.</p>
       ${guards.map(g=>`<div class="guardrail-item">${g}</div>`).join("")}
     </div>
+
+    ${renderPitch(getPitchContent(finalScore, tier, dims))}
 
     <div class="intake-gate animate-in" id="intake-gate">
       <h3 id="intake-title">Ready to act on this?</h3>
@@ -1021,6 +1299,7 @@ function resetWeightSim() {
   } catch(e){}
   renderStep(0);
 })();
+initStepNav();
 </script>
 </body>
 </html>
