@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,51 +10,71 @@
 <link rel="alternate" hreflang="en-US" href="https://campaignautomation.ai/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="/"><span style="color:var(--bone)">CA</span><span>.</span>AI</a>
-  <div class="nav-links">
-    <div class="nav-item">
-      <a href="/solutions">Solutions</a>
-      <div class="dropdown">
-        <span class="dropdown-label">By capability</span>
-        <a href="/paid-advertising-automation">Paid advertising automation</a>
-        <a href="/ai-strategy">AI strategy & agentic intelligence</a>
-        <a href="/workflow-automation">Workflow & operations automation</a>
-        <a href="/revenue-operations">Revenue operations</a>
-        <div class="dropdown-divider"></div>
-        <a href="/solutions/integrations">Integrations →</a>
+<!-- Skip navigation for keyboard/screen reader users -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">
+    <span aria-hidden="true" style="color:var(--bone)">CA</span><span aria-hidden="true">.</span><span aria-hidden="true">AI</span>
+  </a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu" aria-label="Solutions submenu">
+        <span class="dropdown-label" role="presentation">By capability</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid advertising automation</a>
+        <a href="/ai-strategy" role="menuitem">AI strategy &amp; agentic intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow &amp; operations automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue operations</a>
+        <div class="dropdown-divider" role="separator"></div>
+        <a href="/solutions/integrations" role="menuitem">Integrations →</a>
       </div>
     </div>
-    <a href="/training">Training</a>
-    <a href="/results">Results</a>
-    <div class="nav-item">
-      <a href="/resources">Resources</a>
-      <div class="dropdown">
-        <a href="/resources">Blog</a>
-        <a href="/resources/glossary">Glossary</a>
-        <a href="/solutions/integrations">Integrations</a>
-        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu" aria-label="Resources submenu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+        <a href="/solutions/integrations" role="menuitem">Integrations</a>
+        <a href="/resources/ai-automation-pricing" role="menuitem">Pricing guide</a>
       </div>
     </div>
-    <a href="/get-started" class="nav-cta">Get started →</a>
+    <a href="/get-started" class="nav-cta" role="listitem">Get started →</a>
   </div>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  <button
+    class="hamburger"
+    id="hamburger"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobileMenu"
+    type="button"
+  >
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
   <div class="mobile-section">
-    <h6>Solutions</h6>
+    <h2 class="mobile-section" style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
     <a href="/paid-advertising-automation">Paid advertising automation</a>
-    <a href="/ai-strategy">AI strategy & agentic intelligence</a>
-    <a href="/workflow-automation">Workflow & operations automation</a>
+    <a href="/ai-strategy">AI strategy &amp; agentic intelligence</a>
+    <a href="/workflow-automation">Workflow &amp; operations automation</a>
     <a href="/revenue-operations">Revenue operations</a>
   </div>
   <div class="mobile-section">
-    <h6>Company</h6>
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
     <a href="/training">Training</a>
     <a href="/results">Results</a>
     <a href="/resources">Resources</a>
@@ -62,189 +82,220 @@
     <a href="/about">About</a>
   </div>
   <a href="/get-started" class="mobile-cta">Get started →</a>
-</div>
+</nav>
 
 <div class="page-wrap">
-  <div class="hero">
-    <div class="hero-eyebrow"><span class="dot"></span>campaignautomation.ai</div>
-    <h1>There is a<br><em>smarter way</em><br>to work.</h1>
-    <p class="hero-sub">From strategy to execution — we help business leaders unlock measurable results with AI through optimised workflows, practical training, and scalable automation.</p>
-    <div class="hero-actions">
-      <a href="/get-started" class="btn-primary">Book a strategy call →</a>
-      <a href="/solutions" class="btn-ghost">See how it works</a>
-    </div>
-    <div class="hero-metrics">
-      <div class="metric">
-        <div class="metric-n">3<span>×</span></div>
-        <div class="metric-l">Average ROI on ad spend in 90 days</div>
-      </div>
-      <div class="metric" style="padding-left:40px">
-        <div class="metric-n">68<span>%</span></div>
-        <div class="metric-l">Reduction in manual campaign time</div>
-      </div>
-      <div class="metric" style="padding-left:40px">
-        <div class="metric-n">14<span>d</span></div>
-        <div class="metric-l">Average time to first automation live</div>
-      </div>
-    </div>
-  </div>
+  <main id="main-content">
 
-  <div class="section">
-    <div class="section-label reveal"><span class="label-signal">What we do</span></div>
-    <div class="grid-2">
-      <div class="reveal">
-        <h2 class="display">Strategy to execution. No gaps.</h2>
-        <p class="lead">Most companies have an AI strategy. Very few have working AI. We close that gap — from the first conversation to the first dollar saved.</p>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-eyebrow" aria-hidden="true"><span class="dot"></span>campaignautomation.ai</div>
+      <h1 id="hero-heading">There is a<br><em>smarter way</em><br>to work.</h1>
+      <p class="hero-sub">From strategy to execution — we help business leaders unlock measurable results with AI through optimised workflows, practical training, and scalable automation.</p>
+      <div class="hero-actions">
+        <a href="/get-started" class="btn-primary">Book a strategy call →</a>
+        <a href="/solutions" class="btn-ghost">See how it works</a>
       </div>
-      <div>
-        <div class="step reveal reveal-delay-1">
-          <div class="step-n">01</div>
-          <div><h3>Diagnose</h3><p>We map your current workflows, ad accounts, and team structure. Every automation we build is grounded in your actual operations, not a template.</p></div>
+      <div class="hero-metrics" role="list" aria-label="Key outcomes">
+        <div class="metric" role="listitem">
+          <div class="metric-n" aria-label="3 times average ROI">3<span aria-hidden="true">×</span></div>
+          <div class="metric-l">Average ROI on ad spend in 90 days</div>
         </div>
-        <div class="step reveal reveal-delay-2">
-          <div class="step-n">02</div>
-          <div><h3>Automate</h3><p>Guardrail-driven AI agents take over campaign management, budget allocation, and performance optimisation — within bounds your team controls.</p></div>
+        <div class="metric" role="listitem" style="padding-left:40px">
+          <div class="metric-n" aria-label="68 percent reduction">68<span aria-hidden="true">%</span></div>
+          <div class="metric-l">Reduction in manual campaign time</div>
         </div>
-        <div class="step reveal reveal-delay-3">
-          <div class="step-n">03</div>
-          <div><h3>Train</h3><p>Your team learns to work alongside the system. Practical, role-specific programs — not vendor certification theater.</p></div>
-        </div>
-        <div class="step reveal reveal-delay-4" style="border-bottom:none">
-          <div class="step-n">04</div>
-          <div><h3>Scale</h3><p>Add channels, accounts, and use cases. The infrastructure compounds — each new workflow improves the whole system.</p></div>
+        <div class="metric" role="listitem" style="padding-left:40px">
+          <div class="metric-n" aria-label="14 days average time">14<span aria-hidden="true">d</span></div>
+          <div class="metric-l">Average time to first automation live</div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="section">
-    <div class="section-label reveal"><span class="label-signal">Solutions</span></div>
-    <h2 class="display reveal" style="margin-bottom:48px">Six pillars. One platform.</h2>
-    <div class="grid-3" data-stagger>
-      <a class="pillar-card" href="/paid-advertising-automation">
-        <div class="pillar-tag signal">Pillar 1</div>
-        <h4>Paid advertising automation</h4>
-        <p>AI-managed Google Ads, Meta, and paid search campaigns with guardrail-driven budget allocation and performance optimisation.</p>
-        <div class="url">/paid-advertising-automation</div>
-      </a>
-      <a class="pillar-card" href="/ai-strategy">
-        <div class="pillar-tag signal">Pillar 2</div>
-        <h4>AI strategy & agentic intelligence</h4>
-        <p>From identifying automation opportunities to deploying agentic workflows — we build the roadmap and the system.</p>
-        <div class="url">/ai-strategy</div>
-      </a>
-      <a class="pillar-card" href="/workflow-automation">
-        <div class="pillar-tag">Pillar 3</div>
-        <h4>Workflow & operations automation</h4>
-        <p>End-to-end process automation for marketing, finance, and revenue operations. Measurable time and cost reduction.</p>
-        <div class="url">/workflow-automation</div>
-      </a>
-      <a class="pillar-card" href="/revenue-operations">
-        <div class="pillar-tag">Pillar 4</div>
-        <h4>Revenue operations</h4>
-        <p>ABM, demand gen, and sales automation aligned to pipeline — not just activity metrics.</p>
-        <div class="url">/revenue-operations</div>
-      </a>
-      <a class="pillar-card" href="/training">
-        <div class="pillar-tag">Pillar 5</div>
-        <h4>Training & enablement</h4>
-        <p>Practical AI training for business leaders, marketers, and ops teams. Certification tracks included.</p>
-        <div class="url">/training</div>
-      </a>
-      <a class="pillar-card" href="/results">
-        <div class="pillar-tag">Pillar 6</div>
-        <h4>Proof & results</h4>
-        <p>Case studies, ROI frameworks, and a resource library built on real campaign and workflow data.</p>
-        <div class="url">/results</div>
-      </a>
-    </div>
-  </div>
-
-  <div class="section bone">
-    <div class="section-label reveal"><span>Why guardrail-driven</span></div>
-    <div class="grid-2">
-      <div class="reveal">
-        <h2 class="display" style="color:var(--ink)">Autonomous within bounds. Not a black box.</h2>
-        <p class="lead">The problem with full AI autonomy isn't the AI — it's the absence of guardrails. Our agents act within rules your team defines, edits, and controls. Every action is logged. Nothing is invisible.</p>
-        <a href="/ai-strategy/guardrail-driven-automation" class="btn-primary" style="margin-top:32px">How guardrails work →</a>
+    <!-- What we do -->
+    <section class="section" aria-labelledby="what-we-do-heading">
+      <div class="section-label reveal"><span class="label-signal">What we do</span></div>
+      <div class="grid-2">
+        <div class="reveal">
+          <h2 class="display" id="what-we-do-heading">Strategy to execution. No gaps.</h2>
+          <p class="lead">Most companies have an AI strategy. Very few have working AI. We close that gap — from the first conversation to the first dollar saved.</p>
+        </div>
+        <ol class="steps-list" aria-label="Our process" style="list-style:none;padding:0">
+          <li class="step reveal reveal-delay-1">
+            <div class="step-n" aria-hidden="true">01</div>
+            <div>
+              <h3>Diagnose</h3>
+              <p>We map your current workflows, ad accounts, and team structure. Every automation we build is grounded in your actual operations, not a template.</p>
+            </div>
+          </li>
+          <li class="step reveal reveal-delay-2">
+            <div class="step-n" aria-hidden="true">02</div>
+            <div>
+              <h3>Automate</h3>
+              <p>Guardrail-driven AI agents take over campaign management, budget allocation, and performance optimisation — within bounds your team controls.</p>
+            </div>
+          </li>
+          <li class="step reveal reveal-delay-3">
+            <div class="step-n" aria-hidden="true">03</div>
+            <div>
+              <h3>Train</h3>
+              <p>Your team learns to work alongside the system. Practical, role-specific programs — not vendor certification theater.</p>
+            </div>
+          </li>
+          <li class="step reveal reveal-delay-4" style="border-bottom:none">
+            <div class="step-n" aria-hidden="true">04</div>
+            <div>
+              <h3>Scale</h3>
+              <p>Add channels, accounts, and use cases. The infrastructure compounds — each new workflow improves the whole system.</p>
+            </div>
+          </li>
+        </ol>
       </div>
-      <div class="terminal reveal reveal-delay-2" data-animate style="background:#1a1a1a;border-color:#333;color:#aaa"><div class="scanline"></div>
-        <div data-type class="t-dim"># Agent run — Google Ads campaign</div>
-        <div data-type>✓ Trigger: CPA above threshold ($42 → $58)</div>
-        <div data-type>✓ Action: Pause 3 underperforming ad groups</div>
-        <div data-type>✓ Action: Reallocate $840 to top converter</div>
-        <div data-type>✓ Guardrail: Daily spend cap respected ($2,400)</div>
-        <div data-type>✓ Guardrail: Brand exclusions applied (47 terms)</div>
-        <div data-type class="t-dim" style="margin-top:8px"># Impact logged</div>
-        <div data-type>CPA delta: -22% over 72h window</div>
-        <div data-type>Human approval required: 0</div>
-        <div data-type class="t-dim" style="margin-top:8px">Agent standing by <span class="cursor"></span></div>
+    </section>
+
+    <!-- Solutions / Pillar cards -->
+    <section class="section" aria-labelledby="solutions-heading">
+      <div class="section-label reveal"><span class="label-signal">Solutions</span></div>
+      <h2 class="display reveal" id="solutions-heading" style="margin-bottom:48px">Six pillars. One platform.</h2>
+      <div class="grid-3" data-stagger role="list" aria-label="Solution pillars">
+        <a class="pillar-card" href="/paid-advertising-automation" role="listitem">
+          <div class="pillar-tag signal" aria-label="Pillar 1">Pillar 1</div>
+          <h3>Paid advertising automation</h3>
+          <p>AI-managed Google Ads, Meta, and paid search campaigns with guardrail-driven budget allocation and performance optimisation.</p>
+          <div class="url" aria-hidden="true">/paid-advertising-automation</div>
+        </a>
+        <a class="pillar-card" href="/ai-strategy" role="listitem">
+          <div class="pillar-tag signal" aria-label="Pillar 2">Pillar 2</div>
+          <h3>AI strategy &amp; agentic intelligence</h3>
+          <p>From identifying automation opportunities to deploying agentic workflows — we build the roadmap and the system.</p>
+          <div class="url" aria-hidden="true">/ai-strategy</div>
+        </a>
+        <a class="pillar-card" href="/workflow-automation" role="listitem">
+          <div class="pillar-tag" aria-label="Pillar 3">Pillar 3</div>
+          <h3>Workflow &amp; operations automation</h3>
+          <p>End-to-end process automation for marketing, finance, and revenue operations. Measurable time and cost reduction.</p>
+          <div class="url" aria-hidden="true">/workflow-automation</div>
+        </a>
+        <a class="pillar-card" href="/revenue-operations" role="listitem">
+          <div class="pillar-tag" aria-label="Pillar 4">Pillar 4</div>
+          <h3>Revenue operations</h3>
+          <p>ABM, demand gen, and sales automation aligned to pipeline — not just activity metrics.</p>
+          <div class="url" aria-hidden="true">/revenue-operations</div>
+        </a>
+        <a class="pillar-card" href="/training" role="listitem">
+          <div class="pillar-tag" aria-label="Pillar 5">Pillar 5</div>
+          <h3>Training &amp; enablement</h3>
+          <p>Practical AI training for business leaders, marketers, and ops teams. Certification tracks included.</p>
+          <div class="url" aria-hidden="true">/training</div>
+        </a>
+        <a class="pillar-card" href="/results" role="listitem">
+          <div class="pillar-tag" aria-label="Pillar 6">Pillar 6</div>
+          <h3>Proof &amp; results</h3>
+          <p>Case studies, ROI frameworks, and a resource library built on real campaign and workflow data.</p>
+          <div class="url" aria-hidden="true">/results</div>
+        </a>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="section">
-    <div class="section-label reveal"><span class="label-signal">Who we work with</span></div>
-    <h2 class="display reveal" style="margin-bottom:16px">Built for the people responsible for outcomes.</h2>
-    <p class="lead reveal reveal-delay-1" style="margin-bottom:0">Whether you're running a marketing team, managing client accounts, or leading a company-wide AI transition — the platform adapts to your context.</p>
-    <div class="buyer-router" data-stagger>
-      <a class="buyer-card" href="/solutions">
-        <div class="buyer-tag">Executive</div>
-        <h4>Business leaders & CMOs</h4>
-        <p>Strategy, governance, and ROI measurement. Understand how AI automation fits your business — and how to lead the transition.</p>
-        <span class="arrow">→</span>
-      </a>
-      <a class="buyer-card" href="/paid-advertising-automation/agency-automation">
-        <div class="buyer-tag">Agency</div>
-        <h4>Agency owners & partners</h4>
-        <p>Scale account capacity without adding headcount. White-label the platform, deploy per-client guardrails, and protect your margin.</p>
-        <span class="arrow">→</span>
-      </a>
-      <a class="buyer-card" href="/ai-strategy/b2b-ai-marketing">
-        <div class="buyer-tag">In-house</div>
-        <h4>In-house marketing directors</h4>
-        <p>Automate the repetitive work. Keep human judgment where it matters. Build a marketing function that operates closer to real time.</p>
-        <span class="arrow">→</span>
-      </a>
-    </div>
-  </div>
+    <!-- Guardrail demo -->
+    <section class="section bone" aria-labelledby="guardrail-heading">
+      <div class="section-label reveal"><span>Why guardrail-driven</span></div>
+      <div class="grid-2">
+        <div class="reveal">
+          <h2 class="display" id="guardrail-heading" style="color:var(--ink)">Autonomous within bounds. Not a black box.</h2>
+          <p class="lead">The problem with full AI autonomy isn't the AI — it's the absence of guardrails. Our agents act within rules your team defines, edits, and controls. Every action is logged. Nothing is invisible.</p>
+          <a href="/ai-strategy/guardrail-driven-automation" class="btn-primary" style="margin-top:32px">How guardrails work →</a>
+        </div>
+        <div
+          class="terminal reveal reveal-delay-2"
+          data-animate
+          style="background:#111;border-color:#2a2a2a;color:#aaa"
+          role="region"
+          aria-label="AI agent log example — live demonstration"
+          aria-live="off"
+        >
+          <div class="scanline" aria-hidden="true"></div>
+          <div data-type class="t-dim"># Agent run — Google Ads campaign</div>
+          <div data-type>✓ Trigger: CPA above threshold ($42 → $58)</div>
+          <div data-type>✓ Action: Pause 3 underperforming ad groups</div>
+          <div data-type>✓ Action: Reallocate $840 to top converter</div>
+          <div data-type>✓ Guardrail: Daily spend cap respected ($2,400)</div>
+          <div data-type>✓ Guardrail: Brand exclusions applied (47 terms)</div>
+          <div data-type class="t-dim" style="margin-top:8px"># Impact logged</div>
+          <div data-type>CPA delta: -22% over 72h window</div>
+          <div data-type>Human approval required: 0</div>
+          <div data-type class="t-dim" style="margin-top:8px">Agent standing by <span class="cursor" aria-hidden="true"></span></div>
+        </div>
+      </div>
+    </section>
 
-  <div class="tagline-footer">
-    <p class="reveal">There is a smarter<br>way to work.<br><span>Let us show you the way.</span></p>
-    <a href="/get-started" class="btn-primary reveal reveal-delay-2" style="margin-top:40px;font-size:15px;padding:16px 36px">Book your strategy call →</a>
-  </div>
+    <!-- Who we work with -->
+    <section class="section" aria-labelledby="audience-heading">
+      <div class="section-label reveal"><span class="label-signal">Who we work with</span></div>
+      <h2 class="display reveal" id="audience-heading" style="margin-bottom:16px">Built for the people responsible for outcomes.</h2>
+      <p class="lead reveal reveal-delay-1" style="margin-bottom:0">Whether you're running a marketing team, managing client accounts, or leading a company-wide AI transition — the platform adapts to your context.</p>
+      <div class="buyer-router" data-stagger role="list" aria-label="Who we work with">
+        <a class="buyer-card" href="/solutions" role="listitem">
+          <div class="buyer-tag">Executive</div>
+          <h3>Business leaders &amp; CMOs</h3>
+          <p>Strategy, governance, and ROI measurement. Understand how AI automation fits your business — and how to lead the transition.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="buyer-card" href="/paid-advertising-automation/agency-automation" role="listitem">
+          <div class="buyer-tag">Agency</div>
+          <h3>Agency owners &amp; partners</h3>
+          <p>Scale account capacity without adding headcount. White-label the platform, deploy per-client guardrails, and protect your margin.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="buyer-card" href="/ai-strategy/b2b-ai-marketing" role="listitem">
+          <div class="buyer-tag">In-house</div>
+          <h3>In-house marketing directors</h3>
+          <p>Automate the repetitive work. Keep human judgment where it matters. Build a marketing function that operates closer to real time.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
 
-  <footer>
+    <!-- Tagline CTA -->
+    <section class="tagline-footer" aria-label="Call to action">
+      <p class="reveal">There is a smarter<br>way to work.<br><span>Let us show you the way.</span></p>
+      <a href="/get-started" class="btn-primary reveal reveal-delay-2" style="margin-top:40px;font-size:15px;padding:16px 36px">Book your strategy call →</a>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo" aria-label="Site footer">
     <div>
-      <a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
-      <div class="footer-desc">From strategy to execution — we help companies make smarter decisions, drive better financial outcomes, and work more efficiently with AI.</div>
+      <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+      <p class="footer-desc">From strategy to execution — we help companies make smarter decisions, drive better financial outcomes, and work more efficiently with AI.</p>
       <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
     </div>
-    <div class="footer-col">
-      <h5>Solutions</h5>
+    <nav aria-label="Solutions links">
+      <h3 class="footer-col" style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
       <a href="/paid-advertising-automation">Paid advertising</a>
       <a href="/ai-strategy">AI strategy</a>
       <a href="/workflow-automation">Workflow automation</a>
       <a href="/revenue-operations">Revenue operations</a>
       <a href="/solutions/integrations">Integrations</a>
-    </div>
-    <div class="footer-col">
-      <h5>Learn</h5>
+    </nav>
+    <nav aria-label="Learn links">
+      <h3 class="footer-col" style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
       <a href="/training">Training hub</a>
       <a href="/results">Case studies</a>
       <a href="/resources">Resources</a>
       <a href="/resources/glossary">Glossary</a>
       <a href="/resources/ai-automation-pricing">Pricing guide</a>
-    </div>
-    <div class="footer-col">
-      <h5>Company</h5>
+    </nav>
+    <nav aria-label="Company links">
+      <h3 class="footer-col" style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
       <a href="/about">About</a>
       <a href="/get-started">Get started</a>
       <a href="/get-started">Book a call</a>
       <a href="mailto:hello@campaignautomation.ai">Contact</a>
-    </div>
+    </nav>
   </footer>
 </div>
+
 <script src="/js/main.js"></script>
 </body>
 </html>
