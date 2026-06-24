@@ -60,6 +60,22 @@
 .audit-card p{font-size:14px;color:var(--mist2);margin:0;line-height:1.6}
 .audit-card-badge{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
 @media(max-width:640px){.audit-card{grid-template-columns:1fr}.audit-card .btn-primary{width:100%;text-align:center}}
+
+/* ── ADD TO PROPOSAL ───────────────────────────────────── */
+.cat-card{position:relative}
+.add-proposal-btn{width:100%;margin-top:12px;padding:9px 14px;background:transparent;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;cursor:pointer;border-radius:2px;transition:all .15s;text-align:left;display:flex;align-items:center;gap:8px}
+.add-proposal-btn:hover{border-color:rgba(200,241,53,.4);color:var(--signal)}
+.add-proposal-btn.added{border-color:var(--signal);color:var(--signal);background:rgba(200,241,53,.06)}
+.add-proposal-btn .apb-icon{font-size:14px;line-height:1;flex-shrink:0;transition:transform .15s}
+.add-proposal-btn.added .apb-icon{transform:rotate(45deg)}
+.proposal-tray{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ink);border-top:2px solid var(--signal);padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;transform:translateY(100%);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.proposal-tray.visible{transform:translateY(0)}
+.pt-badge{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;background:var(--signal);color:var(--ink);padding:3px 9px;border-radius:2px;font-weight:700;white-space:nowrap;flex-shrink:0}
+.pt-names{font-size:13px;color:var(--mist2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pt-clear{background:none;border:none;color:var(--mist);font-family:var(--f-mono);font-size:11px;cursor:pointer;padding:0;text-decoration:underline;white-space:nowrap;flex-shrink:0}
+.pt-clear:hover{color:var(--mist2)}
+.pt-cta{background:var(--signal);color:var(--ink);font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.06em;padding:10px 20px;border-radius:2px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:opacity .15s}
+.pt-cta:hover{opacity:.85}
 </style>
 </head>
 <body>
@@ -534,6 +550,7 @@
 
 <script src="/js/main.js"></script>
 <script>
+/* ── FILTER TABS ── */
 (function(){
   const tabs = document.querySelectorAll('.cat-tab');
   const cards = document.querySelectorAll('#cat-grid .cat-card');
@@ -557,6 +574,98 @@
       filterCatalog(this.dataset.app);
     });
   });
+})();
+
+/* ── ADD TO PROPOSAL ── */
+(function(){
+  // Map h3 titles to sprint IDs (matches SPRINT_META in main.js)
+  const SPRINT_ID_MAP = {
+    'AI Brief Machine':               'ai-brief',
+    'Search Term Intelligence':       'search-term-intel',
+    'Competitive Intelligence Engine':'competitive-intel',
+    'Content Atomization System':     'content-atomization',
+    'Content Brief':                  'content-brief',
+    'Campaign Launch Kit':            'launch-kit',
+    'PPC Intelligence':               'ppc-intelligence',
+    'SEO/PPC Opportunity':            'seo-ppc',
+    'Event Follow-Up':                'event-followup',
+    'Lead Reactivation':              'lead-reactivation',
+  };
+
+  const PLAN_KEY = 'ca_plan';
+  const plan = {
+    load() { try { return JSON.parse(localStorage.getItem(PLAN_KEY) || 'null') || {items:[]}; } catch(e){ return {items:[]}; } },
+    save(d) { try { localStorage.setItem(PLAN_KEY, JSON.stringify(d)); } catch(e){} },
+    has(id) { return this.load().items.some(function(i){ return i.id===id; }); },
+    add(item) { var d=this.load(); if(!this.has(item.id)){ d.items.push(Object.assign({},item,{addedAt:Date.now()})); this.save(d); } },
+    remove(id) { var d=this.load(); d.items=d.items.filter(function(i){ return i.id!==id; }); this.save(d); },
+  };
+
+  // Assign sprint IDs to cards
+  document.querySelectorAll('#cat-grid .cat-card').forEach(function(card) {
+    var h3 = card.querySelector('h3');
+    if (!h3) return;
+    var name = h3.textContent.trim();
+    var id = SPRINT_ID_MAP[name];
+    if (!id) return; // not a sprint card
+    card.dataset.sprintId = id;
+
+    // Add button
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'add-proposal-btn' + (plan.has(id) ? ' added' : '');
+    btn.innerHTML = '<span class="apb-icon">+</span><span class="apb-label">' + (plan.has(id) ? 'Added to proposal' : 'Add to proposal') + '</span>';
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (plan.has(id)) {
+        plan.remove(id);
+        btn.classList.remove('added');
+        btn.querySelector('.apb-label').textContent = 'Add to proposal';
+      } else {
+        var href = card.querySelector('.cat-cta') ? card.querySelector('.cat-cta').getAttribute('href') : '/solutions/automation-sprints';
+        plan.add({ id:id, type:'sprint', name:name, href:href });
+        btn.classList.add('added');
+        btn.querySelector('.apb-label').textContent = 'Added to proposal';
+      }
+      updateTray();
+    });
+    card.appendChild(btn);
+  });
+
+  // Proposal tray
+  var tray = document.createElement('div');
+  tray.className = 'proposal-tray';
+  tray.setAttribute('role','region');
+  tray.setAttribute('aria-label','Proposal summary');
+  tray.innerHTML = '<span class="pt-badge">0 sprints</span><span class="pt-names"></span><button class="pt-clear" type="button">Clear all</button><a href="/get-started" class="pt-cta">View Proposal →</a>';
+  document.body.appendChild(tray);
+
+  tray.querySelector('.pt-clear').addEventListener('click', function() {
+    var d = plan.load();
+    var ids = Object.values(SPRINT_ID_MAP);
+    d.items = d.items.filter(function(i){ return !ids.includes(i.id); });
+    plan.save(d);
+    document.querySelectorAll('.add-proposal-btn.added').forEach(function(btn) {
+      btn.classList.remove('added');
+      btn.querySelector('.apb-label').textContent = 'Add to proposal';
+    });
+    updateTray();
+  });
+
+  function updateTray() {
+    var d = plan.load();
+    var sprintIds = Object.values(SPRINT_ID_MAP);
+    var selected = d.items.filter(function(i){ return sprintIds.includes(i.id); });
+    var count = selected.length;
+    tray.classList.toggle('visible', count > 0);
+    tray.querySelector('.pt-badge').textContent = count + (count === 1 ? ' sprint' : ' sprints');
+    tray.querySelector('.pt-names').textContent = selected.map(function(i){ return i.name; }).join(', ');
+    var ids = selected.map(function(i){ return i.id; }).join(',');
+    tray.querySelector('.pt-cta').href = '/get-started' + (ids ? '?plan=1' : '');
+  }
+
+  updateTray();
 })();
 </script>
 </body>

@@ -755,94 +755,78 @@ function getAnswersForDim(dimKey) {
 }
 
 function getPitchContent(finalScore, tier, dims) {
-  let industry='', stage='', company='';
-  try { const s=JSON.parse(localStorage.getItem('ca_readiness')||'null'); if(s){industry=s.industry||'';stage=s.stage||'';company=s.company||'';} } catch(e){}
-  const spendV=answers.ad_spend?.value||0;
-  const spendL={0:'under $5k/mo',1:'$5k–$25k/mo',2:'$25k–$100k/mo',3:'$100k+/mo'}[spendV];
-  const who=company||'we';
+  // Top gaps — worst dims first, max 3, only below 70%
+  const sorted = Object.entries(dims).sort((a,b)=>(a[1].raw/a[1].max)-(b[1].raw/b[1].max));
+  const shortGaps = {
+    demo:    'Data access is siloed — most of the team can\'t pull or act on campaign data without a bottleneck.',
+    instr:   'Conversion tracking has gaps — Smart Bidding and custom rules are optimising toward noise, not revenue.',
+    std:     'Campaign structure is inconsistent — scripts and rules can\'t reliably identify what to act on.',
+    gov:     'No clear automation owner — changes go live without an approval process or audit trail.',
+    tooling: 'Platforms are siloed — manual exports limit what any automation can see or act on.',
+  };
+  const gaps = sorted
+    .filter(([,d]) => (d.raw/d.max) < 0.7)
+    .slice(0,3)
+    .map(([k,d]) => `${d.label} — ${shortGaps[k]} (Score: ${d.raw}/${d.max})`);
+  if (!gaps.length) gaps.push('All dimensions above 70% — primary opportunity is agentic intelligence.');
 
-  // Build gap list from actual dim scores — worst first, flag strong ones separately
-  const sortedDims = Object.entries(dims).sort((a,b)=>(a[1].raw/a[1].max)-(b[1].raw/b[1].max));
-  const gapItems = [], strongItems = [];
-  sortedDims.forEach(([k,d]) => {
-    const pct = Math.round(d.raw/d.max*100);
-    if (pct < 70) {
-      gapItems.push(`${d.label} (${d.raw}/${d.max} — ${pct}% of maximum): ${DIM_PITCH_GAPS[k]}`);
-    } else {
-      strongItems.push(`✓ ${d.label} (${d.raw}/${d.max} — ${pct}%) is working. Maintain this while fixing weaker dimensions.`);
-    }
-  });
-  const allGapItems = [...gapItems, ...strongItems];
-  if (!allGapItems.length) allGapItems.push(`Overall score is ${finalScore}/100. Full breakdown available at campaignautomation.ai/tools/readiness-score.`);
-
-  const aiCase = `Elon Musk has said it plainly: a fully AI-enabled company will outcompete a non-AI company at any stage of growth. In marketing, this is already happening. Teams with connected data, automated workflows, and AI-generated intelligence are publishing faster, bidding smarter, and converting at higher rates — not because they have better marketers, but because their systems compound where manual operations plateau.
-
-Our score of ${finalScore}/100 — ${tier.name} tier — means ${who} ${finalScore<50?'are still building the foundation that makes automation reliable':'have a foundation but are not yet extracting compound returns from it'}. Running ${spendL} in paid media at this readiness level means ${finalScore<50?'measurable, compounding waste every week we delay':'an execution gap that widens as competitors automate faster'}. The companies building AI marketing infrastructure today will be structurally harder to compete with in 12 months.`;
-
-  const askByTier = {
-    Siloed:      `A Campaign Automation Audit ($750–$2,500) maps our current state against the five dimensions, identifies the two or three changes that move the score fastest, and delivers a 30-day action plan within 5 business days — no account access required.`,
-    Emerging:    `An Automation Sprint ($4k–$8k, 2 weeks) builds one high-leverage workflow with our team — fully documented, tested, and handed over. We own the output. No retainer, no lock-in. The Audit ($750–$2,500) is available if we want a full diagnostic first.`,
-    Operational: `A Campaign Automation Audit ($750–$2,500) identifies which integration sprint delivers the highest ROI given our current stack. The first sprint follows within 2–4 weeks. Total commitment: one sprint to start, with a clear decision point before expanding.`,
-    Agentic:     `The Campaign Strategy Portal ($500/mo) gives our team an ongoing AI intelligence layer — strategy, briefs, and performance recommendations generated from our live data every month. Advanced sprints are available in parallel at our score level.`,
+  const urgency = {
+    Siloed:      'Every week we run campaigns on top of broken foundations, we compound the problem. The gap between teams that fix this now and those that delay widens fast — and AI makes it widen faster.',
+    Emerging:    'We have a foundation. What we don\'t have is compounding returns from it. Competitors automating one layer higher are gaining ground every month — not dramatically, but consistently.',
+    Operational: 'At this level the risk is stagnation. Teams moving to AI-assisted automation now will be structurally harder to compete with in 12 months.',
+    Agentic:     'We\'re ahead of most teams. The play now is locking in that advantage with an ongoing intelligence layer before the gap closes.',
   };
 
-  return {
-    title: 'Copy and Paste Pitch to Your Boss',
-    subtitle: `Score ${finalScore}/100 · ${tier.name} tier${company?' · '+company:''}`,
-    how: {
-      label: 'How we found this',
-      body: `We ran a free Campaign Automation Readiness Score at campaignautomation.ai — 14 questions across 5 dimensions: data democratization, measurement instrumentation, campaign standardization, governance, and team tooling. The framework is calibrated to teams running paid media from $5k to $100k+/mo. Our score: ${finalScore}/100, placing us in the ${tier.name} tier (${tier.range}). ${tier.desc}`
-    },
-    gaps: {
-      label: 'What the assessment found',
-      items: allGapItems
-    },
-    aiCase: {
-      label: 'Why this matters in the age of AI',
-      body: aiCase
-    },
-    sprints: {
-      label: 'Recommended next steps',
-      items: PITCH_SPRINT_RECS[tier.name] || PITCH_SPRINT_RECS['Siloed']
-    },
-    ask: {
-      label: 'First step',
-      body: askByTier[tier.name] || askByTier['Siloed']
-    }
+  const nextSteps = {
+    Siloed:      ['Campaign Automation Audit — map every gap, deliver a 30-day action plan ($750–$2,500)', 'AI Marketing Training — close the data literacy gap that limits every automation layer above it', 'Campaign Launch Kit Sprint — build the standard structure every campaign passes through'],
+    Emerging:    ['PPC Intelligence Sprint — surface bidding and budget opportunities the platform dashboard hides', 'Campaign Launch Kit Sprint — templated launch QA that catches structure errors before they cost', 'Campaign Automation Audit — confirm which sprint delivers the highest ROI given our current stack'],
+    Operational: ['SEO/PPC Opportunity Sprint — surface keyword gaps across paid and organic on a weekly cadence', 'Lead Reactivation Sprint — re-engage high-intent leads automatically, within minutes of a trigger', 'Campaign Strategy Portal — monthly AI-generated strategy from our live data, delivered on schedule'],
+    Agentic:     ['Campaign Strategy Portal — ongoing AI intelligence with monthly strategy and budget recommendations', 'Event Follow-Up Sprint — trigger-based follow-up within minutes of any form or conversion event', 'Lead Reactivation Sprint — fully automated re-engagement for highest-intent dormant leads'],
   };
+
+  const links = {
+    Siloed:      [{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'},{t:'AI Marketing Training',h:'/training'},{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'}],
+    Emerging:    [{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'},{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'},{t:'Readiness Guides',h:'/resources'}],
+    Operational: [{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'},{t:'Campaign Strategy Portal',h:'/platform'},{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'}],
+    Agentic:     [{t:'Campaign Strategy Portal',h:'/platform'},{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'},{t:'Results & Case Studies',h:'/results'}],
+  };
+
+  return { score:finalScore, tier:tier.name, gaps, urgency:urgency[tier.name]||urgency.Siloed, nextSteps:nextSteps[tier.name]||nextSteps.Siloed, links:links[tier.name]||links.Siloed };
 }
 
 function renderPitch(pitch) {
+  const stepsHtml = pitch.nextSteps.map((s,i)=>`<li style="font-size:14px;color:var(--mist2);line-height:1.55;padding-left:22px;position:relative"><span style="position:absolute;left:0;font-family:var(--f-mono);font-size:11px;color:var(--signal)">${i+1}.</span>${s}</li>`).join('');
+  const linksHtml = pitch.links.map(l=>`<a href="${l.h}" style="font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;color:var(--signal);text-decoration:none;border:1px solid rgba(200,241,53,.3);padding:6px 12px;border-radius:2px;white-space:nowrap;display:inline-block">${l.t} →</a>`).join('');
   return `
     <div class="pitch-boss animate-in">
       <div class="pitch-boss-header">
         <div class="pitch-boss-meta">
           <div class="pitch-eyebrow">The Plan</div>
-          <h3>${pitch.title}</h3>
-          <div class="pitch-boss-sub">${pitch.subtitle}</div>
+          <h3>Pitch to Your Boss — Ready to Send</h3>
+          <div class="pitch-boss-sub">Score ${pitch.score}/100 · ${pitch.tier} tier · campaignautomation.ai</div>
         </div>
         <button class="pitch-copy-btn" onclick="copyPitch()" type="button">Copy to clipboard →</button>
       </div>
       <div class="pitch-body">
         <div class="pitch-sec">
-          <div class="pitch-sec-label">${pitch.how.label}</div>
-          <p>${pitch.how.body}</p>
+          <div class="pitch-sec-label">What we found</div>
+          <p>We ran a free 14-question Campaign Automation Readiness Score at campaignautomation.ai across 5 dimensions: data access, measurement, campaign structure, governance, and tooling. Our score: <strong style="color:var(--signal)">${pitch.score}/100 — ${pitch.tier}</strong>.</p>
         </div>
         <div class="pitch-sec">
-          <div class="pitch-sec-label">${pitch.gaps.label}</div>
-          <ul class="pitch-list">${pitch.gaps.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+          <div class="pitch-sec-label">The gaps</div>
+          <ul class="pitch-list">${pitch.gaps.map(g=>`<li>${g}</li>`).join('')}</ul>
         </div>
         <div class="pitch-sec">
-          <div class="pitch-sec-label">${pitch.aiCase.label}</div>
-          <p style="white-space:pre-line">${pitch.aiCase.body}</p>
+          <div class="pitch-sec-label">Why it matters</div>
+          <p>${pitch.urgency}</p>
         </div>
         <div class="pitch-sec">
-          <div class="pitch-sec-label">${pitch.sprints.label}</div>
-          <ul class="pitch-list">${pitch.sprints.items.map(i=>`<li><a href="${i.href}" style="color:inherit;text-decoration:none">${i.text}</a></li>`).join('')}</ul>
+          <div class="pitch-sec-label">Top priorities</div>
+          <ol style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">${stepsHtml}</ol>
         </div>
         <div class="pitch-sec pitch-ask">
-          <div class="pitch-sec-label">${pitch.ask.label}</div>
-          <p>${pitch.ask.body}</p>
+          <div class="pitch-sec-label">Quick links</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">${linksHtml}</div>
         </div>
       </div>
     </div>`;
@@ -850,16 +834,17 @@ function renderPitch(pitch) {
 
 function copyPitch() {
   const btn = document.querySelector('.pitch-copy-btn');
-  const header = document.querySelector('.pitch-boss-header h3');
-  let text = (header ? header.textContent : '') + '\n\n';
+  const score = document.querySelector('.pitch-boss-sub')?.textContent || '';
+  let text = 'Pitch to Your Boss — Campaign Automation\n' + score + '\n\n';
   document.querySelectorAll('.pitch-sec').forEach(sec => {
     const label = sec.querySelector('.pitch-sec-label')?.textContent || '';
     const body = sec.querySelector('p')?.textContent || '';
-    const items = Array.from(sec.querySelectorAll('li')).map(li => '• ' + li.textContent).join('\n');
-    text += label.toUpperCase() + '\n' + (body || items) + '\n\n';
+    const items = Array.from(sec.querySelectorAll('li')).map((li,i) => `${i+1}. ${li.textContent}`).join('\n');
+    const links = Array.from(sec.querySelectorAll('a')).map(a => `• ${a.textContent.replace(' →','')} — ${a.href}`).join('\n');
+    text += label.toUpperCase() + '\n' + (body || items || links) + '\n\n';
   });
   navigator.clipboard.writeText(text.trim()).then(() => {
-    if(btn){ btn.textContent='Copied ✓'; setTimeout(()=>{ btn.textContent='Copy to clipboard →'; }, 2500); }
+    if(btn){ btn.textContent='Copied ✓'; setTimeout(()=>{ btn.textContent='Copy to clipboard →'; },2500); }
   }).catch(() => { if(btn) btn.textContent='Select text above to copy'; });
 }
 
@@ -1047,6 +1032,16 @@ function showScorecard() {
   },120);
 
   window.scrollTo({top:0,behavior:"smooth"});
+
+  // Switch nav CTA from "Get Audit" to next step now that score is visible
+  document.querySelectorAll('a.nav-cta').forEach(function(el){
+    el.href = '/solutions/automation-sprints';
+    el.textContent = 'Plan Sprints →';
+  });
+  document.querySelectorAll('a.mobile-cta').forEach(function(el){
+    el.href = '/solutions/automation-sprints';
+    el.textContent = 'Plan Sprints →';
+  });
 }
 
 // Pre-select service from ?ref= URL param and customise intake header
