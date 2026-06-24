@@ -190,6 +190,46 @@ function initTerminalTyping(terminal) {
 
 document.querySelectorAll('.terminal[data-animate]').forEach(initTerminalTyping);
 
+/* ── TIER COPY ───────────────────────────────────────────── */
+const TIER_COPY = {
+  siloed: {
+    name: 'Siloed',
+    heroSub: 'Break business data and intelligence silos — build connections faster and remove organizational barriers with expert consulting, training, and hands-on project management.',
+    heroCta: 'Break the Silos Holding You Back →',
+    heroCtaHref: '/tools/readiness-score?ref=audit',
+    chipTagline: 'Your data silos are the constraint',
+    sprintInsert: 'Disconnected data and fragmented teams are your binding constraint. Start with the Campaign Automation Audit to map exactly where the barriers are — before you build anything.',
+  },
+  emerging: {
+    name: 'Emerging',
+    heroSub: 'You have the foundation — now systematize it. Connect your campaign data, eliminate manual handoffs, and build automation that compounds across every channel.',
+    heroCta: 'Build on Your Foundation →',
+    heroCtaHref: '/solutions/automation-sprints',
+    chipTagline: 'Ready to systematize',
+    sprintInsert: 'Foundation sprints are available for your score. The Audit will confirm which workflow delivers the fastest ROI and prevent you from building on a shaky base.',
+  },
+  operational: {
+    name: 'Operational',
+    heroSub: 'You\'re running well. The next layer is optimization — close the gaps between your tools, reduce manual overhead, and compound your automation advantages across every campaign.',
+    heroCta: 'Unlock the Next Level →',
+    heroCtaHref: '/solutions/automation-sprints',
+    chipTagline: 'Optimize for compounding leverage',
+    sprintInsert: 'All sprints are unlocked for your score. Recommended options are highlighted based on your industry profile.',
+  },
+  agentic: {
+    name: 'Agentic',
+    heroSub: 'You\'re ahead of the curve. The next layer is intelligence — agentic systems that plan, adjust, and report without manual intervention. Let\'s build the infrastructure.',
+    heroCta: 'Go Fully Agentic →',
+    heroCtaHref: '/platform',
+    chipTagline: 'Build agentic intelligence',
+    sprintInsert: 'Full sprint catalogue available. The Campaign Strategy Portal gives you ongoing AI-generated intelligence that runs ahead of your campaigns — not behind them.',
+  },
+};
+
+function getTierKey(score) {
+  return score >= 85 ? 'agentic' : score >= 70 ? 'operational' : score >= 50 ? 'emerging' : 'siloed';
+}
+
 /* ── READINESS SCORE PERSISTENCE + CHIP ─────────────── */
 const RSCORE = {
   KEY: 'ca_readiness',
@@ -202,23 +242,23 @@ const RSCORE = {
 (function injectScoreChip() {
   const data = RSCORE.load();
   if (!data || data.score === undefined) return;
-  const tiers = ['Siloed','Emerging','Operational','Agentic'];
-  const tier = data.score >= 85 ? tiers[3] : data.score >= 70 ? tiers[2] : data.score >= 50 ? tiers[1] : tiers[0];
+  const tk = getTierKey(data.score);
+  const copy = TIER_COPY[tk];
 
   const chip = document.createElement('a');
   chip.href = '/tools/readiness-score';
   chip.className = 'score-chip';
-  chip.setAttribute('aria-label', `Your readiness score: ${data.score} out of 100, ${tier}. Click to view or retake.`);
+  chip.setAttribute('aria-label', `Your readiness score: ${data.score} out of 100, ${copy.name}. Click to view results.`);
   chip.innerHTML = `
     <div style="display:flex;align-items:baseline;gap:2px">
       <span class="score-chip-num">${data.score}</span>
       <span class="score-chip-denom">/100</span>
     </div>
     <div class="score-chip-meta">
-      <span class="score-chip-tier">${tier}</span>
-      <span class="score-chip-label">Readiness Score</span>
+      <span class="score-chip-tier">${copy.name}</span>
+      <span class="score-chip-label">${copy.chipTagline}</span>
     </div>
-    <span class="score-chip-retake">Retake →</span>
+    <span class="score-chip-retake">View results →</span>
   `;
   document.body.appendChild(chip);
 })();
@@ -322,22 +362,17 @@ function injectRecBadge(card) {
 function injectScoreHeroInsert(score, data) {
   const target = document.getElementById('sprint-hero-insert-target');
   if (!target) return;
-  const tier = score >= 85 ? 'Agentic' : score >= 70 ? 'Operational' : score >= 50 ? 'Emerging' : 'Siloed';
+  const tk = getTierKey(score);
+  const copy = TIER_COPY[tk];
   const industryLabels = {ecom:'E-commerce/DTC',b2b_saas:'B2B SaaS',b2b_svc:'B2B Services',agency:'Agency',local:'Local/Regional',other:'Other'};
   const indLabel = data.industry ? ` · ${industryLabels[data.industry]||''}` : '';
-  const tierMsg = {
-    Siloed: 'Start with the Campaign Automation Audit to unlock sprint eligibility.',
-    Emerging: 'Foundation sprints are now available. The Audit will confirm your highest-ROI workflow.',
-    Operational: 'All sprints unlocked. Recommended sprints are highlighted for your profile.',
-    Agentic: 'Full sprint catalogue available. Consider the Strategy Portal for ongoing intelligence.'
-  };
   const insert = document.createElement('div');
   insert.className = 'score-hero-insert';
   insert.innerHTML = `
     <div class="shi-score">${score}</div>
     <div class="shi-body">
-      <strong>Your score: ${tier}${indLabel}</strong>
-      <p>${tierMsg[tier]}</p>
+      <strong>Your score: ${copy.name}${indLabel}</strong>
+      <p>${copy.sprintInsert}</p>
     </div>
   `;
   target.parentNode.insertBefore(insert, target);
@@ -357,6 +392,28 @@ function injectNoScoreBanner() {
   `;
   target.parentNode.insertBefore(banner, target);
 }
+
+/* Swap hero language based on tier — runs on any page with .hero-sub */
+(function injectTierLanguage() {
+  const data = RSCORE.load();
+  if (!data || data.score === undefined) return;
+  const copy = TIER_COPY[getTierKey(data.score)];
+
+  // Homepage / landing hero subtext
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) {
+    heroSub.textContent = copy.heroSub;
+    heroSub.setAttribute('data-tier-personalized', 'true');
+  }
+
+  // Primary hero CTA button — only swap if it still points to default destinations
+  const defaultHrefs = ['/solutions/campaign-audit', '/get-started'];
+  const heroCta = document.querySelector('.hero-actions .btn-primary');
+  if (heroCta && defaultHrefs.some(h => heroCta.getAttribute('href') === h)) {
+    heroCta.textContent = copy.heroCta;
+    heroCta.href = copy.heroCtaHref;
+  }
+})();
 
 /* Run gating on pages that have sprint/offering cards */
 if (document.querySelector('[data-min-score]')) {
