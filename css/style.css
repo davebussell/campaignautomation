@@ -1188,7 +1188,5 @@ footer{
 .nav-score:hover{opacity:.75}
 .nav-score-num{font-weight:800;font-size:15px;font-family:var(--f-display);letter-spacing:-.02em}
 .nav-score-label{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase}
-.nav-score--siloed{color:#D52B1E;border-color:rgba(213,43,30,.4)}
-.nav-score--emerging{color:#FFE200;border-color:rgba(255,226,0,.4)}
-.nav-score--operational{color:#C8F135;border-color:rgba(200,241,53,.4)}
-.nav-score--agentic{color:#C8F135;border-color:rgba(200,241,53,.4);box-shadow:0 0 12px rgba(200,241,53,.2)}
+.nav-score--siloed,.nav-score--emerging,.nav-score--operational,.nav-score--agentic{color:var(--signal);border-color:rgba(200,241,53,.4)}
+.nav-score--agentic{box-shadow:0 0 12px rgba(200,241,53,.2)}
