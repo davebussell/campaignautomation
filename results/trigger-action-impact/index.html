@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trigger/Action/Impact — The AI Automation Accountability Framework</title>
+<meta name="description" content="The TAI framework explains how every AI automation action is initiated by a trigger, constrained by guardrails, executed as an action, and measured as impact. Full documentation.">
+<link rel="canonical" href="https://campaignautomation.ai/results/trigger-action-impact">
+<link rel="alternate" hreflang="en-CA" href="https://campaignautomation.ai/results/trigger-action-impact">
+<link rel="alternate" hreflang="en-US" href="https://campaignautomation.ai/results/trigger-action-impact">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.tai-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;align-items:start}
+.tai-sidebar{position:sticky;top:96px}
+.tai-sidebar nav{display:flex;flex-direction:column;gap:4px}
+.tai-sidebar nav a{font-family:var(--f-mono);font-size:13px;color:var(--mist);text-decoration:none;padding:8px 12px;border-radius:6px;border-left:2px solid transparent;transition:color .2s,border-color .2s}
+.tai-sidebar nav a:hover{color:var(--ink);border-left-color:var(--signal)}
+.tai-sidebar .sidebar-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate2);margin-bottom:12px}
+.tai-article section{padding:48px 0;border-bottom:1px solid var(--border)}
+.tai-article section:last-child{border-bottom:none}
+.tai-article h2{font-size:28px;color:var(--ink);margin-bottom:20px}
+.tai-article p{color:#444;line-height:1.75;margin-bottom:16px}
+.tai-article ul{color:#444;line-height:1.75;padding-left:20px;margin-bottom:16px}
+.tai-article ul li{margin-bottom:8px}
+.sprint-callout{border:2px solid var(--signal);border-radius:12px;padding:24px;margin:48px 0;background:rgba(255,255,255,.5)}
+.sprint-callout .sprint-callout-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
+.sprint-callout h3{font-size:20px;color:var(--ink);margin-bottom:8px}
+.sprint-callout p{color:#555;margin-bottom:16px}
+@media(max-width:768px){.tai-layout{grid-template-columns:1fr}.tai-sidebar{display:none}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item" role="listitem">
+      <a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem" aria-current="page">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a><a href="/results">Results</a><a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
+  </div>
+  <a href="/solutions/campaign-audit" class="mobile-cta">Get a Campaign Automation Audit →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/results">Results</a><span aria-hidden="true">/</span>
+    <span class="current">Trigger/Action/Impact</span>
+  </nav>
+
+  <section class="page-hero snap-sec" aria-labelledby="tai-heading">
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Framework</div>
+    <h1 id="tai-heading">Every AI action has a trigger, an outcome, and a logged reason.</h1>
+    <p class="lead">The TAI framework is the accountability layer underneath every automation we build. It replaces "the AI did something" with a precise, auditable record of what happened and why.</p>
+  </section>
+
+  <section class="section snap-sec" aria-labelledby="tai-doc-heading">
+    <h2 class="sr-only" id="tai-doc-heading">TAI Framework documentation</h2>
+    <div class="tai-layout">
+
+      <aside class="tai-sidebar" aria-label="On this page">
+        <p class="sidebar-label">On this page</p>
+        <nav aria-label="Section navigation">
+          <a href="#trigger">What is a trigger</a>
+          <a href="#action">What is an action</a>
+          <a href="#impact">What is an impact</a>
+          <a href="#guardrails">How guardrails interact</a>
+          <a href="#log">The activity log</a>
+        </nav>
+      </aside>
+
+      <div class="tai-article">
+
+        <section id="trigger" aria-labelledby="trigger-heading">
+          <div class="pillar-tag signal" style="margin-bottom:16px">Trigger</div>
+          <h2 id="trigger-heading">What is a trigger?</h2>
+          <p>A trigger is a defined condition that initiates an automated action. It is not a schedule, a timer, or a guess — it is a specific, observable data event that the system monitors continuously.</p>
+          <p>Triggers are written in plain language and translated into machine-readable rules during sprint configuration. Examples include:</p>
+          <ul>
+            <li>CPA exceeds target threshold by more than 20% over a 3-day rolling window</li>
+            <li>An inbound lead has not received a follow-up within 4 hours of form submission</li>
+            <li>A keyword's quality score drops below 5 for two consecutive weeks</li>
+            <li>Monthly ad spend reaches 80% of budget before the 20th of the month</li>
+          </ul>
+          <p>Each trigger is documented in your AGENTS.md file and is reviewable, editable, and version-controlled. Triggers do not fire actions directly — they initiate a guardrail check first.</p>
+          <div class="terminal" aria-label="Trigger example" style="margin-top:24px">
+            <pre><code>trigger:
+  condition: CPA > target_CPA * 1.38
+  window:    3-day rolling average
+  source:    Google Ads API export (CSV)
+  check_frequency: daily at 06:00 EST</code></pre>
+          </div>
+        </section>
+
+        <section id="action" aria-labelledby="action-heading">
+          <div class="pillar-tag" style="margin-bottom:16px">Action</div>
+          <h2 id="action-heading">What is an action?</h2>
+          <p>An action is the specific change the system makes in response to a confirmed trigger — after all guardrails have been evaluated and passed.</p>
+          <p>Actions are scoped, bounded, and reversible by design. We do not build actions that make irreversible changes without a human approval gate. Every action has:</p>
+          <ul>
+            <li>A defined scope (which campaigns, ad groups, contacts, or records it touches)</li>
+            <li>A maximum change magnitude (e.g. bid adjustments capped at ±30%)</li>
+            <li>A rollback mechanism (logged before-state enables reversal)</li>
+            <li>An approval gate option (some actions can be set to "notify and wait" rather than "execute immediately")</li>
+          </ul>
+          <p>Actions are the deliverable of a sprint. When we hand over a sprint, we hand over the full action library: what each action does, when it fires, and how to modify or disable it.</p>
+          <div class="terminal" aria-label="Action example" style="margin-top:24px">
+            <pre><code>action:
+  type:      pause_ad_groups
+  targets:   [AG-004, AG-007, AG-011, AG-019]
+  secondary: reallocate_budget
+  amount:    $1,200 → top_performing_ad_groups
+  approval:  auto (guardrails passed)
+  logged:    before_state captured</code></pre>
+          </div>
+        </section>
+
+        <div class="sprint-callout" aria-label="Sprint callout">
+          <div class="sprint-callout-label">Turn this into action</div>
+          <h3>Build your first TAI-driven automation</h3>
+          <p>The PPC Intelligence Sprint builds your full trigger library, guardrail config, and TAI activity log — deployed and handed over in 2–4 weeks.</p>
+          <a href="/solutions/sprints/ppc-intelligence" class="btn-primary" style="font-size:14px;padding:12px 28px">See the PPC Intelligence Sprint →</a>
+        </div>
+
+        <section id="impact" aria-labelledby="impact-heading">
+          <div class="pillar-tag" style="margin-bottom:16px">Impact</div>
+          <h2 id="impact-heading">What is an impact?</h2>
+          <p>Impact is the measured outcome of an executed action, logged at the time of execution and tracked over the following observation window.</p>
+          <p>Impact is not a projection or an estimate. It is a before/after comparison logged automatically when the action runs. The impact record includes:</p>
+          <ul>
+            <li>The metric that changed (CPA, lead volume, conversion rate, time-to-action)</li>
+            <li>The before value and the after value at the observation window close</li>
+            <li>The number of human approvals required (target: zero for routine automations)</li>
+            <li>A timestamp and action ID for cross-referencing with the activity log</li>
+          </ul>
+          <p>Over time, the impact log becomes a performance record that informs future trigger thresholds, action scopes, and sprint prioritization.</p>
+          <div class="terminal" aria-label="Impact example" style="margin-top:24px">
+            <pre><code>impact:
+  metric:          CPA
+  before:          $94.20
+  after:           $61.23
+  change:          -35%
+  observation:     90 days
+  approvals_req:   0
+  action_id:       ACT-2024-1114-003
+  logged:          2024-11-14T06:04:22Z</code></pre>
+          </div>
+        </section>
+
+        <section id="guardrails" aria-labelledby="guardrails-heading">
+          <div class="pillar-tag signal" style="margin-bottom:16px">Guardrails</div>
+          <h2 id="guardrails-heading">How guardrails interact with TAI</h2>
+          <p>Guardrails are the conditions that must be satisfied before a trigger can fire its action. They sit between the trigger and the action, and they run on every cycle — not just the first time.</p>
+          <p>There are four standard guardrail types in our framework:</p>
+          <ul>
+            <li><strong>Spend guardrails</strong> — daily, weekly, and monthly caps. No action can exceed these. Period.</li>
+            <li><strong>Brand guardrails</strong> — brand exclusion lists, approved messaging matrices, tone constraints for automated copy.</li>
+            <li><strong>Approval guardrails</strong> — actions above a defined threshold (e.g. budget changes above $5,000) require explicit human sign-off before execution.</li>
+            <li><strong>Conflict guardrails</strong> — if two triggers fire simultaneously and their actions conflict, a conflict resolution protocol determines priority and the lower-priority action is queued.</li>
+          </ul>
+          <p>Guardrails are configured in your AGENTS.md file. They are plain language by design — a non-technical team member can read, understand, and update them without engineering support.</p>
+          <div class="terminal" aria-label="Guardrail example" style="margin-top:24px">
+            <pre><code>guardrails:
+  spend_cap_daily:   $3,000
+  spend_cap_monthly: $68,000
+  brand_exclusions:  [competitor_names.txt]
+  approval_threshold: budget_change > $5,000
+  conflict_protocol: highest_impact_first</code></pre>
+          </div>
+        </section>
+
+        <section id="log" aria-labelledby="log-heading">
+          <div class="pillar-tag" style="margin-bottom:16px">Activity log</div>
+          <h2 id="log-heading">The activity log</h2>
+          <p>Every trigger evaluation, guardrail check, action execution, and impact measurement is written to a structured activity log. The log is delivered as part of every sprint handoff and is updated continuously as the automation runs.</p>
+          <p>The log serves three purposes:</p>
+          <ul>
+            <li><strong>Accountability</strong> — you can see exactly what the AI did, when, and why. No black boxes.</li>
+            <li><strong>Optimization</strong> — the log surfaces patterns. Triggers that fire frequently but produce small impact may need threshold adjustment. Actions that consistently stay under guardrail limits may have room to scale.</li>
+            <li><strong>Compliance</strong> — for teams subject to internal audit, marketing governance, or client reporting requirements, the TAI log is a structured audit trail in a format designed for review.</li>
+          </ul>
+          <p>The log is exportable as CSV or JSON and can be piped into any reporting tool your team already uses — Google Sheets, Looker Studio, HubSpot, or a custom dashboard.</p>
+          <div class="terminal" aria-label="Activity log example" style="margin-top:24px">
+            <pre><code># Activity log — sample entries
+2024-11-14T06:04:22Z | ACT-003 | trigger:CPA_threshold | guardrails:PASS | action:pause_ad_groups | impact:-35%CPA
+2024-11-21T06:04:18Z | ACT-004 | trigger:CPA_threshold | guardrails:PASS | action:negative_kw_add  | impact:-8%wasted_spend
+2024-11-28T06:04:31Z | ACT-005 | trigger:budget_80pct  | guardrails:PASS | action:notify_human     | impact:alert_sent</code></pre>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="tagline-footer snap-sec">
+    <p class="reveal">Automation without accountability<br>is just noise.<br><span style="color:var(--signal)">Build it the right way.</span></p>
+    <a href="/solutions/campaign-audit" class="btn-primary reveal reveal-delay-2" style="margin-top:40px;font-size:15px;padding:16px 36px">Start with a Campaign Automation Audit →</a>
+  </div>
+</main>
+<footer role="contentinfo" aria-label="Site footer">
+  <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
+  </div>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a>
+  </nav>
+  <nav aria-label="Learn"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
+    <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/templates">Templates</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
