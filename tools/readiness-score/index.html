@@ -565,6 +565,30 @@ function showScorecard() {
           <label for="i-email">Work email</label>
           <input type="email" id="i-email" placeholder="jane@acme.com" autocomplete="email">
         </div>
+        <div class="intake-row">
+          <div class="intake-field">
+            <label for="i-industry">Industry</label>
+            <select id="i-industry">
+              <option value="">Select…</option>
+              <option value="ecom">E-commerce / DTC</option>
+              <option value="b2b_saas">B2B SaaS</option>
+              <option value="b2b_svc">B2B Services / Consulting</option>
+              <option value="agency">Marketing Agency</option>
+              <option value="local">Local / Regional Business</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="intake-field">
+            <label for="i-stage">Company stage</label>
+            <select id="i-stage">
+              <option value="">Select…</option>
+              <option value="pre">Pre-revenue / Seed</option>
+              <option value="early">Early ($0–$1M ARR)</option>
+              <option value="growth">Growth ($1M–$10M)</option>
+              <option value="scale">Scale ($10M+)</option>
+            </select>
+          </div>
+        </div>
         <div class="intake-field">
           <label for="i-service">I'm interested in</label>
           <select id="i-service">
@@ -599,6 +623,13 @@ function showScorecard() {
 
     <button class="retake-btn" type="button" onclick="retake()">Retake the assessment</button>
   `;
+
+  // Persist score to localStorage so chip + gating work site-wide
+  if(typeof RSCORE !== 'undefined') {
+    RSCORE.save({score: finalScore, tier: tier.name, dims: Object.fromEntries(Object.entries(dims).map(([k,d])=>[k,{raw:d.raw,max:d.max}]))});
+  } else {
+    try { localStorage.setItem('ca_readiness', JSON.stringify({score:finalScore, tier:tier.name, savedAt:Date.now()})); } catch(e){}
+  }
 
   setTimeout(()=>{
     sc.querySelectorAll(".dim-bar-fill").forEach(b=>{ b.style.width=b.dataset.w; });
@@ -666,11 +697,19 @@ function submitIntake() {
   if(!email || !email.includes("@")){ document.getElementById("i-email").focus(); return; }
   if(!service){ document.getElementById("i-service").focus(); return; }
 
+  const industry = document.getElementById("i-industry")?.value || '';
+  const stage = document.getElementById("i-stage")?.value || '';
   const {finalScore} = computeScore();
   const tier = getTier(finalScore);
 
+  // Persist industry + stage so sprint recommendations work site-wide
+  try {
+    const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
+    localStorage.setItem('ca_readiness', JSON.stringify({...existing, industry, stage}));
+  } catch(e){}
+
   // Phase 1 — log to console; wire to form backend in Phase 2
-  console.log("Intake submission:", {name, email, company, service, challenge, score: finalScore, tier: tier.name});
+  console.log("Intake submission:", {name, email, company, industry, stage, service, challenge, score: finalScore, tier: tier.name});
 
   document.getElementById("sent-score-line").textContent = `Score: ${finalScore}/100 · ${tier.name}`;
   document.getElementById("intake-form-el").style.display="none";

@@ -80,45 +80,98 @@
 
   <section class="page-hero reveal">
     <div class="signal-badge">2–4 weeks · Fixed scope · You own the output</div>
-    <h1>Pick one campaign workflow. Automate it. Measure it. Own it.</h1>
-    <p class="tagline-footer">Automation Sprints are scoped engagements where we build a single AI-powered workflow with your team — from prompt design through handover and training. No retainers. No black-box tools.</p>
-    <a href="/solutions/campaign-audit" class="btn-primary">Start with a Campaign Automation Audit →</a>
+    <h1>Pick one workflow.<br>Build it. Own it.</h1>
+    <p class="tagline-footer">Automation Sprints are scoped engagements where we build a single AI-powered workflow with your team — from prompt design through handover and training. No retainers. No black-box tools. The right sprint for you depends on your Readiness Score.</p>
+    <a href="/tools/readiness-score?ref=sprint" class="btn-primary">Get your Readiness Score →</a>
   </section>
 
   <section class="section bone reveal">
     <h2>Choose your sprint</h2>
-    <p>Each sprint targets one high-value workflow. Most clients start with the audit to confirm which sprint is the right fit.</p>
-    <div class="grid-3">
-      <div class="pillar-card">
-        <div class="signal-badge" style="margin-bottom:12px">$5k–$10k · 2–3 weeks</div>
-        <h3>PPC Intelligence</h3>
-        <p>Automated search term classification, negative keyword workflows, and weekly performance digest — built in Claude with your data exports as the source of truth.</p>
+    <p>Each sprint has a minimum Readiness Score. Your score determines which workflows you're ready to automate — and the Audit narrows it to the highest-ROI option for your industry and stage.</p>
+
+    <div id="sprint-hero-insert-target"></div>
+
+    <div class="sprint-grid">
+
+      <!-- Score 0+ — always visible as entry point -->
+      <div class="sprint-card" data-min-score="0" data-sprint-id="audit-first" style="border-color:var(--signal);grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center">
+        <div>
+          <div class="sprint-badge" style="margin-bottom:10px">
+            <span class="signal-badge">Step 1 — Always first</span>
+            <span class="price-tag">$750–$2,500 · One-time</span>
+          </div>
+          <h3 style="font-size:20px">Campaign Automation Audit</h3>
+          <p style="margin:8px 0 0">The Audit is the diagnostic that scopes every sprint. It maps your stack, identifies your highest-ROI automation opportunity, and tells us exactly which sprint to build — and in what order. No audit, no sprint.</p>
+        </div>
+        <a href="/solutions/campaign-audit" class="btn-primary" style="white-space:nowrap;align-self:center">Learn more →</a>
       </div>
-      <div class="pillar-card">
-        <div class="signal-badge" style="margin-bottom:12px">$5k–$10k · 2–3 weeks</div>
-        <h3>Campaign Launch Kit</h3>
-        <p>An AI-powered launch checklist, asset brief generator, and QA workflow that cuts campaign setup time from days to hours.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="signal-badge" style="margin-bottom:12px">$5k–$10k · 2–3 weeks</div>
-        <h3>SEO/PPC Opportunity</h3>
-        <p>Recurring gap analysis across paid and organic — surfaces cannibalisation, missed keywords, and budget reallocation opportunities on a defined cadence.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="signal-badge" style="margin-bottom:12px">$8k–$15k · 3–4 weeks</div>
-        <h3>Lead Reactivation</h3>
-        <p>AI-scored lead list, personalised outreach sequences, and CRM tagging workflow — designed for teams with stale pipeline and limited SDR capacity.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="signal-badge" style="margin-bottom:12px">$5k–$10k · 2–3 weeks</div>
-        <h3>Event Follow-Up</h3>
-        <p>Post-event segmentation, personalised follow-up sequence generation, and lead routing — automated from attendee list to first touch within 24 hours.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="signal-badge" style="margin-bottom:12px">$5k–$8k · 2 weeks</div>
+
+      <!-- Score 40+ — Content Brief (entry-level, visible to all as teaser) -->
+      <div class="sprint-card" data-min-score="40" data-sprint-id="content-brief">
+        <div class="sprint-badge">
+          <span class="price-tag">$5k–$8k · 2 weeks</span>
+          <span class="min-score-tag">Score 40+</span>
+        </div>
         <h3>Content Brief</h3>
-        <p>A structured AI workflow that turns a keyword or topic into a full content brief — audience, angle, outline, and internal linking — in under five minutes.</p>
+        <p>A structured AI workflow that turns a keyword or topic into a full content brief — audience, angle, outline, and internal linking — in under five minutes. The fastest win in the catalogue.</p>
+        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
       </div>
+
+      <!-- Score 50+ — Campaign Launch Kit -->
+      <div class="sprint-card" data-min-score="50" data-sprint-id="launch-kit">
+        <div class="sprint-badge">
+          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
+          <span class="min-score-tag">Score 50+</span>
+        </div>
+        <h3>Campaign Launch Kit</h3>
+        <p>An AI-powered launch checklist, asset brief generator, and QA workflow that cuts campaign setup time from days to hours. Requires consistent naming conventions and a documented launch process.</p>
+        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+      </div>
+
+      <!-- Score 50+ — PPC Intelligence -->
+      <div class="sprint-card" data-min-score="50" data-sprint-id="ppc-intelligence">
+        <div class="sprint-badge">
+          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
+          <span class="min-score-tag">Score 50+</span>
+        </div>
+        <h3>PPC Intelligence</h3>
+        <p>Automated search term classification, negative keyword workflows, and weekly performance digest — built in Claude with your data exports as the source of truth. Requires clean conversion tracking.</p>
+        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+      </div>
+
+      <!-- Score 55+ — SEO/PPC Opportunity -->
+      <div class="sprint-card" data-min-score="55" data-sprint-id="seo-ppc">
+        <div class="sprint-badge">
+          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
+          <span class="min-score-tag">Score 55+</span>
+        </div>
+        <h3>SEO/PPC Opportunity</h3>
+        <p>Recurring gap analysis across paid and organic — surfaces cannibalisation, missed keywords, and budget reallocation opportunities on a defined cadence. Requires Search Console + GA4 data exports.</p>
+        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+      </div>
+
+      <!-- Score 55+ — Event Follow-Up -->
+      <div class="sprint-card" data-min-score="55" data-sprint-id="event-followup">
+        <div class="sprint-badge">
+          <span class="price-tag">$5k–$10k · 2–3 weeks</span>
+          <span class="min-score-tag">Score 55+</span>
+        </div>
+        <h3>Event Follow-Up</h3>
+        <p>Post-event segmentation, personalised follow-up sequence generation, and lead routing — automated from attendee list to first touch within 24 hours. Requires CRM and email platform access.</p>
+        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+      </div>
+
+      <!-- Score 60+ — Lead Reactivation (highest complexity) -->
+      <div class="sprint-card" data-min-score="60" data-sprint-id="lead-reactivation">
+        <div class="sprint-badge">
+          <span class="price-tag">$8k–$15k · 3–4 weeks</span>
+          <span class="min-score-tag">Score 60+</span>
+        </div>
+        <h3>Lead Reactivation</h3>
+        <p>AI-scored lead list, personalised outreach sequences, and CRM tagging workflow — designed for teams with stale pipeline and limited SDR capacity. Requires structured CRM data and a defined ICP.</p>
+        <a href="/tools/readiness-score?ref=sprint" class="sprint-cta">Request this sprint →</a>
+      </div>
+
     </div>
   </section>
 
@@ -164,11 +217,11 @@
   </section>
 
   <section class="section bone reveal" style="text-align:center">
-    <h2>Not sure which sprint is right?</h2>
-    <p>The Campaign Automation Audit maps your biggest opportunity and recommends the exact sprint to start with.</p>
+    <h2>Not sure which sprint is right for you?</h2>
+    <p>The Readiness Score narrows your options. The Audit tells us exactly what to build first — based on your industry, stage, current stack, and where the highest ROI lives. Pick one workflow. Build it. Own it.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px">
-      <a href="/solutions/campaign-audit" class="btn-primary">Start with a Campaign Automation Audit →</a>
-      <a href="/tools/readiness-score" class="btn-ghost">Take the free Readiness Score</a>
+      <a href="/tools/readiness-score?ref=sprint" class="btn-primary">Get your Readiness Score →</a>
+      <a href="/solutions/campaign-audit" class="btn-ghost">Learn about the Audit →</a>
     </div>
   </section>
 

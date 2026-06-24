@@ -190,6 +190,162 @@ function initTerminalTyping(terminal) {
 
 document.querySelectorAll('.terminal[data-animate]').forEach(initTerminalTyping);
 
+/* ── READINESS SCORE PERSISTENCE + CHIP ─────────────── */
+const RSCORE = {
+  KEY: 'ca_readiness',
+  save(data) { try { localStorage.setItem(this.KEY, JSON.stringify({...data, savedAt: Date.now()})); } catch(e){} },
+  load() { try { const d = localStorage.getItem(this.KEY); return d ? JSON.parse(d) : null; } catch(e){ return null; } },
+  clear() { try { localStorage.removeItem(this.KEY); } catch(e){} }
+};
+
+/* Floating score chip — injects on every page if score exists */
+(function injectScoreChip() {
+  const data = RSCORE.load();
+  if (!data || data.score === undefined) return;
+  const tiers = ['Siloed','Emerging','Operational','Agentic'];
+  const tier = data.score >= 85 ? tiers[3] : data.score >= 70 ? tiers[2] : data.score >= 50 ? tiers[1] : tiers[0];
+
+  const chip = document.createElement('a');
+  chip.href = '/tools/readiness-score';
+  chip.className = 'score-chip';
+  chip.setAttribute('aria-label', `Your readiness score: ${data.score} out of 100, ${tier}. Click to view or retake.`);
+  chip.innerHTML = `
+    <div style="display:flex;align-items:baseline;gap:2px">
+      <span class="score-chip-num">${data.score}</span>
+      <span class="score-chip-denom">/100</span>
+    </div>
+    <div class="score-chip-meta">
+      <span class="score-chip-tier">${tier}</span>
+      <span class="score-chip-label">Readiness Score</span>
+    </div>
+    <span class="score-chip-retake">Retake →</span>
+  `;
+  document.body.appendChild(chip);
+})();
+
+/* Apply score gating to any page with [data-min-score] elements */
+function applyScoreGating() {
+  const cards = document.querySelectorAll('[data-min-score]');
+  if (!cards.length) return;
+  const data = RSCORE.load();
+  const score = data ? data.score : -1;
+  const industry = data ? (data.industry || '') : '';
+
+  // Industry → recommended sprint IDs
+  const industryMap = {
+    ecom:    ['ppc-intelligence','event-followup','lead-reactivation'],
+    b2b_saas:['lead-reactivation','content-brief','seo-ppc'],
+    b2b_svc: ['lead-reactivation','event-followup','launch-kit'],
+    agency:  ['content-brief','launch-kit','seo-ppc'],
+    local:   ['ppc-intelligence','launch-kit','event-followup'],
+    other:   ['content-brief','launch-kit']
+  };
+  const recommended = industryMap[industry] || [];
+
+  cards.forEach(card => {
+    const minScore = parseInt(card.dataset.minScore, 10);
+    const sprintId = card.dataset.sprintId || '';
+    const isRec = recommended.includes(sprintId);
+
+    card.classList.remove('locked','available','recommended');
+
+    if (score < 0) {
+      // No score taken yet — show low-complexity as teaser, lock the rest
+      if (minScore <= 45) {
+        card.classList.add('available');
+      } else {
+        card.classList.add('locked');
+        injectLockOverlay(card, minScore, 'Take the free Readiness Score to unlock');
+      }
+    } else if (score >= minScore) {
+      card.classList.add(isRec ? 'recommended' : 'available');
+      if (isRec) injectRecBadge(card);
+    } else {
+      card.classList.add('locked');
+      const msg = score < 50
+        ? `Complete the Audit to unlock (score ${minScore}+ required)`
+        : `Score ${minScore}+ required — your score: ${score}`;
+      injectLockOverlay(card, minScore, msg);
+    }
+  });
+
+  // Score-personalised hero insert
+  if (score >= 0) injectScoreHeroInsert(score, data);
+  else injectNoScoreBanner();
+}
+
+function injectLockOverlay(card, minScore, msg) {
+  if (card.querySelector('.sprint-lock-overlay')) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'sprint-lock-overlay';
+  overlay.innerHTML = `
+    <span class="lock-icon" aria-hidden="true">🔒</span>
+    <span class="lock-msg">${msg}</span>
+    <a href="/tools/readiness-score">Take the Readiness Score →</a>
+  `;
+  card.style.position = 'relative';
+  card.appendChild(overlay);
+  card.style.filter = '';
+  card.style.opacity = '.45';
+  card.style.pointerEvents = 'none';
+  overlay.style.pointerEvents = 'all';
+  overlay.querySelectorAll('a').forEach(a => { a.style.pointerEvents = 'all'; });
+}
+
+function injectRecBadge(card) {
+  if (card.querySelector('.rec-badge')) return;
+  const badge = document.createElement('span');
+  badge.className = 'rec-badge';
+  badge.textContent = '★ Best match';
+  const badgeRow = card.querySelector('.sprint-badge');
+  if (badgeRow) badgeRow.prepend(badge);
+  else card.prepend(badge);
+}
+
+function injectScoreHeroInsert(score, data) {
+  const target = document.getElementById('sprint-hero-insert-target');
+  if (!target) return;
+  const tier = score >= 85 ? 'Agentic' : score >= 70 ? 'Operational' : score >= 50 ? 'Emerging' : 'Siloed';
+  const industryLabels = {ecom:'E-commerce/DTC',b2b_saas:'B2B SaaS',b2b_svc:'B2B Services',agency:'Agency',local:'Local/Regional',other:'Other'};
+  const indLabel = data.industry ? ` · ${industryLabels[data.industry]||''}` : '';
+  const tierMsg = {
+    Siloed: 'Start with the Campaign Automation Audit to unlock sprint eligibility.',
+    Emerging: 'Foundation sprints are now available. The Audit will confirm your highest-ROI workflow.',
+    Operational: 'All sprints unlocked. Recommended sprints are highlighted for your profile.',
+    Agentic: 'Full sprint catalogue available. Consider the Strategy Portal for ongoing intelligence.'
+  };
+  const insert = document.createElement('div');
+  insert.className = 'score-hero-insert';
+  insert.innerHTML = `
+    <div class="shi-score">${score}</div>
+    <div class="shi-body">
+      <strong>Your score: ${tier}${indLabel}</strong>
+      <p>${tierMsg[tier]}</p>
+    </div>
+  `;
+  target.parentNode.insertBefore(insert, target);
+}
+
+function injectNoScoreBanner() {
+  const target = document.getElementById('sprint-hero-insert-target');
+  if (!target) return;
+  const banner = document.createElement('div');
+  banner.className = 'score-gate-banner';
+  banner.innerHTML = `
+    <div class="sgb-text">
+      <strong>Your sprint options depend on your Readiness Score</strong>
+      <p>Some sprints are locked until you hit a minimum score threshold. The score takes 4 minutes and is free.</p>
+    </div>
+    <a href="/tools/readiness-score" class="sgb-btn">Take the free Readiness Score →</a>
+  `;
+  target.parentNode.insertBefore(banner, target);
+}
+
+/* Run gating on pages that have sprint/offering cards */
+if (document.querySelector('[data-min-score]')) {
+  applyScoreGating();
+}
+
 /* ── PARALLAX — hero only, desktop only ──────────────────── */
 const heroSection = document.querySelector('.hero');
 if (heroSection && !prefersReducedMotion) {
