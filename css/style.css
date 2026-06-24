@@ -1200,3 +1200,10 @@ nav.mobile-menu a.nav-next-step::before{content:"→ ";font-size:.9em}
 .nav-score-label{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase}
 .nav-score--siloed,.nav-score--emerging,.nav-score--operational,.nav-score--agentic{color:var(--signal);border-color:rgba(200,241,53,.4)}
 .nav-score--agentic{box-shadow:0 0 12px rgba(200,241,53,.2)}
+
+/* Score badge dropdown */
+.nav-score-item{position:relative;display:flex;align-items:center}
+.nav-score-item:hover .nav-score-dd,.nav-score-item:focus-within .nav-score-dd{display:flex}
+.nav-score-dd{min-width:220px;right:0;left:auto}
+.nav-score-reset{background:none;border:none;font-size:14px;color:#E05A4E;cursor:pointer;padding:10px 16px;text-align:left;width:100%;font-family:var(--f-body);letter-spacing:0;border-top:1px solid var(--border);margin-top:4px;transition:opacity .15s}
+.nav-score-reset:hover{opacity:.75}

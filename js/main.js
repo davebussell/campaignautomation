@@ -230,6 +230,13 @@ function getTierKey(score) {
   return score >= 85 ? 'agentic' : score >= 70 ? 'operational' : score >= 50 ? 'emerging' : 'siloed';
 }
 
+function clearReadinessScore() {
+  RSCORE.clear();
+  try { localStorage.removeItem('ca_funnel'); } catch(e) {}
+  try { localStorage.removeItem('ca_plan'); } catch(e) {}
+  window.location.reload();
+}
+
 /* ── READINESS SCORE PERSISTENCE + CHIP ─────────────── */
 const RSCORE = {
   KEY: 'ca_readiness',
@@ -319,20 +326,28 @@ const FUNNEL = {
   const stg       = FUNNEL.stage();
   const ctaCfg    = FUNNEL.cta(stg, tier);
 
-  /* 1 — Replace .nav-cta with score badge (if scored) or updated CTA text */
+  /* 1 — Replace .nav-cta with score badge+dropdown (if scored) or updated CTA text */
   document.querySelectorAll('a.nav-cta').forEach(el => {
     if (hasScore) {
       const score = scoreData.score;
-      const tierClass = tier;
       const tierName  = score>=85?'Agentic':score>=70?'Operational':score>=50?'Emerging':'Siloed';
-      const badge = document.createElement('a');
-      badge.href = '/tools/readiness-score';
-      badge.className = `nav-score nav-score--${tierClass}`;
-      badge.setAttribute('aria-label', `Your Readiness Score: ${score} — ${tierName}. View results.`);
-      badge.innerHTML = `<span class="nav-score-num">${score}</span><span class="nav-score-label">${tierName}</span>`;
-      el.replaceWith(badge);
+      const wrapper = document.createElement('div');
+      wrapper.className = 'nav-item nav-score-item';
+      wrapper.setAttribute('role','listitem');
+      wrapper.innerHTML = `
+        <a href="/tools/readiness-score" class="nav-score nav-score--${tier}"
+          aria-label="Your Readiness Score: ${score} — ${tierName}">
+          <span class="nav-score-num">${score}</span>
+          <span class="nav-score-label">${tierName}</span>
+        </a>
+        <div class="dropdown nav-score-dd" role="menu" aria-label="Score actions">
+          <span class="dropdown-label">Score ${score}/100 — ${tierName}</span>
+          <a href="/tools/readiness-score" role="menuitem">View full scorecard →</a>
+          <a href="/get-started" role="menuitem">Plan your next steps →</a>
+          <button class="nav-score-reset" role="menuitem" type="button" onclick="clearReadinessScore()">Reset assessment</button>
+        </div>`;
+      el.replaceWith(wrapper);
     } else if (stg !== 'audit') {
-      /* No score but funnel stage changed — update CTA link/text */
       el.href = ctaCfg.href;
       el.textContent = ctaCfg.label;
     }

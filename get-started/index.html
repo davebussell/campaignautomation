@@ -16,10 +16,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/css/style.css">
 <style>
-.gs-wrap{max-width:680px;margin:0 auto;padding:0 24px 80px}
-.gs-hero{padding:48px 0 40px;text-align:center}
+.gs-wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+
+/* ── NO-SCORE STATE ── */
+.gs-hero{padding:48px 0 40px}
 .gs-hero h1{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.2;margin-bottom:16px}
-.gs-hero p{font-size:18px;color:var(--mist2);line-height:1.6;max-width:520px;margin:0 auto 32px}
+.gs-hero p{font-size:17px;color:var(--mist2);line-height:1.6;max-width:520px;margin:0 0 32px}
 .gs-steps{display:flex;flex-direction:column;gap:0;margin:48px 0}
 .gs-step{display:flex;gap:24px;padding:28px 0;border-top:1px solid var(--border)}
 .gs-step:last-child{border-bottom:1px solid var(--border)}
@@ -27,19 +29,83 @@
 .gs-step-body strong{font-size:17px;font-weight:600;display:block;margin-bottom:6px}
 .gs-step-body p{font-size:15px;color:var(--mist2);margin:0;line-height:1.55}
 .gs-step-body .step-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.07em;text-transform:uppercase;margin-top:8px}
-.gs-cta-block{margin:48px 0;padding:36px;border:2px solid var(--signal);border-radius:4px;text-align:center}
-.gs-cta-block h2{font-size:24px;font-weight:700;margin-bottom:10px}
-.gs-cta-block p{font-size:15px;color:var(--mist2);margin-bottom:28px;line-height:1.55}
-.gs-cta-block .score-meta{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.06em;margin-top:14px}
-.gs-services{margin:48px 0}
-.gs-services h2{font-size:20px;font-weight:700;margin-bottom:24px}
-.gs-service-card{display:flex;gap:20px;padding:20px 0;border-top:1px solid var(--border);align-items:flex-start}
-.gs-service-card:last-child{border-bottom:1px solid var(--border)}
-.gs-service-card .svc-name{font-size:15px;font-weight:600;margin-bottom:4px}
-.gs-service-card .svc-desc{font-size:14px;color:var(--mist2);line-height:1.5;margin:0}
-.gs-service-card .svc-price{font-family:var(--f-mono);font-size:12px;color:var(--mist);white-space:nowrap;padding-top:3px;min-width:90px}
-@keyframes fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.animate-in{animation:fade-up .35s ease both}
+
+/* ── SCORED STATE ── */
+.gs-scored{display:none}
+.gs-scored-hero{padding:40px 0 32px;border-bottom:1px solid var(--border);margin-bottom:40px}
+.gs-scored-eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
+.gs-scored-hero h1{font-size:clamp(26px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:8px}
+.gs-scored-hero .gs-tier-line{font-size:15px;color:var(--mist2);margin-bottom:20px}
+.gs-score-chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.gs-score-chip{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:5px 12px;border-radius:2px;border:1px solid var(--border);color:var(--mist2)}
+.gs-score-chip.signal{border-color:rgba(200,241,53,.3);color:var(--signal);background:rgba(200,241,53,.06)}
+.gs-rescore{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.05em;text-decoration:none;transition:color .15s}
+.gs-rescore:hover{color:var(--mist2)}
+
+/* ── PLAN TRAY ── */
+.gs-plan-tray{display:none;margin-bottom:40px;border:1px solid rgba(200,241,53,.3);border-radius:4px;overflow:hidden}
+.gs-plan-tray.has-items{display:block}
+.gs-plan-header{background:rgba(200,241,53,.08);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(200,241,53,.2)}
+.gs-plan-header h3{font-size:14px;font-weight:700;color:var(--signal);margin:0}
+.gs-plan-header span{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.05em}
+.gs-plan-items{padding:4px 0}
+.gs-plan-item{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.04)}
+.gs-plan-item:last-child{border-bottom:none}
+.gs-plan-item-name{font-size:14px;color:var(--bone)}
+.gs-plan-item-meta{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.04em;margin-top:2px}
+.gs-plan-remove{background:none;border:none;color:var(--mist);cursor:pointer;font-size:18px;line-height:1;padding:0 4px;transition:color .15s}
+.gs-plan-remove:hover{color:#E05A4E}
+.gs-plan-footer{padding:16px 20px;border-top:1px solid rgba(200,241,53,.2);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+/* ── RECOMMENDED ENGAGEMENTS ── */
+.gs-section-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-bottom:20px}
+.gs-rec-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:48px}
+.gs-rec-card{border:1px solid var(--border);border-radius:4px;padding:20px 24px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;transition:border-color .2s}
+.gs-rec-card:hover{border-color:rgba(200,241,53,.2)}
+.gs-rec-card.top-pick{border-color:rgba(200,241,53,.35);background:rgba(200,241,53,.03)}
+.gs-rec-top{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.gs-rec-badge{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
+.gs-rec-badge.top{background:rgba(200,241,53,.15);color:var(--signal);border:1px solid rgba(200,241,53,.3)}
+.gs-rec-badge.good{background:rgba(255,255,255,.06);color:var(--mist2);border:1px solid var(--border)}
+.gs-rec-badge.prep{background:rgba(213,43,30,.08);color:#E05A4E;border:1px solid rgba(213,43,30,.2)}
+.gs-rec-name{font-size:16px;font-weight:700;color:var(--bone);margin:0 0 6px}
+.gs-rec-why{font-size:13px;color:var(--mist2);line-height:1.55;margin:0 0 12px}
+.gs-rec-tags{display:flex;gap:8px;flex-wrap:wrap}
+.gs-rec-tag{font-family:var(--f-mono);font-size:10px;color:var(--mist);border:1px solid var(--border);padding:2px 7px;border-radius:2px;letter-spacing:.05em}
+.gs-rec-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.gs-rec-price{font-family:var(--f-mono);font-size:13px;color:var(--bone);white-space:nowrap;text-align:right}
+.gs-rec-timeline{font-family:var(--f-mono);font-size:10px;color:var(--mist);letter-spacing:.05em;text-align:right}
+.gs-add-btn{background:none;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:7px 14px;cursor:pointer;border-radius:3px;white-space:nowrap;transition:all .2s}
+.gs-add-btn:hover{border-color:var(--signal);color:var(--signal)}
+.gs-add-btn.added{border-color:rgba(200,241,53,.4);color:var(--signal);background:rgba(200,241,53,.08)}
+.gs-rec-link{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.05em;text-decoration:none;transition:color .15s}
+.gs-rec-link:hover{color:var(--mist2)}
+
+/* ── BUILDER PROFILES ── */
+.gs-builder-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.gs-filter-btn{background:none;border:1px solid var(--border);color:var(--mist);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:6px 14px;cursor:pointer;border-radius:3px;transition:all .2s}
+.gs-filter-btn:hover,.gs-filter-btn.active{border-color:var(--signal);color:var(--signal);background:rgba(200,241,53,.06)}
+.gs-builder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:48px}
+.gs-builder-card{border:1px solid var(--border);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
+.gs-builder-card:hover{border-color:rgba(200,241,53,.2)}
+.gs-builder-card[data-hidden]{display:none}
+.gs-builder-avail{display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--mist)}
+.gs-builder-avail .dot{width:6px;height:6px;border-radius:50%;background:var(--signal);flex-shrink:0}
+.gs-builder-name{font-size:15px;font-weight:700;color:var(--bone)}
+.gs-builder-role{font-size:13px;color:var(--mist2);line-height:1.45;margin-top:-4px}
+.gs-builder-skills{display:flex;gap:6px;flex-wrap:wrap}
+.gs-builder-skill{font-family:var(--f-mono);font-size:10px;color:var(--mist);border:1px solid var(--border);padding:2px 6px;border-radius:2px;letter-spacing:.04em}
+.gs-builder-platforms{display:flex;gap:6px;flex-wrap:wrap}
+.gs-builder-platform{font-family:var(--f-mono);font-size:10px;color:var(--mist2);background:var(--slate2);padding:2px 7px;border-radius:2px;letter-spacing:.04em}
+.gs-builder-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px;border-top:1px solid var(--border);padding-top:12px}
+.gs-builder-rate{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.05em}
+.gs-request-btn{background:none;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;padding:5px 12px;cursor:pointer;border-radius:3px;transition:all .2s;text-decoration:none}
+.gs-request-btn:hover{border-color:var(--signal);color:var(--signal)}
+
+@media(max-width:600px){
+  .gs-rec-card{grid-template-columns:1fr}
+  .gs-rec-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
+}
 </style>
 </head>
 <body>
@@ -108,71 +174,96 @@
     <span aria-current="page">Get Started</span>
   </div>
 
-  <div class="gs-hero animate-in">
-    <div class="signal-badge" style="margin-bottom:20px">Step 1 of 3</div>
-    <h1>Every engagement starts<br>with your Readiness Score.</h1>
-    <p>The score tells us where you are, what's blocking you, and which service will move you fastest. It takes 4 minutes and it's free — no login required.</p>
-    <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
-    <p class="gs-cta-block" style="border:none;padding:0;margin:0;background:none;text-align:center">
-      <span style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em">14 questions · 4 minutes · No login</span>
-    </p>
+  <!-- ── SCORED STATE (shown by JS when score exists) ── -->
+  <div class="gs-scored" id="gs-scored">
+
+    <div class="gs-scored-hero animate-in">
+      <div class="gs-scored-eyebrow">Your plan</div>
+      <h1 id="gs-name-heading">Your Campaign Automation Plan</h1>
+      <p class="gs-tier-line" id="gs-tier-line">Score: — · Tier: —</p>
+      <div class="gs-score-chips" id="gs-score-chips"></div>
+      <a href="/tools/readiness-score" class="gs-rescore">Retake assessment or view full scorecard →</a>
+    </div>
+
+    <!-- Plan tray -->
+    <div class="gs-plan-tray" id="gs-plan-tray">
+      <div class="gs-plan-header">
+        <h3>Your plan <span id="gs-plan-count"></span></h3>
+        <span id="gs-plan-count-label"></span>
+      </div>
+      <div class="gs-plan-items" id="gs-plan-items"></div>
+      <div class="gs-plan-footer">
+        <a href="/request-proposals" id="gs-plan-cta" class="btn-primary" style="font-size:14px;padding:12px 24px">Request proposals on my plan →</a>
+        <button onclick="clearPlan()" style="background:none;border:none;font-family:var(--f-mono);font-size:11px;color:var(--mist);cursor:pointer;letter-spacing:.05em">Clear plan</button>
+      </div>
+    </div>
+
+    <!-- Recommended engagements -->
+    <div class="animate-in">
+      <div class="gs-section-label">Recommended for you</div>
+      <div class="gs-rec-grid" id="gs-rec-grid"></div>
+    </div>
+
+    <!-- Builder profiles -->
+    <div class="animate-in">
+      <div class="gs-section-label" style="margin-top:8px">Choose a builder</div>
+      <p style="font-size:14px;color:var(--mist2);margin-bottom:20px;line-height:1.55;max-width:560px">Our network of AI implementation specialists. Filter by expertise or platform — then add them to your proposal request alongside your selected services.</p>
+      <div class="gs-builder-filters" id="gs-builder-filters" role="group" aria-label="Filter builders">
+        <button class="gs-filter-btn active" data-filter="all" type="button">All builders</button>
+        <button class="gs-filter-btn" data-filter="google-ads" type="button">Google Ads</button>
+        <button class="gs-filter-btn" data-filter="meta-ads" type="button">Meta Ads</button>
+        <button class="gs-filter-btn" data-filter="analytics" type="button">Analytics</button>
+        <button class="gs-filter-btn" data-filter="content" type="button">Content & Briefs</button>
+        <button class="gs-filter-btn" data-filter="revops" type="button">RevOps</button>
+      </div>
+      <div class="gs-builder-grid" id="gs-builder-grid"></div>
+    </div>
+
   </div>
 
-  <div class="gs-steps animate-in">
-    <div class="gs-step">
-      <div class="gs-step-num">01</div>
-      <div class="gs-step-body">
-        <strong>Complete the Readiness Score</strong>
-        <p>14 questions across 5 dimensions. You get a score out of 100, a tier placement, your binding constraint, and a prioritised roadmap — immediately.</p>
-        <span class="step-tag">Free · 4 minutes</span>
-      </div>
-    </div>
-    <div class="gs-step">
-      <div class="gs-step-num">02</div>
-      <div class="gs-step-body">
-        <strong>Submit your intake at the end of the score</strong>
-        <p>After your scorecard, you'll see a short intake form. Tell us which service you're interested in and your biggest campaign challenge. We review every submission personally.</p>
-        <span class="step-tag">2 business day response</span>
-      </div>
-    </div>
-    <div class="gs-step">
-      <div class="gs-step-num">03</div>
-      <div class="gs-step-body">
-        <strong>We scope the right engagement</strong>
-        <p>We'll respond with a concrete recommendation — which service fits your score, what it costs, and what the first 30 days look like. If it's a fit, we schedule a 30-minute alignment call.</p>
-        <span class="step-tag">No pitch · Just clarity</span>
-      </div>
-    </div>
-  </div>
+  <!-- ── NO-SCORE STATE ── -->
+  <div class="gs-unscored" id="gs-unscored">
 
-  <div class="gs-services animate-in">
-    <h2>What you can request after scoring</h2>
-    <div class="gs-service-card">
-      <div class="svc-price">From $750</div>
-      <div>
-        <div class="svc-name">Campaign Automation Audit</div>
-        <p class="svc-desc">A one-time diagnostic: PPC waste analysis, SEO gaps, and a 30-day AI automation roadmap. Best for scores 40–69 where you need clarity before building.</p>
-      </div>
+    <div class="gs-hero animate-in">
+      <div class="signal-badge" style="margin-bottom:20px">Step 1 of 3</div>
+      <h1>Every engagement starts<br>with your Readiness Score<span class="blink-dot" aria-hidden="true">.</span></h1>
+      <p>The score tells us where you are, what's blocking you, and which service will move you fastest. It takes 4 minutes and it's free — no login required.</p>
+      <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
+      <p style="margin-top:14px"><span style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em">14 questions · 4 minutes · No login</span></p>
     </div>
-    <div class="gs-service-card">
-      <div class="svc-price">From $3,500</div>
-      <div>
-        <div class="svc-name">Automation Sprint</div>
-        <p class="svc-desc">A focused 2-week build: one automation workflow, fully implemented and measured. Best for scores 60+ where you know what to build but want it done right.</p>
-      </div>
-    </div>
-    <div class="gs-service-card">
-      <div class="svc-price">From $500/mo</div>
-      <div>
-        <div class="svc-name">Campaign Strategy Portal</div>
-        <p class="svc-desc">Monthly AI-generated strategy, recommendations, and assets — your campaign intelligence layer. Best for scores 55+ with an active campaign programme.</p>
-      </div>
-    </div>
-  </div>
 
-  <div style="text-align:center;margin-top:48px">
-    <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
-    <p style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em;margin-top:12px">Already completed it? <a href="mailto:hello@campaignautomation.ai" style="color:var(--mist2);text-decoration:underline">Email us directly</a></p>
+    <div class="gs-steps animate-in">
+      <div class="gs-step">
+        <div class="gs-step-num">01</div>
+        <div class="gs-step-body">
+          <strong>Complete the Readiness Score</strong>
+          <p>14 questions across 5 dimensions. You get a score out of 100, a tier placement, your binding constraint, a prioritised roadmap, and a boss-pitch — immediately.</p>
+          <span class="step-tag">Free · 4 minutes</span>
+        </div>
+      </div>
+      <div class="gs-step">
+        <div class="gs-step-num">02</div>
+        <div class="gs-step-body">
+          <strong>Choose your sprints and builder</strong>
+          <p>Based on your score, we surface the right sprints and match you with specialists in our network. You pick what to build and who to build it with.</p>
+          <span class="step-tag">Score required</span>
+        </div>
+      </div>
+      <div class="gs-step">
+        <div class="gs-step-num">03</div>
+        <div class="gs-step-body">
+          <strong>Receive competing proposals</strong>
+          <p>Submit your plan. We put it in front of our network. You get a minimum of three proposals within 5 business days — no pitch calls, just scoped work.</p>
+          <span class="step-tag">Minimum 3 proposals guaranteed</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px">
+      <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
+      <p style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em;margin-top:12px">Already have a score? <a href="/tools/readiness-score" style="color:var(--mist2);text-decoration:underline">View your scorecard →</a></p>
+    </div>
+
   </div>
 
 </div>
@@ -193,6 +284,248 @@
     <a href="/tools/readiness-score">Readiness Score</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
   </nav>
 </footer>
+
 <script src="/js/main.js"></script>
+<script>
+/* ── PLAN PERSISTENCE ── */
+const PLAN = {
+  KEY: 'ca_plan',
+  load() { try { return JSON.parse(localStorage.getItem(this.KEY) || 'null') || {items:[]}; } catch(e){ return {items:[]}; } },
+  save(d) { try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch(e){} },
+  add(item) { const d=this.load(); if(!d.items.find(i=>i.id===item.id)){ d.items.push(item); this.save(d); } },
+  remove(id) { const d=this.load(); d.items=d.items.filter(i=>i.id!==id); this.save(d); },
+  has(id) { return this.load().items.some(i=>i.id===id); },
+  clear() { this.save({items:[]}); }
+};
+
+function clearPlan() { PLAN.clear(); renderPlanTray(); renderRecGrid(); }
+
+/* ── RECOMMENDED ENGAGEMENTS DATA ── */
+const ENGAGEMENTS = [
+  // Sprints
+  {id:'content-brief',   type:'sprint',   name:'Content Brief Automation',         price:'$4k–$6k',  timeline:'2 weeks',  minScore:0,  tiers:['siloed','emerging','operational','agentic'], industries:['agency','b2b_saas','b2b_svc'],   tags:['AI writing','Brief generation','Prompt packs'],    href:'/solutions/automation-sprints'},
+  {id:'ppc-intelligence',type:'sprint',   name:'PPC Intelligence Sprint',          price:'$5k–$8k',  timeline:'2 weeks',  minScore:50, tiers:['emerging','operational','agentic'],            industries:['ecom','b2b_saas','local'],       tags:['Google Ads','Search terms','Automation'],          href:'/solutions/automation-sprints'},
+  {id:'launch-kit',      type:'sprint',   name:'Campaign Launch Kit',              price:'$4k–$7k',  timeline:'2 weeks',  minScore:0,  tiers:['siloed','emerging','operational'],              industries:['ecom','agency','local','b2b_svc'],tags:['QA templates','Launch checklist','Naming'],        href:'/solutions/automation-sprints'},
+  {id:'seo-ppc',         type:'sprint',   name:'SEO/PPC Opportunity Sprint',       price:'$5k–$9k',  timeline:'3 weeks',  minScore:55, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','agency','ecom'],      tags:['Search Console','Keyword gaps','Cross-channel'],   href:'/solutions/automation-sprints'},
+  {id:'lead-reactivation',type:'sprint',  name:'Lead Reactivation Sprint',         price:'$6k–$10k', timeline:'3 weeks',  minScore:60, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','b2b_svc'],            tags:['CRM integration','Email automation','Lead scoring'],href:'/solutions/automation-sprints'},
+  {id:'event-followup',  type:'sprint',   name:'Event Follow-up Automation',       price:'$5k–$8k',  timeline:'2 weeks',  minScore:55, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','b2b_svc','local'],    tags:['Event triggers','Follow-up sequences','CRM'],      href:'/solutions/automation-sprints'},
+  // Services
+  {id:'audit',           type:'service',  name:'Campaign Automation Audit',        price:'$750–$2,500',timeline:'1 week',  minScore:0,  tiers:['siloed','emerging'],                          industries:['ecom','b2b_saas','b2b_svc','agency','local','other'], tags:['PPC analysis','Roadmap','30-day plan'], href:'/solutions/campaign-audit'},
+  {id:'training',        type:'training', name:'AI Marketing Training Programme',  price:'From $500', timeline:'Ongoing',  minScore:0,  tiers:['siloed'],                                      industries:['ecom','b2b_saas','b2b_svc','agency','local','other'], tags:['Team enablement','Data literacy','AI fundamentals'], href:'/training'},
+  {id:'portal',          type:'service',  name:'Campaign Strategy Portal',         price:'$500–$2,500/mo',timeline:'Monthly',minScore:55,tiers:['operational','agentic'],                    industries:['ecom','b2b_saas','b2b_svc','agency'],tags:['Monthly strategy','AI briefs','Intelligence layer'],href:'/platform'},
+];
+
+const BUILDERS = [
+  {id:'b1', name:'PPC Intelligence Specialist', role:'Builds Google Ads automation scripts, search term analysis pipelines, and bidding rule frameworks. Specialises in high-spend accounts.', skills:['PPC Automation','Search Term Mining','Bid Rules','Scripts'], platforms:['Google Ads','Microsoft Ads','SA360'], filter:['google-ads'], rate:'Sprint-based', available:true},
+  {id:'b2', name:'Content & Brief Automation', role:'Designs AI brief generation workflows, prompt packs, and content production pipelines using Claude and GPT-4. Deep expertise in campaign copywriting.', skills:['Prompt Engineering','Brief Generation','Claude API','Content Systems'], platforms:['Claude','ChatGPT','Notion','Google Docs'], filter:['content'], rate:'Sprint-based', available:true},
+  {id:'b3', name:'Attribution & Measurement', role:'Specialist in GA4 setup, GTM configuration, server-side tracking, and cross-channel attribution modelling. Fixes broken measurement stacks.', skills:['GA4','GTM','Server-side Tracking','Attribution'], platforms:['GA4','GTM','Looker Studio','BigQuery'], filter:['analytics'], rate:'Sprint-based', available:true},
+  {id:'b4', name:'RevOps & CRM Integration', role:'Builds lead routing, scoring, and nurture automation between ad platforms and CRM systems. Connects HubSpot, Salesforce, and Make/Zapier flows.', skills:['Lead Scoring','CRM Automation','Pipeline Forecasting','Routing'], platforms:['HubSpot','Salesforce','Make','Zapier'], filter:['revops'], rate:'Sprint-based', available:true},
+  {id:'b5', name:'Meta & Social Automation', role:'Automates creative testing, audience management, and budget pacing across Meta Ads and TikTok. Builds creative performance tracking and refresh workflows.', skills:['Creative Automation','Audience Management','Budget Pacing','A/B Testing'], platforms:['Meta Ads','TikTok Ads','Advantage+','Smartly'], filter:['meta-ads'], rate:'Sprint-based', available:true},
+  {id:'b6', name:'SEO/PPC Integration Specialist', role:'Builds cross-channel intelligence layers connecting Search Console, Ahrefs, and Google Ads to surface keyword gaps and cannibalization opportunities automatically.', skills:['Keyword Gap Analysis','SEO/PPC Bridge','Search Console API','Opportunity Mining'], platforms:['Search Console','Ahrefs','Semrush','Google Ads'], filter:['google-ads','analytics'], rate:'Sprint-based', available:true},
+  {id:'b7', name:'AI Strategy & Agentic Systems', role:'Designs multi-step AI workflows, AGENTS.md documentation, and guardrail systems for teams moving toward autonomous campaign management.', skills:['Agentic AI','Workflow Design','AGENTS.md','Guardrails'], platforms:['Claude','n8n','Make','Custom APIs'], filter:['content','revops'], rate:'Consulting', available:true},
+  {id:'b8', name:'Data & Reporting Automation', role:'Automates reporting pipelines from ad platforms to BI tools. Builds live dashboards, weekly digest automations, and anomaly alert systems.', skills:['Reporting Automation','Dashboard Design','Alert Systems','Data Pipelines'], platforms:['Looker Studio','BigQuery','Supermetrics','GA4'], filter:['analytics'], rate:'Sprint-based', available:true},
+];
+
+function getRecs(score, tier, industry) {
+  const tierKey = tier ? tier.toLowerCase() : 'siloed';
+  // Filter engagements available at this score + industry
+  const available = ENGAGEMENTS.filter(e =>
+    score >= e.minScore &&
+    e.tiers.includes(tierKey) &&
+    (e.industries.includes(industry) || e.industries.length >= 5)
+  );
+  // Sort: industry match first, then by minScore proximity (closest to current score)
+  available.sort((a,b) => {
+    const aInd = a.industries.includes(industry) ? 0 : 1;
+    const bInd = b.industries.includes(industry) ? 0 : 1;
+    if (aInd !== bInd) return aInd - bInd;
+    return Math.abs(score - b.minScore) - Math.abs(score - a.minScore);
+  });
+  return available.slice(0, 6);
+}
+
+function renderRecGrid() {
+  const grid = document.getElementById('gs-rec-grid');
+  if (!grid) return;
+  const d = (typeof RSCORE !== 'undefined') ? RSCORE.load() : null;
+  if (!d) return;
+  const score = d.score || 0;
+  const tier  = score>=85?'Agentic':score>=70?'Operational':score>=50?'Emerging':'Siloed';
+  const ind   = d.industry || 'other';
+  const recs  = getRecs(score, tier, ind);
+
+  if (!recs.length) { grid.innerHTML = '<p style="color:var(--mist);font-size:14px">No recommendations available yet — complete the readiness score to unlock.</p>'; return; }
+
+  grid.innerHTML = recs.map((e, i) => {
+    const isAdded = PLAN.has(e.id);
+    const isTop   = i < 2;
+    const badgeClass = isTop ? 'top' : (e.type === 'training' ? 'prep' : 'good');
+    const badgeLabel = isTop ? 'Top pick' : (e.type === 'training' ? 'Foundation first' : 'Good fit');
+    return `
+    <div class="gs-rec-card${isTop?' top-pick':''}">
+      <div>
+        <div class="gs-rec-top">
+          <span class="gs-rec-badge ${badgeClass}">${badgeLabel}</span>
+          <span class="gs-rec-badge good" style="text-transform:capitalize">${e.type}</span>
+        </div>
+        <div class="gs-rec-name">${e.name}</div>
+        <p class="gs-rec-why">${getRecWhy(e, score, tier)}</p>
+        <div class="gs-rec-tags">${e.tags.map(t=>`<span class="gs-rec-tag">${t}</span>`).join('')}</div>
+      </div>
+      <div class="gs-rec-right">
+        <div>
+          <div class="gs-rec-price">${e.price}</div>
+          <div class="gs-rec-timeline">${e.timeline}</div>
+        </div>
+        <button class="gs-add-btn${isAdded?' added':''}" id="add-btn-${e.id}"
+          onclick="togglePlanItem('${e.id}','${e.name}','${e.type}','${e.href}')" type="button">
+          ${isAdded ? 'Added ✓' : '+ Add to plan'}
+        </button>
+        <a href="${e.href}" class="gs-rec-link">Learn more →</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getRecWhy(e, score, tier) {
+  const whyMap = {
+    'content-brief': 'AI brief generation removes the single biggest creative bottleneck for most teams. No integration required — runs from your existing briefs and brand guidelines.',
+    'ppc-intelligence': `At your score, your paid search data is likely underused. This sprint surfaces the search terms, budget inefficiencies, and bid opportunities your current setup is missing.`,
+    'launch-kit': 'Inconsistent launches compound silently. This sprint creates a templated QA workflow that every campaign passes through — so structure becomes automatic.',
+    'seo-ppc': 'Connecting Search Console to your paid search reveals keyword gaps and cannibalization that platform dashboards hide. One sprint. Ongoing automated intelligence.',
+    'lead-reactivation': 'Your CRM likely has high-intent leads going cold. This sprint builds the trigger-based reactivation sequence that re-engages them automatically.',
+    'event-followup': 'Most event follow-up is manual and late. This sprint builds the trigger-based automation that follows up within minutes of any form, booking, or conversion event.',
+    'audit': `At your current score, an Audit identifies the 2–3 changes that move the needle fastest — before you commit to a sprint. The recommended starting point for ${tier} tier teams.`,
+    'training': 'Your score shows foundational gaps that will limit sprint ROI without addressing first. Training closes these quickly and unlocks the full catalogue of sprints.',
+    'portal': `At ${score}/100 your team is ready for an ongoing intelligence layer. The Portal delivers monthly AI-generated strategy so your campaigns compound rather than plateau.`,
+  };
+  return whyMap[e.id] || 'Recommended based on your score and industry.';
+}
+
+function togglePlanItem(id, name, type, href) {
+  if (PLAN.has(id)) {
+    PLAN.remove(id);
+  } else {
+    PLAN.add({id, name, type, href, addedAt: Date.now()});
+  }
+  renderPlanTray();
+  // Update button state
+  const btn = document.getElementById(`add-btn-${id}`);
+  if (btn) {
+    const added = PLAN.has(id);
+    btn.className = 'gs-add-btn' + (added ? ' added' : '');
+    btn.textContent = added ? 'Added ✓' : '+ Add to plan';
+  }
+}
+
+function renderPlanTray() {
+  const tray  = document.getElementById('gs-plan-tray');
+  const list  = document.getElementById('gs-plan-items');
+  const cta   = document.getElementById('gs-plan-cta');
+  if (!tray || !list) return;
+  const d = PLAN.load();
+  const items = d.items || [];
+  tray.classList.toggle('has-items', items.length > 0);
+  document.getElementById('gs-plan-count-label').textContent = `${items.length} item${items.length!==1?'s':''}`;
+  list.innerHTML = items.map(item => `
+    <div class="gs-plan-item">
+      <div>
+        <div class="gs-plan-item-name">${item.name}</div>
+        <div class="gs-plan-item-meta" style="text-transform:capitalize">${item.type}</div>
+      </div>
+      <button class="gs-plan-remove" onclick="removePlanItem('${item.id}')" type="button" aria-label="Remove ${item.name}">×</button>
+    </div>`).join('');
+  // Build proposals URL with sprint IDs
+  const sprintIds = items.filter(i=>i.type==='sprint').map(i=>i.id).join(',');
+  if (cta) cta.href = sprintIds ? `/request-proposals/?sprints=${sprintIds}` : '/request-proposals/';
+}
+
+function removePlanItem(id) {
+  PLAN.remove(id);
+  renderPlanTray();
+  const btn = document.getElementById(`add-btn-${id}`);
+  if (btn) { btn.className = 'gs-add-btn'; btn.textContent = '+ Add to plan'; }
+}
+
+function renderBuilders() {
+  const grid = document.getElementById('gs-builder-grid');
+  if (!grid) return;
+  grid.innerHTML = BUILDERS.map(b => `
+    <div class="gs-builder-card" data-filter="${b.filter.join(' ')}" id="builder-${b.id}">
+      <div class="gs-builder-avail">
+        <span class="dot" aria-hidden="true"></span>Available now
+      </div>
+      <div class="gs-builder-name">${b.name}</div>
+      <p class="gs-builder-role">${b.role}</p>
+      <div class="gs-builder-skills">${b.skills.map(s=>`<span class="gs-builder-skill">${s}</span>`).join('')}</div>
+      <div class="gs-builder-platforms">${b.platforms.map(p=>`<span class="gs-builder-platform">${p}</span>`).join('')}</div>
+      <div class="gs-builder-foot">
+        <span class="gs-builder-rate">${b.rate}</span>
+        <a href="/request-proposals/" class="gs-request-btn">Request builder →</a>
+      </div>
+    </div>`).join('');
+}
+
+function initBuilderFilters() {
+  document.querySelectorAll('.gs-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gs-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.gs-builder-card').forEach(card => {
+        const filters = (card.dataset.filter || '').split(' ');
+        const show = f === 'all' || filters.includes(f);
+        card.toggleAttribute('data-hidden', !show);
+      });
+    });
+  });
+}
+
+function renderScoredHero(d) {
+  const score   = d.score;
+  const tier    = score>=85?'Agentic':score>=70?'Operational':score>=50?'Emerging':'Siloed';
+  const name    = d.name ? `, ${d.name.split(' ')[0]}` : '';
+  const stage   = {pre:'Pre-revenue',early:'Early-stage',growth:'Growth-stage',scale:'Scale-stage'}[d.stage] || '';
+  const indL    = {ecom:'E-commerce',b2b_saas:'B2B SaaS',b2b_svc:'B2B Services',agency:'Agency',local:'Local Business'}[d.industry] || '';
+
+  const h = document.getElementById('gs-name-heading');
+  if (h) h.textContent = `Your plan${name}`;
+
+  const tl = document.getElementById('gs-tier-line');
+  if (tl) tl.textContent = `Score: ${score}/100 · ${tier} tier${stage?' · '+stage:''}${indL?' · '+indL:''}`;
+
+  const chips = document.getElementById('gs-score-chips');
+  if (chips) {
+    const tierMsg = {
+      agentic:'Ready for autonomous workflows and consulting-led self-execution.',
+      operational:'Sprint-ready. Minimal support needed. Fast outcomes.',
+      emerging:'Foundation in place. Sprints will compound with some coaching.',
+      siloed:'Enablement first. Training closes the gaps and unlocks sprint ROI.',
+    }[tier.toLowerCase()] || '';
+    chips.innerHTML = `
+      <span class="gs-score-chip signal">${score}/100 — ${tier}</span>
+      ${stage ? `<span class="gs-score-chip">${stage}</span>` : ''}
+      ${indL  ? `<span class="gs-score-chip">${indL}</span>` : ''}
+      ${tierMsg ? `<span class="gs-score-chip" style="max-width:340px;white-space:normal;height:auto;line-height:1.45">${tierMsg}</span>` : ''}`;
+  }
+}
+
+// ── INIT ──
+(function init() {
+  const d = (typeof RSCORE !== 'undefined') ? RSCORE.load() : null;
+  const hasScore = d && d.score !== undefined;
+
+  document.getElementById('gs-scored').style.display  = hasScore ? 'block' : 'none';
+  document.getElementById('gs-unscored').style.display = hasScore ? 'none'  : 'block';
+
+  if (hasScore) {
+    renderScoredHero(d);
+    renderPlanTray();
+    renderRecGrid();
+    renderBuilders();
+    initBuilderFilters();
+  }
+})();
+</script>
 </body>
 </html>
