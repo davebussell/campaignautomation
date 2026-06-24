@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Proposals — Campaign Automation AI</title>
+<meta name="description" content="Submit your sprint request and receive a minimum of three competing proposals from vetted AI implementation specialists within 5 business days.">
+<link rel="canonical" href="https://campaignautomation.ai/request-proposals">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item" role="listitem">
+      <a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
+        <a href="/resources/sprint-prep" role="menuitem">Sprint Prep Resources</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a><a href="/results">Results</a><a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
+  </div>
+  <a href="/solutions/automation-sprints" class="mobile-cta">Browse Sprints →</a>
+</nav>
+
+<main id="main-content">
+<div class="pr-wrap">
+
+  <div class="breadcrumb" style="margin-bottom:32px">
+    <a href="/">Home</a><span aria-hidden="true">›</span>
+    <a href="/solutions/automation-sprints">Automation Sprints</a><span aria-hidden="true">›</span>
+    <span aria-current="page">Request Proposals</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="pr-hero reveal">
+    <div class="signal-badge" style="margin-bottom:16px">Guaranteed · 3 proposals · 5 business days</div>
+    <h1>Get competing proposals<br>on your sprint.</h1>
+    <p>Tell us what you want to build and your request goes to our network of vetted AI implementation specialists. We guarantee a minimum of three proposals — from our internal team, our specialist network, or both.</p>
+  </div>
+
+  <!-- FORM + CONFIRMATION (toggled by JS) -->
+  <div id="pr-form-wrapper">
+
+    <!-- SELECTED SPRINTS -->
+    <div class="pr-section">
+      <div class="pr-section-label">Sprints you want proposals on</div>
+      <div class="pr-selected-sprints" id="pr-sprint-list">
+        <div class="pr-selected-label">Selected sprints</div>
+        <div id="pr-pills"></div>
+        <button class="pr-add-sprint" id="pr-add-btn" aria-expanded="false" aria-controls="pr-add-panel">
+          + Add another sprint
+        </button>
+        <div id="pr-add-panel" hidden style="padding:12px 16px;border-top:1px solid var(--border);background:var(--slate)">
+          <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.06em;margin-bottom:10px">Select a sprint to add</div>
+          <div id="pr-add-options" style="display:flex;flex-direction:column;gap:6px"></div>
+        </div>
+      </div>
+      <div id="pr-no-sprints" hidden style="padding:20px;border:1px dashed var(--border);border-radius:4px;text-align:center">
+        <p style="font-size:14px;color:var(--mist2);margin:0 0 12px">No sprints selected yet.</p>
+        <a href="/solutions/automation-sprints" style="font-family:var(--f-mono);font-size:12px;color:var(--signal);text-decoration:none;letter-spacing:.05em">Browse sprints →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT CONTEXT -->
+    <div class="pr-section">
+      <div class="pr-section-label">Project context</div>
+      <div class="pr-field">
+        <label for="pr-goal">What do you want this sprint to deliver?</label>
+        <textarea id="pr-goal" placeholder="Describe the outcome you're after — what does success look like? What problem is this solving for your team?" rows="4"></textarea>
+      </div>
+      <div class="pr-row">
+        <div class="pr-field">
+          <label for="pr-timeline">Timeline</label>
+          <select id="pr-timeline">
+            <option value="">Select…</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1mo">Within 1 month</option>
+            <option value="1-3mo">1–3 months</option>
+            <option value="3mo+">3+ months</option>
+            <option value="flexible">Flexible — open to proposals</option>
+          </select>
+        </div>
+        <div class="pr-field">
+          <label for="pr-budget">Budget range</label>
+          <select id="pr-budget">
+            <option value="">Select…</option>
+            <option value="under5">Under $5,000</option>
+            <option value="5-10">$5,000–$10,000</option>
+            <option value="10-20">$10,000–$20,000</option>
+            <option value="20plus">$20,000+</option>
+            <option value="flexible">Flexible — show me options</option>
+          </select>
+        </div>
+      </div>
+      <div class="pr-field">
+        <label for="pr-team">Team context <span style="color:var(--mist);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea id="pr-team" placeholder="Who will be involved on your side? What tools does your team use daily? Any constraints we should know about?" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- CONTACT DETAILS -->
+    <div class="pr-section">
+      <div class="pr-section-label">Your details</div>
+      <div class="pr-row">
+        <div class="pr-field">
+          <label for="pr-name">Name</label>
+          <input type="text" id="pr-name" placeholder="Jane Smith" autocomplete="name">
+        </div>
+        <div class="pr-field">
+          <label for="pr-company">Company</label>
+          <input type="text" id="pr-company" placeholder="Acme Co." autocomplete="organization">
+        </div>
+      </div>
+      <div class="pr-field">
+        <label for="pr-email">Work email</label>
+        <input type="email" id="pr-email" placeholder="jane@acmeco.com" autocomplete="email">
+      </div>
+    </div>
+
+    <!-- THE GUARANTEE -->
+    <div class="pr-guarantee reveal">
+      <div class="pr-guarantee-label">The Guarantee</div>
+      <h3>Minimum 3 proposals. No exceptions.</h3>
+      <div class="pr-guarantee-items">
+        <div class="pr-guarantee-item">
+          <span class="gi-num">01</span>
+          <div><strong>Three competing proposals — guaranteed</strong><span>Your request goes to our internal team first. If we're at capacity or your project calls for a specialist outside our focus area, we source from our vetted specialist network. You get three proposals either way.</span></div>
+        </div>
+        <div class="pr-guarantee-item">
+          <span class="gi-num">02</span>
+          <div><strong>All proposals within 5 business days</strong><span>We confirm receipt within 2 business hours. You'll receive proposals as they come in — you don't have to wait for all three before evaluating.</span></div>
+        </div>
+        <div class="pr-guarantee-item">
+          <span class="gi-num">03</span>
+          <div><strong>Every specialist is vetted by our team</strong><span>Third-party specialists in our network have passed a technical review covering AI implementation methodology, prompt engineering standards, and documentation practice.</span></div>
+        </div>
+        <div class="pr-guarantee-item">
+          <span class="gi-num">04</span>
+          <div><strong>No obligation — evaluate and choose freely</strong><span>Proposals are free to receive. You evaluate them on your own terms and choose the one that fits. We don't take a cut of third-party engagements — our incentive is the quality of the match.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pr-network-note">
+      <p><strong>How the specialist network works.</strong> Your request goes to our internal team first. When internal capacity is full or your sprint calls for a domain specialist — e-commerce tech stacks, enterprise CRM, specific ad platforms — we open the request to vetted third-party AI implementation specialists. All proposals follow the same delivery standard: full handover documentation, prompt packs, and a team training session.</p>
+    </div>
+
+    <button class="pr-submit-btn" id="pr-submit" onclick="submitProposal()">Submit Proposal Request →</button>
+    <p class="pr-submit-note">We confirm receipt within 2 business hours · Minimum 3 proposals within 5 business days</p>
+
+  </div><!-- /pr-form-wrapper -->
+
+  <!-- CONFIRMATION STATE (shown after submit) -->
+  <div class="pr-confirm" id="pr-confirm">
+    <div class="pc-icon">✦</div>
+    <h2>Your request is in.</h2>
+    <p>We'll confirm receipt within 2 business hours and begin matching your project with specialists immediately.</p>
+    <p style="font-size:14px;color:var(--mist)">Check your inbox — confirmation goes to the email you provided.</p>
+    <div class="pc-timeline">
+      <div class="pc-step"><span class="pcs-num">Now</span><div><strong>Request submitted</strong><span>Your project details and sprint selection are with our team.</span></div></div>
+      <div class="pc-step"><span class="pcs-num">2h</span><div><strong>Confirmation sent</strong><span>We'll email confirmation and a summary of your request.</span></div></div>
+      <div class="pc-step"><span class="pcs-num">24h</span><div><strong>Matching begins</strong><span>We assign your request to internal specialists first. Third-party network is activated if needed to guarantee your three proposals.</span></div></div>
+      <div class="pc-step"><span class="pcs-num">5d</span><div><strong>Proposals delivered</strong><span>Minimum three competing proposals in your inbox. You evaluate, ask questions, and choose — on your timeline.</span></div></div>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+      <a href="/solutions/automation-sprints" class="btn-ghost">Browse more sprints →</a>
+      <a href="/resources/sprint-prep" class="btn-ghost">Sprint prep resources →</a>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer">
+  <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
+  </div>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a>
+  </nav>
+  <nav aria-label="Learn"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
+    <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/sprint-prep">Sprint Prep</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+const SPRINT_META_PAGE = {
+  'ai-brief':           { name: 'AI Brief Machine',               type: 'Leapfrog',     price: '$4k–$6k · 2 weeks' },
+  'search-term-intel':  { name: 'Search Term Intelligence',       type: 'Leapfrog',     price: '$4k–$6k · 2 weeks' },
+  'competitive-intel':  { name: 'Competitive Intelligence Engine',type: 'Leapfrog',     price: '$5k–$8k · 2–3 weeks' },
+  'content-atomization':{ name: 'Content Atomization System',     type: 'Leapfrog',     price: '$5k–$8k · 2–3 weeks' },
+  'content-brief':      { name: 'Content Brief',                  type: 'Integration',  price: '$5k–$8k · 2 weeks' },
+  'launch-kit':         { name: 'Campaign Launch Kit',            type: 'Integration',  price: '$5k–$10k · 2–3 weeks' },
+  'ppc-intelligence':   { name: 'PPC Intelligence',               type: 'Integration',  price: '$5k–$10k · 2–3 weeks' },
+  'seo-ppc':            { name: 'SEO/PPC Opportunity',            type: 'Integration',  price: '$5k–$10k · 2–3 weeks' },
+  'event-followup':     { name: 'Event Follow-Up',                type: 'Integration',  price: '$5k–$10k · 2–3 weeks' },
+  'lead-reactivation':  { name: 'Lead Reactivation',              type: 'Integration',  price: '$8k–$15k · 3–4 weeks' },
+};
+
+const selected = new Set();
+
+function renderPills() {
+  const pillsEl = document.getElementById('pr-pills');
+  const noSprints = document.getElementById('pr-no-sprints');
+  const sprintList = document.getElementById('pr-sprint-list');
+  pillsEl.innerHTML = '';
+  if (selected.size === 0) {
+    sprintList.style.display = 'none';
+    noSprints.removeAttribute('hidden');
+    return;
+  }
+  sprintList.style.display = '';
+  noSprints.setAttribute('hidden', '');
+  selected.forEach(id => {
+    const meta = SPRINT_META_PAGE[id] || { name: id, type: '', price: '' };
+    const pill = document.createElement('div');
+    pill.className = 'pr-sprint-pill';
+    pill.innerHTML = `
+      <div>
+        <div class="ps-name">${meta.name}</div>
+        <div class="ps-meta">${meta.type}${meta.price ? ' · ' + meta.price : ''}</div>
+      </div>
+      <button class="ps-remove" aria-label="Remove ${meta.name}" data-id="${id}" title="Remove">×</button>
+    `;
+    pill.querySelector('.ps-remove').addEventListener('click', () => {
+      selected.delete(id);
+      renderPills();
+      renderAddOptions();
+    });
+    pillsEl.appendChild(pill);
+  });
+  renderAddOptions();
+}
+
+function renderAddOptions() {
+  const panel = document.getElementById('pr-add-options');
+  if (!panel) return;
+  panel.innerHTML = '';
+  Object.entries(SPRINT_META_PAGE).forEach(([id, meta]) => {
+    if (selected.has(id)) return;
+    const btn = document.createElement('button');
+    btn.style.cssText = 'background:none;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-body);font-size:13px;padding:8px 14px;cursor:pointer;border-radius:3px;text-align:left;transition:all .15s;width:100%';
+    btn.textContent = `${meta.name} — ${meta.type} · ${meta.price}`;
+    btn.addEventListener('mouseover', () => { btn.style.borderColor = 'var(--signal)'; btn.style.color = 'var(--bone)'; });
+    btn.addEventListener('mouseout', () => { btn.style.borderColor = 'var(--border)'; btn.style.color = 'var(--mist2)'; });
+    btn.addEventListener('click', () => {
+      selected.add(id);
+      renderPills();
+      document.getElementById('pr-add-panel').setAttribute('hidden', '');
+      document.getElementById('pr-add-btn').setAttribute('aria-expanded', 'false');
+    });
+    panel.appendChild(btn);
+  });
+  if (panel.children.length === 0) {
+    panel.innerHTML = '<p style="font-size:13px;color:var(--mist);margin:0">All sprints added.</p>';
+  }
+}
+
+// Toggle "add sprint" panel
+document.getElementById('pr-add-btn').addEventListener('click', () => {
+  const panel = document.getElementById('pr-add-panel');
+  const btn = document.getElementById('pr-add-btn');
+  const isHidden = panel.hasAttribute('hidden');
+  if (isHidden) {
+    panel.removeAttribute('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    renderAddOptions();
+  } else {
+    panel.setAttribute('hidden', '');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Pre-fill from URL params
+(function init() {
+  const params = new URLSearchParams(window.location.search);
+  const sprints = (params.get('sprints') || params.get('sprint') || '').split(',').filter(Boolean);
+  sprints.forEach(id => { if (SPRINT_META_PAGE[id]) selected.add(id); });
+  renderPills();
+
+  // Pre-fill contact from localStorage
+  try {
+    const saved = JSON.parse(localStorage.getItem('ca_readiness') || 'null');
+    if (saved) {
+      if (saved.name)    document.getElementById('pr-name').value    = saved.name;
+      if (saved.email)   document.getElementById('pr-email').value   = saved.email;
+      if (saved.company) document.getElementById('pr-company').value = saved.company;
+    }
+  } catch(e) {}
+})();
+
+function submitProposal() {
+  const name    = document.getElementById('pr-name').value.trim();
+  const email   = document.getElementById('pr-email').value.trim();
+  const company = document.getElementById('pr-company').value.trim();
+  const goal    = document.getElementById('pr-goal').value.trim();
+  const timeline= document.getElementById('pr-timeline').value;
+  const budget  = document.getElementById('pr-budget').value;
+
+  if (!name)    { document.getElementById('pr-name').focus();  return; }
+  if (!email || !email.includes('@')) { document.getElementById('pr-email').focus(); return; }
+  if (!goal)    { document.getElementById('pr-goal').focus();  return; }
+  if (!timeline){ document.getElementById('pr-timeline').focus(); return; }
+  if (!budget)  { document.getElementById('pr-budget').focus(); return; }
+  if (selected.size === 0) { document.getElementById('pr-no-sprints').removeAttribute('hidden'); return; }
+
+  const payload = {
+    sprints: Array.from(selected).map(id => ({ id, ...SPRINT_META_PAGE[id] })),
+    goal, timeline, budget,
+    team: document.getElementById('pr-team').value.trim(),
+    name, email, company,
+    score: (function(){ try { const d = JSON.parse(localStorage.getItem('ca_readiness') || 'null'); return d ? d.score : null; } catch(e){ return null; } })(),
+    submittedAt: new Date().toISOString(),
+  };
+
+  console.log('Proposal request:', payload);
+
+  // Persist submission context to localStorage
+  try {
+    const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
+    localStorage.setItem('ca_readiness', JSON.stringify({ ...existing, name, email, company, lastProposalRequest: payload.submittedAt }));
+  } catch(e) {}
+
+  // Show confirmation
+  document.getElementById('pr-form-wrapper').style.display = 'none';
+  const confirm = document.getElementById('pr-confirm');
+  confirm.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

@@ -421,6 +421,102 @@ if (document.querySelector('[data-min-score]')) {
   applyScoreGating();
 }
 
+/* ── SPRINT PROPOSAL MULTI-SELECT + TRAY ────────────────── */
+const SPRINT_META = {
+  'ai-brief':          { name: 'AI Brief Machine',              type: 'Leapfrog', price: '$4k–$6k' },
+  'search-term-intel': { name: 'Search Term Intelligence',      type: 'Leapfrog', price: '$4k–$6k' },
+  'competitive-intel': { name: 'Competitive Intelligence Engine', type: 'Leapfrog', price: '$5k–$8k' },
+  'content-atomization':{ name: 'Content Atomization System',   type: 'Leapfrog', price: '$5k–$8k' },
+  'content-brief':     { name: 'Content Brief',                 type: 'Integration', price: '$5k–$8k' },
+  'launch-kit':        { name: 'Campaign Launch Kit',           type: 'Integration', price: '$5k–$10k' },
+  'ppc-intelligence':  { name: 'PPC Intelligence',              type: 'Integration', price: '$5k–$10k' },
+  'seo-ppc':           { name: 'SEO/PPC Opportunity',           type: 'Integration', price: '$5k–$10k' },
+  'event-followup':    { name: 'Event Follow-Up',               type: 'Integration', price: '$5k–$10k' },
+  'lead-reactivation': { name: 'Lead Reactivation',             type: 'Integration', price: '$8k–$15k' },
+};
+
+(function initProposalSelect() {
+  const cards = document.querySelectorAll('.sprint-card[data-sprint-id]');
+  if (!cards.length) return;
+
+  const selected = new Set();
+
+  // Inject select button into each eligible card
+  cards.forEach(card => {
+    const id = card.dataset.sprintId;
+    if (!id || id === 'audit-first') return; // skip audit card
+    if (card.classList.contains('locked')) return;
+
+    const btn = document.createElement('button');
+    btn.className = 'sprint-select-btn';
+    btn.setAttribute('aria-label', 'Add to proposal request');
+    btn.setAttribute('title', 'Add to proposal request');
+    btn.innerHTML = '+';
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (selected.has(id)) {
+        selected.delete(id);
+        card.classList.remove('card-selected');
+        btn.innerHTML = '+';
+        btn.setAttribute('aria-label', 'Add to proposal request');
+      } else {
+        selected.add(id);
+        card.classList.add('card-selected');
+        btn.innerHTML = '✓';
+        btn.setAttribute('aria-label', 'Remove from proposal request');
+      }
+      updateTray();
+    });
+    card.appendChild(btn);
+
+    // Update direct CTA link
+    const cta = card.querySelector('.sprint-cta');
+    if (cta) {
+      cta.textContent = 'Get Proposals →';
+      cta.href = `/request-proposals/?sprints=${id}`;
+    }
+  });
+
+  // Create the tray
+  const tray = document.createElement('div');
+  tray.id = 'proposal-tray';
+  tray.className = 'proposal-tray';
+  tray.setAttribute('role', 'region');
+  tray.setAttribute('aria-label', 'Proposal request summary');
+  tray.innerHTML = `
+    <div class="pt-summary">
+      <div class="pt-count">0</div>
+      <div class="pt-label">sprints selected</div>
+      <div class="pt-names"></div>
+    </div>
+    <button class="pt-clear" aria-label="Clear selection">Clear</button>
+    <a href="/request-proposals/" class="pt-cta">Request Proposals →</a>
+  `;
+  document.body.appendChild(tray);
+
+  tray.querySelector('.pt-clear').addEventListener('click', () => {
+    selected.clear();
+    cards.forEach(card => {
+      card.classList.remove('card-selected');
+      const btn = card.querySelector('.sprint-select-btn');
+      if (btn) { btn.innerHTML = '+'; btn.setAttribute('aria-label', 'Add to proposal request'); }
+    });
+    updateTray();
+  });
+
+  function updateTray() {
+    const count = selected.size;
+    tray.classList.toggle('visible', count > 0);
+    tray.querySelector('.pt-count').textContent = count;
+    tray.querySelector('.pt-label').textContent = count === 1 ? 'sprint selected' : 'sprints selected';
+    const names = Array.from(selected).map(id => SPRINT_META[id]?.name || id).join(', ');
+    tray.querySelector('.pt-names').textContent = names;
+    const ids = Array.from(selected).join(',');
+    tray.querySelector('.pt-cta').href = `/request-proposals/?sprints=${ids}`;
+  }
+})();
+
 /* ── SPRINT FILTER TABS ──────────────────────────────────── */
 (function initSprintFilter() {
   const tabs = document.querySelectorAll('.sprint-filter-tab');

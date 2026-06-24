@@ -993,6 +993,115 @@ footer{
 .score-hero-insert .shi-body strong{font-size:14px;display:block;margin-bottom:4px}
 .score-hero-insert .shi-body p{font-size:13px;color:var(--mist2);margin:0;line-height:1.5}
 
+/* ── SPRINT CARD SELECTION + PROPOSAL TRAY ──────────────── */
+.sprint-card .sprint-select-btn{
+  position:absolute;top:14px;right:14px;
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px solid var(--border);background:transparent;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--mist);font-size:14px;line-height:1;transition:all .18s;
+  z-index:2;flex-shrink:0;
+}
+.sprint-card .sprint-select-btn:hover{border-color:var(--signal);color:var(--signal)}
+.sprint-card.card-selected{border-color:var(--signal);background:rgba(200,241,53,.04)}
+.sprint-card.card-selected .sprint-select-btn{
+  background:var(--signal);border-color:var(--signal);color:var(--ink);
+}
+
+.proposal-tray{
+  position:fixed;bottom:0;left:0;right:0;z-index:300;
+  background:var(--slate);border-top:2px solid var(--signal);
+  padding:16px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  box-shadow:0 -8px 32px rgba(0,0,0,.5);
+  transform:translateY(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);
+}
+.proposal-tray.visible{transform:translateY(0)}
+.proposal-tray .pt-summary{flex:1;min-width:160px}
+.proposal-tray .pt-count{font-size:22px;font-weight:800;color:var(--signal);font-family:var(--f-display);line-height:1}
+.proposal-tray .pt-label{font-family:var(--f-mono);font-size:11px;color:var(--mist2);letter-spacing:.06em;margin-top:2px}
+.proposal-tray .pt-names{font-size:13px;color:var(--mist);margin-top:4px;line-height:1.4}
+.proposal-tray .pt-cta{
+  background:var(--signal);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;font-weight:700;padding:14px 28px;text-decoration:none;
+  border-radius:4px;white-space:nowrap;transition:opacity .2s;letter-spacing:.01em;
+}
+.proposal-tray .pt-cta:hover{opacity:.88}
+.proposal-tray .pt-clear{
+  background:none;border:none;color:var(--mist);font-family:var(--f-mono);
+  font-size:11px;cursor:pointer;letter-spacing:.05em;padding:4px;
+}
+.proposal-tray .pt-clear:hover{color:var(--mist2)}
+@media(max-width:600px){
+  .proposal-tray{padding:12px 16px}
+  .proposal-tray .pt-cta{width:100%;text-align:center}
+}
+
+/* ── PROPOSAL REQUEST FORM PAGE ──────────────────────────── */
+.pr-wrap{max-width:740px;margin:0 auto;padding:0 24px 100px}
+.pr-hero{padding:40px 0 36px}
+.pr-hero h1{font-size:clamp(26px,5vw,40px);font-weight:800;line-height:1.2;margin-bottom:12px}
+.pr-hero p{font-size:17px;color:var(--mist2);line-height:1.6;max-width:540px}
+
+.pr-selected-sprints{margin:0 0 32px;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.pr-selected-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);padding:12px 16px;border-bottom:1px solid var(--border);background:var(--slate)}
+.pr-sprint-pill{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);gap:12px}
+.pr-sprint-pill:last-child{border-bottom:none}
+.pr-sprint-pill .ps-name{font-size:15px;font-weight:600}
+.pr-sprint-pill .ps-meta{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.04em;margin-top:2px}
+.pr-sprint-pill .ps-remove{background:none;border:none;color:var(--mist);cursor:pointer;font-size:18px;padding:0 4px;line-height:1;transition:color .15s}
+.pr-sprint-pill .ps-remove:hover{color:#D52B1E}
+.pr-add-sprint{display:flex;align-items:center;gap:8px;padding:12px 16px;font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em;cursor:pointer;background:none;border:none;border-top:1px dashed var(--border);width:100%;text-align:left;transition:color .15s}
+.pr-add-sprint:hover{color:var(--signal)}
+
+.pr-section{margin:32px 0}
+.pr-section-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.pr-field{margin-bottom:20px}
+.pr-field label{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mist);margin-bottom:7px}
+.pr-field input,.pr-field textarea,.pr-field select{
+  width:100%;padding:13px 15px;background:var(--slate2);border:1px solid var(--border);
+  color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px;
+  outline:none;box-sizing:border-box;
+}
+.pr-field input:focus,.pr-field textarea:focus,.pr-field select:focus{border-color:var(--signal)}
+.pr-field textarea{resize:vertical;min-height:100px;line-height:1.55}
+.pr-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.pr-field select option{background:var(--ink);color:var(--bone)}
+.pr-row{display:flex;gap:16px}
+.pr-row .pr-field{flex:1}
+@media(max-width:600px){.pr-row{flex-direction:column}}
+
+.pr-guarantee{margin:32px 0;border:2px solid var(--signal);border-radius:4px;padding:28px;background:rgba(200,241,53,.03)}
+.pr-guarantee-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
+.pr-guarantee h3{font-size:18px;font-weight:700;margin-bottom:12px}
+.pr-guarantee-items{display:flex;flex-direction:column;gap:10px}
+.pr-guarantee-item{display:flex;gap:14px;align-items:flex-start;font-size:14px;line-height:1.5}
+.pr-guarantee-item .gi-num{font-family:var(--f-mono);font-size:11px;color:var(--signal);min-width:20px;padding-top:1px}
+.pr-guarantee-item strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.pr-guarantee-item span{font-size:13px;color:var(--mist2)}
+
+.pr-network-note{margin:16px 0 28px;padding:16px 20px;border:1px solid var(--border);border-left:3px solid var(--mist);border-radius:0 4px 4px 0}
+.pr-network-note p{font-size:13px;color:var(--mist2);line-height:1.6;margin:0}
+.pr-network-note strong{color:var(--bone)}
+
+.pr-submit-btn{
+  background:var(--signal);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;font-weight:700;padding:18px 36px;border:none;cursor:pointer;
+  border-radius:4px;width:100%;letter-spacing:.01em;
+  transition:opacity .2s,transform .2s;margin-top:8px;
+}
+.pr-submit-btn:hover{opacity:.9;transform:translateY(-1px)}
+.pr-submit-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pr-submit-note{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.05em;text-align:center;margin-top:10px}
+
+.pr-confirm{display:none;text-align:center;padding:48px 0}
+.pr-confirm .pc-icon{font-size:48px;margin-bottom:20px}
+.pr-confirm h2{font-size:28px;font-weight:800;margin-bottom:12px}
+.pr-confirm p{font-size:16px;color:var(--mist2);line-height:1.6;max-width:480px;margin:0 auto 12px}
+.pr-confirm .pc-timeline{display:flex;flex-direction:column;gap:12px;margin:32px auto;max-width:440px;text-align:left}
+.pr-confirm .pc-step{display:flex;gap:14px;font-size:14px;color:var(--mist2);line-height:1.45}
+.pr-confirm .pc-step .pcs-num{font-family:var(--f-mono);font-size:11px;color:var(--signal);min-width:20px;padding-top:1px}
+.pr-confirm .pc-step strong{display:block;color:var(--bone);font-size:14px;margin-bottom:2px}
+
 /* ── SPRINT FILTER TABS ──────────────────────────────────── */
 .sprint-filter-wrap{margin:28px 0 24px}
 .sprint-filter-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:10px}
