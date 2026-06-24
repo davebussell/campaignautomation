@@ -869,6 +869,18 @@ footer{
   body.page-entering{animation:page-enter-anim 200ms ease forwards}
 }
 
+/* ── COLOR SHIFT TEXT ────────────────────────────────── */
+@keyframes color-shift{
+  0%,100%{color:#FFE200}
+  50%{color:#C8F135}
+}
+@media(prefers-reduced-motion:no-preference){
+  .color-shift{animation:color-shift 4s ease-in-out infinite}
+}
+@media(prefers-reduced-motion:reduce){
+  .color-shift{color:#C8F135}
+}
+
 /* ── CARD BORDER SWEEP (extended to .card) ───────────── */
 .card{position:relative;overflow:hidden}
 .card::before{
