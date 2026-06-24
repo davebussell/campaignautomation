@@ -373,6 +373,7 @@ function injectScoreHeroInsert(score, data) {
     <div class="shi-body">
       <strong>Your score: ${copy.name}${indLabel}</strong>
       <p>${copy.sprintInsert}</p>
+      <a href="/resources/sprint-prep" style="display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.06em;text-decoration:none">Build your sprint foundation →</a>
     </div>
   `;
   target.parentNode.insertBefore(insert, target);
@@ -419,6 +420,48 @@ function injectNoScoreBanner() {
 if (document.querySelector('[data-min-score]')) {
   applyScoreGating();
 }
+
+/* ── SPRINT FILTER TABS ──────────────────────────────────── */
+(function initSprintFilter() {
+  const tabs = document.querySelectorAll('.sprint-filter-tab');
+  if (!tabs.length) return;
+
+  function filterSprints(filter) {
+    document.querySelectorAll('.sprint-card[data-stage]').forEach(card => {
+      if (filter === 'all') {
+        card.style.display = '';
+      } else if (filter === 'leapfrog') {
+        card.style.display = card.dataset.sprintType === 'leapfrog' ? '' : 'none';
+      } else {
+        const stages = (card.dataset.stage || '').split(' ');
+        card.style.display = stages.includes(filter) ? '' : 'none';
+      }
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      filterSprints(tab.dataset.filter);
+    });
+  });
+
+  // Auto-select tab based on saved stage
+  const data = RSCORE.load();
+  if (data && data.stage) {
+    const stageMap = { pre: 'early', early: 'early', growth: 'growth', scale: 'scale' };
+    const autoFilter = stageMap[data.stage];
+    if (autoFilter) {
+      const matchTab = document.querySelector(`.sprint-filter-tab[data-filter="${autoFilter}"]`);
+      if (matchTab) {
+        tabs.forEach(t => t.classList.remove('active'));
+        matchTab.classList.add('active');
+        filterSprints(autoFilter);
+      }
+    }
+  }
+})();
 
 /* ── PARALLAX — hero only, desktop only ──────────────────── */
 const heroSection = document.querySelector('.hero');

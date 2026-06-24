@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprint Prep Resources — Campaign Automation AI</title>
+<meta name="description" content="Everything you need before your first automation sprint. Tier-specific checklists, templates, prompt packs, and a clear next action based on your Readiness Score.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/sprint-prep">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.sp-wrap{max-width:880px;margin:0 auto;padding:0 24px 80px}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item" role="listitem">
+      <a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true" aria-current="page">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
+        <a href="/resources/sprint-prep" role="menuitem">Sprint Prep Resources</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+      </div>
+    </div>
+    <a href="/solutions/campaign-audit" class="nav-cta" role="listitem">Get Audit →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a><a href="/results">Results</a><a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Take the free Readiness Score →</a>
+</nav>
+
+<main id="main-content">
+<div class="sp-wrap">
+
+  <div class="breadcrumb" style="margin-bottom:32px">
+    <a href="/">Home</a><span aria-hidden="true">›</span>
+    <a href="/resources">Resources</a><span aria-hidden="true">›</span>
+    <span aria-current="page">Sprint Prep</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="rc-hero reveal">
+    <div class="signal-badge" style="margin-bottom:16px">Before you sprint</div>
+    <h1>Build your sprint foundation.</h1>
+    <p>The difference between a sprint that delivers and one that stalls is almost always preparation. This page tells you exactly what to have in place — organized by your Readiness Score tier and company stage.</p>
+  </div>
+
+  <!-- DYNAMIC BLOCK — injected by JS if score exists -->
+  <div id="rc-dynamic-block" class="reveal"></div>
+
+  <!-- PREP TRACKS -->
+  <section class="reveal" style="margin:48px 0">
+    <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Prep track by tier</div>
+    <h2 style="font-size:22px;margin-bottom:8px">What you need at each stage</h2>
+    <p style="font-size:15px;color:var(--mist2);margin-bottom:28px;line-height:1.55">Your active track is highlighted when you've completed the Readiness Score. Each track builds on the one below it — you don't need to complete a lower track before starting a Leapfrog Sprint.</p>
+
+    <div class="rc-tracks" id="rc-tracks">
+
+      <div class="rc-track" id="track-siloed" data-tier="siloed">
+        <h3>Siloed <span style="color:var(--mist);font-weight:400;font-size:13px">· Score 0–49</span></h3>
+        <div class="rc-track-meta">Foundation work first</div>
+        <ul>
+          <li>Complete the free Readiness Score</li>
+          <li>Document your current campaign workflow</li>
+          <li>Export your last 90 days of campaign data</li>
+          <li>Identify who owns campaign decisions</li>
+          <li>Map which tools each team member uses daily</li>
+          <li>Book a Campaign Automation Audit</li>
+        </ul>
+        <a href="/tools/readiness-score" style="display:inline-block;margin-top:16px;font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.06em;text-decoration:none">Take the Readiness Score →</a>
+      </div>
+
+      <div class="rc-track" id="track-emerging" data-tier="emerging">
+        <h3>Emerging <span style="color:var(--mist);font-weight:400;font-size:13px">· Score 50–69</span></h3>
+        <div class="rc-track-meta">Foundation sprints available</div>
+        <ul>
+          <li>Set up Claude (claude.ai or API access)</li>
+          <li>Download the Campaign Brief prompt pack</li>
+          <li>Document your campaign naming conventions</li>
+          <li>Identify your one highest-friction workflow</li>
+          <li>Review the AI Brief Machine sprint</li>
+          <li>Complete the Audit to unlock integration sprints</li>
+        </ul>
+        <a href="/solutions/automation-sprints#leapfrog" style="display:inline-block;margin-top:16px;font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.06em;text-decoration:none">See Leapfrog Sprints →</a>
+      </div>
+
+      <div class="rc-track" id="track-operational" data-tier="operational">
+        <h3>Operational <span style="color:var(--mist);font-weight:400;font-size:13px">· Score 70–84</span></h3>
+        <div class="rc-track-meta">Integration sprints available</div>
+        <ul>
+          <li>Map your full stack (ad platforms, CRM, analytics)</li>
+          <li>Verify conversion tracking across all channels</li>
+          <li>Download the stack audit template</li>
+          <li>Document your data ownership + access rights</li>
+          <li>Set up a shared prompt library for your team</li>
+          <li>Request a sprint scoping call</li>
+        </ul>
+        <a href="/tools/readiness-score?ref=sprint" style="display:inline-block;margin-top:16px;font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.06em;text-decoration:none">Request a sprint →</a>
+      </div>
+
+      <div class="rc-track" id="track-agentic" data-tier="agentic">
+        <h3>Agentic <span style="color:var(--mist);font-weight:400;font-size:13px">· Score 85–100</span></h3>
+        <div class="rc-track-meta">Intelligence layer ready</div>
+        <ul>
+          <li>Download the AGENTS.md + CLAUDE.md templates</li>
+          <li>Map your orchestration architecture</li>
+          <li>Define your agent trigger + reporting cadence</li>
+          <li>Identify measurement baseline for agentic output</li>
+          <li>Explore the Campaign Strategy Portal</li>
+          <li>Request a Portal or advanced sprint scoping call</li>
+        </ul>
+        <a href="/platform" style="display:inline-block;margin-top:16px;font-family:var(--f-mono);font-size:11px;color:var(--signal);letter-spacing:.06em;text-decoration:none">Explore the Strategy Portal →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESOURCE LIBRARY -->
+  <section class="reveal" style="margin:48px 0">
+    <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Resource library</div>
+    <h2 style="font-size:22px;margin-bottom:8px">Templates, packs, and guides</h2>
+    <p style="font-size:15px;color:var(--mist2);margin-bottom:28px;line-height:1.55">Download, adapt, and use. Everything here is yours — no subscription, no lock-in.</p>
+
+    <div class="rc-resources">
+
+      <div class="rc-resource">
+        <div class="rc-resource-type">Prompt Pack · Any tier</div>
+        <h3>Campaign Brief Prompt Pack</h3>
+        <p>A structured set of Claude prompts that turn any objective, keyword, or product into a full campaign brief. Includes audience definition, angle selection, and format guidance. The starting point for the AI Brief Machine sprint.</p>
+        <a href="/resources/templates" class="rc-resource-cta">Download free →</a>
+      </div>
+
+      <div class="rc-resource">
+        <div class="rc-resource-type">Checklist · Siloed / Emerging</div>
+        <h3>Campaign Data Export Guide</h3>
+        <p>Step-by-step instructions for pulling the right 90-day data from Google Ads, GA4, and Search Console — formatted for the Audit intake. Covers what to export, how to name files, and what not to include.</p>
+        <a href="/resources/templates" class="rc-resource-cta">Download free →</a>
+      </div>
+
+      <div class="rc-resource">
+        <div class="rc-resource-type">Template · Emerging / Operational</div>
+        <h3>Campaign Naming Convention Template</h3>
+        <p>A standardized naming structure for campaigns, ad groups, and assets — across Google Ads, Meta, and LinkedIn. Prerequisite for the Campaign Launch Kit sprint. Includes rationale for each field and a fill-in-the-blank format.</p>
+        <a href="/resources/templates" class="rc-resource-cta">Download free →</a>
+      </div>
+
+      <div class="rc-resource">
+        <div class="rc-resource-type">Template · Operational</div>
+        <h3>Stack Audit Template</h3>
+        <p>A structured inventory of your ad platforms, CRM, analytics tools, and data connections — with columns for data owner, access level, and integration status. Required prep for any integration sprint scoping call.</p>
+        <a href="/resources/templates" class="rc-resource-cta">Download free →</a>
+      </div>
+
+      <div class="rc-resource">
+        <div class="rc-resource-type">Prompt Pack · Operational / Agentic</div>
+        <h3>Performance Narrative Prompt Pack</h3>
+        <p>A Claude prompt library for turning raw performance data — Google Ads, GA4, or Search Console exports — into clear, client-ready narrative reports. Includes weekly digest, monthly summary, and executive summary formats.</p>
+        <a href="/resources/templates" class="rc-resource-cta">Download free →</a>
+      </div>
+
+      <div class="rc-resource">
+        <div class="rc-resource-type">Documentation · Agentic</div>
+        <h3>AGENTS.md + CLAUDE.md Templates</h3>
+        <p>Production-ready documentation templates for AI agents and Claude configurations. Defines agent scope, guardrails, trigger conditions, escalation rules, and logging requirements. Shipped in every sprint — available here in advance.</p>
+        <a href="/resources/templates" class="rc-resource-cta">Download free →</a>
+      </div>
+
+      <div class="rc-resource coming">
+        <div class="rc-resource-type">Guide · Any tier</div>
+        <h3>AI Tooling Setup Guide</h3>
+        <p>Practical configuration advice for Claude, Cursor, and supporting tools — covering API access, team sharing, prompt versioning, and the minimal setup required before your first sprint kicks off.</p>
+        <a href="mailto:hello@campaignautomation.ai?subject=AI Tooling Setup Guide" class="rc-resource-cta">Request early access →</a>
+      </div>
+
+      <div class="rc-resource coming">
+        <div class="rc-resource-type">Framework · Agentic</div>
+        <h3>Orchestration Architecture Map</h3>
+        <p>A structured framework for mapping multi-agent campaign workflows — defining triggers, data flows, handoff points, and human-in-the-loop gates. Prerequisite for Agentic-tier sprint scoping.</p>
+        <a href="mailto:hello@campaignautomation.ai?subject=Orchestration Architecture Map" class="rc-resource-cta">Request early access →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STAGE-BASED NEXT ACTIONS -->
+  <section class="reveal" style="margin:48px 0">
+    <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Next actions by stage</div>
+    <h2 style="font-size:22px;margin-bottom:24px">Where to go from here</h2>
+
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;gap:24px;padding:24px 0;border-top:1px solid var(--border)">
+        <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);min-width:80px;padding-top:3px;letter-spacing:.04em">Pre / Seed</div>
+        <div>
+          <strong style="display:block;margin-bottom:6px">Start with a Leapfrog Sprint — no prerequisites needed</strong>
+          <p style="font-size:14px;color:var(--mist2);margin:0 0 10px;line-height:1.55">At pre-revenue or seed stage, data infrastructure takes a back seat. Leapfrog Sprints let you build real AI capability — briefs, intelligence pipelines, content systems — without waiting for data maturity. Pick one. Build it. Own it.</p>
+          <a href="/solutions/automation-sprints#leapfrog" style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.06em">See Leapfrog Sprints →</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;padding:24px 0;border-top:1px solid var(--border)">
+        <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);min-width:80px;padding-top:3px;letter-spacing:.04em">Early Stage</div>
+        <div>
+          <strong style="display:block;margin-bottom:6px">Leapfrog now, Audit when you're ready to integrate</strong>
+          <p style="font-size:14px;color:var(--mist2);margin:0 0 10px;line-height:1.55">At $0–$1M ARR you're building process while running campaigns. Leapfrog Sprints systematize your highest-friction workflows immediately. When you're ready to connect your stack, the Audit scopes your first integration sprint.</p>
+          <a href="/solutions/automation-sprints" style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.06em">View all sprints →</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;padding:24px 0;border-top:1px solid var(--border)">
+        <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);min-width:80px;padding-top:3px;letter-spacing:.04em">Growth</div>
+        <div>
+          <strong style="display:block;margin-bottom:6px">Audit first, then pick the integration sprint with highest ROI</strong>
+          <p style="font-size:14px;color:var(--mist2);margin:0 0 10px;line-height:1.55">At $1M–$10M ARR you have enough campaign volume and stack depth for integration sprints to compound. The Audit identifies which workflow — PPC Intelligence, Launch Kit, Content Brief — delivers the fastest measurable return for your current situation.</p>
+          <a href="/solutions/campaign-audit" style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.06em">Learn about the Audit →</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+        <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);min-width:80px;padding-top:3px;letter-spacing:.04em">Scale</div>
+        <div>
+          <strong style="display:block;margin-bottom:6px">Lead Reactivation, Event Follow-Up, and the Strategy Portal</strong>
+          <p style="font-size:14px;color:var(--mist2);margin:0 0 10px;line-height:1.55">At $10M+ you have the data depth and org structure for high-complexity integration sprints — and the pipeline volume to make Lead Reactivation and Event Follow-Up measurably valuable. The Campaign Strategy Portal gives you an ongoing AI intelligence layer on top.</p>
+          <a href="/platform" style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.06em">Explore the Strategy Portal →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT ACTION BLOCK — dynamically updated by JS if score exists, static fallback -->
+  <div class="rc-next-action reveal" id="rc-next-action">
+    <div class="rna-label">Your next action</div>
+    <h2 id="rna-headline">Start with your Readiness Score</h2>
+    <p id="rna-body">The score tells us your tier, your binding constraint, and which sprint — Leapfrog or integration — is the right starting point for your situation. It takes 4 minutes and it's free.</p>
+    <a href="/tools/readiness-score" class="btn-primary" id="rna-cta">Take the free Readiness Score →</a>
+    <p style="font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.05em;margin-top:16px">14 questions · 4 minutes · No login</p>
+  </div>
+
+</div>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer">
+  <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
+  </div>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a>
+  </nav>
+  <nav aria-label="Learn"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
+    <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/sprint-prep">Sprint Prep</a><a href="/resources/templates">Templates</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+// Personalize this page from localStorage on load
+(function personalizeSprintPrep() {
+  const data = (function(){ try { return JSON.parse(localStorage.getItem('ca_readiness') || 'null'); } catch(e){ return null; } })();
+
+  const tierMap = {
+    siloed:      { name:'Siloed',      score:'0–49',  trackId:'track-siloed' },
+    emerging:    { name:'Emerging',    score:'50–69', trackId:'track-emerging' },
+    operational: { name:'Operational', score:'70–84', trackId:'track-operational' },
+    agentic:     { name:'Agentic',     score:'85–100',trackId:'track-agentic' },
+  };
+  const stageLabels = { pre:'Pre-revenue / Seed', early:'Early ($0–$1M ARR)', growth:'Growth ($1M–$10M)', scale:'Scale ($10M+)' };
+
+  const nextActions = {
+    siloed: {
+      headline: 'Your next action: complete the Campaign Automation Audit',
+      body: 'Your score shows foundational barriers — siloed data, unclear ownership, or fragmented tooling. The Audit maps exactly where those barriers are and scopes the first sprint that moves you forward fastest. While you wait, Leapfrog Sprints are available at any score.',
+      cta: 'Learn about the Audit →',
+      href: '/solutions/campaign-audit',
+    },
+    emerging: {
+      headline: 'Your next action: start with a Leapfrog Sprint',
+      body: 'You have enough foundation to build real automation now. Leapfrog Sprints — Brief Machine, Search Term Intelligence, Competitive Engine — are available immediately. Run one in parallel while the Audit scopes your integration sprint path.',
+      cta: 'See Leapfrog Sprints →',
+      href: '/solutions/automation-sprints#leapfrog',
+    },
+    operational: {
+      headline: 'Your next action: request an integration sprint scoping call',
+      body: 'Your score qualifies you for integration sprints — Launch Kit, PPC Intelligence, SEO/PPC Opportunity, and more. Download the stack audit template above, fill in your tool inventory, and request a scoping call. We\'ll propose the highest-ROI sprint for your current situation.',
+      cta: 'Request a sprint →',
+      href: '/tools/readiness-score?ref=sprint',
+    },
+    agentic: {
+      headline: 'Your next action: explore the Campaign Strategy Portal',
+      body: 'At your score, the highest-leverage move is an ongoing AI intelligence layer — not just a one-time sprint. The Campaign Strategy Portal delivers AI-generated strategy, recommendations, and assets on a monthly cadence. Advanced sprints (Lead Reactivation, Event Follow-Up) are also fully available.',
+      cta: 'Explore the Strategy Portal →',
+      href: '/platform',
+    },
+  };
+
+  if (!data || data.score === undefined) return;
+
+  const tk = data.score >= 85 ? 'agentic' : data.score >= 70 ? 'operational' : data.score >= 50 ? 'emerging' : 'siloed';
+  const tier = tierMap[tk];
+  const stageLabel = stageLabels[data.stage] || '';
+  const na = nextActions[tk];
+
+  // Highlight active prep track
+  document.querySelectorAll('.rc-track').forEach(t => {
+    t.classList.toggle('active', t.id === tier.trackId);
+  });
+
+  // Inject dynamic block
+  const block = document.getElementById('rc-dynamic-block');
+  if (block) {
+    block.innerHTML = `
+      <div class="rc-dynamic">
+        <div class="rcd-label">Your sprint prep path · Score ${data.score}/100</div>
+        <div class="rcd-headline">${tier.name} tier${stageLabel ? ' · ' + stageLabel : ''}</div>
+        <div class="rcd-sub">Based on your Readiness Score, your active prep track is highlighted below. Complete the items in your tier before requesting an integration sprint. Leapfrog Sprints are available immediately.</div>
+        <div class="rc-checklist">
+          <div class="rc-check-item"><span class="rc-check-icon">→</span><div><strong>Your active track</strong><span>Scroll down to the "${tier.name}" column — those items apply to you now.</span></div></div>
+          <div class="rc-check-item"><span class="rc-check-icon">→</span><div><strong>Leapfrog Sprints are open</strong><span>AI Brief Machine, Search Term Intelligence, Competitive Engine, and Content Atomization are available at any score.</span></div></div>
+          ${tk !== 'siloed' ? `<div class="rc-check-item"><span class="rc-check-icon">→</span><div><strong>Download your resources</strong><span>The resource library below includes templates and prompt packs matched to your tier.</span></div></div>` : ''}
+        </div>
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="/solutions/automation-sprints#leapfrog" style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.06em;border-bottom:1px solid rgba(200,241,53,.3);padding-bottom:1px">See Leapfrog Sprints →</a>
+          <a href="/tools/readiness-score" style="font-family:var(--f-mono);font-size:11px;color:var(--mist2);text-decoration:none;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:1px">View your full scorecard →</a>
+        </div>
+      </div>
+    `;
+  }
+
+  // Update next action block
+  const headline = document.getElementById('rna-headline');
+  const body = document.getElementById('rna-body');
+  const cta = document.getElementById('rna-cta');
+  if (headline) headline.textContent = na.headline;
+  if (body) body.textContent = na.body;
+  if (cta) { cta.textContent = na.cta; cta.href = na.href; }
+})();
+</script>
+</body>
+</html>
