@@ -118,6 +118,80 @@
 
   <!-- HERO -->
   <section class="hero snap-sec" aria-labelledby="hero-heading">
+    <div class="hero-sankey" aria-hidden="true">
+      <svg class="hero-sankey__svg" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sk-base" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#2A2A2A"/>
+            <stop offset=".55" stop-color="#888888"/>
+            <stop offset="1" stop-color="#C8F135"/>
+          </linearGradient>
+          <linearGradient id="sk-flow" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#C8F135" stop-opacity="0"/>
+            <stop offset=".18" stop-color="#C8F135" stop-opacity=".55"/>
+            <stop offset=".42" stop-color="#888888" stop-opacity=".30"/>
+            <stop offset=".70" stop-color="#C8F135" stop-opacity=".42"/>
+            <stop offset="1" stop-color="#888888" stop-opacity="0"/>
+            <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="1 0" dur="13s" repeatCount="indefinite"/>
+          </linearGradient>
+          <linearGradient id="sk-flow2" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#888888" stop-opacity="0"/>
+            <stop offset=".25" stop-color="#B0B0B0" stop-opacity=".28"/>
+            <stop offset=".55" stop-color="#C8F135" stop-opacity=".40"/>
+            <stop offset=".85" stop-color="#888888" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#C8F135" stop-opacity="0"/>
+            <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="1 0" dur="17s" repeatCount="indefinite"/>
+          </linearGradient>
+          <linearGradient id="sk-sheen" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#C8F135" stop-opacity="0"/>
+            <stop offset=".5" stop-color="#C8F135" stop-opacity=".5"/>
+            <stop offset="1" stop-color="#C8F135" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="sk-node" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#C8F135" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#C8F135" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="sk-fade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#000" stop-opacity="0"/>
+            <stop offset=".12" stop-color="#000" stop-opacity="1"/>
+            <stop offset=".88" stop-color="#000" stop-opacity="1"/>
+            <stop offset="1" stop-color="#000" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="sk-edge"><rect x="0" y="0" width="1440" height="640" fill="url(#sk-fade)"/></mask>
+        </defs>
+        <g mask="url(#sk-edge)">
+          <g class="sk-base">
+            <path style="--w:46" d="M-60,150 C320,150 380,110 720,150 C1060,190 1140,300 1500,300"/>
+            <path style="--w:64" d="M-60,320 C340,320 420,330 720,320 C1020,310 1140,330 1500,340"/>
+            <path style="--w:38" d="M-60,500 C320,500 380,540 720,480 C1060,420 1140,360 1500,380"/>
+            <path style="--w:22" d="M-60,230 C360,230 460,420 720,440 C1020,470 1160,520 1500,520"/>
+          </g>
+          <g class="sk-bands">
+            <path style="--w:46;--fill:url(#sk-flow)" d="M-60,150 C320,150 380,110 720,150 C1060,190 1140,300 1500,300"/>
+            <path style="--w:64;--fill:url(#sk-flow2)" d="M-60,320 C340,320 420,330 720,320 C1020,310 1140,330 1500,340"/>
+            <path style="--w:38;--fill:url(#sk-flow)" d="M-60,500 C320,500 380,540 720,480 C1060,420 1140,360 1500,380"/>
+            <path style="--w:22;--fill:url(#sk-flow2)" d="M-60,230 C360,230 460,420 720,440 C1020,470 1160,520 1500,520"/>
+          </g>
+          <g class="sk-pulses">
+            <path class="sk-p1" d="M-60,150 C320,150 380,110 720,150 C1060,190 1140,300 1500,300"/>
+            <path class="sk-p2" d="M-60,320 C340,320 420,330 720,320 C1020,310 1140,330 1500,340"/>
+            <path class="sk-p3" d="M-60,500 C320,500 380,540 720,480 C1060,420 1140,360 1500,380"/>
+            <path class="sk-p4" d="M-60,230 C360,230 460,420 720,440 C1020,470 1160,520 1500,520"/>
+          </g>
+          <g class="sk-nodes">
+            <circle cx="0" cy="150" r="26" fill="url(#sk-node)"/>
+            <circle cx="0" cy="320" r="30" fill="url(#sk-node)"/>
+            <circle cx="0" cy="500" r="22" fill="url(#sk-node)"/>
+            <circle cx="720" cy="240" r="34" fill="url(#sk-node)"/>
+            <circle cx="720" cy="420" r="28" fill="url(#sk-node)"/>
+            <circle cx="1440" cy="300" r="30" fill="url(#sk-node)"/>
+            <circle cx="1440" cy="380" r="24" fill="url(#sk-node)"/>
+            <circle cx="1440" cy="520" r="22" fill="url(#sk-node)"/>
+          </g>
+          <rect class="sk-sheen" x="-560" y="0" width="560" height="640" fill="url(#sk-sheen)"/>
+        </g>
+      </svg>
+    </div>
     <div class="orb orb-lime" aria-hidden="true"></div>
     <div class="orb orb-bone" aria-hidden="true"></div>
     <div class="hero-eyebrow"><span class="dot" aria-hidden="true"></span>campaignautomation.ai</div>
@@ -137,18 +211,19 @@
     </div>
     <div class="hero-metrics" role="list" aria-label="Key outcomes">
       <div class="metric" role="listitem">
-        <div class="metric-n" aria-label="3 times average ROI">3<span aria-hidden="true">×</span></div>
-        <div class="metric-l">ROI on ad spend within 90 days</div>
+        <div class="metric-n" aria-label="13 hours saved per project on average">13<span aria-hidden="true"> hrs</span></div>
+        <div class="metric-l">Saved per project — priority-setting, project management, development &amp; deployment</div>
       </div>
       <div class="metric" role="listitem" style="padding-left:40px">
-        <div class="metric-n" aria-label="68 percent reduction">68<span aria-hidden="true">%</span></div>
-        <div class="metric-l">Reduction in manual campaign time</div>
+        <div class="metric-n" aria-label="27 percent average ROAS improvement">27<span aria-hidden="true">%</span></div>
+        <div class="metric-l">Average ROAS improvement</div>
       </div>
       <div class="metric" role="listitem" style="padding-left:40px">
-        <div class="metric-n" aria-label="14 days to first automation">14<span aria-hidden="true">d</span></div>
-        <div class="metric-l">Average time to first automation live</div>
+        <div class="metric-n" aria-label="Plus 2 Quality Score points out of 10">+2<span aria-hidden="true"> pts</span></div>
+        <div class="metric-l">Quality Score lift (out of 10) — the multiplier on reach, cost &amp; impact</div>
       </div>
     </div>
+    <p class="hero-tagline">Move quickly <span aria-hidden="true">—</span> do big things<span class="blink-dot" aria-hidden="true">.</span></p>
   </section>
 
   <!-- HOW IT WORKS — 3 STEPS -->

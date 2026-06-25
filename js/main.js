@@ -44,6 +44,12 @@ if (hamburger && mobileMenu) {
 /* ── REDUCED MOTION CHECK ────────────────────────────────── */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* Pause the hero Sankey's SMIL flow under reduced motion (CSS can't stop SMIL) */
+if (prefersReducedMotion) {
+  const skSvg = document.querySelector('.hero-sankey__svg');
+  if (skSvg && skSvg.pauseAnimations) skSvg.pauseAnimations();
+}
+
 /* ── PAGE ENTER ANIMATION ────────────────────────────────── */
 if (!prefersReducedMotion) {
   document.body.classList.add('page-entering');
