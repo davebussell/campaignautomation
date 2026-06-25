@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,116 +112,123 @@
   <a href="/tools/readiness-score/?ref=audit" class="mobile-cta">Get a Campaign Automation Audit &#8594;</a>
 </nav>
 
-      <div class="article-section" id="guardrails">
-        <h2>Guardrail setup — what you control</h2>
-        <p>Before the agent touches anything, you define the constraints. These are not defaults — they're decisions your team makes, documents, and can change at any time.</p>
-        <div class="terminal" style="margin:24px 0">
-          <div><span class="t-green">guardrail</span>  daily_spend_cap = $2,400</div>
-          <div><span class="t-green">guardrail</span>  max_bid_change_pct = 20</div>
-          <div><span class="t-green">guardrail</span>  cpa_pause_threshold = $65</div>
-          <div><span class="t-green">guardrail</span>  brand_exclusions = [list: 47 terms]</div>
-          <div><span class="t-green">guardrail</span>  min_campaign_budget = $200</div>
-          <div><span class="t-green">guardrail</span>  reallocation_window_hours = 72</div>
-          <div style="margin-top:8px"><span class="t-dim"># Agent operates freely within these constraints — nothing outside them</span><span class="cursor"></span></div>
-        </div>
-        <h3>Why 72-hour windows matter</h3>
-        <p>Reallocation decisions based on less than 72 hours of data produce false signals. A campaign that looks underperforming at 24 hours may simply be in a low-conversion window. The agent evaluates rolling performance windows — not yesterday's numbers.</p>
-        <a href="/paid-advertising-automation/ai-budget-allocation-best-practices" style="color:var(--signal);text-decoration:none;font-size:14px">Read the full budget allocation guide →</a>
-      </div>
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span class="current">Paid Advertising Automation</span></nav>
 
-      <div class="article-section" id="agency">
-        <h2>Built for agencies managing multiple accounts</h2>
-        <p>The platform is multi-tenant by design. Each client gets their own guardrail configuration, their own agent log, and their own performance dashboard. You white-label the interface. Your clients see your brand — the AI works underneath.</p>
-        <div class="grid-2" style="margin-top:24px">
-          <div class="card">
-            <div class="card-tag">Multi-tenant</div>
-            <h4>One platform, unlimited clients</h4>
-            <p>Deploy per-client guardrails, view cross-account performance, and manage everything from a single dashboard — without credentials leaving your control.</p>
-          </div>
-          <div class="card">
-            <div class="card-tag">White-label</div>
-            <h4>Your brand, your dashboard</h4>
-            <p>The client-facing interface runs under your agency brand. They see your reporting — not ours.</p>
-          </div>
-        </div>
-        <a href="/paid-advertising-automation/agency-automation" class="btn-primary" style="margin-top:24px;display:inline-block">Agency automation details →</a>
-      </div>
+  <section class="page-hero">
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Paid Advertising Automation</div>
+    <h1>AI-managed paid advertising —<br>with guardrails you control<span class="blink-dot" aria-hidden="true">.</span></h1>
+    <p class="hero-sub">Guardrail-driven AI agents manage your Google Ads, Meta, and paid search in real time — budget allocation, bid management, and performance decisions made continuously, inside the constraints your team sets. This pillar covers how it works, what you control, and where to go deeper.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:28px">
+      <a href="/solutions/campaign-audit" class="btn-primary">Get your free audit →</a>
+      <a href="/solutions/sprints/ppc-intelligence" class="btn-ghost">See the PPC Intelligence Sprint →</a>
+    </div>
+  </section>
 
-      <div class="article-section" id="cluster-pages">
-        <h2>Go deeper</h2>
-        <div class="grid-3">
-          <a class="pillar-card" href="/paid-advertising-automation/will-ai-replace-the-media-buyer">
-            <div class="pillar-tag signal">720 vol</div>
-            <h4>Will AI replace the media buyer?</h4>
-            <p>The complete breakdown of what AI-managed advertising actually does — and what stays human.</p>
-          </a>
-          <a class="pillar-card" href="/paid-advertising-automation/ai-budget-allocation-best-practices">
-            <div class="pillar-tag signal">720 vol</div>
-            <h4>AI budget allocation best practices</h4>
-            <p>Guardrail rules, performance windows, and the mistakes that kill campaigns before they start.</p>
-          </a>
-          <a class="pillar-card" href="/paid-advertising-automation/google-ads-automation">
-            <div class="pillar-tag">Google Ads</div>
-            <h4>Google Ads automation</h4>
-            <p>Beyond Smart Bidding — what guardrail-driven management does differently.</p>
-          </a>
-          <a class="pillar-card" href="/paid-advertising-automation/smart-bidding-alternatives">
-            <div class="pillar-tag">BOFU</div>
-            <h4>Smart Bidding alternatives</h4>
-            <p>When Google's native automation isn't enough — and what to use instead.</p>
-          </a>
-          <a class="pillar-card" href="/paid-advertising-automation/meta-ads-automation">
-            <div class="pillar-tag">Meta</div>
-            <h4>Meta Ads automation</h4>
-            <p>Creative fatigue, audience rotation, and ROAS-driven budget allocation on Facebook and Instagram.</p>
-          </a>
-          <a class="pillar-card" href="/paid-advertising-automation/platform-comparison">
-            <div class="pillar-tag">Evaluation</div>
-            <h4>Platform comparison guide</h4>
-            <p>The 8 criteria that separate real AI automation platforms from expensive dashboards.</p>
-          </a>
-          <a class="pillar-card" href="/paid-advertising-automation/agency-automation">
-            <div class="pillar-tag">Agency</div>
-            <h4>Agency automation & white-label</h4>
-            <p>Multi-tenant setup, per-client guardrails, and scaling accounts without adding headcount.</p>
-          </a>
-          <a class="pillar-card" href="/paid-advertising-automation/ppc-automation">
-            <div class="pillar-tag">PPC</div>
-            <h4>PPC automation tools</h4>
-            <p>Scripts vs rules vs AI agents — what to automate and what to keep human.</p>
-          </a>
+  <section class="section">
+    <div class="article-section" id="guardrails">
+      <h2>Guardrail setup — what you control</h2>
+      <p>Before the agent touches anything, you define the constraints. These are not defaults — they're decisions your team makes, documents, and can change at any time.</p>
+      <div class="terminal" style="margin:24px 0">
+        <div><span class="t-green">guardrail</span>  daily_spend_cap = $2,400</div>
+        <div><span class="t-green">guardrail</span>  max_bid_change_pct = 20</div>
+        <div><span class="t-green">guardrail</span>  cpa_pause_threshold = $65</div>
+        <div><span class="t-green">guardrail</span>  brand_exclusions = [list: 47 terms]</div>
+        <div><span class="t-green">guardrail</span>  min_campaign_budget = $200</div>
+        <div><span class="t-green">guardrail</span>  reallocation_window_hours = 72</div>
+        <div style="margin-top:8px"><span class="t-dim"># Agent operates freely within these constraints — nothing outside them</span><span class="cursor"></span></div>
+      </div>
+      <h3>Why 72-hour windows matter</h3>
+      <p>Reallocation decisions based on less than 72 hours of data produce false signals. A campaign that looks underperforming at 24 hours may simply be in a low-conversion window. The agent evaluates rolling performance windows — not yesterday's numbers.</p>
+      <a href="/paid-advertising-automation/ai-budget-allocation-best-practices" style="color:var(--signal);text-decoration:none;font-size:14px">Read the full budget allocation guide →</a>
+    </div>
+
+    <div class="article-section" id="agency">
+      <h2>Built for agencies managing multiple accounts</h2>
+      <p>The platform is multi-tenant by design. Each client gets their own guardrail configuration, their own agent log, and their own performance dashboard. You white-label the interface. Your clients see your brand — the AI works underneath.</p>
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card">
+          <div class="card-tag">Multi-tenant</div>
+          <h4>One platform, unlimited clients</h4>
+          <p>Deploy per-client guardrails, view cross-account performance, and manage everything from a single dashboard — without credentials leaving your control.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag">White-label</div>
+          <h4>Your brand, your dashboard</h4>
+          <p>The client-facing interface runs under your agency brand. They see your reporting — not ours.</p>
         </div>
       </div>
+      <a href="/paid-advertising-automation/agency-automation" class="btn-primary" style="margin-top:24px;display:inline-block">Agency automation details →</a>
+    </div>
 
+    <div class="article-section" id="cluster-pages">
+      <h2>Go deeper</h2>
+      <div class="grid-3">
+        <a class="pillar-card" href="/paid-advertising-automation/will-ai-replace-the-media-buyer">
+          <div class="pillar-tag signal">720 vol</div>
+          <h4>Will AI replace the media buyer?</h4>
+          <p>The complete breakdown of what AI-managed advertising actually does — and what stays human.</p>
+        </a>
+        <a class="pillar-card" href="/paid-advertising-automation/ai-budget-allocation-best-practices">
+          <div class="pillar-tag signal">720 vol</div>
+          <h4>AI budget allocation best practices</h4>
+          <p>Guardrail rules, performance windows, and the mistakes that kill campaigns before they start.</p>
+        </a>
+        <a class="pillar-card" href="/paid-advertising-automation/google-ads-automation">
+          <div class="pillar-tag">Google Ads</div>
+          <h4>Google Ads automation</h4>
+          <p>Beyond Smart Bidding — what guardrail-driven management does differently.</p>
+        </a>
+        <a class="pillar-card" href="/paid-advertising-automation/smart-bidding-alternatives">
+          <div class="pillar-tag">BOFU</div>
+          <h4>Smart Bidding alternatives</h4>
+          <p>When Google's native automation isn't enough — and what to use instead.</p>
+        </a>
+        <a class="pillar-card" href="/paid-advertising-automation/meta-ads-automation">
+          <div class="pillar-tag">Meta</div>
+          <h4>Meta Ads automation</h4>
+          <p>Creative fatigue, audience rotation, and ROAS-driven budget allocation on Facebook and Instagram.</p>
+        </a>
+        <a class="pillar-card" href="/paid-advertising-automation/platform-comparison">
+          <div class="pillar-tag">Evaluation</div>
+          <h4>Platform comparison guide</h4>
+          <p>The 8 criteria that separate real AI automation platforms from expensive dashboards.</p>
+        </a>
+        <a class="pillar-card" href="/paid-advertising-automation/agency-automation">
+          <div class="pillar-tag">Agency</div>
+          <h4>Agency automation &amp; white-label</h4>
+          <p>Multi-tenant setup, per-client guardrails, and scaling accounts without adding headcount.</p>
+        </a>
+        <a class="pillar-card" href="/paid-advertising-automation/ppc-automation">
+          <div class="pillar-tag">PPC</div>
+          <h4>PPC automation tools</h4>
+          <p>Scripts vs rules vs AI agents — what to automate and what to keep human.</p>
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
+</main>
 
-  <div class="tagline-footer">
-    <p>Smarter campaigns<span>.</span><br>Fewer approvals<span>.</span></p>
-    <a href="/get-started" class="btn-primary" style="margin-top:32px">See it in action →</a>
-  </div>
-
-  <footer>
-    <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
-      <div class="footer-desc">Guardrail-driven paid advertising automation for agencies and in-house teams.</div>
-      <div class="footer-copy">© 2025 campaignautomation.ai</div>
-    </div>
-    <div class="footer-col"><h5>Paid advertising</h5>
-      <a href="/paid-advertising-automation/will-ai-replace-the-media-buyer">Will AI replace media buyers?</a>
-      <a href="/paid-advertising-automation/ai-budget-allocation-best-practices">Budget allocation guide</a>
-      <a href="/paid-advertising-automation/google-ads-automation">Google Ads automation</a>
-      <a href="/paid-advertising-automation/agency-automation">Agency automation</a>
-    </div>
-    <div class="footer-col"><h5>Learn</h5>
-      <a href="/training">Training hub</a><a href="/results">Case studies</a>
-      <a href="/resources/glossary">Glossary</a>
-    </div>
-    <div class="footer-col"><h5>Company</h5>
-      <a href="/about">About</a><a href="/get-started">Get started</a>
-      <a href="mailto:hello@campaignautomation.ai">Contact</a>
-    </div>
-  </footer>
+<div class="tagline-footer">
+  <p>Smarter campaigns<span>.</span><br>Fewer approvals<span>.</span></p>
+  <a href="/solutions/campaign-audit" class="btn-primary" style="margin-top:32px">Get your free audit →</a>
 </div>
+
+<footer role="contentinfo" aria-label="Site footer">
+  <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Ottawa, Toronto, Victoria, New Jersey, San Jose</div>
+  </div>
+  <nav aria-label="Paid advertising"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Paid advertising</h3>
+    <a href="/paid-advertising-automation/will-ai-replace-the-media-buyer">Will AI replace media buyers?</a><a href="/paid-advertising-automation/ai-budget-allocation-best-practices">Budget allocation guide</a><a href="/paid-advertising-automation/google-ads-automation">Google Ads automation</a><a href="/paid-advertising-automation/agency-automation">Agency automation</a>
+  </nav>
+  <nav aria-label="Learn"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
+    <a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a><a href="/resources/glossary">Glossary</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/results">Case studies</a><a href="/about">About</a><a href="/get-started">Get started</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
 <script src="/js/main.js"></script>
 </body>
 </html>
