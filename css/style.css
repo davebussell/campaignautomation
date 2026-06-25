@@ -885,17 +885,17 @@ footer{
 .snap-dot.active{background:var(--signal);transform:scale(1.5)}
 @media(max-width:899px){.snap-indicator{display:none!important}}
 
-/* ── NAV LINK HOVER UNDERLINE ────────────────────────── */
-.nav-links > a:not(.nav-cta){position:relative}
-.nav-links > a:not(.nav-cta)::before{
+/* ── NAV LINK HOVER UNDERLINE (skip all CTA button variants) ─── */
+.nav-links > a:not([class*="nav-cta"]){position:relative}
+.nav-links > a:not([class*="nav-cta"])::before{
   content:'';
   position:absolute;bottom:10px;left:0;right:0;
   height:1px;background:var(--signal);
   transform:scaleX(0);transform-origin:right;
   transition:transform 160ms ease;
 }
-.nav-links > a:not(.nav-cta):hover::before,
-.nav-links > a:not(.nav-cta)[aria-current]::before{
+.nav-links > a:not([class*="nav-cta"]):hover::before,
+.nav-links > a:not([class*="nav-cta"])[aria-current]::before{
   transform:scaleX(1);transform-origin:left;
 }
 
