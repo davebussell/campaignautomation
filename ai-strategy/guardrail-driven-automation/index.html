@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,40 +109,117 @@
   </div>
   <a href="/tools/readiness-score/?ref=audit" class="mobile-cta">Get a Campaign Automation Audit &#8594;</a>
 </nav>
-    </div>
 
-    <div style="border-left:1px solid var(--border);padding:40px 32px;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;align-self:start">
-      <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:20px">Related</div>
-      <a href="/ai-strategy/agentic-marketing" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">What is agentic marketing? →</a>
-      <a href="/paid-advertising-automation/ai-budget-allocation-best-practices" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">Budget allocation guardrail rules →</a>
-      <a href="/results/trigger-action-impact" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">Trigger/action/impact schema →</a>
-      <a href="/training#course-4-heading" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">Guardrail setup workshop →</a>
-      <a href="/workflow-automation/ai-compliance-governance" style="display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--mist2);font-size:13px" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='var(--mist2)'">AI compliance & governance →</a>
-      <div style="margin-top:32px;padding:24px;border:1px solid var(--border);background:var(--slate)">
-        <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:12px">Get started</div>
-        <p style="font-size:13px;color:var(--mist2);line-height:1.6;margin-bottom:16px">Configure your guardrails. Run AI that your team trusts.</p>
-        <a href="/get-started" class="btn-primary btn-sm" style="display:block;text-align:center">Book a call →</a>
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a><span aria-hidden="true">/</span>
+    <span class="current">Guardrail-Driven Automation</span>
+  </nav>
+
+  <div class="pillar-layout">
+    <nav class="pillar-nav" aria-label="AI Strategy articles">
+      <h5>AI Strategy &amp; Agentic Intelligence</h5>
+      <a href="/ai-strategy/agentic-marketing">Agentic Marketing</a>
+      <a href="/ai-strategy/ai-marketing-agents">AI Marketing Agents</a>
+      <a href="/ai-strategy/guardrail-driven-automation" class="active" aria-current="page">Guardrail-Driven Automation</a>
+      <a href="/ai-strategy/measuring-ai-roi">Measuring AI ROI</a>
+      <a href="/ai-strategy/b2b-ai-marketing">B2B AI Marketing</a>
+    </nav>
+
+    <div class="pillar-content">
+      <div class="page-hero" style="padding-left:0;padding-right:0">
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span>AI Strategy &amp; Agentic Intelligence</div>
+        <h1>Guardrail-driven automation — the control layer that makes AI safe to run.</h1>
+        <p>Autonomous AI agents can move faster than any human team. That speed is leverage when the agent stays inside the rules and liability the moment it does not. Guardrail-driven automation is the control layer that decides which one you get: the rules, limits, and audit trails that let an agent run campaign operations without your team holding its breath.</p>
+      </div>
+
+      <article class="article-wrap" style="padding-left:0;padding-right:0;max-width:100%">
+
+        <section class="article-section" id="leverage-vs-liability">
+          <h2>Why guardrails are the difference between leverage and liability</h2>
+          <p>An AI agent with no guardrails is not autonomy — it is an unbounded process touching live budget and live customers. The same agent that reallocates spend to your best-converting campaign overnight can, with one bad input or one misread rule, drain a budget into a dead ad group before anyone logs in. The capability is identical. The only thing that separates the two outcomes is the constraint layer around it.</p>
+          <p>This is the practical reality we keep coming back to with clients: one unchecked rule can burn a week of budget. Guardrails are not a tax on automation — they are what makes automation worth deploying at all. They turn a system you have to babysit into a system you can let run, because the boundaries of what it can do are defined in advance, enforced on every action, and visible after the fact.</p>
+          <p>Guardrail-driven automation sits deliberately between two failure modes. On one side is human approval at every step, which is just a slower manual process wearing an automation badge. On the other is black-box AI, where the agent acts and you find out what it did from the invoice. The middle path keeps the agent autonomous inside hard boundaries and keeps a human in the loop where judgment actually matters.</p>
+        </section>
+
+        <section class="article-section" id="guardrail-types">
+          <h2>The guardrail types</h2>
+          <p>A guardrail is a rule your team defines and the system enforces. Most useful automation layers combine several types, because each one catches a different class of mistake:</p>
+          <ul>
+            <li><strong>Hard limits</strong> — absolute ceilings the agent can never cross, like a daily spend cap per campaign or a maximum bid. These are non-negotiable and checked before any action executes.</li>
+            <li><strong>Triggers</strong> — condition-action pairs that fire automatically, like pausing an ad group once its cost per acquisition runs past a threshold with no conversions.</li>
+            <li><strong>Exclusions</strong> — things the agent must never do, such as bidding on competitor brand terms or touching a protected campaign.</li>
+            <li><strong>Rate limits</strong> — caps on how fast the agent can change things, like a maximum percentage of budget it can shift per campaign per week, so no single run can swing your account.</li>
+            <li><strong>Approval gates</strong> — actions the agent prepares but cannot execute alone, holding them for a named human to review and release. This is where the human stays in the loop on the decisions that carry the most risk.</li>
+          </ul>
+          <div style="border:1px solid var(--border);padding:24px;margin:24px 0">
+            <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Example guardrail rules</div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Daily spend cap per campaign</div><div class="kw-vol" style="color:var(--mist2)">Hard limit</div></div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Pause ad group if CPA &gt; 2× target after 50 clicks</div><div class="kw-vol" style="color:var(--mist2)">Trigger</div></div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Never bid on competitor brand terms</div><div class="kw-vol" style="color:var(--mist2)">Exclusion</div></div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Max 20% budget shift per campaign per week</div><div class="kw-vol" style="color:var(--mist2)">Rate limit</div></div>
+            <div class="kw-row" style="padding:12px 0;border-bottom:none"><div class="kw-term">Any new campaign launch held for human release</div><div class="kw-vol" style="color:var(--mist2)">Approval gate</div></div>
+          </div>
+          <p>When an agent runs inside this set, every action it takes is constrained by a hard limit, screened against exclusions, paced by a rate limit, and — where it matters — held at an approval gate. No single action can exceed the rules your team defined.</p>
+        </section>
+
+        <section class="article-section" id="audit-logs">
+          <h2>Audit logs — making every action accountable</h2>
+          <p>Guardrails decide what the agent is allowed to do. Audit logs make what it actually did visible. Every automated action should be logged as three fields: the <strong>trigger</strong> that fired it, the <strong>action</strong> the agent took, and the <strong>measured impact</strong> of that action after the fact.</p>
+          <h3>Why the log builds trust</h3>
+          <p>A team trusts a system it can inspect. When a stakeholder asks "why did spend drop on this campaign?", the answer is one log line, not a forensic investigation. The trigger/action/impact record turns the agent from a black box into a process anyone can read. That readability is what gets an organisation comfortable letting the automation run wider.</p>
+          <h3>Why the log enables debugging and rollback</h3>
+          <p>When something does go wrong — and eventually it will — the log is how you find the cause and reverse it. Because every action is tied to the rule that triggered it, you can trace a bad outcome back to the guardrail that needs tightening, fix the rule, and roll back the specific action rather than tearing down the whole system. Without the log, a single bad week is a mystery. With it, it is a two-line diff to a rule.</p>
+        </section>
+
+        <section class="article-section" id="ownership-approval">
+          <h2>Ownership and the approval flow</h2>
+          <p>Guardrails and logs are mechanics. They only hold up if someone owns them. Every automation should have a named owner — a specific person accountable for the rule set, not a committee and not "the team." When a guardrail needs to change, that change goes through a defined review rather than someone editing a threshold on a Friday afternoon and forgetting about it.</p>
+          <p>A workable change-review flow is simple: a proposed rule change is written down, the named owner reviews it against the audit log of what the current rule has been doing, and the change is released with a record of who approved it and when. That record becomes part of the same trail as the agent's own actions, so the rules and the actions live in one accountable history.</p>
+          <p>This is the operational core of a broader <a href="/resources/governance" style="color:var(--signal)">governance framework</a> — ownership, review, and audit trails applied to automated systems. It is also where guardrail-driven automation connects to <a href="/workflow-automation/ai-compliance-governance" style="color:var(--signal)">AI compliance and governance</a>: the same internal controls that keep an agent inside its budget are the ones that let you answer, with evidence, what the system did and who signed off on it.</p>
+        </section>
+
+        <section class="article-section" id="where-you-stand">
+          <h2>Where you stand and how to start</h2>
+          <p>Most teams do not need to be told guardrails matter — they need to know where their current setup is exposed. Governance is one of the five dimensions in our free <a href="/tools/readiness-score" style="color:var(--signal)">Readiness Score</a>, alongside the rest of what determines whether you can run AI safely. Scoring that dimension tells you, concretely, whether you have the ownership, rules, and audit trail to let automation run — or whether you are one unchecked rule away from a bad week.</p>
+          <p>Guardrails matter most where the money moves fastest, which is paid budget. An agent reallocating spend in real time is exactly the case where a missing rate limit or exclusion turns into burned spend overnight. That is why we treat budget controls as the proving ground for guardrail discipline — see <a href="/paid-advertising-automation/ai-budget-allocation-best-practices" style="color:var(--signal)">AI budget allocation best practices</a> for how the same guardrail types apply directly to spend decisions.</p>
+        </section>
+
+        <section class="article-section" id="sprint-callout" style="border:2px solid var(--signal);padding:28px">
+          <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Turn this into action</div>
+          <h3 style="margin-bottom:10px">Find your guardrail gaps — free</h3>
+          <p style="margin-bottom:20px">Our free Campaign Automation Audit assesses where your current automation is running without rules, ownership, or an audit trail — and exactly which guardrails to put in place first. No commitment, no charge.</p>
+          <a href="/solutions/campaign-audit" class="btn-primary">Get a free Campaign Automation Audit &#8594;</a>
+        </section>
+
+      </article>
+
+      <div class="tagline-footer" style="padding-left:0;padding-right:0;text-align:left">
+        <p style="font-size:clamp(20px,3vw,36px)">Set the guardrails first.<br><span>Then let the automation run.</span></p>
+        <a href="/solutions/campaign-audit" class="btn-primary" style="margin-top:24px">Get a Campaign Automation Audit &#8594;</a>
       </div>
     </div>
   </div>
+</main>
 
-  <footer>
-    <div><a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
-      <div class="footer-desc">Guardrail-driven automation — the middle path between black-box AI and human approval theater.</div>
-      <div class="footer-copy">© 2025 campaignautomation.ai</div>
-    </div>
-    <div class="footer-col"><h5>AI strategy</h5>
-      <a href="/ai-strategy">Overview</a><a href="/ai-strategy/agentic-marketing">Agentic marketing</a>
-      <a href="/ai-strategy/ai-marketing-agents">AI marketing agents</a><a href="/ai-strategy/measuring-ai-roi">Measuring ROI</a>
-    </div>
-    <div class="footer-col"><h5>Learn</h5>
-      <a href="/training#course-4-heading">Guardrail workshop</a>
-      <a href="/results">Case studies</a><a href="/resources/glossary">Glossary</a>
-    </div>
-    <div class="footer-col"><h5>Company</h5>
-      <a href="/about">About</a><a href="/get-started">Get started</a>
-    </div>
-  </footer>
+<footer role="contentinfo" aria-label="Site footer">
+  <div>
+    <a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Ottawa, Toronto, Victoria, New Jersey, San Jose</div>
+  </div>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a>
+  </nav>
+  <nav aria-label="Learn"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
+    <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/templates">Templates</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
 </div>
 <script src="/js/main.js"></script>
 </body>
