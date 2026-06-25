@@ -216,6 +216,57 @@
 .pitch-sec.pitch-ask{background:rgba(200,241,53,.03);padding:20px;margin:0 -24px -24px;border-top:1px solid rgba(200,241,53,.2);border-bottom:none}
 .pitch-sec.pitch-ask .pitch-sec-label{color:var(--signal)}
 .pitch-sec.pitch-ask p{color:var(--bone);font-size:15px;font-weight:500;line-height:1.6}
+
+/* ── BRD: KEY FINDINGS / RECOMMENDATIONS ─────────────────── */
+.brd-block{margin:36px 0;padding:32px;border:1px solid var(--border);background:rgba(255,255,255,.015)}
+.brd-eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin-bottom:10px}
+.brd-block>h3{font-family:var(--f-display);font-size:22px;font-weight:700;color:var(--bone);margin:0 0 16px;line-height:1.2}
+.brd-scoreline{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.brd-score{font-family:var(--f-mono);font-size:34px;font-weight:700;color:var(--signal);line-height:1}
+.brd-denom{font-size:16px;color:var(--mist);font-weight:400}
+.brd-tier{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist2);border:1px solid var(--border);padding:4px 10px}
+.brd-lead{font-size:15px;color:var(--mist2);line-height:1.65;margin:0 0 8px;max-width:680px}
+.brd-body{font-size:14px;color:var(--mist2);line-height:1.7;margin:0;max-width:680px}
+.brd-subhead{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin:26px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.kf-gaps{display:flex;flex-direction:column;gap:16px}
+.kf-gap{border-left:2px solid rgba(200,241,53,.45);padding:2px 0 2px 16px}
+.kf-gap-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:5px}
+.kf-gap-name{font-size:15px;font-weight:600;color:var(--bone)}
+.kf-gap-score{font-family:var(--f-mono);font-size:13px;color:var(--signal);white-space:nowrap}
+.kf-gap p{font-size:14px;color:var(--mist2);line-height:1.6;margin:0}
+.rec-list{list-style:none;padding:0;margin:0 0 26px;display:flex;flex-direction:column;gap:12px}
+.rec-list li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--mist2);line-height:1.6}
+.rec-num{font-family:var(--f-mono);font-size:12px;color:var(--signal);border:1px solid rgba(200,241,53,.3);width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rec-callout{background:rgba(200,241,53,.04);border:1px solid rgba(200,241,53,.2);padding:22px}
+.rec-callout .brd-subhead{margin-top:0}
+.rec-callout p{font-size:15px;color:var(--bone);line-height:1.6;margin:0 0 14px}
+.rec-links{display:flex;gap:8px;flex-wrap:wrap}
+.rec-links a{font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;color:var(--signal);text-decoration:none;border:1px solid rgba(200,241,53,.3);padding:6px 12px;white-space:nowrap;transition:background .15s}
+.rec-links a:hover{background:rgba(200,241,53,.1)}
+
+/* ── SHARE YOUR RESULTS (email generator) ────────────────── */
+.share-block{margin:36px 0;padding:32px;border:1px solid var(--border);background:var(--slate)}
+.share-block>h3{font-family:var(--f-display);font-size:22px;font-weight:700;color:var(--bone);margin:0 0 12px;line-height:1.2}
+.share-controls{display:flex;flex-wrap:wrap;gap:22px;margin:24px 0 18px;align-items:flex-end}
+.share-field{display:flex;flex-direction:column;gap:8px}
+.share-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist)}
+.share-toggle{display:inline-flex;border:1px solid var(--border)}
+.share-toggle-btn{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;padding:11px 20px;background:transparent;color:var(--mist2);border:none;cursor:pointer;border-radius:0;transition:background .15s,color .15s}
+.share-toggle-btn+.share-toggle-btn{border-left:1px solid var(--border)}
+.share-toggle-btn.active{background:var(--signal);color:var(--ink);font-weight:600}
+.share-field input{font-family:var(--f-body);font-size:14px;padding:10px 12px;background:var(--ink);border:1px solid var(--border);color:var(--bone);border-radius:0;min-width:200px}
+.share-field input:focus{outline:2px solid var(--signal);outline-offset:1px;border-color:var(--signal)}
+.share-preview{border:1px solid var(--border);background:var(--ink)}
+.share-prev-subject{display:flex;gap:10px;align-items:baseline;padding:14px 18px;border-bottom:1px solid var(--border);font-size:14px;color:var(--bone)}
+.share-prev-tag{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);flex-shrink:0}
+.share-prev-body{font-family:var(--f-body);font-size:13.5px;line-height:1.6;color:var(--mist2);white-space:pre-wrap;word-wrap:break-word;padding:18px;margin:0;max-height:440px;overflow-y:auto}
+.share-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.share-copy{font-family:var(--f-mono);font-size:13px;font-weight:600;letter-spacing:.04em;padding:13px 24px;background:var(--signal);color:var(--ink);border:none;cursor:pointer;border-radius:0;transition:opacity .15s}
+.share-copy:hover{opacity:.9}
+.share-open{font-family:var(--f-mono);font-size:13px;letter-spacing:.04em;padding:13px 24px;background:transparent;color:var(--bone);border:1px solid var(--border);cursor:pointer;border-radius:0;transition:border-color .15s}
+.share-open:hover{border-color:var(--mist2)}
+.share-note{font-size:12px;color:var(--mist);margin-top:14px;line-height:1.5;max-width:640px}
+@media(max-width:560px){.brd-block,.share-block{padding:22px}.share-controls{flex-direction:column;align-items:stretch;gap:16px}.share-field input{width:100%}}
 </style>
 </head>
 <body>
@@ -811,59 +862,224 @@ function getPitchContent(finalScore, tier, dims) {
   return { score:finalScore, tier:tier.name, gaps, urgency:urgency[tier.name]||urgency.Siloed, nextSteps:nextSteps[tier.name]||nextSteps.Siloed, links:links[tier.name]||links.Siloed };
 }
 
-function renderPitch(pitch) {
-  const stepsHtml = pitch.nextSteps.map((s,i)=>`<li style="font-size:14px;color:var(--mist2);line-height:1.55;padding-left:22px;position:relative"><span style="position:absolute;left:0;font-family:var(--f-mono);font-size:11px;color:var(--signal)">${i+1}.</span>${s}</li>`).join('');
-  const linksHtml = pitch.links.map(l=>`<a href="${l.h}" style="font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;color:var(--signal);text-decoration:none;border:1px solid rgba(200,241,53,.3);padding:6px 12px;border-radius:2px;white-space:nowrap;display:inline-block">${l.t} →</a>`).join('');
-  return `
-    <div class="pitch-boss animate-in">
-      <div class="pitch-boss-header">
-        <div class="pitch-boss-meta">
-          <div class="pitch-eyebrow">The Plan</div>
-          <h3>Pitch to Your Boss — Ready to Send</h3>
-          <div class="pitch-boss-sub">Score ${pitch.score}/100 · ${pitch.tier} tier · campaignautomation.ai</div>
-        </div>
-        <button class="pitch-copy-btn" onclick="copyPitch()" type="button">Copy to clipboard →</button>
-      </div>
-      <div class="pitch-body">
-        <div class="pitch-sec">
-          <div class="pitch-sec-label">What we found</div>
-          <p>We ran a free 14-question Campaign Automation Readiness Score at campaignautomation.ai across 5 dimensions: data access, measurement, campaign structure, governance, and tooling. Our score: <strong style="color:var(--signal)">${pitch.score}/100 — ${pitch.tier}</strong>.</p>
-        </div>
-        <div class="pitch-sec">
-          <div class="pitch-sec-label">The gaps</div>
-          <ul class="pitch-list">${pitch.gaps.map(g=>`<li>${g}</li>`).join('')}</ul>
-        </div>
-        <div class="pitch-sec">
-          <div class="pitch-sec-label">Why it matters</div>
-          <p>${pitch.urgency}</p>
-        </div>
-        <div class="pitch-sec">
-          <div class="pitch-sec-label">Top priorities</div>
-          <ol style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">${stepsHtml}</ol>
-        </div>
-        <div class="pitch-sec pitch-ask">
-          <div class="pitch-sec-label">Quick links</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">${linksHtml}</div>
-        </div>
-      </div>
-    </div>`;
+/* ── SHARE YOUR RESULTS — data + email generator ─────────── */
+const SHARE_DIMS = {
+  demo:    { label:'Data Access',        desc:"Key platforms and data sources aren't fully connected, so automation can't see the complete picture it needs to make good decisions.", short:"platforms and data sources aren't fully connected" },
+  instr:   { label:'Instrumentation',    desc:"Conversion tracking has gaps, which means Smart Bidding and custom rules may be optimizing toward surface-level activity instead of true business outcomes.", short:"conversion tracking gaps push bidding toward surface activity, not outcomes" },
+  std:     { label:'Campaign Structure', desc:"Campaign and account structure is inconsistent, which makes it harder for automation to allocate budget and learn efficiently.", short:"inconsistent structure makes budget allocation and learning harder" },
+  gov:     { label:'Governance',         desc:"There's no clearly defined automation owner, approval process, or audit trail for campaign changes. That creates risk and makes optimization harder to scale.", short:"no defined automation owner, approval process, or audit trail" },
+  tooling: { label:'Team & Tooling',     desc:"Platforms are still siloed, and manual exports limit what systems can see, measure, and act on in real time.", short:"siloed platforms and manual exports limit real-time visibility" },
+};
+
+function getShareData(finalScore, tier, dims) {
+  const order = ['demo','instr','std','gov','tooling'];
+  const arr = Object.entries(dims).map(([k,d]) => ({ key:k, score:d.raw, max:d.max, pct:d.raw/d.max }));
+  // 3 lowest by % of max; ties → lower raw → fixed dimension order
+  arr.sort((a,b) => (a.pct-b.pct) || (a.score-b.score) || (order.indexOf(a.key)-order.indexOf(b.key)));
+  const gaps = arr.slice(0,3).map(x => ({
+    key:x.key, label:SHARE_DIMS[x.key].label, score:x.score, max:x.max, pct:x.pct,
+    desc:SHARE_DIMS[x.key].desc, descShort:SHARE_DIMS[x.key].short
+  }));
+  return {
+    score:finalScore, maxScore:100, tier:tier.name, gaps,
+    allStrong: arr.every(x => x.pct >= 0.8),       // high scorer, no critical gaps
+    recommendedSprint:'Campaign Automation Audit'   // configurable; could later be tier/gap-driven
+  };
 }
 
-function copyPitch() {
-  const btn = document.querySelector('.pitch-copy-btn');
-  const score = document.querySelector('.pitch-boss-sub')?.textContent || '';
-  let text = 'Pitch to Your Boss — Campaign Automation\n' + score + '\n\n';
-  document.querySelectorAll('.pitch-sec').forEach(sec => {
-    const label = sec.querySelector('.pitch-sec-label')?.textContent || '';
-    const body = sec.querySelector('p')?.textContent || '';
-    const items = Array.from(sec.querySelectorAll('li')).map((li,i) => `${i+1}. ${li.textContent}`).join('\n');
-    const links = Array.from(sec.querySelectorAll('a')).map(a => `• ${a.textContent.replace(' →','')} — ${a.href}`).join('\n');
-    text += label.toUpperCase() + '\n' + (body || items || links) + '\n\n';
-  });
-  navigator.clipboard.writeText(text.trim()).then(() => {
-    if(btn){ btn.textContent='Copied ✓'; setTimeout(()=>{ btn.textContent='Copy to clipboard →'; },2500); }
-  }).catch(() => { if(btn) btn.textContent='Select text above to copy'; });
+/* On-page BRD sections (replace the old "Pitch to Your Boss" block) */
+function renderKeyFindings(d, pitch) {
+  const gapsHtml = d.gaps.map((g,i) => `
+        <div class="kf-gap">
+          <div class="kf-gap-top"><span class="kf-gap-name">${i+1}. ${g.label}</span><span class="kf-gap-score">${g.score}/${g.max}</span></div>
+          <p>${g.desc}</p>
+        </div>`).join('');
+  return `
+    <section class="brd-block animate-in" aria-labelledby="kf-h">
+      <div class="brd-eyebrow">Key Findings</div>
+      <h3 id="kf-h">Where your campaign automation stands</h3>
+      <div class="brd-scoreline"><span class="brd-score">${d.score}<span class="brd-denom">/100</span></span><span class="brd-tier">${d.tier} tier</span></div>
+      <p class="brd-lead">We assessed five core areas — data access, measurement, campaign structure, governance, and tooling. You have a real foundation in place, but specific gaps are keeping your campaigns, platforms, and teams from working as one connected growth system.</p>
+      <div class="brd-subhead">${d.allStrong ? 'Strengths to extend' : 'Key gaps'}</div>
+      <div class="kf-gaps">${gapsHtml}</div>
+      <div class="brd-subhead">Why it matters</div>
+      <p class="brd-body">${pitch.urgency}</p>
+    </section>`;
 }
+
+function renderRecommendations(d, pitch) {
+  const steps = pitch.nextSteps.map((s,i) => `<li><span class="rec-num">${i+1}</span><span>${s}</span></li>`).join('');
+  const linksHtml = pitch.links.map(l => `<a href="${l.h}">${l.t} →</a>`).join('');
+  return `
+    <section class="brd-block animate-in" aria-labelledby="rec-h">
+      <div class="brd-eyebrow">Recommendations</div>
+      <h3 id="rec-h">Recommended priorities</h3>
+      <ol class="rec-list">${steps}</ol>
+      <div class="rec-callout">
+        <div class="brd-subhead" style="color:var(--signal);border-color:rgba(200,241,53,.25)">Where to start</div>
+        <p>Start with the <strong>${d.recommendedSprint}</strong> — it's free, and it tells us where automation creates the most leverage first so we can sequence the rest with confidence.</p>
+        <div class="rec-links">${linksHtml}</div>
+      </div>
+    </section>`;
+}
+
+/* "Share Your Results" interactive email module (at the end of results) */
+function renderShareResults() {
+  return `
+    <section class="share-block animate-in" id="share-results" aria-labelledby="share-h">
+      <div class="brd-eyebrow">Share</div>
+      <h3 id="share-h">Share your results</h3>
+      <p class="brd-lead">Send your readiness score to your team or leadership. Pick your audience and we'll draft the email for you.</p>
+      <div class="share-controls">
+        <div class="share-field">
+          <span class="share-label" id="share-aud-label">Audience</span>
+          <div class="share-toggle" role="group" aria-labelledby="share-aud-label">
+            <button type="button" class="share-toggle-btn active" data-aud="full" onclick="shareSetAudience('full')">Full Detail</button>
+            <button type="button" class="share-toggle-btn" data-aud="exec" onclick="shareSetAudience('exec')">Executive</button>
+          </div>
+        </div>
+        <div class="share-field"><label class="share-label" for="share-sender">Your name</label><input id="share-sender" type="text" placeholder="[Your name]" autocomplete="name" oninput="shareSetField('sender', this.value)"></div>
+        <div class="share-field"><label class="share-label" for="share-recipient">Sending to</label><input id="share-recipient" type="text" value="team" oninput="shareSetField('recipient', this.value)"></div>
+      </div>
+      <div class="share-preview">
+        <div class="share-prev-subject"><span class="share-prev-tag">Subject</span><span id="share-subject"></span></div>
+        <pre class="share-prev-body" id="share-body" aria-live="polite"></pre>
+      </div>
+      <div class="share-actions">
+        <button type="button" class="share-copy" id="share-copy-btn" onclick="copyShareEmail()">Copy email →</button>
+        <button type="button" class="share-open" onclick="openShareEmail()">Open in email</button>
+      </div>
+      <p class="share-note">Full Detail is long — Copy works best for it. "Open in email" pre-fills your mail app, though some clients trim very long messages.</p>
+    </section>`;
+}
+
+let SHARE_STATE = { data:null, audience:'full', sender:'', recipient:'team' };
+
+function buildShareEmail(state) {
+  const d = state.data;
+  const sender = (state.sender && state.sender.trim()) || '[Your name]';
+  const recipient = (state.recipient && state.recipient.trim()) || 'team';
+  const g = d.gaps;
+  if (state.audience === 'exec') {
+    const subject = `Automation Readiness: ${d.score}/${d.maxScore} — recommend starting with the Audit`;
+    const bullets = g.map(x => `• ${x.label} (${x.score}/${x.max}) — ${x.descShort}`).join('\n');
+    const body =
+`Hi ${recipient},
+
+Quick summary of our Campaign Automation Readiness Score (run at campaignautomation.ai), which assessed our infrastructure across data access, measurement, campaign structure, governance, and tooling.
+
+SCORE: ${d.score}/${d.maxScore} — ${d.tier}. Solid foundation, but real gaps are keeping our campaigns, platforms, and teams from working as one connected growth system.
+
+The core issue isn't that we need more automation — it's that our automation is optimizing from incomplete signals. Three gaps stand out:
+${bullets}
+
+We already have the building blocks. The next step is connecting them into a performance engine that improves lead quality, supports sales readiness, cuts wasted spend, and compounds over time.
+
+Three options on the table: a PPC Intelligence Sprint, a Campaign Launch Kit Sprint, and a Campaign Automation Audit.
+
+My recommendation: start with the ${d.recommendedSprint}. It tells us where automation creates the most leverage first — paid media efficiency, launch governance, conversion data, or tighter campaign-to-pipeline connection — so we sequence the rest with confidence.
+
+Happy to discuss.
+
+Best,
+${sender}`;
+    return { subject, body };
+  }
+  // Full Detail
+  const subject = 'Campaign Automation Readiness — Our Score and Next Steps';
+  const gapsBlock = g.map((x,i) => `${i+1}. ${x.label} — Score: ${x.score}/${x.max}\n${x.desc}`).join('\n\n');
+  const body =
+`Hi ${recipient},
+
+We completed the Campaign Automation Readiness Score at campaignautomation.ai to understand how well our current campaign infrastructure supports smarter automation, better decision-making, and measurable revenue growth.
+
+The assessment reviewed five core areas: data access, measurement, campaign structure, governance, and tooling.
+
+OUR SCORE: ${d.score}/${d.maxScore} — ${d.tier}
+
+We have a solid foundation in place, but there are still important gaps preventing our campaigns, platforms, and teams from working as one connected growth system.
+
+— WHAT WE FOUND —
+
+Our biggest opportunity isn't simply to "use more automation." It's to make sure automation is working from the right signals.
+
+Right now, some of our systems are still optimizing around incomplete data, disconnected workflows, and manual processes. That limits how effectively paid media, campaign operations, reporting, and sales follow-up can work together to generate qualified demand and pipeline contribution.
+
+— KEY GAPS —
+
+${gapsBlock}
+
+— WHY THIS MATTERS —
+
+We already have the building blocks: campaigns, data, platforms, and team capability. The next step is turning those pieces into a more connected performance engine — one that improves lead quality, supports sales readiness, reduces wasted spend, and compounds over time.
+
+Competitors automating one layer deeper aren't making dramatic leaps overnight. They're gaining ground consistently through better data, cleaner processes, faster optimization, and tighter alignment between marketing activity and revenue impact.
+
+— RECOMMENDED PRIORITIES —
+
+1. PPC Intelligence Sprint
+Identify bidding, budget, query, audience, and conversion opportunities hidden inside the platform dashboard.
+
+2. Campaign Launch Kit Sprint
+Create a repeatable launch QA framework to catch structure, tracking, naming, routing, and measurement issues before they affect performance.
+
+3. Campaign Automation Audit
+Evaluate the current stack, data quality, campaign workflows, and revenue signals to determine which sprint will produce the highest near-term ROI.
+
+— RECOMMENDATION —
+
+Start with the ${d.recommendedSprint}.
+
+This gives us a practical view of where automation can create the most leverage first — whether that's improving paid media efficiency, tightening launch governance, strengthening conversion data, or connecting campaign activity more directly to pipeline and revenue.
+
+Happy to walk through any of this in more detail.
+
+Best,
+${sender}`;
+  return { subject, body };
+}
+
+function initShareModule(d) {
+  SHARE_STATE = { data:d, audience:'full', sender:'', recipient:'team' };
+  try {
+    const saved = JSON.parse(localStorage.getItem('ca_readiness') || 'null');
+    if (saved && saved.name) { SHARE_STATE.sender = saved.name; const el = document.getElementById('share-sender'); if (el) el.value = saved.name; }
+  } catch(e){}
+  renderSharePreview();
+}
+function shareSetAudience(a) {
+  SHARE_STATE.audience = a;
+  document.querySelectorAll('.share-toggle-btn').forEach(b => {
+    const on = b.dataset.aud === a;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  renderSharePreview();
+}
+function shareSetField(f, v) { SHARE_STATE[f] = v; renderSharePreview(); }
+function renderSharePreview() {
+  if (!SHARE_STATE.data) return;
+  const { subject, body } = buildShareEmail(SHARE_STATE);
+  const s = document.getElementById('share-subject'), b = document.getElementById('share-body');
+  if (s) s.textContent = subject;
+  if (b) b.textContent = body;
+}
+function copyShareEmail() {
+  const { subject, body } = buildShareEmail(SHARE_STATE);
+  const text = 'Subject: ' + subject + '\n\n' + body;
+  const btn = document.getElementById('share-copy-btn');
+  navigator.clipboard.writeText(text).then(() => {
+    if (btn) { btn.textContent = 'Copied ✓'; setTimeout(() => { btn.textContent = 'Copy email →'; }, 2500); }
+  }).catch(() => { if (btn) btn.textContent = 'Press Ctrl/Cmd+C to copy'; });
+}
+function openShareEmail() {
+  const { subject, body } = buildShareEmail(SHARE_STATE);
+  window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+}
+
+/* (Removed legacy renderPitch/copyPitch — the "Pitch to Your Boss" block is
+   replaced by renderKeyFindings + renderRecommendations (BRD sections) and the
+   interactive renderShareResults email module above.) */
 
 function showScorecard() {
   const {finalScore,gated,dims} = computeScore();
@@ -872,6 +1088,8 @@ function showScorecard() {
   const con = getConstraint(dims);
   const road = getRoadmap(dims,finalScore);
   const guards = getGuardrails(finalScore,dims);
+  const pitch = getPitchContent(finalScore, tier, dims);
+  const shareData = getShareData(finalScore, tier, dims);
 
   document.getElementById("intake").style.display="none";
   const sc = document.getElementById("scorecard");
@@ -911,7 +1129,9 @@ function showScorecard() {
       <p class="score-tagline">${tier.desc}</p>
     </div>
 
-    ${renderPitch(getPitchContent(finalScore, tier, dims))}
+    ${renderKeyFindings(shareData, pitch)}
+
+    ${renderRecommendations(shareData, pitch)}
 
     <div class="dim-grid animate-in">
       <div class="dim-grid-label">Dimension breakdown</div>
@@ -939,6 +1159,8 @@ function showScorecard() {
       <p style="font-size:14px;color:var(--mist2);margin-bottom:16px;line-height:1.5">These rules are calibrated to your score. Copy them into your automation documentation as a starting constraint layer.</p>
       ${guards.map(g=>`<div class="guardrail-item">${g}</div>`).join("")}
     </div>
+
+    ${renderShareResults()}
 
     <div class="intake-gate animate-in" id="intake-gate">
       <h3 id="intake-title">Ready to act on this?</h3>
@@ -1036,6 +1258,7 @@ function showScorecard() {
     applyRefParam();
     updateIntakeForTier(finalScore);
     initWeightSim(dims, finalScore, gated);
+    initShareModule(shareData);
     // Pre-fill intake form from saved data
     try {
       const saved = JSON.parse(localStorage.getItem('ca_readiness') || 'null');
