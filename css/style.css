@@ -304,19 +304,21 @@ nav[aria-label="Main navigation"].scrolled{
   transition:color .15s,padding-left .15s;min-height:44px;
 }
 .mobile-menu a:hover{color:var(--bone);padding-left:8px}
-.mobile-cta{
+.mobile-menu a.mobile-cta{
   background:var(--signal);color:var(--ink);display:flex;justify-content:center;
   align-items:center;font-size:15px;font-weight:600;padding:16px;
-  text-decoration:none;margin-top:20px;min-height:48px;
+  text-decoration:none;margin-top:20px;min-height:48px;border-bottom:none;
   transition:box-shadow .2s;
 }
-.mobile-cta:hover{box-shadow:0 4px 20px var(--signal-glow)}
-/* Mobile CTA pair — outline + rotating glow, layered over base .mobile-cta */
-.mobile-cta-yellow,
-.mobile-cta-audit{
+.mobile-menu a.mobile-cta:hover{box-shadow:0 4px 20px var(--signal-glow);padding-left:16px}
+/* Mobile CTA pair — outline + rotating glow (scoped under .mobile-menu so it
+   beats the .mobile-menu a link styles that would otherwise grey the text,
+   add a bottom border, and shift padding on hover). */
+.mobile-menu a.mobile-cta-yellow,
+.mobile-menu a.mobile-cta-audit{
   position:relative;isolation:isolate;overflow:visible;
   background:transparent;border:1px solid transparent;
-  background-clip:padding-box;border-radius:8px;
+  background-clip:padding-box;border-radius:8px;padding:15px 18px;
   --ring:1.5px;
   transition:color .25s ease,background-color .25s ease,
              --ring-op .35s ease,--halo-op .35s ease;
@@ -345,41 +347,41 @@ nav[aria-label="Main navigation"].scrolled{
   animation:nav-cta-spin 4s linear infinite;
   opacity:var(--halo-op);
 }
-.mobile-cta-yellow{
+.mobile-menu a.mobile-cta-yellow{
   --ring-core:var(--signal);
   --ring-tint:rgba(200,241,53,.5);
   --ring-faint:rgba(200,241,53,.12);
   --halo:var(--signal-glow);
   --halo-soft:rgba(200,241,53,.4);
   --ring-op:1;--halo-op:.5;
-  color:var(--bone);
-  background-color:rgba(200,241,53,.05);
+  color:var(--bone);font-weight:600;
+  background-color:rgba(200,241,53,.14);
 }
-.mobile-cta-yellow:hover{
+.mobile-menu a.mobile-cta-yellow:hover{
   --halo-op:.95;
-  color:#fff;background-color:rgba(200,241,53,.1);box-shadow:none;
+  color:#fff;background-color:rgba(200,241,53,.2);box-shadow:none;padding-left:18px;
 }
 .mobile-cta-yellow:hover::before,
 .mobile-cta-yellow:hover::after{animation-duration:2.6s}
-.mobile-cta-audit{
+.mobile-menu a.mobile-cta-audit{
   --ring-core:var(--mist2);
   --ring-tint:rgba(176,176,176,.3);
   --ring-faint:rgba(176,176,176,.1);
   --halo:rgba(176,176,176,.4);
   --halo-soft:rgba(200,241,53,.18);
   --ring:1px;
-  --ring-op:.55;--halo-op:0;
-  color:var(--mist2);margin-top:12px;
+  --ring-op:.6;--halo-op:0;
+  color:var(--mist2);margin-top:12px;font-weight:500;
   background-color:transparent;
 }
-.mobile-cta-audit:hover{
-  --ring-op:.85;--halo-op:.4;
-  color:var(--bone);box-shadow:none;
+.mobile-menu a.mobile-cta-audit:hover{
+  --ring-op:.9;--halo-op:.4;
+  color:var(--bone);box-shadow:none;padding-left:18px;
 }
 .mobile-cta-audit:hover::before,
 .mobile-cta-audit:hover::after{animation-duration:3.2s}
-.mobile-cta-yellow:focus-visible,
-.mobile-cta-audit:focus-visible{
+.mobile-menu a.mobile-cta-yellow:focus-visible,
+.mobile-menu a.mobile-cta-audit:focus-visible{
   outline:2px solid var(--signal);outline-offset:3px;
 }
 
