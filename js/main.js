@@ -327,38 +327,38 @@ const FUNNEL = {
   const stg       = FUNNEL.stage();
   const ctaCfg    = FUNNEL.cta(stg, tier);
 
-  /* 1 — Replace single nav-cta with two buttons: Plan Sprints (yellow) + Audit Results */
+  /* 1 — Two nav buttons: Get your free Audit (yellow — the hook) + Plan Sprints (ghost) */
   document.querySelectorAll('a.nav-cta').forEach(el => {
-    // Button 1: Plan Sprints (yellow)
-    el.href = '/solutions/automation-sprints';
-    el.textContent = 'Plan Sprints →';
+    // Button 1: Get your free Audit (yellow) — the free team-connection hook
+    el.href = '/solutions/campaign-audit';
+    el.textContent = 'Get your free Audit →';
     el.className = 'nav-cta-yellow';
     el.removeAttribute('role');
 
-    // Button 2: Audit Results — inject once
+    // Button 2: Plan Sprints — inject once
     if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('nav-cta-audit')) {
-      const audit = document.createElement('a');
-      audit.href = '/tools/readiness-score';
-      audit.className = 'nav-cta-audit';
-      audit.textContent = 'Audit Results →';
-      el.parentNode.insertBefore(audit, el.nextSibling);
+      const sprints = document.createElement('a');
+      sprints.href = '/solutions/automation-sprints';
+      sprints.className = 'nav-cta-audit';
+      sprints.textContent = 'Plan Sprints →';
+      el.parentNode.insertBefore(sprints, el.nextSibling);
     }
   });
 
-  /* 2 — Mobile CTAs: mirror the desktop pair (Plan Sprints + Audit Results) */
+  /* 2 — Mobile CTAs mirror desktop: Get your free Audit (yellow) + Plan Sprints (ghost) */
   document.querySelectorAll('a.mobile-cta').forEach(el => {
     if (el.classList.contains('mobile-cta-audit')) return; // skip the injected one
-    // Primary → Plan Sprints (yellow)
-    el.href = '/solutions/automation-sprints';
-    el.textContent = 'Plan Sprints →';
+    // Primary → Get your free Audit (yellow)
+    el.href = '/solutions/campaign-audit';
+    el.textContent = 'Get your free Audit →';
     el.classList.add('mobile-cta-yellow');
-    // Secondary → Audit Results (ghost), injected once
+    // Secondary → Plan Sprints (ghost), injected once
     if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('mobile-cta-audit')) {
-      const audit = document.createElement('a');
-      audit.href = '/tools/readiness-score';
-      audit.className = 'mobile-cta mobile-cta-audit';
-      audit.textContent = 'Audit Results →';
-      el.parentNode.insertBefore(audit, el.nextSibling);
+      const sprints = document.createElement('a');
+      sprints.href = '/solutions/automation-sprints';
+      sprints.className = 'mobile-cta mobile-cta-audit';
+      sprints.textContent = 'Plan Sprints →';
+      el.parentNode.insertBefore(sprints, el.nextSibling);
     }
   });
 
