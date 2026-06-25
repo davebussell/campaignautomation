@@ -648,6 +648,11 @@ footer{
 }
 .footer-col a:visited{color:var(--mist2)}
 .footer-col a:hover{color:var(--signal);padding-left:4px}
+/* Footer links in the <nav>-column markup variant — match .footer-col a
+   (without this they fall back to the default browser-blue link colour) */
+footer nav a{display:flex;align-items:center;font-size:15px;color:var(--mist2);text-decoration:none;margin-bottom:4px;padding:8px 0;transition:color .15s,padding-left .15s;min-height:44px}
+footer nav a:visited{color:var(--mist2)}
+footer nav a:hover{color:var(--signal);padding-left:4px}
 
 /* ── BUYER ROUTER ────────────────────────────────────────── */
 .buyer-router{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:40px}
@@ -857,7 +862,9 @@ footer{
 
 /* ── SCROLL SNAP (desktop only) ──────────────────────── */
 @media(min-width:900px){
-  html{scroll-snap-type:y mandatory}
+  /* proximity (not mandatory): snaps near a section but never traps the user
+     above the footer — mandatory was yanking the page back off the footer */
+  html{scroll-snap-type:y proximity}
   .snap-sec{
     scroll-snap-align:start;
     scroll-snap-stop:always;
