@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Compliance &amp; Governance — Guardrails, Audit Logs &amp; Approvals</title>
+<meta name="description" content="How to build guardrails, audit logs, and approval workflows for AI-driven campaigns. The operational governance layer that makes campaign automation safe to run.">
+<link rel="canonical" href="https://campaignautomation.ai/workflow-automation/ai-compliance-governance">
+<link rel="alternate" hreflang="en-CA" href="https://campaignautomation.ai/workflow-automation/ai-compliance-governance">
+<link rel="alternate" hreflang="en-US" href="https://campaignautomation.ai/workflow-automation/ai-compliance-governance">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/workflow-automation/ai-compliance-governance">
+<meta property="og:title" content="AI Compliance &amp; Governance — Guardrails, Audit Logs &amp; Approvals">
+<meta property="og:description" content="How to build guardrails, audit logs, and approval workflows for AI-driven campaigns. The operational governance layer that makes campaign automation safe to run.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Compliance &amp; Governance — Guardrails, Audit Logs &amp; Approvals">
+<meta name="twitter:description" content="How to build guardrails, audit logs, and approval workflows for AI-driven campaigns. The operational governance layer that makes campaign automation safe to run.">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links" role="list">
+    <div class="nav-item" role="listitem">
+      <a href="/solutions" aria-haspopup="true">Solutions</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit" role="menuitem">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints" role="menuitem">Automation Sprints</a>
+        <a href="/platform" role="menuitem">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item" role="listitem">
+      <a href="/learn" aria-haspopup="true">Learn</a>
+      <div class="dropdown" role="menu"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation" role="menuitem">Paid Advertising Automation</a>
+        <a href="/ai-strategy" role="menuitem">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation" role="menuitem">Workflow Automation</a>
+        <a href="/revenue-operations" role="menuitem">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training" role="listitem">Training</a>
+    <a href="/results" role="listitem">Results</a>
+    <div class="nav-item" role="listitem">
+      <a href="/resources" aria-haspopup="true">Resources</a>
+      <div class="dropdown" role="menu">
+        <a href="/resources" role="menuitem">Blog</a>
+        <a href="/tools/readiness-score" role="menuitem">Readiness Score ✦ Free</a>
+        <a href="/resources/templates" role="menuitem">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary" role="menuitem">Glossary</a>
+        <a href="/resources/ai-automation-pricing" role="menuitem">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score/?ref=audit" class="nav-cta" role="listitem">Get Audit →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score/?ref=audit" class="mobile-cta">Get a Campaign Automation Audit →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/workflow-automation">Workflow Automation</a><span aria-hidden="true">/</span>
+    <span class="current">AI Compliance &amp; Governance</span>
+  </nav>
+
+  <div class="pillar-layout">
+    <nav class="pillar-nav" aria-label="Workflow Automation articles">
+  <h5>Workflow Automation</h5>
+  <a href="/workflow-automation/ai-workflow-guide">AI Workflow Design Guide</a>
+  <a href="/workflow-automation/ai-content-automation">AI Content Automation</a>
+  <a href="/workflow-automation/ai-consulting-services">AI Consulting Services</a>
+  <a href="/workflow-automation/ai-compliance-governance" class="active" aria-current="page">AI Compliance &amp; Governance</a>
+</nav>
+
+    <div class="pillar-content">
+      <div class="page-hero" style="padding-left:0;padding-right:0">
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Workflow Automation</div>
+        <h1>AI compliance &amp; governance — the layer that keeps automation safe.</h1>
+        <p>An AI agent that can adjust budgets, pause campaigns, and publish assets is leverage. The same agent without guardrails, logs, and approvals is liability. Governance is the operational layer that decides which one you get — and one unchecked rule can burn a week of budget before anyone notices.</p>
+      </div>
+
+      <article class="article-wrap" style="padding-left:0;padding-right:0;max-width:100%">
+
+        <section class="article-section" id="leverage-vs-liability">
+          <h2>Why governance is the difference between leverage and liability</h2>
+          <p>Automation removes the human from the loop on purpose — that is the point. But the moment a system can act on its own, the cost of a bad rule scales as fast as the benefit of a good one. A budget reallocation rule pointed at the wrong campaign does not stop after one mistake. It runs every hour, every day, until someone catches it.</p>
+          <p>We have a blunt way of putting it: one unchecked rule can burn a week of budget. That is not a hypothetical edge case — it is the default behaviour of any unsupervised loop. Governance is what turns "the system did something we did not intend" into "the system tried to do something we did not intend, the guardrail blocked it, and the log told us why."</p>
+          <p>Governance is not paperwork bolted on after launch. It is four practical pieces that ship with the automation itself: guardrails that constrain what can happen, audit logs that record what did happen, approval gates for the decisions a human must still own, and a named person accountable for the whole thing. Skip any one and the system becomes a liability the day it does something surprising.</p>
+        </section>
+
+        <section class="article-section" id="guardrails">
+          <h2>Guardrails — the hard limits an agent cannot cross</h2>
+          <p>A guardrail is a rule your team defines that constrains every action the automation can take. It is not a suggestion the model weighs — it is a boundary the system enforces before any action executes. Good guardrails come in a few shapes:</p>
+          <ul>
+            <li><strong>Hard limits:</strong> absolute ceilings the system can never exceed, like a daily spend cap per campaign or a maximum number of assets published per day.</li>
+            <li><strong>Triggers:</strong> condition-action rules that fire automatically, like pausing an ad group once it spends past a threshold with no conversions.</li>
+            <li><strong>Exclusions:</strong> things the system must never touch — competitor brand terms, locked audiences, a campaign mid-experiment.</li>
+            <li><strong>Rate limits:</strong> caps on how fast change can happen, like no more than a 20% budget shift per campaign per week, so a single bad signal cannot cascade.</li>
+          </ul>
+          <p>Written down and enforced, these turn an agent from an open-ended actor into a constrained one. Here is what a starter set looks like:</p>
+          <div style="border:1px solid var(--border);padding:24px;margin:24px 0">
+            <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Example guardrail rules</div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Daily spend cap per campaign</div><div class="kw-vol" style="color:var(--mist2)">Hard limit</div></div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Pause ad group if CPA &gt; 2× target after 50 clicks</div><div class="kw-vol" style="color:var(--mist2)">Trigger</div></div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Never edit a campaign tagged "experiment"</div><div class="kw-vol" style="color:var(--mist2)">Exclusion</div></div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Flag any creative published without brand-term review</div><div class="kw-vol" style="color:var(--mist2)">Alert</div></div>
+            <div class="kw-row" style="padding:12px 0;border-bottom:none"><div class="kw-term">Max 20% budget shift per campaign per week</div><div class="kw-vol" style="color:var(--mist2)">Rate limit</div></div>
+          </div>
+          <p>When an AI agent runs inside these guardrails, every action it takes is constrained, logged, and reversible. No action exceeds the rules your team defined — and the rules live in one place you can read, version, and change deliberately.</p>
+        </section>
+
+        <section class="article-section" id="audit-logs">
+          <h2>Audit logs — record every automated action, not just the failures</h2>
+          <p>A guardrail tells the system what it cannot do. An audit log tells you what it actually did. Without one, an automated campaign is a black box: results change, spend moves, and nobody can reconstruct why. With one, every change is a line you can read.</p>
+          <p>The format that holds up is simple — log each action as three fields: the <strong>trigger</strong> that fired it, the <strong>action</strong> the system took, and the <strong>measured impact</strong> after the fact.</p>
+          <div style="border:1px solid var(--border);padding:24px;margin:24px 0">
+            <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Example audit log entries</div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">CPA exceeded 2× target after 60 clicks → paused ad group "Brand-Exact"</div><div class="kw-vol" style="color:var(--mist2)">−$340/wk spend</div></div>
+            <div class="kw-row" style="padding:12px 0"><div class="kw-term">Top campaign hit ROAS target → shifted 15% budget from underperformer</div><div class="kw-vol" style="color:var(--mist2)">+18 conversions</div></div>
+            <div class="kw-row" style="padding:12px 0;border-bottom:none"><div class="kw-term">Search term CTR below 0.5% over 200 impressions → flagged for review</div><div class="kw-vol" style="color:var(--mist2)">Queued, no action</div></div>
+          </div>
+          <p>Logs do two jobs. They build trust — a stakeholder who can see every decision stops treating the automation as a risk and starts treating it as a teammate. And they make debugging possible — when something looks wrong, you trace the exact trigger and action instead of guessing. A system you cannot audit is a system you cannot trust, and a system you cannot trust gets switched off.</p>
+        </section>
+
+        <section class="article-section" id="approvals-ownership">
+          <h2>Approval workflows &amp; ownership — keep a human on the decisions that matter</h2>
+          <p>Not every action should run unsupervised. Some decisions carry enough risk that a human should approve them before they execute — and the discipline of human-in-the-loop is deciding, deliberately, which ones those are.</p>
+          <h3>Approval gates</h3>
+          <p>An approval gate pauses an action and routes it to a person before it runs. Low-risk, reversible actions — pausing a wasteful ad group, flagging a search term — can run automatically and simply log. Higher-stakes actions — launching a new campaign, raising a budget cap, publishing customer-facing copy — wait for a yes. The agent does the analysis and proposes the action; a human approves it. That is the loop.</p>
+          <h3>A named owner</h3>
+          <p>Every automated system needs one person accountable for it — not a committee, a name. The owner reviews the audit log on a set cadence, signs off on guardrail changes, and is the one who answers when a stakeholder asks why the system did what it did. Automation without an owner drifts; rules go stale, edge cases pile up, and nobody is responsible for catching it.</p>
+          <h3>Change review</h3>
+          <p>Guardrails are not set-and-forget. Markets shift, budgets change, and a rule that was right in January is wrong by June. Treat every change to a guardrail or approval gate as a reviewed decision — proposed, checked against the log, and recorded — the same way you treat a code change. We lay out the full framework in our <a href="/resources/governance" style="color:var(--signal)">governance resource</a>.</p>
+        </section>
+
+        <section class="article-section" id="sprint-callout" style="border:2px solid var(--signal);padding:28px">
+          <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Turn this into action</div>
+          <h3 style="margin-bottom:10px">Campaign Automation Audit</h3>
+          <p style="margin-bottom:20px">We review your current automations, map where guardrails, logs, and approvals are missing, and hand you a prioritised plan to close the governance gaps before they cost you.</p>
+          <a href="/solutions/campaign-audit" class="btn-primary">Get a Campaign Automation Audit →</a>
+        </section>
+
+        <section class="article-section" id="where-you-stand">
+          <h2>Where you stand</h2>
+          <p>Governance is hard to assess from the inside — the gaps are the things you are not already watching. That is why governance is one of the five dimensions in our free <a href="/tools/readiness-score" style="color:var(--signal)">Readiness Score</a>. It gives you a plain read on whether your automation has the guardrails, logs, ownership, and approval gates to run safely, alongside the four other dimensions that decide whether you are ready to automate at all.</p>
+          <p>If you want to go deeper on the design philosophy underneath all of this, governance is the operational half of <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a> — the approach we build every system on. And if your team needs to run this themselves, our <a href="/training" style="color:var(--signal)">Guardrail Setup &amp; Automation Governance training</a> walks through configuring the limits, logs, and approval flows step by step.</p>
+          <p>The principle holds across all of it: you own the system, there is no lock-in, and a human stays in the loop on the decisions that matter. Governance is not the part you add when you have time. It is the part that makes everything else safe to run.</p>
+        </section>
+
+      </article>
+
+      <div class="tagline-footer" style="padding-left:0;padding-right:0;text-align:left">
+        <p style="font-size:clamp(20px,3vw,36px)">Governance is not optional.<br><span>See where yours stands.</span></p>
+        <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer">
+  <div>
+    <a href="/" class="footer-brand">Campaign Automation<span>.</span>AI</a>
+    <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution.</p>
+    <div class="footer-copy">© 2025 campaignautomation.ai · Caledon, Ontario</div>
+  </div>
+  <nav aria-label="Solutions"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Solutions</h3>
+    <a href="/solutions/campaign-audit">Campaign Audit</a><a href="/solutions/automation-sprints">Automation Sprints</a><a href="/platform">Strategy Portal</a>
+  </nav>
+  <nav aria-label="Learn"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Learn</h3>
+    <a href="/paid-advertising-automation">Paid Advertising</a><a href="/ai-strategy">AI Strategy</a><a href="/workflow-automation">Workflow Automation</a><a href="/revenue-operations">Revenue Ops</a>
+  </nav>
+  <nav aria-label="Company"><h3 style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">Company</h3>
+    <a href="/tools/readiness-score">Readiness Score</a><a href="/resources/templates">Templates</a><a href="/results">Case studies</a><a href="/about">About</a><a href="mailto:hello@campaignautomation.ai">Contact</a>
+  </nav>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
