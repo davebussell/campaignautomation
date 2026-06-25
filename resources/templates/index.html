@@ -80,7 +80,7 @@
   <section class="page-hero reveal">
     <div class="signal-badge">7 Free Templates</div>
     <h1>The templates we use. Free to download.</h1>
-    <p class="hero-sub">Every sprint we run produces a set of reusable files. These are the starter versions — enough to get going with Claude, Cursor, or Codex on your own campaigns. No email required for individual files. Enter your email below to get all 7 in one package.</p>
+    <p class="hero-sub">Every sprint we run produces a set of reusable files. These are the starter versions — enough to get going with Claude, Cursor, or Codex on your own campaigns. Enter your email below and we'll send all 7 in one package.</p>
   </section>
 
   <section class="section reveal">
@@ -89,37 +89,37 @@
       <div class="card">
         <h3>Campaign AGENTS.md</h3>
         <p>The base agent instruction file for campaign work — roles, tools list, guardrails, and output format standards.</p>
-        <a href="#" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Download</a>
+        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
       </div>
       <div class="card">
         <h3>Campaign CLAUDE.md</h3>
         <p>Project-level Claude instructions covering brand voice, audience, offer framing, and what not to generate.</p>
-        <a href="#" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Download</a>
+        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
       </div>
       <div class="card">
         <h3>PPC Audit Prompt Pack</h3>
         <p>8 reusable prompts for waste analysis, negative keyword review, match type audits, and bid strategy evaluation.</p>
-        <a href="#" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Download</a>
+        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
       </div>
       <div class="card">
         <h3>SEO Brief Prompt Pack</h3>
         <p>Prompts for keyword clustering, intent mapping, brief generation, and internal linking recommendations.</p>
-        <a href="#" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Download</a>
+        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
       </div>
       <div class="card">
         <h3>Landing Page Builder Prompt Pack</h3>
         <p>Section-by-section LP generation prompts — hero, pain, solution, proof, objection, CTA — with intent-matching logic.</p>
-        <a href="#" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Download</a>
+        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
       </div>
       <div class="card">
         <h3>Campaign Launch Kit Template</h3>
         <p>The full campaign kit structure — ad group scaffold, copy variant tables, UTM taxonomy, and QA checklist in one doc.</p>
-        <a href="#" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Download</a>
+        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
       </div>
       <div class="card">
         <h3>Guardrail Configuration Template</h3>
         <p>Starter guardrail rules covering spend caps, CTR anomaly alerts, negative keyword triggers, and suppression logic.</p>
-        <a href="#" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Download</a>
+        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
       </div>
     </div>
   </section>
@@ -162,14 +162,17 @@ You do not recommend budget changes without a performance baseline.
   Handover docs: include summary, action list, and owner assignment</div>
   </section>
 
-  <section class="section bone reveal">
+  <section class="section bone reveal" id="get-pack">
     <h2>Get all 7 templates</h2>
     <p style="margin-bottom:1.5rem;color:var(--mist2)">Enter your email and we'll send the full template package — AGENTS.md, CLAUDE.md, all five prompt packs — in one download.</p>
-    <form style="display:flex;gap:12px;flex-wrap:wrap;max-width:480px" action="#" method="post">
+    <form name="templates" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="templates-form" style="display:flex;gap:12px;flex-wrap:wrap;max-width:480px">
+      <input type="hidden" name="form-name" value="templates">
+      <p hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
       <label for="email-capture" class="visually-hidden">Email address</label>
-      <input id="email-capture" type="email" name="email" placeholder="you@company.com" required style="flex:1;min-width:220px;padding:12px 16px;border:1px solid #333;background:var(--slate);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px">
+      <input id="email-capture" type="email" name="email" placeholder="you@company.com" required autocomplete="email" style="flex:1;min-width:220px;padding:12px 16px;border:1px solid #333;background:var(--slate);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px">
       <button type="submit" class="btn-primary">Get all 7 templates →</button>
     </form>
+    <p id="templates-form-msg" role="status" aria-live="polite" style="margin-top:14px;font-size:14px;display:none"></p>
   </section>
 
   <section class="section reveal">
@@ -212,5 +215,29 @@ You do not recommend budget changes without a performance baseline.
   </nav>
 </footer>
 <script src="/js/main.js"></script>
+<script>
+/* Netlify Forms — AJAX submit with inline success + graceful mailto fallback */
+(function(){
+  var form = document.getElementById('templates-form');
+  if (!form) return;
+  var msg = document.getElementById('templates-form-msg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var body = new URLSearchParams(new FormData(form)).toString();
+    fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:body })
+      .then(function(r){ if(!r.ok) throw new Error('status '+r.status);
+        form.style.display='none';
+        msg.style.display='block';
+        msg.style.color='var(--signal)';
+        msg.textContent='✓ Check your inbox — the template pack is on its way. If it doesn’t arrive in a few minutes, email hello@campaignautomation.ai.';
+      })
+      .catch(function(){
+        msg.style.display='block';
+        msg.style.color='var(--mist2)';
+        msg.innerHTML='Couldn’t send that automatically. Email <a href="mailto:hello@campaignautomation.ai?subject=Template%20pack" style="color:var(--signal)">hello@campaignautomation.ai</a> and we’ll send the pack directly.';
+      });
+  });
+})();
+</script>
 </body>
 </html>

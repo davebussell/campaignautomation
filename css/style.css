@@ -233,6 +233,11 @@ nav[aria-label="Main navigation"].scrolled{
   transition:box-shadow .2s;
 }
 .mobile-cta:hover{box-shadow:0 4px 20px var(--signal-glow)}
+/* Mobile CTA pair — mirrors the desktop Plan Sprints + Audit Results buttons */
+.mobile-cta-yellow{background:#F0B429;color:#fff}
+.mobile-cta-yellow:hover{background:#D9A020;box-shadow:0 4px 20px rgba(240,180,41,.4)}
+.mobile-cta-audit{background:transparent;color:var(--mist2);border:1px solid var(--border);margin-top:12px}
+.mobile-cta-audit:hover{color:var(--bone);border-color:var(--mist);box-shadow:none}
 
 /* ── PAGE WRAPPER ────────────────────────────────────────── */
 .page-wrap{padding-top:64px;min-height:100vh}
@@ -947,6 +952,13 @@ footer{
 @media(max-width:600px){
   .score-chip{bottom:16px;right:16px;padding:8px 12px}
   .score-chip-num{font-size:16px}
+}
+/* Lift the score chip clear of the proposal tray when the tray is open
+   (catalog page). :has() degrades gracefully — without it the chip simply
+   stays at its default bottom position as before. */
+body:has(.proposal-tray.visible) .score-chip{bottom:96px}
+@media(max-width:600px){
+  body:has(.proposal-tray.visible) .score-chip{bottom:150px}
 }
 
 /* ── SPRINT / OFFERING CARDS ─────────────────────────── */

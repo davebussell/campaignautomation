@@ -233,7 +233,8 @@ function getTierKey(score) {
 function clearReadinessScore() {
   RSCORE.clear();
   try { localStorage.removeItem('ca_funnel'); } catch(e) {}
-  try { localStorage.removeItem('ca_plan'); } catch(e) {}
+  // NOTE: ca_plan (proposal cart) is intentionally preserved — it's an
+  // independent shopping action, not part of the score/funnel state.
   window.location.reload();
 }
 
@@ -344,10 +345,21 @@ const FUNNEL = {
     }
   });
 
-  /* 2 — Update mobile CTA */
+  /* 2 — Mobile CTAs: mirror the desktop pair (Plan Sprints + Audit Results) */
   document.querySelectorAll('a.mobile-cta').forEach(el => {
-    el.href = ctaCfg.href;
-    el.textContent = ctaCfg.label;
+    if (el.classList.contains('mobile-cta-audit')) return; // skip the injected one
+    // Primary → Plan Sprints (yellow)
+    el.href = '/solutions/automation-sprints';
+    el.textContent = 'Plan Sprints →';
+    el.classList.add('mobile-cta-yellow');
+    // Secondary → Audit Results (ghost), injected once
+    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('mobile-cta-audit')) {
+      const audit = document.createElement('a');
+      audit.href = '/tools/readiness-score';
+      audit.className = 'mobile-cta mobile-cta-audit';
+      audit.textContent = 'Audit Results →';
+      el.parentNode.insertBefore(audit, el.nextSibling);
+    }
   });
 
   /* 3 — Personalize Solutions dropdown based on tier/stage */
@@ -380,9 +392,9 @@ const FUNNEL = {
     } else if (tier === 'emerging') {
       html =
         `<span class="dropdown-label">Recommended${scoreLabel}</span>`+
-        lnk('PPC Intelligence Sprint','/solutions/automation-sprints','PPC')+
-        lnk('Content Brief Sprint','/solutions/automation-sprints','SEO · WEB')+
-        lnk('Campaign Launch Kit','/solutions/automation-sprints','WEB · PPC')+
+        lnk('PPC Intelligence Sprint','/solutions/sprints/ppc-intelligence','PPC')+
+        lnk('Content Brief Sprint','/solutions/sprints/content-brief','SEO · WEB')+
+        lnk('Campaign Launch Kit','/solutions/sprints/campaign-launch','WEB · PPC')+
         `<span class="dropdown-label">More</span>`+
         lnk('Campaign Automation Audit','/solutions/campaign-audit')+
         lnk('AI Marketing Training','/training')+
@@ -392,9 +404,9 @@ const FUNNEL = {
     } else if (tier === 'operational') {
       html =
         `<span class="dropdown-label">Recommended${scoreLabel}</span>`+
-        lnk('SEO/PPC Opportunity Sprint','/solutions/automation-sprints','SEO · PPC')+
-        lnk('Lead Reactivation Sprint','/solutions/automation-sprints','ABM')+
-        lnk('PPC Intelligence Sprint','/solutions/automation-sprints','PPC')+
+        lnk('SEO/PPC Opportunity Sprint','/solutions/sprints/seo-ppc','SEO · PPC')+
+        lnk('Lead Reactivation Sprint','/solutions/sprints/lead-reactivation','ABM')+
+        lnk('PPC Intelligence Sprint','/solutions/sprints/ppc-intelligence','PPC')+
         `<span class="dropdown-label">Intelligence</span>`+
         lnk('Campaign Strategy Portal','/platform')+
         lnk('Campaign Automation Audit','/solutions/campaign-audit')+
@@ -405,8 +417,8 @@ const FUNNEL = {
         `<span class="dropdown-label">Intelligence${scoreLabel}</span>`+
         lnk('Campaign Strategy Portal','/platform')+
         `<span class="dropdown-label">Advanced Sprints</span>`+
-        lnk('Event Follow-Up Sprint','/solutions/automation-sprints','ABM · LOCAL')+
-        lnk('Lead Reactivation Sprint','/solutions/automation-sprints','ABM')+
+        lnk('Event Follow-Up Sprint','/solutions/sprints/event-followup','ABM · LOCAL')+
+        lnk('Lead Reactivation Sprint','/solutions/sprints/lead-reactivation','ABM')+
         lnk('Campaign Automation Audit','/solutions/campaign-audit')+
         `<div class="dropdown-divider"></div>`+
         lnk('Browse full catalog →','/solutions/automation-sprints');

@@ -285,6 +285,15 @@
   <!-- INTAKE -->
   <div id="intake">
 
+    <!-- Hidden form so Netlify detects + registers "readiness-intake" at deploy.
+         The real intake UI below is JS-driven; submitIntake() AJAX-POSTs to this. -->
+    <form name="readiness-intake" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true" tabindex="-1">
+      <input type="hidden" name="form-name" value="readiness-intake">
+      <input name="bot-field"><input name="name"><input name="email"><input name="company">
+      <input name="industry"><input name="stage"><input name="service"><textarea name="challenge"></textarea>
+      <input name="score"><input name="tier">
+    </form>
+
     <!-- Sticky step progress nav -->
     <div class="rs-progress-bar">
       <nav class="step-nav" id="step-nav" aria-label="Assessment steps">
@@ -1111,8 +1120,18 @@ function submitIntake() {
     localStorage.setItem('ca_readiness', JSON.stringify({...existing, name, email, company, industry, stage, service, challenge, savedAt: Date.now()}));
   } catch(e){}
 
-  // Phase 1 — log to console; wire to form backend in Phase 2
-  console.log("Intake submission:", {name, email, company, industry, stage, service, challenge, score: finalScore, tier: tier.name});
+  // Capture the lead to Netlify Forms — best-effort and non-blocking, so a
+  // network hiccup never blocks the user (the success state below shows either
+  // way). The hidden <form name="readiness-intake"> in this page's HTML is what
+  // lets Netlify detect and register the form at deploy time.
+  try {
+    const payload = new URLSearchParams({
+      'form-name': 'readiness-intake',
+      name, email, company, industry, stage, service, challenge,
+      score: String(finalScore), tier: tier.name
+    }).toString();
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: payload}).catch(()=>{});
+  } catch(e){}
 
   document.getElementById("sent-score-line").textContent = `Score: ${finalScore}/100 · ${tier.name}`;
   document.getElementById("intake-form-el").style.display="none";
@@ -1122,20 +1141,19 @@ function submitIntake() {
 }
 
 function retake() {
-  // Wipe score/dims/answers but keep intake fields
+  // Drop score/dims/answers, keep intake/contact fields, then hard-reload.
+  // The reload is deliberate: it clears every piece of global score UI in one
+  // pass — the floating score chip, the personalized nav CTAs, and the
+  // Solutions dropdown — which a soft form reset would leave showing the old
+  // score until the next navigation. On reload there's no score, so the page
+  // shows the assessment again and the intake form re-prefills from these
+  // preserved fields.
   try {
     const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
     const {name, email, company, industry, stage, service, challenge} = existing;
     localStorage.setItem('ca_readiness', JSON.stringify({name, email, company, industry, stage, service, challenge}));
   } catch(e){}
-  Object.keys(answers).forEach(k=>delete answers[k]);
-  currentStep=0;
-  document.getElementById("scorecard").style.display="none";
-  document.getElementById("scorecard").innerHTML="";
-  document.getElementById("intake").style.display="block";
-  renderAllSteps();
-  updateNav();
-  document.getElementById('rs-intro')?.scrollIntoView({behavior:'smooth',block:'start'});
+  window.location.reload();
 }
 
 // ─────────────────────────────────────────────
