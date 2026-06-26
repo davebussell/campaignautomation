@@ -464,6 +464,83 @@ const FUNNEL = {
   }
 })();
 
+/* Sprints catalog — personalised readiness banner at the top of the page.
+   If the visitor has a saved Readiness Score, show their result and focus
+   them on what to fix first (their binding constraint) before they browse. */
+(function injectSprintsResultsBanner(){
+  const path = window.location.pathname.replace(/\/+$/, '');
+  if (!/\/solutions\/automation-sprints$/.test(path)) return;
+
+  const data = RSCORE.load();
+  if (!data || data.score === undefined) return;
+
+  const anchor = document.querySelector('.cat-filter-wrap');
+  if (!anchor || document.querySelector('.rs-sprints-banner')) return;
+
+  const tierKey  = getTierKey(data.score);
+  const copy     = TIER_COPY[tierKey] || {};
+  const tierName = copy.name || data.tier || '';
+
+  // Binding constraint = the weakest of the five scored dimensions
+  const CONSTRAINT = {
+    demo:    { title: 'Data access is your ceiling',                          focus: 'Get every channel owner self-serve access to campaign data before you scale automation.' },
+    instr:   { title: 'Measurement gaps are blocking automation quality',     focus: 'Fix conversion tracking first, so automation optimises against clean signals.' },
+    std:     { title: 'Inconsistent structure limits what automation can touch', focus: 'Lock down naming and launch process so automation can reliably act.' },
+    gov:     { title: 'No clear ownership means automation drifts',            focus: 'Name a single automation owner before you add more rules.' },
+    tooling: { title: 'Tooling gaps cap your automation ceiling',             focus: 'Integrate your data sources so automation has a complete signal to act on.' }
+  };
+  let cKey = null, cPct = Infinity;
+  const dims = data.dims || {};
+  for (const k of Object.keys(CONSTRAINT)) {
+    const d = dims[k];
+    if (d && d.max) { const p = d.raw / d.max; if (p < cPct) { cPct = p; cKey = k; } }
+  }
+  const con = cKey ? CONSTRAINT[cKey] : null;
+
+  if (!document.getElementById('rsb-css')) {
+    const st = document.createElement('style');
+    st.id = 'rsb-css';
+    st.textContent =
+      '.rs-sprints-banner{border:1px solid rgba(200,241,53,.28);border-left:3px solid var(--signal);background:linear-gradient(180deg,rgba(200,241,53,.05),rgba(200,241,53,0));border-radius:6px;padding:22px 26px;margin:8px 0 36px}' +
+      '.rsb-head{display:flex;align-items:center;gap:20px;flex-wrap:wrap}' +
+      '.rsb-score{display:flex;align-items:baseline;font-family:var(--f-display);line-height:1}' +
+      '.rsb-num{font-size:42px;font-weight:800;color:var(--signal)}' +
+      '.rsb-denom{font-size:17px;color:var(--mist);margin-left:2px}' +
+      '.rsb-meta{flex:1;min-width:150px}' +
+      '.rsb-eyebrow{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-bottom:5px}' +
+      '.rsb-tier{font-size:16px;font-weight:600;color:var(--bone)}' +
+      '.rsb-link{font-family:var(--f-mono);font-size:12px;color:var(--signal);text-decoration:none;letter-spacing:.04em;white-space:nowrap}' +
+      '.rsb-link:hover{text-decoration:underline}' +
+      '.rsb-body{margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}' +
+      '.rsb-constraint{font-size:15px;color:var(--mist2);line-height:1.6;margin:0 0 10px}' +
+      '.rsb-constraint strong{color:var(--bone)}' +
+      '.rsb-focus-label{display:inline-block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-right:10px;border:1px solid rgba(200,241,53,.3);border-radius:999px;padding:3px 9px;vertical-align:middle}' +
+      '.rsb-insert{font-size:14px;color:var(--mist);line-height:1.6;margin:0}' +
+      '@media(max-width:560px){.rsb-num{font-size:34px}.rsb-link{width:100%}}';
+    document.head.appendChild(st);
+  }
+
+  const banner = document.createElement('div');
+  banner.className = 'rs-sprints-banner';
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-label', 'Your readiness results and where to focus');
+  banner.innerHTML =
+    '<div class="rsb-head">' +
+      '<div class="rsb-score"><span class="rsb-num">' + data.score + '</span><span class="rsb-denom">/100</span></div>' +
+      '<div class="rsb-meta">' +
+        '<div class="rsb-eyebrow">Your readiness results</div>' +
+        '<div class="rsb-tier">' + tierName + ' tier' + (copy.chipTagline ? ' · ' + copy.chipTagline : '') + '</div>' +
+      '</div>' +
+      '<a class="rsb-link" href="/tools/readiness-score">View full results →</a>' +
+    '</div>' +
+    '<div class="rsb-body">' +
+      (con ? '<p class="rsb-constraint"><span class="rsb-focus-label">Focus first</span><strong>' + con.title + '.</strong> ' + con.focus + '</p>' : '') +
+      (copy.sprintInsert ? '<p class="rsb-insert">' + copy.sprintInsert + '</p>' : '') +
+    '</div>';
+
+  anchor.parentNode.insertBefore(banner, anchor);
+})();
+
 /* (Removed legacy .sprint-card proposal multi-select + stage-filter IIFEs and
    their SPRINT_META map. The unified catalog at /solutions/automation-sprints
    ships its own inline application filter and ca_plan proposal tray.) */
