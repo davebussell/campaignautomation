@@ -367,7 +367,7 @@ const FUNNEL = {
     if (!dropdown) return;
 
     function lnk(text, href, tag) {
-      return `<a href="${href}" role="menuitem">${text}${tag?`<span class="dd-tag">${tag}</span>`:''}</a>`;
+      return `<a href="${href}">${text}${tag?`<span class="dd-tag">${tag}</span>`:''}</a>`;
     }
 
     const scoreLabel = hasScore ? ` — Score ${scoreData.score}/100` : '';
