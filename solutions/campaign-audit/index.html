@@ -17,6 +17,31 @@
 <meta name="twitter:title" content="Campaign Automation Audit — Your First Sprint · PPC Waste, SEO Gaps &amp; 30-Day Plan">
 <meta name="twitter:description" content="The first sprint of every engagement: a human-led review of PPC waste, SEO gaps, and an AI automation roadmap. No account access. Where working with our team begins.">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+/* ── ABOVE-THE-FOLD HERO + INTAKE FORM ── */
+.audit-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;padding:48px 48px 56px;border-bottom:1px solid var(--border)}
+.ah-left .lead{max-width:none}
+.ah-points{list-style:none;padding:0;margin:22px 0 18px;display:flex;flex-direction:column;gap:9px}
+.ah-points li{position:relative;padding-left:24px;color:var(--mist2);font-size:15px;line-height:1.5}
+.ah-points li::before{content:"\2192";position:absolute;left:0;color:var(--signal)}
+.ah-trust{font-family:var(--f-mono);font-size:12px;letter-spacing:.03em;color:var(--mist);margin:0}
+.audit-form-card{background:var(--slate);border:1px solid var(--border);border-top:3px solid var(--signal);border-radius:8px;padding:26px 26px 24px;position:sticky;top:88px}
+.afc-title{font-size:20px;margin:0 0 6px}
+.afc-sub{font-size:13px;color:var(--mist2);margin:0 0 18px;line-height:1.5}
+.audit-ctx{font-family:var(--f-mono);font-size:11px;color:var(--mist2);background:rgba(200,241,53,.06);border:1px solid rgba(200,241,53,.25);border-radius:5px;padding:9px 12px;margin-bottom:18px;line-height:1.6}
+.audit-ctx .ac-score{color:var(--signal);font-weight:600}
+.audit-form{display:flex;flex-direction:column;gap:13px}
+.af-row{display:flex;gap:13px;flex-wrap:wrap}
+.af-field{flex:1;min-width:140px;display:flex;flex-direction:column;gap:5px}
+.af-field.af-full{flex-basis:100%}
+.af-field label{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist)}
+.audit-form input,.audit-form select,.audit-form textarea{padding:11px 13px;border:1px solid #333;background:var(--ink);color:var(--bone);font-family:var(--f-body);font-size:14px;border-radius:4px;width:100%}
+.audit-form input:focus,.audit-form select:focus,.audit-form textarea:focus{outline:2px solid var(--signal);outline-offset:1px;border-color:var(--signal)}
+.audit-form textarea{resize:vertical;min-height:68px}
+.audit-form .btn-primary{border:none;cursor:pointer;margin-top:4px;width:100%;text-align:center}
+.af-note{font-size:12px;color:var(--mist);margin:8px 0 0;line-height:1.5}
+@media(max-width:840px){.audit-hero{grid-template-columns:1fr;gap:30px;padding:32px 24px 44px}.audit-form-card{position:static}}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -132,23 +157,68 @@
     <a href="/">Home</a><span aria-hidden="true">›</span><a href="/solutions">Solutions</a><span aria-hidden="true">›</span><span aria-current="page">Campaign Automation Audit</span>
   </div>
 
-  <section class="page-hero reveal">
-    <div class="signal-badge">Sprint 01 · Human-led · Where every engagement begins</div>
-    <h1>Start with the Audit. Your first sprint<span class="blink-dot" aria-hidden="true">.</span></h1>
-    <p class="lead">The Campaign Automation Audit is the first sprint we run together. We review your campaigns, show you exactly where AI saves time and money, and hand you a prioritised 30-day plan, with no account access required. It's where every engagement begins, and it scopes every sprint that follows.</p>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px">
-      <a href="/request-proposals" class="btn-primary">Plan your Audit sprint →</a>
-      <a href="/tools/readiness-score" class="btn-ghost">Haven't scored yet? Take the free Readiness Score</a>
+  <section class="audit-hero reveal" id="request">
+    <div class="ah-left">
+      <div class="signal-badge">Sprint 01 · Human-led · No account access</div>
+      <h1>Start with the Audit. Your first sprint<span class="blink-dot" aria-hidden="true">.</span></h1>
+      <p class="lead">We review your campaigns, show you where AI saves time and money, and hand you a prioritised 30-day plan. It's the first sprint of every engagement, and it scopes the rest.</p>
+      <ul class="ah-points">
+        <li>PPC waste analysis and an SEO/PPC opportunity map</li>
+        <li>An AI automation roadmap built for your stack, not a checklist</li>
+        <li>A 30-day action plan you keep, whether or not we work together</li>
+      </ul>
+      <p class="ah-trust">We work from CSV exports you share. No logins, no OAuth, no ad-account access.</p>
     </div>
-  </section>
 
-  <section class="section reveal" style="padding-top:0">
-    <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:24px 28px;max-width:720px;display:flex;gap:20px;align-items:flex-start">
-      <div style="font-family:var(--f-mono);font-size:20px;color:var(--signal);line-height:1" aria-hidden="true">★</div>
-      <div>
-        <strong style="font-size:16px;display:block;margin-bottom:6px">New here? Start with the free Readiness Score</strong>
-        <p style="font-size:14px;color:var(--mist2);margin:0;line-height:1.6">The 4-minute Readiness Score is the free front door. It gives us your tier and your binding constraint up front, so your Audit sprint goes deeper, faster. Free, instant, no login.</p>
-        <a href="/tools/readiness-score?ref=audit" style="display:inline-block;margin-top:12px;font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.05em;text-decoration:none">Take the free Readiness Score → 13 questions · 4 min</a>
+    <div class="ah-right">
+      <div class="audit-form-card">
+        <h2 class="afc-title">Request your Audit</h2>
+        <p class="afc-sub">Tell us where to look. We reply within 2 business days.</p>
+        <div class="audit-ctx" id="audit-ctx" hidden></div>
+        <form name="audit-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="audit-form" class="audit-form">
+          <input type="hidden" name="form-name" value="audit-request">
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+          <div class="af-row">
+            <div class="af-field"><label for="af-name">Your name</label><input id="af-name" name="name" type="text" required autocomplete="name" placeholder="Jane Smith"></div>
+            <div class="af-field"><label for="af-email">Work email</label><input id="af-email" name="email" type="email" required autocomplete="email" placeholder="jane@company.com"></div>
+          </div>
+          <div class="af-row">
+            <div class="af-field"><label for="af-website">Website</label><input id="af-website" name="website" type="url" required placeholder="https://company.com"></div>
+            <div class="af-field"><label for="af-company">Company</label><input id="af-company" name="company" type="text" autocomplete="organization" placeholder="Acme Co."></div>
+          </div>
+          <div class="af-row">
+            <div class="af-field"><label for="af-industry">Industry</label>
+              <select id="af-industry" name="industry">
+                <option value="">Select…</option>
+                <option value="ecom">E-commerce / DTC</option>
+                <option value="b2b_saas">B2B SaaS</option>
+                <option value="b2b_svc">B2B Services / Consulting</option>
+                <option value="agency">Marketing Agency</option>
+                <option value="local">Local / Regional Business</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="af-field"><label for="af-stage">Company stage</label>
+              <select id="af-stage" name="stage">
+                <option value="">Select…</option>
+                <option value="pre">Pre-revenue / Seed</option>
+                <option value="early">Early ($0–$1M ARR)</option>
+                <option value="growth">Growth ($1M–$10M)</option>
+                <option value="scale">Scale ($10M+)</option>
+              </select>
+            </div>
+          </div>
+          <div class="af-field af-full"><label for="af-challenge">Your biggest campaign challenge</label>
+            <textarea id="af-challenge" name="challenge" rows="3" placeholder="e.g. We spend $40k/mo on Google Ads but can't tell what's actually working."></textarea>
+          </div>
+          <input type="hidden" name="service" value="audit">
+          <input type="hidden" name="readiness_score" id="af-score">
+          <input type="hidden" name="readiness_tier" id="af-tier">
+          <input type="hidden" name="binding_constraint" id="af-constraint">
+          <button type="submit" class="btn-primary">Request your Audit →</button>
+          <p id="af-msg" role="status" aria-live="polite" style="display:none;margin:8px 0 0;font-size:13px"></p>
+          <p class="af-note">No spam, no hard sell. We review every request personally.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -181,7 +251,7 @@
   <section class="section reveal">
     <h2>How it works</h2>
     <div class="grid-4">
-      <div class="step"><div class="step-num" aria-hidden="true">01</div><strong>Plan the sprint</strong><p>Tell us about your campaigns through the proposals flow. We scope the Audit sprint and confirm next steps. No account access needed.</p></div>
+      <div class="step"><div class="step-num" aria-hidden="true">01</div><strong>Request the Audit</strong><p>Fill in the short form at the top of this page. If you took the Readiness Score, your answers are already carried over. No account access needed.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">02</div><strong>Share a few exports</strong><p>We reply within 2 business days with a short checklist of CSV exports to send: Google Ads, GA4, Search Console. No logins or OAuth.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">03</div><strong>We review your campaigns</strong><p>We run your data through our structured review and AI analysis, and build your roadmap and 30-day plan.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">04</div><strong>We walk you through it</strong><p>A live call with our team to review the findings, answer questions, and map your next step together.</p></div>
@@ -199,17 +269,6 @@
       <div class="kw-row"><span>CRM lead export</span><span style="color:var(--mist);font-size:12px">Optional</span></div>
     </div>
     <p style="margin-top:16px;color:var(--mist)">Not sure how to export these? We'll send you step-by-step instructions after you request your audit.</p>
-  </section>
-
-  <!-- PLAN THE AUDIT SPRINT -->
-  <section class="section reveal" id="request">
-    <h2>Plan your Audit sprint</h2>
-    <p style="max-width:640px">The Audit is the first sprint of your engagement. Tell us about your campaigns through our proposals flow and we'll scope it and get back to you within 2 business days. No account access, no obligation to continue.</p>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px">
-      <a href="/request-proposals" class="btn-primary">Plan your Audit sprint →</a>
-      <a href="/tools/readiness-score" class="btn-ghost">New here? Take the free Readiness Score first</a>
-    </div>
-    <p style="margin-top:16px;font-size:13px;color:var(--mist)">No spam, no hard sell. We review every request personally and respond within 2 business days.</p>
   </section>
 
   <section class="section bone reveal">
@@ -247,7 +306,7 @@
     <h2>Ready to see where the waste is?</h2>
     <p>Human-led. No account access. The first sprint of your engagement.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px">
-      <a href="/request-proposals" class="btn-primary">Plan your Audit sprint →</a>
+      <a href="#request" class="btn-primary">Request your Audit →</a>
       <a href="/tools/readiness-score" class="btn-ghost">Not scored yet? Take the free Readiness Score</a>
     </div>
   </section>
@@ -270,5 +329,56 @@
   </nav>
 </footer>
 <script src="/js/main.js"></script>
+<script>
+/* Pre-fill the Audit intake from the saved Readiness Score.
+   Name, email, and website are always left blank for the visitor to enter. */
+(function(){
+  var data = {};
+  try { data = JSON.parse(localStorage.getItem('ca_readiness') || '{}') || {}; } catch(e){}
+  function set(id, val){ var el = document.getElementById(id); if (el && val != null && val !== '') el.value = val; }
+
+  set('af-company',   data.company);
+  set('af-industry',  data.industry);
+  set('af-stage',     data.stage);
+  set('af-challenge', data.challenge);
+
+  if (data.score !== undefined && data.score !== null) {
+    set('af-score', String(data.score));
+    set('af-tier',  data.tier || '');
+    var CON = { demo:'Data access (democratization)', instr:'Measurement (instrumentation)', std:'Structure (standardization)', gov:'Governance', tooling:'Tooling & integration' };
+    var dims = data.dims || {}, lowK = null, lowP = Infinity;
+    Object.keys(CON).forEach(function(k){ var d = dims[k]; if (d && d.max) { var p = d.raw / d.max; if (p < lowP) { lowP = p; lowK = k; } } });
+    var conLabel = lowK ? CON[lowK] : '';
+    set('af-constraint', conLabel);
+    var ctx = document.getElementById('audit-ctx');
+    if (ctx) {
+      ctx.hidden = false;
+      ctx.innerHTML = 'Carried over from your Readiness Score: <span class="ac-score">' + data.score + '/100</span>' +
+        (data.tier ? ' · ' + data.tier + ' tier' : '') + (conLabel ? ' · Focus: ' + conLabel : '');
+    }
+  }
+})();
+
+/* Netlify Forms — AJAX submit with inline success + graceful mailto fallback */
+(function(){
+  var form = document.getElementById('audit-form');
+  if (!form) return;
+  var msg = document.getElementById('af-msg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var body = new URLSearchParams(new FormData(form)).toString();
+    fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:body })
+      .then(function(r){ if(!r.ok) throw new Error('status '+r.status);
+        form.querySelectorAll('input,select,textarea,button').forEach(function(el){ el.disabled = true; });
+        msg.style.display='block'; msg.style.color='var(--signal)';
+        msg.textContent='✓ Request received. We’ll be in touch within 2 business days to kick off your Audit.';
+      })
+      .catch(function(){
+        msg.style.display='block'; msg.style.color='var(--mist2)';
+        msg.innerHTML='Couldn’t send that automatically. Email <a href="mailto:hello@campaignautomation.ai?subject=Campaign%20Automation%20Audit" style="color:var(--signal)">hello@campaignautomation.ai</a> and we’ll get you booked in.';
+      });
+  });
+})();
+</script>
 </body>
 </html>
