@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Security and Privacy for AI Marketing Automation | Campaign Automation AI | Campaign Automation AI</title>
+<meta name="description" content="AI marketing automation data security: what an AI sees, stores, and sends when it touches your accounts, plus the governance questions to ask any vendor.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/ai-marketing-automation-data-security">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/ai-marketing-automation-data-security">
+<meta property="og:title" content="Data Security and Privacy for AI Marketing Automation">
+<meta property="og:description" content="What an AI sees, stores, and sends across your marketing accounts: least-privilege, revocable, auditable access.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Security and Privacy for AI Marketing Automation">
+<meta name="twitter:description" content="What an AI sees, stores, and sends across your marketing accounts: least-privilege, revocable, auditable access.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Data Security and Privacy for AI Marketing Automation | Campaign Automation AI",
+      "description": "AI marketing automation data security: what an AI sees, stores, and sends when it touches your accounts, plus the governance questions to ask any vendor.",
+      "url": "https://campaignautomation.ai/resources/ai-marketing-automation-data-security",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/ai-marketing-automation-data-security"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Marketing Data Security",
+          "item": "https://campaignautomation.ai/resources/ai-marketing-automation-data-security"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">AI Marketing Data Security</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Governance</div>
+      <h1>Data security and privacy for AI marketing automation</h1>
+      <p>Before you connect an AI system to your ad accounts and CRM, you need a clear answer to three questions: what does it see, what does it store, and what does it send onward. Here's how to evaluate the security posture of AI marketing automation without taking anyone's word for it.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section"><h2>Three questions that define the risk</h2><p>When you connect any AI system to your marketing stack, you are handing it a key. The security question is not whether the vendor is trustworthy in the abstract. It is mechanical and specific: <strong>what does the system see, what does it store, and what does it send</strong>?</p><p>Sees covers the read surface — which accounts, which fields, which customer records the AI can pull. Stores covers retention — what gets copied off your platforms and held, for how long, and where. Sends covers egress — whether your data leaves to train a model, feeds a third party, or moves between your accounts. A vendor who can answer all three crisply has thought about the problem. A vendor who deflects to "enterprise-grade security" as a slogan has told you nothing.</p></section><section class="article-section"><h2>Least privilege is the whole game</h2><p>The most important security control is also the simplest: the AI should be able to touch only what it needs to do the job, and nothing more. This is least-privilege access, and in a marketing context it is concrete. A system that optimizes ad spend needs to read campaign performance and adjust budgets. It does not need to export your full customer list, read unrelated business units, or hold standing write access to everything it can see.</p><p>Scope minimization is how you enforce that. When you grant access, you are choosing a set of permissions — and narrow, purpose-bound scopes beat broad ones every time. The starting posture should be <strong>read-only and auditable</strong>: the AI can observe and reason, and any move that changes your accounts is explicit, logged, and reversible. We cover the mechanics of that grant in detail in our guide to <a href="/resources/ai-account-access-marketing-tools" style="color:var(--signal)">account access for AI marketing tools</a>.</p><ul><li><strong>Scoped, not blanket.</strong> Access is bound to specific accounts and functions, not your entire stack.</li><li><strong>Read-first.</strong> The default is observation; action is a deliberate, separate grant.</li><li><strong>Revocable on demand.</strong> You can pull the key at any moment, and access stops immediately.</li></ul></section><section class="article-section"><h2>Revocable access is a security control, not a courtesy</h2><p>Treat the ability to revoke as a primary line of defense. If something looks wrong — an unexpected change, a vendor incident, a contract ending — you should be able to cut access in one move and have it take effect now, not after a support ticket. Access that you cannot pull instantly is access you do not actually control.</p><p>Pair that with a record of what was read and what was acted on. An <a href="/resources/ai-marketing-audit-trail" style="color:var(--signal)">audit trail</a> turns "trust us" into "check for yourself." When every read and every action carries a receipt, security stops being a promise and becomes something you can verify after the fact — and reconstruct if you ever need to explain a change to a stakeholder or auditor.</p></section><section class="article-section"><h2>The black box is the threat model</h2><p>The real danger is not an AI that helps you. It is an AI that acts on your accounts and cannot explain or undo what it did. A system that moves budget, edits audiences, or changes targeting with no visible reasoning and no path to reverse the change is a data and spend risk wearing an automation badge. We unpack that failure mode in <a href="/resources/black-box-ai-marketing-risks" style="color:var(--signal)">the risks of black-box AI marketing</a>.</p><p>The alternative is bounded autonomy: the AI reasons and acts, but only inside limits you set, with every action visible and reversible. The clearest way to see this is through <strong>Trigger, Action, Impact</strong> — each move starts from a defined trigger, takes a specific action, and reports its measurable impact, with nothing happening off-ledger. Read how that frame works at <a href="/results/trigger-action-impact" style="color:var(--signal)">Trigger-Action-Impact</a>, and how spend caps, change ceilings, and approval thresholds box in what the system can do at <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a>. Guardrails are a security feature: they cap the blast radius of anything that goes wrong.</p></section><section class="article-section"><h2>Due-diligence questions for any vendor</h2><p>You do not need to be a security engineer to run a useful evaluation. You need to ask plainly and listen for whether the answers are specific or evasive.</p><ul><li>Does the AI start <strong>read-only</strong>, and is write access a separate, scoped grant?</li><li>What customer data does it read, and is anything copied off our platforms — if so, what, where, and for how long?</li><li>Is any of our data used to train models, or shared with third parties?</li><li>Can we <strong>revoke access instantly</strong>, and does it take effect immediately?</li><li>Is there a complete log of what was read and what was changed, and can we export it?</li><li>What are the hard limits — spend caps, change ceilings, exclusions — and can we set them?</li></ul><p>A vendor whose product is built around bounded autonomy can answer these without flinching, because the answers are the product. If the questions produce hedging, that is your finding.</p></section><section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">See where your security posture stands</h3>
+  <p style="margin-bottom:20px">Before you grant any AI access to your accounts, find out how ready your setup is for bounded, auditable automation. The Readiness Score takes 4 minutes, no login.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section><section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul><li><a href="/resources/ai-account-access-marketing-tools" style="color:var(--signal)">Account access for AI marketing tools</a> — the read-only-first permission model in detail</li><li><a href="/resources/ai-marketing-automation-governance-checklist" style="color:var(--signal)">An AI marketing automation governance checklist</a> — the controls to confirm before you connect</li><li><a href="/resources/black-box-ai-marketing-risks" style="color:var(--signal)">The risks of black-box AI marketing</a> — why unexplained, irreversible actions are the core threat</li></ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
