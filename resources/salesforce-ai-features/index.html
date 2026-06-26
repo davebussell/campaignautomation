@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salesforce AI Features: Einstein vs. Agentforce for Marketers | Campaign Automation AI</title>
+<meta name="description" content="A buyer's guide to Salesforce AI features: how Einstein became Agentforce, what its marketing and revenue agents do, and how to judge their autonomy.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/salesforce-ai-features">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/salesforce-ai-features">
+<meta property="og:title" content="Salesforce AI Features: Einstein vs. Agentforce for Marketers">
+<meta property="og:description" content="How Salesforce folded Einstein into Agentforce, what its marketing and revenue agents actually do, and how to evaluate whether that automation stays visible and reversible.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Salesforce AI Features: Einstein vs. Agentforce for Marketers">
+<meta name="twitter:description" content="How Salesforce folded Einstein into Agentforce, what its marketing and revenue agents actually do, and how to evaluate whether that automation stays visible and reversible.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Salesforce AI Features: Einstein vs. Agentforce for Marketers",
+      "description": "A buyer's guide to Salesforce AI features: how Einstein became Agentforce, what its marketing and revenue agents do, and how to judge their autonomy.",
+      "url": "https://campaignautomation.ai/resources/salesforce-ai-features",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/salesforce-ai-features"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Salesforce AI Features",
+          "item": "https://campaignautomation.ai/resources/salesforce-ai-features"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">Salesforce AI Features</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Vendor guide</div>
+      <h1>Salesforce AI features: Einstein, Agentforce, and what changed for marketers</h1>
+      <p>Salesforce has folded its AI under one brand: Agentforce. Here's what the former Einstein features actually do for marketing and revenue teams now, and how to judge whether agents that act on your CRM stay inside the lines you set.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section"><h2>From Einstein predictions to Agentforce action</h2><p>If you last evaluated Salesforce AI under the <strong>Einstein</strong> name, the labels have moved. In early 2025 Salesforce renamed its conversational AI "Einstein Copilot" to <strong>Agentforce</strong>, and has been folding its broader Einstein/AI capabilities under the Agentforce brand. Per <a href="https://martech.org/salesforce-agentforce-what-you-need-to-know/" style="color:var(--signal)">MarTech's reporting</a>, the change reflects a shift in intent: from predictive AI that scored and forecasted to autonomous agents that take action.</p><p>The rebrand runs across the portfolio. Salesforce describes Marketing Cloud's AI-native successor as <strong>Marketing Cloud Next</strong> with Agentforce agents embedded, and positions <strong>Agentforce for Revenue</strong> inside Revenue Cloud. The research notes one caveat worth keeping in mind: for the conversational-AI rename, this is a <strong>rename</strong>, not a teardown — existing licenses, permissions, and workflows reportedly carry over unchanged, and sources disagree on some naming and timing details across the wider portfolio (treat exact product labels and dates as approximate, and confirm against current Salesforce material).</p></section><section class="article-section"><h2>What Agentforce Marketing actually does</h2><p>For marketers, the headline product is <strong>Marketing Cloud Next</strong> — Salesforce's marketing platform rebuilt natively on its data layer (Data Cloud, which Salesforce also refers to as "Data 360"). Per <a href="https://www.salesforceben.com/how-salesforce-is-rebuilding-marketing-cloud-for-the-age-of-ai/" style="color:var(--signal)">Salesforce Ben</a>, it brings prior Salesforce marketing investments together with AI-native capabilities powered by Agentforce agents.</p><p>The core pitch is goal-to-campaign: you describe an objective in natural language, and agents help translate it into a structured campaign — suggesting <strong>audience criteria</strong>, <strong>content themes</strong>, <strong>channel mix</strong>, <strong>timing</strong>, and measurable KPIs. Salesforce organizes these into campaign-creation, orchestration, and campaign-activation agent types. Capabilities reported include:</p><ul><li>Campaign planning and content drafting (campaign-creation agents)</li><li>Interpreting real-time signals and recommending next-best actions (orchestration agents)</li><li><strong>Two-way messaging</strong> — two-way SMS reported from around late 2025 and two-way email by around February 2026, enabling interactive conversations rather than one-way sends</li><li>Cross-channel activation, segmentation, and personalization grounded in customer data and real-time signals</li></ul><p>The decisioning is anchored on live CRM and event data from Salesforce's data platform, which is the practical reason this lives inside the Salesforce ecosystem rather than bolting on from outside.</p></section><section class="article-section"><h2>The engine and the build tools underneath</h2><p>Agentforce is powered by the <strong>Atlas Reasoning Engine</strong>, which Salesforce credits for the agents' ability to plan and act within company-defined guardrails, drawing on internal data and large language models. Salesforce describes those guardrails as low-code, on by default, and configurable by admins. That phrase — "within company-defined guardrails" — is the part a buyer should underline.</p><p>You build and customize agents with low-code tools: <strong>Agent Builder, Model Builder, and Prompt Builder</strong>. The stated goal is agents that respond more flexibly than preset-script chatbots. On the revenue side, <strong>Agentforce for Revenue</strong> extends the same agentic approach inside Revenue Cloud to streamline the quote-to-cash process — relevant if marketing and RevOps share a Salesforce instance. If that overlap is your situation, our <a href="/revenue-operations/ai-revenue-ops" style="color:var(--signal)">AI revenue ops</a> notes are a useful companion.</p></section><section class="article-section"><h2>How to judge an agent that acts on your CRM</h2><p>Here's our lens, not Salesforce's. When AI moves from predicting to <em>acting</em>, the question changes. Einstein scored a lead; you decided what to do. An Agentforce agent can trigger a journey, send a message, or move a quote-to-cash step on its own. That's powerful — and it's exactly where you want <strong>bounded autonomy</strong>: the agent should reason and act, but only inside guardrails you set, with every action visible and reversible.</p><p>We use a simple test we call <a href="/results/trigger-action-impact" style="color:var(--signal)">Trigger, Action, Impact</a>. For any agent capability, ask: what <strong>triggered</strong> it, what <strong>action</strong> did it take, and what was the <strong>impact</strong> — and can you see all three after the fact? Salesforce's own framing of "company-defined guardrails" is the right starting point; your job in evaluation is to confirm those guardrails are real, configurable, and auditable in your own instance, not just a default to accept on faith. Map out, before you buy, which actions an agent can take unsupervised (a two-way SMS reply, a send-time change) versus which require a human to approve. Our <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a> guide walks through how to draw those lines.</p><p>Two practical cautions. First, because Agentforce is grounded in live CRM and event data, a misconfigured agent acts on production customer data immediately — so test scope tightly. Second, the rename means documentation and third-party guides are mid-transition; verify any capability against current Salesforce material before you commit budget. Some vendor claims in the research were corroborated through reputable third-party 2026 sources alongside Salesforce's own documentation.</p><p style="font-size:13px;color:var(--mist)">Last reviewed June 2026. Salesforce updates its AI capabilities frequently — confirm current specifics on the vendor's own site.</p></section><section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Before you let Agentforce act on your pipeline, know where your guardrails stand</h3>
+  <p style="margin-bottom:20px">Agents that send messages and change journeys on their own are only as safe as the boundaries around them. Our free Readiness Score shows you where your automation is visible and reversible — and where it isn't — in about 4 minutes, no login.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section><section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul><li><a href="/resources/predictive-vs-agentic-ai-marketing" style="color:var(--signal)">Predictive vs. agentic AI in marketing</a> — the exact shift Salesforce made from Einstein to Agentforce, explained for buyers</li><li><a href="/resources/ai-agents-in-your-crm" style="color:var(--signal)">AI agents in your CRM</a> — what changes when an agent can act directly on your customer data</li><li><a href="/resources/hubspot-ai-features" style="color:var(--signal)">HubSpot AI features</a> — compare a sibling vendor's approach to AI-driven marketing automation</li></ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

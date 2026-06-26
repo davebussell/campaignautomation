@@ -504,4 +504,40 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/hubspot-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/activecampaign-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/oracle-eloqua-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/salesforce-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/zoominfo-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/6sense-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
 </urlset>
