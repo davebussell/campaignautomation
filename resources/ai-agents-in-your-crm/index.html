@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agents in Your CRM: What They Actually Automate (and Where They Break) | Campaign Automation AI</title>
+<meta name="description" content="CRM AI agents promise to update records, route leads, and act on signals. Here's what they genuinely automate well, where they break, and the guardrails that keep them safe.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/ai-agents-in-your-crm">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/ai-agents-in-your-crm">
+<meta property="og:title" content="AI Agents in Your CRM: What They Actually Automate (and Where They Break)">
+<meta property="og:description" content="What CRM AI agents genuinely automate well, where they break, and the guardrails that keep them from corrupting your system of record.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Agents in Your CRM: What They Automate (and Where They Break)">
+<meta name="twitter:description" content="What CRM AI agents automate well, where they break, and the guardrails that keep them safe.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "AI Agents in Your CRM: What They Actually Automate (and Where They Break)",
+      "description": "CRM AI agents promise to update records, route leads, and act on signals. Here's what they genuinely automate well, where they break, and the guardrails that keep them safe.",
+      "url": "https://campaignautomation.ai/resources/ai-agents-in-your-crm",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://campaignautomation.ai/resources/ai-agents-in-your-crm"},
+      "author": {"@type": "Organization", "name": "Campaign Automation AI", "url": "https://campaignautomation.ai"},
+      "publisher": {"@type": "Organization", "name": "Campaign Automation AI", "url": "https://campaignautomation.ai"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://campaignautomation.ai/"},
+        {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://campaignautomation.ai/resources"},
+        {"@type": "ListItem", "position": 3, "name": "AI Agents in Your CRM", "item": "https://campaignautomation.ai/resources/ai-agents-in-your-crm"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">AI Agents in Your CRM</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Revenue operations</div>
+      <h1>AI agents in your CRM: what they automate, and where they break.</h1>
+      <p>Every CRM now ships an "agent" that promises to update records, route leads, draft replies, and act on buying signals. Some of that is genuinely useful. Some of it quietly corrupts the one system your whole revenue team trusts. The trick is knowing which is which before you switch it on.</p>
+    </div>
+
+    <article class="article-wrap">
+
+      <section class="article-section">
+        <h2>What a CRM agent is actually doing</h2>
+        <p>A CRM agent is an AI given access to your records and the ability to change them. Instead of a person reading a lead and updating a field, the agent reads the signal — a form fill, an email reply, a meeting booked — and writes the change itself: updating a stage, assigning an owner, logging an activity, or kicking off a sequence.</p>
+        <p>That is real leverage, because this work is high-volume and rule-shaped. It is also where the danger lives, because your CRM is a <strong>system of record</strong>. A reporting dashboard that is wrong is annoying. A CRM that is wrong sends reps to the wrong accounts, breaks your forecast, and pollutes every report built on top of it. An agent that edits records at scale can do a lot of quiet damage fast.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Where they work well</h2>
+        <p>CRM agents earn their keep on bounded, mechanical work where the right answer is unambiguous and the cost of a mistake is low and reversible:</p>
+        <ul>
+          <li><strong>Enrichment and hygiene</strong> — filling missing firmographics, de-duplicating, standardising formats. Clear rules, easy to check.</li>
+          <li><strong>Lead routing</strong> — assigning by territory, segment, or round-robin the moment a lead qualifies, instead of hours later.</li>
+          <li><strong>Activity logging</strong> — capturing that a call happened or an email was sent, so reps stop doing data entry.</li>
+          <li><strong>First-draft follow-up</strong> — drafting the reply or the sequence step for a human to approve and send.</li>
+          <li><strong>Signal surfacing</strong> — flagging an account that went quiet or a deal that slipped, so a person decides what to do.</li>
+        </ul>
+      </section>
+
+      <section class="article-section">
+        <h2>Where they break</h2>
+        <p>The failure modes are predictable, and they all share a root cause: the agent acting confidently on incomplete context, with no limit and no log.</p>
+        <ul>
+          <li><strong>Stage and status changes.</strong> An agent that advances or closes deals from a thin signal corrupts your pipeline and forecast. Stage is a judgement call; treat it as one.</li>
+          <li><strong>Bulk edits.</strong> One rule applied to the wrong segment can rewrite thousands of records before anyone notices. Without a capped blast radius, a small mistake becomes a big cleanup.</li>
+          <li><strong>Unattended outbound.</strong> An agent sending messages on a rep's behalf without approval is one bad inference away from emailing the wrong thing to the wrong buyer in your name.</li>
+          <li><strong>No audit trail.</strong> If you cannot see which changes the agent made and why, you cannot trust the data or roll back a bad run. "The AI did it" is not an answer your RevOps lead can use.</li>
+        </ul>
+      </section>
+
+      <section class="article-section">
+        <h2>The guardrails that keep a CRM agent safe</h2>
+        <p>The pattern is the same one that makes any acting agent safe to deploy: bound what it can do, log everything it does, and keep a person on the decisions that carry risk.</p>
+        <ul>
+          <li><strong>Scope its write access.</strong> Let it touch enrichment and activity fields freely; require approval to change stage, owner, or anything that drives the forecast.</li>
+          <li><strong>Cap the blast radius.</strong> Limit how many records a single action can change before a human signs off.</li>
+          <li><strong>Log before-and-after.</strong> Every change records its trigger, the old value, the new value, and the result — so any run can be inspected and reversed. That is the <a href="/results/trigger-action-impact" style="color:var(--signal)">Trigger / Action / Impact</a> discipline applied to your CRM.</li>
+          <li><strong>Approve the outbound.</strong> Drafts, not sends, until you have earned the trust to let specific, proven actions run on their own.</li>
+        </ul>
+        <p>This is <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a> in a system of record. It is not a brake on the agent; it is what lets you point one at your CRM without holding your breath.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Before you switch it on</h2>
+        <p>A CRM agent is only as good as the data and definitions underneath it. If your stages are inconsistent, your fields are half-populated, or your routing rules live in someone's head, an agent will scale that mess, not fix it. The foundation comes first: clean data, clear definitions, and an owner for the automation. If you are not sure your CRM is in that state, the <a href="/tools/readiness-score" style="color:var(--signal)">Readiness Score</a> will tell you where the gap is — and our <a href="/revenue-operations">revenue operations</a> work goes deeper on aligning the data and signals an agent depends on.</p>
+      </section>
+
+      <section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+        <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+        <h3 style="margin:0 0 10px">Is your CRM ready for an agent?</h3>
+        <p style="margin-bottom:20px">The free Readiness Score checks the data quality, definitions, and governance a CRM agent depends on, and tells you the one thing to fix before you let anything write to your system of record. Four minutes, no login.</p>
+        <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+      </section>
+
+      <section class="article-section" style="border-bottom:none;margin-bottom:0">
+        <h2 style="font-size:22px">Keep reading</h2>
+        <ul>
+          <li><a href="/resources/predictive-vs-agentic-ai-marketing" style="color:var(--signal)">Predictive vs. agentic AI in marketing: the difference that governs your buying decision</a></li>
+          <li><a href="/resources/execution-depth-spectrum" style="color:var(--signal)">Recommend, rule, or act: the execution-depth spectrum of marketing AI</a></li>
+          <li><a href="/revenue-operations/ai-revenue-ops" style="color:var(--signal)">AI for revenue operations</a></li>
+        </ul>
+      </section>
+
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

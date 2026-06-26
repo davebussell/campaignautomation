@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rule-Based vs. Autonomous PPC: Which Optimization Model Wins? | Campaign Automation AI</title>
+<meta name="description" content="Hand-built rules are predictable but brittle. Autonomous optimization adapts but can run blind. Here's how each model fails, and why bounded autonomy is the answer to both.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/rule-based-vs-autonomous-ppc">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/rule-based-vs-autonomous-ppc">
+<meta property="og:title" content="Rule-Based vs. Autonomous PPC: Which Optimization Model Wins?">
+<meta property="og:description" content="Hand-built rules are brittle; autonomous optimization can run blind. Why bounded autonomy is the answer to both.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rule-Based vs. Autonomous PPC: Which Optimization Model Wins?">
+<meta name="twitter:description" content="Hand-built rules are brittle; autonomous optimization can run blind. The case for bounded autonomy.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Rule-Based vs. Autonomous PPC: Which Optimization Model Wins?",
+      "description": "Hand-built rules are predictable but brittle. Autonomous optimization adapts but can run blind. Here's how each model fails, and why bounded autonomy is the answer to both.",
+      "url": "https://campaignautomation.ai/resources/rule-based-vs-autonomous-ppc",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://campaignautomation.ai/resources/rule-based-vs-autonomous-ppc"},
+      "author": {"@type": "Organization", "name": "Campaign Automation AI", "url": "https://campaignautomation.ai"},
+      "publisher": {"@type": "Organization", "name": "Campaign Automation AI", "url": "https://campaignautomation.ai"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://campaignautomation.ai/"},
+        {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://campaignautomation.ai/resources"},
+        {"@type": "ListItem", "position": 3, "name": "Rule-Based vs. Autonomous PPC", "item": "https://campaignautomation.ai/resources/rule-based-vs-autonomous-ppc"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">Rule-Based vs. Autonomous PPC</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Paid media</div>
+      <h1>Rule-based vs. autonomous PPC: which optimization model wins?</h1>
+      <p>Paid-media automation has split into two camps. One runs the rules you hand-build. The other lets AI optimise on its own. Both have a real failure mode, and the honest answer to "which wins" is neither — at least not the way they are usually sold. The model that actually holds up is the one that borrows the strength of each and fixes the weakness of both.</p>
+    </div>
+
+    <article class="article-wrap">
+
+      <section class="article-section">
+        <h2>Rule-based optimization: predictable, until it isn't</h2>
+        <p>A rules engine does exactly what you tell it. "If cost per acquisition is above target for three days, pause the ad group." "If a search term spends more than X with no conversion, add it as a negative." You can read every rule, you know precisely what will happen, and nothing acts that you did not write.</p>
+        <p>That predictability is the strength and the ceiling. Rules only handle the situations you anticipated. Reality drifts — seasonality shifts, a competitor enters, a tracking change moves your numbers — and the rule keeps firing on a world that no longer matches it. Worse, a complex account ends up with dozens of rules nobody fully remembers, quietly interacting in ways no one designed. Rules do not learn. They are a snapshot of your thinking on the day you wrote them, frozen.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Autonomous optimization: adaptive, until it surprises you</h2>
+        <p>An autonomous optimiser does not wait for a rule. Given a goal — hit a target ROAS, maximise conversions at a CPA — it decides what to change and changes it, learning from the result. It handles situations you never anticipated, and it improves as it goes. On paper, it is everything rules are not.</p>
+        <p>The catch is what you give up. Most autonomous tools are a black box: you set a goal, money moves, and you cannot fully see why or stop a specific decision. When it is right, that is fine. When it is wrong — acting on a tracking glitch, chasing a vanity conversion, making a change far larger than you would have — you are left explaining a result you did not authorise and cannot cleanly reverse. Adaptive is powerful. Adaptive and unaccountable is a liability.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>The real fork: reasoning vs. rules — and visibility vs. trust</h2>
+        <p>Lay the two side by side and the trade-off is clear:</p>
+        <ul>
+          <li><strong>Rules</strong> give you visibility and control, and cost you adaptability. You see everything; you also have to anticipate everything.</li>
+          <li><strong>Autonomy</strong> gives you adaptability, and costs you visibility and control. It handles the unexpected; you just cannot always see how, or undo it.</li>
+        </ul>
+        <p>Framed that way, "which wins" is the wrong question. You do not want to trade visibility for adaptability or the other way round. You want both — reasoning that adapts, inside limits you can see and control.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Bounded autonomy: the model that actually holds up</h2>
+        <p>The answer to both failure modes is autonomy with a control layer. The system reasons and adapts like an autonomous optimiser, but it acts only inside guardrails you set — spend caps, change limits, brand exclusions, approval thresholds — and it logs every action with the condition that triggered it and the result it produced. You get the adaptability of autonomy and the visibility of rules, without the brittleness of one or the blindness of the other.</p>
+        <p>Concretely, every change runs as a <a href="/results/trigger-action-impact" style="color:var(--signal)">trigger, an action, and a measured impact</a>: the condition the system watched for, the change it made through a real connection to your account, and what that change moved. The limits it runs inside are <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a>. The result is an optimiser you can actually run unattended, because nothing happens that you cannot see, bound, or reverse. For the full map of where this sits relative to plain rules and black-box autonomy, see <a href="/resources/execution-depth-spectrum" style="color:var(--signal)">the execution-depth spectrum</a>.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Which to choose, honestly</h2>
+        <p>If your account is small and stable, well-built rules may be all you need, and there is no shame in that. If it is large, volatile, or eating a senior person's week, rules will not keep up and a pure black box will eventually surprise you. The durable choice for an account that matters is bounded autonomy: it adapts, and you stay in control. Just remember the precondition — none of these models fixes broken tracking or messy structure. Optimisation applied to bad inputs optimises toward the wrong thing faster. Get the foundation right first.</p>
+      </section>
+
+      <section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+        <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+        <h3 style="margin:0 0 10px">See whether your account is ready to optimise</h3>
+        <p style="margin-bottom:20px">The free Readiness Score checks your tracking, structure, and data quality — the inputs every optimisation model depends on — and tells you the one thing to fix first. Four minutes, no login.</p>
+        <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+      </section>
+
+      <section class="article-section" style="border-bottom:none;margin-bottom:0">
+        <h2 style="font-size:22px">Keep reading</h2>
+        <ul>
+          <li><a href="/resources/execution-depth-spectrum" style="color:var(--signal)">Recommend, rule, or act: the execution-depth spectrum of marketing AI</a></li>
+          <li><a href="/paid-advertising-automation/smart-bidding-alternatives" style="color:var(--signal)">Smart Bidding alternatives</a> — where automated bidding helps and where it falls short</li>
+          <li><a href="/resources/predictive-vs-agentic-ai-marketing" style="color:var(--signal)">Predictive vs. agentic AI in marketing</a></li>
+        </ul>
+      </section>
+
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
