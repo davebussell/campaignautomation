@@ -2,8 +2,8 @@
 <html lang="en-CA">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trigger/Action/Impact — The AI Automation Accountability Framework</title>
-<meta name="description" content="The TAI framework explains how every AI automation action is initiated by a trigger, constrained by guardrails, executed as an action, and measured as impact. Full documentation.">
+<title>Trigger/Action/Impact · The Self-Improving Automation Loop</title>
+<meta name="description" content="The TAI framework: a scheduled AI agent watches for a trigger, acts on your ad account through MCP, logs the impact, and feeds every result back to refine the next decision. Full documentation.">
 <link rel="canonical" href="https://campaignautomation.ai/results/trigger-action-impact">
 <link rel="alternate" hreflang="en-CA" href="https://campaignautomation.ai/results/trigger-action-impact">
 <link rel="alternate" hreflang="en-US" href="https://campaignautomation.ai/results/trigger-action-impact">
@@ -16,8 +16,8 @@
   "@graph": [
     {
       "@type": "Article",
-      "headline": "Trigger/Action/Impact — The AI Automation Accountability Framework",
-      "description": "The TAI framework explains how every AI automation action is initiated by a trigger, constrained by guardrails, executed as an action, and measured as impact. Full documentation.",
+      "headline": "Trigger/Action/Impact · The Self-Improving Automation Loop",
+      "description": "The TAI framework: a scheduled AI agent watches for a trigger, acts on your ad account through MCP, logs the impact, and feeds every result back to refine the next decision. Full documentation.",
       "url": "https://campaignautomation.ai/results/trigger-action-impact",
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://campaignautomation.ai/results/trigger-action-impact"},
       "author": {"@type": "Organization", "name": "Campaign Automation AI", "url": "https://campaignautomation.ai"},
@@ -68,6 +68,15 @@
 .sprint-callout h3{font-size:20px;color:var(--ink);margin-bottom:8px}
 .sprint-callout p{color:#555;margin-bottom:16px}
 @media(max-width:768px){.tai-layout{grid-template-columns:1fr}.tai-sidebar{display:none}}
+.tai-article h3{font-size:18px;color:var(--ink);font-weight:700;margin:28px 0 10px}
+.tai-loop{margin:6px 0 22px}
+.tai-loop-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.tai-node{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink);background:#fff;border:1px solid #d8d4c8;border-radius:6px;padding:11px 16px;white-space:nowrap}
+.tai-node.accent{border-color:var(--signal);background:rgba(200,241,53,.18)}
+.tai-arrow{color:var(--signal);font-size:16px;font-weight:700}
+.tai-loop-back{margin-top:14px;display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#555;line-height:1.55;border-left:3px solid var(--signal);background:rgba(200,241,53,.06);padding:12px 16px;border-radius:0 6px 6px 0}
+.tai-loop-back-arrow{color:var(--signal);font-size:20px;font-weight:700;line-height:1.2}
+@media(max-width:560px){.tai-node{font-size:11px;padding:9px 12px}}
 </style>
 </head>
 <body>
@@ -139,19 +148,21 @@
   <section class="page-hero snap-sec" aria-labelledby="tai-heading">
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Framework</div>
     <h1 id="tai-heading">Every AI action has a trigger, an outcome, and a logged reason.</h1>
-    <p class="lead">The TAI framework is the accountability layer underneath every automation we build. It replaces "the AI did something" with a precise, auditable record of what happened and why.</p>
+    <p class="lead">The TAI framework is the engine underneath every automation we build. A scheduled agent watches for a trigger, checks your guardrails, acts on your account, and logs the impact. Then the loop closes: every result is recorded and fed back to sharpen the next decision. It replaces "the AI did something" with an auditable record of what happened, why, and what it changed.</p>
   </section>
 
-  <section class="section snap-sec" aria-labelledby="tai-doc-heading">
+  <section class="section bone snap-sec" aria-labelledby="tai-doc-heading">
     <h2 class="sr-only" id="tai-doc-heading">TAI Framework documentation</h2>
     <div class="tai-layout">
 
       <aside class="tai-sidebar" aria-label="On this page">
         <p class="sidebar-label">On this page</p>
         <nav aria-label="Section navigation">
+          <a href="#loop">The loop</a>
           <a href="#trigger">What is a trigger</a>
           <a href="#action">What is an action</a>
           <a href="#impact">What is an impact</a>
+          <a href="#feedback">The feedback loop</a>
           <a href="#guardrails">How guardrails interact</a>
           <a href="#log">The activity log</a>
         </nav>
@@ -159,10 +170,27 @@
 
       <div class="tai-article">
 
+        <section id="loop" aria-labelledby="loop-heading">
+          <div class="pillar-tag signal" style="margin-bottom:16px">The loop</div>
+          <h2 id="loop-heading">One loop that gets sharper every cycle</h2>
+          <p>Most "AI automation" is a one-way street: a rule fires, something changes, and nobody records whether it worked. TAI is a closed loop. Every cycle leaves a record, and that record makes the next cycle smarter.</p>
+          <div class="tai-loop" aria-label="The Trigger, Action, Impact loop">
+            <div class="tai-loop-row">
+              <span class="tai-node">Trigger</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node">Guardrails</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node">Action</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node">Impact</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node accent">Learn</span>
+            </div>
+            <div class="tai-loop-back"><span class="tai-loop-back-arrow" aria-hidden="true">⟲</span><span>Every result is recorded and fed back, refining the next trigger, action, and guardrail.</span></div>
+          </div>
+          <p>The first four stages give you accountability. The fifth, the feedback step, is what makes the system compound. Here is each stage in detail.</p>
+        </section>
+
         <section id="trigger" aria-labelledby="trigger-heading">
           <div class="pillar-tag signal" style="margin-bottom:16px">Trigger</div>
           <h2 id="trigger-heading">What is a trigger?</h2>
-          <p>A trigger is a defined condition that initiates an automated action. It is not a schedule, a timer, or a guess — it is a specific, observable data event that the system monitors continuously.</p>
+          <p>A trigger is a defined condition that initiates an automated action. It is a specific, observable data event, not a blind timer or a guess. The system checks for it on a schedule, but it only moves to the next stage when the condition is actually met.</p>
           <p>Triggers are written in plain language and translated into machine-readable rules during sprint configuration. Examples include:</p>
           <ul>
             <li>CPA exceeds target threshold by more than 20% over a 3-day rolling window</li>
@@ -170,20 +198,23 @@
             <li>A keyword's quality score drops below 5 for two consecutive weeks</li>
             <li>Monthly ad spend reaches 80% of budget before the 20th of the month</li>
           </ul>
-          <p>Each trigger is documented in your AGENTS.md file and is reviewable, editable, and version-controlled. Triggers do not fire actions directly — they initiate a guardrail check first.</p>
+          <p>Each trigger is documented in your AGENTS.md file and is reviewable, editable, and version-controlled. Triggers do not fire actions directly. They initiate a guardrail check first.</p>
+          <h3>How a trigger actually runs</h3>
+          <p>The watching is done by a scheduled agent. Claude, Cursor, and Codex all support scheduled "wakeup" tasks: an agent that wakes on a cron-style schedule, pulls the latest data (a Google Ads export, a GA4 report, a Search Console pull), and evaluates the condition. If nothing is met, it stands down and writes a "no action" line to the log. If the condition is met, it moves to the guardrail check. The schedule decides how often the system looks; the condition decides whether anything happens.</p>
           <div class="terminal" aria-label="Trigger example" style="margin-top:24px">
             <pre><code>trigger:
   condition: CPA > target_CPA * 1.38
   window:    3-day rolling average
   source:    Google Ads API export (CSV)
-  check_frequency: daily at 06:00 EST</code></pre>
+  engine:    scheduled agent wakeup (Claude / Cursor / Codex)
+  check:     daily at 06:00 EST</code></pre>
           </div>
         </section>
 
         <section id="action" aria-labelledby="action-heading">
           <div class="pillar-tag" style="margin-bottom:16px">Action</div>
           <h2 id="action-heading">What is an action?</h2>
-          <p>An action is the specific change the system makes in response to a confirmed trigger — after all guardrails have been evaluated and passed.</p>
+          <p>An action is the specific change the system makes in response to a confirmed trigger, after all guardrails have been evaluated and passed.</p>
           <p>Actions are scoped, bounded, and reversible by design. We do not build actions that make irreversible changes without a human approval gate. Every action has:</p>
           <ul>
             <li>A defined scope (which campaigns, ad groups, contacts, or records it touches)</li>
@@ -192,14 +223,16 @@
             <li>An approval gate option (some actions can be set to "notify and wait" rather than "execute immediately")</li>
           </ul>
           <p>Actions are the deliverable of a sprint. When we hand over a sprint, we hand over the full action library: what each action does, when it fires, and how to modify or disable it.</p>
+          <h3>How an action executes</h3>
+          <p>When a trigger clears its guardrails, the agent makes the change through a real connection to your account, not a screenshot or a suggestion you have to action yourself. We connect through MCP, the Model Context Protocol, or a platform API to Google Ads, Meta, GA4, or your CRM, and the agent performs the change directly: pause a campaign, add negative keywords, shift budget, adjust a bid. Because it runs through your own connection with scoped, revocable credentials, the action is real, logged with a before-state, and reversible.</p>
           <div class="terminal" aria-label="Action example" style="margin-top:24px">
             <pre><code>action:
   type:      pause_ad_groups
   targets:   [AG-004, AG-007, AG-011, AG-019]
-  secondary: reallocate_budget
-  amount:    $1,200 → top_performing_ad_groups
+  via:       MCP -> Google Ads (scoped credentials)
+  secondary: reallocate_budget -> top_performing_ad_groups ($1,200)
   approval:  auto (guardrails passed)
-  logged:    before_state captured</code></pre>
+  logged:    before_state captured for rollback</code></pre>
           </div>
         </section>
 
@@ -221,7 +254,7 @@
             <li>The number of human approvals required (target: zero for routine automations)</li>
             <li>A timestamp and action ID for cross-referencing with the activity log</li>
           </ul>
-          <p>Over time, the impact log becomes a performance record that informs future trigger thresholds, action scopes, and sprint prioritization.</p>
+          <p>Impact is tracked across whatever the action touched: PPC metrics like CPA, ROAS, and Quality Score, and SEO metrics like rankings, impressions, and clicks. Over time the impact log becomes a performance record, and that record is what powers the feedback loop below.</p>
           <div class="terminal" aria-label="Impact example" style="margin-top:24px">
             <pre><code>impact:
   metric:          CPA
@@ -232,6 +265,34 @@
   approvals_req:   0
   action_id:       ACT-2024-1114-003
   logged:          2024-11-14T06:04:22Z</code></pre>
+          </div>
+        </section>
+
+        <section id="feedback" aria-labelledby="feedback-heading">
+          <div class="pillar-tag signal" style="margin-bottom:16px">The feedback loop</div>
+          <h2 id="feedback-heading">The part that compounds</h2>
+          <p>An automation that pauses a campaign is useful once. A system that records every action, measures what it changed, and feeds that back into the next decision gets better every cycle. This is the difference between an automation and an intelligence layer, and it is the part most "AI automation" leaves out.</p>
+          <p>Every action writes a record: the trigger that fired it, the guardrails it passed, the change it made, and the impact over the observation window. That record is not just an audit trail. It is training data for the system's own thresholds. The loop reads it and proposes refinements:</p>
+          <ul>
+            <li><strong>Triggers get sharper.</strong> A trigger that fires often but moves nothing gets its threshold tightened. One that fires too late gets loosened. If pausing at CPA +38% keeps recovering spend, the system can recommend acting earlier, at +30%.</li>
+            <li><strong>Actions get better scoped.</strong> Actions that consistently stay well under their guardrail caps have room to scale. Actions that overshoot get pulled back.</li>
+            <li><strong>Guardrails get calibrated</strong> to how your accounts actually behave, not a generic default.</li>
+          </ul>
+          <p>Refinements are proposed, not silently applied. Each one lands in the log as a recommendation with the evidence behind it, and waits for a human yes. You keep the wheel; the system keeps getting smarter about where to point it.</p>
+          <div class="terminal" aria-label="Feedback ledger example" style="margin-top:24px">
+            <pre><code># Feedback ledger -- trigger refinement
+ACT-003 | pause @ CPA>+38% | impact: -35% CPA | verdict: effective
+ACT-009 | pause @ CPA>+38% | impact: -31% CPA | verdict: effective
+ACT-014 | pause @ CPA>+22% | impact:  -6% CPA | verdict: marginal
+-> recommendation: tighten trigger to CPA>+30% (acts earlier, recovers more)
+-> status: awaiting human approval</code></pre>
+          </div>
+          <p>Over enough cycles, the loop turns a static rule set into a system that reflects your accounts. Running it continuously, month over month, is exactly what the <a href="/platform" style="color:var(--signal)">Campaign Strategy Portal</a> is for.</p>
+          <div class="sprint-callout" aria-label="Portal callout">
+            <div class="sprint-callout-label">Run the loop continuously</div>
+            <h3 style="margin:0 0 8px">The Campaign Strategy Portal keeps the loop running</h3>
+            <p>A sprint builds the loop for one workflow. The Strategy Portal runs it across your account every month: new triggers, refined thresholds, and a standing record of what each change delivered.</p>
+            <a href="/platform" class="btn-primary" style="font-size:14px;padding:12px 28px">See the Campaign Strategy Portal →</a>
           </div>
         </section>
 
