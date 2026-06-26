@@ -576,4 +576,22 @@
     <changefreq>monthly</changefreq>
     <priority>5</priority>
   </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/salesloft-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/mailchimp-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>2</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/braze-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
 </urlset>
