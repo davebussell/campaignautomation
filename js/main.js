@@ -279,7 +279,7 @@ const FUNNEL = {
   /* CTA config per stage, optionally influenced by score tier */
   cta(stg, tier) {
     const map = {
-      audit:       { label:'Get Audit →',               href:'/tools/readiness-score',        next:null },
+      audit:       { label:'Get your free score →',     href:'/tools/readiness-score',        next:null },
       training:    { label:'Explore Training →',         href:'/training',                     next:'training' },
       prep:        { label:'Build Sprint Foundation →',  href:'/resources/sprint-prep',        next:'sprint-prep' },
       sprints:     { label:'Browse Sprints →',           href:'/solutions/automation-sprints', next:'automation-sprints' },
@@ -333,40 +333,31 @@ const FUNNEL = {
   const stg       = FUNNEL.stage();
   const ctaCfg    = FUNNEL.cta(stg, tier);
 
-  /* 1 — Two nav buttons: Get your free Audit (yellow — the hook) + Plan Sprints (ghost) */
-  document.querySelectorAll('a.nav-cta').forEach(el => {
-    // Button 1: Get your free Audit (yellow) — the free team-connection hook
-    el.href = '/solutions/campaign-audit';
-    el.textContent = 'Get your free Audit →';
+  /* 1 — Single, state-aware nav CTA:
+         no score  → "Get your free score →"  (Readiness Score — the free hook)
+         has score → "Plan your sprints →"    (Automation Sprints — the next step) */
+  const navCta = hasScore
+    ? { href: '/solutions/automation-sprints', text: 'Plan your sprints →' }
+    : { href: '/tools/readiness-score',        text: 'Get your free score →' };
+
+  document.querySelectorAll('a.nav-cta, a.nav-cta-yellow').forEach(el => {
+    el.href = navCta.href;
+    el.textContent = navCta.text;
     el.className = 'nav-cta-yellow';
     el.removeAttribute('role');
-
-    // Button 2: Plan Sprints — inject once
-    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('nav-cta-audit')) {
-      const sprints = document.createElement('a');
-      sprints.href = '/solutions/automation-sprints';
-      sprints.className = 'nav-cta-audit';
-      sprints.textContent = 'Plan Sprints →';
-      el.parentNode.insertBefore(sprints, el.nextSibling);
-    }
   });
+  // Remove any second button injected by the previous two-CTA model (idempotent)
+  document.querySelectorAll('a.nav-cta-audit').forEach(el => el.remove());
 
-  /* 2 — Mobile CTAs mirror desktop: Get your free Audit (yellow) + Plan Sprints (ghost) */
+  /* 2 — Mobile CTA mirrors desktop (single button) */
+  const mobileCtaText = hasScore ? 'Plan your sprints →' : 'Get your free Readiness Score →';
   document.querySelectorAll('a.mobile-cta').forEach(el => {
-    if (el.classList.contains('mobile-cta-audit')) return; // skip the injected one
-    // Primary → Get your free Audit (yellow)
-    el.href = '/solutions/campaign-audit';
-    el.textContent = 'Get your free Audit →';
+    if (el.classList.contains('mobile-cta-audit')) return; // legacy injected — removed below
+    el.href = navCta.href;
+    el.textContent = mobileCtaText;
     el.classList.add('mobile-cta-yellow');
-    // Secondary → Plan Sprints (ghost), injected once
-    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('mobile-cta-audit')) {
-      const sprints = document.createElement('a');
-      sprints.href = '/solutions/automation-sprints';
-      sprints.className = 'mobile-cta mobile-cta-audit';
-      sprints.textContent = 'Plan Sprints →';
-      el.parentNode.insertBefore(sprints, el.nextSibling);
-    }
   });
+  document.querySelectorAll('a.mobile-cta-audit').forEach(el => el.remove());
 
   /* 3 — Personalize Solutions dropdown based on tier/stage */
   (function() {
@@ -384,9 +375,11 @@ const FUNNEL = {
 
     if (!hasScore || tier === 'siloed') {
       html =
-        `<span class="dropdown-label">Diagnostic</span>`+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
-        `<span class="dropdown-label">Sprints — No Score Required</span>`+
+        `<span class="dropdown-label">Start here — free</span>`+
+        lnk('Readiness Score','/tools/readiness-score','FREE')+
+        `<span class="dropdown-label">First sprint</span>`+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit','START HERE')+
+        `<span class="dropdown-label">Build sprints</span>`+
         lnk('AI Brief Machine','/solutions/automation-sprints','WEB · PPC')+
         lnk('Search Term Intelligence','/solutions/automation-sprints','PPC · SEO')+
         lnk('Content Atomization System','/solutions/automation-sprints','WEB · SEO')+
@@ -402,7 +395,7 @@ const FUNNEL = {
         lnk('Content Brief Sprint','/solutions/sprints/content-brief','SEO · WEB')+
         lnk('Campaign Launch Kit','/solutions/sprints/campaign-launch','WEB · PPC')+
         `<span class="dropdown-label">More</span>`+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit','first sprint')+
         lnk('AI Marketing Training','/training')+
         lnk('Campaign Strategy Portal','/platform')+
         `<div class="dropdown-divider"></div>`+
@@ -415,7 +408,7 @@ const FUNNEL = {
         lnk('PPC Intelligence Sprint','/solutions/sprints/ppc-intelligence','PPC')+
         `<span class="dropdown-label">Intelligence</span>`+
         lnk('Campaign Strategy Portal','/platform')+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit','first sprint')+
         `<div class="dropdown-divider"></div>`+
         lnk('Browse full catalog →','/solutions/automation-sprints');
     } else {
@@ -425,7 +418,7 @@ const FUNNEL = {
         `<span class="dropdown-label">Advanced Sprints</span>`+
         lnk('Event Follow-Up Sprint','/solutions/sprints/event-followup','ABM · LOCAL')+
         lnk('Lead Reactivation Sprint','/solutions/sprints/lead-reactivation','ABM')+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit')+
+        lnk('Campaign Automation Audit','/solutions/campaign-audit','first sprint')+
         `<div class="dropdown-divider"></div>`+
         lnk('Browse full catalog →','/solutions/automation-sprints');
     }
@@ -463,7 +456,7 @@ const FUNNEL = {
   }
 
   // Primary hero CTA button — only swap if it still points to default destinations
-  const defaultHrefs = ['/solutions/campaign-audit', '/get-started'];
+  const defaultHrefs = ['/solutions/campaign-audit', '/get-started', '/tools/readiness-score'];
   const heroCta = document.querySelector('.hero-actions .btn-primary');
   if (heroCta && defaultHrefs.some(h => heroCta.getAttribute('href') === h)) {
     heroCta.textContent = copy.heroCta;
