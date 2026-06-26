@@ -267,6 +267,70 @@
 .share-open:hover{border-color:var(--mist2)}
 .share-note{font-size:12px;color:var(--mist);margin-top:14px;line-height:1.5;max-width:640px}
 @media(max-width:560px){.brd-block,.share-block{padding:22px}.share-controls{flex-direction:column;align-items:stretch;gap:16px}.share-field input{width:100%}}
+
+/* ── READINESS QUIZ — one question at a time ─────────────────────── */
+.rs-quiz{min-height:calc(100vh - 64px);display:flex;align-items:center;padding:48px 0 72px}
+.rs-quiz[hidden]{display:none}
+.rs-quiz-grid{display:grid;grid-template-columns:88px minmax(0,1fr);gap:36px;width:100%;max-width:760px;margin:0 auto;align-items:center}
+.rsq-rail{display:flex;flex-direction:column;align-items:flex-start;gap:14px;position:sticky;top:96px}
+.rsq-rail-count{font-family:var(--f-mono);font-size:13px;color:var(--bone);letter-spacing:.04em;line-height:1}
+.rsq-rail-count #rsq-count-cur{color:var(--signal);font-weight:500}
+.rsq-rail-sep{color:var(--mist);margin:0 3px}
+.rsq-rail-ticks{display:flex;flex-direction:column;gap:7px}
+.rsq-tick{width:4px;height:20px;border-radius:2px;background:var(--border);transition:background .3s ease,height .3s ease,box-shadow .3s ease}
+.rsq-tick.done{background:var(--signal)}
+.rsq-tick.current{background:var(--signal);height:26px;box-shadow:0 0 10px var(--signal-glow,rgba(200,241,53,.45))}
+.rsq-rail-pct{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.06em}
+.rsq-main{min-width:0;max-width:600px;width:100%}
+.rsq-meta{margin-bottom:28px}
+.rsq-meta-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.rsq-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);border:1px solid rgba(200,241,53,.3);background:rgba(200,241,53,.05);border-radius:999px;padding:5px 12px 5px 10px;white-space:nowrap}
+.rsq-chip-dot{width:6px;height:6px;border-radius:50%;background:var(--signal);box-shadow:var(--signal-glow,0 0 8px rgba(200,241,53,.5))}
+.rsq-status{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin:0}
+.rsq-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.rsq-bar-fill{height:100%;width:0;background:var(--signal);border-radius:2px;box-shadow:0 0 12px rgba(200,241,53,.45);transition:width .45s cubic-bezier(.4,0,.2,1)}
+.rsq-stage{will-change:transform,opacity}
+.rsq-card{display:block}
+.rsq-question{font-family:var(--f-display);font-size:clamp(22px,3.4vw,30px);font-weight:700;line-height:1.32;letter-spacing:-.01em;margin:0 0 12px;outline:none}
+.rsq-hint{font-size:14px;color:var(--mist2);line-height:1.55;margin:0 0 22px;padding-left:14px;border-left:2px solid rgba(200,241,53,.3)}
+.rsq-options{margin-top:22px;gap:12px}
+.rsq-options .opt-btn{align-items:center;padding:17px 18px;transition:border-color .18s,background .18s,transform .12s}
+.rsq-options .opt-btn:active{transform:scale(.992)}
+.rsq-options .opt-text{display:flex;flex-direction:column}
+.rsq-options .opt-key{min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:6px;font-weight:600;color:var(--mist);transition:all .18s}
+.rsq-options .opt-btn.selected .opt-key{background:var(--signal);color:var(--ink);border-color:var(--signal)}
+.rsq-options .opt-btn:focus-visible{outline:none;border-color:var(--signal);box-shadow:0 0 0 2px var(--ink),0 0 0 4px rgba(200,241,53,.6)}
+@keyframes rsq-pick{0%{box-shadow:0 0 0 0 rgba(200,241,53,.5)}100%{box-shadow:0 0 0 10px rgba(200,241,53,0)}}
+.rsq-options .opt-btn.just-picked{animation:rsq-pick .42s ease-out}
+.rsq-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:34px;padding-top:20px;border-top:1px solid var(--border)}
+.rsq-back{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-body);font-size:14px;padding:10px 18px;cursor:pointer;border-radius:6px;transition:border-color .2s,color .2s}
+.rsq-back:hover{border-color:var(--mist2);color:var(--bone)}
+.rsq-back:focus-visible{outline:none;border-color:var(--signal);box-shadow:0 0 0 2px var(--ink),0 0 0 4px rgba(200,241,53,.55)}
+.rsq-foot-hint{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--mist)}
+@keyframes rsq-in-fwd{from{opacity:0;transform:translate3d(26px,0,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes rsq-in-back{from{opacity:0;transform:translate3d(-26px,0,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+.rsq-stage.swap-in.is-fwd{animation:rsq-in-fwd .28s cubic-bezier(.22,.61,.36,1) both}
+.rsq-stage.swap-in.is-back{animation:rsq-in-back .28s cubic-bezier(.22,.61,.36,1) both}
+@media(max-width:680px){
+  .rs-quiz{padding:28px 0 56px;align-items:flex-start}
+  .rs-quiz-grid{grid-template-columns:1fr;gap:0}
+  .rsq-rail{flex-direction:row;align-items:center;gap:12px;position:static;margin-bottom:22px}
+  .rsq-rail-ticks{flex-direction:row;gap:5px;flex-wrap:wrap}
+  .rsq-tick{width:18px;height:4px}
+  .rsq-tick.current{width:24px;height:4px}
+  .rsq-rail-pct{margin-left:auto}
+  .rsq-main{max-width:100%}
+  .rsq-meta-top{flex-wrap:wrap}
+  .rsq-options .opt-btn{padding:16px}
+  .rsq-foot{flex-wrap:wrap;gap:10px}
+  .rsq-foot-hint{order:2;width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .rsq-stage.swap-in.is-fwd,.rsq-stage.swap-in.is-back{animation:none}
+  .rsq-bar-fill{transition:none}
+  .rsq-options .opt-btn.just-picked{animation:none}
+  .rsq-tick{transition:none}
+}
 </style>
 </head>
 <body>
@@ -349,35 +413,7 @@
       <input name="score"><input name="tier">
     </form>
 
-    <!-- Sticky step progress nav -->
-    <div class="rs-progress-bar">
-      <nav class="step-nav" id="step-nav" aria-label="Assessment steps">
-        <button class="sni active" data-step="0" type="button" aria-label="Step 1: Context">
-          <span class="sni-num" aria-hidden="true">01</span>
-          <span class="sni-label">Context</span>
-        </button>
-        <div class="sni-line" id="sni-line-0" aria-hidden="true"></div>
-        <button class="sni" data-step="1" type="button" disabled aria-label="Step 2: Data Access">
-          <span class="sni-num" aria-hidden="true">02</span>
-          <span class="sni-label">Data Access</span>
-        </button>
-        <div class="sni-line" id="sni-line-1" aria-hidden="true"></div>
-        <button class="sni" data-step="2" type="button" disabled aria-label="Step 3: Measurement">
-          <span class="sni-num" aria-hidden="true">03</span>
-          <span class="sni-label">Measurement</span>
-        </button>
-        <div class="sni-line" id="sni-line-2" aria-hidden="true"></div>
-        <button class="sni" data-step="3" type="button" disabled aria-label="Step 4: Standards">
-          <span class="sni-num" aria-hidden="true">04</span>
-          <span class="sni-label">Standards</span>
-        </button>
-        <div class="sni-line" id="sni-line-3" aria-hidden="true"></div>
-        <button class="sni" data-step="4" type="button" disabled aria-label="Step 5: Governance">
-          <span class="sni-num" aria-hidden="true">05</span>
-          <span class="sni-label">Governance</span>
-        </button>
-      </nav>
-    </div>
+    <!-- (legacy step-nav removed — the quiz has its own progress rail) -->
 
     <!-- Intro snap section -->
     <section class="rs-snap snap-sec" id="rs-intro" aria-labelledby="rs-heading">
@@ -399,12 +435,50 @@
       </div>
     </section>
 
-    <!-- Step snap sections (filled by renderAllSteps) -->
-    <section class="rs-snap snap-sec" id="rs-step-0" aria-label="Step 1"></section>
-    <section class="rs-snap snap-sec" id="rs-step-1" aria-label="Step 2"></section>
-    <section class="rs-snap snap-sec" id="rs-step-2" aria-label="Step 3"></section>
-    <section class="rs-snap snap-sec" id="rs-step-3" aria-label="Step 4"></section>
-    <section class="rs-snap snap-sec" id="rs-step-4" aria-label="Step 5"></section>
+    <!-- READINESS QUIZ — one question at a time (replaces grouped step sections) -->
+    <section class="rs-quiz" id="rs-quiz" aria-label="Readiness assessment" hidden aria-hidden="true">
+      <div class="rs-quiz-grid">
+
+        <!-- Left vertical progress rail (segmented ticks + numeric counter) -->
+        <aside class="rsq-rail" aria-hidden="true">
+          <div class="rsq-rail-count">
+            <span id="rsq-count-cur">01</span><span class="rsq-rail-sep">/</span><span id="rsq-count-tot">13</span>
+          </div>
+          <div class="rsq-rail-ticks" id="rsq-rail-ticks"></div>
+          <div class="rsq-rail-pct" id="rsq-rail-pct">0%</div>
+        </aside>
+
+        <!-- Main column -->
+        <div class="rsq-main">
+
+          <!-- Top meta row: live status + thin bar + dimension chip -->
+          <div class="rsq-meta">
+            <div class="rsq-meta-top">
+              <span class="rsq-chip" id="rsq-chip"><span class="rsq-chip-dot" aria-hidden="true"></span><span id="rsq-chip-text">Context</span></span>
+              <p class="rsq-status" id="rsq-status" aria-live="polite">Question 1 of 13</p>
+            </div>
+            <div class="rsq-bar" role="progressbar" aria-label="Assessment progress"
+                 aria-valuemin="0" aria-valuemax="13" aria-valuenow="1" id="rsq-bar">
+              <div class="rsq-bar-fill" id="rsq-bar-fill"></div>
+            </div>
+          </div>
+
+          <!-- Animated question stage (renderQuestion fills #rsq-card) -->
+          <div class="rsq-stage" id="rsq-stage">
+            <article class="rsq-card" id="rsq-card"></article>
+          </div>
+
+          <!-- Persistent footer: Back control -->
+          <div class="rsq-foot">
+            <button type="button" class="rsq-back" id="rsq-back" onclick="goBack()">
+              <span class="rsq-back-arrow" aria-hidden="true">←</span><span class="rsq-back-label"> Back</span>
+            </button>
+            <span class="rsq-foot-hint" id="rsq-foot-hint">Pick an option to continue</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
   </div>
 
@@ -546,111 +620,229 @@ const STEPS = [
 let currentStep = 0;
 const answers = {};
 
-function isStepComplete(idx) {
-  return STEPS[idx].questions.every(q => answers[q.id] !== undefined);
+/* ── READINESS QUIZ CONTROLLER — one question at a time ─────────────
+   Reuses (does NOT redefine): answers, STEPS, TLDR_DEFAULTS, computeScore,
+   getTier, showScorecard, clearReadinessScore. Uses its own state (qIndex);
+   leaves the legacy `currentStep` untouched. */
+const QUESTIONS = STEPS.flatMap(s => s.questions.map(q => ({ ...q, dimTitle: s.title })));
+
+let qIndex = 0;
+let qDir = 1;
+let qLocked = false;
+
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ADVANCE_MS = REDUCED_MOTION ? 0 : 380;
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
-function renderAllSteps() {
-  STEPS.forEach((step, idx) => {
-    const sec = document.getElementById(`rs-step-${idx}`);
-    if (!sec) return;
-    let html = `<div class="rs-step-inner animate-in">
-      <div class="step-header"><h2>${step.title}</h2><p>${step.subtitle}</p></div>`;
-    step.questions.forEach(q => {
-      html += `<div class="q-block" id="qblock-${q.id}">
-        <h3>${q.text}</h3>${q.hint?`<p class="q-hint">${q.hint}</p>`:''}
-        <div class="options" id="opts-${q.id}" role="radiogroup" aria-label="${q.text}">
-          ${q.options.map(opt=>`<button type="button" class="opt-btn${answers[q.id]?.value===opt.value?' selected':''}"
-            data-qid="${q.id}" data-dim="${q.dim}" data-val="${opt.value}" data-label="${opt.label.replace(/"/g,'&quot;')}"
-            role="radio" aria-checked="${answers[q.id]?.value===opt.value?'true':'false'}">
-            <span class="opt-key">${opt.key}</span>
-            <div><div class="opt-label">${opt.label}</div>${opt.desc?`<div class="opt-desc">${opt.desc}</div>`:''}</div>
-          </button>`).join('')}
-        </div>
-      </div>`;
-    });
-    const isLast = idx === STEPS.length - 1;
-    html += `<div class="rs-q-nav">
-      <button class="btn-back" onclick="scrollToStep(${idx-1})" type="button" style="${idx===0?'visibility:hidden':''}">← Back</button>
-      <button class="btn-next" id="rs-cont-${idx}" type="button" onclick="${isLast?'showScorecard()':'scrollToStep('+(idx+1)+')'}"
-        ${isStepComplete(idx)?'':'disabled'}>${isLast?'Get my score →':'Continue →'}</button>
-    </div></div>`;
-    sec.innerHTML = html;
+function buildRail() {
+  const ticks = document.getElementById('rsq-rail-ticks');
+  const tot = document.getElementById('rsq-count-tot');
+  if (tot) tot.textContent = String(QUESTIONS.length).padStart(2, '0');
+  if (!ticks || ticks.childElementCount) return;
+  QUESTIONS.forEach((_, i) => {
+    const t = document.createElement('span');
+    t.className = 'rsq-tick';
+    t.dataset.i = i;
+    ticks.appendChild(t);
+  });
+  const bar = document.getElementById('rsq-bar');
+  if (bar) bar.setAttribute('aria-valuemax', String(QUESTIONS.length));
+}
 
-    // Attach option click handlers
-    sec.querySelectorAll('.opt-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const qid = btn.dataset.qid;
-        const dim = btn.dataset.dim;
-        const val = parseInt(btn.dataset.val, 10);
-        const label = btn.dataset.label;
-        document.querySelectorAll(`.opt-btn[data-qid="${qid}"]`).forEach(b => {
-          b.classList.remove('selected'); b.setAttribute('aria-checked','false');
-        });
-        btn.classList.add('selected'); btn.setAttribute('aria-checked','true');
-        answers[qid] = {value:val, dim, label};
-        updateNav();
-        // Auto-advance when step fully answered
-        if (isStepComplete(idx)) {
-          setTimeout(() => { if (!isLast) scrollToStep(idx+1); else showScorecard(); }, 420);
-        }
-      });
+function startQuiz() {
+  buildRail();
+  const intro = document.getElementById('rs-intro');
+  if (intro) intro.style.display = 'none';
+  const oldBar = document.querySelector('.rs-progress-bar');
+  if (oldBar) oldBar.style.display = 'none';
+  const quiz = document.getElementById('rs-quiz');
+  if (quiz) { quiz.hidden = false; quiz.setAttribute('aria-hidden', 'false'); }
+  const firstUnanswered = QUESTIONS.findIndex(q => answers[q.id] === undefined);
+  qIndex = firstUnanswered === -1 ? 0 : firstUnanswered;
+  qDir = 1;
+  renderQuestion(qIndex, { focus: true, animate: false });
+}
+
+function renderQuestion(i, opts) {
+  opts = opts || {};
+  const q = QUESTIONS[i];
+  if (!q) return;
+  qIndex = i;
+  const card = document.getElementById('rsq-card');
+  if (!card) return;
+
+  const chosen = answers[q.id];
+  const optsHtml = q.options.map(opt => {
+    const sel = chosen && chosen.value === opt.value;
+    return `<button type="button" class="opt-btn${sel ? ' selected' : ''}"
+        role="radio" aria-checked="${sel ? 'true' : 'false'}" tabindex="${sel ? '0' : '-1'}"
+        data-val="${opt.value}" data-label="${esc(opt.label)}">
+        <span class="opt-key" aria-hidden="true">${esc(opt.key)}</span>
+        <span class="opt-text"><span class="opt-label">${esc(opt.label)}</span>${opt.desc ? `<span class="opt-desc">${esc(opt.desc)}</span>` : ''}</span>
+      </button>`;
+  }).join('');
+
+  card.innerHTML = `
+    <h2 class="rsq-question" id="rsq-question" tabindex="-1">${esc(q.text)}</h2>
+    ${q.hint ? `<p class="q-hint rsq-hint">${esc(q.hint)}</p>` : ''}
+    <div class="options rsq-options" id="rsq-options" role="radiogroup" aria-labelledby="rsq-question">
+      ${optsHtml}
+    </div>`;
+
+  wireOptions(q);
+  updateProgress();
+
+  const stage = document.getElementById('rsq-stage');
+  if (stage && opts.animate !== false && !REDUCED_MOTION) {
+    stage.classList.remove('is-fwd', 'is-back', 'swap-in');
+    void stage.offsetWidth;
+    stage.classList.add(qDir >= 0 ? 'is-fwd' : 'is-back', 'swap-in');
+    stage.addEventListener('animationend', () => {
+      stage.classList.remove('is-fwd', 'is-back', 'swap-in');
+    }, { once: true });
+  }
+
+  if (opts.focus !== false) {
+    const target = card.querySelector('.opt-btn.selected') || card.querySelector('#rsq-question');
+    if (target) requestAnimationFrame(() => target.focus({ preventScroll: true }));
+  }
+
+  const backLabel = document.querySelector('#rsq-back .rsq-back-label');
+  if (backLabel) backLabel.textContent = i === 0 ? ' Intro' : ' Back';
+
+  const footHint = document.getElementById('rsq-foot-hint');
+  if (footHint) footHint.textContent = i === QUESTIONS.length - 1
+    ? 'Choose to see your score'
+    : 'Pick an option to continue';
+}
+
+function wireOptions(q) {
+  const group = document.getElementById('rsq-options');
+  if (!group) return;
+  const btns = Array.from(group.querySelectorAll('.opt-btn'));
+  btns.forEach((btn, idx) => {
+    btn.addEventListener('click', () => selectOption(q, btn));
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); focusOpt(btns, idx + 1); }
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); focusOpt(btns, idx - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); focusOpt(btns, 0); }
+      else if (e.key === 'End') { e.preventDefault(); focusOpt(btns, btns.length - 1); }
     });
   });
 }
 
-function updateNav() {
-  document.querySelectorAll(".sni").forEach((btn, i) => {
-    const complete = isStepComplete(i);
-    btn.classList.remove("active","done");
-    btn.disabled = true;
-    const numEl = btn.querySelector(".sni-num");
-    if (i === currentStep) {
-      btn.classList.add("active"); btn.disabled = false;
-      if (numEl) numEl.textContent = String(i+1).padStart(2,"0");
-    } else if (complete) {
-      btn.classList.add("done"); btn.disabled = false;
-      if (numEl) numEl.textContent = "✓";
+function focusOpt(btns, i) {
+  const n = btns.length;
+  if (!n) return;
+  const t = btns[((i % n) + n) % n];
+  btns.forEach(b => { b.tabIndex = -1; });
+  t.tabIndex = 0;
+  t.focus();
+}
+
+function selectOption(q, btn) {
+  if (qLocked) return;
+  const group = btn.parentElement;
+  group.querySelectorAll('.opt-btn').forEach(b => {
+    b.classList.remove('selected');
+    b.setAttribute('aria-checked', 'false');
+    b.tabIndex = -1;
+  });
+  btn.classList.add('selected', 'just-picked');
+  btn.setAttribute('aria-checked', 'true');
+  btn.tabIndex = 0;
+
+  answers[q.id] = {
+    value: parseInt(btn.dataset.val, 10),
+    dim: q.dim,
+    label: btn.dataset.label
+  };
+
+  const isLast = qIndex === QUESTIONS.length - 1;
+  qLocked = true;
+  updateProgress();
+
+  setTimeout(() => {
+    qLocked = false;
+    if (isLast) {
+      showScorecard();
     } else {
-      if (numEl) numEl.textContent = String(i+1).padStart(2,"0");
+      qDir = 1;
+      renderQuestion(qIndex + 1, { focus: true, animate: true });
     }
-    const line = document.getElementById(`sni-line-${i}`);
-    if (line) line.classList.toggle("done", complete);
-    // Update this step's continue button
-    const cont = document.getElementById(`rs-cont-${i}`);
-    if (cont) cont.disabled = !complete;
+  }, ADVANCE_MS);
+}
+
+function goBack() {
+  if (qLocked) return;
+  if (qIndex === 0) {
+    const quiz = document.getElementById('rs-quiz');
+    if (quiz) { quiz.hidden = true; quiz.setAttribute('aria-hidden', 'true'); }
+    const intro = document.getElementById('rs-intro');
+    if (intro) intro.style.display = '';
+    const oldBar = document.querySelector('.rs-progress-bar');
+    if (oldBar) oldBar.style.display = '';
+    const startBtn = document.querySelector('#rs-intro .btn-primary');
+    if (startBtn) startBtn.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: REDUCED_MOTION ? 'auto' : 'smooth' });
+    return;
+  }
+  qDir = -1;
+  renderQuestion(qIndex - 1, { focus: true, animate: true });
+}
+
+function updateProgress() {
+  const n = QUESTIONS.length;
+  const answeredCount = QUESTIONS.filter(q => answers[q.id] !== undefined).length;
+  const human = qIndex + 1;
+  const q = QUESTIONS[qIndex];
+
+  const status = document.getElementById('rsq-status');
+  if (status) status.textContent = `Question ${human} of ${n}`;
+
+  const chipText = document.getElementById('rsq-chip-text');
+  if (chipText) chipText.textContent = q.dimTitle;
+
+  const fill = document.getElementById('rsq-bar-fill');
+  if (fill) fill.style.width = (answeredCount / n * 100) + '%';
+  const bar = document.getElementById('rsq-bar');
+  if (bar) bar.setAttribute('aria-valuenow', String(human));
+
+  const cur = document.getElementById('rsq-count-cur');
+  if (cur) cur.textContent = String(human).padStart(2, '0');
+  const pct = document.getElementById('rsq-rail-pct');
+  if (pct) pct.textContent = Math.round(answeredCount / n * 100) + '%';
+
+  document.querySelectorAll('.rsq-tick').forEach((t, i) => {
+    t.classList.toggle('done', answers[QUESTIONS[i].id] !== undefined);
+    t.classList.toggle('current', i === qIndex);
   });
 }
 
+/* Compatibility shims — keep the existing call sites working:
+   intro "Start Assessment" uses scrollToStep(0); checkSavedScore() calls
+   renderAllSteps() + initStepNav() + initScrollObserver() on load. */
 function scrollToStep(idx) {
-  if (idx < 0) { document.getElementById('rs-intro')?.scrollIntoView({behavior:'smooth',block:'start'}); return; }
-  if (idx >= STEPS.length) { showScorecard(); return; }
-  currentStep = idx;
-  updateNav();
-  document.getElementById(`rs-step-${idx}`)?.scrollIntoView({behavior:'smooth',block:'start'});
+  if (idx === undefined || idx === null || idx <= 0) { startQuiz(); return; }
+  if (idx >= QUESTIONS.length) { showScorecard(); return; }
+  startQuiz();
+  qDir = idx >= qIndex ? 1 : -1;
+  renderQuestion(idx, { focus: true, animate: false });
 }
-
-function initStepNav() {
-  document.querySelectorAll(".sni").forEach((btn, i) => {
-    btn.addEventListener("click", () => { if (!btn.disabled) scrollToStep(i); });
-  });
+function renderAllSteps() {
+  const quiz = document.getElementById('rs-quiz');
+  if (quiz) { quiz.hidden = true; quiz.setAttribute('aria-hidden', 'true'); }
+  buildRail();
 }
-
-function initScrollObserver() {
-  if (!('IntersectionObserver' in window)) return;
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const idx = parseInt(e.target.dataset.stepIdx, 10);
-        if (!isNaN(idx) && idx !== currentStep) { currentStep = idx; updateNav(); }
-      }
-    });
-  }, {rootMargin:'-45% 0px -45% 0px'});
-  STEPS.forEach((_, i) => {
-    const sec = document.getElementById(`rs-step-${i}`);
-    if (sec) { sec.dataset.stepIdx = i; obs.observe(sec); }
-  });
-}
+function updateNav() { updateProgress(); }
+function initStepNav() {}
+function initScrollObserver() {}
+function isStepComplete() { return QUESTIONS.every(q => answers[q.id] !== undefined); }
 
 const TLDR_DEFAULTS = {
   team_size:          {value:2, label:"6–15 people",                               dim:"context"},
@@ -670,13 +862,8 @@ const TLDR_DEFAULTS = {
 
 function tldrFill() {
   Object.assign(answers, TLDR_DEFAULTS);
-  renderAllSteps(); // re-render to show selected state
-  updateNav();
   showScorecard();
 }
-
-function nextStep() { scrollToStep(currentStep + 1); }
-function prevStep() { scrollToStep(currentStep - 1); }
 
 /* ── SCORING ── */
 function computeScore() {
