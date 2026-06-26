@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Access Should AI Marketing Tools Get? | Campaign Automation AI</title>
+<meta name="description" content="How to think about ai marketing tool account access: why read-only and auditable come first, and how to keep any tool that can act bounded and revocable.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/ai-account-access-marketing-tools">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/ai-account-access-marketing-tools">
+<meta property="og:title" content="What Access Should AI Marketing Tools Get?">
+<meta property="og:description" content="Read-only first, then bounded and revocable. A buyer's lens for AI marketing tool account access.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Access Should AI Marketing Tools Get?">
+<meta name="twitter:description" content="Read-only first, then bounded and revocable. A buyer's lens for AI marketing tool account access.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What Access Should AI Marketing Tools Get?",
+      "description": "How to think about ai marketing tool account access: why read-only and auditable come first, and how to keep any tool that can act bounded and revocable.",
+      "url": "https://campaignautomation.ai/resources/ai-account-access-marketing-tools",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/ai-account-access-marketing-tools"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI tool account access",
+          "item": "https://campaignautomation.ai/resources/ai-account-access-marketing-tools"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">AI tool account access</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Buyer guide</div>
+      <h1>Read-only first: deciding what access an AI tool should have to your accounts</h1>
+      <p>The moment you connect an AI tool to your ad accounts, CRM, or analytics, you've handed it a key. The question is not whether to connect — the connection is what makes automation real instead of theater — but how much that key can do, who can see what it does, and how fast you can take it back. Get the access model right and everything downstream gets safer. Get it wrong and you're trusting a black box with your budget.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+  <h2>Access is the first real decision, not the fine print</h2>
+  <p>Most buyers evaluate AI marketing tools on features, dashboards, and demos. The access model gets skimmed during procurement, buried in a scope-of-work line, and never revisited. That's backwards. The permissions you grant decide what the tool can do to your accounts on a bad day, not a good one.</p>
+  <p>An AI tool that only reads your accounts can analyze, flag, and recommend — but it cannot spend a dollar or change a single setting without you. An AI tool that can act has its hands on the controls. Both can be useful. They are not the same risk, and they should not be granted the same way or at the same time.</p>
+  <p>The honest framing is simple: <strong>start with read-only, auditable access</strong>, prove the tool understands your accounts, and only then decide whether — and how narrowly — to let it act.</p>
+</section>
+<section class="article-section">
+  <h2>Read-only first: what it buys you</h2>
+  <p>A read-only connection lets a tool see your campaigns, spend, conversions, and structure without touching anything. That's enough to do a surprising amount of real work: surface wasted spend, spot mistargeted segments, find the rules you're enforcing by hand every Monday.</p>
+  <p>It also gives you a low-stakes trial. Before a tool ever moves money, you get to watch how it reasons. Does it understand your account the way you do? Do its recommendations match what a senior person on your team would say? If a tool can't earn trust in read-only mode, it has no business getting write access.</p>
+  <ul>
+    <li><strong>You see its thinking before it acts.</strong> Recommendations you can accept or reject, not changes you have to discover.</li>
+    <li><strong>The blast radius is zero.</strong> A read-only tool can be wrong without being expensive.</li>
+    <li><strong>You set the pace.</strong> Expand access deliberately, on your timeline, when the tool has earned it.</li>
+  </ul>
+</section>
+<section class="article-section">
+  <h2>When a tool can act, every action needs three things</h2>
+  <p>Read-only is the right starting point, but recommendations a human has to hand-key back into the platform don't scale. At some point you want the tool to make the change. The line you should hold is this: any connection that can act must be <strong>bounded, visible, and reversible</strong>.</p>
+  <p>That's the heart of bounded autonomy, and it has a structure. Every automated change should resolve into a <a href="/results/trigger-action-impact" style="color:var(--signal)">trigger, an action, and an impact</a> — the condition that was watched, the change that was made through a real connection, and the measured result. If a tool can't show you those three things for every move it made, it isn't acting transparently; it's acting in the dark and reporting later.</p>
+  <p>The action half of that loop only counts if it runs through an auditable connection. "The AI optimized your campaigns" is not an audit trail. "The tool paused these ad sets because cost-per-acquisition crossed your ceiling, and here's the spend it saved" is.</p>
+</section>
+<section class="article-section">
+  <h2>Bound the connection before you grant it</h2>
+  <p>A tool that can act should never have open-ended permission to do anything to your account. The bounds come first, written down, before the connection goes live. That's what <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a> means in practice — the limits are the product, not an afterthought.</p>
+  <p>Concretely, a connection that can act should carry guardrails like these:</p>
+  <ul>
+    <li><strong>Spend caps</strong> — a hard ceiling on what the tool can shift or spend in a window.</li>
+    <li><strong>Change ceilings</strong> — limits on how big a single adjustment can be, so a bid never doubles unsupervised.</li>
+    <li><strong>Exclusions</strong> — campaigns, audiences, or accounts the tool is forbidden to touch.</li>
+    <li><strong>Approval thresholds</strong> — anything above a set size routes to a human before it executes.</li>
+  </ul>
+  <p>Notice what these have in common: you set them, and they constrain the tool whether it's having a good day or a bad one. Guardrails you can't configure aren't guardrails. They're the vendor's defaults wearing a nicer name.</p>
+</section>
+<section class="article-section">
+  <h2>Revocable is non-negotiable</h2>
+  <p>The final test is the one buyers ask about last and should ask about first: how fast can you cut the connection, and what happens when you do? A connection you can't cleanly revoke isn't access you granted — it's access you surrendered.</p>
+  <p>Two things have to be true. You can disconnect the tool in minutes, through your own platform's permissions, without filing a support ticket and waiting. And the changes it made are reversible — you can see what it did and roll it back, because every action was logged as a discrete, undoable step rather than smeared across your account.</p>
+  <p>This is the opposite of the black box. The black box spends your money, can't explain the specific moves it made, and leaves you no clean way to undo them or pull the plug. Read-only-first, bounded, auditable, revocable — that's the whole answer to the access question, and it doubles as a sharp lens for evaluating any tool that asks to connect.</p>
+</section>
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">See where your accounts stand first</h3>
+  <p style="margin-bottom:20px">Before you grant any tool access, find out how ready your accounts are to be automated safely. The Readiness Score is 4 minutes, 13 questions, no login.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+    <li><a href="/resources/bounded-autonomy-buyers-guide" style="color:var(--signal)">The bounded autonomy buyer's guide</a> — how to evaluate tools that act, not just analyze.</li>
+    <li><a href="/resources/reversible-ai-marketing-changes" style="color:var(--signal)">Why AI marketing changes must be reversible</a> — the undo side of the access question, in depth.</li>
+    <li><a href="/resources/black-box-ai-marketing-risks" style="color:var(--signal)">The black-box problem in AI marketing</a> — what you're avoiding when you demand auditable connections.</li>
+  </ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

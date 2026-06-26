@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Marketing Guardrails: What to Set Before You Automate | Campaign Automation AI</title>
+<meta name="description" content="AI marketing guardrails explained: the four limits to set before you automate — spend caps, change ceilings, exclusions, approval thresholds, in order.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/ai-marketing-guardrails">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/ai-marketing-guardrails">
+<meta property="og:title" content="AI Marketing Guardrails: Set These Before You Automate">
+<meta property="og:description" content="The four guardrail types to configure before AI touches a live account — and how to decide each one.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Marketing Guardrails: Set These Before You Automate">
+<meta name="twitter:description" content="The four guardrail types to configure before AI touches a live account — and how to decide each one.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "AI Marketing Guardrails: What to Set Before You Automate",
+      "description": "AI marketing guardrails explained: the four limits to set before you automate — spend caps, change ceilings, exclusions, approval thresholds, in order.",
+      "url": "https://campaignautomation.ai/resources/ai-marketing-guardrails",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/ai-marketing-guardrails"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Marketing Guardrails",
+          "item": "https://campaignautomation.ai/resources/ai-marketing-guardrails"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">AI Marketing Guardrails</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Buyer guide</div>
+      <h1>The guardrails to set before you let AI touch a live account</h1>
+      <p>"Guardrails" is the word every AI marketing vendor reaches for, and almost none of them tell you which limits you actually configure or in what order. Here is the part that matters: before you grant any tool the ability to change a live account, you set four kinds of boundaries — spend caps, change ceilings, exclusions, and approval thresholds. Decide each one deliberately and automation becomes safe to turn on. Skip them and you are trusting a black box with your budget.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+  <h2>Why guardrails come before access, not after</h2>
+  <p>Most teams approach AI automation backwards. They connect a tool, watch it work for a week, and then start asking what it is allowed to do. By then it has already made changes, and you are reverse-engineering boundaries from behavior you did not fully control.</p>
+  <p>Flip the order. The limits are a setup step, not a reaction. A tool should connect with <strong>read-only, auditable access first</strong> — it can see your account, propose changes, and show you its reasoning before it has the power to move a single dollar. The guardrails are what you configure in the gap between "it can read" and "it can act." This article is the checklist for that gap: the four guardrail types, what each one controls, and how to decide it.</p>
+  <p>Think of it as writing the rules of the game before letting the player onto the field. The four below are not optional add-ons. They are the minimum any account needs before automation is responsible rather than reckless.</p>
+</section>
+<section class="article-section">
+  <h2>Guardrail 1: spend caps</h2>
+  <p>The spend cap is the boundary you set first because it is the one that protects real money. It answers a blunt question: what is the most this automation can spend, and over what window?</p>
+  <p>Set caps at more than one level. A <strong>daily ceiling</strong> stops a single bad day from compounding. A <strong>per-campaign cap</strong> keeps one experiment from quietly eating the budget meant for everything else. A <strong>total program cap</strong> bounds the whole automation engagement so nothing runs away while you are not looking. Decide each number the way you would brief a new media buyer on their first week — generous enough to do useful work, tight enough that a mistake is an inconvenience, not a crisis.</p>
+  <p>If a tool cannot enforce a hard spend cap, that is your answer about whether to connect it at all.</p>
+</section>
+<section class="article-section">
+  <h2>Guardrail 2: change ceilings</h2>
+  <p>Spend caps limit how much money moves. Change ceilings limit <strong>how aggressively</strong> it moves. A budget can be technically within its cap and still swing so violently that it wrecks the learning your campaigns depend on.</p>
+  <p>So you set ceilings on the size and pace of individual changes. No more than a set percentage shift to any one budget in a day. No more than a handful of structural changes — paused keywords, new audiences, bid strategy switches — inside a given window. These ceilings are what separate steady optimization from thrash. They let the AI act often without acting wildly, which is usually exactly what you want from automation: many small, sensible moves rather than a few dramatic ones you have to clean up.</p>
+</section>
+<section class="article-section">
+  <h2>Guardrail 3: exclusions</h2>
+  <p>Exclusions are the "do not touch" list. Every account has assets that automation should leave alone no matter how the numbers look — your brand campaign, a flagship product line mid-launch, a geo you are testing manually, a creative your legal team signed off on word by word.</p>
+  <p>Name these explicitly before you automate. Exclusions are easy to skip because nothing breaks when you forget them — until the day an algorithm "optimizes" your brand budget to zero because the efficiency math said so. Build the list from a simple prompt: <strong>what in this account would I be angry to find changed tomorrow?</strong> Everything on that list goes behind a wall the automation cannot cross.</p>
+  <ul>
+    <li><strong>Brand and trademark campaigns</strong> that should never be paused on efficiency grounds alone</li>
+    <li><strong>Active manual tests</strong> whose results you would contaminate by automating around them</li>
+    <li><strong>Compliance-sensitive creative or audiences</strong> that require a human signature to change</li>
+  </ul>
+</section>
+<section class="article-section">
+  <h2>Guardrail 4: approval thresholds</h2>
+  <p>The first three guardrails are bright lines the AI enforces on its own. Approval thresholds are the dial that decides which actions it can take alone and which ones wait for a human. This is where you tune how much autonomy you are actually comfortable granting.</p>
+  <p>Set the threshold by consequence. Routine, reversible, low-stakes moves — shifting a small budget between two ad groups, pausing an obviously dead keyword — can run automatically. Anything above a value you choose, or anything structural, lands in a queue for a person to approve. Early in an engagement you set this line conservatively and let almost nothing through unreviewed. As the tool earns trust by showing its reasoning and its results, you raise the threshold deliberately. The point is that <strong>you move the line, on evidence, rather than discovering after the fact where it was set.</strong></p>
+</section>
+<section class="article-section">
+  <h2>How the four guardrails make automation auditable</h2>
+  <p>Set in order — caps, then ceilings, then exclusions, then thresholds — these four turn "guardrails" from a marketing slogan into a configuration you can actually point to. They are also what makes the underlying model honest. Every automated change should run as a <a href="/results/trigger-action-impact" style="color:var(--signal)">Trigger, Action, Impact</a> loop: a condition the tool was watching, a change it made through a real and auditable connection, and a measured result. Your guardrails define the box that loop is allowed to operate inside.</p>
+  <p>That is the whole idea behind <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a> — bounded autonomy, where the AI reasons and acts, but only within limits you set, and every action stays visible and reversible. The enemy is the black box that spends money and cannot explain or undo what it did. Four well-chosen guardrails are how you make sure you never have to meet it.</p>
+</section>
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Find out which guardrails your account is missing</h3>
+  <p style="margin-bottom:20px">Before you set a single limit, see where your marketing actually stands. The free Readiness Score walks through the conditions that make bounded automation safe — 4 minutes, no login.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+    <li><a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">Guardrail-driven automation</a> — the concept behind the four limits, and why bounded autonomy beats a black box</li>
+    <li><a href="/resources/execution-depth-spectrum" style="color:var(--signal)">The execution-depth spectrum</a> — how much an AI tool should actually be allowed to do, from suggestions to autonomous action</li>
+    <li><a href="/resources/reversible-ai-marketing-changes" style="color:var(--signal)">Why AI marketing changes must be reversible</a> — the undo guarantee that sits underneath every guardrail you set</li>
+  </ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
