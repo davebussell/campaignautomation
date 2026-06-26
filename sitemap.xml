@@ -540,4 +540,40 @@
     <changefreq>monthly</changefreq>
     <priority>5</priority>
   </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/marketo-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/apollo-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/cognism-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/clay-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/gong-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/outreach-ai-features/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
 </urlset>
