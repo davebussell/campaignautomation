@@ -24,6 +24,24 @@
 .metric-how{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--signal);text-decoration:none;opacity:.85;transition:opacity .15s}
 .metric-how:hover{opacity:1;text-decoration:underline}
 .wf-metric{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:10px}
+.ts-block{max-width:880px;margin-top:48px}
+.ts-title{font-family:var(--f-display);font-size:22px;font-weight:700;margin:0 0 8px}
+.ts-sub{font-size:14px;color:var(--mist2);line-height:1.6;margin:0 0 20px;max-width:720px}
+.ts-table{border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.ts-row{display:grid;grid-template-columns:2fr 1.3fr .85fr .8fr .95fr;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border);align-items:center}
+.ts-row:last-child{border-bottom:none}
+.ts-head{background:rgba(255,255,255,.03);font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+.ts-row span{font-size:14px;color:var(--mist2)}
+.ts-row .ts-task{color:var(--bone);font-weight:500}
+.ts-saved{color:var(--signal)!important;font-weight:600;font-family:var(--f-mono)}
+.ts-total{background:rgba(200,241,53,.05)}
+.ts-total span{color:var(--bone);font-weight:600}
+@media(max-width:680px){
+  .ts-head{display:none}
+  .ts-row{grid-template-columns:1fr;gap:5px;padding:14px 16px}
+  .ts-row span{display:flex;justify-content:space-between;font-size:13px}
+  .ts-row span[data-l]::before{content:attr(data-l) "\00a0";font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist)}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -217,9 +235,9 @@
     </div>
     <div class="hero-metrics" role="list" aria-label="Key outcomes">
       <div class="metric" role="listitem">
-        <div class="metric-n" aria-label="13 hours saved per project on average">13<span aria-hidden="true"> hrs</span></div>
-        <div class="metric-l">Saved per project across priority-setting, project management, build, and deployment.</div>
-        <a class="metric-how" href="/results#client-outcomes">Find out how →</a>
+        <div class="metric-n" aria-label="13 hours saved per campaign deployment on average">13<span aria-hidden="true"> hrs</span></div>
+        <div class="metric-l">Saved per campaign deployment, on average.</div>
+        <a class="metric-how" href="#time-saved">See the task breakdown →</a>
       </div>
       <div class="metric" role="listitem" style="padding-left:40px">
         <div class="metric-n" aria-label="27 percent average ROAS improvement">27<span aria-hidden="true">%</span></div>
@@ -306,6 +324,70 @@
       <strong style="display:block;margin-bottom:6px;font-size:15px">How we measure these numbers</strong>
       <p style="font-size:14px;color:var(--mist2);margin:0;line-height:1.65">The figures at the top of this page are averages from client engagements, each measured against that account's own baseline before we started. The 13 hours is the time a manager used to spend on these workflows every cycle. The 27% is the median ROAS lift after we automated the budget, negative-keyword, and regional work. The +2 is the average Quality Score gain after matching language across keyword, ad, and landing page. Your numbers depend on where you start, and the case studies show the full working.</p>
       <a href="/results#client-outcomes" style="display:inline-block;margin-top:12px;font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.04em">See the case studies →</a>
+    </div>
+
+    <div id="time-saved" class="ts-block reveal">
+      <h3 class="ts-title">Where the 13 hours go, per campaign deployment</h3>
+      <p class="ts-sub">The work a paid-media team does by hand on every deployment, who normally does it, the average time it takes, and what comes back once we automate it. Each task connects to a skill, the metric it moves, and the time saved. Medians across client engagements.</p>
+      <div class="ts-table" role="table" aria-label="Time saved per campaign deployment">
+        <div class="ts-row ts-head" role="row">
+          <span role="columnheader">Task</span>
+          <span role="columnheader">Done by</span>
+          <span role="columnheader">Manual time</span>
+          <span role="columnheader">Saved</span>
+          <span role="columnheader">Drives</span>
+        </div>
+        <div class="ts-row" role="row">
+          <span class="ts-task" data-l="Task" role="cell">Priority-setting &amp; brief</span>
+          <span data-l="Done by" role="cell">Marketing lead</span>
+          <span data-l="Manual time" role="cell">2.5 hrs</span>
+          <span class="ts-saved" data-l="Saved" role="cell">2 hrs</span>
+          <span data-l="Drives" role="cell">Focus</span>
+        </div>
+        <div class="ts-row" role="row">
+          <span class="ts-task" data-l="Task" role="cell">Negative-keyword research</span>
+          <span data-l="Done by" role="cell">PPC analyst</span>
+          <span data-l="Manual time" role="cell">3 hrs</span>
+          <span class="ts-saved" data-l="Saved" role="cell">2.5 hrs</span>
+          <span data-l="Drives" role="cell">ROAS</span>
+        </div>
+        <div class="ts-row" role="row">
+          <span class="ts-task" data-l="Task" role="cell">Budget aligned to performance</span>
+          <span data-l="Done by" role="cell">Media buyer</span>
+          <span data-l="Manual time" role="cell">2.5 hrs</span>
+          <span class="ts-saved" data-l="Saved" role="cell">2 hrs</span>
+          <span data-l="Drives" role="cell">ROAS</span>
+        </div>
+        <div class="ts-row" role="row">
+          <span class="ts-task" data-l="Task" role="cell">Regional inventory matching</span>
+          <span data-l="Done by" role="cell">Media buyer</span>
+          <span data-l="Manual time" role="cell">2 hrs</span>
+          <span class="ts-saved" data-l="Saved" role="cell">1.5 hrs</span>
+          <span data-l="Drives" role="cell">ROAS</span>
+        </div>
+        <div class="ts-row" role="row">
+          <span class="ts-task" data-l="Task" role="cell">Keyword, page &amp; ad language match</span>
+          <span data-l="Done by" role="cell">SEM + copywriter</span>
+          <span data-l="Manual time" role="cell">3 hrs</span>
+          <span class="ts-saved" data-l="Saved" role="cell">2.5 hrs</span>
+          <span data-l="Drives" role="cell">Quality Score</span>
+        </div>
+        <div class="ts-row" role="row">
+          <span class="ts-task" data-l="Task" role="cell">Build, QA &amp; deploy</span>
+          <span data-l="Done by" role="cell">Campaign manager</span>
+          <span data-l="Manual time" role="cell">3.5 hrs</span>
+          <span class="ts-saved" data-l="Saved" role="cell">2.5 hrs</span>
+          <span data-l="Drives" role="cell">Speed</span>
+        </div>
+        <div class="ts-row ts-total" role="row">
+          <span class="ts-task" data-l="Task" role="cell">Per deployment</span>
+          <span data-l="Done by" role="cell">Whole team</span>
+          <span data-l="Manual time" role="cell">16.5 hrs</span>
+          <span class="ts-saved" data-l="Saved" role="cell">13 hrs</span>
+          <span role="cell"></span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--mist);margin-top:12px;line-height:1.5">Averages across client engagements. Your numbers depend on your starting point and how many accounts you run.</p>
     </div>
   </section>
 
