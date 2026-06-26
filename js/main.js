@@ -483,11 +483,11 @@ const FUNNEL = {
 
   // Binding constraint = the weakest of the five scored dimensions
   const CONSTRAINT = {
-    demo:    { title: 'Data access is your ceiling',                          focus: 'Get every channel owner self-serve access to campaign data before you scale automation.' },
-    instr:   { title: 'Measurement gaps are blocking automation quality',     focus: 'Fix conversion tracking first, so automation optimises against clean signals.' },
-    std:     { title: 'Inconsistent structure limits what automation can touch', focus: 'Lock down naming and launch process so automation can reliably act.' },
-    gov:     { title: 'No clear ownership means automation drifts',            focus: 'Name a single automation owner before you add more rules.' },
-    tooling: { title: 'Tooling gaps cap your automation ceiling',             focus: 'Integrate your data sources so automation has a complete signal to act on.' }
+    demo:    { title: 'Data access is your ceiling',                          focus: 'Get every channel owner self-serve access to campaign data before you scale automation.', sprint: 'Data Access & Dashboards', anchor: 'sprint-data-access' },
+    instr:   { title: 'Measurement gaps are blocking automation quality',     focus: 'Fix conversion tracking first, so automation optimises against clean signals.', sprint: 'Measurement Repair', anchor: 'sprint-measurement' },
+    std:     { title: 'Inconsistent structure limits what automation can touch', focus: 'Lock down naming and launch process so automation can reliably act.', sprint: 'Campaign Structure & Naming', anchor: 'sprint-structure' },
+    gov:     { title: 'No clear ownership means automation drifts',            focus: 'Name a single automation owner before you add more rules.', sprint: 'Automation Governance', anchor: 'sprint-governance' },
+    tooling: { title: 'Tooling gaps cap your automation ceiling',             focus: 'Integrate your data sources so automation has a complete signal to act on.', sprint: 'Data Pipeline & Integration', anchor: 'sprint-data-pipeline' }
   };
   let cKey = null, cPct = Infinity;
   const dims = (hasScore && data.dims) || {};
@@ -519,6 +519,9 @@ const FUNNEL = {
       '.rsb-score-pending .rsb-num{color:var(--mist)}' +
       '.rsb-cta-btn{display:inline-block;background:var(--signal);color:var(--ink);font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.04em;padding:11px 18px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:opacity .15s}' +
       '.rsb-cta-btn:hover{opacity:.85}' +
+      '.rsb-rec{font-size:14px;color:var(--mist2);margin:10px 0 0}' +
+      '.rsb-rec-link{color:var(--signal);text-decoration:none;font-weight:600}' +
+      '.rsb-rec-link:hover{text-decoration:underline}' +
       '@media(max-width:560px){.rsb-num{font-size:34px}.rsb-link,.rsb-cta-btn{width:100%;text-align:center}}';
     document.head.appendChild(st);
   }
@@ -538,6 +541,7 @@ const FUNNEL = {
 
   const bodyHtml = hasScore
     ? ((con ? '<p class="rsb-constraint"><span class="rsb-focus-label">Focus first</span><strong>' + con.title + '.</strong> ' + con.focus + '</p>' : '') +
+       (con && con.sprint ? '<p class="rsb-rec">Recommended first sprint: <a class="rsb-rec-link" href="#' + con.anchor + '">' + con.sprint + ' →</a></p>' : '') +
        (copy.sprintInsert ? '<p class="rsb-insert">' + copy.sprintInsert + '</p>' : ''))
     : ('<p class="rsb-constraint"><span class="rsb-focus-label">Focus first</span><strong>Pending.</strong> Take the free Readiness Score to unlock your binding constraint, the one thing to fix first, and a prioritised sprint plan.</p>' +
        '<p class="rsb-insert">It takes about four minutes. You\'ll know your tier, your focus area, and which sprints to run first, so you browse this catalog with a plan instead of a guess.</p>');

@@ -84,6 +84,17 @@
 .deliv-name{font-size:15px;color:var(--ink);font-weight:500}
 .deliv-note{font-family:var(--f-mono);font-size:12px;color:#4f6312;text-align:right;letter-spacing:.02em;flex-shrink:0}
 @media(max-width:560px){.deliv-row{flex-direction:column;align-items:flex-start;gap:4px}.deliv-note{text-align:left}}
+
+/* ── THREE TRACKS — section headers + intro ─────────────── */
+.cat-tracks-intro{max-width:780px;margin:8px 0 4px}
+.cat-tracks-intro p{font-size:15px;color:var(--mist2);line-height:1.65;margin:0}
+.cat-tracks-intro strong{color:var(--bone)}
+.cat-track-head{grid-column:1/-1;margin:44px 0 6px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.cat-track-head:first-child{margin-top:8px}
+.cat-track-head h3{font-size:18px;font-weight:700;color:var(--bone);margin:0 0 5px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cat-track-head .cth-tag{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--signal);padding:3px 8px;border-radius:3px}
+.cat-track-head p{font-size:13px;color:var(--mist);margin:0;line-height:1.5;max-width:760px}
+.cat-type.foundation{background:rgba(200,241,53,.16);color:var(--signal);border:1px solid rgba(200,241,53,.35)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Automation Sprints","description":"Every sprint, training program, and readiness guide in one place. Filter by application: PPC, SEO, WEB, COMMERCE, AIO, ABM, LOCAL, INTEGRATION, or FOUNDATIONAL.","url":"https://campaignautomation.ai/solutions/automation-sprints","serviceType":"AI marketing campaign automation","provider":{"@type":"Organization","name":"Campaign Automation AI","url":"https://campaignautomation.ai"},"areaServed":"Worldwide"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Solutions","item":"https://campaignautomation.ai/solutions"},{"@type":"ListItem","position":3,"name":"Catalog","item":"https://campaignautomation.ai/solutions/automation-sprints"}]}]}
@@ -181,11 +192,101 @@
       <a href="/solutions/campaign-audit" class="btn-primary" style="white-space:nowrap">Start with the Audit →</a>
     </div>
 
+    <div class="cat-tracks-intro">
+      <p>Three tracks, and most teams use all three. They are separate things: <strong>Resources</strong> to learn it yourself for free, <strong>Training</strong> to build the skill inside your team, and <strong>Sprints</strong> where we build the automation with you. Start where your Readiness Score points you.</p>
+    </div>
+
     <!-- Catalog grid -->
     <div class="cat-grid" id="cat-grid">
 
       <!-- ── SPRINTS ─────────────────────────────────────── -->
+      <div class="cat-track-head" data-track-head="sprints">
+        <h3><span class="cth-tag">We build it</span>Sprints</h3>
+        <p>Fixed-scope engagements where we build the automation with your team and hand it over. Start with the foundation sprint that clears your binding constraint, then layer execution on top.</p>
+      </div>
 
+      <!-- Foundation sprints — fix the readiness gap before execution -->
+      <div class="cat-card" id="sprint-data-access" data-app="FOUNDATIONAL PPC WEB SEO">
+        <div class="cat-card-top">
+          <span class="cat-type foundation">Sprint · Foundation</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">WEB</span>
+          </div>
+        </div>
+        <h3>Data Access &amp; Dashboards</h3>
+        <p>Connect Google Ads, Meta, GA4, and your CRM into live self-serve dashboards your channel owners can actually use. When the team can read the data without an analyst, every automation above it stops creating a bottleneck. This is the gap the Readiness Score weights most heavily.</p>
+        <div class="cat-card-meta">
+          <span>Scoped to your account</span><span>2–3 weeks</span><span>Fixes data access</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Read access to your ad and analytics platforms</div>
+        <a href="/request-proposals" class="cat-cta">Request this sprint →</a>
+      </div>
+
+      <div class="cat-card" id="sprint-data-pipeline" data-app="FOUNDATIONAL INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type foundation">Sprint · Foundation</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
+        </div>
+        <h3>Data Pipeline &amp; Integration</h3>
+        <p>Replace manual CSV exports and disconnected tools with one connected pipeline. We wire your ad platforms, analytics, and CRM together so every downstream automation works from a complete, current signal instead of a stale spreadsheet. If your workflows are manual today, this comes first.</p>
+        <div class="cat-card-meta">
+          <span>Scoped to your account</span><span>2–3 weeks</span><span>Fixes tooling &amp; integration</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Connector or API access to the platforms you want linked</div>
+        <a href="/request-proposals" class="cat-cta">Request this sprint →</a>
+      </div>
+
+      <div class="cat-card" id="sprint-measurement" data-app="FOUNDATIONAL PPC WEB">
+        <div class="cat-card-top">
+          <span class="cat-type foundation">Sprint · Foundation</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">WEB</span>
+          </div>
+        </div>
+        <h3>Measurement Repair</h3>
+        <p>A full conversion-tracking audit and rebuild across GA4, Google Ads, and Meta. We fix deduplication, validate attribution, and document every event, so Smart Bidding and any rule you automate optimise toward revenue instead of noise.</p>
+        <div class="cat-card-meta">
+          <span>Scoped to your account</span><span>2 weeks</span><span>Fixes measurement</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Tag manager and analytics admin access</div>
+        <a href="/request-proposals" class="cat-cta">Request this sprint →</a>
+      </div>
+
+      <div class="cat-card" id="sprint-structure" data-app="FOUNDATIONAL PPC WEB SEO">
+        <div class="cat-card-top">
+          <span class="cat-type foundation">Sprint · Foundation</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">PPC</span><span class="cat-app-tag">SEO</span>
+          </div>
+        </div>
+        <h3>Campaign Structure &amp; Naming</h3>
+        <p>A naming convention plus a launch template and QA checklist that every campaign passes through. Automation can only act on what it can reliably identify, so consistent structure is what makes rules, scripts, and AI workflows dependable at scale.</p>
+        <div class="cat-card-meta">
+          <span>Scoped to your account</span><span>1–2 weeks</span><span>Fixes structure</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>Editor access to your ad accounts</div>
+        <a href="/request-proposals" class="cat-cta">Request this sprint →</a>
+      </div>
+
+      <div class="cat-card" id="sprint-governance" data-app="FOUNDATIONAL INTEGRATION">
+        <div class="cat-card-top">
+          <span class="cat-type foundation">Sprint · Foundation</span>
+          <div class="cat-apps">
+            <span class="cat-app-tag">FOUNDATIONAL</span><span class="cat-app-tag">INTEGRATION</span>
+          </div>
+        </div>
+        <h3>Automation Governance</h3>
+        <p>Name a single automation owner, stand up an approval workflow, install the guardrail set (budget caps, conversion thresholds, brand exclusions), and start a change log, all before any rule touches live spend. The cheapest insurance against a runaway automation.</p>
+        <div class="cat-card-meta">
+          <span>Scoped to your account</span><span>1 week</span><span>Fixes governance</span>
+        </div>
+        <div class="cat-dep"><span class="dep-dot-sig"></span>A named owner and access to your automation rules</div>
+        <a href="/request-proposals" class="cat-cta">Request this sprint →</a>
+      </div>
+
+      <!-- Execution sprints -->
       <div class="cat-card" data-app="WEB PPC AIO FOUNDATIONAL">
         <div class="cat-card-top">
           <span class="cat-type sprint">Sprint · Leapfrog</span>
@@ -346,7 +447,11 @@
         <a href="/solutions/sprints/lead-reactivation" class="cat-cta">View sprint →</a>
       </div>
 
-      <!-- ── PROGRAMS ─────────────────────────────────────── -->
+      <!-- ── TRAINING ─────────────────────────────────────── -->
+      <div class="cat-track-head" data-track-head="training">
+        <h3><span class="cth-tag">Level up your team</span>Training</h3>
+        <p>Programs that build the skill inside your team so you can run and extend automations yourselves. Separate from sprints: here we teach, rather than build it for you.</p>
+      </div>
 
       <div class="cat-card" data-app="FOUNDATIONAL AIO">
         <div class="cat-card-top">
@@ -423,7 +528,11 @@
         <a href="/training" class="cat-cta">View program →</a>
       </div>
 
-      <!-- ── GUIDES ───────────────────────────────────────── -->
+      <!-- ── RESOURCES ────────────────────────────────────── -->
+      <div class="cat-track-head" data-track-head="resources">
+        <h3><span class="cth-tag">Learn it free</span>Resources</h3>
+        <p>Free guides, frameworks, and templates you can use on your own, no engagement required. Each one maps to a readiness dimension, so you can close a gap yourself or hand it to us as a sprint.</p>
+      </div>
 
       <div class="cat-card" data-app="FOUNDATIONAL PPC WEB">
         <div class="cat-card-top">
@@ -565,6 +674,7 @@
   const cards = document.querySelectorAll('#cat-grid .cat-card');
   const noResults = document.getElementById('cat-no-results');
 
+  const trackHeads = document.querySelectorAll('#cat-grid .cat-track-head');
   function filterCatalog(app) {
     let visible = 0;
     cards.forEach(function(card) {
@@ -572,6 +682,15 @@
       const show = app === 'all' || apps.includes(app);
       card.style.display = show ? '' : 'none';
       if (show) visible++;
+    });
+    // Hide a track header when its section has no visible cards
+    trackHeads.forEach(function(head) {
+      let any = false, el = head.nextElementSibling;
+      while (el && !el.classList.contains('cat-track-head')) {
+        if (el.classList.contains('cat-card') && el.style.display !== 'none') { any = true; break; }
+        el = el.nextElementSibling;
+      }
+      head.style.display = any ? '' : 'none';
     });
     noResults.style.display = visible === 0 ? 'block' : 'none';
   }
@@ -589,6 +708,11 @@
 (function(){
   // Map h3 titles to sprint IDs (matches SPRINT_META in main.js)
   const SPRINT_ID_MAP = {
+    'Data Access & Dashboards':       'found-data-access',
+    'Data Pipeline & Integration':    'found-data-pipeline',
+    'Measurement Repair':             'found-measurement',
+    'Campaign Structure & Naming':    'found-structure',
+    'Automation Governance':          'found-governance',
     'AI Brief Machine':               'ai-brief',
     'Search Term Intelligence':       'search-term-intel',
     'Competitive Intelligence Engine':'competitive-intel',

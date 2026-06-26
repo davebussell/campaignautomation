@@ -955,11 +955,11 @@ function getGuardrails(score, dims) {
 const DIM_WEIGHTS = {demo:'30%', instr:'20%', std:'20%', gov:'20%', tooling:'10%'};
 
 const DIM_SERVICES = {
-  demo:    {label:'Data Democratization Guide', href:'/resources/democratization/',   sprint:'Build self-serve data access →'},
-  instr:   {label:'Instrumentation & Tracking Guide', href:'/resources/instrumentation/', sprint:'Fix your tracking foundation →'},
-  std:     {label:'Campaign Standardization Guide', href:'/resources/standardization/', sprint:'Standardize your structure →'},
-  gov:     {label:'Governance Framework Guide', href:'/resources/governance/',          sprint:'Establish automation ownership →'},
-  tooling: {label:'Team & Tooling Guide', href:'/resources/team-tooling/',             sprint:'Audit and upgrade your stack →'},
+  demo:    {label:'Data Democratization Guide', href:'/resources/democratization/',   sprint:'Data Access &amp; Dashboards Sprint →',     sprintHref:'/solutions/automation-sprints#sprint-data-access'},
+  instr:   {label:'Instrumentation &amp; Tracking Guide', href:'/resources/instrumentation/', sprint:'Measurement Repair Sprint →',         sprintHref:'/solutions/automation-sprints#sprint-measurement'},
+  std:     {label:'Campaign Standardization Guide', href:'/resources/standardization/', sprint:'Campaign Structure &amp; Naming Sprint →', sprintHref:'/solutions/automation-sprints#sprint-structure'},
+  gov:     {label:'Governance Framework Guide', href:'/resources/governance/',          sprint:'Automation Governance Sprint →',      sprintHref:'/solutions/automation-sprints#sprint-governance'},
+  tooling: {label:'Team &amp; Tooling Guide', href:'/resources/team-tooling/',         sprint:'Data Pipeline &amp; Integration Sprint →', sprintHref:'/solutions/automation-sprints#sprint-data-pipeline'},
 };
 
 const DIM_PITCH_GAPS = {
@@ -1299,7 +1299,7 @@ function showScorecard() {
       </div>
       <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:0%" data-w="${Math.round(d.raw/d.max*100)}%"></div></div>
       ${qaHtml?`<div class="dim-answers">${qaHtml}</div>`:''}
-      ${DIM_SERVICES[key]?`<a href="${DIM_SERVICES[key].href}" class="dim-row-link">${DIM_SERVICES[key].sprint}</a>`:''}
+      ${DIM_SERVICES[key]?`<a href="${DIM_SERVICES[key].sprintHref}" class="dim-row-link">${DIM_SERVICES[key].sprint}</a>`:''}
     </div>`;
   }).join("");
 
