@@ -594,4 +594,28 @@
     <changefreq>monthly</changefreq>
     <priority>5</priority>
   </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/top-marketing-automation-ai-compared/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>90</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/zoominfo-vs-apollo-vs-6sense/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/salesforce-vs-hubspot-ai/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>8</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/eloqua-vs-marketo-vs-hubspot/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>8</priority>
+  </url>
 </urlset>
