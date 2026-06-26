@@ -471,15 +471,15 @@ const FUNNEL = {
   const path = window.location.pathname.replace(/\/+$/, '');
   if (!/\/solutions\/automation-sprints$/.test(path)) return;
 
-  const data = RSCORE.load();
-  if (!data || data.score === undefined) return;
-
   const anchor = document.querySelector('.cat-filter-wrap');
   if (!anchor || document.querySelector('.rs-sprints-banner')) return;
 
-  const tierKey  = getTierKey(data.score);
-  const copy     = TIER_COPY[tierKey] || {};
-  const tierName = copy.name || data.tier || '';
+  const data = RSCORE.load();
+  const hasScore = data && data.score !== undefined;
+
+  const tierKey  = hasScore ? getTierKey(data.score) : null;
+  const copy     = hasScore ? (TIER_COPY[tierKey] || {}) : {};
+  const tierName = copy.name || (data && data.tier) || '';
 
   // Binding constraint = the weakest of the five scored dimensions
   const CONSTRAINT = {
@@ -490,7 +490,7 @@ const FUNNEL = {
     tooling: { title: 'Tooling gaps cap your automation ceiling',             focus: 'Integrate your data sources so automation has a complete signal to act on.' }
   };
   let cKey = null, cPct = Infinity;
-  const dims = data.dims || {};
+  const dims = (hasScore && data.dims) || {};
   for (const k of Object.keys(CONSTRAINT)) {
     const d = dims[k];
     if (d && d.max) { const p = d.raw / d.max; if (p < cPct) { cPct = p; cKey = k; } }
@@ -516,27 +516,45 @@ const FUNNEL = {
       '.rsb-constraint strong{color:var(--bone)}' +
       '.rsb-focus-label{display:inline-block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-right:10px;border:1px solid rgba(200,241,53,.3);border-radius:999px;padding:3px 9px;vertical-align:middle}' +
       '.rsb-insert{font-size:14px;color:var(--mist);line-height:1.6;margin:0}' +
-      '@media(max-width:560px){.rsb-num{font-size:34px}.rsb-link{width:100%}}';
+      '.rsb-score-pending .rsb-num{color:var(--mist)}' +
+      '.rsb-cta-btn{display:inline-block;background:var(--signal);color:var(--ink);font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.04em;padding:11px 18px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:opacity .15s}' +
+      '.rsb-cta-btn:hover{opacity:.85}' +
+      '@media(max-width:560px){.rsb-num{font-size:34px}.rsb-link,.rsb-cta-btn{width:100%;text-align:center}}';
     document.head.appendChild(st);
   }
 
+  // Scored state and pending state share one layout
+  const scoreHtml = hasScore
+    ? '<div class="rsb-score"><span class="rsb-num">' + data.score + '</span><span class="rsb-denom">/100</span></div>'
+    : '<div class="rsb-score rsb-score-pending"><span class="rsb-num">—</span><span class="rsb-denom">/100</span></div>';
+
+  const tierLine = hasScore
+    ? (tierName + ' tier' + (copy.chipTagline ? ' · ' + copy.chipTagline : ''))
+    : 'Not scored yet';
+
+  const headRight = hasScore
+    ? '<a class="rsb-link" href="/tools/readiness-score">View full results →</a>'
+    : '<a class="rsb-cta-btn" href="/tools/readiness-score">Get your free score →</a>';
+
+  const bodyHtml = hasScore
+    ? ((con ? '<p class="rsb-constraint"><span class="rsb-focus-label">Focus first</span><strong>' + con.title + '.</strong> ' + con.focus + '</p>' : '') +
+       (copy.sprintInsert ? '<p class="rsb-insert">' + copy.sprintInsert + '</p>' : ''))
+    : ('<p class="rsb-constraint"><span class="rsb-focus-label">Focus first</span><strong>Pending.</strong> Take the free Readiness Score to unlock your binding constraint, the one thing to fix first, and a prioritised sprint plan.</p>' +
+       '<p class="rsb-insert">It takes about four minutes. You\'ll know your tier, your focus area, and which sprints to run first, so you browse this catalog with a plan instead of a guess.</p>');
+
   const banner = document.createElement('div');
-  banner.className = 'rs-sprints-banner';
+  banner.className = 'rs-sprints-banner' + (hasScore ? '' : ' is-pending');
   banner.setAttribute('role', 'region');
   banner.setAttribute('aria-label', 'Your readiness results and where to focus');
   banner.innerHTML =
-    '<div class="rsb-head">' +
-      '<div class="rsb-score"><span class="rsb-num">' + data.score + '</span><span class="rsb-denom">/100</span></div>' +
+    '<div class="rsb-head">' + scoreHtml +
       '<div class="rsb-meta">' +
         '<div class="rsb-eyebrow">Your readiness results</div>' +
-        '<div class="rsb-tier">' + tierName + ' tier' + (copy.chipTagline ? ' · ' + copy.chipTagline : '') + '</div>' +
+        '<div class="rsb-tier">' + tierLine + '</div>' +
       '</div>' +
-      '<a class="rsb-link" href="/tools/readiness-score">View full results →</a>' +
+      headRight +
     '</div>' +
-    '<div class="rsb-body">' +
-      (con ? '<p class="rsb-constraint"><span class="rsb-focus-label">Focus first</span><strong>' + con.title + '.</strong> ' + con.focus + '</p>' : '') +
-      (copy.sprintInsert ? '<p class="rsb-insert">' + copy.sprintInsert + '</p>' : '') +
-    '</div>';
+    '<div class="rsb-body">' + bodyHtml + '</div>';
 
   anchor.parentNode.insertBefore(banner, anchor);
 })();
