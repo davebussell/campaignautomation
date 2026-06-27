@@ -2,15 +2,38 @@
 <html lang="en-CA">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Marketing Automation Glossary — Key Terms Defined</title>
-<meta name="description" content="Definitions for guardrail-driven automation, trigger/action/impact, agentic marketing, AGENTS.md, plus the platform, workflow, and process vocabulary an operator actually needs.">
+<title>The Automation &amp; AI Glossary — 355 Terms Defined | Campaign Automation AI</title>
+<meta name="description" content="The terms an operator actually needs: 355 definitions across bounded autonomy, agents, the GTM stack, paid media, attribution, deliverability, AI search, and governance. Filter and search.">
 <link rel="canonical" href="https://campaignautomation.ai/resources/glossary">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
-<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+<style>
+  .gl-controls{display:flex;gap:14px;align-items:center;margin:0 0 16px;flex-wrap:wrap}
+  .gl-search{position:relative;flex:1;min-width:240px}
+  #glq{width:100%;background:var(--slate2);border:1px solid var(--border);color:var(--bone);font-family:var(--f-mono);font-size:14px;padding:12px 14px;outline:none;transition:border-color .15s;box-sizing:border-box;border-radius:4px}
+  #glq:focus{border-color:var(--signal)}
+  #glq::placeholder{color:var(--mist)}
+  .gl-count{font-family:var(--f-mono);font-size:12px;color:var(--mist);white-space:nowrap;letter-spacing:.04em}
+  .gl-count b{color:var(--signal)}
+  .gl-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
+  .gl-chip{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;background:transparent;color:var(--mist2);border:1px solid var(--border);padding:7px 11px;cursor:pointer;transition:all .13s;border-radius:3px;white-space:nowrap}
+  .gl-chip:hover{border-color:var(--mist2);color:var(--bone)}
+  .gl-chip.on{background:var(--signal);color:var(--ink);border-color:var(--signal);font-weight:600}
+  .gl-group{display:flex;align-items:baseline;gap:12px;margin:38px 0 2px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .gl-group h2{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:-.01em;margin:0}
+  .gl-group .gc{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.06em}
+  .gl-entry{display:grid;grid-template-columns:minmax(190px,260px) 1fr;gap:28px;padding:16px 0;border-bottom:1px solid rgba(237,232,218,.06);scroll-margin-top:88px}
+  .gl-entry .gl-term{font-family:var(--f-display);font-weight:600;font-size:16px;color:var(--bone);align-self:start}
+  .gl-entry .gl-tag{display:block;margin-top:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+  .gl-entry .gl-def{font-size:14.5px;color:var(--mist2);line-height:1.6;align-self:center}
+  .gl-entry.hit{background:var(--signal-glow);border-radius:4px;padding-left:12px;padding-right:12px}
+  .gl-empty{font-family:var(--f-mono);color:var(--mist);font-size:13px;padding:50px 0;text-align:center}
+  #gl-list mark{background:var(--signal);color:var(--ink);padding:0 1px}
+  @media(max-width:680px){.gl-entry{grid-template-columns:1fr;gap:6px}}
+</style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"The language of AI-driven campaign automation.","description":"Definitions for guardrail-driven automation, trigger/action/impact, agentic marketing, AGENTS.md, plus the platform, workflow, and process vocabulary an operator actually needs.","url":"https://campaignautomation.ai/resources/glossary","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://campaignautomation.ai/resources"},{"@type":"ListItem","position":3,"name":"Glossary","item":"https://campaignautomation.ai/resources/glossary"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"The Automation & AI Glossary","description":"Definitions for 355 automation and AI terms — bounded autonomy, agents, the GTM stack, paid media, attribution, deliverability, AI search, and governance.","url":"https://campaignautomation.ai/resources/glossary","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://campaignautomation.ai/resources"},{"@type":"ListItem","position":3,"name":"Glossary","item":"https://campaignautomation.ai/resources/glossary"}]}]}
 </script>
 </head>
 <body>
@@ -39,7 +62,7 @@
     <a href="/results">Results</a>
     <a href="/results/trigger-action-impact">Framework</a>
     <div class="nav-item">
-      <a href="/resources" aria-current="page">Resources</a>
+      <a href="/resources">Resources</a>
       <div class="dropdown" role="group">
         <a href="/resources/articles">Articles</a>
         <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
@@ -67,7 +90,10 @@
     <a href="/revenue-operations">Revenue Operations</a>
   </div>
   <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
-    <a href="/training">Training</a><a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a><a href="/tools/readiness-score">Readiness Score</a><a href="/about">About</a>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
   </div>
   <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
 </nav>
@@ -76,346 +102,27 @@
 <main id="main-content">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/resources">Resources</a><span aria-hidden="true">/</span><span class="current">Glossary</span></nav>
 
-  <section class="page-hero snap-sec" aria-labelledby="gloss-heading">
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Glossary</div>
-    <h1 id="gloss-heading">The language of AI-driven campaign automation.</h1>
-    <p class="lead">These are the terms we use consistently across every engagement. If you see a term on this site, its exact definition is here.</p>
-  </section>
-
-  <section class="section snap-sec" aria-labelledby="core-heading">
-    <div class="section-label reveal"><span class="label-signal">Core concepts</span></div>
-    <h2 class="display reveal" id="core-heading" style="margin-bottom:48px">The foundational terms.</h2>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Core concept</div>
-      <h3>Guardrail-driven automation</h3>
-      <p>An AI automation approach where every agent action is constrained by explicit, auditable rules. The guardrail layer defines what the agent can and cannot do — preventing runaway spend, brand violations, or unapproved actions. The rules are visible, editable, and logged.</p>
+  <div style="max-width:1080px;margin:0 auto;padding:8px 24px 90px">
+    <div class="page-hero" style="padding:20px 0 20px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Glossary</div>
+      <h1 style="margin-bottom:12px">The automation &amp; AI glossary.</h1>
+      <p class="lead" style="max-width:64ch">The terms an operator actually needs — model internals, agent architecture, the GTM stack, and the vendor vocabulary that moves faster than the docs. 355 terms. Filter by domain or search.</p>
     </div>
 
-    <div class="glossary-term reveal">
-      <div class="term-tag">Core concept</div>
-      <h3>Trigger/action/impact</h3>
-      <p>The accountability schema for every automated action. Trigger: the condition that caused the agent to act. Action: what the agent did. Impact: the measured outcome with a timestamp. No action is logged without all three fields.</p>
+    <div class="gl-controls">
+      <div class="gl-search"><input id="glq" type="search" placeholder="Search term or definition… e.g. 'bounded autonomy', 'DMARC', 'attribution'" autocomplete="off" spellcheck="false" aria-label="Search glossary"></div>
+      <div class="gl-count" id="glcount"></div>
     </div>
+    <div class="gl-chips" id="glchips"></div>
+    <div id="gl-list"></div>
+  </div>
 
-    <div class="glossary-term reveal">
-      <div class="term-tag">Framework</div>
-      <h3>Agentic marketing</h3>
-      <p>Marketing operations run by AI agents that can plan, execute, and adjust campaigns within defined constraints. Not just automation — agents make decisions, not just follow scripts.</p>
-    </div>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Framework</div>
-      <h3>TAI schema</h3>
-      <p>Shorthand for trigger/action/impact. The three-field log entry format used in all campaign automation activity logs. See: <a href="/results/trigger-action-impact">/results/trigger-action-impact</a></p>
-    </div>
-  </section>
-
-  <section class="section bone snap-sec" aria-labelledby="products-heading">
-    <div class="section-label reveal"><span>Products</span></div>
-    <h2 class="display reveal" id="products-heading" style="margin-bottom:48px;color:var(--ink)">What we deliver.</h2>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Product</div>
-      <h3>Campaign Automation Audit</h3>
-      <p>A human-led diagnostic, and the first sprint of every engagement, that analyses your campaign data via read-only access to your key accounts (Google Ads, GA4, Search Console) to identify PPC waste, SEO/PPC gaps, and AI automation opportunities. Produces a 30-day action plan, and is how new clients first work with our team.</p>
-    </div>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Product</div>
-      <h3>Automation Sprint</h3>
-      <p>A 2–4 week engagement ($5,000–$15,000) that builds one specific campaign automation workflow. Delivered with guardrail config, prompt packs, AGENTS.md, and a training session. The client owns the result.</p>
-    </div>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Product</div>
-      <h3>Campaign Strategy Portal</h3>
-      <p>A recurring subscription ($500–$2,500/month) that provides monthly AI-generated strategy, recommendations, assets, and agent instructions for your campaigns.</p>
-    </div>
-  </section>
-
-  <section class="section snap-sec" aria-labelledby="technical-heading">
-    <div class="section-label reveal"><span class="label-signal">Technical terms</span></div>
-    <h2 class="display reveal" id="technical-heading" style="margin-bottom:48px">How the systems work.</h2>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Technical</div>
-      <h3>AGENTS.md</h3>
-      <p>A markdown file that defines the rules, constraints, personas, and workflows for AI agents operating on a campaign. The guardrail configuration document. Every sprint delivers one.</p>
-    </div>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Technical</div>
-      <h3>Prompt pack</h3>
-      <p>A structured set of reusable prompts for a specific campaign task — PPC brief generation, SEO keyword research, ad copy creation, or lead scoring. Delivered as part of every sprint.</p>
-    </div>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Technical</div>
-      <h3>Guardrail</h3>
-      <p>A rule that constrains AI agent behaviour. Examples: daily spend cap, brand exclusion list, maximum bid change per cycle, required human approval for actions above a threshold.</p>
-    </div>
-  </section>
-
-  <section class="section bone snap-sec" aria-labelledby="metrics-heading">
-    <div class="section-label reveal"><span>Metrics</span></div>
-    <h2 class="display reveal" id="metrics-heading" style="margin-bottom:48px;color:var(--ink)">How we measure impact.</h2>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Metric</div>
-      <h3>CPA (Cost Per Acquisition)</h3>
-      <p>The total cost to acquire one customer or conversion. A core KPI for PPC campaigns. CPA reduction is the primary metric for the PPC Intelligence Sprint.</p>
-    </div>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Metric</div>
-      <h3>LTV (Lifetime Value)</h3>
-      <p>The predicted total revenue from a customer over their relationship with the business. Used in bid strategy and budget allocation decisions.</p>
-    </div>
-  </section>
-
-  <section class="section snap-sec" aria-labelledby="vocab-heading">
-    <div class="section-label reveal"><span class="label-signal">Expanded glossary</span></div>
-    <h2 class="display reveal" id="vocab-heading" style="margin-bottom:16px">The operator's vocabulary.</h2>
-    <p class="lead reveal" style="margin-bottom:48px">The terms that matter most for AI marketing automation, ordered by relevance — each tagged as a <strong>platform</strong> you adopt, a <strong>workflow</strong> you run, or a <strong>process</strong> you practise.</p>
-
-    <div class="glossary-term reveal">
-      <div class="term-tag">Process</div>
-      <h3>Bounded autonomy</h3>
-      <p>An operating model where an AI agent acts freely but only within explicitly defined limits, instead of asking permission for every move. The core of guardrail-driven automation.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Workflow</div>
-      <h3>Human-in-the-loop</h3>
-      <p>Requiring human approval at defined points before an agent's action takes effect.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Workflow</div>
-      <h3>Human-on-the-loop</h3>
-      <p>Letting an agent act autonomously while a human monitors and can intervene, rather than approving each step.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Process</div>
-      <h3>Blast radius</h3>
-      <p>The maximum scope of damage an autonomous action could cause if it goes wrong — the variable you cap before granting autonomy.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Reversal token</h3>
-      <p>A captured handle that lets a system undo an agent's action, making otherwise risky autonomy acceptable because it is reversible.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Workflow</div>
-      <h3>Dry-run mode</h3>
-      <p>Executing an agent's planned actions without committing them, so a human can review intended changes first.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>Agent</h3>
-      <p>A system where an AI decides its own sequence of actions and tool calls to reach a goal, versus a fixed deterministic workflow.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Workflow</div>
-      <h3>Agentic workflow</h3>
-      <p>A process that mixes deterministic steps with points where an agent reasons, chooses tools, or handles ambiguity.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Platform</div>
-      <h3>MCP (Model Context Protocol)</h3>
-      <p>An open standard for connecting AI models to external tools and data through a uniform server interface.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>Tool use</h3>
-      <p>A model invoking external functions or APIs, with the host executing the call and returning results into context.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Lead scoring</h3>
-      <p>Ranking leads by likelihood to convert using fit and behaviour signals, so sales works the warmest first.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>Predictive lead scoring</h3>
-      <p>Lead scoring where a model, not hand-tuned rules, learns which attributes and actions predict conversion from historical data.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Workflow</div>
-      <h3>Journey orchestration</h3>
-      <p>Coordinating a contact's experience across channels in response to behaviour, rather than running channels as silos.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Platform</div>
-      <h3>Smart Bidding</h3>
-      <p>Google's auction-time bidding that uses signals and machine learning to optimise toward a target cost or value goal.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Platform</div>
-      <h3>Performance Max</h3>
-      <p>Google's goal-based campaign type that auto-allocates across all its inventory from one asset group and conversion goals.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>Advantage+</h3>
-      <p>Meta's automation suite that hands targeting, placement, and budget decisions to its models given a conversion objective.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Autonomous bidding</h3>
-      <p>Optimisation where the platform sets bids and budgets with minimal human input, contrasted with rules-based control.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>Budget pacing</h3>
-      <p>Controlling spend velocity across a flight so a budget is not exhausted early or left unspent.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Process</div>
-      <h3>tROAS</h3>
-      <p>Target return on ad spend — a bid strategy that sets bids to hit a desired revenue-to-cost ratio.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Incrementality testing</h3>
-      <p>Measuring the conversions an ad actually caused versus those that would have happened anyway, via controlled holdouts.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>Multi-touch attribution</h3>
-      <p>Distributing conversion credit across the several touchpoints in a journey rather than crediting only one.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Process</div>
-      <h3>Marketing mix modeling</h3>
-      <p>A top-down statistical model attributing outcomes to channels using aggregate spend and results, resilient to signal loss.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>RevOps</h3>
-      <p>Revenue operations — unifying marketing, sales, and success operations under shared data, process, and accountability for revenue.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>ICP</h3>
-      <p>Ideal customer profile — the firmographic and behavioural definition of the accounts worth pursuing.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Process</div>
-      <h3>Intent data</h3>
-      <p>Signals that an account is researching a category — first-party from your properties, third-party from external networks.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Win probability</h3>
-      <p>A model-derived likelihood that an open deal closes, used to prioritise effort and sharpen forecasts.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>Speed-to-lead</h3>
-      <p>The elapsed time from inbound interest to first sales contact, where minutes materially change conversion odds.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>CDP (Customer Data Platform)</h3>
-      <p>Software that unifies customer data from many sources into persistent profiles for activation.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Identity resolution</h3>
-      <p>Stitching disparate identifiers into one persistent profile so a customer is recognised across devices and channels.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Workflow</div>
-      <h3>Reverse ETL</h3>
-      <p>Pushing modeled data from the warehouse back into operational tools like CRMs and ad platforms for activation.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>iPaaS</h3>
-      <p>Integration platform as a service — hosted middleware for connecting apps and syncing data without custom infrastructure.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Platform</div>
-      <h3>Webhook</h3>
-      <p>An HTTP callback fired by an event so downstream systems react in real time instead of polling for changes.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Platform</div>
-      <h3>RPA</h3>
-      <p>Robotic process automation — software bots that automate UI-driven, repetitive tasks across systems lacking APIs.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Workflow</div>
-      <h3>Self-healing automation</h3>
-      <p>An automation that adapts when an underlying interface or schema changes instead of breaking and needing manual repair.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Send-time optimization</h3>
-      <p>Choosing each recipient's individual best send moment from their past engagement to lift opens and clicks.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>Sender reputation</h3>
-      <p>A mailbox provider's trust score for your sending identity — the dominant factor in whether mail reaches the inbox.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>DMARC</h3>
-      <p>An email-authentication policy tying SPF and DKIM to the visible From domain and telling receivers what to do with failures.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>List hygiene</h3>
-      <p>Routinely validating and pruning addresses to remove bounces, traps, and dead contacts that drag reputation down.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>AEO (Answer Engine Optimization)</h3>
-      <p>Structuring content so AI systems extract and surface it as a direct answer.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Process</div>
-      <h3>GEO (Generative Engine Optimization)</h3>
-      <p>Shaping content and presence so LLMs cite your brand as a source in synthesized answers.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Platform</div>
-      <h3>AI Overviews</h3>
-      <p>Google's generative summaries atop search results that answer directly and depress click-through to ranked links.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>AI governance</h3>
-      <p>The policies, controls, and accountability structures for deploying AI responsibly and within legal and brand limits.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>Trust layer</h3>
-      <p>A wrapper around model calls enforcing grounding, data masking, retention rules, and content checks before output is used.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-1">
-      <div class="term-tag">Process</div>
-      <h3>Least-privilege access</h3>
-      <p>Granting a system or agent only the minimum permissions its task requires, capping the damage of misuse or compromise.</p>
-    </div>
-    <div class="glossary-term reveal reveal-delay-2">
-      <div class="term-tag">Process</div>
-      <h3>Prompt injection</h3>
-      <p>An attack that smuggles instructions into model input to override intended behaviour — a key risk when agents read external content.</p>
-    </div>
-    <div class="glossary-term reveal">
-      <div class="term-tag">Platform</div>
-      <h3>RAG (Retrieval-Augmented Generation)</h3>
-      <p>Fetching relevant documents at query time and grounding the model's answer in them, so claims trace to a source.</p>
-    </div>
-  </section>
-
-  <div class="snap-sec tagline-footer">
-    <p class="reveal">Know the terms.<br>Build the system.<br><span>Start with the Audit.</span></p>
-    <a href="/tools/readiness-score" class="btn-primary reveal reveal-delay-2" style="margin-top:40px;font-size:15px;padding:16px 36px">Get your free Readiness Score →</a>
+  <div class="tagline-footer" style="text-align:center">
+    <p>Know the terms.<br>Build the system.<br><span>Start with the score.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
   </div>
 </main>
+
 <footer class="site-footer" role="contentinfo" aria-label="Site footer">
   <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
   <div class="footer-inner">
@@ -472,6 +179,44 @@
   </div>
 </footer>
 </div>
+<script type="application/json" id="gldata">[["Guardrail-driven automation","ca","An AI automation approach where every agent action is constrained by explicit, auditable rules — what the agent can and cannot do is visible, editable, and logged. The core campaignautomation.ai model."],["Trigger / action / impact (TAI)","ca","The accountability schema behind every automated action: the trigger (the condition that fired), the action (what the system did), and the impact (the measured, timestamped outcome). No action is logged without all three."],["Agentic marketing","ca","Marketing run by AI agents that plan, execute, and adjust campaigns within defined constraints — agents that make decisions, not just follow scripts."],["Campaign Automation Audit","ca","A human-led diagnostic, and the first sprint of every engagement, that reviews your accounts via read-only access to find PPC waste, SEO/PPC gaps, and automation opportunities, producing a 30-day plan."],["Automation Sprint","ca","A 2–4 week engagement that builds one specific campaign automation workflow, delivered with guardrail config, prompt packs, AGENTS.md, and training. You own the result."],["Campaign Strategy Portal","ca","A recurring subscription providing monthly AI-generated strategy, recommendations, assets, and agent instructions for your campaigns."],["Readiness Score","ca","A free, 13-question self-assessment that returns your automation-readiness score, tier, binding constraint, guardrail set, and a prioritised roadmap."],["Binding constraint","ca","The single readiness gap most limiting your ability to automate safely — what the Readiness Score surfaces as the thing to fix first."],["AGENTS.md","ca","A markdown file defining the rules, constraints, personas, and workflows for the AI agents operating on a campaign — the guardrail configuration document. Every sprint delivers one."],["Prompt pack","ca","A structured, reusable set of prompts for a specific campaign task — PPC briefs, SEO research, ad copy, lead scoring. Delivered with every sprint."],["Read-only access","ca","Connecting a tool so it can see and analyse your accounts but not change anything — the auditable, revocable starting point before any automation is allowed to act."],["Context window","llm","The token budget a model can attend to at once; the practical limit is always lower than the advertised number once system prompt, tools, and history are loaded."],["Effective context","llm","The portion of a context window where recall stays reliable — usually far shorter than the advertised length before accuracy decays."],["Context rot","llm","Gradual degradation in answer quality as a context window fills with low-signal tokens, even when nominally within limits."],["Lost in the middle","llm","The tendency of models to recall information at the start and end of a long context while missing material buried in the middle."],["Needle in a haystack","llm","A long-context eval that plants a fact in filler text to measure whether the model can retrieve it at a given depth and length."],["KV cache","llm","Cached key/value attention tensors from prior tokens, reused so generation doesn't recompute the whole sequence each step."],["Prompt caching","llm","Reusing a previously processed prompt prefix to cut latency and cost on repeated calls that share a stable preamble."],["Speculative decoding","llm","A small draft model proposes tokens that a larger model verifies in parallel, accelerating generation without changing output."],["Mixture of experts","llm","An architecture that routes each token to a sparse subset of expert subnetworks, raising capacity without proportional inference cost."],["Quantization","llm","Lowering weight precision (e.g. to INT8/INT4) to shrink memory and speed inference, trading a little accuracy for a lot of efficiency."],["Distillation","llm","Training a smaller, cheaper model to mimic the outputs of a larger one, capturing much of its behavior at a fraction of the cost."],["Logit bias","llm","A decode-time adjustment that raises or lowers the probability of specific tokens to force or forbid certain outputs."],["Test-time compute","llm","Spending more inference compute — longer reasoning, more samples — to improve answers without retraining the model."],["Reasoning model","llm","A model tuned to produce extended internal deliberation before answering, trading latency for accuracy on hard problems."],["Constitutional AI","llm","Anthropic's method of aligning a model to a written set of principles using AI feedback rather than only human labels."],["RLHF","llm","Reinforcement learning from human feedback — fine-tuning a model against human preference rankings to shape its behavior."],["DPO","llm","Direct preference optimization — aligning a model to preference data directly, skipping the separate reward model RLHF requires."],["Sycophancy","llm","A failure mode where a model agrees with the user's stated view over the correct answer to seem agreeable."],["Jagged frontier","llm","The uneven capability surface of LLMs — superhuman on some tasks, surprisingly weak on adjacent ones of similar apparent difficulty."],["Extrinsic hallucination","llm","Fabricated content that contradicts the source material provided, as opposed to contradicting the model's own prior statements."],["Intrinsic hallucination","llm","Output that is internally inconsistent or self-contradicting, independent of any external source."],["Grounding","llm","Constraining generation to supplied evidence so claims are traceable to a source rather than produced from parametric memory."],["Model collapse","llm","Quality degradation that compounds when models are trained on increasing amounts of AI-generated data."],["Time to first token","llm","Latency from request to the first streamed token — the metric users feel as responsiveness, distinct from total throughput."],["Tokens per second","llm","Sustained generation throughput; together with TTFT it defines the perceived speed of a model in production."],["Catastrophic forgetting","llm","When fine-tuning on new data erodes a model's prior capabilities, a key risk in continual training."],["Activation steering","llm","Nudging a model's behavior at inference by adding direction vectors to its internal activations rather than changing the prompt."],["Logprobs","llm","Per-token log probabilities exposed at decode time, useful for confidence scoring, routing, and structured-output validation."],["Temperature","llm","A sampling parameter scaling output randomness; low values make generation deterministic, high values diversify it."],["Top-p sampling","llm","Nucleus sampling — restricting next-token choice to the smallest set whose cumulative probability exceeds p."],["Context compaction","llm","Summarizing or pruning earlier turns to keep a long conversation inside the window without losing critical state."],["Embedding","llm","A dense vector that encodes the meaning of text so semantically similar items sit near each other in vector space."],["Latent space","llm","The high-dimensional representational space a model maps inputs into, where geometric proximity reflects learned similarity."],["Context engineering","prompt","The discipline of assembling exactly the right tokens — instructions, examples, retrieved data, tools — into the window for a given task."],["Few-shot prompting","prompt","Supplying a handful of worked examples in the prompt to demonstrate the desired format or reasoning before the real query."],["Chain-of-thought","prompt","Prompting a model to show intermediate reasoning steps, which improves accuracy on multi-step problems."],["Tree of thoughts","prompt","Exploring multiple reasoning branches and evaluating them, rather than committing to a single linear chain."],["Self-consistency","prompt","Sampling several reasoning paths for one question and taking the majority answer to reduce variance."],["ReAct","prompt","A pattern interleaving reasoning and tool actions so the model thinks, acts, observes, and repeats toward a goal."],["Prompt chaining","prompt","Decomposing a task into a pipeline of prompts where each step's output feeds the next, improving reliability over one mega-prompt."],["Meta-prompting","prompt","Using a model to generate or refine prompts for itself or another model."],["Prompt injection","prompt","An attack that smuggles instructions into model input to override the developer's intent; direct via user text, indirect via retrieved content."],["Indirect prompt injection","prompt","Injection delivered through content the model reads — a web page, email, or document — rather than typed by the user."],["Spotlighting","prompt","A defense that marks untrusted input (encoding or delimiters) so the model treats it as data, not instructions."],["Instruction hierarchy","prompt","An ordering that ranks system over developer over user over tool content, so higher-trust instructions win conflicts."],["Structured output","prompt","Constraining a model to emit a defined schema (often JSON) so downstream systems can parse it deterministically."],["Prefilling","prompt","Seeding the start of the assistant's reply to steer format or force it past a refusal boundary into a desired structure."],["Delimiter prompting","prompt","Using explicit markers (XML tags, fences) to separate instructions from data and reduce leakage between them."],["Prompt compression","prompt","Shrinking a prompt's token count while preserving signal, via summarization, pruning, or learned compressors."],["Golden prompt","prompt","A canonical, version-controlled prompt that serves as the reference baseline for regression testing changes."],["Rubric prompting","prompt","Giving the model an explicit scoring rubric so its self-evaluation or generation aligns to defined criteria."],["Negative prompting","prompt","Specifying what the output should not contain or do, used to suppress recurring failure patterns."],["Stop sequence","prompt","A string that halts generation when emitted, used to bound output and prevent runaway completions."],["Shot ordering effect","prompt","The sensitivity of few-shot performance to the order of examples, a subtle source of prompt instability."],["Agent","agent","A system where an LLM decides its own sequence of actions and tool calls to reach a goal, versus a fixed deterministic workflow."],["Agentic workflow","agent","A process that mixes deterministic steps with points where an agent reasons, chooses tools, or handles ambiguity."],["Workflow vs agent","agent","The core design distinction: workflows follow predefined paths reliably; agents reason about which path to take, trading control for flexibility."],["Tool use","agent","A model invoking external functions or APIs, with the host executing the call and returning results into the context."],["Planner-executor","agent","An architecture splitting a planning model that decomposes the goal from an executor that carries out each step."],["Orchestrator-worker","agent","A supervisor agent that delegates subtasks to specialized worker agents and assembles their results."],["Multi-agent system","agent","Multiple cooperating agents with distinct roles or tools, coordinated to solve tasks beyond a single agent's reliable scope."],["Agent handoff","agent","Transferring control and context from one agent to another better suited to the next stage of a task."],["Human-in-the-loop","agent","Requiring human approval at defined points before an agent's action takes effect."],["Human-on-the-loop","agent","Letting an agent act autonomously while a human monitors and can intervene, rather than approving each step."],["Guardrails","agent","Constraints — allowed tools, value ranges, content filters — that bound what an agent may do regardless of its reasoning."],["Bounded autonomy","agent","An operating model where an agent acts freely but only within explicitly defined limits, rather than asking permission for each move."],["Blast radius","agent","The maximum scope of damage an autonomous action could cause if it goes wrong — a key variable to cap when granting autonomy."],["Reversal token","agent","A captured handle that lets a system undo an agent's action, making otherwise risky autonomy acceptable because it's reversible."],["Idempotency","agent","A property where repeating the same action produces no additional effect, critical for safe retries in agentic systems."],["Dry-run mode","agent","Executing an agent's planned actions without committing them, so a human can review intended changes first."],["MCP","agent","Model Context Protocol — an open standard for connecting models to external tools and data through a uniform server interface."],["MCP server","agent","A process exposing tools, resources, or prompts to any MCP-compatible client, decoupling integrations from the model host."],["A2A","agent","Agent2Agent protocol — a standard letting agents on different platforms delegate tasks to each other without sharing internals."],["Agent identity","agent","A cryptographic identity scoped to a deployed agent — its own permissions, audit log, and revocation — so autonomous actions are attributable."],["Agent gateway","agent","A control layer that routes, authenticates, and rate-limits agent traffic across tools and other agents."],["Computer-using agent","agent","An agent (CUA) that operates software through its graphical interface — moving the cursor, clicking, typing — to automate systems that lack APIs."],["Browser agent","agent","An agent that navigates and acts on live web pages to complete tasks like research, form-filling, or booking."],["Agent memory","agent","Persisted state an agent carries across turns or sessions — episodic events, learned facts, or user preferences."],["Scratchpad","agent","A working area where an agent records intermediate reasoning or notes that aren't part of the final answer."],["Reflection","agent","An agent critiquing and revising its own output before finalizing, often catching errors a single pass would ship."],["Subagent","agent","A child agent spawned by a parent to handle a bounded subtask with its own context and tools."],["Generative orchestration","agent","An approach where the model dynamically selects and sequences tools at runtime instead of following an author's fixed routing."],["Goal drift","agent","An agent gradually optimizing for something other than the user's actual intent over a long autonomous run."],["Confused deputy","agent","A security flaw where an agent is tricked into misusing its legitimate permissions on an attacker's behalf."],["Tool poisoning","agent","Manipulating a tool's description or output to hijack an agent's behavior, a supply-chain risk in tool ecosystems."],["Durable execution","agent","Running long-lived agent processes that survive restarts and resume from checkpoints, enabling multi-day tasks."],["Trajectory","agent","The full sequence of an agent's reasoning, tool calls, and observations for one task — the unit evaluated in agent testing."],["RAG","rag","Retrieval-augmented generation — fetching relevant documents at query time and grounding the model's answer in them."],["Agentic RAG","rag","Retrieval driven by an agent that decides what to search, reformulates queries, and iterates rather than running one fixed lookup."],["GraphRAG","rag","Retrieval over a knowledge graph so answers can traverse relationships and summarize across linked entities, not just match passages."],["Hybrid search","rag","Combining dense vector similarity with sparse keyword scoring (BM25) to catch both semantic and exact-term matches."],["Re-ranking","rag","A second-stage model that reorders retrieved candidates by relevance, sharply improving precision over raw vector recall."],["Cross-encoder","rag","A reranker that jointly encodes query and document for accurate scoring, slower but more precise than bi-encoder retrieval."],["Semantic chunking","rag","Splitting documents at meaning boundaries rather than fixed lengths, so each chunk is a coherent retrievable unit."],["Contextual retrieval","rag","Prepending a short, chunk-specific summary before embedding so isolated chunks retain the document context they need to be found."],["Late chunking","rag","Embedding a long document first, then pooling into chunks, so each chunk's vector carries surrounding context."],["HyDE","rag","Hypothetical document embeddings — generating a fake ideal answer and retrieving against it to improve recall on sparse queries."],["Query expansion","rag","Broadening a query with synonyms or related terms to retrieve documents that don't share the original wording."],["Parent-document retrieval","rag","Matching on small chunks but returning their larger parent passage, balancing retrieval precision with answer completeness."],["Multi-vector retrieval","rag","Representing a document with several vectors (e.g. ColBERT token-level) for finer-grained matching than a single embedding."],["Metadata filtering","rag","Restricting retrieval by structured attributes (date, source, permissions) before or alongside semantic search."],["Vector database","rag","A store optimized for nearest-neighbor search over embeddings, the retrieval backbone of most RAG systems."],["HNSW","rag","Hierarchical navigable small world — a graph index enabling fast approximate nearest-neighbor search at scale."],["Embedding drift","rag","Degraded retrieval quality when the embedding model or data distribution changes but the index isn't rebuilt."],["Index lag","rag","The delay between source data changing and the retrieval index reflecting it, a common cause of stale RAG answers."],["Chunk overlap","rag","Repeating a span of text across adjacent chunks so context straddling a boundary isn't lost at retrieval."],["LLMOps","ops","The practice of deploying, monitoring, evaluating, and governing LLM applications in production."],["LLM-as-judge","ops","Using a model to score or compare outputs against criteria, scaling evaluation beyond what human review can cover."],["Golden dataset","ops","A curated set of inputs with known-good outputs used as the fixed benchmark for regression testing prompts and models."],["Eval harness","ops","The tooling that runs a system against test cases and computes metrics, enabling repeatable, automated evaluation."],["Faithfulness","ops","An eval metric measuring whether an answer's claims are actually supported by the retrieved or supplied context."],["Answer relevancy","ops","An eval metric for how well a response addresses the question asked, independent of factual grounding."],["Red-teaming","ops","Adversarially probing a system for unsafe, biased, or exploitable behavior before and after release."],["Regression suite","ops","An automated battery of cases run on every prompt or model change to catch quality regressions before shipping."],["Model routing","ops","Sending each request to the cheapest model that can handle it, escalating to stronger models only when needed."],["Model cascade","ops","A tiered routing strategy that tries small models first and falls back to larger ones on low confidence."],["Semantic caching","ops","Returning a cached answer when a new query is semantically close to a prior one, cutting cost and latency."],["Shadow deployment","ops","Running a new model on live traffic without serving its results, to compare against production before switching."],["Canary release","ops","Routing a small slice of traffic to a new version to detect problems before a full rollout."],["Containment rate","ops","The share of conversations an AI resolves end-to-end without human handoff — a core support-automation KPI."],["Deflection rate","ops","The proportion of inbound queries an automated system answers so they never reach a human agent."],["Cost per resolution","ops","The fully loaded cost for an AI system to resolve one case, the unit economic that justifies or kills a deployment."],["Trace","ops","A recorded end-to-end execution of a request across models and tools, the primary artifact for debugging LLM apps."],["Eval-driven development","ops","Building LLM features against a growing eval set first, so quality is measured continuously rather than judged by vibes."],["Acceptance rate","ops","The fraction of an agent's or assistant's suggestions that users actually accept, a practical quality signal."],["Claude Projects","tools","A Claude workspace that bundles instructions, files, and chat history so an ongoing body of work shares persistent context."],["Artifact","tools","A standalone output Claude generates in its own panel — a document, app, or chart — that can be iterated on separately from the chat."],["Claude Skills","tools","Packaged folders of instructions and resources Claude loads on demand to perform specialized tasks consistently."],["Computer Use","tools","Anthropic's capability letting Claude operate a computer's interface directly to complete multi-step software tasks."],["Extended thinking","tools","A mode where Claude reasons at length before answering, improving performance on complex problems."],["MCP (Anthropic)","tools","The open tool-connection standard Anthropic introduced, now adopted across major agent platforms for interoperable integrations."],["Agentforce","tools","Salesforce's platform for autonomous agents that reason and act across CRM data, the successor brand to Einstein Copilot."],["Atlas Reasoning Engine","tools","The reasoning layer underpinning Salesforce Agentforce that plans and executes multi-step actions over CRM context."],["Einstein Trust Layer","tools","Salesforce's governance wrapper for generative AI — grounding, masking, zero retention, and toxicity checks around model calls."],["Salesforce Data Cloud","tools","Salesforce's unified data platform that grounds Einstein and Agentforce in harmonized customer data."],["Prompt Builder","tools","Salesforce's tool for creating reusable, CRM-grounded prompt templates that staff can invoke in the flow of work."],["Breeze","tools","HubSpot's unified AI brand spanning Assistant, Agents, and Intelligence, which replaced its earlier Copilot naming."],["Breeze Agents","tools","HubSpot's autonomous AI workers — Customer, Prospecting, Data — that run multi-step tasks and bill against HubSpot Credits."],["Breeze Intelligence","tools","HubSpot's enrichment and buyer-intent layer that fills CRM gaps and identifies in-market accounts."],["Knowledge Vault","tools","HubSpot's scoped collection of files and CRM data that grounds a Breeze agent's answers in approved context."],["HubSpot Credits","tools","HubSpot's unified consumption currency for AI actions, drawn from a shared pool across all Breeze agents."],["Audit Cards","tools","HubSpot's timestamped records of each AI action — which fields changed and what data informed the decision — for compliance trails."],["ZoomInfo Copilot","tools","ZoomInfo's AI sales assistant that surfaces buying signals, builds buying groups, and drafts outreach over its B2B data."],["Copilot Workspace","tools","ZoomInfo's agentic layer where AI agents research accounts, draft follow-ups, and update CRM fields from one unified view."],["Buying Groups","tools","ZoomInfo Copilot's AI-assembled set of likely decision-makers in an account, mapped to the ideal customer profile."],["Copilot Studio","tools","Microsoft's low-code platform for building and governing AI agents and agentic workflows across the Microsoft ecosystem."],["Agent flows","tools","Copilot Studio's Power Automate-style flows that run deterministic actions, callable by an agent as a tool."],["Microsoft Agent 365","tools","Microsoft's governance plane for managing custom agents at scale — identity, security posture, and data classification."],["Microsoft Foundry","tools","Microsoft's developer platform for building, evaluating, and deploying AI models and multi-agent systems."],["AI Builder","tools","Power Platform's embedded AI for document processing, prediction, and extraction inside low-code flows and apps."],["Dataverse","tools","Microsoft's managed data backbone for Power Platform, where business data, rules, and agent grounding live."],["Gemini Enterprise Agent Platform","tools","Google Cloud's consolidated platform for building, governing, and scaling agents — the rebrand and evolution of Vertex AI."],["Agentspace","tools","Google's employee-facing enterprise search and agent workspace, since folded into the unified Gemini Enterprise product."],["Agent Development Kit","tools","Google's open, code-first framework (ADK) for building model-agnostic agents deployable to any container or Kubernetes."],["Agent Runtime","tools","Google's managed execution environment for deployed agents (formerly Agent Engine), supporting long-running operations."],["Model Garden","tools","Google's catalog of foundation models — Gemini, Claude, open models — selectable within the Agent Platform."],["Project Mariner","tools","Google's web-browsing agent that completes tasks by navigating and acting on live websites."],["Google Antigravity","tools","Google's app for steering and orchestrating multiple agents to execute end-to-end workflows like a product launch."],["Model Armor","tools","Google's safety layer defending agents against indirect prompt injection and other input-borne attacks."],["NotebookLM","tools","Google's source-grounded research tool that synthesizes uploaded documents and can generate audio overviews from them."],["Cursor","tools","An AI-native code editor whose agent and Composer features let it plan and apply multi-file changes across a repo."],["Cursor Rules","tools","Project-scoped instruction files that persistently steer Cursor's agent behavior and coding conventions."],["LangGraph","tools","A framework for building stateful, multi-step agent workflows as graphs with explicit control over loops and branches."],["CrewAI","tools","A framework for orchestrating role-based multi-agent teams that collaborate on a shared objective."],["LlamaIndex","tools","A data framework for connecting LLMs to private data through indexing, retrieval, and agentic query pipelines."],["n8n","tools","A source-available workflow automation tool with native AI-agent nodes, favored for self-hosted, developer-leaning automations."],["Make","tools","A visual automation platform that chains app actions into scenarios, with AI modules for generative steps."],["Zapier Agents","tools","Zapier's AI agents that act across its thousands of app connectors, extending its trigger-action automation into reasoning."],["Jasper","tools","An AI marketing platform with brand-governed content generation and agents that score and close AI-citation gaps."],["Clay","tools","A GTM data platform that orchestrates waterfall enrichment and AI research agents to build and qualify prospect lists."],["6sense Revenue AI","tools","An ABM platform using intent and predictive models to reveal in-market accounts and prioritize outreach."],["Eloqua Advanced Intelligence","tools","Oracle Eloqua's AI layer focused on send-time optimization, fatigue detection, and account engagement for enterprise B2B."],["Active Intelligence","tools","ActiveCampaign's AI brand spanning predictive sending, Win Probability scoring, and generative content assistance."],["iPaaS","auto","Integration platform as a service — hosted middleware for connecting apps and syncing data without custom infrastructure."],["RPA","auto","Robotic process automation — software bots that automate UI-driven, repetitive tasks across systems lacking APIs."],["Webhook","auto","An HTTP callback fired by an event so downstream systems react in real time instead of polling for changes."],["Polling","auto","Repeatedly checking a source for changes on a schedule — simpler than webhooks but laggier and heavier on rate limits."],["Idempotency key","auto","A unique token attached to a request so retries don't duplicate the effect — essential for reliable webhooks and payments."],["Reverse ETL","auto","Pushing modeled data from the warehouse back into operational tools like CRMs and ad platforms for activation."],["Change data capture","auto","Streaming row-level changes from a database as they happen, so downstream systems stay in near-real-time sync."],["Orchestration vs choreography","auto","Central control of a process by one coordinator versus distributed events where each service reacts independently."],["Dead letter queue","auto","A holding queue for messages that repeatedly fail processing, so failures are isolated rather than blocking the pipeline."],["Exponential backoff","auto","Retrying a failed call with progressively longer waits to avoid hammering a rate-limited or struggling service."],["Fan-out / fan-in","auto","Splitting one event into many parallel tasks, then aggregating their results back into a single downstream step."],["Citizen developer","auto","A non-engineer who builds automations or apps on low-code platforms, governed by IT rather than writing production code."],["Process mining","auto","Reconstructing how a business process actually runs from system logs to find bottlenecks and automation candidates."],["Self-healing automation","auto","An automation that adapts when an underlying interface or schema changes instead of breaking and requiring manual repair."],["Schema mapping","auto","Defining how fields in one system correspond to another so data transforms correctly as it moves between them."],["Saga pattern","auto","Coordinating a multi-step transaction across services with compensating actions to roll back if a later step fails."],["Lead scoring","mktg","Ranking leads by likelihood to convert using fit and behavior signals, so sales prioritizes the warmest first."],["Predictive lead scoring","mktg","Lead scoring where a model, not hand-tuned rules, learns which attributes and actions predict conversion from historical data."],["Negative scoring","mktg","Deducting points for disqualifying signals — student emails, competitor domains, unsubscribes — to keep scores honest."],["Lead grading","mktg","Scoring a lead's fit to the ideal customer profile separately from their behavioral engagement."],["Progressive profiling","mktg","Asking for a little more information on each successive form so you enrich a record without long, abandoned forms."],["Journey orchestration","mktg","Coordinating a contact's experience across channels in response to behavior, rather than running channels as silos."],["Lifecycle stage","mktg","A contact's position in the funnel (subscriber, lead, MQL, opportunity, customer) used to gate content and routing."],["MQL","mktg","Marketing-qualified lead — a contact whose engagement meets the threshold to be passed toward sales."],["PQL","mktg","Product-qualified lead — a user whose in-product behavior signals readiness to buy, central to product-led growth."],["Sourced vs influenced","mktg","Whether marketing created a pipeline opportunity outright or merely touched one sales originated — a perennial attribution fight."],["Send-time optimization","mktg","Choosing each recipient's individual best send moment from their past engagement to lift opens and clicks."],["Frequency capping","mktg","Limiting how many messages a contact receives in a window to protect engagement and deliverability."],["Fatigue detection","mktg","Flagging contacts showing declining engagement from over-messaging so cadence can be eased before they churn."],["Sunset policy","mktg","Rules that stop emailing chronically unengaged contacts to protect sender reputation and inbox placement."],["Win-back campaign","mktg","A targeted sequence aimed at re-engaging lapsed contacts or customers before suppressing or removing them."],["Suppression list","mktg","Addresses excluded from sending — unsubscribes, bounces, complainers — kept separate from active segments."],["Speed-to-lead","mktg","The elapsed time from inbound interest to first sales contact, where minutes materially change conversion odds."],["Content syndication","mktg","Distributing gated content through third-party networks to generate leads, often requiring tight quality filtering."],["Predictive audiences","mktg","Model-built segments of contacts predicted to take a target action, used to focus campaigns."],["Goal-based automation","mktg","An automation defined by the outcome to reach, letting the system choose steps, rather than a fixed linear flow."],["Performance Max","ads","Google's goal-based campaign type that auto-allocates across all its inventory using one asset group and conversion goals."],["Advantage+","ads","Meta's suite of automation that hands targeting, placement, and budget decisions to its models given a conversion objective."],["Smart Bidding","ads","Google's auction-time bidding that uses signals and ML to optimize toward a target cost or value goal."],["tROAS","ads","Target return on ad spend — a bid strategy that sets bids to hit a desired revenue-to-cost ratio."],["Value-based bidding","ads","Optimizing toward predicted conversion value rather than volume, so the system chases revenue, not just count."],["Portfolio bidding","ads","Treating multiple campaigns as one pool so the system shifts budget to wherever the target is most efficiently met."],["Budget pacing","ads","Controlling spend velocity across a flight so a budget isn't exhausted early or left unspent."],["Dynamic creative optimization","ads","Assembling and serving the best-performing combination of creative elements per impression in real time."],["Audience signal","ads","First-party data given to Performance Max as a hint, not a hard target, to seed its audience exploration."],["Customer Match","ads","Uploading hashed customer data to target or seed lookalikes inside an ad platform."],["Conversions API","ads","Server-side event sending (CAPI) that restores conversion signal lost to browser restrictions and ad blockers."],["SKAdNetwork","ads","Apple's privacy-preserving attribution framework (SKAN) that reports app-install conversions without user-level data."],["Privacy Sandbox","ads","Google's set of browser APIs meant to enable ad measurement and targeting without third-party cookies."],["Incrementality testing","ads","Measuring the conversions an ad actually caused versus those that would have happened anyway, via controlled holdouts."],["Geo holdout","ads","Withholding ads in matched regions to measure causal lift against treated regions — a clean-room-free incrementality method."],["Marketing mix modeling","ads","A top-down statistical model attributing outcomes to channels using aggregate spend and results, resilient to signal loss."],["MER","ads","Marketing efficiency ratio — total revenue over total marketing spend, a blended view immune to per-platform attribution gaming."],["Asset group","ads","The Performance Max unit bundling creative, audience signals, and a conversion goal in place of traditional ad groups."],["Creative fatigue","ads","Declining performance as an audience sees the same creative too often, the trigger for refresh in paid social."],["Autonomous bidding","ads","Optimization where the platform sets bids and budgets with minimal human input, contrasted with rules-based control."],["RevOps","sales","Revenue operations — unifying marketing, sales, and success operations under shared data, process, and accountability for revenue."],["Pipeline velocity","sales","How fast revenue moves through the pipeline, a function of deal count, value, win rate, and cycle length."],["ICP","sales","Ideal customer profile — the firmographic and behavioral definition of the accounts worth pursuing."],["Conversation intelligence","sales","Software that records, transcribes, and analyzes sales calls to surface coaching, risk, and deal signals."],["Win probability","sales","A model-derived likelihood that an open deal closes, used to prioritize effort and sharpen forecasts."],["Deal scoring","sales","Ranking open opportunities by health and close likelihood from engagement, stage, and historical patterns."],["Buying committee","sales","The full set of stakeholders involved in a B2B purchase, whose multithreading is required to close complex deals."],["Intent data","sales","Signals that an account is researching a category — first-party from your properties, third-party from external networks."],["Surge data","sales","Third-party intent indicating an account's research activity has spiked above its baseline for a topic."],["Waterfall enrichment","sales","Querying multiple data vendors in sequence until a field is filled, maximizing coverage and accuracy per record."],["Lead-to-account matching","sales","Associating inbound leads with their parent account so routing and ABM reflect company-level context."],["Multithreading","sales","Building relationships with several stakeholders in an account to de-risk a deal against a single champion leaving."],["Economic buyer","sales","The person with budget authority to approve a purchase, distinct from champions and end users."],["MEDDIC","sales","A B2B qualification framework — Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion."],["Net revenue retention","sales","Revenue retained from existing customers including expansion and churn; above 100% means growth without new logos."],["Slip rate","sales","The share of forecasted deals that push to a later period, a key signal of forecast reliability."],["Coverage ratio","sales","Open pipeline divided by the quota it must produce, used to judge whether a period is adequately covered."],["Signal-based selling","sales","Triggering outreach off real-time buying signals — job changes, funding, product usage — rather than static lists."],["Activity capture","sales","Automatically logging emails, calls, and meetings to the CRM so reps don't, keeping data complete without manual entry."],["CPQ","sales","Configure, price, quote — software that generates accurate, approved quotes for complex or variable product configurations."],["CDP","data","Customer data platform — software that unifies customer data from many sources into persistent profiles for activation."],["Composable CDP","data","A CDP architecture assembled from best-of-breed tools on top of the data warehouse rather than a packaged all-in-one."],["Identity resolution","data","Stitching disparate identifiers into one persistent profile so a customer is recognized across devices and channels."],["Deterministic matching","data","Linking records by exact shared identifiers like email or login, high-confidence but lower-coverage than probabilistic."],["Probabilistic matching","data","Inferring that records belong to the same person from behavioral and device similarity, broader but less certain."],["Golden record","data","The single, reconciled version of a customer's data merged from all sources, used as the system of reference."],["Identity graph","data","A map of all the identifiers known to belong to each person, the backbone of cross-channel recognition."],["Zero-party data","data","Information a customer intentionally and proactively shares — preferences, intentions — distinct from observed behavior."],["Data clean room","data","A secure environment where two parties match and analyze overlapping audiences without exposing raw user-level data."],["Semantic layer","data","A governed definitions layer that maps raw warehouse tables to business metrics so everyone computes them the same way."],["Householding","data","Grouping individual records into the household or account they belong to for relationship-level marketing."],["Consent string","data","An encoded record of a user's privacy choices (e.g. IAB TCF) passed downstream so vendors honor their preferences."],["UID2","data","Unified ID 2.0 — an open, email-based identifier built to support addressable advertising after third-party cookies."],["Signal loss","data","The erosion of tracking and attribution data from cookie deprecation, privacy rules, and platform restrictions."],["Server-side tagging","data","Routing tracking events through a first-party server instead of the browser to improve durability and control."],["Computed trait","data","A profile attribute derived from raw events — like lifetime value or last purchase date — recalculated as data updates."],["Audience activation","data","Pushing a built segment from the data platform into the channels where it can be targeted or suppressed."],["Match rate","data","The percentage of an uploaded audience a platform can recognize and act on — a gating factor for any data partnership."],["Data lineage","data","The traceable path of data from source through transformations to use, required for trust, debugging, and audits."],["Data residency","data","The requirement that data be stored and processed in a specific jurisdiction to satisfy legal or contractual rules."],["Multi-touch attribution","attr","Distributing conversion credit across the several touchpoints in a journey rather than crediting only one."],["Data-driven attribution","attr","Algorithmically assigning credit based on each touchpoint's measured marginal contribution, not a fixed rule."],["Position-based attribution","attr","A rule giving most credit to the first and last touch (U-shaped) with the remainder split among the middle."],["Incrementality","attr","The lift an activity causes above the baseline that would have happened anyway — the question attribution models can't answer alone."],["Holdout group","attr","An audience deliberately withheld from a treatment so its outcome is the control baseline for measuring lift."],["View-through conversion","attr","A conversion credited to an ad that was seen but not clicked, contentious because it's easy to over-claim."],["Assisted conversion","attr","A conversion in which a channel played a supporting role earlier in the path without being the final click."],["Attribution window","attr","The lookback period during which a prior touch can receive conversion credit; its length materially changes the picture."],["Triangulation","attr","Reconciling attribution, marketing mix modeling, and controlled experiments rather than trusting any single method."],["Unified measurement","attr","Blending MTA, MMM, and incrementality experiments into one framework to offset each method's blind spots."],["Self-reported attribution","attr","Asking buyers how they heard about you, used to capture dark-funnel influence that tracking misses."],["Dark funnel","attr","The untrackable influence — podcasts, communities, word of mouth — that shapes buying but never shows in analytics."],["LTV:CAC","attr","Lifetime value over customer acquisition cost, the ratio that judges whether growth spend is economically sound."],["Payback period","attr","How long it takes recovered margin from a customer to repay the cost of acquiring them."],["Multi-armed bandit","attr","An adaptive test that shifts traffic toward better-performing variants as it learns, trading clean inference for faster gains."],["Peeking problem","attr","Inflated false positives from checking an A/B test repeatedly and stopping when it looks significant."],["Minimum detectable effect","attr","The smallest true difference a test is powered to detect, which sets the sample size it needs."],["Bayesian testing","attr","Experiment analysis expressing results as probability distributions and credible intervals rather than fixed p-values."],["Halo effect","attr","Spillover where activity on one channel or product lifts another, complicating isolated channel measurement."],["Vanity metric","attr","A number that looks good but doesn't tie to a decision or outcome — impressions absent context, follower counts."],["Sender reputation","deliv","A mailbox provider's trust score for your sending identity, the dominant factor in whether mail reaches the inbox."],["IP warming","deliv","Gradually ramping volume on a new sending IP to build reputation before sending at full scale."],["SPF","deliv","An email authentication record listing which servers may send for a domain, checked to detect spoofing."],["DKIM","deliv","A cryptographic signature proving an email wasn't altered in transit and genuinely came from the signing domain."],["DMARC","deliv","A policy tying SPF and DKIM to the visible From domain and telling receivers what to do with failures."],["DMARC enforcement","deliv","Setting a DMARC policy to quarantine or reject so unauthenticated mail claiming your domain is blocked, not just monitored."],["BIMI","deliv","A standard that displays your verified brand logo beside authenticated mail, rewarding strong DMARC posture."],["Inbox placement rate","deliv","The share of sent mail that lands in the inbox rather than spam or oblivion — the metric delivery rate hides."],["Spam trap","deliv","An address that only exists to catch senders with poor list hygiene; hitting one signals bad acquisition practices."],["Seed list","deliv","A set of monitored test accounts across providers used to check where a campaign actually lands before or during send."],["Feedback loop","deliv","A provider service that reports when recipients mark your mail as spam so you can suppress those addresses."],["List hygiene","deliv","Routinely validating and pruning addresses to remove bounces, traps, and dead contacts that drag reputation down."],["Engagement-based sending","deliv","Prioritizing recent openers and clickers, since provider filtering increasingly weights recipient engagement."],["Mailbox Privacy Protection","deliv","Apple Mail's feature that pre-fetches images, inflating and distorting open rates and breaking open-based logic."],["One-click unsubscribe","deliv","The RFC 8058 header letting recipients opt out in a single action, now required by major bulk-sender rules."],["Complaint rate","deliv","The fraction of recipients marking mail as spam; staying under provider thresholds (around 0.3%) is mandatory."],["Subdomain segmentation","deliv","Sending different mail streams from separate subdomains so a problem in one doesn't poison the whole domain's reputation."],["Authentication alignment","deliv","DMARC's requirement that the SPF or DKIM domain match the visible From domain, not just pass on their own."],["AEO","aisearch","Answer engine optimization — structuring content so AI systems extract and surface it as a direct answer."],["GEO","aisearch","Generative engine optimization — shaping content and presence so LLMs cite your brand as a source in synthesized answers."],["LLMO","aisearch","Large language model optimization — one of several overlapping labels for getting cited inside AI-generated responses."],["Agentic engine optimization","aisearch","The emerging practice of optimizing so AI agents acting for users choose your product or content when they take action."],["AI Overviews","aisearch","Google's generative summaries atop search results that answer directly and depress click-through to ranked links."],["Position zero","aisearch","Visibility in the answer block above organic results — featured snippet or AI summary — often captured without a click."],["Share of voice (AI)","aisearch","How often your brand appears across AI answers for a prompt set — the AI-era analog of ranking, measured as a mention rate."],["AI citation","aisearch","An instance of a generative engine referencing your page as a source; citation, not ranking, is the GEO unit of success."],["Brand mention accuracy","aisearch","Whether AI systems describe your brand and attributes correctly, a reputation surface most teams don't yet monitor."],["llms.txt","aisearch","A proposed root-level file telling AI crawlers how to find and use a site's most relevant content for answers."],["Query fan-out","aisearch","An AI search technique that decomposes one question into many sub-queries, broadening which sources can be cited."],["Citation gap analysis","aisearch","Auditing which prompts your competitors get cited for and you don't, to target GEO content where it pays."],["Extractability","aisearch","How easily a machine can lift a clean, correct answer from your page — a function of structure, clarity, and directness."],["Schema markup","aisearch","Structured data that labels page content for machines, aiding interpretation though it doesn't guarantee citation."],["Topical authority","aisearch","Demonstrated depth across a subject that signals trustworthiness to both ranking and citation systems."],["E-E-A-T","aisearch","Google's quality lens — experience, expertise, authoritativeness, trustworthiness — that informs which content is surfaced."],["AI crawler","aisearch","Bots like GPTBot and ClaudeBot that fetch pages for training or retrieval; allowing or blocking them is now a strategic choice."],["Zero-click search","aisearch","A query resolved on the results surface itself, so the answer is consumed without a visit to any site."],["AI governance","gov","The policies, controls, and accountability structures for deploying AI responsibly and within legal and brand limits."],["Trust layer","gov","A wrapper around model calls enforcing grounding, data masking, retention rules, and content checks before output is used."],["Zero data retention","gov","A processing mode where prompts and outputs aren't stored by the provider, often required for regulated data."],["Model card","gov","A standardized disclosure of a model's intended use, training, limitations, and safety properties for reviewers."],["Explainability","gov","The degree to which an AI decision can be understood and justified, increasingly a compliance and trust requirement."],["EU AI Act","gov","The EU's risk-tiered AI regulation imposing obligations that scale with an application's potential for harm."],["CASL","gov","Canada's Anti-Spam Legislation — a strict consent-based regime for commercial electronic messages with significant penalties."],["Consent management platform","gov","Software that captures, stores, and enforces user privacy choices across a site's tags and data flows."],["Data processing agreement","gov","A contract governing how a vendor may process personal data on your behalf, mandatory under GDPR-style regimes."],["Sub-processor","gov","A third party a vendor uses to process your data, whose use must typically be disclosed and contractually controlled."],["Shadow AI","gov","Unsanctioned use of AI tools by employees outside IT governance, a growing source of data-leak and compliance risk."],["Agent sprawl","gov","The unmanaged proliferation of agents across an organization, creating visibility, cost, and security gaps."],["Least-privilege access","gov","Granting a system or agent only the minimum permissions its task requires, capping the damage of misuse or compromise."],["Sensitivity labels","gov","Classifications applied to data (e.g. via Microsoft Purview) that AI systems must honor when accessing or sharing it."],["Data loss prevention","gov","Controls that detect and block sensitive data from leaving approved boundaries, including through AI prompts."],["Content provenance","gov","Cryptographic metadata (e.g. C2PA) attesting how a piece of media was created or edited, used to fight synthetic fakes."],["Watermarking","gov","Embedding a detectable signal in AI-generated content to mark its origin, a partial defense against undisclosed synthesis."],["Indirect injection defense","gov","Safeguards that stop instructions hidden in retrieved content from hijacking an agent that reads it."],["Acceptable use policy","gov","The rules defining permitted and prohibited uses of an AI system, the contractual basis for enforcement."]]</script>
+<script>
+(function(){
+  var CATS=[["ca","Campaign Automation AI"],["llm","LLM Internals"],["prompt","Prompting & Context"],["agent","Agents & Agentic"],["rag","Retrieval & RAG"],["ops","AI Ops & Eval"],["tools","Platforms & Tools"],["auto","Automation & Orchestration"],["mktg","Marketing Automation"],["ads","Paid Media & Ads"],["sales","Sales & RevOps"],["data","Data, CDP & Identity"],["attr","Attribution & Measurement"],["deliv","Deliverability"],["aisearch","AI Search (AEO/GEO)"],["gov","Governance & Trust"]];
+  var CATMAP=Object.fromEntries(CATS);
+  var DATA=JSON.parse(document.getElementById('gldata').textContent).map(function(r){return {t:r[0],c:r[1],d:r[2]};});
+  function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
+  var active='all', query='';
+  var chips=document.getElementById('glchips'), list=document.getElementById('gl-list'), countEl=document.getElementById('glcount'), q=document.getElementById('glq');
+  function chip(k,label){var b=document.createElement('button');b.className='gl-chip'+(k==='all'?' on':'');b.textContent=label;b.dataset.k=k;b.addEventListener('click',function(){active=k;[].forEach.call(chips.children,function(c){c.classList.toggle('on',c.dataset.k===k);});render();});return b;}
+  chips.appendChild(chip('all','All ('+DATA.length+')'));
+  CATS.forEach(function(c){var n=DATA.filter(function(d){return d.c===c[0];}).length;if(n)chips.appendChild(chip(c[0],c[1]+' ('+n+')'));});
+  function esc(s){return s.replace(/[&<>]/g,function(m){return({'&':'&amp;','<':'&lt;','>':'&gt;'})[m];});}
+  function hl(s,ql){if(!ql)return esc(s);var i=s.toLowerCase().indexOf(ql);if(i<0)return esc(s);return esc(s.slice(0,i))+'<mark>'+esc(s.slice(i,i+ql.length))+'</mark>'+esc(s.slice(i+ql.length));}
+  function render(){
+    var ql=query.trim().toLowerCase();
+    var rows=DATA.filter(function(d){return (active==='all'||d.c===active)&&(!ql||d.t.toLowerCase().indexOf(ql)>=0||d.d.toLowerCase().indexOf(ql)>=0);});
+    countEl.innerHTML='<b>'+rows.length+'</b> / '+DATA.length+' terms';
+    if(!rows.length){list.innerHTML='<div class="gl-empty">No terms match "'+esc(query)+'". Try a broader word.</div>';return;}
+    var html='';
+    CATS.forEach(function(c){
+      var g=rows.filter(function(d){return d.c===c[0];});
+      if(!g.length)return;
+      g.sort(function(a,b){return a.t.localeCompare(b.t);});
+      html+='<div class="gl-group"><h2>'+c[1]+'</h2><span class="gc">'+g.length+'</span></div>';
+      g.forEach(function(d){
+        html+='<div class="gl-entry" id="'+slug(d.t)+'"><div class="gl-term">'+hl(d.t,ql)+'<span class="gl-tag">'+CATMAP[d.c]+'</span></div><div class="gl-def">'+hl(d.d,ql)+'</div></div>';
+      });
+    });
+    list.innerHTML=html;
+  }
+  var t;q.addEventListener('input',function(e){query=e.target.value;clearTimeout(t);t=setTimeout(render,80);});
+  render();
+  function jump(){if(location.hash){var el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el){document.querySelectorAll('.gl-entry.hit').forEach(function(x){x.classList.remove('hit');});el.classList.add('hit');el.scrollIntoView({block:'center'});}}}
+  jump();
+  window.addEventListener('hashchange',jump);
+})();
+</script>
 <script src="/js/main.js"></script>
 </body>
 </html>
