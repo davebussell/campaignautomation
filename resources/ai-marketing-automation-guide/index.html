@@ -21,14 +21,17 @@
   .guide-toc a{font-size:13px;color:var(--mist2);text-decoration:none;border-bottom:1px dotted var(--mist)}
   .guide-toc a:hover{color:var(--signal);border-bottom-color:var(--signal)}
   .article-section[id]{scroll-margin-top:84px}
-  .cmp-wrap{overflow-x:auto;margin:20px 0 6px;-webkit-overflow-scrolling:touch}
-  .cmp-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:680px}
-  .cmp-table th,.cmp-table td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
-  .cmp-table thead th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid rgba(200,241,53,.35);white-space:nowrap}
+  .cmp-wrap{overflow-x:auto;margin:22px 0 6px;-webkit-overflow-scrolling:touch}
+  /* on wide screens, let tables use more room than the prose column (gutter is ample) */
+  @media(min-width:1000px){.cmp-wrap{margin-left:-90px;margin-right:-90px}}
+  .cmp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:540px;table-layout:fixed}
+  .cmp-table th,.cmp-table td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.45;overflow-wrap:break-word;word-break:normal}
+  .cmp-table thead th{font-family:var(--f-mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid rgba(200,241,53,.35)}
   .cmp-table tbody tr:hover{background:rgba(255,255,255,.025)}
   .cmp-table td strong{color:var(--bone)}
   .cmp-table a{color:var(--signal);text-decoration:none}
-  .cmp-table .rowh{color:var(--bone);font-weight:600;white-space:nowrap}
+  .cmp-table .rowh{color:var(--bone);font-weight:600}
+  .cmp-table thead th:first-child,.cmp-table .rowh{width:22%}
   .cmp-cap{font-size:12px;color:var(--mist);margin:6px 0 0}
   .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:22px 0 6px}
   .flow-col{flex:1;min-width:140px;display:flex;flex-direction:column;gap:8px}
@@ -97,9 +100,9 @@
     <div class="nav-item">
       <a href="/solutions">Solutions</a>
       <div class="dropdown" role="group"><span class="dropdown-label">Offerings</span>
+        <a href="/solutions/campaign-audit">Automation Audit</a>
         <a href="/solutions/automation-sprints">Automation Sprints</a>
-        <a href="/solutions/campaign-audit">Campaign Audit</a>
-        <a href="/training">Training</a>
+        <a href="/training">Automation Training</a>
         <span class="dropdown-label" style="margin-top:12px;display:block">Who we help</span>
         <a href="/who-we-help/agencies">Agencies</a>
         <a href="/who-we-help/in-house">In-house teams</a>
@@ -135,9 +138,9 @@
 </nav>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
   <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Automation Audit</a>
     <a href="/solutions/automation-sprints">Automation Sprints</a>
-    <a href="/solutions/campaign-audit">Campaign Audit</a>
-    <a href="/training">Training</a>
+    <a href="/training">Automation Training</a>
     <a href="/who-we-help/agencies">Agencies</a>
     <a href="/who-we-help/in-house">In-house teams</a>
     <a href="/who-we-help/executives">Executives</a>
