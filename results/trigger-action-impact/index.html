@@ -67,7 +67,10 @@
 .sprint-callout .sprint-callout-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
 .sprint-callout h3{font-size:20px;color:var(--ink);margin-bottom:8px}
 .sprint-callout p{color:#555;margin-bottom:16px}
-@media(max-width:768px){.tai-layout{grid-template-columns:1fr}.tai-sidebar{display:none}}
+@media(max-width:900px){.tai-layout{grid-template-columns:1fr;gap:20px}.tai-sidebar{display:none}}
+@media(max-width:400px){.tai-layout{gap:16px}}
+.tai-article{min-width:0}
+.tai-article .terminal pre,.tai-article pre{overflow-x:auto;max-width:100%}
 .tai-article h3{font-size:18px;color:var(--ink);font-weight:700;margin:28px 0 10px}
 .tai-loop{margin:6px 0 22px}
 .tai-loop-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
@@ -261,7 +264,7 @@
           <div class="sprint-callout-label">Turn this into action</div>
           <h3>Build your first TAI-driven automation</h3>
           <p>The PPC Intelligence Sprint builds your full trigger library, guardrail config, and TAI activity log — deployed and handed over in 2–4 weeks.</p>
-          <a href="/solutions/sprints/ppc-intelligence" class="btn-primary" style="font-size:14px;padding:12px 28px">See the PPC Intelligence Sprint →</a>
+          <a href="/solutions/sprints/ppc-intelligence" class="btn-primary btn-sm">See the PPC Intelligence Sprint →</a>
         </div>
 
         <section id="impact" aria-labelledby="impact-heading">
@@ -313,7 +316,7 @@ ACT-014 | pause @ CPA>+22% | impact:  -6% CPA | verdict: marginal
             <div class="sprint-callout-label">Run the loop continuously</div>
             <h3 style="margin:0 0 8px">The Campaign Strategy Portal keeps the loop running</h3>
             <p>A sprint builds the loop for one workflow. The Strategy Portal runs it across your account every month: new triggers, refined thresholds, and a standing record of what each change delivered.</p>
-            <a href="/platform" class="btn-primary" style="font-size:14px;padding:12px 28px">See the Campaign Strategy Portal →</a>
+            <a href="/platform" class="btn-primary btn-sm">See the Campaign Strategy Portal →</a>
           </div>
         </section>
 
@@ -364,7 +367,7 @@ ACT-014 | pause @ CPA>+22% | impact:  -6% CPA | verdict: marginal
 
   <div class="tagline-footer snap-sec">
     <p class="reveal">Automation without accountability<br>is just noise.<br><span style="color:var(--signal)">Build it the right way.</span></p>
-    <a href="/tools/readiness-score" class="btn-primary reveal reveal-delay-2" style="margin-top:40px;font-size:15px;padding:16px 36px">Get your free Readiness Score →</a>
+    <a href="/tools/readiness-score" class="btn-primary reveal reveal-delay-2" style="margin-top:40px">Get your free Readiness Score →</a>
   </div>
 </main>
 <footer class="site-footer" role="contentinfo" aria-label="Site footer">

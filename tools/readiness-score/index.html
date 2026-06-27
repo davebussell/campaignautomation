@@ -24,6 +24,15 @@
 .rs-progress-bar{position:sticky;top:64px;z-index:50;background:rgba(13,13,13,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:10px 24px;margin:0 -24px}
 .rs-snap{min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;padding:60px 0 80px}
 .rs-snap-inner{max-width:640px}
+/* Horizontal gutter ladder — track the canonical 24→20@900→16@400 steps */
+@media(max-width:900px){
+  .tool-wrap{padding:0 20px 0}
+  .rs-progress-bar{padding:10px 20px;margin:0 -20px}
+}
+@media(max-width:400px){
+  .tool-wrap{padding:0 16px 0}
+  .rs-progress-bar{padding:10px 16px;margin:0 -16px}
+}
 .rs-intro-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center}
 .btn-tldr{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--border);color:var(--mist2);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;padding:12px 20px;cursor:pointer;border-radius:3px;transition:all .2s;text-decoration:none}
 .btn-tldr:hover{border-color:var(--signal);color:var(--bone)}

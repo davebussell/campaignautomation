@@ -141,6 +141,12 @@
   .gs-rec-card{grid-template-columns:1fr}
   .gs-rec-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
 }
+@media(max-width:900px){
+  .gs-wrap{padding-left:20px;padding-right:20px}
+}
+@media(max-width:400px){
+  .gs-wrap{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
@@ -249,7 +255,7 @@
       </div>
       <div class="gs-plan-items" id="gs-plan-items"></div>
       <div class="gs-plan-footer">
-        <a href="/request-proposals" id="gs-plan-cta" class="btn-primary" style="font-size:14px;padding:12px 24px">Request proposals on my plan →</a>
+        <a href="/request-proposals" id="gs-plan-cta" class="btn-primary btn-sm">Request proposals on my plan →</a>
         <button onclick="clearPlan()" style="background:none;border:none;font-family:var(--f-mono);font-size:11px;color:var(--mist);cursor:pointer;letter-spacing:.05em">Clear plan</button>
       </div>
     </div>
@@ -284,7 +290,7 @@
       <div class="signal-badge" style="margin-bottom:20px">Step 1 of 3</div>
       <h1>Every engagement starts<br>with your Readiness Score<span class="blink-dot" aria-hidden="true">.</span></h1>
       <p>The score tells us where you are, what's blocking you, and which service will move you fastest. It takes 4 minutes and it's free — no login required.</p>
-      <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
+      <a href="/tools/readiness-score" class="btn-primary">Take the free Readiness Score →</a>
       <p style="margin-top:14px"><span style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em">13 questions · 4 minutes · No login</span></p>
     </div>
 
@@ -316,7 +322,7 @@
     </div>
 
     <div style="text-align:center;margin-top:48px">
-      <a href="/tools/readiness-score" class="btn-primary" style="font-size:16px;padding:16px 32px">Take the free Readiness Score →</a>
+      <a href="/tools/readiness-score" class="btn-primary">Take the free Readiness Score →</a>
       <p style="font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.05em;margin-top:12px">Already have a score? <a href="/tools/readiness-score" style="color:var(--mist2);text-decoration:underline">View your scorecard →</a></p>
     </div>
 
