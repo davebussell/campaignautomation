@@ -2,8 +2,8 @@
 <html lang="en-CA">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Marketing Automation: A 2026 Buyer Guide | Campaign Automation AI</title>
-<meta name="description" content="A 2026 buyer guide to AI marketing automation: what it is, how bounded autonomy works, and how to choose tools that keep every action visible and reversible.">
+<title>AI Marketing Automation in 2026: Tools, Platforms &amp; the Buyer's Guide | Campaign Automation AI</title>
+<meta name="description" content="The 2026 landscape of AI marketing automation: every tool category and key player, whether to use Claude/Cursor + MCP or buy a platform, how to choose by business type, and how to connect ads, CRM and revenue data.">
 <link rel="canonical" href="https://campaignautomation.ai/resources/ai-marketing-automation-guide">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,14 +15,37 @@
 <meta name="twitter:title" content="AI Marketing Automation: A 2026 Buyer Guide">
 <meta name="twitter:description" content="What AI marketing automation actually is, and how to buy the kind that stays visible and reversible.">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+  .guide-toc{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 36px;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .guide-toc .toc-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist)}
+  .guide-toc a{font-size:13px;color:var(--mist2);text-decoration:none;border-bottom:1px dotted var(--mist)}
+  .guide-toc a:hover{color:var(--signal);border-bottom-color:var(--signal)}
+  .article-section[id]{scroll-margin-top:84px}
+  .cmp-wrap{overflow-x:auto;margin:20px 0 6px;-webkit-overflow-scrolling:touch}
+  .cmp-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:680px}
+  .cmp-table th,.cmp-table td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .cmp-table thead th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid rgba(200,241,53,.35);white-space:nowrap}
+  .cmp-table tbody tr:hover{background:rgba(255,255,255,.025)}
+  .cmp-table td strong{color:var(--bone)}
+  .cmp-table a{color:var(--signal);text-decoration:none}
+  .cmp-table .rowh{color:var(--bone);font-weight:600;white-space:nowrap}
+  .cmp-cap{font-size:12px;color:var(--mist);margin:6px 0 0}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:22px 0 6px}
+  .flow-col{flex:1;min-width:140px;display:flex;flex-direction:column;gap:8px}
+  .flow-box{background:var(--slate);border:1px solid var(--border);border-radius:6px;padding:11px 13px;font-size:12.5px;color:var(--mist2)}
+  .flow-box strong{display:block;color:var(--bone);font-size:13px;margin-bottom:2px}
+  .flow-box.hl{border-color:var(--signal)}
+  .flow-arrow{align-self:center;color:var(--signal);font-size:22px;line-height:1}
+  @media(max-width:640px){.flow-arrow{transform:rotate(90deg)}.flow-col{min-width:100%}}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Article",
-      "headline": "AI Marketing Automation: A 2026 Buyer Guide",
-      "description": "A 2026 buyer guide to AI marketing automation: what it is, how bounded autonomy works, and how to choose tools that keep every action visible and reversible.",
+      "headline": "AI Marketing Automation in 2026: Tools, Platforms & the Buyer's Guide",
+      "description": "The 2026 landscape of AI marketing automation: every tool category and key player, the build-vs-buy decision between Claude/Cursor + MCP and a platform, how to choose by business type, and how to connect ads, CRM and revenue data into governed automation.",
       "url": "https://campaignautomation.ai/resources/ai-marketing-automation-guide",
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -140,8 +163,18 @@
     <div class="page-hero" style="padding:24px 0 36px">
       <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Category education</div>
       <h1>AI marketing automation, explained for the buyer who has to own the outcome</h1>
-      <p>AI marketing automation is software that watches your accounts, decides what to change, and makes the change for you. The promise is real and the risk is specific: a system that can spend money and adjust campaigns on its own is only worth buying if you can see what it did and undo it. This guide frames the category the way a buyer who owns the outcome should — around bounded autonomy, where every automated action is a trigger you set, an action you can audit, and an impact you can measure.</p>
+      <p>AI marketing automation is software that watches your accounts, decides what to change, and makes the change for you. The promise is real and the risk is specific: a system that can spend money and adjust campaigns on its own is only worth buying if you can see what it did and undo it. This guide frames the category the way a buyer who owns the outcome should — around bounded autonomy, where every automated action is a trigger you set, an action you can audit, and an impact you can measure. It also maps the 2026 landscape: every category of tool, the key players, whether to just wire up Claude or Cursor yourself, and how to connect your CRM, ads and revenue data into something intelligent.</p>
     </div>
+
+    <nav class="guide-toc" aria-label="In this guide">
+      <span class="toc-label">In this guide</span>
+      <a href="#landscape">The market, by category</a>
+      <a href="#build-vs-buy">DIY agent vs. platform</a>
+      <a href="#players">Key players</a>
+      <a href="#by-business">By business type</a>
+      <a href="#stack">Connecting your stack</a>
+      <a href="#trends">Where it's heading</a>
+    </nav>
 
     <article class="article-wrap">
 <section class="article-section">
@@ -181,6 +214,129 @@
   </ul>
   <p>The right tool will welcome these questions, because answering them is the product. The wrong tool will reframe them as a lack of trust in the AI. Trust is the point — and trust comes from seeing the work, not from being told to relax.</p>
 </section>
+
+<section class="article-section" id="landscape">
+  <h2>The market, by category: how the tools actually break down</h2>
+  <p>The category is crowded and the labels overlap, but almost every tool falls into one of a handful of buckets. Sorting a vendor into the right bucket tells you more than its feature list, because it tells you what the tool is built to do, who owns the risk, and where the gaps will be. Here is the landscape as it stands in 2026.</p>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead><tr><th>Category</th><th>What it is</th><th>Examples</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td class="rowh">Native platform automation</td><td>Optimisation built into the ad platforms themselves</td><td><a href="/resources/glossary#smart-bidding" class="gloss-link">Smart Bidding</a> &amp; <a href="/resources/glossary#performance-max" class="gloss-link">Performance Max</a>, Meta <a href="/resources/glossary#advantage" class="gloss-link">Advantage+</a></td><td>Single-channel teams who want zero setup</td></tr>
+        <tr><td class="rowh">Rules engines &amp; point optimisers</td><td>Bolt-on tools that run the if-then rules you configure</td><td><a href="/resources/optmyzr-alternatives">Optmyzr</a>, Revealbot</td><td>Search-led teams who want explicit, controllable rules</td></tr>
+        <tr><td class="rowh">Autonomous ad platforms</td><td>AI that runs cross-channel bidding, budget &amp; audience on its own</td><td><a href="/resources/trapica-alternatives">Trapica</a>, <a href="/resources/albert-ai-alternatives">Albert by Zoomd</a>, <a href="/resources/madgicx-alternatives">Madgicx</a>, Skai, Smartly</td><td>Large multi-channel spend, hands-off</td></tr>
+        <tr><td class="rowh">Enterprise suite AI</td><td>AI embedded in the marketing/CRM suite you already pay for</td><td><a href="/resources/hubspot-ai-features">HubSpot Breeze</a>, <a href="/resources/salesforce-ai-features">Salesforce Agentforce</a>, <a href="/resources/marketo-ai-features">Adobe Marketo</a>, <a href="/resources/activecampaign-ai-features">ActiveCampaign</a></td><td>Teams standardised on one suite</td></tr>
+        <tr><td class="rowh">GTM &amp; RevOps intelligence</td><td>AI over sales, intent &amp; account data</td><td><a href="/resources/zoominfo-ai-features">ZoomInfo Copilot</a>, <a href="/resources/6sense-ai-features">6sense</a>, <a href="/resources/gong-ai-features">Gong</a>, <a href="/resources/clay-ai-features">Clay</a></td><td>Pipeline, ABM, outbound</td></tr>
+        <tr><td class="rowh">DIY agents (LLM + MCP)</td><td>A general model wired to your platforms through an <a href="/resources/glossary#mcp" class="gloss-link">MCP</a> server</td><td>Claude, Cursor or ChatGPT + Google Ads MCP; <a href="/resources/glossary#n8n" class="gloss-link">n8n</a> / Make / Zapier agents</td><td>Technical teams who want control and custom workflows</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="cmp-cap">The buckets aren't mutually exclusive — most real stacks mix several.</p>
+  <p>One question cuts across all six: can you see, bound, and reverse what it does? That is the <a href="/resources/execution-depth-spectrum" style="color:var(--signal)">execution-depth spectrum</a> — from tools that only recommend, to rules engines, to fully autonomous platforms, to autonomy that runs inside guardrails you set. Where a tool sits on that line matters more than which logo is on it.</p>
+</section>
+
+<section class="article-section" id="build-vs-buy">
+  <h2>Should you just use Claude, Cursor or ChatGPT with an MCP?</h2>
+  <p>This is the baseline question every team now asks, and it's a fair one. <strong>MCP</strong> — the Model Context Protocol — is an open standard that lets a general AI model connect to an outside system through a small server. Google has published an (experimental) Google Ads MCP server, and open-source community servers exist for Google Ads, GA4, Meta, HubSpot, Salesforce and more. So you can point Claude, Cursor or ChatGPT at your Google Ads account and have it pull live data, answer questions in plain language, build reports, flag wasted spend, and — with the right server and permissions — make changes. Setup is an afternoon, not a procurement cycle.</p>
+  <p>For analysis, reporting, and bounded one-off tasks, this is genuinely the fastest way to get value, and for many teams it's the right place to start. But "should I just use Claude instead of a platform?" has a real answer, and it turns on one thing: <strong>with the DIY route, you are the platform</strong>. MCP gives the model a connection. It does not give you spend caps, change ceilings, approval gates, a reversible action log, or the 2 a.m. safety that stops an agent emptying a budget on a tracking glitch — unless you build them. For pulling insights, that's fine. For letting an agent run live spend unattended, the guardrails <em>are</em> the product, and that's exactly the part you'd be hand-rolling.</p>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead><tr><th>&nbsp;</th><th>DIY agent (LLM + MCP)</th><th>Autonomous ad platform</th><th>Enterprise suite AI</th><th>Governed build (own it)</th></tr></thead>
+      <tbody>
+        <tr><td class="rowh">Time to first value</td><td>Hours</td><td>Days–weeks</td><td>Already in your suite</td><td>Weeks, built for you</td></tr>
+        <tr><td class="rowh">Control over the logic</td><td>Total — your prompts &amp; code</td><td>Low — vendor's model</td><td>Low–medium</td><td>High — yours, documented</td></tr>
+        <tr><td class="rowh">Cross-channel reach</td><td>Whatever you wire up</td><td>Broad, built-in</td><td>Within the suite</td><td>Whatever you connect</td></tr>
+        <tr><td class="rowh">Joins CRM + ads + revenue data</td><td>Yes, if you build it</td><td>Rarely</td><td>Within the suite only</td><td>Yes, by design</td></tr>
+        <tr><td class="rowh">Who owns the guardrails</td><td>You (from scratch)</td><td>The vendor (opaque)</td><td>The vendor (varies)</td><td>You (with help)</td></tr>
+        <tr><td class="rowh">Auditable &amp; reversible</td><td>Build it yourself</td><td>Often a black box</td><td>Varies by product</td><td>Trigger/Action/Impact, reversible</td></tr>
+        <tr><td class="rowh">Maintenance burden</td><td>On you</td><td>On the vendor</td><td>On the vendor</td><td>Handed over, you own it</td></tr>
+        <tr><td class="rowh">Best fit</td><td>Technical teams; analysis &amp; bounded tasks</td><td>Big, hands-off ad spend</td><td>Suite-standardised teams</td><td>Teams that want autonomy they own &amp; can audit</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The honest verdict for most marketers: start with the DIY agent for analysis and the low-risk, repetitive work — it's the fastest way to learn what "good" looks like — but the moment you want an agent to spend money unattended across channels, the real question stops being "which model" and becomes "<a href="/resources/bounded-autonomy-buyers-guide" style="color:var(--signal)">who builds and owns the guardrails</a>." That's true whether you DIY it, buy a platform, or have it built.</p>
+</section>
+
+<section class="article-section" id="players">
+  <h2>Key players worth knowing</h2>
+  <p>A map of the tools that come up most, by category, with our deeper analysis of each. None of these is "the answer" — the point is to recognise what each is built for so you can place it against your own situation.</p>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead><tr><th>Tool</th><th>Category</th><th>In one line</th><th>Deep dive</th></tr></thead>
+      <tbody>
+        <tr><td class="rowh">HubSpot Breeze</td><td>Enterprise suite</td><td>Assistant, agents &amp; enrichment across the Smart CRM</td><td><a href="/resources/hubspot-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">Salesforce (Einstein / Agentforce)</td><td>Enterprise suite</td><td>Autonomous agents acting across CRM data</td><td><a href="/resources/salesforce-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">Adobe Marketo Engage</td><td>Enterprise suite</td><td>Predictive audiences + agentic skills for B2B</td><td><a href="/resources/marketo-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">ActiveCampaign</td><td>Suite (SMB/mid)</td><td>Active Intelligence: predictive sending, win probability</td><td><a href="/resources/activecampaign-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">Oracle Eloqua</td><td>Enterprise suite</td><td>Deliberately governance-first AI for complex B2B</td><td><a href="/resources/oracle-eloqua-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">Trapica</td><td>Autonomous ads</td><td>Cross-channel audience, bid &amp; budget AI</td><td><a href="/resources/trapica-alternatives">Read →</a></td></tr>
+        <tr><td class="rowh">Albert by Zoomd</td><td>Autonomous ads</td><td>Enterprise autonomous campaign management</td><td><a href="/resources/albert-ai-alternatives">Read →</a></td></tr>
+        <tr><td class="rowh">Madgicx</td><td>Autonomous ads</td><td>Meta-first AI optimisation &amp; creative</td><td><a href="/resources/madgicx-alternatives">Read →</a></td></tr>
+        <tr><td class="rowh">Optmyzr</td><td>Rules engine</td><td>Controllable PPC rules &amp; scripts</td><td><a href="/resources/optmyzr-alternatives">Read →</a></td></tr>
+        <tr><td class="rowh">Skai</td><td>Autonomous ads (ent.)</td><td>Omnichannel &amp; retail-media optimisation</td><td><a href="/resources/campaignautomation-vs-skai">Read →</a></td></tr>
+        <tr><td class="rowh">ZoomInfo Copilot</td><td>GTM intelligence</td><td>Buying signals, groups &amp; outreach over B2B data</td><td><a href="/resources/zoominfo-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">6sense</td><td>GTM intelligence</td><td>Intent &amp; predictive ABM</td><td><a href="/resources/6sense-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">Gong</td><td>GTM intelligence</td><td>Conversation intelligence &amp; forecasting</td><td><a href="/resources/gong-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">Clay</td><td>GTM data</td><td>Agentic research &amp; waterfall enrichment</td><td><a href="/resources/clay-ai-features">Read →</a></td></tr>
+        <tr><td class="rowh">Claude / Cursor + MCP</td><td>DIY agents</td><td>General models wired to your platforms yourself</td><td><a href="#build-vs-buy">See above →</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>For the autonomous-ad field mapped by execution depth, see <a href="/resources/best-autonomous-ad-optimization-platforms" style="color:var(--signal)">the best autonomous ad optimisation platforms</a>; for the marketing suites' AI side by side, <a href="/resources/top-marketing-automation-ai-compared" style="color:var(--signal)">the top platforms compared</a>.</p>
+</section>
+
+<section class="article-section" id="by-business">
+  <h2>How to think it through, by business type</h2>
+  <p>The right move is rarely a tool — it's a sequence that fits your size, stack and risk. Find the row that sounds like you.</p>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead><tr><th>If you're…</th><th>Sensible starting point</th><th>Prioritise</th><th>Common mistake</th></tr></thead>
+      <tbody>
+        <tr><td class="rowh">A lean team / SMB</td><td>DIY agent (Claude + MCP) for analysis; native platform automation for execution</td><td>Speed; one or two high-leverage workflows</td><td>Buying an enterprise platform you can't staff. <a href="/resources/ai-marketing-automation-for-small-teams">More →</a></td></tr>
+        <tr><td class="rowh">Mid-market with a real stack</td><td>A focused platform or a governed build layered on what you already run</td><td>Joining ads + CRM data; one workflow at a time</td><td>Rip-and-replace migrations. <a href="/resources/add-ai-to-your-martech-stack">More →</a></td></tr>
+        <tr><td class="rowh">Enterprise on Salesforce / Marketo + RevOps</td><td>Your suite's AI for in-suite work, plus a governed layer to unify ads, revenue &amp; data</td><td>Data unification, governance, auditability</td><td>Trusting a black box with regulated spend. <a href="/resources/ai-marketing-automation-governance-checklist">More →</a></td></tr>
+        <tr><td class="rowh">An agency</td><td>A platform or build that's multi-tenant with per-client guardrails</td><td>Per-client controls, white-label, repeatable workflows</td><td>One config for every client. <a href="/paid-advertising-automation/agency-automation">More →</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="article-section" id="stack">
+  <h2>Connecting the stack: revenue, ads &amp; data</h2>
+  <p>If you run HubSpot, Marketo or Salesforce alongside Google and Meta, the hardest and highest-value problem isn't picking one tool — it's that your signal is scattered. Ad data sits in the ad platforms, customer data in the CRM, revenue in the CRM and finance, product usage somewhere else. An agent that only sees one of those optimises to a partial picture: a platform chasing conversions the CRM would tell you never became revenue.</p>
+  <p>The pattern winning in 2026 is <strong>warehouse-centric</strong>. Pull ads, CRM, revenue and product data into a warehouse (Snowflake, BigQuery) or a <a href="/resources/glossary#composable-cdp" class="gloss-link">composable CDP</a>, resolve identity, and treat that unified layer as the source of truth. <a href="/resources/glossary#reverse-etl" class="gloss-link">Reverse-ETL</a> tools (Hightouch, Census) push the modelled segments and signals back out to the ad platforms and CRM for activation. The CRM stops being the centre of gravity; the unified data layer is.</p>
+  <div class="flow" role="img" aria-label="Sources flow into a unified data layer, which a governed agent reads and acts on, sending actions back to channels">
+    <div class="flow-col">
+      <div class="flow-box"><strong>Your sources</strong>Ads · CRM · Revenue · Product</div>
+    </div>
+    <div class="flow-arrow" aria-hidden="true">→</div>
+    <div class="flow-col">
+      <div class="flow-box"><strong>Unified layer</strong>Warehouse / CDP — identity resolved, one source of truth</div>
+    </div>
+    <div class="flow-arrow" aria-hidden="true">→</div>
+    <div class="flow-col">
+      <div class="flow-box hl"><strong>Governed agent</strong>Reads the truth, acts inside guardrails, logs every move</div>
+    </div>
+    <div class="flow-arrow" aria-hidden="true">→</div>
+    <div class="flow-col">
+      <div class="flow-box"><strong>Channels</strong>Ads · Email · Sales — activated</div>
+    </div>
+  </div>
+  <p>That unified layer is what makes "intelligent" automation actually intelligent: an agent reading true revenue and customer data — not just platform conversions — can move pipeline instead of vanity metrics. It's also where MCP earns its keep, since a model can connect to the warehouse and the ad platforms at once. The catch is the same one as everywhere else: the more sources an agent can see and act on, the bigger its <a href="/resources/glossary#blast-radius" class="gloss-link">blast radius</a>. So the unification project and the guardrail project are one project — decide what it may touch, log every action as trigger/action/impact, keep it reversible. This is exactly the kind of system we build: connect the sources, then put a bounded-autonomy agent on top, so the intelligence is grounded in your real numbers and every action is auditable.</p>
+</section>
+
+<section class="article-section" id="trends">
+  <h2>Where this is heading</h2>
+  <ul>
+    <li><strong>MCP is standardising the plumbing.</strong> Connecting a model to Google Ads, GA4, HubSpot or your warehouse is becoming a config step, not a build — which quietly erodes the "integration moat" platforms used to charge for.</li>
+    <li><strong>Purpose-built agents are beating all-in-one bots.</strong> The pattern that's working is many small, high-trust agents embedded in real workflows, not one giant agent that claims to do everything.</li>
+    <li><strong>The assist → act line is the real frontier.</strong> Most tools assist (suggest); fewer act (execute). The ones that act <em>and can prove what they did</em> are the ones that earn trust.</li>
+    <li><strong>Governance is becoming the differentiator.</strong> As acting gets easy, the moat shifts to visibility, guardrails, and reversibility. The winners won't be the most autonomous — they'll be the most accountable.</li>
+    <li><strong>Data gravity is moving to the warehouse.</strong> The unified data layer, not the CRM, is increasingly the centre teams build on.</li>
+  </ul>
+  <p style="font-size:13px;color:var(--mist)">Last reviewed June 2026. This landscape moves fast — product names, capabilities and ownership shift quarterly; treat the specifics as a snapshot and confirm current details with each vendor.</p>
+</section>
+
 <section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
   <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
   <h3 style="margin:0 0 10px">See where your accounts actually stand</h3>
@@ -190,9 +346,10 @@
 <section class="article-section" style="border-bottom:none;margin-bottom:0">
   <h2 style="font-size:22px">Keep reading</h2>
   <ul>
-    <li><a href="/resources/what-is-bounded-autonomy" style="color:var(--signal)">What is bounded autonomy in marketing AI?</a> — the core idea, unpacked in full.</li>
-    <li><a href="/resources/black-box-ai-marketing-risks" style="color:var(--signal)">The black-box problem in AI marketing</a> — what goes wrong when you can't see or undo what the AI did.</li>
+    <li><a href="/resources/best-autonomous-ad-optimization-platforms" style="color:var(--signal)">The best autonomous ad optimisation platforms in 2026</a> — the field mapped by execution depth.</li>
+    <li><a href="/resources/top-marketing-automation-ai-compared" style="color:var(--signal)">Top marketing-automation platforms' AI, compared</a> — HubSpot, Salesforce, Marketo and more, side by side.</li>
     <li><a href="/resources/evaluate-ai-marketing-automation-platforms" style="color:var(--signal)">How to evaluate AI marketing automation platforms</a> — turn the demo checklist into a real buying process.</li>
+    <li><a href="/resources/bounded-autonomy-buyers-guide" style="color:var(--signal)">Why "autonomous" tools still need guardrails</a> — the buyer's lens for trusting any tool to act.</li>
   </ul>
 </section>
     </article>
