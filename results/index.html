@@ -45,7 +45,28 @@
   ]
 }
 </script>
-<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+<style>
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .rs-metrics{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .rs-metric{padding:30px 28px;border-right:1px solid var(--border)}
+  .rs-metric:last-child{border-right:none}
+  .rs-metric .n{font-family:var(--f-display);font-size:clamp(38px,5vw,58px);font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--bone)}
+  .rs-metric .n span{color:var(--signal)}
+  .rs-metric .l{font-size:14px;color:var(--mist2);line-height:1.55;margin:14px 0 0}
+  .rs-metric .how{display:inline-block;margin-top:14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:var(--signal);text-decoration:none}
+  .rs-metric .how:hover{text-decoration:underline}
+  @media(max-width:760px){.rs-metrics{grid-template-columns:1fr}.rs-metric{border-right:none;border-bottom:1px solid var(--border)}.rs-metric:last-child{border-bottom:none}}
+  .ts-table{border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  .ts-row{display:grid;grid-template-columns:2fr 1.3fr .85fr .8fr .95fr;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border);align-items:center}
+  .ts-row:last-child{border-bottom:none}
+  .ts-head{background:rgba(255,255,255,.03);font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+  .ts-row span{font-size:14px;color:var(--mist2)}
+  .ts-row .ts-task{color:var(--bone);font-weight:500}
+  .ts-saved{color:var(--signal)!important;font-weight:600;font-family:var(--f-mono)}
+  .ts-total{background:rgba(200,241,53,.05)}
+  .ts-total span{color:var(--bone);font-weight:600}
+  @media(max-width:680px){.ts-head{display:none}.ts-row{grid-template-columns:1fr;gap:5px;padding:14px 16px}.ts-row span{display:flex;justify-content:space-between;font-size:13px}.ts-row span[data-l]::before{content:attr(data-l) "\00a0";font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist)}}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -64,7 +85,6 @@
         <a href="/who-we-help/executives">Executives</a>
       </div>
     </div>
-    <a href="/training">Training</a>
     <a href="/results" aria-current="page">Results</a>
     <a href="/results/trigger-action-impact">Framework</a>
     <div class="nav-item">
@@ -113,13 +133,62 @@
 <main id="main-content">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span class="current">Results</span></nav>
 
-  <section class="page-hero snap-sec" aria-labelledby="results-heading">
+  <section class="page-hero" aria-labelledby="results-heading">
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Results</div>
     <h1 id="results-heading">What guardrail-driven automation actually delivers<span class="blink-dot" aria-hidden="true">.</span></h1>
-    <p class="lead">Real outcomes from AI automation built with accountability. Every number below is tied to a specific trigger, a specific action, and a logged impact.</p>
+    <p class="lead">Real outcomes from AI automation built with accountability. Every number below is an average across client engagements, measured against each account's own baseline — and tied to a specific trigger, action, and logged impact.</p>
   </section>
 
-  <section class="section snap-sec" id="client-outcomes" aria-labelledby="outcomes-heading">
+  <section class="section">
+    <div class="section-label reveal"><span class="label-signal">By the numbers</span></div>
+    <h2 class="display reveal" style="margin-bottom:10px">The averages we hold ourselves to.</h2>
+    <p class="lead reveal" style="margin-bottom:36px;max-width:640px">Three headline numbers from the paid-media workflows we automate most. Here's what each one means — and below, exactly where it comes from.</p>
+    <div class="rs-metrics reveal">
+      <div class="rs-metric">
+        <div class="n">13<span> hrs</span></div>
+        <div class="l">Saved per campaign deployment, on average.</div>
+        <a class="how" href="#time-saved">See the task breakdown →</a>
+      </div>
+      <div class="rs-metric">
+        <div class="n">27<span>%</span></div>
+        <div class="l">Average ROAS improvement after we automate budget, negative-keyword, and regional workflows.</div>
+        <a class="how" href="#time-saved">See the workflows →</a>
+      </div>
+      <div class="rs-metric">
+        <div class="n">+2<span> pts</span></div>
+        <div class="l">Quality Score gain (out of 10) from matching keyword, landing page, and ad language.</div>
+        <a class="how" href="#time-saved">See the workflows →</a>
+      </div>
+    </div>
+    <div class="reveal" style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:24px">
+      <strong style="display:block;margin-bottom:6px;font-size:15px">How we measure these numbers</strong>
+      <p style="font-size:14px;color:var(--mist2);margin:0;line-height:1.65">Each figure is an average from client engagements, measured against that account's own baseline before we started. The 13 hours is the time a team used to spend by hand on these workflows every cycle. The 27% is the median ROAS lift after automating the budget, negative-keyword, and regional work. The +2 is the average Quality Score gain after matching language across keyword, ad, and landing page. Your numbers depend on where you start.</p>
+    </div>
+  </section>
+
+  <section class="section" id="time-saved">
+    <div class="section-label reveal"><span class="label-signal">Where the gains come from</span></div>
+    <h2 class="display reveal" style="margin-bottom:12px">Where the 13 hours go — and the ROAS and Quality Score with them.</h2>
+    <p class="lead reveal" style="max-width:700px;margin-bottom:36px">The work a paid-media team does by hand on every deployment — who normally does it, how long it takes, and what comes back once we automate it. Each task maps to the metric it moves, so this one table backs all three numbers above. Medians across client engagements.</p>
+    <div class="ts-table reveal" role="table" aria-label="Time saved per campaign deployment">
+      <div class="ts-row ts-head" role="row">
+        <span role="columnheader">Task</span>
+        <span role="columnheader">Done by</span>
+        <span role="columnheader">Manual time</span>
+        <span role="columnheader">Saved</span>
+        <span role="columnheader">Drives</span>
+      </div>
+      <div class="ts-row" role="row"><span class="ts-task" data-l="Task" role="cell">Priority-setting &amp; brief</span><span data-l="Done by" role="cell">Marketing lead</span><span data-l="Manual time" role="cell">2.5 hrs</span><span class="ts-saved" data-l="Saved" role="cell">2 hrs</span><span data-l="Drives" role="cell">Focus</span></div>
+      <div class="ts-row" role="row"><span class="ts-task" data-l="Task" role="cell">Negative-keyword research</span><span data-l="Done by" role="cell">PPC analyst</span><span data-l="Manual time" role="cell">3 hrs</span><span class="ts-saved" data-l="Saved" role="cell">2.5 hrs</span><span data-l="Drives" role="cell">ROAS</span></div>
+      <div class="ts-row" role="row"><span class="ts-task" data-l="Task" role="cell">Budget aligned to performance</span><span data-l="Done by" role="cell">Media buyer</span><span data-l="Manual time" role="cell">2.5 hrs</span><span class="ts-saved" data-l="Saved" role="cell">2 hrs</span><span data-l="Drives" role="cell">ROAS</span></div>
+      <div class="ts-row" role="row"><span class="ts-task" data-l="Task" role="cell">Regional inventory matching</span><span data-l="Done by" role="cell">Media buyer</span><span data-l="Manual time" role="cell">2 hrs</span><span class="ts-saved" data-l="Saved" role="cell">1.5 hrs</span><span data-l="Drives" role="cell">ROAS</span></div>
+      <div class="ts-row" role="row"><span class="ts-task" data-l="Task" role="cell">Keyword, page &amp; ad language match</span><span data-l="Done by" role="cell">SEM + copywriter</span><span data-l="Manual time" role="cell">3 hrs</span><span class="ts-saved" data-l="Saved" role="cell">2.5 hrs</span><span data-l="Drives" role="cell">Quality Score</span></div>
+      <div class="ts-row" role="row"><span class="ts-task" data-l="Task" role="cell">Build, QA &amp; deploy</span><span data-l="Done by" role="cell">Campaign manager</span><span data-l="Manual time" role="cell">3.5 hrs</span><span class="ts-saved" data-l="Saved" role="cell">2.5 hrs</span><span data-l="Drives" role="cell">Speed</span></div>
+      <div class="ts-row ts-total" role="row"><span class="ts-task" data-l="Task" role="cell">Per deployment</span><span data-l="Done by" role="cell">Whole team</span><span data-l="Manual time" role="cell">16.5 hrs</span><span class="ts-saved" data-l="Saved" role="cell">13 hrs</span><span role="cell"></span></div>
+    </div>
+  </section>
+
+  <section class="section" id="client-outcomes" aria-labelledby="outcomes-heading">
     <div class="section-label reveal"><span class="label-signal">Client outcomes</span></div>
     <h2 class="display reveal" id="outcomes-heading" style="margin-bottom:48px">Four engagements. Four measurable results.</h2>
 
@@ -172,7 +241,7 @@
     </div>
   </section>
 
-  <section class="section bone snap-sec" aria-labelledby="tai-heading">
+  <section class="section bone" aria-labelledby="tai-heading">
     <div class="section-label reveal"><span class="label-signal">How it works</span></div>
     <h2 class="display reveal" id="tai-heading" style="margin-bottom:32px">Every result is auditable.</h2>
     <p class="lead reveal" style="max-width:640px;margin-bottom:48px">Each automated action in our system is logged with its trigger condition, the action taken, the guardrails respected, and the measured impact. Nothing runs in a black box.</p>
@@ -182,7 +251,7 @@
 trigger:   CPA exceeded threshold by 38% over 3-day window
 action:    Pause 4 underperforming ad groups, reallocate $1,200 budget
 guardrail: Daily spend cap ($3,000) respected · brand exclusions applied
-impact:    CPA -35% · 0 human approvals required · logged 2024-11-14</code></pre>
+impact:    CPA -35% · 0 human approvals required · logged 2026-06-15</code></pre>
     </div>
 
     <div class="grid-2" style="align-items:start;gap:48px">
@@ -199,8 +268,8 @@ impact:    CPA -35% · 0 human approvals required · logged 2024-11-14</code></p
     </div>
   </section>
 
-  <div class="tagline-footer snap-sec">
-    <p class="reveal">There is a smarter way to work.<br><span style="color:var(--signal)">Let us show you the way.</span></p>
+  <div class="tagline-footer">
+    <p class="reveal">Move quickly.<br><span style="color:var(--signal)">Do big things.</span></p>
     <a href="/tools/readiness-score" class="btn-primary reveal reveal-delay-2" style="margin-top:40px;font-size:15px;padding:16px 36px">Get your free Readiness Score →</a>
   </div>
 </main>
