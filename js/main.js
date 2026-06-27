@@ -69,6 +69,12 @@ if (!prefersReducedMotion) {
   });
 }
 
+/* Reset the exit animation on back/forward (bfcache) restore, otherwise the
+   restored page stays stuck at the animation's faded-out end state. */
+window.addEventListener('pageshow', () => {
+  document.body.style.animation = '';
+});
+
 /* ── WORD-BY-WORD HERO REVEAL ────────────────────────────── */
 const heroWords = document.querySelectorAll('.hero-word');
 if (heroWords.length) {
