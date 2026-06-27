@@ -39,8 +39,20 @@
 .audit-form input:focus,.audit-form select:focus,.audit-form textarea:focus{outline:2px solid var(--signal);outline-offset:1px;border-color:var(--signal)}
 .audit-form textarea{resize:vertical;min-height:68px}
 .audit-form .btn-primary{border:none;cursor:pointer;margin-top:4px;width:100%;text-align:center}
-.af-note{font-size:12px;color:var(--mist);margin:8px 0 0;line-height:1.5}
-@media(max-width:840px){.audit-hero{grid-template-columns:1fr;gap:30px;padding:32px 24px 44px}.audit-form-card{position:static}}
+.af-note{font-size:12px;color:var(--mist);margin:10px 0 0;line-height:1.5}
+.af-opt{color:var(--mist);font-weight:400;text-transform:none;letter-spacing:0}
+.afc-next{list-style:none;counter-reset:n;padding:16px 0 0;margin:16px 0 0;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:9px}
+.afc-next li{position:relative;padding-left:28px;font-size:12.5px;color:var(--mist2);line-height:1.45;counter-increment:n}
+.afc-next li::before{content:counter(n);position:absolute;left:0;top:-1px;width:19px;height:19px;border-radius:50%;background:var(--signal);color:var(--ink);font-family:var(--f-mono);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+/* trust strip */
+.audit-trust{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.ats-item{padding:18px 24px;border-right:1px solid var(--border);display:flex;gap:10px;align-items:flex-start}
+.ats-item:last-child{border-right:none}
+.ats-check{color:var(--signal);flex:0 0 auto;font-weight:700;line-height:1.4}
+.ats-t{font-size:13px;color:var(--bone);line-height:1.4}
+@media(max-width:840px){.audit-hero{grid-template-columns:1fr;gap:30px;padding:32px 24px 44px}.audit-form-card{position:static}
+  .audit-trust{grid-template-columns:1fr 1fr}.ats-item{border-bottom:1px solid var(--border)}.ats-item:nth-child(2n){border-right:none}}
+@media(max-width:480px){.audit-trust{grid-template-columns:1fr}.ats-item{border-right:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -160,21 +172,20 @@
 
   <section class="audit-hero reveal" id="request">
     <div class="ah-left">
-      <div class="signal-badge">Sprint 01 · Human-led · Read-only access</div>
-      <h1>Start with the Audit. Your first sprint<span class="blink-dot" aria-hidden="true">.</span></h1>
-      <p class="lead">We review your campaigns, show you where AI saves time and money, and hand you a prioritised 30-day plan. It's the first sprint of every engagement, and it scopes the rest.</p>
+      <div class="signal-badge">Sprint 01 · Human-led · Where every engagement begins</div>
+      <h1>Start with the Audit<span class="blink-dot" aria-hidden="true">.</span></h1>
+      <p class="lead">We review your campaigns, show you exactly where AI saves time and money, and hand you a prioritised 30-day plan you keep. It's the first sprint of every engagement — and it scopes the rest.</p>
       <ul class="ah-points">
         <li>PPC waste analysis and an SEO/PPC opportunity map</li>
         <li>An AI automation roadmap built for your stack, not a checklist</li>
-        <li>A 30-day action plan you keep, whether or not we work together</li>
+        <li>A 30-day action plan that's yours, whether or not we work together</li>
       </ul>
-      <p class="ah-trust">We work from read-only access to your key accounts. View access only, so we can look but never touch, and you can revoke it the moment we're done.</p>
     </div>
 
     <div class="ah-right">
       <div class="audit-form-card">
         <h2 class="afc-title">Request your Audit</h2>
-        <p class="afc-sub">Tell us where to look. We reply within 2 business days.</p>
+        <p class="afc-sub">Three quick fields. A real person replies within two business days.</p>
         <div class="audit-ctx" id="audit-ctx" hidden></div>
         <form name="audit-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="audit-form" class="audit-form">
           <input type="hidden" name="form-name" value="audit-request">
@@ -183,45 +194,35 @@
             <div class="af-field"><label for="af-name">Your name</label><input id="af-name" name="name" type="text" required autocomplete="name" placeholder="Jane Smith"></div>
             <div class="af-field"><label for="af-email">Work email</label><input id="af-email" name="email" type="email" required autocomplete="email" placeholder="jane@company.com"></div>
           </div>
-          <div class="af-row">
-            <div class="af-field"><label for="af-website">Website</label><input id="af-website" name="website" type="url" required placeholder="https://company.com"></div>
-            <div class="af-field"><label for="af-company">Company</label><input id="af-company" name="company" type="text" autocomplete="organization" placeholder="Acme Co."></div>
+          <div class="af-field af-full"><label for="af-website">Website</label><input id="af-website" name="website" type="url" required placeholder="https://company.com"></div>
+          <div class="af-field af-full"><label for="af-challenge">Biggest campaign challenge <span class="af-opt">(optional)</span></label>
+            <textarea id="af-challenge" name="challenge" rows="2" placeholder="e.g. We spend $40k/mo on Google Ads but can't tell what's actually working."></textarea>
           </div>
-          <div class="af-row">
-            <div class="af-field"><label for="af-industry">Industry</label>
-              <select id="af-industry" name="industry">
-                <option value="">Select…</option>
-                <option value="ecom">E-commerce / DTC</option>
-                <option value="b2b_saas">B2B SaaS</option>
-                <option value="b2b_svc">B2B Services / Consulting</option>
-                <option value="agency">Marketing Agency</option>
-                <option value="local">Local / Regional Business</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="af-field"><label for="af-stage">Company stage</label>
-              <select id="af-stage" name="stage">
-                <option value="">Select…</option>
-                <option value="pre">Pre-revenue / Seed</option>
-                <option value="early">Early ($0–$1M ARR)</option>
-                <option value="growth">Growth ($1M–$10M)</option>
-                <option value="scale">Scale ($10M+)</option>
-              </select>
-            </div>
-          </div>
-          <div class="af-field af-full"><label for="af-challenge">Your biggest campaign challenge</label>
-            <textarea id="af-challenge" name="challenge" rows="3" placeholder="e.g. We spend $40k/mo on Google Ads but can't tell what's actually working."></textarea>
-          </div>
+          <input type="hidden" name="company" id="af-company">
+          <input type="hidden" name="industry" id="af-industry">
+          <input type="hidden" name="stage" id="af-stage">
           <input type="hidden" name="service" value="audit">
           <input type="hidden" name="readiness_score" id="af-score">
           <input type="hidden" name="readiness_tier" id="af-tier">
           <input type="hidden" name="binding_constraint" id="af-constraint">
           <button type="submit" class="btn-primary">Request your Audit →</button>
           <p id="af-msg" role="status" aria-live="polite" style="display:none;margin:8px 0 0;font-size:13px"></p>
-          <p class="af-note">No spam, no hard sell. We review every request personally.</p>
+          <ol class="afc-next">
+            <li>We reply within 2 business days to scope it</li>
+            <li>You grant read-only access, or send exports</li>
+            <li>We walk you through the findings on a live call</li>
+          </ol>
+          <p class="af-note">No spam, no hard sell. Every request is reviewed personally.</p>
         </form>
       </div>
     </div>
+  </section>
+
+  <section class="audit-trust reveal" aria-label="What to expect">
+    <div class="ats-item"><span class="ats-check" aria-hidden="true">✓</span><span class="ats-t">Human-led review, not an automated scan</span></div>
+    <div class="ats-item"><span class="ats-check" aria-hidden="true">✓</span><span class="ats-t">Read-only access — we never change anything</span></div>
+    <div class="ats-item"><span class="ats-check" aria-hidden="true">✓</span><span class="ats-t">A 30-day plan that's yours to keep</span></div>
+    <div class="ats-item"><span class="ats-check" aria-hidden="true">✓</span><span class="ats-t">A real reply within 2 business days</span></div>
   </section>
 
   <section class="section bone reveal">
@@ -252,7 +253,7 @@
   <section class="section reveal">
     <h2>How it works</h2>
     <div class="grid-4">
-      <div class="step"><div class="step-num" aria-hidden="true">01</div><strong>Request the Audit</strong><p>Fill in the short form at the top of this page. If you took the Readiness Score, your answers are already carried over.</p></div>
+      <div class="step"><div class="step-num" aria-hidden="true">01</div><strong>Request the Audit</strong><p>Three fields at the top of this page. If you took the Readiness Score, the rest is already carried over.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">02</div><strong>Grant read-only access</strong><p>We reply within 2 business days and ask for view-only access to the accounts we need: Google Ads, GA4, Search Console. Read-only and revocable. Prefer to send exports? That works too.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">03</div><strong>We review your campaigns</strong><p>We run your data through our structured review and AI analysis, and build your roadmap and 30-day plan.</p></div>
       <div class="step"><div class="step-num" aria-hidden="true">04</div><strong>We walk you through it</strong><p>A live call with our team to review the findings, answer questions, and map your next step together.</p></div>
@@ -261,7 +262,7 @@
 
   <section class="section bone reveal">
     <h2>What we look at</h2>
-    <p>With read-only access we pull these data sources ourselves. View access only, so nothing in your accounts changes. Prefer to export them instead? That works for most of these too.</p>
+    <p>The data sources we review. With read-only access we pull them ourselves, or you can export them — either way, nothing in your accounts changes.</p>
     <div class="terminal" role="region" aria-label="Data sources we review">
       <div class="kw-row"><span>Google Ads campaign data</span><span class="signal-badge">Required</span></div>
       <div class="kw-row"><span>Search terms report (last 90 days)</span><span class="signal-badge">Required</span></div>
