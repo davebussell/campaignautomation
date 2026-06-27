@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google for Marketing &amp; Sales: Workspace, Gemini &amp; AppSheet | Campaign Automation AI</title>
+<meta name="description" content="Navigate Google's Gemini, AppSheet, Apps Script and BigQuery stack: what each tool does, how they connect to Ads, and which workflow to automate first.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/google-for-marketing-and-sales">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/google-for-marketing-and-sales">
+<meta property="og:title" content="Google for Marketing &amp; Sales: Workspace, Gemini &amp; AppSheet">
+<meta property="og:description" content="A practical map of Google's marketing and sales stack — Gemini in Workspace, AppSheet, Apps Script, BigQuery and the Google Ads MCP server — and how to prioritise.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google for Marketing &amp; Sales: Workspace, Gemini &amp; AppSheet">
+<meta name="twitter:description" content="A practical map of Google's marketing and sales stack — Gemini in Workspace, AppSheet, Apps Script, BigQuery and the Google Ads MCP server — and how to prioritise.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Google for Marketing & Sales: Workspace, Gemini & AppSheet",
+      "description": "Navigate Google's Gemini, AppSheet, Apps Script and BigQuery stack: what each tool does, how they connect to Ads, and which workflow to automate first.",
+      "url": "https://campaignautomation.ai/resources/google-for-marketing-and-sales",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/google-for-marketing-and-sales"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources/articles"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Google for Marketing & Sales",
+          "item": "https://campaignautomation.ai/resources/google-for-marketing-and-sales"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources/articles">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources/articles">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">Google for Marketing &amp; Sales</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Connecting systems</div>
+      <h1>Google for marketing &amp; sales: Workspace, Gemini &amp; AppSheet</h1>
+      <p>Google's marketing and sales stack now spans Gemini in Workspace, no-code AppSheet, Apps Script, BigQuery and an agent platform. Here's how the pieces fit, and how to pick the first workflow to automate.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+  <h2>What you're actually working with</h2>
+  <p>If you run marketing or sales on Google, your automation surface is wider than the Gmail-and-Sheets you use day to day. The current stack pairs AI assistance inside your familiar apps with a no-code app builder, a scripting layer, a data warehouse and an agent platform. Knowing which layer does what is the difference between a tidy automation and a tangle of half-connected scripts.</p>
+  <ul>
+    <li><strong>Gemini in Workspace</strong> — AI bundled into Business and Enterprise Workspace editions, with side-panel help in Gmail, Docs, Sheets, Slides and Drive, plus note-taking in Meet</li>
+    <li><strong>AppSheet</strong> — Google's no-code platform for building apps and automations on top of your data, now with Gemini in AppSheet</li>
+    <li><strong>Apps Script</strong> — a JavaScript platform with a browser editor whose code runs on Google's servers to automate and extend Workspace</li>
+    <li><strong>BigQuery</strong> — a serverless enterprise data warehouse, with Gemini in BigQuery adding a natural-language data canvas</li>
+    <li><strong>Gemini Enterprise Agent Platform</strong> — the evolution of Vertex AI, for building and governing enterprise agents</li>
+    <li><strong>Google Ads MCP server</strong> — an open-source bridge from the Google Ads API to LLMs like Gemini</li>
+  </ul>
+</section>
+
+<section class="article-section">
+  <h2>The rebrands you need to know in 2026</h2>
+  <p>Google reshuffled names through 2025 and 2026. Two changes matter most for navigating the docs. First, in January 2025 Google <strong>retired the standalone Gemini for Workspace add-on</strong> and bundled Gemini AI into Business and Enterprise Workspace editions — so the side-panel help and Meet note-taking come with your subscription rather than as a separate line item. Second, Google Cloud now calls the <strong>Gemini Enterprise Agent Platform the evolution of Vertex AI</strong>, where you build and govern enterprise agents using the Agent Development Kit, Model Garden and Agent Runtime; Google has said Vertex AI is being rebranded rather than retired, with existing workloads running unchanged. If you find an older tutorial referencing the "Gemini for Workspace add-on" or standalone "Vertex AI," you're reading something that pre-dates these moves — confirm against current docs before you build on it.</p>
+</section>
+
+<section class="article-section">
+  <h2>How the pieces connect</h2>
+  <p>The glue is the <a href="https://developers.googleblog.com/announcing-the-apps-script-connector-for-appsheet-automate-workflows-for-google-workspace/" style="color:var(--signal)">Apps Script connector for AppSheet</a>. It lets a no-code AppSheet automation call Apps Script functions, which in turn reach Workspace APIs — Gmail, Docs, Drive, Calendar — and BigQuery. That gives you a clean division of labour: AppSheet handles the interface and trigger, Apps Script does the work that needs code, and BigQuery holds the data that drives decisions.</p>
+  <p>Apps Script itself is the workhorse. It automates and extends Workspace through built-in services for Gmail, Calendar, Drive, Docs, Sheets, Forms and Slides, all from a browser editor with nothing to install. Think of it as the layer where a "when a lead form is submitted, draft a follow-up and log the deal" rule actually executes. For analytical work, <strong>Gemini in BigQuery</strong> adds a natural-language data canvas, data insights and SQL or Python code generation — so a marketer who isn't fluent in SQL can still interrogate the warehouse.</p>
+</section>
+
+<section class="article-section">
+  <h2>Connecting ads, CRM and revenue data</h2>
+  <p>Your campaign and revenue data only earns its keep when it lands somewhere you can query. BigQuery is that destination — a serverless warehouse where ad spend, pipeline and revenue can sit together. Once it's there, Gemini in BigQuery lets you ask questions in plain language instead of hand-writing every query.</p>
+  <p>On the ads side, the <strong>official open-source Google Ads MCP server</strong> bridges the Google Ads API to LLMs like Gemini. It exposes <strong>list_accessible_customers</strong>, <strong>search</strong> (using GAQL, the Google Ads Query Language) and <strong>get_resource_metadata</strong> — and critically, it is <strong>strictly read-only</strong>: it cannot modify bids, pause campaigns or create assets. That read-only posture is the right starting point: you let an assistant pull and interpret campaign data without granting it the ability to change bids or budgets. If you're new to the protocol, our <a href="/resources/glossary#mcp" style="color:var(--signal)">MCP glossary entry</a> explains how these connectors work.</p>
+</section>
+
+<section class="article-section">
+  <h2>Which workflow to automate first</h2>
+  <p>Don't start with the most exciting agent. Start with the workflow that is repetitive, well-bounded and already lives in your data. A practical sequence:</p>
+  <ul>
+    <li><strong>Read before you write</strong> — point the Google Ads MCP server at your campaigns first, since it can only read; you get value with zero risk of an unwanted change</li>
+    <li><strong>Automate the obvious handoff</strong> — use AppSheet plus the Apps Script connector for a single high-frequency task, like turning a form submission into a logged record and a drafted email</li>
+    <li><strong>Centralise the data</strong> — get ads, CRM and revenue into BigQuery so Gemini in BigQuery can answer questions across them</li>
+    <li><strong>Then reach for agents</strong> — only once the simpler layers are stable should you build on the Gemini Enterprise Agent Platform</li>
+  </ul>
+  <p>The rule of thumb: pick the workflow where you can describe the trigger and the action in one sentence, and where a mistake is easy to spot and undo. Our <a href="/resources/execution-depth-spectrum" style="color:var(--signal)">execution-depth spectrum</a> can help you place each candidate.</p>
+</section>
+
+<section class="article-section">
+  <h2>Governance and bounded autonomy</h2>
+  <p>The enemy isn't AI in your stack — it's the black box. Across these tools, design so that AI acts inside guardrails you set. The Google Ads MCP server models this well by being read-only by default; treat that as the template even where write access is available. Every automated action should be loggable as a <a href="/results/trigger-action-impact" style="color:var(--signal)">Trigger / Action / Impact</a> record — what fired it, what it did, and what changed — so you can audit and reverse it. When you do hand an agent on the Gemini Enterprise Agent Platform more authority, do it deliberately and within the governance controls it provides, following a <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven approach</a> rather than flipping everything on at once.</p>
+  <p>Keep the bounded-autonomy posture consistent: read-only and auditable first, reversible always, and never an action you can't explain after the fact. You own the system; the AI operates inside it.</p>
+  <p style="font-size:13px;color:var(--mist)">Last reviewed June 2026. Microsoft and Google rename and reshape these products frequently — confirm current capabilities and naming on the vendor's own docs.</p>
+</section>
+
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Not sure which Google workflow to automate first?</h3>
+  <p style="margin-bottom:20px">Before you wire up AppSheet, Apps Script or an MCP server, find out where you're actually ready to automate. The free Readiness Score takes 4 minutes, no login, and tells you which workflow to pick first.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+    <li><a href="/resources/connecting-your-marketing-stack" style="color:var(--signal)">Connecting your marketing stack</a> — the cross-platform view of wiring ads, CRM and data together</li>
+    <li><a href="/resources/microsoft-for-marketing-and-sales" style="color:var(--signal)">Microsoft for marketing & sales</a> — the same navigation guide for the Microsoft ecosystem, if you run both</li>
+    <li><a href="/resources/ai-account-access-marketing-tools" style="color:var(--signal)">AI account access for marketing tools</a> — how to scope read-only and auditable access before you grant more</li>
+  </ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

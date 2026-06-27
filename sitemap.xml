@@ -804,4 +804,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/connecting-your-marketing-stack/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/microsoft-for-marketing-and-sales/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>5</priority>
+  </url>
+  <url>
+    <loc>https://campaignautomation.ai/resources/google-for-marketing-and-sales/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>2</priority>
+  </url>
 </urlset>

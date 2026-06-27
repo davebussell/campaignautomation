@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connecting Your Marketing Stack: Ads, CRM &amp; Revenue Data | Campaign Automation AI</title>
+<meta name="description" content="A vendor-neutral 2026 guide to connect marketing ads CRM revenue data: MCP servers, iPaaS, the warehouse and reverse ETL, plus how to sequence and govern it.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/connecting-your-marketing-stack">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/connecting-your-marketing-stack">
+<meta property="og:title" content="Connecting Your Marketing Stack: Ads, CRM &amp; Revenue Data">
+<meta property="og:description" content="DIY MCP vs iPaaS vs warehouse + reverse ETL — how to choose, sequence a unification project, and keep one bad sync from fanning out across every tool.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Connecting Your Marketing Stack: Ads, CRM &amp; Revenue Data">
+<meta name="twitter:description" content="DIY MCP vs iPaaS vs warehouse + reverse ETL — how to choose, sequence a unification project, and keep one bad sync from fanning out across every tool.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Connecting Your Marketing Stack: Ads, CRM & Revenue Data",
+      "description": "A vendor-neutral 2026 guide to connect marketing ads CRM revenue data: MCP servers, iPaaS, the warehouse and reverse ETL, plus how to sequence and govern it.",
+      "url": "https://campaignautomation.ai/resources/connecting-your-marketing-stack",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/connecting-your-marketing-stack"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources/articles"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Connecting Your Marketing Stack",
+          "item": "https://campaignautomation.ai/resources/connecting-your-marketing-stack"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources/articles">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources/articles">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">Connecting Your Marketing Stack</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Connecting systems</div>
+      <h1>Connecting your marketing stack: ads, CRM &amp; revenue data</h1>
+      <p>Your ads, CRM, and revenue data live in different systems that don't agree with each other. In 2026 the fix is less about a master CRM and more about a warehouse you push from. Here's how to choose between the three connection patterns and sequence the work.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+<h2>The shift you're connecting around: the fall of CRM gravity</h2>
+<p>For years the CRM was treated as the organizational source of truth, because every team migrated its records into it. The 2026 <strong>"fall of CRM gravity"</strong> thesis argues that this is exactly why the CRM lost that status — and that the <strong>cloud data warehouse</strong> should replace it as the authoritative foundation. In a warehouse-centric architecture, changes are versioned, authored, timestamped, and reviewable through code-based deployments. The recommended flow is simple to state: <strong>extract</strong> raw data to the warehouse, <strong>transform</strong> it with dbt, then <strong>activate</strong> it via reverse ETL — so an audience is defined once and deployed everywhere, instead of being rebuilt by hand in each tool.</p>
+<p>If you only take one idea from this guide, take that sequence. It's the spine that the rest of the tooling hangs off, and it's how you stop maintaining five slightly different definitions of "active customer."</p>
+</section>
+
+<section class="article-section">
+<h2>The three ways to connect systems — and how to choose</h2>
+<p>There isn't one right architecture. There are three patterns, and most teams end up combining them. Pick based on whether your priority is <strong>AI access</strong>, <strong>app-to-app workflows</strong>, or <strong>a single source of truth</strong>.</p>
+<ul>
+<li><strong>DIY MCP servers</strong> — The <a href="/resources/glossary#mcp" style="color:var(--signal)">Model Context Protocol</a> gives AI agents a standardized bridge to read and (sometimes) act on a system. Google publishes an <strong>official Google Ads MCP server</strong>: written in Python, running over stdio transport, it lets MCP-compatible LLMs and agents like Gemini analyze and retrieve campaign data in natural language. Crucially it is <strong>strictly read-only</strong> — it exposes tools such as <em>list_accessible_customers</em>, <em>search</em> (GAQL queries for metrics, budgets, status), and <em>get_resource_metadata</em>, and explicitly cannot modify bids, pause campaigns, or create assets. Mutations stay in the REST/gRPC API. Best when you want AI to interrogate one platform safely.</li>
+<li><strong>iPaaS</strong> — <a href="/resources/glossary#ipaas" style="color:var(--signal)">Integration platforms</a> automate app-to-app workflows. <strong>n8n</strong> is open-source and self-hostable (Docker/on-prem or hosted cloud) with 500+ integrations and native AI-agent features — multi-model support, human-in-the-loop approvals, visible reasoning on the canvas, and MCP support — giving you data-sovereignty control that cloud-only tools don't. <strong>Workato</strong> is enterprise iPaaS built for governed, large-scale automation. Best when the job is moving events and records between operational apps.</li>
+<li><strong>Warehouse + reverse ETL</strong> — The pattern behind "fall of CRM gravity." You land data in a warehouse, model it, and sync it out. Best when ads, CRM, and revenue data disagree and you need one definition to win.</li>
+</ul>
+</section>
+
+<section class="article-section">
+<h2>The warehouse-centric stack, layer by layer</h2>
+<p>This is the pattern most likely to outlive a single tool, so it's worth knowing the pieces by name.</p>
+<ul>
+<li><strong>The warehouse</strong> — <strong>Snowflake</strong> and <strong>Google BigQuery</strong> are the common single sources of truth. BigQuery is fully managed and serverless, separating storage and compute, with built-in BigQuery ML and 2026 native AI features including Gemini-assisted natural-language SQL and integration with Google's Gemini Enterprise Agent Platform (the platform formerly known as Vertex AI). Snowflake's <strong>Cortex AI</strong> provides managed LLM, RAG, and text-to-SQL services (e.g. Cortex Analyst for natural-language querying) on governed warehouse data — enabling propensity modeling, churn prediction, and AI-assisted campaign decisioning where the data already lives.</li>
+<li><strong>Reverse ETL / activation</strong> — <a href="/resources/glossary#reverse-etl" style="color:var(--signal)">Reverse ETL</a> syncs data from the warehouse <em>out</em> to operational tools used by marketing, advertising, and sales — the opposite direction of traditional ETL. <strong>Fivetran Activations</strong> (formerly Census, acquired May 2025) moves modeled data into tools like Salesforce, Marketo, Zendesk, and HubSpot while keeping data in your warehouse by default, references dbt models (Core and Cloud) directly as activation sources, and supports near-real-time Live Syncs down to single-second latency (on its higher tiers) across 200+ destinations.</li>
+<li><strong>Composable CDP</strong> — A <a href="/resources/glossary#composable-cdp" style="color:var(--signal)">composable CDP</a> layers identity and audiences on the warehouse instead of copying data into a silo. <strong>Hightouch</strong> reads directly from Snowflake, Databricks, BigQuery, or Redshift, lets you define your own identity-resolution rules and own your identity graph, build audiences in Customer Studio (no-code), and sync to 300+ destinations. <strong>RudderStack</strong> similarly leaves data where it lives (Snowflake, BigQuery, Databricks, Redshift, Azure Synapse) and layers identity resolution (Unify/Profiles), no-code segmentation, and reverse ETL (Engage) on top.</li>
+</ul>
+<p>One consolidation note for your lock-in math: Fivetran acquired Census and rebranded it Fivetran Activations, then completed its merger with dbt Labs (June 1, 2026), bringing ingestion, transformation, and activation under one vendor.</p>
+</section>
+
+<section class="article-section">
+<h2>How to prioritise which workflow to connect first</h2>
+<p>Don't try to unify everything at once. Sequence by where the disagreement costs you most.</p>
+<ul>
+<li><strong>Start read-only.</strong> An official, read-only connection like the Google Ads MCP server lets agents analyze campaign data without any ability to change bids or pause campaigns. It's the lowest-blast-radius way to get AI value first, before you grant anything write access.</li>
+<li><strong>Pick the audience you rebuild most often.</strong> If your team manually recreates the same "high-value, at-risk" segment in three ad platforms, that's the first thing to model once in dbt and push via reverse ETL — define it once, deploy everywhere.</li>
+<li><strong>Automate the highest-friction app-to-app handoff next.</strong> The lead that takes too long to reach sales, the closed-won that never updates marketing — that's iPaaS territory, ideally with human-in-the-loop approval on the first runs.</li>
+</ul>
+</section>
+
+<section class="article-section">
+<h2>Governance: centralized truth means centralized blast radius</h2>
+<p>Warehouse-native architecture is powerful precisely because it centralizes truth — which is also its risk. A single bad model or sync can fan out errors across every connected tool at once. That's why code-reviewed, traceable changes matter: the dbt-based flow gives you deployments that are versioned, authored, timestamped, and reviewable, so a mistake is catchable before it ships.</p>
+<p>On the automation layer, <strong>Workato</strong> bakes role-based access control, audit trails, environment separation, approval flows, and encryption into its core — and in 2026 extends that same governance to AI agents ("Genies") via Enterprise MCP, where agents call pre-validated "Skills" rather than raw APIs to improve auditability and reduce blast radius. That pre-validated-skill idea is the same instinct behind <strong>bounded autonomy</strong> — our framing for how to adopt these tools safely: let AI act inside guardrails you set, keep early access read-only and auditable, and make every action reversible. Log what each automation does as a <a href="/results/trigger-action-impact" style="color:var(--signal)">Trigger, Action, and Impact</a> so you can see and undo it — and build your write paths on the <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrails</a> first, not after the first incident. The enemy is the black box, not the automation.</p>
+<p style="font-size:13px;color:var(--mist)">Last reviewed June 2026. Microsoft and Google rename and reshape these products frequently — confirm current capabilities and naming on the vendor's own docs.</p>
+</section>
+
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Not sure which workflow to connect first?</h3>
+  <p style="margin-bottom:20px">Before you stand up a warehouse or wire an MCP server, find out where your stack is actually ready to automate. The free Readiness Score points you at the first workflow worth connecting — 4 minutes, no login.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+<li><a href="/resources/google-for-marketing-and-sales" style="color:var(--signal)">Google for marketing and sales</a> — the platform-specific deep dive on the Google Ads MCP server, BigQuery, and Gemini.</li>
+<li><a href="/resources/microsoft-for-marketing-and-sales" style="color:var(--signal)">Microsoft for marketing and sales</a> — the companion guide for connecting Microsoft's ads, CRM, and AI layer.</li>
+<li><a href="/resources/ai-account-access-marketing-tools" style="color:var(--signal)">AI account access for marketing tools</a> — how to grant read-only-first access before any agent gets write permissions.</li>
+</ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

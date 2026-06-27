@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft for Marketing &amp; Sales: Copilot Studio, Power Platform &amp; Azure | Campaign Automation AI</title>
+<meta name="description" content="Navigate copilot studio power platform marketing sales: what each Microsoft layer does, how Dataverse connects them, and which workflow to automate first.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/microsoft-for-marketing-and-sales">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/microsoft-for-marketing-and-sales">
+<meta property="og:title" content="Microsoft for Marketing &amp; Sales: Copilot Studio, Power Platform &amp; Azure">
+<meta property="og:description" content="A practical map of Microsoft's marketing and sales stack — Copilot Studio, Power Platform, Dynamics 365, Foundry and Agent 365 — and how to prioritise your first automation.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft for Marketing &amp; Sales: Copilot Studio, Power Platform &amp; Azure">
+<meta name="twitter:description" content="A practical map of Microsoft's marketing and sales stack — Copilot Studio, Power Platform, Dynamics 365, Foundry and Agent 365 — and how to prioritise your first automation.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Microsoft for Marketing & Sales: Copilot Studio, Power Platform & Azure",
+      "description": "Navigate copilot studio power platform marketing sales: what each Microsoft layer does, how Dataverse connects them, and which workflow to automate first.",
+      "url": "https://campaignautomation.ai/resources/microsoft-for-marketing-and-sales",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/microsoft-for-marketing-and-sales"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources/articles"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Microsoft for Marketing & Sales",
+          "item": "https://campaignautomation.ai/resources/microsoft-for-marketing-and-sales"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Offers</span>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="/learn">Learn</a>
+      <div class="dropdown" role="group"><span class="dropdown-label">Knowledge pillars</span>
+        <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+        <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </div>
+    </div>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown" role="group">
+        <a href="/resources/articles">Articles</a>
+        <a href="/tools/readiness-score">Readiness Score ✦ Free</a>
+        <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/platform">Campaign Strategy Portal</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Learn</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section"><h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/training">Training</a>
+    <a href="/results">Results</a><a href="/results/trigger-action-impact">Framework</a>
+    <a href="/tools/readiness-score">Readiness Score</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources/articles">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">Microsoft for Marketing &amp; Sales</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Article · Connecting systems</div>
+      <h1>Microsoft for marketing &amp; sales: Copilot Studio, Power Platform &amp; Azure</h1>
+      <p>Microsoft sells you a stack, not a product. Here's how the layers — Copilot Studio, Power Platform, Dynamics 365, Foundry and Agent 365 — actually connect, and how a marketing or sales operator decides which workflow to automate first.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+<h2>The layers you're actually navigating</h2>
+<p>Microsoft doesn't hand marketing and sales teams one tool. It hands you a stack, and the names changed again in 2025-2026. Before you automate anything, know which layer does what — because picking the wrong layer for a job is how you end up rebuilding it.</p>
+<ul>
+<li><strong>Copilot Studio</strong> — a graphical, low-code tool for building <strong>agents</strong> and <strong>agent flows</strong>. It connects to data through prebuilt or custom connectors, and the agents you build can run on their own or <strong>extend Microsoft 365 Copilot</strong> with your enterprise data and scenarios.</li>
+<li><strong>Power Platform</strong> — the low-code foundation underneath: <strong>Power Apps</strong> (canvas and model-driven apps), <strong>Power Automate</strong> (cloud flows, RPA and process mining), and <strong>Dataverse</strong> (the shared data store).</li>
+<li><strong>Microsoft 365 Copilot</strong> — combines large language models with your own work data via the <strong>Microsoft Graph</strong>, grounding responses in emails, chats, files and calendars you're already permitted to see.</li>
+<li><strong>Dynamics 365</strong> — the CRM and marketing applications: <strong>Sales</strong> for AI-assisted selling and <strong>Customer Insights</strong> for unified profiles and real-time journeys.</li>
+<li><strong>Microsoft Foundry</strong> — the pro-developer Azure platform (formerly Azure AI Studio / Azure AI Foundry) for building, deploying and governing AI models and agents.</li>
+<li><strong>Microsoft Agent 365</strong> plus <strong>Purview</strong> — the control plane to observe, govern and secure every agent.</li>
+</ul>
+</section>
+<section class="article-section">
+<h2>Copilot Studio and Power Platform: your build layer</h2>
+<p>For most marketing and sales teams, the work starts in <strong>Copilot Studio</strong>. It's a low-code authoring surface where you build agents that answer questions, take actions, or hand off to a human. Its <strong>agent flows</strong> give you an authoring experience similar to Power Automate but native inside Copilot Studio — a flow can run standalone or be triggered from an agent as a tool, run prompts, call other agents, and include <strong>human review steps</strong>. That last detail matters: human-in-the-loop is built in, not bolted on.</p>
+<p>Underneath sits Power Platform. <strong>Power Apps</strong> lets you build in two styles — <strong>canvas apps</strong> (WYSIWYG layout control, connecting to 400+ data sources) and <strong>model-driven apps</strong> (which start from the Dataverse data model to generate forms and views), well suited to data-dense work like managing a sales process. <strong>Power Automate</strong> covers automation across cloud flows, <a href="/resources/glossary#rpa" style="color:var(--signal)">robotic process automation</a> and process mining; its desktop flows mimic a human's mouse and keyboard to automate web and desktop tasks, and cloud flows can trigger them remotely.</p>
+</section>
+<section class="article-section">
+<h2>How it connects to your CRM, ads and revenue data</h2>
+<p>The connective tissue is <strong>Dataverse</strong>. It's the default data store for Power Platform, letting you integrate data from multiple sources into a single store usable across <strong>Power Apps, Power Automate and Power BI</strong> — alongside data already in your Dynamics 365 applications. Critically, Dynamics 365 apps like Sales and Customer Service <strong>also run on Dataverse</strong>, so you can build Power Apps directly against core Dynamics business data without separate integration work.</p>
+<p>On the marketing side, <strong>Dynamics 365 Customer Insights</strong> brings data and engagement together. Its <strong>Data</strong> capability unifies disconnected CRM data into customer profiles and builds segments; its <strong>Journeys</strong> capability delivers personalized, real-time, multichannel journeys, with Copilot generating tailored content, emails and images. For analytics, <strong>Microsoft OneLake</strong> ships automatically with every Microsoft Fabric tenant as a single unified data lake — built on Azure Data Lake Storage, storing tables in open <strong>Delta Parquet or Iceberg</strong> formats, and using <strong>shortcuts</strong> so teams share data across workspaces without duplicating it.</p>
+<p>If you need pro-developer muscle, <strong>Microsoft Foundry</strong> supports multi-agent orchestration via C#/Python SDKs, a tool catalog, memory and <strong>Foundry IQ</strong> knowledge grounding. Foundry agents publish to Microsoft 365, Teams, BizChat or containers, and preview tools connect them to your data: <strong>Fabric IQ</strong> for Microsoft Fabric data and <strong>Work IQ</strong> for Microsoft 365 content.</p>
+</section>
+<section class="article-section">
+<h2>How to prioritise your first workflow</h2>
+<p>The stack is broad enough that the real risk is starting everywhere at once. Don't. Pick one workflow using three practical filters, and let the rest wait.</p>
+<ul>
+<li><strong>Where your data already lives</strong> — if your CRM is Dynamics 365, it's already on Dataverse, so a Power Apps or Copilot Studio agent against that data needs no integration. Start where the connection is free.</li>
+<li><strong>Where a human review step adds safety, not friction</strong> — Copilot Studio agent flows support human review natively. A first automation that drafts (a follow-up email, a segment, a journey) and waits for sign-off earns trust faster than one that sends.</li>
+<li><strong>Where the output is reversible and observable</strong> — favour read-and-draft over send-and-act for workflow one. You want to watch it run before you let it run alone.</li>
+</ul>
+<p>A strong first candidate for most teams: an agent that grounds in your own work data through <strong>Microsoft 365 Copilot</strong> — which only accesses data the user is already authorized to see under existing permissions — and drafts the repetitive thing a rep or marketer does daily. Low integration cost, built-in permission boundary, easy to audit.</p>
+</section>
+<section class="article-section">
+<h2>Governance: keep autonomy bounded</h2>
+<p>The enemy isn't AI acting — it's AI acting in a black box you can't see into. Microsoft's control plane is built for exactly this. <strong>Microsoft Agent 365</strong> (generally available May 1, 2026) lets you observe, govern and secure your agents: through the Agent 365 <strong>registry</strong> in the Microsoft 365 admin center, plus <strong>Microsoft Entra</strong> and <strong>Microsoft Purview</strong>, admins manage agent lifecycle, access control and compliance, while <strong>Microsoft Defender</strong> adds continuous threat detection. It governs agents from Copilot Studio, Dynamics 365 and partners through one registry.</p>
+<p><strong>Purview Data Lifecycle Management</strong> lets you define retention and deletion policies for human-to-agent and agent-to-human interactions, scoped by users and groups — extending established data-governance controls to agent activity. Use that surface to make every agent action legible: treat each one as a <a href="/results/trigger-action-impact" style="color:var(--signal)">Trigger / Action / Impact</a> record so you can see what fired, what it did, and what changed. That's the practice behind <a href="/ai-strategy/guardrail-driven-automation" style="color:var(--signal)">guardrail-driven automation</a> — autonomy inside limits you set, logged and reversible, read-only first.</p>
+<p style="font-size:13px;color:var(--mist)">Last reviewed June 2026. Microsoft and Google rename and reshape these products frequently — confirm current capabilities and naming on the vendor's own docs.</p>
+</section>
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Not sure which Microsoft workflow to automate first?</h3>
+  <p style="margin-bottom:20px">Before you open Copilot Studio, find out where your data, permissions and review steps actually line up. The free Readiness Score tells you which workflow is ready to automate first — 4 minutes, no login.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+<li><a href="/resources/connecting-your-marketing-stack" style="color:var(--signal)">Connecting your marketing stack</a> — the vendor-neutral version of how these data spines and connectors fit together.</li>
+<li><a href="/resources/google-for-marketing-and-sales" style="color:var(--signal)">Google for marketing & sales</a> — the parallel guide to Google's stack, for teams comparing ecosystems.</li>
+<li><a href="/resources/bounded-autonomy-buyers-guide" style="color:var(--signal)">The bounded-autonomy buyer's guide</a> — what to demand from any agent platform before you let it act.</li>
+</ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <a href="/tools/readiness-score" class="btn-primary" style="margin-top:24px">Get your free Readiness Score →</a>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Learn</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
