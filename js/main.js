@@ -371,6 +371,9 @@ const FUNNEL = {
     if (!solutionsLink) return;
     const dropdown = solutionsLink.closest('.nav-item')?.querySelector('.dropdown');
     if (!dropdown) return;
+    // Mega-menu Solutions panel (Offerings + Who-we-help) is a fixed, authored IA —
+    // do not overwrite it with tier-based sprint recommendations.
+    if (dropdown.classList.contains('mega')) return;
 
     function lnk(text, href, tag) {
       return `<a href="${href}">${text}${tag?`<span class="dd-tag">${tag}</span>`:''}</a>`;
