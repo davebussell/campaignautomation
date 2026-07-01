@@ -827,6 +827,19 @@ p.lead{font-size:clamp(16px,1.5vw,18px);color:var(--mist2);line-height:1.7;font-
 }
 .tagline-footer p span{color:var(--signal);text-shadow:0 0 40px var(--signal-glow)}
 
+/* ── KEEP-EXPLORING BRIDGE (related TOFU content above the footer CTA) ── */
+.tf-explore{max-width:920px;margin:44px auto 0;text-align:left;position:relative;z-index:1}
+.tf-explore-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.tf-explore-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.tf-explore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tf-explore-card{display:block;border:1px solid var(--border);border-radius:8px;padding:16px 18px;text-decoration:none;background:var(--slate);transition:border-color .15s,transform .15s;min-width:0}
+.tf-explore-card:hover{border-color:var(--signal-dim);transform:translateY(-2px)}
+.tf-x-cat{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:6px}
+.tf-x-title{display:block;font-size:13.5px;color:var(--bone);line-height:1.45;font-weight:500}
+.tf-explore-all{display:inline-block;margin-top:16px;font-family:var(--f-mono);font-size:12px;letter-spacing:.03em;color:var(--mist2);text-decoration:none}
+.tf-explore-all:hover{color:var(--signal)}
+@media(max-width:760px){.tf-explore-grid{grid-template-columns:1fr}}
+
 /* ── FOOTER ──────────────────────────────────────────────── */
 .site-footer{position:relative;background:var(--ink);border-top:1px solid var(--border);overflow:hidden}
 .site-footer::before{content:'';position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--signal),transparent);opacity:.55}
