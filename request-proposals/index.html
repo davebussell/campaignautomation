@@ -252,8 +252,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p><strong>How the specialist network works.</strong> Your request goes to our internal team first. When internal capacity is full or your sprint calls for a domain specialist — e-commerce tech stacks, enterprise CRM, specific ad platforms — we open the request to vetted third-party AI implementation specialists. All proposals follow the same delivery standard: full handover documentation, prompt packs, and a team training session.</p>
     </div>
 
+    <p id="pr-error" role="alert" aria-live="polite" hidden style="font-family:var(--f-mono);font-size:12.5px;color:#FFE200;margin:0 0 14px"></p>
     <button class="pr-submit-btn" id="pr-submit" onclick="submitProposal()">Submit Proposal Request →</button>
     <p class="pr-submit-note">We confirm receipt within 2 business hours · Minimum 3 proposals within 5 business days</p>
+
+    <!-- Static registration form so Netlify captures proposal-request submissions (posted via JS) -->
+    <form name="proposal-request" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+      <input type="hidden" name="form-name" value="proposal-request">
+      <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+      <input type="text" name="name"><input type="email" name="email"><input type="text" name="company">
+      <input type="text" name="sprints"><textarea name="goal"></textarea><input type="text" name="timeline">
+      <input type="text" name="budget"><input type="text" name="team"><input type="text" name="score">
+    </form>
 
   </div><!-- /pr-form-wrapper -->
 
@@ -348,6 +358,11 @@ const SPRINT_META_PAGE = {
   'seo-ppc':            { name: 'SEO/PPC Opportunity',            type: 'Integration',  price: '$5k–$10k · 2–3 weeks' },
   'event-followup':     { name: 'Event Follow-Up',                type: 'Integration',  price: '$5k–$10k · 2–3 weeks' },
   'lead-reactivation':  { name: 'Lead Reactivation',              type: 'Integration',  price: '$8k–$15k · 3–4 weeks' },
+  'found-data-access':  { name: 'Data Access & Dashboards',       type: 'Foundation',   price: 'Scoped · 2–3 weeks' },
+  'found-data-pipeline':{ name: 'Data Pipeline & Integration',    type: 'Foundation',   price: 'Scoped · 2–3 weeks' },
+  'found-measurement':  { name: 'Measurement Repair',             type: 'Foundation',   price: 'Scoped · 2–3 weeks' },
+  'found-structure':    { name: 'Campaign Structure & Naming',    type: 'Foundation',   price: 'Scoped · 2–3 weeks' },
+  'found-governance':   { name: 'Automation Governance',          type: 'Foundation',   price: 'Scoped · 2–3 weeks' },
 };
 
 const selected = new Set();
@@ -356,14 +371,18 @@ function renderPills() {
   const pillsEl = document.getElementById('pr-pills');
   const noSprints = document.getElementById('pr-no-sprints');
   const sprintList = document.getElementById('pr-sprint-list');
+  const addBtn = document.getElementById('pr-add-btn');
   pillsEl.innerHTML = '';
-  if (selected.size === 0) {
-    sprintList.style.display = 'none';
-    noSprints.removeAttribute('hidden');
-    return;
-  }
   sprintList.style.display = '';
   noSprints.setAttribute('hidden', '');
+  if (selected.size === 0) {
+    // Keep the picker visible — render the empty note as a row and invite adding.
+    pillsEl.innerHTML = '<div style="padding:16px;border:1px dashed var(--border);border-radius:4px;font-size:13.5px;color:var(--mist2);text-align:center;margin-bottom:10px">No sprints selected yet — add one below, or <a href="/solutions/automation-sprints" style="color:var(--signal);text-decoration:none">browse the catalog →</a></div>';
+    if (addBtn) addBtn.textContent = '+ Add a sprint';
+    renderAddOptions();
+    return;
+  }
+  if (addBtn) addBtn.textContent = '+ Add another sprint';
   selected.forEach(id => {
     const meta = SPRINT_META_PAGE[id] || { name: id, type: '', price: '' };
     const pill = document.createElement('div');
@@ -429,6 +448,13 @@ document.getElementById('pr-add-btn').addEventListener('click', () => {
   const params = new URLSearchParams(window.location.search);
   const sprints = (params.get('sprints') || params.get('sprint') || '').split(',').filter(Boolean);
   sprints.forEach(id => { if (SPRINT_META_PAGE[id]) selected.add(id); });
+  // No URL selection? Seed from the ca_plan cart built on the sprint catalog.
+  if (selected.size === 0) {
+    try {
+      const plan = JSON.parse(localStorage.getItem('ca_plan') || 'null');
+      if (plan && Array.isArray(plan.items)) plan.items.forEach(i => { if (i && SPRINT_META_PAGE[i.id]) selected.add(i.id); });
+    } catch(e) {}
+  }
   renderPills();
 
   // Pre-fill contact from localStorage
@@ -442,6 +468,16 @@ document.getElementById('pr-add-btn').addEventListener('click', () => {
   } catch(e) {}
 })();
 
+function prFail(msg, el) {
+  const err = document.getElementById('pr-error');
+  err.textContent = msg;
+  err.removeAttribute('hidden');
+  if (el) {
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    try { el.focus({ preventScroll: true }); } catch(e) { el.focus(); }
+  }
+}
+
 function submitProposal() {
   const name    = document.getElementById('pr-name').value.trim();
   const email   = document.getElementById('pr-email').value.trim();
@@ -449,13 +485,15 @@ function submitProposal() {
   const goal    = document.getElementById('pr-goal').value.trim();
   const timeline= document.getElementById('pr-timeline').value;
   const budget  = document.getElementById('pr-budget').value;
+  const err     = document.getElementById('pr-error');
+  err.setAttribute('hidden', '');
 
-  if (!name)    { document.getElementById('pr-name').focus();  return; }
-  if (!email || !email.includes('@')) { document.getElementById('pr-email').focus(); return; }
-  if (!goal)    { document.getElementById('pr-goal').focus();  return; }
-  if (!timeline){ document.getElementById('pr-timeline').focus(); return; }
-  if (!budget)  { document.getElementById('pr-budget').focus(); return; }
-  if (selected.size === 0) { document.getElementById('pr-no-sprints').removeAttribute('hidden'); return; }
+  if (selected.size === 0) { prFail('Select at least one sprint to request proposals on.', document.getElementById('pr-sprint-list')); return; }
+  if (!name)    { prFail('Add your name to continue.', document.getElementById('pr-name'));  return; }
+  if (!email || !email.includes('@')) { prFail('Add a valid email so we can send your proposals.', document.getElementById('pr-email')); return; }
+  if (!goal)    { prFail('Tell us what you want the sprint to deliver.', document.getElementById('pr-goal'));  return; }
+  if (!timeline){ prFail('Pick a timeline.', document.getElementById('pr-timeline')); return; }
+  if (!budget)  { prFail('Pick a budget range.', document.getElementById('pr-budget')); return; }
 
   const payload = {
     sprints: Array.from(selected).map(id => ({ id, ...SPRINT_META_PAGE[id] })),
@@ -466,22 +504,43 @@ function submitProposal() {
     submittedAt: new Date().toISOString(),
   };
 
-  console.log('Proposal request:', payload);
+  function showConfirm() {
+    // Persist submission context to localStorage
+    try {
+      const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
+      localStorage.setItem('ca_readiness', JSON.stringify({ ...existing, name, email, company, lastProposalRequest: payload.submittedAt }));
+    } catch(e) {}
+    // Mark proposal submitted in funnel tracker
+    if (typeof FUNNEL !== 'undefined') FUNNEL.setFlag('proposalSubmitted', true);
+    document.getElementById('pr-form-wrapper').style.display = 'none';
+    document.getElementById('pr-confirm').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-  // Persist submission context to localStorage
-  try {
-    const existing = JSON.parse(localStorage.getItem('ca_readiness') || '{}');
-    localStorage.setItem('ca_readiness', JSON.stringify({ ...existing, name, email, company, lastProposalRequest: payload.submittedAt }));
-  } catch(e) {}
-
-  // Mark proposal submitted in funnel tracker
-  if (typeof FUNNEL !== 'undefined') FUNNEL.setFlag('proposalSubmitted', true);
-
-  // Show confirmation
-  document.getElementById('pr-form-wrapper').style.display = 'none';
-  const confirm = document.getElementById('pr-confirm');
-  confirm.style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Submit to Netlify (registered via the hidden proposal-request form)
+  const btn = document.getElementById('pr-submit');
+  btn.disabled = true;
+  const body = new URLSearchParams({
+    'form-name': 'proposal-request',
+    name, email, company,
+    sprints: payload.sprints.map(s => s.name + ' [' + s.id + ']').join('; '),
+    goal, timeline, budget,
+    team: payload.team,
+    score: payload.score == null ? '' : String(payload.score)
+  }).toString();
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+    .then(showConfirm)
+    .catch(function () {
+      // Delivery fallback: open a pre-filled email so the request is never lost.
+      btn.disabled = false;
+      prFail('Something went wrong sending your request — opening an email draft instead.', btn);
+      const mail = 'mailto:hello@campaignautomation.ai'
+        + '?subject=' + encodeURIComponent('Proposal request — ' + payload.sprints.map(s => s.name).join(', '))
+        + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + company
+          + '\nSprints: ' + payload.sprints.map(s => s.name).join(', ') + '\nGoal: ' + goal
+          + '\nTimeline: ' + timeline + '\nBudget: ' + budget + '\nTeam: ' + payload.team);
+      window.location.href = mail;
+    });
 }
 </script>
 </body>

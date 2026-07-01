@@ -1407,10 +1407,11 @@ function showScorecard() {
       <button type="button" onclick="clearReadinessScore()" style="background:none;border:1px solid var(--border);color:var(--mist);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:7px 14px;cursor:pointer;border-radius:3px;transition:all .2s" onmouseover="this.style.borderColor='#888';this.style.color='var(--bone)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--mist)'">↺ Reset score</button>
     </div>
     <div class="score-reveal animate-in">
-      <div class="score-number">${finalScore}<span class="score-denom">/100</span></div>
+      <div class="score-number" role="img" aria-label="Your score: ${finalScore} out of 100"><span id="score-num" aria-hidden="true">${finalScore}</span><span class="score-denom" aria-hidden="true">/100</span></div>
       ${gated?`<p style="font-size:13px;color:#FFE200;font-family:var(--f-mono);margin-top:8px;letter-spacing:.04em">↑ Capped at 49 — democratization gate active</p>`:""}
       <div class="tier-badge">${tier.name} · ${tier.range}</div>
       <p class="score-tagline">${tier.desc}</p>
+      <a href="#intake-gate" class="btn-primary" style="margin-top:26px" onclick="var g=document.getElementById('intake-gate');if(g){g.scrollIntoView({behavior:REDUCED_MOTION?'auto':'smooth',block:'start'});return false;}">See your recommended next step ↓</a>
     </div>
 
     ${renderKeyFindings(shareData, pitch)}
@@ -1443,8 +1444,6 @@ function showScorecard() {
       <p style="font-size:14px;color:var(--mist2);margin-bottom:16px;line-height:1.5">These rules are calibrated to your score. Copy them into your automation documentation as a starting constraint layer.</p>
       ${guards.map(g=>`<div class="guardrail-item">${g}</div>`).join("")}
     </div>
-
-    ${renderShareResults()}
 
     <div class="intake-gate animate-in" id="intake-gate">
       <h3 id="intake-title">Ready to act on this?</h3>
@@ -1492,7 +1491,7 @@ function showScorecard() {
           <label for="i-service">I'm interested in</label>
           <select id="i-service">
             <option value="">Select a service…</option>
-            <option value="audit">Campaign Automation Audit — free</option>
+            <option value="audit">Campaign Automation Audit — the first sprint</option>
             <option value="sprint">Automation Sprint — focused 2-week build</option>
             <option value="portal">Campaign Strategy Portal — monthly intelligence layer</option>
             <option value="unsure">Not sure yet — let's talk</option>
@@ -1502,6 +1501,7 @@ function showScorecard() {
           <label for="i-challenge">Biggest campaign challenge right now</label>
           <textarea id="i-challenge" placeholder="e.g. We're spending $40k/mo on Google Ads but can't tell what's actually working…"></textarea>
         </div>
+        <p id="intake-error" role="alert" aria-live="polite" hidden style="font-family:var(--f-mono);font-size:12.5px;color:#FFE200;margin:0 0 12px"></p>
         <button type="button" class="intake-submit" id="intake-submit-btn" onclick="submitIntake()">Submit request →</button>
         <p class="intake-note">No spam. No hard sell. We review every submission and respond with a concrete next step.</p>
       </div>
@@ -1516,7 +1516,22 @@ function showScorecard() {
             <div class="next-step-item"><span class="ns-num">02</span><span>We send a short email with our recommended starting point and why</span></div>
             <div class="next-step-item"><span class="ns-num">03</span><span>If it's a fit, we schedule a 30-minute scoping call — no pitch, just alignment</span></div>
           </div>
+          <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+            <a href="/get-started" class="btn-primary">Build your sprint plan →</a>
+            <a href="/solutions/campaign-audit" class="btn-ghost">Start with the Audit →</a>
+          </div>
         </div>
+      </div>
+    </div>
+
+    ${renderShareResults()}
+
+    <div class="score-cta">
+      <h3>Where to go from here</h3>
+      <p>Your score is saved on this device — use it to plan the right first build.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="/get-started" class="btn-primary">Build your sprint plan →</a>
+        <a href="/solutions/campaign-audit" class="btn-ghost">Start with the Audit →</a>
       </div>
     </div>
 
@@ -1539,6 +1554,16 @@ function showScorecard() {
 
   setTimeout(()=>{
     sc.querySelectorAll(".dim-bar-fill").forEach(b=>{ b.style.width=b.dataset.w; });
+    // Count the score up 0 → final (the funnel's emotional peak); static under reduced motion.
+    const numEl = document.getElementById('score-num');
+    if (numEl && !REDUCED_MOTION && finalScore > 0) {
+      const t0 = performance.now(), dur = 1200;
+      (function tick(now){
+        const p = Math.min((now - t0) / dur, 1);
+        numEl.textContent = Math.round(finalScore * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    }
     applyRefParam();
     updateIntakeForTier(finalScore);
     initWeightSim(dims, finalScore, gated);
@@ -1616,9 +1641,17 @@ function submitIntake() {
   const service = document.getElementById("i-service").value;
   const challenge = document.getElementById("i-challenge").value.trim();
 
-  if(!name){ document.getElementById("i-name").focus(); return; }
-  if(!email || !email.includes("@")){ document.getElementById("i-email").focus(); return; }
-  if(!service){ document.getElementById("i-service").focus(); return; }
+  const iErr = document.getElementById("intake-error");
+  function intakeFail(msg, el){
+    if (iErr) { iErr.textContent = msg; iErr.removeAttribute("hidden"); }
+    el.setAttribute("aria-invalid", "true");
+    el.scrollIntoView({ block: "center", behavior: REDUCED_MOTION ? "auto" : "smooth" });
+    try { el.focus({ preventScroll: true }); } catch(e) { el.focus(); }
+  }
+  if (iErr) iErr.setAttribute("hidden", "");
+  if(!name){ intakeFail("Add your name to continue.", document.getElementById("i-name")); return; }
+  if(!email || !email.includes("@")){ intakeFail("Add a valid work email so we can respond.", document.getElementById("i-email")); return; }
+  if(!service){ intakeFail("Choose the service you're interested in.", document.getElementById("i-service")); return; }
 
   const industry = document.getElementById("i-industry")?.value || '';
   const stage = document.getElementById("i-stage")?.value || '';

@@ -341,10 +341,11 @@ const FUNNEL = {
 
   /* 1 — Single, state-aware nav CTA:
          no score  → "Get your free score →"  (Readiness Score — the free hook)
-         has score → "Plan your sprints →"    (Automation Sprints — the next step) */
+         has score → the funnel stage's next action (FUNNEL.cta drives label+href,
+                     so post-score visitors advance: prep → sprints → proposals) */
   const navCta = hasScore
-    ? { href: '/solutions/automation-sprints', text: 'Plan your sprints →' }
-    : { href: '/tools/readiness-score',        text: 'Get your free score →' };
+    ? { href: ctaCfg.href, text: ctaCfg.label }
+    : { href: '/tools/readiness-score', text: 'Get your free score →' };
 
   document.querySelectorAll('a.nav-cta, a.nav-cta-yellow').forEach(el => {
     el.href = navCta.href;
@@ -356,7 +357,7 @@ const FUNNEL = {
   document.querySelectorAll('a.nav-cta-audit').forEach(el => el.remove());
 
   /* 2 — Mobile CTA mirrors desktop (single button) */
-  const mobileCtaText = hasScore ? 'Plan your sprints →' : 'Get your free Readiness Score →';
+  const mobileCtaText = hasScore ? ctaCfg.label : 'Get your free Readiness Score →';
   document.querySelectorAll('a.mobile-cta').forEach(el => {
     if (el.classList.contains('mobile-cta-audit')) return; // legacy injected — removed below
     el.href = navCta.href;
@@ -365,76 +366,9 @@ const FUNNEL = {
   });
   document.querySelectorAll('a.mobile-cta-audit').forEach(el => el.remove());
 
-  /* 3 — Personalize Solutions dropdown based on tier/stage */
-  (function() {
-    const solutionsLink = document.querySelector('.nav-links a[href="/solutions"]');
-    if (!solutionsLink) return;
-    const dropdown = solutionsLink.closest('.nav-item')?.querySelector('.dropdown');
-    if (!dropdown) return;
-    // Mega-menu Solutions panel (Offerings + Who-we-help) is a fixed, authored IA —
-    // do not overwrite it with tier-based sprint recommendations.
-    if (dropdown.classList.contains('mega')) return;
-
-    function lnk(text, href, tag) {
-      return `<a href="${href}">${text}${tag?`<span class="dd-tag">${tag}</span>`:''}</a>`;
-    }
-
-    const scoreLabel = hasScore ? ` — Score ${scoreData.score}/100` : '';
-    let html = '';
-
-    if (!hasScore || tier === 'siloed') {
-      html =
-        `<span class="dropdown-label">Start here — free</span>`+
-        lnk('Readiness Score','/tools/readiness-score','FREE')+
-        `<span class="dropdown-label">First sprint</span>`+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit','START HERE')+
-        `<span class="dropdown-label">Build sprints</span>`+
-        lnk('AI Brief Machine','/solutions/automation-sprints','WEB · PPC')+
-        lnk('Search Term Intelligence','/solutions/automation-sprints','PPC · SEO')+
-        lnk('Content Atomization System','/solutions/automation-sprints','WEB · SEO')+
-        `<span class="dropdown-label">Programs</span>`+
-        lnk('AI Marketing Training','/training')+
-        lnk('Campaign Strategy Portal','/platform')+
-        `<div class="dropdown-divider"></div>`+
-        lnk('Browse full catalog →','/solutions/automation-sprints');
-    } else if (tier === 'emerging') {
-      html =
-        `<span class="dropdown-label">Recommended${scoreLabel}</span>`+
-        lnk('PPC Intelligence Sprint','/solutions/sprints/ppc-intelligence','PPC')+
-        lnk('Content Brief Sprint','/solutions/sprints/content-brief','SEO · WEB')+
-        lnk('Campaign Launch Kit','/solutions/sprints/campaign-launch','WEB · PPC')+
-        `<span class="dropdown-label">More</span>`+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit','first sprint')+
-        lnk('AI Marketing Training','/training')+
-        lnk('Campaign Strategy Portal','/platform')+
-        `<div class="dropdown-divider"></div>`+
-        lnk('Browse full catalog →','/solutions/automation-sprints');
-    } else if (tier === 'operational') {
-      html =
-        `<span class="dropdown-label">Recommended${scoreLabel}</span>`+
-        lnk('SEO/PPC Opportunity Sprint','/solutions/sprints/seo-ppc','SEO · PPC')+
-        lnk('Lead Reactivation Sprint','/solutions/sprints/lead-reactivation','ABM')+
-        lnk('PPC Intelligence Sprint','/solutions/sprints/ppc-intelligence','PPC')+
-        `<span class="dropdown-label">Intelligence</span>`+
-        lnk('Campaign Strategy Portal','/platform')+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit','first sprint')+
-        `<div class="dropdown-divider"></div>`+
-        lnk('Browse full catalog →','/solutions/automation-sprints');
-    } else {
-      html =
-        `<span class="dropdown-label">Intelligence${scoreLabel}</span>`+
-        lnk('Campaign Strategy Portal','/platform')+
-        `<span class="dropdown-label">Advanced Sprints</span>`+
-        lnk('Event Follow-Up Sprint','/solutions/sprints/event-followup','ABM · LOCAL')+
-        lnk('Lead Reactivation Sprint','/solutions/sprints/lead-reactivation','ABM')+
-        lnk('Campaign Automation Audit','/solutions/campaign-audit','first sprint')+
-        `<div class="dropdown-divider"></div>`+
-        lnk('Browse full catalog →','/solutions/automation-sprints');
-    }
-
-    dropdown.innerHTML = html;
-    dropdown.style.minWidth = '300px';
-  })();
+  /* 3 — (removed) Legacy tier-based Solutions-dropdown personalization: every page
+         now uses the fixed mega menu (Offerings + Who-we-help), which this block
+         explicitly skipped — it could never execute. */
 
   /* 4 — Highlight recommended next nav link */
   if (ctaCfg.next) {

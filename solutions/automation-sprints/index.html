@@ -835,6 +835,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!id) return; // not a sprint card
     card.dataset.sprintId = id;
 
+    // Carry the sprint into the proposal form (deep-link instead of arriving empty)
+    var cta = card.querySelector('.cat-cta');
+    if (cta && /^\/request-proposals\/?$/.test(cta.getAttribute('href') || '')) {
+      cta.setAttribute('href', '/request-proposals?sprints=' + id);
+    }
+
     // Add button
     var btn = document.createElement('button');
     btn.type = 'button';
