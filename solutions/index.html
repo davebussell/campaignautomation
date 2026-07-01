@@ -95,9 +95,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* ── WHO MATRIX ── */
 .who-matrix{display:grid;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden}
 .wm-header{display:grid;grid-template-columns:160px 1fr 1fr;gap:0;background:var(--slate);border-bottom:1px solid var(--border)}
-.wm-header span{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mist);padding:14px 20px;border-right:1px solid var(--border)}
-.wm-header span:first-child{color:transparent} /* empty corner */
-.wm-header span:last-child{border-right:none}
+.wm-header > span{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mist);padding:14px 20px;border-right:1px solid var(--border)}
+.wm-header > span:first-child{color:transparent} /* empty corner */
+.wm-header > span:last-child{border-right:none}
 .wm-range{color:var(--mist);opacity:.6}
 .wm-row{display:grid;grid-template-columns:160px 1fr 1fr;border-bottom:1px solid var(--border)}
 .wm-row:last-child{border-bottom:none}
@@ -112,9 +112,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .wm-not-yet .wm-cell-tag{background:rgba(213,43,30,.08);color:#E05A4E;border:1px solid rgba(213,43,30,.2)}
 .wm-cta{font-family:var(--f-mono);font-size:11px;color:var(--signal);text-decoration:none;letter-spacing:.04em;transition:opacity .15s;align-self:flex-start}
 .wm-cta:hover{opacity:.7}
-.ai-advantage-note{border-left:3px solid var(--border);padding:20px 24px;max-width:680px}
-.ai-advantage-note p{font-size:14px;color:var(--mist);line-height:1.7;margin:0}
-@media(max-width:700px){.wm-header,.wm-row{grid-template-columns:1fr}.wm-header{display:none}.wm-cell,.wm-row-label{border-right:none;border-bottom:1px solid var(--border)}}
+.wm-cell-axis{display:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+@media(max-width:700px){.wm-header,.wm-row{grid-template-columns:1fr}.wm-header{display:none}.wm-cell,.wm-row-label{border-right:none;border-bottom:1px solid var(--border)}.wm-cell-axis{display:block}}
 
 /* ── TIER 0 SCORE STATE ── */
 .tier0-scored .result-tag{color:var(--signal);border-color:rgba(200,241,53,.3)}
@@ -226,6 +225,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Solutions</div>
     <h1 id="sol-heading">Your readiness determines<br>your path<span class="blink-dot" aria-hidden="true">.</span></h1>
     <p>Every engagement is scoped to where you actually are, not where you wish you were. Your Readiness Score tells us what to build, how to support you, and what you can run independently when we're done.</p>
+    <div class="hero-actions" style="margin-top:28px">
+      <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+      <a href="#tiers-heading" class="btn-ghost">See the offer stack →</a>
+    </div>
   </section>
 
   <!-- AI Company Manifesto -->
@@ -235,7 +238,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <blockquote class="manifesto-quote">"A fully AI company will outperform a company that is not — at any stage, any size."</blockquote>
       <p class="manifesto-attr">— Elon Musk</p>
       <p class="manifesto-body">In marketing, this isn't about replacing people with software. It's about connecting AI, data, and workflow automation so that every decision, brief, budget call, and campaign compounds automatically, without a human needed in the loop for every action.</p>
-      <p class="manifesto-body">The question isn't whether to automate. It's whether you'll be the operation that's ahead or behind when it matters. Your Readiness Score tells you exactly where you stand, and what to do next.</p>
+      <p class="manifesto-body">The question isn't whether to automate. It's whether you'll be the operation that's ahead or behind when it matters. Your Readiness Score tells you exactly where you stand, and what to do next. The owner-operator of a small company who achieves this has a structurally unfair advantage.</p>
       <a href="/tools/readiness-score" class="btn-ghost" id="manifesto-cta" style="margin-top:28px;display:inline-flex">Get your free Readiness Score →</a>
     </div>
   </section>
@@ -286,50 +289,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- Who we work with matrix -->
-  <section class="section" aria-labelledby="who-heading">
-    <div class="section-label reveal"><span class="label-signal">Who we work with</span></div>
-    <h2 class="display reveal" id="who-heading" style="margin-bottom:12px">Company size changes<br>who's in the room.</h2>
-    <p class="lead reveal" style="max-width:600px;margin-bottom:48px">Readiness and company scale together determine the engagement model. Large companies can work with us at any readiness level. Small and early-stage companies generally need a higher readiness score before a sprint delivers real ROI.</p>
-
-    <div class="who-matrix reveal">
-      <div class="wm-header wm-col-header">
-        <span>Low Readiness <span class="wm-range">(0–69)</span></span>
-        <span>High Readiness <span class="wm-range">(70–100)</span></span>
-      </div>
-      <div class="wm-row">
-        <div class="wm-row-label">Large Company<span class="wm-row-sub">Enterprise / Scale</span></div>
-        <div class="wm-cell wm-yes">
-          <div class="wm-cell-tag">Executives + Front Lines</div>
-          <p>We engage at two levels simultaneously: leadership to align on strategy and investment, and frontline teams to build the capability and workflows. High-readiness infrastructure isn't a prerequisite. We build it with you.</p>
-          <a href="/solutions/campaign-audit" class="wm-cta">Start with an Audit →</a>
-        </div>
-        <div class="wm-cell wm-yes">
-          <div class="wm-cell-tag">Team-led + Consulting</div>
-          <p>Your teams can move fast and own the work. We scope sprints, validate approach, and consult on edge cases. The goal is full independence. The engagement ends with you not needing us.</p>
-          <a href="/solutions/automation-sprints" class="wm-cta">Browse Sprints →</a>
-        </div>
-      </div>
-      <div class="wm-row">
-        <div class="wm-row-label">Small Company<span class="wm-row-sub">Startup / Early / SMB</span></div>
-        <div class="wm-cell wm-not-yet">
-          <div class="wm-cell-tag">Foundation First</div>
-          <p>A sprint built on fragmented data and no naming convention will fail silently. The first move is building the infrastructure that makes automation work. Once that's in place, the sprint ROI compounds fast.</p>
-          <a href="/tools/readiness-score" class="wm-cta">Check your score →</a>
-        </div>
-        <div class="wm-cell wm-yes">
-          <div class="wm-cell-tag">Owner / Executor + Light Support</div>
-          <p>A small, AI-enabled company outperforms a larger, un-automated one. At this stage, you, the owner or operator, are the executor. We work with you directly. Lean engagements, high output, you own everything.</p>
-          <a href="/solutions/automation-sprints" class="wm-cta">Browse Sprints →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="ai-advantage-note reveal" style="margin-top:48px">
-      <p>Musk's point about AI companies applies directly here: a small, fully AI-enabled marketing operation will outperform a large, manual one at any revenue stage. In marketing, this means connecting AI to data to workflow so the entire operation compounds automatically. The owner/executor of a small company who achieves this has a structurally unfair advantage. That's the point.</p>
-    </div>
-  </section>
-
   <!-- Offer Stack -->
   <section class="section" aria-labelledby="tiers-heading">
     <div class="section-label reveal"><span class="label-signal">The offer stack</span></div>
@@ -337,7 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="result-card reveal" id="tier0-card" style="margin-bottom:24px;cursor:default">
       <div class="tier0-content">
-        <div class="result-tag">Foundation · Free</div>
+        <div class="result-tag">Tier 0 · Free</div>
         <h3 style="color:var(--bone)">Campaign Automation Readiness Score</h3>
         <p>13 questions across 5 dimensions. You get a score (0–100), your tier, your binding constraint, a prioritised roadmap, and a boss-pitch built from your actual answers.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
@@ -352,7 +311,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a class="result-card reveal" href="/solutions/campaign-audit">
       <div>
-        <div class="result-tag">Sprint 01 · Start here</div>
+        <div class="result-tag">Tier 1 · Start here</div>
         <h3>Campaign Automation Audit</h3>
         <p>A human-led diagnostic of your current campaign infrastructure, the first sprint of every engagement. PPC waste analysis, SEO/PPC opportunity map, AI automation roadmap, and a 30-day action plan. Read-only access to your key accounts, nothing changed.</p>
         <div style="margin-top:20px"><span class="signal-badge"><span class="dot" aria-hidden="true"></span>Recommended first step for most teams</span></div>
@@ -365,27 +324,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a class="result-card reveal" href="/solutions/automation-sprints">
       <div>
-        <div class="result-tag">Tier 2 — Core offer · Score 50+</div>
+        <div class="result-tag">Tier 2 · Score 50+</div>
         <h3>Campaign Automation Sprints</h3>
         <p>Pick one workflow. We build it with your team in 2–4 weeks. You get the automated workflow, guardrail config, prompt packs, AGENTS.md, and a training session. You own it when we're done. No retainer, no lock-in.</p>
       </div>
       <div class="result-stat">
-        <div class="result-n" style="font-size:36px">$5k–<br>$15k</div>
-        <div class="result-nl">Per sprint · 2–4 weeks</div>
+        <div class="result-n" style="font-size:36px">From $5k</div>
+        <div class="result-nl">Up to $15k · per sprint · 2–4 weeks</div>
       </div>
     </a>
 
     <a class="result-card reveal" href="/platform">
       <div>
-        <div class="result-tag">Tier 3 — Recurring · Score 70+</div>
+        <div class="result-tag">Tier 3 · Score 70+</div>
         <h3>Campaign Strategy Portal</h3>
         <p>An ongoing AI intelligence layer above your existing tools. Monthly strategy refresh, prioritised recommendations, AI-generated briefs and prompt packs. For teams that are ready to compound month over month.</p>
       </div>
       <div class="result-stat">
-        <div class="result-n" style="font-size:36px">$500–<br>$2,500</div>
-        <div class="result-nl">Per month · cancel anytime</div>
+        <div class="result-n" style="font-size:36px">From $500</div>
+        <div class="result-nl">Up to $2,500/mo · cancel anytime</div>
       </div>
     </a>
+
+    <div class="reveal" style="border:1px solid var(--border);border-left:4px solid var(--signal);border-radius:4px;padding:20px 24px;margin-top:24px">
+      <p style="margin:0;font-size:14px;color:var(--mist2);line-height:1.6">Score under 50? <a href="/training" style="font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:var(--signal);text-decoration:none">Start with Training →</a></p>
+    </div>
+  </section>
+
+  <!-- Who we work with matrix -->
+  <section class="section" aria-labelledby="who-heading">
+    <div class="section-label reveal"><span class="label-signal">Who we work with</span></div>
+    <h2 class="display reveal" id="who-heading" style="margin-bottom:12px">Company size changes<br>who's in the room.</h2>
+    <p class="lead reveal" style="max-width:600px;margin-bottom:48px">Readiness and company scale together determine the engagement model. Large companies can work with us at any readiness level. Small and early-stage companies generally need a higher readiness score before a sprint delivers real ROI.</p>
+
+    <div class="who-matrix reveal">
+      <div class="wm-header wm-col-header">
+        <span aria-hidden="true"></span>
+        <span>Low Readiness <span class="wm-range">(0–69)</span></span>
+        <span>High Readiness <span class="wm-range">(70–100)</span></span>
+      </div>
+      <div class="wm-row">
+        <div class="wm-row-label">Large Company<span class="wm-row-sub">Enterprise / Scale</span></div>
+        <div class="wm-cell wm-yes">
+          <span class="wm-cell-axis">Low readiness · 0–69</span>
+          <div class="wm-cell-tag">Executives + Front Lines</div>
+          <p>We engage at two levels simultaneously: leadership to align on strategy and investment, and frontline teams to build the capability and workflows. High-readiness infrastructure isn't a prerequisite. We build it with you.</p>
+          <a href="/solutions/campaign-audit" class="wm-cta">Start with an Audit →</a>
+        </div>
+        <div class="wm-cell wm-yes">
+          <span class="wm-cell-axis">High readiness · 70–100</span>
+          <div class="wm-cell-tag">Team-led + Consulting</div>
+          <p>Your teams can move fast and own the work. We scope sprints, validate approach, and consult on edge cases. The goal is full independence. The engagement ends with you not needing us.</p>
+          <a href="/solutions/automation-sprints" class="wm-cta">Browse Sprints →</a>
+        </div>
+      </div>
+      <div class="wm-row">
+        <div class="wm-row-label">Small Company<span class="wm-row-sub">Startup / Early / SMB</span></div>
+        <div class="wm-cell wm-not-yet">
+          <span class="wm-cell-axis">Low readiness · 0–69</span>
+          <div class="wm-cell-tag">Foundation First</div>
+          <p>A sprint built on fragmented data and no naming convention will fail silently. The first move is building the infrastructure that makes automation work. Once that's in place, the sprint ROI compounds fast.</p>
+          <a href="/tools/readiness-score" class="wm-cta">Check your score →</a>
+        </div>
+        <div class="wm-cell wm-yes">
+          <span class="wm-cell-axis">High readiness · 70–100</span>
+          <div class="wm-cell-tag">Owner / Executor + Light Support</div>
+          <p>A small, AI-enabled company outperforms a larger, un-automated one. At this stage, you, the owner or operator, are the executor. We work with you directly. Lean engagements, high output, you own everything.</p>
+          <a href="/solutions/automation-sprints" class="wm-cta">Browse Sprints →</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section bone" aria-labelledby="dont-heading">

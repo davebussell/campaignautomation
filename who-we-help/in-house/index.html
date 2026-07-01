@@ -25,10 +25,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="Pick the one process eating the most hours. We build it into a governed automation in 2–4 weeks and hand it over — configured, documented, and yours to run without us.">
 <link rel="stylesheet" href="/css/style.css">
 <style>
-  .aud-pains{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 28px}
-  .aud-pains li{position:relative;padding-left:26px;color:var(--mist2);font-size:15px;line-height:1.55}
-  .aud-pains li::before{content:'\2715';position:absolute;left:0;top:1px;color:var(--signal);font-size:13px}
-  @media(max-width:900px){.aud-pains{grid-template-columns:1fr}}
+  .metric-how{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--signal);text-decoration:none;opacity:.85;transition:opacity .15s}
+  .metric-how:hover{opacity:1;text-decoration:underline}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"For In-house Marketing Teams — Automate the Workflow That's Burning You","description":"Pick the one process eating the most hours. We build it into a governed automation in 2–4 weeks and hand it over — configured, documented, and yours to run without us.","url":"https://campaignautomation.ai/who-we-help/in-house","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"For in-house teams","item":"https://campaignautomation.ai/who-we-help/in-house"}]}]}
@@ -136,35 +134,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="page-hero reveal">
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Who we help · In-house teams</div>
-    <h1>Automate the workflow that's burning your team — and own it.</h1>
+    <h1>Automate the workflow that's burning your team — and own it<span class="blink-dot" aria-hidden="true">.</span></h1>
     <p>Pick the one process eating the most hours. We build it into a governed automation in 2–4 weeks and hand it over — configured, documented, and trained — so your team runs it without us.</p>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:28px">
+    <div class="hero-actions">
       <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
       <a href="/solutions/automation-sprints" class="btn-ghost">See the sprint catalog →</a>
     </div>
-  </section>
-
-  <section class="section reveal">
-    <h2 class="display">Sound familiar?</h2>
-    <ul class="aud-pains">
-        <li>Your best people spend their best hours on repetitive, manual work.</li>
-        <li>Your stack is a pile of tools that don't talk to each other.</li>
-        <li>You have no engineering resources to build automation yourself.</li>
-        <li>Leadership wants "AI" but nobody has handed you a plan you trust.</li>
-    </ul>
-  </section>
-
-  <section class="section bone reveal">
-    <h2 class="display">How we work with you</h2>
-    <div class="grid-2" style="margin-top:24px">
-      <div class="card bone-card"><h4>Start with the binding constraint</h4><p>The free Readiness Score finds the one thing most limiting your ability to automate safely — so we fix the right thing first, not the loudest thing.</p></div>
-      <div class="card bone-card"><h4>One workflow at a time</h4><p>No rip-and-replace, no 12-month platform migration. We automate the single highest-leverage workflow, prove it, then move to the next.</p></div>
-      <div class="card bone-card"><h4>Built on the stack you run</h4><p>HubSpot, Salesforce, Google, Meta — we layer governed automation on what you already use. Nothing new for your team to learn.</p></div>
-      <div class="card bone-card"><h4>You own it when we're done</h4><p>Every sprint hands over the guardrail config, prompt packs, an AGENTS.md, and a training session. You run it; we don't hold the keys.</p></div>
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-n" aria-label="13 hours saved per campaign deployment on average">13<span aria-hidden="true"> hrs</span></div>
+        <div class="metric-l">Saved per campaign deployment, on average.</div>
+        <a class="metric-how" href="/#time-saved">See the task breakdown →</a>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="27 percent average ROAS improvement">27<span aria-hidden="true">%</span></div>
+        <div class="metric-l">Average ROAS improvement after we automate budget, negative-keyword, and regional workflows.</div>
+        <a class="metric-how" href="/results#client-outcomes">Find out how →</a>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="Plus 2 Quality Score points out of 10">+2<span aria-hidden="true"> pts</span></div>
+        <div class="metric-l">Quality Score gain (out of 10) from matching keyword, landing page, and ad language.</div>
+        <a class="metric-how" href="/results#client-outcomes">Find out how →</a>
+      </div>
     </div>
   </section>
 
   <section class="section reveal">
+    <div class="section-label"><span class="label-signal">The symptoms</span></div>
+    <h2 class="display">Sound familiar?</h2>
+    <div style="border:1px solid var(--border);padding:6px 20px;margin-top:24px;max-width:760px" role="list" aria-label="Common symptoms">
+      <div class="kw-row" role="listitem"><div class="kw-term">Your best people spend their best hours on repetitive, manual work.</div><div class="kw-vol" aria-hidden="true">✕</div></div>
+      <div class="kw-row" role="listitem"><div class="kw-term">Your stack is a pile of tools that don't talk to each other.</div><div class="kw-vol" aria-hidden="true">✕</div></div>
+      <div class="kw-row" role="listitem"><div class="kw-term">You have no engineering resources to build automation yourself.</div><div class="kw-vol" aria-hidden="true">✕</div></div>
+      <div class="kw-row" role="listitem"><div class="kw-term">Leadership wants "AI" but nobody has handed you a plan you trust.</div><div class="kw-vol" aria-hidden="true">✕</div></div>
+    </div>
+    <p class="lead" style="margin-top:18px">If two of these sound like your Tuesday, keep reading.</p>
+  </section>
+
+  <section class="section bone reveal">
+    <div class="section-label"><span class="label-signal">The method</span></div>
+    <h2 class="display">How we work with you</h2>
+    <div class="grid-2" style="margin-top:24px">
+      <div class="card bone-card reveal reveal-delay-1"><div class="card-tag">01 · Diagnose</div><h4>Start with the binding constraint</h4><p>The free Readiness Score finds the one thing most limiting your ability to automate safely — so we fix the right thing first, not the loudest thing.</p></div>
+      <div class="card bone-card reveal reveal-delay-2"><div class="card-tag">02 · Focus</div><h4>One workflow at a time</h4><p>No rip-and-replace, no 12-month platform migration. We automate the single highest-leverage workflow, prove it, then move to the next.</p></div>
+      <div class="card bone-card reveal reveal-delay-3"><div class="card-tag">03 · Build</div><h4>Built on the stack you run</h4><p>HubSpot, Salesforce, Google, Meta — we layer governed automation on what you already use. Nothing new for your team to learn.</p></div>
+      <div class="card bone-card reveal reveal-delay-4"><div class="card-tag">04 · Handover</div><h4>You own it when we're done</h4><p>Every sprint hands over the guardrail config, prompt packs, an AGENTS.md, and a training session. You run it; we don't hold the keys.</p></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">The handover</span></div>
     <h2 class="display">What you get</h2>
     <div class="terminal" style="margin-top:20px" role="region" aria-label="What you get">
       <div class="kw-row"><div class="kw-term">Hours back, on the workflow that was costing you the most</div><div class="kw-vol" aria-hidden="true">✦</div></div>
@@ -172,7 +191,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="kw-row"><div class="kw-term">No new platform to learn or migrate to</div><div class="kw-vol" aria-hidden="true">✦</div></div>
       <div class="kw-row"><div class="kw-term">Governance and an audit trail built in from day one</div><div class="kw-vol" aria-hidden="true">✦</div></div>
     </div>
-    <p style="margin-top:18px"><a href="/results/trigger-action-impact" style="color:var(--signal);text-decoration:none">How we measure the impact →</a></p>
+    <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:24px">
+      <p style="font-size:14px;color:var(--mist2);margin:0 0 8px;line-height:1.65">Every gain is measured with the Trigger–Action–Impact framework — against your own baseline, not an industry average.</p>
+      <a href="/results/trigger-action-impact" style="font-family:var(--f-mono);font-size:13px;color:var(--signal);text-decoration:none">How we measure the impact →</a>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">Free tool</span></div>
+    <div style="border:2px solid var(--signal);border-radius:8px;padding:36px;max-width:680px;margin:24px auto 0;text-align:center">
+      <div class="signal-badge" style="margin-bottom:20px"><span class="dot" aria-hidden="true"></span>Free tool</div>
+      <h3 class="display" style="margin-bottom:12px">Find the workflow burning your team — in four minutes.</h3>
+      <p style="max-width:520px;margin:0 auto 22px">13 questions, no login. You get a score, your top bottlenecks, and the sprint we'd run first.</p>
+      <a href="/tools/readiness-score" class="btn-ghost">Get your Readiness Score →</a>
+    </div>
   </section>
 
   <section class="section reveal">

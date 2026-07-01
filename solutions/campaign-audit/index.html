@@ -28,7 +28,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/css/style.css">
 <style>
 /* ── ABOVE-THE-FOLD HERO + INTAKE FORM ── */
-.audit-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;padding:48px 48px 56px;border-bottom:1px solid var(--border)}
+.audit-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;padding:48px 48px 56px;border-bottom:1px solid var(--border);position:relative;scroll-margin-top:80px}
+.audit-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(200,241,53,.05) 1px,transparent 0);background-size:32px 32px;pointer-events:none}
+.audit-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--signal),transparent);opacity:.55}
+.audit-hero > *{position:relative;z-index:1}
+.ah-left h1{font-family:var(--f-display);font-size:clamp(38px,4.5vw,60px);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin:14px 0 16px}
 .ah-left .lead{max-width:none}
 .ah-points{list-style:none;padding:0;margin:22px 0 18px;display:flex;flex-direction:column;gap:9px}
 .ah-points li{position:relative;padding-left:24px;color:var(--mist2);font-size:15px;line-height:1.5}
@@ -230,6 +234,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>An AI automation roadmap built for your stack, not a checklist</li>
         <li>A 30-day action plan that's yours, whether or not we work together</li>
       </ul>
+      <p class="ah-trust">Fixed-scope sprint · Findings call ~1 week after data access</p>
     </div>
 
     <div class="ah-right">
@@ -276,9 +281,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <section class="section bone reveal">
+    <div class="section-label"><span class="label-signal">Deliverables</span></div>
     <h2 class="display">What the Audit sprint delivers</h2>
-    <p>Six concrete outputs you own, with no fluff and no vague recommendations. Everything here scopes the sprints that follow.</p>
-    <div class="grid-3">
+    <p class="lead">Six concrete outputs you own, with no fluff and no vague recommendations. Everything here scopes the sprints that follow.</p>
+    <div class="grid-3" data-stagger>
       <div class="card bone-card"><h4>Current-state workflow review</h4><p>A documented map of how your campaigns are planned, launched, and optimised today, and where the friction lives.</p></div>
       <div class="card bone-card"><h4>PPC waste analysis</h4><p>Search term audit, match-type efficiency review, and estimated monthly waste with a prioritised fix list.</p></div>
       <div class="card bone-card"><h4>SEO/PPC opportunity map</h4><p>Keyword gaps, cannibalization flags, and quick-win opportunities across paid and organic together.</p></div>
@@ -289,30 +295,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <section class="section reveal">
+    <div class="section-label"><span class="label-signal">Commitment</span></div>
     <h2 class="display">Our performance commitment</h2>
-    <p style="max-width:720px">The Audit does not end with a vague list of ideas. We read your accounts, find where time and money are leaking, and recommend a short list of sprints. Every sprint we recommend comes with a measurable target tied to your own numbers, written down before we build anything.</p>
+    <p class="lead" style="max-width:720px">The Audit does not end with a vague list of ideas. We read your accounts, find where time and money are leaking, and recommend a short list of sprints. Every sprint we recommend comes with a measurable target tied to your own numbers, written down before we build anything.</p>
     <p style="max-width:720px;margin-top:12px">If we cannot define a target we believe in, we will not recommend the sprint. That keeps us honest, and it keeps you from paying for work that cannot show its return.</p>
-    <div class="grid-3" style="margin-top:28px">
-      <div class="card"><div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px">Hours back</div><h4>Time saved, counted</h4><p>We baseline the hours your team spends on a workflow today, then set a target reduction once it runs as a system.</p></div>
-      <div class="card"><div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px">ROAS</div><h4>Return on ad spend</h4><p>For paid media we set a target lift against your current ROAS, driven by negative-keyword, budget, and regional automation.</p></div>
-      <div class="card"><div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px">Quality Score</div><h4>Quality Score, moved</h4><p>Where Quality Score is the constraint, we target a specific gain by matching keyword, ad, and landing-page language.</p></div>
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-n" aria-label="13 hours saved per campaign deployment on average">13<span aria-hidden="true"> hrs</span></div>
+        <div class="metric-l">Saved per campaign deployment, on average.</div>
+        <a class="metric-how" href="/#time-saved">See the task breakdown →</a>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="27 percent average ROAS improvement">27<span aria-hidden="true">%</span></div>
+        <div class="metric-l">Average ROAS improvement after we automate budget, negative-keyword, and regional workflows.</div>
+        <a class="metric-how" href="/results#client-outcomes">Find out how →</a>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="Plus 2 Quality Score points out of 10">+2<span aria-hidden="true"> pts</span></div>
+        <div class="metric-l">Quality Score gain (out of 10) from matching keyword, landing page, and ad language.</div>
+        <a class="metric-how" href="/results#client-outcomes">Find out how →</a>
+      </div>
+    </div>
+    <div class="grid-3" data-stagger style="margin-top:28px">
+      <div class="card"><div class="card-tag">Hours back</div><h4>Time saved, counted</h4><p>We baseline the hours your team spends on a workflow today, then set a target reduction once it runs as a system.</p></div>
+      <div class="card"><div class="card-tag">ROAS</div><h4>Return on ad spend</h4><p>For paid media we set a target lift against your current ROAS, driven by negative-keyword, budget, and regional automation.</p></div>
+      <div class="card"><div class="card-tag">Quality Score</div><h4>Quality Score, moved</h4><p>Where Quality Score is the constraint, we target a specific gain by matching keyword, ad, and landing-page language.</p></div>
     </div>
     <p style="max-width:720px;margin-top:24px;font-size:14px;color:var(--mist)">These are the same workflows behind the numbers on our <a href="/" style="color:var(--signal)">homepage</a>. Every target is set against your baseline and tracked after launch. See the <a href="/results#client-outcomes" style="color:var(--signal)">case studies</a> for the full working.</p>
   </section>
 
   <section class="section reveal">
+    <div class="section-label"><span class="label-signal">Process</span></div>
     <h2 class="display">How it works</h2>
-    <div class="grid-4">
-      <div class="step"><div class="step-n" aria-hidden="true">01</div><h3>Request the Audit</h3><p>Three fields at the top of this page. If you took the Readiness Score, the rest is already carried over.</p></div>
-      <div class="step"><div class="step-n" aria-hidden="true">02</div><h3>Grant read-only access</h3><p>We reply within 2 business days and ask for view-only access to the accounts we need: Google Ads, GA4, Search Console. Read-only and revocable. Prefer to send exports? That works too.</p></div>
-      <div class="step"><div class="step-n" aria-hidden="true">03</div><h3>We review your campaigns</h3><p>We run your data through our structured review and AI analysis, and build your roadmap and 30-day plan.</p></div>
-      <div class="step"><div class="step-n" aria-hidden="true">04</div><h3>We walk you through it</h3><p>A live call with our team to review the findings, answer questions, and map your next step together.</p></div>
-    </div>
+    <ol class="grid-4" data-stagger style="list-style:none;padding:0;margin:0">
+      <li class="step"><div class="step-n" aria-hidden="true">01</div><div><h3>Request the Audit</h3><p>Three fields at the top of this page. If you took the Readiness Score, the rest is already carried over.</p><a href="#request" class="btn-ghost btn-sm" style="margin-top:16px;display:inline-flex">Request the Audit →</a></div></li>
+      <li class="step"><div class="step-n" aria-hidden="true">02</div><div><h3>Grant read-only access</h3><p>We reply within 2 business days and ask for view-only access to the accounts we need: Google Ads, GA4, Search Console. Read-only and revocable. Prefer to send exports? That works too.</p></div></li>
+      <li class="step"><div class="step-n" aria-hidden="true">03</div><div><h3>We review your campaigns</h3><p>We run your data through our structured review and AI analysis, and build your roadmap and 30-day plan.</p></div></li>
+      <li class="step"><div class="step-n" aria-hidden="true">04</div><div><h3>We walk you through it</h3><p>A live call with our team to review the findings, answer questions, and map your next step together.</p></div></li>
+    </ol>
   </section>
 
   <section class="section bone reveal">
+    <div class="section-label"><span class="label-signal">Data sources</span></div>
     <h2 class="display">What we look at</h2>
-    <p>The data sources we review. With read-only access we pull them ourselves, or you can export them — either way, nothing in your accounts changes.</p>
+    <p class="lead">The data sources we review. With read-only access we pull them ourselves, or you can export them — either way, nothing in your accounts changes.</p>
     <div class="terminal" role="region" aria-label="Data sources we review">
       <div class="kw-row"><span>Google Ads campaign data</span><span class="signal-badge">Required</span></div>
       <div class="kw-row"><span>Search terms report (last 90 days)</span><span class="signal-badge">Required</span></div>
@@ -323,7 +349,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p style="margin-top:16px;color:var(--mist)">Not sure how to grant read-only access? We'll send step-by-step instructions for each platform after you request the Audit.</p>
   </section>
 
-  <section class="section bone reveal">
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">What comes after</span></div>
     <div style="border:2px solid var(--signal);border-radius:8px;padding:32px;max-width:680px;margin:0 auto;text-align:center">
       <div class="signal-badge" style="margin-bottom:16px">Audit → build sprints</div>
       <h3 class="display" style="margin-bottom:12px">What comes after the first sprint</h3>
@@ -333,6 +360,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <section class="section reveal">
+    <div class="section-label"><span class="label-signal">FAQ</span></div>
     <h2 class="display">Frequently asked questions</h2>
     <div style="max-width:720px;display:flex;flex-direction:column;gap:32px">
       <div>
@@ -350,6 +378,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <h3>What happens after the Audit sprint?</h3>
         <p>You get a live call to walk through the findings and a prioritised 30-day plan. From there we build the sprints the audit identifies, the highest-ROI workflows in order, with your team. There's no pressure to continue, but most teams do.</p>
+      </div>
+      <div>
+        <h3>What does the Audit cost?</h3>
+        <p>The Audit is a fixed-scope sprint: we confirm the commercial details when we scope your request, before anything starts, and there's no obligation to continue afterwards. For how AI automation engagements are typically structured, see our <a href="/resources/ai-automation-pricing" style="color:var(--signal)">pricing guide</a>.</p>
       </div>
     </div>
   </section>

@@ -170,52 +170,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">Control layer</span></div>
     <div class="article-section" id="guardrails">
       <h2 class="display">Guardrail setup — what you control</h2>
       <p>Before the agent touches anything, you define the constraints. These are not defaults — they're decisions your team makes, documents, and can change at any time.</p>
-      <div class="terminal" style="margin:24px 0">
-        <div><span class="t-green">guardrail</span>  daily_spend_cap = $2,400</div>
-        <div><span class="t-green">guardrail</span>  max_bid_change_pct = 20</div>
-        <div><span class="t-green">guardrail</span>  cpa_pause_threshold = $65</div>
-        <div><span class="t-green">guardrail</span>  brand_exclusions = [list: 47 terms]</div>
-        <div><span class="t-green">guardrail</span>  min_campaign_budget = $200</div>
-        <div><span class="t-green">guardrail</span>  reallocation_window_hours = 72</div>
-        <div style="margin-top:8px"><span class="t-dim"># Agent operates freely within these constraints — nothing outside them</span><span class="cursor"></span></div>
+      <div class="terminal" data-animate role="region" aria-label="Guardrail configuration example" aria-live="off" style="margin:24px 0">
+        <div class="scanline" aria-hidden="true"></div>
+        <div data-type class="t-green">guardrail  daily_spend_cap = $2,400</div>
+        <div data-type class="t-green">guardrail  max_bid_change_pct = 20</div>
+        <div data-type class="t-green">guardrail  cpa_pause_threshold = $65</div>
+        <div data-type class="t-green">guardrail  brand_exclusions = [list: 47 terms]</div>
+        <div data-type class="t-green">guardrail  min_campaign_budget = $200</div>
+        <div data-type class="t-green">guardrail  reallocation_window_hours = 72</div>
+        <div class="t-dim" style="margin-top:8px"># Agent operates freely within these constraints — nothing outside them <span class="cursor" aria-hidden="true"></span></div>
       </div>
       <h3>Why 72-hour windows matter</h3>
       <p>Reallocation decisions based on less than 72 hours of data produce false signals. A campaign that looks underperforming at 24 hours may simply be in a low-conversion window. The agent evaluates rolling performance windows — not yesterday's numbers.</p>
       <a href="/paid-advertising-automation/ai-budget-allocation-best-practices" style="color:var(--signal);text-decoration:none;font-size:14px">Read the full budget allocation guide →</a>
     </div>
+  </section>
 
+  <section class="section bone reveal">
+    <div class="section-label"><span class="label-signal">For agencies</span></div>
     <div class="article-section" id="agency">
       <h2 class="display">Built for agencies managing multiple accounts</h2>
-      <p>The platform is multi-tenant by design. Each client gets their own guardrail configuration, their own agent log, and their own performance dashboard. You white-label the interface. Your clients see your brand — the AI works underneath.</p>
+      <p style="color:#444">The platform is multi-tenant by design. Each client gets their own guardrail configuration, their own agent log, and their own performance dashboard. You white-label the interface. Your clients see your brand — the AI works underneath.</p>
       <div class="grid-2" style="margin-top:24px">
-        <div class="card">
+        <div class="card bone-card">
           <div class="card-tag">Multi-tenant</div>
           <h4>One platform, unlimited clients</h4>
           <p>Deploy per-client guardrails, view cross-account performance, and manage everything from a single dashboard — without credentials leaving your control.</p>
         </div>
-        <div class="card">
+        <div class="card bone-card">
           <div class="card-tag">White-label</div>
           <h4>Your brand, your dashboard</h4>
           <p>The client-facing interface runs under your agency brand. They see your reporting — not ours.</p>
         </div>
       </div>
-      <a href="/paid-advertising-automation/agency-automation" class="btn-primary" style="margin-top:24px;display:inline-block">Agency automation details →</a>
+      <a href="/paid-advertising-automation/agency-automation" class="btn-ghost btn-sm" style="margin-top:24px;color:var(--ink);border-color:var(--border-bone)">Agency automation details →</a>
     </div>
+  </section>
 
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">Go deeper</span></div>
     <div class="article-section" id="cluster-pages">
       <h2 class="display">Go deeper</h2>
-      <div class="grid-3">
+      <div class="grid-3" data-stagger>
         <a class="pillar-card" href="/paid-advertising-automation/will-ai-replace-the-media-buyer">
-          <div class="pillar-tag signal">720 vol</div>
+          <div class="pillar-tag signal">Most read</div>
           <h4>Will AI replace the media buyer?</h4>
           <p>The complete breakdown of what AI-managed advertising actually does — and what stays human.</p>
         </a>
         <a class="pillar-card" href="/paid-advertising-automation/ai-budget-allocation-best-practices">
-          <div class="pillar-tag signal">720 vol</div>
+          <div class="pillar-tag signal">Start here</div>
           <h4>AI budget allocation best practices</h4>
           <p>Guardrail rules, performance windows, and the mistakes that kill campaigns before they start.</p>
         </a>
@@ -225,7 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Beyond Smart Bidding — what guardrail-driven management does differently.</p>
         </a>
         <a class="pillar-card" href="/paid-advertising-automation/smart-bidding-alternatives">
-          <div class="pillar-tag">BOFU</div>
+          <div class="pillar-tag">Comparison</div>
           <h4>Smart Bidding alternatives</h4>
           <p>When Google's native automation isn't enough — and what to use instead.</p>
         </a>
@@ -250,41 +258,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Scripts vs rules vs AI agents — what to automate and what to keep human.</p>
         </a>
       </div>
+      <div style="border-left:3px solid var(--signal);background:rgba(200,241,53,.05);padding:20px 24px;margin-top:40px;max-width:680px">
+        <strong style="display:block;font-family:var(--f-display);font-size:18px;color:var(--bone);margin-bottom:6px">Not sure where your account stands?</strong>
+        <p style="font-size:15px;color:var(--mist2);line-height:1.65;margin:0 0 12px">The Readiness Score grades your paid-media foundation in four minutes — no login, no obligation — so you know what to fix before the agent touches anything.</p>
+        <a href="/tools/readiness-score" style="font-family:var(--f-mono);font-size:13px;color:var(--signal);text-decoration:none">Take the Readiness Score →</a>
+      </div>
     </div>
+  </section>
 
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">From the library</span></div>
     <div class="article-section">
       <h2 class="display">More from the library</h2>
       <p>More on governed paid-media automation — the optimization models, the guardrails, and the competitive landscape.</p>
-      <div class="grid-3">
-        <a class="pillar-card" href="/resources/rule-based-vs-autonomous-ppc">
-          <div class="pillar-tag signal">Strategy</div>
-          <h4>Rule-based vs. autonomous PPC</h4>
-          <p>Hand-built rules are brittle; black-box autonomy runs blind. Why bounded autonomy wins.</p>
+      <div style="margin-top:8px;max-width:820px">
+        <a class="kw-row" href="/resources/rule-based-vs-autonomous-ppc" style="text-decoration:none">
+          <span class="kw-term">Rule-based vs. autonomous PPC</span>
+          <span class="kw-intent">Why bounded autonomy wins</span>
         </a>
-        <a class="pillar-card" href="/resources/ai-spend-caps-budget-guardrails">
-          <div class="pillar-tag">Guardrails</div>
-          <h4>Spend caps &amp; budget guardrails</h4>
-          <p>The limits to set before you let AI move budget — caps, ceilings, exclusions, and approvals.</p>
+        <a class="kw-row" href="/resources/ai-spend-caps-budget-guardrails" style="text-decoration:none">
+          <span class="kw-term">Spend caps &amp; budget guardrails</span>
+          <span class="kw-intent">The limits to set before AI moves budget</span>
         </a>
-        <a class="pillar-card" href="/resources/best-autonomous-ad-optimization-platforms">
-          <div class="pillar-tag">Field guide</div>
-          <h4>Best autonomous ad platforms 2026</h4>
-          <p>The category mapped by execution depth — from rules engines to governed autonomy.</p>
+        <a class="kw-row" href="/resources/best-autonomous-ad-optimization-platforms" style="text-decoration:none">
+          <span class="kw-term">Best autonomous ad platforms 2026</span>
+          <span class="kw-intent">The category, mapped by execution depth</span>
         </a>
-        <a class="pillar-card" href="/resources/ai-bid-budget-management-tools">
-          <div class="pillar-tag">Comparison</div>
-          <h4>AI bid &amp; budget tools, compared</h4>
-          <p>Optmyzr, Skai, Trapica and more, organised by how much each does unattended.</p>
+        <a class="kw-row" href="/resources/ai-bid-budget-management-tools" style="text-decoration:none">
+          <span class="kw-term">AI bid &amp; budget tools, compared</span>
+          <span class="kw-intent">Ranked by how much runs unattended</span>
         </a>
-        <a class="pillar-card" href="/resources/trapica-alternatives">
-          <div class="pillar-tag">Alternatives</div>
-          <h4>Best Trapica alternatives 2026</h4>
-          <p>A grounded field guide to the autonomous-optimisation field, and how to choose.</p>
+        <a class="kw-row" href="/resources/trapica-alternatives" style="text-decoration:none">
+          <span class="kw-term">Best Trapica alternatives 2026</span>
+          <span class="kw-intent">The field, and how to choose</span>
         </a>
-        <a class="pillar-card" href="/resources/predictive-vs-agentic-ai-marketing">
-          <div class="pillar-tag">Category</div>
-          <h4>Predictive vs. agentic AI</h4>
-          <p>What separates forecasting tools from agents that act on your campaigns in real time.</p>
+        <a class="kw-row" href="/resources/predictive-vs-agentic-ai-marketing" style="text-decoration:none">
+          <span class="kw-term">Predictive vs. agentic AI</span>
+          <span class="kw-intent">Forecasting tools vs. agents that act</span>
         </a>
       </div>
       <a href="/resources/articles" style="display:inline-block;margin-top:20px;color:var(--signal);text-decoration:none;font-family:var(--f-mono);font-size:13px">Browse all 80 articles →</a>

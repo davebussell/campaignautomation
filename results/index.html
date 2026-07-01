@@ -56,15 +56,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <style>
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  .rs-metrics{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-  .rs-metric{padding:30px 28px;border-right:1px solid var(--border)}
-  .rs-metric:last-child{border-right:none}
-  .rs-metric .n{font-family:var(--f-display);font-size:clamp(38px,5vw,58px);font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--bone)}
-  .rs-metric .n span{color:var(--signal)}
-  .rs-metric .l{font-size:14px;color:var(--mist2);line-height:1.55;margin:14px 0 0}
-  .rs-metric .how{display:inline-block;margin-top:14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:var(--signal);text-decoration:none}
-  .rs-metric .how:hover{text-decoration:underline}
-  @media(max-width:900px){.rs-metrics{grid-template-columns:1fr}.rs-metric{border-right:none;border-bottom:1px solid var(--border)}.rs-metric:last-child{border-bottom:none}}
+  .metric-how{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--signal);text-decoration:none;opacity:.85;transition:opacity .15s}
+  .metric-how:hover{opacity:1;text-decoration:underline}
   .ts-table{border:1px solid var(--border);border-radius:6px;overflow:hidden}
   .ts-row{display:grid;grid-template-columns:2fr 1.3fr .85fr .8fr .95fr;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border);align-items:center}
   .ts-row:last-child{border-bottom:none}
@@ -182,27 +175,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Results</div>
     <h1 id="results-heading">What guardrail-driven automation actually delivers<span class="blink-dot" aria-hidden="true">.</span></h1>
     <p class="lead">Real outcomes from AI automation built with accountability. Every number below is an average across client engagements, measured against each account's own baseline — and tied to a specific trigger, action, and logged impact.</p>
+    <div class="page-meta"><span>Medians across engagements</span><span>4 case results</span><span>TAI-logged</span></div>
   </section>
 
   <section class="section">
     <div class="section-label reveal"><span class="label-signal">By the numbers</span></div>
     <h2 class="display reveal" style="margin-bottom:10px">The averages we hold ourselves to.</h2>
     <p class="lead reveal" style="margin-bottom:36px;max-width:640px">Three headline numbers from the paid-media workflows we automate most. Here's what each one means — and below, exactly where it comes from.</p>
-    <div class="rs-metrics reveal">
-      <div class="rs-metric">
-        <div class="n">13<span> hrs</span></div>
-        <div class="l">Saved per campaign deployment, on average.</div>
-        <a class="how" href="#time-saved">See the task breakdown →</a>
+    <div class="hero-metrics reveal" style="margin-top:0">
+      <div class="metric">
+        <div class="metric-n" aria-label="13 hours saved per campaign deployment on average">13<span aria-hidden="true"> hrs</span></div>
+        <div class="metric-l">Saved per campaign deployment, on average.</div>
+        <a class="metric-how" href="#time-saved">See the task breakdown →</a>
       </div>
-      <div class="rs-metric">
-        <div class="n">27<span>%</span></div>
-        <div class="l">Average ROAS improvement after we automate budget, negative-keyword, and regional workflows.</div>
-        <a class="how" href="#time-saved">See the workflows →</a>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="27 percent average ROAS improvement">27<span aria-hidden="true">%</span></div>
+        <div class="metric-l">Average ROAS improvement after we automate budget, negative-keyword, and regional workflows.</div>
+        <a class="metric-how" href="#time-saved">See which tasks drive it →</a>
       </div>
-      <div class="rs-metric">
-        <div class="n">+2<span> pts</span></div>
-        <div class="l">Quality Score gain (out of 10) from matching keyword, landing page, and ad language.</div>
-        <a class="how" href="#time-saved">See the workflows →</a>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="Plus 2 Quality Score points out of 10">+2<span aria-hidden="true"> pts</span></div>
+        <div class="metric-l">Quality Score gain (out of 10) from matching keyword, landing page, and ad language.</div>
+        <a class="metric-how" href="#time-saved">See which tasks drive it →</a>
       </div>
     </div>
     <div class="reveal" style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:24px">
@@ -239,7 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="result-card reveal" style="margin-bottom:24px">
       <div>
-        <div class="result-tag">PPC Intelligence Sprint</div>
+        <a class="result-tag" href="/solutions/sprints/ppc-intelligence" style="display:inline-block;text-decoration:none">PPC Intelligence Sprint →</a>
         <h3>CPA reduced 35% in 90 days</h3>
         <p>Mid-market B2B SaaS. Google Ads. Waste analysis identified $4,200/month in underperforming spend across 6 ad groups. Guardrail rules automated bid adjustments and negative keyword additions weekly.</p>
       </div>
@@ -251,7 +245,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="result-card reveal" style="margin-bottom:24px">
       <div>
-        <div class="result-tag">Lead Reactivation Sprint</div>
+        <a class="result-tag" href="/solutions/sprints/lead-reactivation" style="display:inline-block;text-decoration:none">Lead Reactivation Sprint →</a>
         <h3>2.75× pipeline from dormant contacts</h3>
         <p>Professional services firm. 4,800 CRM contacts older than 90 days. Segmentation + personalized sequences + routing logic. Pipeline generated in first 45 days: $218,000.</p>
       </div>
@@ -263,7 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="result-card reveal" style="margin-bottom:24px">
       <div>
-        <div class="result-tag">Campaign Launch Sprint</div>
+        <a class="result-tag" href="/solutions/sprints/campaign-launch" style="display:inline-block;text-decoration:none">Campaign Launch Sprint →</a>
         <h3>68% faster campaign launches</h3>
         <p>Agency managing 12 client accounts. Brief-to-launch workflow automated. Average campaign setup time dropped from 11 hours to 3.5 hours. Deployed across all accounts in week 3.</p>
       </div>
@@ -275,7 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="result-card reveal">
       <div>
-        <div class="result-tag">Event Follow-Up Sprint</div>
+        <a class="result-tag" href="/solutions/sprints/event-followup" style="display:inline-block;text-decoration:none">Event Follow-Up Sprint →</a>
         <h3>+81% lead-to-meeting rate</h3>
         <p>B2B SaaS. Trade show lead capture. Enrich → personalize → route → track pipeline. 340 leads processed automatically within 4 hours of badge scan. Follow-up sent same day.</p>
       </div>
@@ -284,6 +278,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="result-nl">Lead-to-meeting rate</div>
       </div>
     </div>
+
+    <div class="reveal" style="text-align:center;margin-top:40px">
+      <a href="/solutions/automation-sprints" class="btn-ghost">See the sprints behind these results →</a>
+    </div>
   </section>
 
   <section class="section bone" aria-labelledby="tai-heading">
@@ -291,30 +289,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="display reveal" id="tai-heading" style="margin-bottom:32px">Every result is auditable.</h2>
     <p class="lead reveal" style="max-width:640px;margin-bottom:48px">Each automated action in our system is logged with its trigger condition, the action taken, the guardrails respected, and the measured impact. Nothing runs in a black box.</p>
 
-    <div class="terminal terminal-float reveal" aria-label="TAI schema example" style="margin-bottom:48px">
-      <pre><code># Trigger/action/impact — schema example
-trigger:   CPA exceeded threshold by 38% over 3-day window
-action:    Pause 4 underperforming ad groups, reallocate $1,200 budget
-guardrail: Daily spend cap ($3,000) respected · brand exclusions applied
-impact:    CPA -35% · 0 human approvals required · logged 2026-06-15</code></pre>
-    </div>
-
     <div class="grid-2" style="align-items:start;gap:48px">
-      <div>
+      <div class="reveal">
         <h3 style="font-size:22px;color:var(--ink);margin-bottom:16px">The TAI framework: Trigger / Action / Impact</h3>
         <p style="color:#555;margin-bottom:16px">Every automation we build follows the same accountability schema. A <strong>trigger</strong> defines the condition that initiates an action — a threshold crossed, a timing rule met, or a data signal detected.</p>
         <p style="color:#555;margin-bottom:16px">The <strong>action</strong> is what the system does in response — and it only runs if all guardrails are satisfied. Spend caps, brand exclusions, and approval gates are evaluated before anything executes.</p>
-        <p style="color:#555">The <strong>impact</strong> is logged automatically — what changed, when, and by how much. Every sprint deliverable includes the TAI log as part of the handoff.</p>
+        <p style="color:#555;margin-bottom:24px">The <strong>impact</strong> is logged automatically — what changed, when, and by how much. Every sprint deliverable includes the TAI log as part of the handoff.</p>
+        <a href="/results/trigger-action-impact" class="btn-ghost" style="display:inline-flex">Read the full TAI framework →</a>
       </div>
-      <div>
-        <a href="/results/trigger-action-impact" class="btn-ghost" style="display:inline-flex;margin-bottom:24px">Read the full TAI framework →</a>
-        <p style="font-size:13px;color:var(--mist)">Learn how triggers, actions, guardrails, and impact logs work together to make AI automation accountable at every step.</p>
+      <div class="terminal terminal-float reveal" data-animate role="region" aria-label="TAI schema example" aria-live="off">
+        <div class="scanline" aria-hidden="true"></div>
+        <div data-type class="t-dim"># Trigger/action/impact — schema example</div>
+        <div data-type>trigger: CPA exceeded threshold by 38% over 3-day window</div>
+        <div data-type>action: Pause 4 underperforming ad groups, reallocate $1,200 budget</div>
+        <div data-type class="t-green">guardrail: Daily spend cap ($3,000) respected · brand exclusions applied</div>
+        <div data-type>impact: CPA -35% · 0 human approvals required · logged 2026-06-15</div>
+        <div class="t-dim" style="margin-top:8px">Logged and auditable <span class="cursor" aria-hidden="true"></span></div>
       </div>
     </div>
   </section>
 
   <div class="tagline-footer">
     <p class="reveal">Move quickly.<br><span style="color:var(--signal)">Do big things.</span></p>
+    <div class="reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px;position:relative;z-index:1">
+      <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+      <a href="/solutions/campaign-audit" class="btn-ghost">Start with the Audit →</a>
+    </div>
     <div class="tf-explore"><p class="tf-explore-label">Keep exploring</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/resources/ai-marketing-automation-roi"><span class="tf-x-cat">Buyer guides</span><span class="tf-x-title">How to Prove ROI on AI Marketing Automation</span></a><a class="tf-explore-card" href="/resources/ai-marketing-audit-trail"><span class="tf-x-cat">Strategy &amp; bounded autonomy</span><span class="tf-x-title">The AI Marketing Audit Trail: Why AI Needs a Receipt | Campaign Automation AI</span></a><a class="tf-explore-card" href="/resources/human-in-the-loop-marketing-automation"><span class="tf-x-cat">Strategy &amp; bounded autonomy</span><span class="tf-x-title">Human-in-the-Loop AI Marketing Automation</span></a></div><a class="tf-explore-all" href="/resources/articles">Browse all articles &rarr;</a></div>
   </div>
 </main>

@@ -63,8 +63,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .tai-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;align-items:start}
 .tai-sidebar{position:sticky;top:96px}
 .tai-sidebar nav{display:flex;flex-direction:column;gap:4px}
-.tai-sidebar nav a{font-family:var(--f-mono);font-size:13px;color:var(--mist);text-decoration:none;padding:8px 12px;border-radius:6px;border-left:2px solid transparent;transition:color .2s,border-color .2s}
+.tai-sidebar nav.pillar-nav{position:static;top:auto;height:auto;overflow-y:visible;border-right:none;padding:0}
+.tai-sidebar nav a{font-family:var(--f-mono);font-size:13px;color:#555;text-decoration:none;padding:8px 12px;border-radius:6px;border-left:2px solid transparent;transition:color .2s,border-color .2s,background .2s}
+.tai-sidebar nav.pillar-nav a{display:block;min-height:0;border-bottom:none;font-size:13px;color:#555;padding:8px 12px}
 .tai-sidebar nav a:hover{color:var(--ink);border-left-color:var(--signal)}
+.tai-sidebar nav.pillar-nav a:hover,.tai-sidebar nav.pillar-nav a.active{color:var(--ink);border-left-color:var(--signal);padding-left:12px;background:rgba(200,241,53,.12)}
 .tai-sidebar .sidebar-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate2);margin-bottom:12px}
 .tai-article section{padding:48px 0;border-bottom:1px solid var(--border)}
 .tai-article section:last-child{border-bottom:none}
@@ -73,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .tai-article ul{color:#444;line-height:1.75;padding-left:20px;margin-bottom:16px}
 .tai-article ul li{margin-bottom:8px}
 .sprint-callout{border:2px solid var(--signal);border-radius:12px;padding:24px;margin:48px 0;background:rgba(255,255,255,.5)}
-.sprint-callout .sprint-callout-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
+.sprint-callout .sprint-callout-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#333;margin-bottom:12px}
 .sprint-callout h3{font-size:20px;color:var(--ink);margin-bottom:8px}
 .sprint-callout p{color:#555;margin-bottom:16px}
 @media(max-width:900px){.tai-layout{grid-template-columns:1fr;gap:20px}.tai-sidebar{display:none}}
@@ -89,6 +92,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .tai-loop-back{margin-top:14px;display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#555;line-height:1.55;border-left:3px solid var(--signal);background:rgba(200,241,53,.06);padding:12px 16px;border-radius:0 6px 6px 0}
 .tai-loop-back-arrow{color:var(--signal);font-size:20px;font-weight:700;line-height:1.2}
 @media(max-width:560px){.tai-node{font-size:11px;padding:9px 12px}}
+.section.bone .pillar-tag.signal{color:#333;border-color:var(--signal);background:rgba(200,241,53,.18)}
+.section.bone .gloss-link:hover{color:#333}
+.tai-article section.article-section{margin-bottom:0}
+.tai-article li{color:#444}
+.tai-article strong{color:var(--ink)}
+.sprint-callout .btn-ghost,.sprint-callout .btn-ghost:hover{color:var(--ink)}
 </style>
 <script defer src="/js/consent.js"></script>
 </head>
@@ -196,49 +205,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="current">Trigger/Action/Impact</span>
   </nav>
 
-  <section class="page-hero snap-sec" aria-labelledby="tai-heading">
+  <section class="page-hero" aria-labelledby="tai-heading">
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Framework</div>
-    <h1 id="tai-heading">Every AI action has a trigger, an outcome, and a logged reason.</h1>
+    <h1 id="tai-heading">Every AI action has a trigger, an outcome, and a logged reason<span class="blink-dot" aria-hidden="true">.</span></h1>
     <p class="lead">The TAI framework is the engine underneath every automation we build. A scheduled agent watches for a trigger, checks your guardrails, acts on your account, and logs the impact. Then the loop closes: every result is recorded and fed back to sharpen the next decision. It replaces "the AI did something" with an auditable record of what happened, why, and what it changed.</p>
+    <div class="page-meta"><span>5 stages</span><span>Ships with every sprint</span><span>Exportable CSV/JSON</span></div>
   </section>
 
-  <section class="section bone snap-sec" aria-labelledby="tai-doc-heading">
+  <section class="section bone" aria-labelledby="tai-doc-heading">
     <h2 class="sr-only" id="tai-doc-heading">TAI Framework documentation</h2>
     <div class="tai-layout">
 
       <aside class="tai-sidebar" aria-label="On this page">
         <p class="sidebar-label">On this page</p>
-        <nav aria-label="Section navigation">
+        <nav class="pillar-nav" aria-label="Section navigation">
           <a href="#loop">The loop</a>
           <a href="#trigger">What is a trigger</a>
+          <a href="#guardrails">How guardrails interact</a>
           <a href="#action">What is an action</a>
           <a href="#impact">What is an impact</a>
           <a href="#feedback">The feedback loop</a>
-          <a href="#guardrails">How guardrails interact</a>
           <a href="#log">The activity log</a>
         </nav>
       </aside>
 
       <div class="tai-article">
 
-        <section id="loop" aria-labelledby="loop-heading">
+        <section id="loop" class="article-section reveal" aria-labelledby="loop-heading">
           <div class="pillar-tag signal" style="margin-bottom:16px">The loop</div>
           <h2 id="loop-heading">One loop that gets sharper every cycle</h2>
           <p>Most "AI automation" is a one-way street: a rule fires, something changes, and nobody records whether it worked. TAI is a closed loop. Every cycle leaves a record, and that record makes the next cycle smarter.</p>
           <div class="tai-loop" aria-label="The Trigger, Action, Impact loop">
             <div class="tai-loop-row">
-              <span class="tai-node">Trigger</span><span class="tai-arrow" aria-hidden="true">→</span>
-              <span class="tai-node">Guardrails</span><span class="tai-arrow" aria-hidden="true">→</span>
-              <span class="tai-node">Action</span><span class="tai-arrow" aria-hidden="true">→</span>
-              <span class="tai-node">Impact</span><span class="tai-arrow" aria-hidden="true">→</span>
-              <span class="tai-node accent">Learn</span>
+              <span class="tai-node reveal reveal-delay-1">Trigger</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node reveal reveal-delay-2">Guardrails</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node reveal reveal-delay-3">Action</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node reveal reveal-delay-4">Impact</span><span class="tai-arrow" aria-hidden="true">→</span>
+              <span class="tai-node accent reveal reveal-delay-5">Learn</span>
             </div>
             <div class="tai-loop-back"><span class="tai-loop-back-arrow" aria-hidden="true">⟲</span><span>Every result is recorded and fed back, refining the next trigger, action, and guardrail.</span></div>
           </div>
           <p>The first four stages give you accountability. The fifth, the feedback step, is what makes the system compound. Here is each stage in detail.</p>
         </section>
 
-        <section id="trigger" aria-labelledby="trigger-heading">
+        <section id="trigger" class="article-section reveal" aria-labelledby="trigger-heading">
           <div class="pillar-tag signal" style="margin-bottom:16px">Trigger</div>
           <h2 id="trigger-heading">What is a trigger?</h2>
           <p>A trigger is a defined condition that initiates an automated action. It is a specific, observable data event, not a blind timer or a guess. The system checks for it on a schedule, but it only moves to the next stage when the condition is actually met.</p>
@@ -262,7 +272,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </section>
 
-        <section id="action" aria-labelledby="action-heading">
+        <section id="guardrails" class="article-section reveal" aria-labelledby="guardrails-heading">
+          <div class="pillar-tag signal" style="margin-bottom:16px">Guardrails</div>
+          <h2 id="guardrails-heading">How guardrails interact with TAI</h2>
+          <p>Guardrails are the conditions that must be satisfied before a trigger can fire its action. They sit between the trigger and the action, and they run on every cycle — not just the first time.</p>
+          <p>There are four standard guardrail types in our framework:</p>
+          <ul>
+            <li><strong>Spend guardrails</strong> — daily, weekly, and monthly caps. No action can exceed these. Period.</li>
+            <li><strong>Brand guardrails</strong> — brand exclusion lists, approved messaging matrices, tone constraints for automated copy.</li>
+            <li><strong>Approval guardrails</strong> — actions above a defined threshold (e.g. budget changes above $5,000) require explicit human sign-off before execution.</li>
+            <li><strong>Conflict guardrails</strong> — if two triggers fire simultaneously and their actions conflict, a conflict resolution protocol determines priority and the lower-priority action is queued.</li>
+          </ul>
+          <p>Guardrails are configured in your AGENTS.md file. They are plain language by design — a non-technical team member can read, understand, and update them without engineering support.</p>
+          <div class="terminal" aria-label="Guardrail example" style="margin-top:24px">
+            <pre><code>guardrails:
+  spend_cap_daily:   $3,000
+  spend_cap_monthly: $68,000
+  brand_exclusions:  [competitor_names.txt]
+  approval_threshold: budget_change > $5,000
+  conflict_protocol: highest_impact_first</code></pre>
+          </div>
+        </section>
+
+        <section id="action" class="article-section reveal" aria-labelledby="action-heading">
           <div class="pillar-tag" style="margin-bottom:16px">Action</div>
           <h2 id="action-heading">What is an action?</h2>
           <p>An action is the specific change the system makes in response to a confirmed trigger, after all guardrails have been evaluated and passed.</p>
@@ -287,14 +319,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </section>
 
-        <div class="sprint-callout" aria-label="Sprint callout">
+        <div class="sprint-callout reveal" aria-label="Sprint callout">
           <div class="sprint-callout-label">Turn this into action</div>
           <h3>Build your first TAI-driven automation</h3>
           <p>The PPC Intelligence Sprint builds your full trigger library, guardrail config, and TAI activity log — deployed and handed over in 2–4 weeks.</p>
-          <a href="/solutions/sprints/ppc-intelligence" class="btn-primary btn-sm">See the PPC Intelligence Sprint →</a>
+          <a href="/solutions/sprints/ppc-intelligence" class="btn-ghost btn-sm">See the PPC Intelligence Sprint →</a>
         </div>
 
-        <section id="impact" aria-labelledby="impact-heading">
+        <section id="impact" class="article-section reveal" aria-labelledby="impact-heading">
           <div class="pillar-tag" style="margin-bottom:16px">Impact</div>
           <h2 id="impact-heading">What is an impact?</h2>
           <p>Impact is the measured outcome of an executed action, logged at the time of execution and tracked over the following observation window.</p>
@@ -319,7 +351,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </section>
 
-        <section id="feedback" aria-labelledby="feedback-heading">
+        <section id="feedback" class="article-section reveal" aria-labelledby="feedback-heading">
           <div class="pillar-tag signal" style="margin-bottom:16px">The feedback loop</div>
           <h2 id="feedback-heading">The part that compounds</h2>
           <p>An automation that pauses a campaign is useful once. A system that records every action, measures what it changed, and feeds that back into the next decision gets better every cycle. This is the difference between an automation and an intelligence layer, and it is the part most "AI automation" leaves out.</p>
@@ -338,38 +370,16 @@ ACT-014 | pause @ CPA>+22% | impact:  -6% CPA | verdict: marginal
 -> recommendation: tighten trigger to CPA>+30% (acts earlier, recovers more)
 -> status: awaiting human approval</code></pre>
           </div>
-          <p>Over enough cycles, the loop turns a static rule set into a system that reflects your accounts. Running it continuously, month over month, is exactly what the <a href="/platform" style="color:var(--signal)">Campaign Strategy Portal</a> is for.</p>
-          <div class="sprint-callout" aria-label="Portal callout">
+          <p>Over enough cycles, the loop turns a static rule set into a system that reflects your accounts. Running it continuously, month over month, is exactly what the <a href="/platform" class="gloss-link">Campaign Strategy Portal</a> is for.</p>
+          <div class="sprint-callout reveal" aria-label="Portal callout">
             <div class="sprint-callout-label">Run the loop continuously</div>
             <h3 style="margin:0 0 8px">The Campaign Strategy Portal keeps the loop running</h3>
             <p>A sprint builds the loop for one workflow. The Strategy Portal runs it across your account every month: new triggers, refined thresholds, and a standing record of what each change delivered.</p>
-            <a href="/platform" class="btn-primary btn-sm">See the Campaign Strategy Portal →</a>
+            <a href="/platform" class="btn-ghost btn-sm">See the Campaign Strategy Portal →</a>
           </div>
         </section>
 
-        <section id="guardrails" aria-labelledby="guardrails-heading">
-          <div class="pillar-tag signal" style="margin-bottom:16px">Guardrails</div>
-          <h2 id="guardrails-heading">How guardrails interact with TAI</h2>
-          <p>Guardrails are the conditions that must be satisfied before a trigger can fire its action. They sit between the trigger and the action, and they run on every cycle — not just the first time.</p>
-          <p>There are four standard guardrail types in our framework:</p>
-          <ul>
-            <li><strong>Spend guardrails</strong> — daily, weekly, and monthly caps. No action can exceed these. Period.</li>
-            <li><strong>Brand guardrails</strong> — brand exclusion lists, approved messaging matrices, tone constraints for automated copy.</li>
-            <li><strong>Approval guardrails</strong> — actions above a defined threshold (e.g. budget changes above $5,000) require explicit human sign-off before execution.</li>
-            <li><strong>Conflict guardrails</strong> — if two triggers fire simultaneously and their actions conflict, a conflict resolution protocol determines priority and the lower-priority action is queued.</li>
-          </ul>
-          <p>Guardrails are configured in your AGENTS.md file. They are plain language by design — a non-technical team member can read, understand, and update them without engineering support.</p>
-          <div class="terminal" aria-label="Guardrail example" style="margin-top:24px">
-            <pre><code>guardrails:
-  spend_cap_daily:   $3,000
-  spend_cap_monthly: $68,000
-  brand_exclusions:  [competitor_names.txt]
-  approval_threshold: budget_change > $5,000
-  conflict_protocol: highest_impact_first</code></pre>
-          </div>
-        </section>
-
-        <section id="log" aria-labelledby="log-heading">
+        <section id="log" class="article-section reveal" aria-labelledby="log-heading">
           <div class="pillar-tag" style="margin-bottom:16px">Activity log</div>
           <h2 id="log-heading">The activity log</h2>
           <p>Every trigger evaluation, guardrail check, action execution, and impact measurement is written to a structured activity log. The log is delivered as part of every sprint handoff and is updated continuously as the automation runs.</p>
@@ -380,11 +390,14 @@ ACT-014 | pause @ CPA>+22% | impact:  -6% CPA | verdict: marginal
             <li><strong>Compliance</strong> — for teams subject to internal audit, marketing governance, or client reporting requirements, the TAI log is a structured audit trail in a format designed for review.</li>
           </ul>
           <p>The log is exportable as CSV or JSON and can be piped into any reporting tool your team already uses — Google Sheets, Looker Studio, HubSpot, or a custom dashboard.</p>
-          <div class="terminal" aria-label="Activity log example" style="margin-top:24px">
-            <pre><code># Activity log — sample entries
-2024-11-14T06:04:22Z | ACT-003 | trigger:CPA_threshold | guardrails:PASS | action:pause_ad_groups | impact:-35%CPA
-2024-11-21T06:04:18Z | ACT-004 | trigger:CPA_threshold | guardrails:PASS | action:negative_kw_add  | impact:-8%wasted_spend
-2024-11-28T06:04:31Z | ACT-005 | trigger:budget_80pct  | guardrails:PASS | action:notify_human     | impact:alert_sent</code></pre>
+          <div class="terminal" data-animate role="region" aria-label="Activity log example" aria-live="off" style="margin-top:24px">
+            <div class="scanline" aria-hidden="true"></div>
+            <div data-type class="t-comment"># Activity log — sample entries</div>
+            <div data-type>2024-11-14T06:04:22Z | ACT-003 | trigger:CPA_threshold | guardrails:PASS | action:pause_ad_groups | impact:-35%CPA</div>
+            <div data-type>2024-11-21T06:04:18Z | ACT-004 | trigger:CPA_threshold | guardrails:PASS | action:negative_kw_add | impact:-8%wasted_spend</div>
+            <div data-type>2024-11-28T06:04:31Z | ACT-005 | trigger:budget_80pct | guardrails:PASS | action:notify_human | impact:alert_sent</div>
+            <div data-type class="t-dim" style="margin-top:8px"># 3 actions · 3 guardrail checks · 0 unlogged changes</div>
+            <div data-type class="t-green">log ready for export → CSV / JSON <span class="cursor" aria-hidden="true"></span></div>
           </div>
         </section>
 
@@ -392,7 +405,7 @@ ACT-014 | pause @ CPA>+22% | impact:  -6% CPA | verdict: marginal
     </div>
   </section>
 
-  <div class="tagline-footer snap-sec">
+  <div class="tagline-footer">
     <p class="reveal">Automation without accountability<br>is just noise.<br><span style="color:var(--signal)">Build it the right way.</span></p>
     <div class="tf-explore"><p class="tf-explore-label">Keep exploring</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/resources/what-is-bounded-autonomy"><span class="tf-x-cat">Strategy &amp; bounded autonomy</span><span class="tf-x-title">What Is Bounded Autonomy in Marketing AI?</span></a><a class="tf-explore-card" href="/resources/execution-depth-spectrum"><span class="tf-x-cat">Strategy &amp; bounded autonomy</span><span class="tf-x-title">Recommend, Rule, or Act: The Execution-Depth Spectrum of Marketing AI</span></a><a class="tf-explore-card" href="/resources/reversible-ai-marketing-changes"><span class="tf-x-cat">Strategy &amp; bounded autonomy</span><span class="tf-x-title">Why AI Marketing Changes Must Be Reversible</span></a></div><a class="tf-explore-all" href="/resources/articles">Browse all articles &rarr;</a></div>
   </div>

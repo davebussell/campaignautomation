@@ -26,6 +26,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="About Campaign Automation AI — Built by Marketers, Powered by AI">
 <meta name="twitter:description" content="We built the system we always needed. Campaign Automation AI was founded by marketers who ran out of patience for AI that delivered slide decks instead of results.">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+.metric-how{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--signal);text-decoration:none;opacity:.85;transition:opacity .15s}
+.metric-how:hover{opacity:1;text-decoration:underline}
+.hero-metrics.metrics-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.hero-metrics.metrics-4{grid-template-columns:1fr}}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -166,12 +172,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="page-hero">
-    <div class="eyebrow">About</div>
+    <div class="eyebrow"><span class="dot"></span>About</div>
     <h1>We built the system we always needed<span class="blink-dot" aria-hidden="true">.</span></h1>
     <p>Campaign Automation AI was founded by marketers who ran out of patience — for AI that promised transformation and delivered slide decks, for automation that required approval on every action, and for consultants who couldn't measure what they built.</p>
+    <div class="page-meta"><span>Founded 2025</span><span>ClickShift heritage · 2015</span><span>Caledon, Ontario</span></div>
+    <div class="hero-metrics metrics-4" aria-label="By the numbers">
+      <div class="metric">
+        <div class="metric-n" aria-label="Over 1 million automation actions logged">1<span aria-hidden="true">M+</span></div>
+        <div class="metric-l">Automation actions logged — each with a trigger and a measured outcome.</div>
+        <a class="metric-how" href="/results#client-outcomes">See the evidence →</a>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="31 percent average CPA reduction in the first 90 days">-31<span aria-hidden="true">%</span></div>
+        <div class="metric-l">Average CPA reduction, first 90 days.</div>
+        <a class="metric-how" href="/results#client-outcomes">Find out how →</a>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="12 manual campaign hours eliminated per client, per week">12<span aria-hidden="true"> h/wk</span></div>
+        <div class="metric-l">Manual campaign hours eliminated per client.</div>
+        <a class="metric-how" href="/results#client-outcomes">See how →</a>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="Zero human approvals required per 100 actions">0</div>
+        <div class="metric-l">Human approvals required per 100 actions.</div>
+        <a class="metric-how" href="/results#client-outcomes">See the evidence →</a>
+      </div>
+    </div>
   </div>
 
-  <div class="section">
+  <section class="section reveal">
     <div class="section-label"><span class="label-signal">Origin</span></div>
     <div class="grid-2">
       <div>
@@ -185,45 +214,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <blockquote>"The question isn't whether AI will replace the media buyer. It's whether your team will use AI to do what three media buyers used to do."</blockquote>
           <div class="quote-attr">— campaignautomation.ai founding philosophy</div>
         </div>
-        <div style="margin-top:32px;padding:24px;border:1px solid var(--border)">
-          <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:16px">By the numbers</div>
-          <div class="kw-row"><div class="kw-term">Automation actions logged</div><div class="kw-vol">1M+</div></div>
-          <div class="kw-row"><div class="kw-term">Avg CPA reduction, first 90 days</div><div class="kw-vol">-31%</div></div>
-          <div class="kw-row"><div class="kw-term">Manual campaign hours eliminated / client</div><div class="kw-vol">12 h/wk</div></div>
-          <div class="kw-row" style="border-bottom:none"><div class="kw-term">Human approvals required per 100 actions</div><div class="kw-vol">0</div></div>
-        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section bone">
+  <section class="section bone reveal">
     <div class="section-label"><span>Philosophy</span></div>
     <h2 class="display" style="color:var(--ink);margin-bottom:48px">Four things we believe that most agencies don't.</h2>
     <div class="grid-2">
-      <div class="card bone-card">
+      <div class="card bone-card reveal reveal-delay-1">
         <div class="card-tag">Belief 1</div>
         <h4>Guardrails are the product.</h4>
         <p>The AI model isn't the hard part. Defining what the agent can and cannot do — and making those rules auditable, editable, and trusted — is what makes automation actually work in real organisations.</p>
       </div>
-      <div class="card bone-card">
-        <div class="card-tag">Belief 2</div>
-        <h4>Every action must be traceable.</h4>
-        <p>If you can't explain why the agent did something, you can't trust it. Our trigger/action/impact schema means every decision has a logged reason and a measured outcome. No black box, ever.</p>
-      </div>
-      <div class="card bone-card">
-        <div class="card-tag">Belief 3</div>
-        <h4>Training is not a deliverable — it's a dependency.</h4>
-        <p>Automation that your team doesn't understand will be turned off at the first sign of uncertainty. Every engagement includes role-specific enablement so the system stays running and improves over time.</p>
-      </div>
-      <div class="card bone-card">
+      <a class="card-link" href="/results/trigger-action-impact">
+        <div class="card bone-card reveal reveal-delay-2" style="height:100%">
+          <div class="card-tag">Belief 2</div>
+          <h4>Every action must be traceable.</h4>
+          <p>If you can't explain why the agent did something, you can't trust it. Our trigger/action/impact schema means every decision has a logged reason and a measured outcome. No black box, ever.</p>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a class="card-link" href="/training">
+        <div class="card bone-card reveal reveal-delay-3" style="height:100%">
+          <div class="card-tag">Belief 3</div>
+          <h4>Training is not a deliverable — it's a dependency.</h4>
+          <p>Automation that your team doesn't understand will be turned off at the first sign of uncertainty. Every engagement includes role-specific enablement so the system stays running and improves over time.</p>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <div class="card bone-card reveal reveal-delay-4">
         <div class="card-tag">Belief 4</div>
         <h4>Measurement should be built in, not bolted on.</h4>
         <p>ROI from AI automation is measurable from day one — if you instrument it correctly. We build measurement into the architecture, not as an afterthought report you receive three months later.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="section reveal">
     <div class="section-label"><span class="label-signal">ClickShift heritage</span></div>
     <div class="grid-2">
       <div>
@@ -231,29 +259,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="lead">Campaign Automation AI is the evolution of ClickShift — a performance marketing agency that spent ten years building and managing campaigns across Google, Meta, and programmatic channels for mid-market and enterprise clients in Canada and the US.</p>
         <p style="color:var(--mist2);font-size:15px;line-height:1.7;margin-top:20px">That background matters. Our automation isn't built in a lab — it's built by people who have managed real ad accounts, seen real budget waste, and know exactly where human judgment is essential and where it's just expensive overhead.</p>
         <p style="color:var(--mist2);font-size:15px;line-height:1.7;margin-top:16px">We're based in Caledon, Ontario, and serve clients across North America.</p>
+        <p style="margin-top:20px"><a href="/results/trigger-action-impact" style="font-family:var(--f-mono);font-size:13px;letter-spacing:.04em;color:var(--signal);text-decoration:none">See the framework →</a></p>
       </div>
       <div>
-        <div class="terminal">
-          <div><span class="t-dim"># Company profile</span></div>
-          <div style="margin-top:12px"><span class="t-green">founded</span>   2025</div>
-          <div><span class="t-green">heritage</span>  ClickShift performance marketing (2015)</div>
-          <div><span class="t-green">location</span>  Caledon, Ontario</div>
-          <div><span class="t-green">market</span>    Canada + United States</div>
-          <div style="margin-top:12px"><span class="t-dim"># Core capabilities</span></div>
-          <div><span class="t-green">→</span> Guardrail-driven AI automation</div>
-          <div><span class="t-green">→</span> Paid advertising management</div>
-          <div><span class="t-green">→</span> Workflow & ops automation</div>
-          <div><span class="t-green">→</span> AI training & enablement</div>
-          <div style="margin-top:12px"><span class="t-dim">hello@campaignautomation.ai</span><span class="cursor"></span></div>
+        <div class="terminal terminal-float" data-animate role="region" aria-label="Company profile" aria-live="off">
+          <div data-type class="t-dim"># Company profile</div>
+          <div data-type class="t-green" style="margin-top:12px">founded   2025</div>
+          <div data-type class="t-green">heritage  ClickShift performance marketing (2015)</div>
+          <div data-type class="t-green">location  Caledon, Ontario</div>
+          <div data-type class="t-green">market    Canada + United States</div>
+          <div data-type class="t-dim" style="margin-top:12px"># Core capabilities</div>
+          <div data-type>→ Guardrail-driven AI automation</div>
+          <div data-type>→ Paid advertising management</div>
+          <div data-type>→ Workflow & ops automation</div>
+          <div data-type>→ AI training & enablement</div>
+          <div data-type class="t-dim" style="margin-top:12px">hello@campaignautomation.ai <span class="cursor" aria-hidden="true"></span></div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section reveal" aria-labelledby="people-heading">
+    <div class="section-label"><span class="label-signal">The people</span></div>
+    <div class="grid-2" style="align-items:center">
+      <div>
+        <h2 class="display" id="people-heading" style="margin-bottom:16px">A founding builder.<br>A bench of specialists.</h2>
+        <p class="lead">Campaign Automation is led by founding builder Dave Bussell and a vetted network of specialists across paid, lifecycle, RevOps, agents, data, and governance.</p>
+        <a href="/builders" class="btn-ghost" style="margin-top:24px">Meet the builders →</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:330px;margin:0 auto" aria-hidden="true">
+        <svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Dave Bussell"><defs><linearGradient id="ab0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F766E"/><stop offset="1" stop-color="#C8F135"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab0)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">DB</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Priya Raghunathan"><defs><linearGradient id="ab1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D28D9"/><stop offset="1" stop-color="#4F46E5"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab1)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">PR</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Tomás Rivera"><defs><linearGradient id="ab2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E11D48"/><stop offset="1" stop-color="#F97316"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab2)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">TR</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Aïsha Okonkwo"><defs><linearGradient id="ab3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B45309"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab3)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">AO</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Sofía Mendes"><defs><linearGradient id="ab4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1D4ED8"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab4)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">SM</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Hassan Mahmoud"><defs><linearGradient id="ab5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A21CAF"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab5)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">HM</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Marcus Adeyemi"><defs><linearGradient id="ab6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#047857"/><stop offset="1" stop-color="#65A30D"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab6)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">MA</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Kwame Mensah"><defs><linearGradient id="ab7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BE123C"/><stop offset="1" stop-color="#DB2777"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab7)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">KM</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Mei-Ling Chen"><defs><linearGradient id="ab8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4338CA"/><stop offset="1" stop-color="#2563EB"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab8)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">MC</text></svg><svg class="bld-av" viewBox="0 0 100 100" width="54" height="54" role="img" aria-label="Omar Haddad"><defs><linearGradient id="ab9" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F766E"/><stop offset="1" stop-color="#0891B2"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#ab9)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">OH</text></svg>
+      </div>
+    </div>
+  </section>
 </main>
 
   <div class="tagline-footer">
-    <p>Built by people who<br>had to get it <span>done.</span></p>
-    <a href="/get-started" class="btn-primary" style="margin-top:32px">Work with us →</a>
+    <p class="reveal">Built by people who<br>had to get it <span>done.</span></p>
+    <a href="/get-started" class="btn-primary reveal reveal-delay-2" style="margin-top:32px">Work with us →</a>
   </div>
 
   <footer class="site-footer" role="contentinfo" aria-label="Site footer">

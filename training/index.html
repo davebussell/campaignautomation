@@ -24,18 +24,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <style>
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.tr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.training-card{background:var(--bone);border:1px solid var(--border-bone);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,box-shadow .2s}
-.training-card:hover{border-color:var(--signal);box-shadow:0 4px 24px rgba(0,0,0,.06)}
-.training-tag{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:rgba(200,241,53,.22);border:1px solid rgba(200,241,53,.55);border-radius:4px;padding:4px 10px;display:inline-block;align-self:flex-start}
-.training-card h4{font-family:var(--f-display);font-size:18px;font-weight:600;color:var(--ink);line-height:1.3;margin:0}
-.training-card p{font-size:14px;color:#555;line-height:1.65;margin:0;flex:1}
-.training-card .duration{font-family:var(--f-mono);font-size:12px;color:var(--mist);margin-top:auto;padding-top:16px;border-top:1px solid var(--border-bone)}
 .includes-list{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.includes-list li{font-size:15px;color:#444;padding:14px 16px;background:var(--bone);border:1px solid var(--border-bone);border-radius:8px;display:flex;align-items:center;gap:10px}
-.includes-list li::before{content:'✦';color:var(--signal);font-size:12px;flex-shrink:0}
-@media(max-width:900px){.tr-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:400px){.tr-grid{grid-template-columns:1fr}.includes-list{grid-template-columns:1fr}}
+.includes-list li{font-size:15px;padding:14px 16px;background:var(--bone);border:1px solid var(--border-bone);border-radius:8px;display:flex;align-items:center;gap:10px}
+.includes-list li::before{content:'→';color:var(--signal);font-size:12px;flex-shrink:0}
+@media(max-width:400px){.includes-list{grid-template-columns:1fr}}
 </style>
 <script defer src="/js/consent.js"></script>
 </head>
@@ -140,69 +132,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main id="main-content">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span class="current">Training</span></nav>
 
-  <section class="page-hero snap-sec" aria-labelledby="training-heading">
+  <section class="page-hero" aria-labelledby="training-heading">
     <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Training</div>
-    <h1 id="training-heading">Training built for the people running the automation.</h1>
+    <h1 id="training-heading">Training built for the people running the automation<span class="blink-dot" aria-hidden="true">.</span></h1>
     <p class="lead">Not generic AI literacy. Not vendor certification theater. Practical training tied to real campaign workflows, guardrail configuration, and the systems your team will actually use.</p>
+    <div class="page-meta"><span>6 programs</span><span>Half-day &rarr; 3 days</span><span>Online or in-person</span><span>Certificate available</span></div>
   </section>
 
-  <section class="section snap-sec" aria-labelledby="courses-heading">
+  <section class="section" aria-labelledby="courses-heading">
     <div class="section-label reveal"><span class="label-signal">Training programs</span></div>
     <h2 class="display reveal" id="courses-heading">Six programs. Every role covered.</h2>
 
-    <div class="tr-grid">
+    <div class="training-grid" style="margin-top:48px">
 
-      <article class="training-card reveal" aria-labelledby="course-1-heading">
-        <div class="training-tag">Business leaders</div>
+      <article class="training-item reveal" aria-labelledby="course-1-heading">
+        <div class="t-tag">Business leaders</div>
         <h4 id="course-1-heading">AI for Business Leaders</h4>
         <p>Understand what AI automation can and cannot do, how to evaluate vendors, and how to structure a pilot. No technical background required.</p>
         <div class="duration">Half-day · Workshop or async</div>
       </article>
 
-      <article class="training-card reveal reveal-delay-1" aria-labelledby="course-2-heading">
-        <div class="training-tag">Marketing team</div>
+      <article class="training-item reveal reveal-delay-1" aria-labelledby="course-2-heading">
+        <div class="t-tag">Marketing team</div>
         <h4 id="course-2-heading">Marketing Automation Fundamentals</h4>
         <p>Prompt engineering, AI workflow design, guardrail setup, and measurement. Hands-on with real campaign data.</p>
         <div class="duration">Full-day · Workshop</div>
       </article>
 
-      <article class="training-card reveal reveal-delay-2" aria-labelledby="course-3-heading">
-        <div class="training-tag">Marketing team</div>
+      <article class="training-item reveal reveal-delay-2" aria-labelledby="course-3-heading">
+        <div class="t-tag">Marketing team</div>
         <h4 id="course-3-heading">Workflow Automation Training</h4>
         <p>Build your first automated workflow from scratch. Covers brief generation, PPC rule automation, and CRM sequence setup.</p>
         <div class="duration">Full-day · Workshop</div>
       </article>
 
-      <article class="training-card reveal" aria-labelledby="course-4-heading">
-        <div class="training-tag">Technical</div>
+      <article class="training-item reveal" aria-labelledby="course-4-heading">
+        <div class="t-tag">Technical</div>
         <h4 id="course-4-heading">Guardrail Setup &amp; Configuration</h4>
         <p>Set up AGENTS.md, configure guardrail rules, and build audit logs for your AI automation stack. Practical and tool-agnostic.</p>
         <div class="duration">Half-day · Technical workshop</div>
       </article>
 
-      <article class="training-card reveal reveal-delay-1" aria-labelledby="course-5-heading">
-        <div class="training-tag">Marketing team</div>
+      <article class="training-item reveal reveal-delay-1" aria-labelledby="course-5-heading">
+        <div class="t-tag">Marketing team</div>
         <h4 id="course-5-heading">Google Ads AI — Beyond Smart Bidding</h4>
         <p>Manual control vs. automated bidding, script automation, custom rules, and guardrail-driven oversight for Google Ads campaigns.</p>
         <div class="duration">3 hours · Online</div>
       </article>
 
-      <article class="training-card reveal reveal-delay-2" aria-labelledby="course-6-heading">
-        <div class="training-tag">All roles</div>
+      <article class="training-item reveal reveal-delay-2" aria-labelledby="course-6-heading">
+        <div class="t-tag">All roles</div>
         <h4 id="course-6-heading">Campaign Automation Certification</h4>
         <p>Complete training program covering strategy, implementation, guardrails, and measurement. Issued certificate on completion.</p>
         <div class="duration">3 days · Online or in-person</div>
       </article>
 
     </div>
+
+    <div class="reveal" style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:20px 24px;max-width:740px;margin-top:32px">
+      <strong style="display:block;margin-bottom:6px;font-size:15px">Not sure which program fits your team?</strong>
+      <p style="font-size:14px;color:var(--mist2);margin:0;line-height:1.65">Take the Readiness Score — four minutes, no login — and it will point you at the program that matches where your team is today.</p>
+      <a href="/tools/readiness-score" style="display:inline-block;margin-top:12px;font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.04em">Get your Readiness Score →</a>
+      <a href="mailto:hello@campaignautomation.ai" style="display:block;margin-top:8px;font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.04em">or email hello@campaignautomation.ai about team training →</a>
+    </div>
   </section>
 
-  <section class="section bone snap-sec" aria-labelledby="includes-heading">
-    <div class="section-label reveal"><span>What's included</span></div>
+  <section class="section bone" aria-labelledby="includes-heading">
+    <div class="section-label reveal"><span class="label-signal">What's included</span></div>
     <div class="grid-2" style="align-items:start;gap:64px">
       <div>
-        <h2 class="display reveal" id="includes-heading" style="color:var(--ink)">All training includes:</h2>
-        <p class="lead" style="color:#555;margin-top:16px">Every program — from a half-day workshop to the full certification — ships with the same toolkit so your team can apply what they learned immediately.</p>
+        <h2 class="display reveal" id="includes-heading">All training includes:</h2>
+        <p class="lead" style="margin-top:16px">Every program — from a half-day workshop to the full certification — ships with the same toolkit so your team can apply what they learned immediately.</p>
+        <p style="margin-top:20px"><a href="/results/trigger-action-impact" style="font-family:var(--f-mono);font-size:13px;color:#333;letter-spacing:.04em">Every program teaches the TAI framework we run in client accounts →</a></p>
       </div>
       <div>
         <ul class="includes-list reveal" aria-label="Included with all training">
@@ -216,7 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <div class="tagline-footer snap-sec">
+  <div class="tagline-footer">
     <p class="reveal">Your team is the automation.<br>We teach them to own it.<br><span style="color:var(--signal)">Start with the right program.</span></p>
     <div class="tf-explore"><p class="tf-explore-label">Keep exploring</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/resources/first-90-days-ai-marketing-automation"><span class="tf-x-cat">Buyer guides</span><span class="tf-x-title">Your First 90 Days With AI Marketing Automation (2026)</span></a><a class="tf-explore-card" href="/resources/ai-marketing-automation-for-small-teams"><span class="tf-x-cat">Buyer guides</span><span class="tf-x-title">AI Marketing Automation for Small Teams</span></a><a class="tf-explore-card" href="/resources/ai-marketing-automation-governance-checklist"><span class="tf-x-cat">Buyer guides</span><span class="tf-x-title">An AI Marketing Automation Governance Checklist</span></a></div><a class="tf-explore-all" href="/resources/articles">Browse all articles &rarr;</a></div>
   </div>

@@ -19,7 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" hreflang="en-US" href="https://campaignautomation.ai/revenue-operations">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 <script type="application/ld+json">
 {
@@ -155,78 +155,99 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <main id="main-content">
-  <div class="breadcrumb">
-    <a href="/">Home</a><span>/</span><span>Revenue Operations</span>
-  </div>
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span class="current">Revenue Operations</span></nav>
 
-  <section class="page-hero snap-sec reveal">
+  <section class="page-hero reveal">
     <p class="eyebrow"><span class="dot"></span>Revenue Operations</p>
     <h1>Automate the handoff between marketing, sales, and revenue<span class="blink-dot" aria-hidden="true">.</span></h1>
     <p>Revenue operations is where campaigns go to get scored, routed, and converted — or lost. This pillar covers the AI systems that make the handoff between marketing and sales reliable and repeatable.</p>
+    <div class="hero-actions">
+      <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+      <a href="/solutions/sprints/lead-reactivation" class="btn-ghost">See the Lead Reactivation Sprint →</a>
+    </div>
   </section>
 
-  <section class="section snap-sec reveal">
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">Pillar map</span></div>
     <h2 class="display">Explore this pillar</h2>
-    <div class="grid-2" style="margin-top:2rem">
-      <a href="/revenue-operations/ai-revenue-ops" class="pillar-card card" style="text-decoration:none">
-        <h4>AI Revenue Operations →</h4>
+    <p class="lead">Four clusters covering the AI systems that score, route, and convert your pipeline.</p>
+    <div class="grid-3" data-stagger style="margin-top:32px">
+      <a href="/revenue-operations/ai-revenue-ops" class="pillar-card">
+        <div class="pillar-tag signal">Cluster</div>
+        <h4>AI Revenue Operations</h4>
         <p>How AI fits into RevOps: lead scoring, routing, and pipeline forecasting.</p>
       </a>
-      <a href="/revenue-operations/ai-sales-automation" class="pillar-card card" style="text-decoration:none">
-        <h4>AI Sales Automation →</h4>
+      <a href="/revenue-operations/ai-sales-automation" class="pillar-card">
+        <div class="pillar-tag">Sales</div>
+        <h4>AI Sales Automation</h4>
         <p>Automated outreach, follow-up sequences, and CRM enrichment for sales teams.</p>
       </a>
-      <a href="/revenue-operations/abm-demand-gen" class="pillar-card card" style="text-decoration:none">
-        <h4>ABM &amp; Demand Generation →</h4>
+      <a href="/revenue-operations/abm-demand-gen" class="pillar-card">
+        <div class="pillar-tag">ABM</div>
+        <h4>ABM &amp; Demand Generation</h4>
         <p>Account-based targeting with AI-driven personalisation at scale.</p>
       </a>
-      <a href="/revenue-operations/enterprise-outreach" class="pillar-card card" style="text-decoration:none">
-        <h4>Enterprise Outreach Automation →</h4>
+      <a href="/revenue-operations/enterprise-outreach" class="pillar-card">
+        <div class="pillar-tag">Enterprise</div>
+        <h4>Enterprise Outreach Automation</h4>
         <p>Scalable outreach workflows for complex B2B sales cycles and multi-stakeholder accounts.</p>
       </a>
     </div>
   </section>
 
-  <section class="section snap-sec reveal">
+  <section class="section reveal">
+    <div class="section-label"><span class="label-signal">From the library</span></div>
     <h2 class="display">Go deeper: RevOps &amp; GTM-tool guides</h2>
-    <p style="max-width:680px;color:var(--mist2)">Guides from the library on AI across the revenue stack — and the GTM tools you're likely evaluating.</p>
-    <div class="grid-2" style="margin-top:24px">
-      <a href="/resources/ai-agents-in-your-crm" class="pillar-card card" style="text-decoration:none">
-        <h4>AI agents in your CRM →</h4>
+    <p class="lead">Guides from the library on AI across the revenue stack — and the GTM tools you're likely evaluating.</p>
+    <div class="grid-3" data-stagger style="margin-top:32px">
+      <a href="/resources/ai-agents-in-your-crm" class="pillar-card">
+        <div class="pillar-tag">CRM</div>
+        <h4>AI agents in your CRM</h4>
         <p>What CRM AI agents actually automate, where they break, and the guardrails that decide which.</p>
       </a>
-      <a href="/resources/ai-marketing-automation-roi" class="pillar-card card" style="text-decoration:none">
-        <h4>Prove ROI on AI automation →</h4>
+      <a href="/resources/ai-marketing-automation-roi" class="pillar-card">
+        <div class="pillar-tag">ROI</div>
+        <h4>Prove ROI on AI automation</h4>
         <p>Tie automation to pipeline and revenue, not just "time saved" — a model you can defend to finance.</p>
       </a>
-      <a href="/resources/zoominfo-ai-features" class="pillar-card card" style="text-decoration:none">
-        <h4>ZoomInfo AI features →</h4>
+      <a href="/resources/zoominfo-ai-features" class="pillar-card">
+        <div class="pillar-tag">ZoomInfo</div>
+        <h4>ZoomInfo AI features</h4>
         <p>Copilot, Workspace, and GTM.AI — what the B2B data platform's AI actually does.</p>
       </a>
-      <a href="/resources/6sense-ai-features" class="pillar-card card" style="text-decoration:none">
-        <h4>6sense AI features →</h4>
+      <a href="/resources/6sense-ai-features" class="pillar-card">
+        <div class="pillar-tag">6sense</div>
+        <h4>6sense AI features</h4>
         <p>How Revenue AI predicts buyer intent and prioritises the accounts already in-market.</p>
       </a>
-      <a href="/resources/gong-ai-features" class="pillar-card card" style="text-decoration:none">
-        <h4>Gong AI features →</h4>
+      <a href="/resources/gong-ai-features" class="pillar-card">
+        <div class="pillar-tag">Gong</div>
+        <h4>Gong AI features</h4>
         <p>Conversation intelligence, deal prediction, and forecasting AI for revenue teams.</p>
       </a>
-      <a href="/resources/clay-ai-features" class="pillar-card card" style="text-decoration:none">
-        <h4>Clay AI features →</h4>
+      <a href="/resources/clay-ai-features" class="pillar-card">
+        <div class="pillar-tag">Clay</div>
+        <h4>Clay AI features</h4>
         <p>Claygent, Sculptor, and waterfall enrichment for building and qualifying prospect lists.</p>
       </a>
     </div>
     <a href="/resources/articles" style="display:inline-block;margin-top:24px;color:var(--signal);text-decoration:none;font-family:var(--f-mono);font-size:13px">Browse all 80 articles →</a>
   </section>
 
-  <section class="section bone snap-sec reveal">
-    <div class="callout-box" style="border:2px solid var(--signal);padding:2rem;border-radius:4px">
-      <p style="font-family:var(--f-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin-bottom:.5rem">Turn this into action</p>
-      <p style="margin:0 0 1rem">Got a list of cold or stalled leads? The Lead Reactivation Sprint builds a segmented, personalised outreach sequence in 2–3 weeks.</p>
-      <a href="/solutions/sprints/lead-reactivation" class="btn-primary">See the Lead Reactivation Sprint →</a>
+  <section class="section reveal">
+    <div style="border:2px solid var(--signal);padding:40px 32px;max-width:680px;margin:0 auto;text-align:center">
+      <div class="signal-badge" style="margin-bottom:16px"><span class="dot" aria-hidden="true"></span>Turn this into action</div>
+      <h3 class="display" style="margin-bottom:10px">Got cold or stalled leads?</h3>
+      <p style="color:var(--mist2);margin:0 auto 24px;max-width:520px;line-height:1.65">The Lead Reactivation Sprint builds a segmented, personalised outreach sequence in 2–3 weeks.</p>
+      <a href="/solutions/sprints/lead-reactivation" class="btn-ghost">See the Lead Reactivation Sprint →</a>
     </div>
   </section>
 </main>
+
+<div class="tagline-footer">
+  <p>Marketing to sales<span>.</span><br>Nothing lost in the handoff<span>.</span></p>
+  <a href="/tools/readiness-score" class="btn-primary" style="margin-top:32px">Get your free Readiness Score →</a>
+</div>
 
 <footer class="site-footer" role="contentinfo" aria-label="Site footer">
   <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
