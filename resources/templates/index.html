@@ -1,7 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-CA">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 <!-- Google consent mode v2 default (denied until the visitor chooses) -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
 <!-- Google Tag Manager -->
@@ -11,23 +11,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TD5GPWN5');</script>
 <!-- End Google Tag Manager -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free AI Campaign Templates — AGENTS.md, Prompt Packs &amp; Claude Instructions</title>
-  <meta name="description" content="Free starter templates from every sprint we run — AGENTS.md, CLAUDE.md, prompt packs for PPC, SEO, landing pages, and campaign launch. Download and run with Claude or Cursor.">
-  <link rel="canonical" href="https://campaignautomation.ai/resources/templates">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <meta property="og:type" content="website">
-<meta property="og:url" content="https://campaignautomation.ai/resources/templates">
-<meta property="og:title" content="AI Campaign Automation Templates &amp; Prompt Packs — Free Downloads">
-<meta property="og:description" content="AGENTS.md starters, PPC brief generators, SEO brief templates, and prompt packs for Claude, Cursor, and other AI tools.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Campaign Automation Templates &amp; Prompt Packs — Free Downloads">
-<meta name="twitter:description" content="AGENTS.md starters, PPC brief generators, SEO brief templates, and prompt packs for Claude, Cursor, and other AI tools.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Templates &amp; Prompt Packs — Free, Browsable, Guardrail-First | Campaign Automation AI</title>
+<meta name="description" content="Seven free templates and prompt packs — AGENTS.md, CLAUDE.md, guardrail configs, PPC audit, SEO brief, landing page, and launch kit. Browse, copy, and run them in Claude or Cursor.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/templates">
+<link rel="alternate" hreflang="en-CA" href="https://campaignautomation.ai/resources/templates">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+  .tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .tpl-card{border:1px solid var(--border);border-radius:10px;padding:24px;background:var(--slate);display:flex;flex-direction:column;gap:12px;min-width:0;text-decoration:none;transition:border-color .15s,transform .15s}
+  .tpl-card:hover{border-color:var(--signal-dim);transform:translateY(-2px)}
+  .tpl-card h3{font-family:var(--f-display);font-size:17px;font-weight:700;color:var(--bone);margin:0;line-height:1.25;letter-spacing:-.01em}
+  .tpl-card p{font-size:13.5px;color:var(--mist2);line-height:1.6;margin:0;flex:1}
+  .tpl-card .tpl-go{font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.03em}
+  .tpl-chip{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);border:1px solid var(--signal-dim);border-radius:3px;padding:3px 8px;align-self:flex-start}
+  .tpl-kv{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:22px;max-width:760px}
+  .tpl-kv .kw-row{padding:13px 18px}
+  .tpl-artifact{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:26px;background:var(--slate2)}
+  .tpl-artifact-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--border);background:var(--slate)}
+  .tpl-artifact-bar b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist2);font-weight:500}
+  .tpl-copy{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:var(--signal);color:var(--ink);border:none;border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-copy:hover{filter:brightness(1.07)}
+  .tpl-artifact pre{margin:0;padding:20px 22px;max-height:620px;overflow:auto;font-family:var(--f-mono);font-size:12.5px;line-height:1.62;color:var(--mist2);white-space:pre-wrap;overflow-wrap:break-word}
+  .tpl-steps{list-style:none;padding:0;margin:26px 0 0;counter-reset:tp}
+  .tpl-steps li{position:relative;padding:16px 0 16px 58px;border-bottom:1px solid var(--border);counter-increment:tp;color:var(--mist2);font-size:14.5px;line-height:1.6}
+  .tpl-steps li:last-child{border-bottom:none}
+  .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
+  .tpl-steps li strong{color:var(--bone)}
+</style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"The templates we use. Free to download.","description":"Free starter templates from every sprint we run — AGENTS.md, CLAUDE.md, prompt packs for PPC, SEO, landing pages, and campaign launch. Download and run with Claude or Cursor.","url":"https://campaignautomation.ai/resources/templates","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://campaignautomation.ai/resources"},{"@type":"ListItem","position":3,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Templates & Prompt Packs","description":"Seven free templates and prompt packs for governed AI marketing automation.","url":"https://campaignautomation.ai/resources/templates","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"}]}]}
 </script>
 <script defer src="/js/consent.js"></script>
 </head>
@@ -37,6 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a href="#main-content" class="skip-nav">Skip to main content</a>
+
 <nav aria-label="Main navigation">
   <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
   <div class="nav-links">
@@ -93,6 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
   </button>
 </nav>
+
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
   <div class="mobile-section">
     <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
@@ -127,131 +144,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score &rarr;</a>
 </nav>
 
+<div class="page-wrap">
 <main id="main-content">
-  <div class="breadcrumb">
-    <a href="/">Home</a><span>/</span><a href="/resources">Resources</a><span>/</span><span>Templates &amp; Prompt Packs</span>
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/resources">Resources</a><span aria-hidden="true">/</span><span class="current">Templates</span></nav>
+
+  <div class="page-hero">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Free &middot; no gate</p>
+    <h1>The templates we use<span class="blink-dot" aria-hidden="true">.</span></h1>
+    <p>Every template and prompt pack behind our sprints — free to browse, copy, and run in Claude or Cursor. Each one ships guardrail-first: approval thresholds, caps, and a change log are part of the template, not an afterthought.</p>
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-n" aria-label="7 templates">7</div>
+        <div class="metric-l">Templates &amp; prompt packs</div>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="3 categories">3</div>
+        <div class="metric-l">Categories</div>
+      </div>
+      <div class="metric" style="padding-left:40px">
+        <div class="metric-n" aria-label="100 percent guardrail-first">100<span aria-hidden="true">%</span></div>
+        <div class="metric-l">Guardrail-first</div>
+      </div>
+    </div>
   </div>
 
-  <section class="page-hero reveal">
-    <div class="signal-badge">7 Free Templates</div>
-    <h1>The templates we use. Free to download.</h1>
-    <p class="hero-sub">Every sprint we run produces a set of reusable files. These are the starter versions — enough to get going with Claude, Cursor, or Codex on your own campaigns. Enter your email below and we'll send all 7 in one package.</p>
-  </section>
-
   <section class="section reveal">
-    <h2 class="display" style="font-size:clamp(26px,3.4vw,40px)">Available templates</h2>
-    <div class="grid-3" style="margin-top:2rem">
-      <div class="card">
-        <h3>Campaign AGENTS.md</h3>
-        <p>The base agent instruction file for campaign work — roles, tools list, guardrails, and output format standards.</p>
-        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
-      </div>
-      <div class="card">
-        <h3>Campaign CLAUDE.md</h3>
-        <p>Project-level Claude instructions covering brand voice, audience, offer framing, and what not to generate.</p>
-        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
-      </div>
-      <div class="card">
-        <h3>PPC Audit Prompt Pack</h3>
-        <p>8 reusable prompts for waste analysis, negative keyword review, match type audits, and bid strategy evaluation.</p>
-        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
-      </div>
-      <div class="card">
-        <h3>SEO Brief Prompt Pack</h3>
-        <p>Prompts for keyword clustering, intent mapping, brief generation, and internal linking recommendations.</p>
-        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
-      </div>
-      <div class="card">
-        <h3>Landing Page Builder Prompt Pack</h3>
-        <p>Section-by-section LP generation prompts — hero, pain, solution, proof, objection, CTA — with intent-matching logic.</p>
-        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
-      </div>
-      <div class="card">
-        <h3>Campaign Launch Kit Template</h3>
-        <p>The full campaign kit structure — ad group scaffold, copy variant tables, UTM taxonomy, and QA checklist in one doc.</p>
-        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
-      </div>
-      <div class="card">
-        <h3>Guardrail Configuration Template</h3>
-        <p>Starter guardrail rules covering spend caps, CTR anomaly alerts, negative keyword triggers, and suppression logic.</p>
-        <a href="#get-pack" class="btn-ghost btn-sm" style="margin-top:1rem;display:inline-block">Get template →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bone reveal">
-    <h2 class="display" style="font-size:clamp(26px,3.4vw,40px)">How to use them</h2>
-    <div style="margin-top:2rem">
-      <div class="step"><span class="step-num">01</span><div><strong>Drop AGENTS.md into your project root</strong><p>Place the file at the root of your campaign project folder. Claude Code and Cursor will read it automatically on every session.</p></div></div>
-      <div class="step"><span class="step-num">02</span><div><strong>Customize CLAUDE.md with your brand, audience, and goals</strong><p>Fill in your offer, ICP, tone of voice, and campaign objectives. This is what makes the output specific to your campaigns — not generic.</p></div></div>
-      <div class="step"><span class="step-num">03</span><div><strong>Run Claude or Cursor with the prompt pack</strong><p>Open a prompt from the pack, paste it into Claude, and point it at your data. The AGENTS.md and CLAUDE.md do the heavy lifting on context.</p></div></div>
+    <p class="section-label"><span class="label-signal">Agent configs</span></p>
+    <div class="tpl-grid">
+      <a class="tpl-card" href="/resources/templates/campaign-agents-md"><span class="tpl-chip">Agent configs</span><h3>Campaign AGENTS.md</h3><p>The project instruction file your AI agent reads before it is allowed to touch campaign work.</p><span class="tpl-go">View &amp; copy &rarr;</span></a>
+      <a class="tpl-card" href="/resources/templates/campaign-claude-md"><span class="tpl-chip">Agent configs</span><h3>Campaign CLAUDE.md</h3><p>The brand context file that makes AI agent output sound like your company — safely.</p><span class="tpl-go">View &amp; copy &rarr;</span></a>
+      <a class="tpl-card" href="/resources/templates/guardrail-config"><span class="tpl-chip">Agent configs</span><h3>Guardrail Configuration Template</h3><p>The caps, ceilings, and kill-switch rules a team signs off before any agent touches spend.</p><span class="tpl-go">View &amp; copy &rarr;</span></a>
     </div>
   </section>
 
   <section class="section reveal">
-    <h2 class="display" style="font-size:clamp(26px,3.4vw,40px)">What's inside AGENTS.md</h2>
-    <div class="terminal" data-animate>
-<span class="t-comment"># AGENTS.md — Campaign Automation Agent Instructions</span>
-
-<span class="t-label">ROLE</span>
-You are a campaign automation agent. Your job is to analyze campaign data,
-generate structured outputs, and follow guardrail rules without deviation.
-You do not generate copy without an ICP definition present.
-You do not recommend budget changes without a performance baseline.
-
-<span class="t-label">TOOLS</span>
-  - read_csv: ingest campaign exports and search term reports
-  - generate_brief: produce campaign briefs from ICP + offer inputs
-  - build_negatives: output negative keyword lists by match type
-  - write_copy: generate ad copy variants in RSA format
-  - run_qa: execute pre-launch QA checklist against campaign structure
-
-<span class="t-label">GUARDRAILS</span>
-  - Never recommend pausing a campaign without 30-day performance data
-  - Flag any keyword with CPA &gt; 2x target before acting
-  - Require ICP.md to be present before generating audience messaging
-  - Output all recommendations in structured markdown tables
-
-<span class="t-label">OUTPUT FORMAT</span>
-  Default: markdown · Tables for structured data · Code blocks for uploads
-  Handover docs: include summary, action list, and owner assignment</div>
-  </section>
-
-  <section class="section bone reveal" id="get-pack">
-    <h2 class="display" style="font-size:clamp(26px,3.4vw,40px)">Get all 7 templates</h2>
-    <p style="margin-bottom:1.5rem;color:var(--mist2)">Enter your email and we'll send the full template package — AGENTS.md, CLAUDE.md, all five prompt packs — in one download.</p>
-    <form name="templates" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="templates-form" style="display:flex;gap:12px;flex-wrap:wrap;max-width:480px">
-      <input type="hidden" name="form-name" value="templates">
-      <p hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
-      <label for="email-capture" class="visually-hidden">Email address</label>
-      <input id="email-capture" type="email" name="email" placeholder="you@company.com" required autocomplete="email" style="flex:1;min-width:220px;padding:12px 16px;border:1px solid #333;background:var(--slate);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px">
-      <button type="submit" class="btn-primary">Get all 7 templates →</button>
-    </form>
-    <p id="templates-form-msg" role="status" aria-live="polite" style="margin-top:14px;font-size:14px;display:none"></p>
+    <p class="section-label"><span class="label-signal">Prompt packs</span></p>
+    <div class="tpl-grid">
+      <a class="tpl-card" href="/resources/templates/ppc-audit-prompt-pack"><span class="tpl-chip">Prompt packs</span><h3>PPC Audit Prompt Pack</h3><p>Six copy-paste prompts that audit a paid-search account from exports — no logins, no APIs.</p><span class="tpl-go">View &amp; copy &rarr;</span></a>
+      <a class="tpl-card" href="/resources/templates/seo-brief-prompt-pack"><span class="tpl-chip">Prompt packs</span><h3>SEO Brief Prompt Pack</h3><p>Five chained prompts that turn a keyword and a SERP into a review-gated SEO brief.</p><span class="tpl-go">View &amp; copy &rarr;</span></a>
+      <a class="tpl-card" href="/resources/templates/landing-page-prompt-pack"><span class="tpl-chip">Prompt packs</span><h3>Landing Page Builder Prompt Pack</h3><p>Five prompts that take a landing page from message-match audit to pre-launch sign-off.</p><span class="tpl-go">View &amp; copy &rarr;</span></a>
+    </div>
   </section>
 
   <section class="section reveal">
-    <div class="card" style="border-left:3px solid var(--signal);padding:2rem">
-      <p style="font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem">Want more than a starter?</p>
-      <h3 style="margin-bottom:.75rem">Templates pre-configured for your campaigns.</h3>
-      <p>The sprints take these starter files and build them out specifically for your account, your ICP, and your offer — so they work out of the box, not after weeks of customization.</p>
-      <a href="/automations" class="btn-ghost" style="margin-top:1rem;display:inline-block">See all Automation Sprints →</a>
+    <p class="section-label"><span class="label-signal">Playbooks</span></p>
+    <div class="tpl-grid">
+      <a class="tpl-card" href="/resources/templates/campaign-launch-kit"><span class="tpl-chip">Playbooks</span><h3>Campaign Launch Kit Template</h3><p>One fill-in document from brief to approved launch — nothing spends until sign-off.</p><span class="tpl-go">View &amp; copy &rarr;</span></a>
     </div>
   </section>
 
-  <section class="section bone reveal">
-    <h2 class="display" style="font-size:clamp(26px,3.4vw,40px)">Keep learning</h2>
-    <div class="grid-2" style="margin-top:1.5rem">
-      <a href="/ai-strategy/guardrail-driven-automation" class="card" style="text-decoration:none">
-        <h3>Guardrail-Driven Automation →</h3>
-        <p>How to build AI campaign systems that don't go off the rails — the logic behind the guardrail template.</p>
-      </a>
-      <a href="/resources/glossary" class="card" style="text-decoration:none">
-        <h3>Campaign Automation Glossary →</h3>
-        <p>AGENTS.md, CLAUDE.md, trigger/action/impact, routing logic — every term defined in plain language.</p>
-      </a>
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">How to use them</span></p>
+    <h2 class="display" style="margin-bottom:8px">Three files, one working setup.</h2>
+    <ol class="tpl-steps" style="max-width:760px">
+      <li><strong>Drop AGENTS.md into your project root.</strong> It defines what the agent may touch, the guardrails it works inside, and how every action gets logged.</li>
+      <li><strong>Customize CLAUDE.md with your brand, audience, and goals.</strong> This is the context that makes output specific to your business instead of generic.</li>
+      <li><strong>Run Claude or Cursor with the prompt pack for the job.</strong> Each prompt names its inputs and output format — paste your exports and go.</li>
+    </ol>
+    <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Setting up the environment first? The <a href="/automations/setup" style="color:var(--signal)">Environments &amp; tooling guide</a> covers data access, MCP servers, and the agent layer once — every template assumes it.</div>
+  </section>
+
+  <section class="section reveal" style="background:var(--slate)">
+    <div class="grid-2" style="align-items:center;gap:64px">
+      <div>
+        <div class="signal-badge" style="margin-bottom:20px"><span class="dot" aria-hidden="true"></span>Optional</div>
+        <h2 class="display" style="margin-bottom:10px">Want them as files?</h2>
+        <p class="lead" style="margin-bottom:24px">Everything above is free to copy right off the page. If you&rsquo;d rather have the full pack as ready-to-use files in your inbox — plus updates when new packs ship — leave an email.</p>
+        <form name="templates" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="templates-form" style="display:flex;gap:12px;flex-wrap:wrap;max-width:480px">
+          <input type="hidden" name="form-name" value="templates">
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+          <label for="email-capture" class="visually-hidden">Email address</label>
+          <input id="email-capture" type="email" name="email" placeholder="you@company.com" required autocomplete="email" style="flex:1;min-width:220px;padding:12px 16px;border:1px solid #333;background:var(--slate2);color:var(--bone);font-family:var(--f-body);font-size:15px;border-radius:4px">
+          <button type="submit" class="btn-primary">Send me the pack &rarr;</button>
+        </form>
+        <p id="templates-form-msg" role="status" aria-live="polite" style="margin-top:14px;font-size:14px;display:none"></p>
+      </div>
+      <div class="reveal">
+        <div style="border:1px solid var(--border);padding:32px">
+          <div style="font-family:var(--f-mono);font-size:11px;color:var(--mist);text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px">In the pack</div>
+          <div class="kw-row" style="padding:11px 0"><div class="kw-term">Campaign AGENTS.md</div><div class="kw-vol">&#10022;</div></div><div class="kw-row" style="padding:11px 0"><div class="kw-term">Campaign CLAUDE.md</div><div class="kw-vol">&#10022;</div></div><div class="kw-row" style="padding:11px 0"><div class="kw-term">Guardrail Configuration Template</div><div class="kw-vol">&#10022;</div></div><div class="kw-row" style="padding:11px 0"><div class="kw-term">PPC Audit Prompt Pack</div><div class="kw-vol">&#10022;</div></div><div class="kw-row" style="padding:11px 0"><div class="kw-term">SEO Brief Prompt Pack</div><div class="kw-vol">&#10022;</div></div><div class="kw-row" style="padding:11px 0"><div class="kw-term">Landing Page Builder Prompt Pack</div><div class="kw-vol">&#10022;</div></div><div class="kw-row" style="padding:11px 0;border-bottom:none"><div class="kw-term">Campaign Launch Kit Template</div><div class="kw-vol">&#10022;</div></div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Copy the system.<br><span>Keep the guardrails.</span></p>
+    <div class="tf-explore"><p class="tf-explore-label">Keep exploring</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/automations"><span class="tf-x-cat">Build guides</span><span class="tf-x-title">The Automations library — stand each one up yourself</span></a><a class="tf-explore-card" href="/resources/ai-marketing-guardrails"><span class="tf-x-cat">Strategy &amp; bounded autonomy</span><span class="tf-x-title">AI Marketing Guardrails: What to Set Before You Automate</span></a><a class="tf-explore-card" href="/resources/what-is-bounded-autonomy"><span class="tf-x-cat">Strategy &amp; bounded autonomy</span><span class="tf-x-title">What Is Bounded Autonomy in Marketing AI?</span></a></div><a class="tf-explore-all" href="/resources/articles">Browse all articles &rarr;</a></div>
+  </div>
 </main>
 
 <footer class="site-footer" role="contentinfo" aria-label="Site footer">
@@ -310,6 +290,7 @@ You do not recommend budget changes without a performance baseline.
     </div>
   </div>
 </footer>
+</div>
 <script src="/js/main.js"></script>
 <script>
 /* Netlify Forms — AJAX submit with inline success + graceful mailto fallback */
@@ -325,12 +306,12 @@ You do not recommend budget changes without a performance baseline.
         form.style.display='none';
         msg.style.display='block';
         msg.style.color='var(--signal)';
-        msg.textContent='✓ Check your inbox — the template pack is on its way. If it doesn’t arrive in a few minutes, email hello@campaignautomation.ai.';
+        msg.textContent='\u2713 Check your inbox \u2014 the template pack is on its way. If it doesn\u2019t arrive in a few minutes, email hello@campaignautomation.ai.';
       })
       .catch(function(){
         msg.style.display='block';
-        msg.style.color='var(--mist2)';
-        msg.innerHTML='Couldn’t send that automatically. Email <a href="mailto:hello@campaignautomation.ai?subject=Template%20pack" style="color:var(--signal)">hello@campaignautomation.ai</a> and we’ll send the pack directly.';
+        msg.style.color='#FFE200';
+        msg.textContent='Something went wrong \u2014 email hello@campaignautomation.ai and we\u2019ll send the pack directly.';
       });
   });
 })();
