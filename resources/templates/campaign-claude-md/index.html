@@ -40,6 +40,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tpl-steps li:last-child{border-bottom:none}
   .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
   .tpl-steps li strong{color:var(--bone)}
+  .tpl-fields-panel{border:1px solid var(--signal-dim);border-radius:10px;background:rgba(200,241,53,.03);overflow:hidden;margin-top:22px}
+  .tpl-fields-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border)}
+  .tpl-fields-head b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
+  .tpl-fields-meta{display:flex;align-items:center;gap:16px}
+  #tpl-fill-count{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em}
+  .tpl-reset{background:none;border:none;font-family:var(--f-mono);font-size:11.5px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:0}
+  .tpl-reset:hover{color:var(--bone)}
+  .tpl-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px 18px;padding:18px 20px;max-height:420px;overflow-y:auto}
+  .tpl-field label{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist2);margin-bottom:5px}
+  .tpl-field input{width:100%;box-sizing:border-box;background:var(--slate2);border:1px solid var(--border);border-radius:5px;color:var(--bone);font-family:var(--f-body);font-size:13.5px;padding:9px 11px;outline:none;transition:border-color .15s}
+  .tpl-field input:focus{border-color:var(--signal)}
+  .tpl-field input.filled{border-color:var(--signal-dim)}
+  .tpl-dl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:transparent;color:var(--bone);border:1px solid var(--border);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-dl:hover{border-color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Campaign CLAUDE.md","description":"A fill-in CLAUDE.md template that gives AI marketing agents your brand voice, offers, compliance rules, and spend guardrails — so output sounds like you.","url":"https://campaignautomation.ai/resources/templates/campaign-claude-md","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"},{"@type":"ListItem","position":3,"name":"Campaign CLAUDE.md","item":"https://campaignautomation.ai/resources/templates/campaign-claude-md"}]}]}
@@ -155,17 +169,146 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <section class="section reveal">
-    <p class="section-label"><span class="label-signal">What it is</span></p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">Generic, could-be-anyone output is the fastest way for a marketing team to lose confidence in an AI agent. This file is the fix: a single CLAUDE.md the agent reads before every campaign task, containing your voice rules, audience segments, offers, compliance red lines, and URL conventions. And because agents touch money and audiences, it opens with guardrails: read-only defaults, approval thresholds, spend caps, and a Trigger / Action / Impact logging rule. Fill in the placeholders once, keep it under version control, and every draft starts from your company's reality instead of the internet's average.</p>
-    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You are deploying an AI agent on marketing work and its drafts sound like they could be for any company</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are about to let an agent propose budget or audience changes and need caps and approval rules in writing first</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Multiple people or agents produce campaign copy and each describes the brand, offers, and competitors differently</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">An agent has already said something off-brand or non-compliant and you need a control file before it runs again</div><div class="kw-vol">&#10003;</div></div></div>
+    <p class="section-label"><span class="label-signal">Make it yours</span></p>
+    <h2 class="display" style="margin-bottom:8px">Fill in your values.</h2>
+    <p class="lead" style="max-width:720px">Everything you enter below is substituted live into the template — copy or download it and the file is already yours. Skip anything you're not sure of; unfilled fields stay as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{PLACEHOLDER}}</code> markers. Values save in your browser and carry across every template in the library.</p>
+    <div class="tpl-fields-panel">
+      <div class="tpl-fields-head"><b>Your values &middot; 124 fields</b><div class="tpl-fields-meta"><span id="tpl-fill-count" role="status"></span><button type="button" class="tpl-reset" id="tpl-reset">Clear all</button></div></div>
+      <div class="tpl-fields">
+        <div class="tpl-field"><label for="tf-COMPANY_NAME">Company name</label><input id="tf-COMPANY_NAME" type="text" data-token="COMPANY_NAME" placeholder="your company or brand name as it should appear in copy" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PLACEHOLDER">Placeholder</label><input id="tf-PLACEHOLDER" type="text" data-token="PLACEHOLDER" placeholder="{{PLACEHOLDER}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-FILE_OWNER">File owner</label><input id="tf-FILE_OWNER" type="text" data-token="FILE_OWNER" placeholder="name and role of the one person accountable for this file's accuracy" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LAST_VERIFIED_DATE">Last verified date</label><input id="tf-LAST_VERIFIED_DATE" type="text" data-token="LAST_VERIFIED_DATE" placeholder="date someone confirmed every section below is still true" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-REVIEW_CADENCE">Review cadence</label><input id="tf-REVIEW_CADENCE" type="text" data-token="REVIEW_CADENCE" placeholder="how often the owner re-verifies this file, e.g. monthly, or before every major campaign" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SPEND_APPROVER">Spend approver</label><input id="tf-SPEND_APPROVER" type="text" data-token="SPEND_APPROVER" placeholder="name/role who signs off on spend actions" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BUDGET_CHANGE_THRESHOLD">Budget change threshold</label><input id="tf-BUDGET_CHANGE_THRESHOLD" type="text" data-token="BUDGET_CHANGE_THRESHOLD" placeholder="the change size, absolute or %, above which a second approver is required" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SECOND_APPROVER">Second approver</label><input id="tf-SECOND_APPROVER" type="text" data-token="SECOND_APPROVER" placeholder="name/role of the escalation approver" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUDIENCE_SIZE_THRESHOLD">Audience size threshold</label><input id="tf-AUDIENCE_SIZE_THRESHOLD" type="text" data-token="AUDIENCE_SIZE_THRESHOLD" placeholder="recipient count above which sends need extra sign-off" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUDIENCE_APPROVER">Audience approver</label><input id="tf-AUDIENCE_APPROVER" type="text" data-token="AUDIENCE_APPROVER" placeholder="name/role who owns list health and sending reputation" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DAILY_SPEND_CAP">Daily spend cap</label><input id="tf-DAILY_SPEND_CAP" type="text" data-token="DAILY_SPEND_CAP" placeholder="max total ad spend the agent may touch per day" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PER_CAMPAIGN_CAP">Per campaign cap</label><input id="tf-PER_CAMPAIGN_CAP" type="text" data-token="PER_CAMPAIGN_CAP" placeholder="max spend on any single campaign" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ESCALATION_CONTACT">Escalation contact</label><input id="tf-ESCALATION_CONTACT" type="text" data-token="ESCALATION_CONTACT" placeholder="name/channel for &quot;I'm not sure&quot; questions, e.g. a Slack channel or email" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ONE_LINE_DESCRIPTION">One line description</label><input id="tf-ONE_LINE_DESCRIPTION" type="text" data-token="ONE_LINE_DESCRIPTION" placeholder="the sentence you'd use to describe the business to a stranger — the agent will reuse this " autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PRODUCT_SUMMARY">Product summary</label><input id="tf-PRODUCT_SUMMARY" type="text" data-token="PRODUCT_SUMMARY" placeholder="product/service names and the category each belongs to" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-NOT_OFFERED">Not offered</label><input id="tf-NOT_OFFERED" type="text" data-token="NOT_OFFERED" placeholder="adjacent things people assume you offer but you don't — this stops the agent drafting prom" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MARKETS_AND_LANGUAGES">Markets and languages</label><input id="tf-MARKETS_AND_LANGUAGES" type="text" data-token="MARKETS_AND_LANGUAGES" placeholder="regions you sell in and the languages/spelling conventions to use, e.g. US English only" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-NAME_USAGE_RULES">Name usage rules</label><input id="tf-NAME_USAGE_RULES" type="text" data-token="NAME_USAGE_RULES" placeholder="casing, spacing, whether the legal suffix appears in copy, what never to abbreviate it to" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-VOICE_ADJECTIVES">Voice adjectives</label><input id="tf-VOICE_ADJECTIVES" type="text" data-token="VOICE_ADJECTIVES" placeholder="five adjectives, e.g. &quot;direct, warm, technical, unhurried, specific&quot; — pick words that wou" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-VOICE_RULE_1">Voice rule 1</label><input id="tf-VOICE_RULE_1" type="text" data-token="VOICE_RULE_1" placeholder="{{VOICE_RULE_1}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-GOOD_LINE_1">Good line 1</label><input id="tf-GOOD_LINE_1" type="text" data-token="GOOD_LINE_1" placeholder="{{GOOD_LINE_1}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BAD_LINE_1">Bad line 1</label><input id="tf-BAD_LINE_1" type="text" data-token="BAD_LINE_1" placeholder="{{BAD_LINE_1}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-VOICE_RULE_2">Voice rule 2</label><input id="tf-VOICE_RULE_2" type="text" data-token="VOICE_RULE_2" placeholder="{{VOICE_RULE_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-GOOD_LINE_2">Good line 2</label><input id="tf-GOOD_LINE_2" type="text" data-token="GOOD_LINE_2" placeholder="{{GOOD_LINE_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BAD_LINE_2">Bad line 2</label><input id="tf-BAD_LINE_2" type="text" data-token="BAD_LINE_2" placeholder="{{BAD_LINE_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-VOICE_RULE_3">Voice rule 3</label><input id="tf-VOICE_RULE_3" type="text" data-token="VOICE_RULE_3" placeholder="{{VOICE_RULE_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-GOOD_LINE_3">Good line 3</label><input id="tf-GOOD_LINE_3" type="text" data-token="GOOD_LINE_3" placeholder="{{GOOD_LINE_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BAD_LINE_3">Bad line 3</label><input id="tf-BAD_LINE_3" type="text" data-token="BAD_LINE_3" placeholder="{{BAD_LINE_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADDRESS_STYLE">Address style</label><input id="tf-ADDRESS_STYLE" type="text" data-token="ADDRESS_STYLE" placeholder="e.g. &quot;you&quot; always; &quot;we&quot; for the company; never &quot;users&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-EMOJI_POLICY">Emoji policy</label><input id="tf-EMOJI_POLICY" type="text" data-token="EMOJI_POLICY" placeholder="where allowed, where banned — be channel-specific" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-EXCLAMATION_POLICY">Exclamation policy</label><input id="tf-EXCLAMATION_POLICY" type="text" data-token="EXCLAMATION_POLICY" placeholder="e.g. never in body copy, at most one per email" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-JARGON_POLICY">Jargon policy</label><input id="tf-JARGON_POLICY" type="text" data-token="JARGON_POLICY" placeholder="terms your audience uses that you should too, and buzzwords to avoid" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-READABILITY_TARGET">Readability target</label><input id="tf-READABILITY_TARGET" type="text" data-token="READABILITY_TARGET" placeholder="e.g. short sentences, no 40-word openers" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PREFERRED_TERM_1">Preferred term 1</label><input id="tf-PREFERRED_TERM_1" type="text" data-token="PREFERRED_TERM_1" placeholder="your term for your product category or customers" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BANNED_TERM_1">Banned term 1</label><input id="tf-BANNED_TERM_1" type="text" data-token="BANNED_TERM_1" placeholder="the generic or off-brand equivalent" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TERM_REASON_1">Term reason 1</label><input id="tf-TERM_REASON_1" type="text" data-token="TERM_REASON_1" placeholder="one clause" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PREFERRED_TERM_2">Preferred term 2</label><input id="tf-PREFERRED_TERM_2" type="text" data-token="PREFERRED_TERM_2" placeholder="{{PREFERRED_TERM_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BANNED_TERM_2">Banned term 2</label><input id="tf-BANNED_TERM_2" type="text" data-token="BANNED_TERM_2" placeholder="{{BANNED_TERM_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TERM_REASON_2">Term reason 2</label><input id="tf-TERM_REASON_2" type="text" data-token="TERM_REASON_2" placeholder="{{TERM_REASON_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PREFERRED_TERM_3">Preferred term 3</label><input id="tf-PREFERRED_TERM_3" type="text" data-token="PREFERRED_TERM_3" placeholder="{{PREFERRED_TERM_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BANNED_TERM_3">Banned term 3</label><input id="tf-BANNED_TERM_3" type="text" data-token="BANNED_TERM_3" placeholder="{{BANNED_TERM_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TERM_REASON_3">Term reason 3</label><input id="tf-TERM_REASON_3" type="text" data-token="TERM_REASON_3" placeholder="{{TERM_REASON_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_NAME">Segment a name</label><input id="tf-SEGMENT_A_NAME" type="text" data-token="SEGMENT_A_NAME" placeholder="a short internal label, e.g. &quot;Solo operators&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_WHO">Segment a who</label><input id="tf-SEGMENT_A_WHO" type="text" data-token="SEGMENT_A_WHO" placeholder="role, company size, situation — one or two lines" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_GOAL">Segment a goal</label><input id="tf-SEGMENT_A_GOAL" type="text" data-token="SEGMENT_A_GOAL" placeholder="the job they're hiring you for, in their words" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_PAIN">Segment a pain</label><input id="tf-SEGMENT_A_PAIN" type="text" data-token="SEGMENT_A_PAIN" placeholder="the specific frustration your offer relieves" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_HOOK">Segment a hook</label><input id="tf-SEGMENT_A_HOOK" type="text" data-token="SEGMENT_A_HOOK" placeholder="the angle that has actually worked with them" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_REPELS">Segment a repels</label><input id="tf-SEGMENT_A_REPELS" type="text" data-token="SEGMENT_A_REPELS" placeholder="tones, claims, or tactics that make this segment leave" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_PROOF">Segment a proof</label><input id="tf-SEGMENT_A_PROOF" type="text" data-token="SEGMENT_A_PROOF" placeholder="case studies, numbers you can substantiate, names, certifications" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_A_CHANNELS">Segment a channels</label><input id="tf-SEGMENT_A_CHANNELS" type="text" data-token="SEGMENT_A_CHANNELS" placeholder="channels this segment actually uses" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_NAME">Segment b name</label><input id="tf-SEGMENT_B_NAME" type="text" data-token="SEGMENT_B_NAME" placeholder="{{SEGMENT_B_NAME}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_WHO">Segment b who</label><input id="tf-SEGMENT_B_WHO" type="text" data-token="SEGMENT_B_WHO" placeholder="{{SEGMENT_B_WHO}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_GOAL">Segment b goal</label><input id="tf-SEGMENT_B_GOAL" type="text" data-token="SEGMENT_B_GOAL" placeholder="{{SEGMENT_B_GOAL}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_PAIN">Segment b pain</label><input id="tf-SEGMENT_B_PAIN" type="text" data-token="SEGMENT_B_PAIN" placeholder="{{SEGMENT_B_PAIN}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_HOOK">Segment b hook</label><input id="tf-SEGMENT_B_HOOK" type="text" data-token="SEGMENT_B_HOOK" placeholder="{{SEGMENT_B_HOOK}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_REPELS">Segment b repels</label><input id="tf-SEGMENT_B_REPELS" type="text" data-token="SEGMENT_B_REPELS" placeholder="{{SEGMENT_B_REPELS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_PROOF">Segment b proof</label><input id="tf-SEGMENT_B_PROOF" type="text" data-token="SEGMENT_B_PROOF" placeholder="{{SEGMENT_B_PROOF}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEGMENT_B_CHANNELS">Segment b channels</label><input id="tf-SEGMENT_B_CHANNELS" type="text" data-token="SEGMENT_B_CHANNELS" placeholder="{{SEGMENT_B_CHANNELS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DEFAULT_SEGMENT">Default segment</label><input id="tf-DEFAULT_SEGMENT" type="text" data-token="DEFAULT_SEGMENT" placeholder="which segment above is the default" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_1_NAME">Offer 1 name</label><input id="tf-OFFER_1_NAME" type="text" data-token="OFFER_1_NAME" placeholder="public-facing offer name" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_1_CONTENTS">Offer 1 contents</label><input id="tf-OFFER_1_CONTENTS" type="text" data-token="OFFER_1_CONTENTS" placeholder="{{OFFER_1_CONTENTS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_1_SEGMENT">Offer 1 segment</label><input id="tf-OFFER_1_SEGMENT" type="text" data-token="OFFER_1_SEGMENT" placeholder="which Section 4 segment" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_1_URL">Offer 1 url</label><input id="tf-OFFER_1_URL" type="text" data-token="OFFER_1_URL" placeholder="{{OFFER_1_URL}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_1_END_DATE">Offer 1 end date</label><input id="tf-OFFER_1_END_DATE" type="text" data-token="OFFER_1_END_DATE" placeholder="date or &quot;evergreen&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_2_NAME">Offer 2 name</label><input id="tf-OFFER_2_NAME" type="text" data-token="OFFER_2_NAME" placeholder="{{OFFER_2_NAME}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_2_CONTENTS">Offer 2 contents</label><input id="tf-OFFER_2_CONTENTS" type="text" data-token="OFFER_2_CONTENTS" placeholder="{{OFFER_2_CONTENTS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_2_SEGMENT">Offer 2 segment</label><input id="tf-OFFER_2_SEGMENT" type="text" data-token="OFFER_2_SEGMENT" placeholder="{{OFFER_2_SEGMENT}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_2_URL">Offer 2 url</label><input id="tf-OFFER_2_URL" type="text" data-token="OFFER_2_URL" placeholder="{{OFFER_2_URL}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER_2_END_DATE">Offer 2 end date</label><input id="tf-OFFER_2_END_DATE" type="text" data-token="OFFER_2_END_DATE" placeholder="{{OFFER_2_END_DATE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LISTED_PRICES">Listed prices</label><input id="tf-LISTED_PRICES" type="text" data-token="LISTED_PRICES" placeholder="each price you allow in copy, written exactly as it should appear, or &quot;none — always link " autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PRICING_PAGE_URL">Pricing page url</label><input id="tf-PRICING_PAGE_URL" type="text" data-token="PRICING_PAGE_URL" placeholder="canonical pricing page" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PRICE_OK_CHANNELS">Price ok channels</label><input id="tf-PRICE_OK_CHANNELS" type="text" data-token="PRICE_OK_CHANNELS" placeholder="e.g. email to existing leads, pricing page ads" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PRICE_BANNED_CHANNELS">Price banned channels</label><input id="tf-PRICE_BANNED_CHANNELS" type="text" data-token="PRICE_BANNED_CHANNELS" placeholder="e.g. organic social, cold outreach" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SUBSTANTIATION_RULE">Substantiation rule</label><input id="tf-SUBSTANTIATION_RULE" type="text" data-token="SUBSTANTIATION_RULE" placeholder="what counts as substantiation and where it's filed" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BANNED_CLAIM_1">Banned claim 1</label><input id="tf-BANNED_CLAIM_1" type="text" data-token="BANNED_CLAIM_1" placeholder="a claim specific to your industry you must never make, e.g. outcome promises, income claim" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BANNED_CLAIM_2">Banned claim 2</label><input id="tf-BANNED_CLAIM_2" type="text" data-token="BANNED_CLAIM_2" placeholder="a second one — most industries have several" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BANNED_PHRASES">Banned phrases</label><input id="tf-BANNED_PHRASES" type="text" data-token="BANNED_PHRASES" placeholder="exact phrases banned for legal or brand-history reasons" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-REGULATED_TOPICS">Regulated topics</label><input id="tf-REGULATED_TOPICS" type="text" data-token="REGULATED_TOPICS" placeholder="topics regulated in your industry or markets, e.g. financial returns, health outcomes, dat" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPLIANCE_CONTACT">Compliance contact</label><input id="tf-COMPLIANCE_CONTACT" type="text" data-token="COMPLIANCE_CONTACT" placeholder="name/role/channel for compliance review" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DISCLAIMER_CONTEXT_1">Disclaimer context 1</label><input id="tf-DISCLAIMER_CONTEXT_1" type="text" data-token="DISCLAIMER_CONTEXT_1" placeholder="e.g. testimonial posts" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DISCLAIMER_TEXT_1">Disclaimer text 1</label><input id="tf-DISCLAIMER_TEXT_1" type="text" data-token="DISCLAIMER_TEXT_1" placeholder="exact wording, verbatim" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DISCLAIMER_CONTEXT_2">Disclaimer context 2</label><input id="tf-DISCLAIMER_CONTEXT_2" type="text" data-token="DISCLAIMER_CONTEXT_2" placeholder="e.g. emails — unsubscribe/address block" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DISCLAIMER_TEXT_2">Disclaimer text 2</label><input id="tf-DISCLAIMER_TEXT_2" type="text" data-token="DISCLAIMER_TEXT_2" placeholder="{{DISCLAIMER_TEXT_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-APPROVED_TESTIMONIALS_SOURCE">Approved testimonials source</label><input id="tf-APPROVED_TESTIMONIALS_SOURCE" type="text" data-token="APPROVED_TESTIMONIALS_SOURCE" placeholder="where consented testimonials/case studies live" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HOMEPAGE_URL">Homepage url</label><input id="tf-HOMEPAGE_URL" type="text" data-token="HOMEPAGE_URL" placeholder="with or without www — pick one and use it everywhere" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KEY_PAGE_1_NAME">Key page 1 name</label><input id="tf-KEY_PAGE_1_NAME" type="text" data-token="KEY_PAGE_1_NAME" placeholder="your most-linked page, e.g. free tool, demo booking" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KEY_PAGE_1_URL">Key page 1 url</label><input id="tf-KEY_PAGE_1_URL" type="text" data-token="KEY_PAGE_1_URL" placeholder="{{KEY_PAGE_1_URL}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KEY_PAGE_2_NAME">Key page 2 name</label><input id="tf-KEY_PAGE_2_NAME" type="text" data-token="KEY_PAGE_2_NAME" placeholder="{{KEY_PAGE_2_NAME}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KEY_PAGE_2_URL">Key page 2 url</label><input id="tf-KEY_PAGE_2_URL" type="text" data-token="KEY_PAGE_2_URL" placeholder="{{KEY_PAGE_2_URL}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-UTM_SOURCE_VALUES">Utm source values</label><input id="tf-UTM_SOURCE_VALUES" type="text" data-token="UTM_SOURCE_VALUES" placeholder="{{UTM_SOURCE_VALUES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-UTM_MEDIUM_VALUES">Utm medium values</label><input id="tf-UTM_MEDIUM_VALUES" type="text" data-token="UTM_MEDIUM_VALUES" placeholder="{{UTM_MEDIUM_VALUES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-UTM_CAMPAIGN_PATTERN">Utm campaign pattern</label><input id="tf-UTM_CAMPAIGN_PATTERN" type="text" data-token="UTM_CAMPAIGN_PATTERN" placeholder="{{UTM_CAMPAIGN_PATTERN}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-UTM_CONTENT_PATTERN">Utm content pattern</label><input id="tf-UTM_CONTENT_PATTERN" type="text" data-token="UTM_CONTENT_PATTERN" placeholder="{{UTM_CONTENT_PATTERN}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SHORTENER_POLICY">Shortener policy</label><input id="tf-SHORTENER_POLICY" type="text" data-token="SHORTENER_POLICY" placeholder="allowed domain if any, or &quot;none&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ANALYTICS_OWNER">Analytics owner</label><input id="tf-ANALYTICS_OWNER" type="text" data-token="ANALYTICS_OWNER" placeholder="who owns tracking taxonomy" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEASON_1_PERIOD">Season 1 period</label><input id="tf-SEASON_1_PERIOD" type="text" data-token="SEASON_1_PERIOD" placeholder="dates or months of your peak, e.g. your industry's busy season" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEASON_1_CHANGES">Season 1 changes</label><input id="tf-SEASON_1_CHANGES" type="text" data-token="SEASON_1_CHANGES" placeholder="offer emphasis, tone shifts, budget posture" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEASON_1_NOTES">Season 1 notes</label><input id="tf-SEASON_1_NOTES" type="text" data-token="SEASON_1_NOTES" placeholder="what the agent should and shouldn't assume" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEASON_2_PERIOD">Season 2 period</label><input id="tf-SEASON_2_PERIOD" type="text" data-token="SEASON_2_PERIOD" placeholder="your slow period" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEASON_2_CHANGES">Season 2 changes</label><input id="tf-SEASON_2_CHANGES" type="text" data-token="SEASON_2_CHANGES" placeholder="{{SEASON_2_CHANGES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEASON_2_NOTES">Season 2 notes</label><input id="tf-SEASON_2_NOTES" type="text" data-token="SEASON_2_NOTES" placeholder="{{SEASON_2_NOTES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BLACKOUT_DATES">Blackout dates</label><input id="tf-BLACKOUT_DATES" type="text" data-token="BLACKOUT_DATES" placeholder="dates you never publish — sensitive anniversaries, company events, market-specific holiday" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-EVERGREEN_POSTURE">Evergreen posture</label><input id="tf-EVERGREEN_POSTURE" type="text" data-token="EVERGREEN_POSTURE" placeholder="your baseline messaging emphasis" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPETITOR_1">Competitor 1</label><input id="tf-COMPETITOR_1" type="text" data-token="COMPETITOR_1" placeholder="name" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPETITOR_1_DIFF">Competitor 1 diff</label><input id="tf-COMPETITOR_1_DIFF" type="text" data-token="COMPETITOR_1_DIFF" placeholder="a difference you can prove — feature, model, focus; not &quot;we're better&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPETITOR_1_NEVER">Competitor 1 never</label><input id="tf-COMPETITOR_1_NEVER" type="text" data-token="COMPETITOR_1_NEVER" placeholder="claims you can't substantiate or won't stoop to" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPETITOR_2">Competitor 2</label><input id="tf-COMPETITOR_2" type="text" data-token="COMPETITOR_2" placeholder="{{COMPETITOR_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPETITOR_2_DIFF">Competitor 2 diff</label><input id="tf-COMPETITOR_2_DIFF" type="text" data-token="COMPETITOR_2_DIFF" placeholder="{{COMPETITOR_2_DIFF}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPETITOR_2_NEVER">Competitor 2 never</label><input id="tf-COMPETITOR_2_NEVER" type="text" data-token="COMPETITOR_2_NEVER" placeholder="{{COMPETITOR_2_NEVER}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPARATIVE_APPROVER">Comparative approver</label><input id="tf-COMPARATIVE_APPROVER" type="text" data-token="COMPARATIVE_APPROVER" placeholder="who can approve comparative marketing" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SUBSTANTIATION_LOCATION">Substantiation location</label><input id="tf-SUBSTANTIATION_LOCATION" type="text" data-token="SUBSTANTIATION_LOCATION" placeholder="where competitive claim evidence is stored" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TRADEMARK_BIDDING_POLICY">Trademark bidding policy</label><input id="tf-TRADEMARK_BIDDING_POLICY" type="text" data-token="TRADEMARK_BIDDING_POLICY" placeholder="your policy — allowed, banned, or per-approval" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AWARENESS_METRIC">Awareness metric</label><input id="tf-AWARENESS_METRIC" type="text" data-token="AWARENESS_METRIC" placeholder="the one number you actually review, e.g. qualified traffic to a specific page" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AWARENESS_SOURCE">Awareness source</label><input id="tf-AWARENESS_SOURCE" type="text" data-token="AWARENESS_SOURCE" placeholder="dashboard/report of record" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONSIDERATION_METRIC">Consideration metric</label><input id="tf-CONSIDERATION_METRIC" type="text" data-token="CONSIDERATION_METRIC" placeholder="{{CONSIDERATION_METRIC}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONSIDERATION_SOURCE">Consideration source</label><input id="tf-CONSIDERATION_SOURCE" type="text" data-token="CONSIDERATION_SOURCE" placeholder="{{CONSIDERATION_SOURCE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONVERSION_METRIC">Conversion metric</label><input id="tf-CONVERSION_METRIC" type="text" data-token="CONVERSION_METRIC" placeholder="{{CONVERSION_METRIC}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONVERSION_SOURCE">Conversion source</label><input id="tf-CONVERSION_SOURCE" type="text" data-token="CONVERSION_SOURCE" placeholder="{{CONVERSION_SOURCE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-RETENTION_METRIC">Retention metric</label><input id="tf-RETENTION_METRIC" type="text" data-token="RETENTION_METRIC" placeholder="{{RETENTION_METRIC}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-RETENTION_SOURCE">Retention source</label><input id="tf-RETENTION_SOURCE" type="text" data-token="RETENTION_SOURCE" placeholder="{{RETENTION_SOURCE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-METRICS_OWNER">Metrics owner</label><input id="tf-METRICS_OWNER" type="text" data-token="METRICS_OWNER" placeholder="who sets targets" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TARGETS_LOCATION">Targets location</label><input id="tf-TARGETS_LOCATION" type="text" data-token="TARGETS_LOCATION" placeholder="the document/dashboard of record" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-IGNORED_METRICS">Ignored metrics</label><input id="tf-IGNORED_METRICS" type="text" data-token="IGNORED_METRICS" placeholder="vanity metrics the agent should not celebrate or optimize toward, e.g. impressions, follow" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TODAY">Today</label><input id="tf-TODAY" type="text" data-token="TODAY" placeholder="date you completed this template" autocomplete="off" spellcheck="false"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section reveal">
     <p class="section-label"><span class="label-signal">The template</span></p>
-    <h2 class="display" style="margin-bottom:8px">Copy it. Fill the placeholders. Run it.</h2>
-    <p class="lead" style="max-width:720px">Everything in <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{UPPER_SNAKE}}</code> is a placeholder — replace it with your own values before use.</p>
+    <h2 class="display" style="margin-bottom:8px">Your copy, ready to run.</h2>
+    <p class="lead" style="max-width:720px">The preview below updates as you type. Copy it to your clipboard or download it as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">CLAUDE.md</code>.</p>
     <div class="tpl-artifact">
-      <div class="tpl-artifact-bar"><b>Campaign CLAUDE.md &middot; 277 lines</b><button type="button" class="tpl-copy" data-copy>Copy template</button></div>
+      <div class="tpl-artifact-bar"><b>Campaign CLAUDE.md &middot; 277 lines</b><div style="display:flex;gap:10px"><button type="button" class="tpl-dl" data-download>Download CLAUDE.md</button><button type="button" class="tpl-copy" data-copy>Copy template</button></div></div>
       <pre><code id="tpl-src"># CLAUDE.md — Campaign Brand Context for {{COMPANY_NAME}} (your company or brand name as it should appear in copy)
 
 This file is the single source of truth an AI marketing agent must read before doing
@@ -447,6 +590,12 @@ Rules:
   </section>
 
   <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it is</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">Generic, could-be-anyone output is the fastest way for a marketing team to lose confidence in an AI agent. This file is the fix: a single CLAUDE.md the agent reads before every campaign task, containing your voice rules, audience segments, offers, compliance red lines, and URL conventions. And because agents touch money and audiences, it opens with guardrails: read-only defaults, approval thresholds, spend caps, and a Trigger / Action / Impact logging rule. Fill in the placeholders once, keep it under version control, and every draft starts from your company's reality instead of the internet's average.</p>
+    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You are deploying an AI agent on marketing work and its drafts sound like they could be for any company</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are about to let an agent propose budget or audience changes and need caps and approval rules in writing first</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Multiple people or agents produce campaign copy and each describes the brand, offers, and competitors differently</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">An agent has already said something off-brand or non-compliant and you need a control file before it runs again</div><div class="kw-vol">&#10003;</div></div></div>
+  </section>
+
+  <section class="section reveal">
     <p class="section-label"><span class="label-signal">Make it yours</span></p>
     <div class="tpl-kv" style="margin-top:0"><div class="kw-row"><div class="kw-term">Replace every {{PLACEHOLDER}} using its parenthetical hint, then delete the &gt; guidance lines — the file should read as plain instructions when done</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Set the Section 1 thresholds and caps to your own comfort level; they are deliberately blank because no universal number is right</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Cut segments, offers, or competitors down to what is real — two specific entries beat five generic ones</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Expand Section 6 with your industry's regulator in mind (financial, health, alcohol, etc.); it is the section legal will read first</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Commit the file to version control and put the review cadence on the owner's calendar so it never goes stale</div><div class="kw-vol">&rarr;</div></div></div>
     <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Used in practice by the <a href="/automations/ai-brief-machine" style="color:var(--signal)">AI Brief Machine build guide</a> — the step-by-step build this template plugs into.</div>
@@ -518,15 +667,68 @@ Rules:
 <script src="/js/main.js"></script>
 <script>
 (function(){
-  var btn=document.querySelector('[data-copy]');
   var src=document.getElementById('tpl-src');
-  if(!btn||!src)return;
-  btn.addEventListener('click',function(){
+  if(!src)return;
+  var PRISTINE=src.textContent;
+  var FNAME="CLAUDE.md";
+  var LSKEY='ca_tpl_fields';
+  var inputs=[].slice.call(document.querySelectorAll('.tpl-field input[data-token]'));
+  var countEl=document.getElementById('tpl-fill-count');
+
+  function loadVals(){try{return JSON.parse(localStorage.getItem(LSKEY)||'{}')||{};}catch(e){return {};}}
+  function saveVals(v){try{localStorage.setItem(LSKEY,JSON.stringify(v));}catch(e){}}
+
+  /* substitute saved values into the preview; unfilled tokens stay visible */
+  function apply(){
+    var v=loadVals(), t=PRISTINE, filled=0;
+    inputs.forEach(function(inp){
+      var tok=inp.getAttribute('data-token');
+      var val=(v[tok]||'').trim();
+      inp.classList.toggle('filled',!!val);
+      if(val){filled++;t=t.split('{{'+tok+'}}').join(val);}
+    });
+    src.textContent=t;
+    if(countEl)countEl.textContent=filled+' of '+inputs.length+' filled';
+  }
+
+  /* prefill from localStorage (values carry across every template) */
+  (function(){var v=loadVals();inputs.forEach(function(inp){var tok=inp.getAttribute('data-token');if(v[tok])inp.value=v[tok];});})();
+  inputs.forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var v=loadVals();
+      var val=inp.value.trim();
+      if(val)v[inp.getAttribute('data-token')]=val; else delete v[inp.getAttribute('data-token')];
+      saveVals(v);apply();
+    });
+  });
+  var reset=document.getElementById('tpl-reset');
+  if(reset)reset.addEventListener('click',function(){
+    var v=loadVals();
+    inputs.forEach(function(inp){delete v[inp.getAttribute('data-token')];inp.value='';});
+    saveVals(v);apply();
+  });
+  apply();
+
+  var copyBtn=document.querySelector('[data-copy]');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
     var t=src.textContent;
-    function done(ok){btn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){btn.textContent='Copy template';},2200);}
+    function done(ok){copyBtn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){copyBtn.textContent='Copy template';},2200);}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){fallback();});}
     else fallback();
-    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
+  });
+
+  var dlBtn=document.querySelector('[data-download]');
+  if(dlBtn)dlBtn.addEventListener('click',function(){
+    var blob=new Blob([src.textContent],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=FNAME;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},300);
+    var orig=dlBtn.textContent;
+    dlBtn.textContent='Downloaded \u2713';
+    setTimeout(function(){dlBtn.textContent=orig;},2200);
   });
 })();
 </script>

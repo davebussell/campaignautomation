@@ -40,6 +40,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tpl-steps li:last-child{border-bottom:none}
   .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
   .tpl-steps li strong{color:var(--bone)}
+  .tpl-fields-panel{border:1px solid var(--signal-dim);border-radius:10px;background:rgba(200,241,53,.03);overflow:hidden;margin-top:22px}
+  .tpl-fields-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border)}
+  .tpl-fields-head b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
+  .tpl-fields-meta{display:flex;align-items:center;gap:16px}
+  #tpl-fill-count{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em}
+  .tpl-reset{background:none;border:none;font-family:var(--f-mono);font-size:11.5px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:0}
+  .tpl-reset:hover{color:var(--bone)}
+  .tpl-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px 18px;padding:18px 20px;max-height:420px;overflow-y:auto}
+  .tpl-field label{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist2);margin-bottom:5px}
+  .tpl-field input{width:100%;box-sizing:border-box;background:var(--slate2);border:1px solid var(--border);border-radius:5px;color:var(--bone);font-family:var(--f-body);font-size:13.5px;padding:9px 11px;outline:none;transition:border-color .15s}
+  .tpl-field input:focus{border-color:var(--signal)}
+  .tpl-field input.filled{border-color:var(--signal-dim)}
+  .tpl-dl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:transparent;color:var(--bone);border:1px solid var(--border);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-dl:hover{border-color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Landing Page Builder Prompt Pack","description":"Landing page prompt pack: message-match audit, wireframe copy, headline variants, objection FAQs, and a pre-launch CRO checklist with guardrails built in.","url":"https://campaignautomation.ai/resources/templates/landing-page-prompt-pack","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"},{"@type":"ListItem","position":3,"name":"Landing Page Builder Prompt Pack","item":"https://campaignautomation.ai/resources/templates/landing-page-prompt-pack"}]}]}
@@ -155,17 +169,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <section class="section reveal">
-    <p class="section-label"><span class="label-signal">What it is</span></p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">A five-prompt sequence for building or fixing landing pages that actually match the ads pointing at them: a message-match audit, full wireframe copy for a stated offer and audience, headline and subhead variants tied to your keyword, an objection-driven FAQ built from real sales objections, and a pre-launch CRO checklist review. Every prompt specifies exactly what to paste in and the table format that comes back, so output lands ready to act on. Guardrails are built in: drafts only, no invented proof, and named human approval before anything goes live.</p>
-    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">Launching a new paid campaign and the landing page does not exist yet — run prompts 2 through 5 in order</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">An existing page underperforms and you suspect the ad and the page tell different stories — start with prompt 1</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Sales keeps hearing the same objections and the page never answers them — run prompt 4 with real call notes</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A page is about to go live and nobody has done a structured final pass — run prompt 5 every time</div><div class="kw-vol">&#10003;</div></div></div>
+    <p class="section-label"><span class="label-signal">Make it yours</span></p>
+    <h2 class="display" style="margin-bottom:8px">Fill in your values.</h2>
+    <p class="lead" style="max-width:720px">Everything you enter below is substituted live into the template — copy or download it and the file is already yours. Skip anything you're not sure of; unfilled fields stay as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{PLACEHOLDER}}</code> markers. Values save in your browser and carry across every template in the library.</p>
+    <div class="tpl-fields-panel">
+      <div class="tpl-fields-head"><b>Your values &middot; 20 fields</b><div class="tpl-fields-meta"><span id="tpl-fill-count" role="status"></span><button type="button" class="tpl-reset" id="tpl-reset">Clear all</button></div></div>
+      <div class="tpl-fields">
+        <div class="tpl-field"><label for="tf-APPROVER_ROLE">Approver role</label><input id="tf-APPROVER_ROLE" type="text" data-token="APPROVER_ROLE" placeholder="the
+human who signs off on sensitive copy and launch — e.g. marketing lead, founder, legal" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AD_COPY">Ad copy</label><input id="tf-AD_COPY" type="text" data-token="AD_COPY" placeholder="every live headline, description, display path, and ad asset, pasted verbatim" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PAGE_COPY">Page copy</label><input id="tf-PAGE_COPY" type="text" data-token="PAGE_COPY" placeholder="the current landing page text, top to bottom in page order, hero first — include button an" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PRIMARY_KEYWORD">Primary keyword</label><input id="tf-PRIMARY_KEYWORD" type="text" data-token="PRIMARY_KEYWORD" placeholder="the search keyword or audience hook the ad targets" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER">Offer</label><input id="tf-OFFER" type="text" data-token="OFFER" placeholder="the specific thing the page asks visitors to take — e.g. free audit, demo, trial" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONVERSION_ACTION">Conversion action</label><input id="tf-CONVERSION_ACTION" type="text" data-token="CONVERSION_ACTION" placeholder="the single action that counts as a conversion — e.g. form submit, booked call" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUDIENCE">Audience</label><input id="tf-AUDIENCE" type="text" data-token="AUDIENCE" placeholder="who lands here: role, situation, what they were searching or scrolling when they clicked" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TRAFFIC_SOURCE">Traffic source</label><input id="tf-TRAFFIC_SOURCE" type="text" data-token="TRAFFIC_SOURCE" placeholder="where the click comes from — e.g. Google Search, Meta, LinkedIn — it changes how much cont" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROOF_ASSETS">Proof assets</label><input id="tf-PROOF_ASSETS" type="text" data-token="PROOF_ASSETS" placeholder="testimonials, client names or logos you may use, case study summaries — paste the actual t" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TOP_OBJECTIONS">Top objections</label><input id="tf-TOP_OBJECTIONS" type="text" data-token="TOP_OBJECTIONS" placeholder="the 3-5 most common reasons prospects hesitate, in their words" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BRAND_VOICE">Brand voice</label><input id="tf-BRAND_VOICE" type="text" data-token="BRAND_VOICE" placeholder="two or three adjectives plus one sentence you consider on-voice" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AD_HEADLINE">Ad headline</label><input id="tf-AD_HEADLINE" type="text" data-token="AD_HEADLINE" placeholder="the exact headline of the ad this page receives traffic from" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BANNED_PHRASES">Banned phrases</label><input id="tf-BANNED_PHRASES" type="text" data-token="BANNED_PHRASES" placeholder="words or claims you never use — competitor names, superlatives legal has rejected, categor" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-REAL_DEADLINE">Real deadline</label><input id="tf-REAL_DEADLINE" type="text" data-token="REAL_DEADLINE" placeholder="an actual expiry date or capacity limit if one exists; write NONE and urgency variants wil" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SALES_OBJECTIONS">Sales objections</label><input id="tf-SALES_OBJECTIONS" type="text" data-token="SALES_OBJECTIONS" placeholder="verbatim objections from calls, CRM notes, chat, or tickets — paste 5-10, exactly as prosp" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-POLICY_TEXT">Policy text</label><input id="tf-POLICY_TEXT" type="text" data-token="POLICY_TEXT" placeholder="your actual refund, guarantee, contract, cancellation, and data-handling terms, pasted ver" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-FINAL_PAGE_COPY">Final page copy</label><input id="tf-FINAL_PAGE_COPY" type="text" data-token="FINAL_PAGE_COPY" placeholder="the complete near-final page text in order, including form fields, button labels, and foot" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-FORM_FIELDS">Form fields</label><input id="tf-FORM_FIELDS" type="text" data-token="FORM_FIELDS" placeholder="every field on the form and whether each is required" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TRACKING_PLAN">Tracking plan</label><input id="tf-TRACKING_PLAN" type="text" data-token="TRACKING_PLAN" placeholder="the events you intend to fire — e.g. form submit, thank-you pageview — and the tool that f" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PAGE_URL">Page url</label><input id="tf-PAGE_URL" type="text" data-token="PAGE_URL" placeholder="the URL the page will go live at" autocomplete="off" spellcheck="false"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section reveal">
     <p class="section-label"><span class="label-signal">The template</span></p>
-    <h2 class="display" style="margin-bottom:8px">Copy it. Fill the placeholders. Run it.</h2>
-    <p class="lead" style="max-width:720px">Everything in <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{UPPER_SNAKE}}</code> is a placeholder — replace it with your own values before use.</p>
+    <h2 class="display" style="margin-bottom:8px">Your copy, ready to run.</h2>
+    <p class="lead" style="max-width:720px">The preview below updates as you type. Copy it to your clipboard or download it as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">landing-page-prompts.md</code>.</p>
     <div class="tpl-artifact">
-      <div class="tpl-artifact-bar"><b>Landing Page Builder Prompt Pack &middot; 395 lines</b><button type="button" class="tpl-copy" data-copy>Copy template</button></div>
+      <div class="tpl-artifact-bar"><b>Landing Page Builder Prompt Pack &middot; 395 lines</b><div style="display:flex;gap:10px"><button type="button" class="tpl-dl" data-download>Download landing-page-prompts.md</button><button type="button" class="tpl-copy" data-copy>Copy template</button></div></div>
       <pre><code id="tpl-src"># Landing Page Builder Prompt Pack
 
 Five prompts, run in order for a new page or individually for fixes. Each prompt tells you
@@ -565,6 +605,12 @@ every impact stated before it happens.
   </section>
 
   <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it is</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">A five-prompt sequence for building or fixing landing pages that actually match the ads pointing at them: a message-match audit, full wireframe copy for a stated offer and audience, headline and subhead variants tied to your keyword, an objection-driven FAQ built from real sales objections, and a pre-launch CRO checklist review. Every prompt specifies exactly what to paste in and the table format that comes back, so output lands ready to act on. Guardrails are built in: drafts only, no invented proof, and named human approval before anything goes live.</p>
+    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">Launching a new paid campaign and the landing page does not exist yet — run prompts 2 through 5 in order</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">An existing page underperforms and you suspect the ad and the page tell different stories — start with prompt 1</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Sales keeps hearing the same objections and the page never answers them — run prompt 4 with real call notes</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A page is about to go live and nobody has done a structured final pass — run prompt 5 every time</div><div class="kw-vol">&#10003;</div></div></div>
+  </section>
+
+  <section class="section reveal">
     <p class="section-label"><span class="label-signal">Make it yours</span></p>
     <div class="tpl-kv" style="margin-top:0"><div class="kw-row"><div class="kw-term">Swap the approval categories in guardrail rule 4 for your industry — regulated sectors should add their own compliance list</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Add or remove wireframe sections in Prompt 2 to match your page builder's block library</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Tune Prompt 3's angle list to your channel: keyword echo matters most for search, hook echo for paid social</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Feed Prompt 4 from whatever objection source you trust — call recordings, CRM loss reasons, or chat transcripts</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Extend Prompt 5's checklist with your own launch requirements, such as accessibility, page speed, or legal review</div><div class="kw-vol">&rarr;</div></div></div>
     <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Used in practice by the <a href="/automations/seo-ppc-opportunity" style="color:var(--signal)">SEO/PPC Opportunity build guide</a> — the step-by-step build this template plugs into.</div>
@@ -636,15 +682,68 @@ every impact stated before it happens.
 <script src="/js/main.js"></script>
 <script>
 (function(){
-  var btn=document.querySelector('[data-copy]');
   var src=document.getElementById('tpl-src');
-  if(!btn||!src)return;
-  btn.addEventListener('click',function(){
+  if(!src)return;
+  var PRISTINE=src.textContent;
+  var FNAME="landing-page-prompts.md";
+  var LSKEY='ca_tpl_fields';
+  var inputs=[].slice.call(document.querySelectorAll('.tpl-field input[data-token]'));
+  var countEl=document.getElementById('tpl-fill-count');
+
+  function loadVals(){try{return JSON.parse(localStorage.getItem(LSKEY)||'{}')||{};}catch(e){return {};}}
+  function saveVals(v){try{localStorage.setItem(LSKEY,JSON.stringify(v));}catch(e){}}
+
+  /* substitute saved values into the preview; unfilled tokens stay visible */
+  function apply(){
+    var v=loadVals(), t=PRISTINE, filled=0;
+    inputs.forEach(function(inp){
+      var tok=inp.getAttribute('data-token');
+      var val=(v[tok]||'').trim();
+      inp.classList.toggle('filled',!!val);
+      if(val){filled++;t=t.split('{{'+tok+'}}').join(val);}
+    });
+    src.textContent=t;
+    if(countEl)countEl.textContent=filled+' of '+inputs.length+' filled';
+  }
+
+  /* prefill from localStorage (values carry across every template) */
+  (function(){var v=loadVals();inputs.forEach(function(inp){var tok=inp.getAttribute('data-token');if(v[tok])inp.value=v[tok];});})();
+  inputs.forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var v=loadVals();
+      var val=inp.value.trim();
+      if(val)v[inp.getAttribute('data-token')]=val; else delete v[inp.getAttribute('data-token')];
+      saveVals(v);apply();
+    });
+  });
+  var reset=document.getElementById('tpl-reset');
+  if(reset)reset.addEventListener('click',function(){
+    var v=loadVals();
+    inputs.forEach(function(inp){delete v[inp.getAttribute('data-token')];inp.value='';});
+    saveVals(v);apply();
+  });
+  apply();
+
+  var copyBtn=document.querySelector('[data-copy]');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
     var t=src.textContent;
-    function done(ok){btn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){btn.textContent='Copy template';},2200);}
+    function done(ok){copyBtn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){copyBtn.textContent='Copy template';},2200);}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){fallback();});}
     else fallback();
-    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
+  });
+
+  var dlBtn=document.querySelector('[data-download]');
+  if(dlBtn)dlBtn.addEventListener('click',function(){
+    var blob=new Blob([src.textContent],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=FNAME;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},300);
+    var orig=dlBtn.textContent;
+    dlBtn.textContent='Downloaded \u2713';
+    setTimeout(function(){dlBtn.textContent=orig;},2200);
   });
 })();
 </script>

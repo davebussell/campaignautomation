@@ -40,6 +40,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tpl-steps li:last-child{border-bottom:none}
   .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
   .tpl-steps li strong{color:var(--bone)}
+  .tpl-fields-panel{border:1px solid var(--signal-dim);border-radius:10px;background:rgba(200,241,53,.03);overflow:hidden;margin-top:22px}
+  .tpl-fields-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border)}
+  .tpl-fields-head b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
+  .tpl-fields-meta{display:flex;align-items:center;gap:16px}
+  #tpl-fill-count{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em}
+  .tpl-reset{background:none;border:none;font-family:var(--f-mono);font-size:11.5px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:0}
+  .tpl-reset:hover{color:var(--bone)}
+  .tpl-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px 18px;padding:18px 20px;max-height:420px;overflow-y:auto}
+  .tpl-field label{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist2);margin-bottom:5px}
+  .tpl-field input{width:100%;box-sizing:border-box;background:var(--slate2);border:1px solid var(--border);border-radius:5px;color:var(--bone);font-family:var(--f-body);font-size:13.5px;padding:9px 11px;outline:none;transition:border-color .15s}
+  .tpl-field input:focus{border-color:var(--signal)}
+  .tpl-field input.filled{border-color:var(--signal-dim)}
+  .tpl-dl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:transparent;color:var(--bone);border:1px solid var(--border);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-dl:hover{border-color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"SEO Brief Prompt Pack","description":"Five chained AI prompts that turn a keyword and its SERP into a writer-ready SEO brief: intent, outline, coverage checklist, internal links, title and meta.","url":"https://campaignautomation.ai/resources/templates/seo-brief-prompt-pack","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"},{"@type":"ListItem","position":3,"name":"SEO Brief Prompt Pack","item":"https://campaignautomation.ai/resources/templates/seo-brief-prompt-pack"}]}]}
@@ -155,18 +169,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <section class="section reveal">
-    <p class="section-label"><span class="label-signal">What it is</span></p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">A five-prompt pack that walks a target keyword all the way to a writer-ready SEO brief: keyword-to-intent analysis, an outline with heading hierarchy, an entity and subtopic coverage checklist, an internal-link plan drawn from your own URLs, and title/meta variants. Each prompt names exactly what to paste in and what shape the output takes, so the results drop straight into a standardized brief.</p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">It exists because briefing is a common bottleneck in content operations. The pack makes that step fast and repeatable without lowering the bar — every draft passes an editor before a writer ever sees it, and every run is logged so a brief can be traced and regenerated.</p>
-    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You have a target keyword and need a structured brief a writer can act on without guessing</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are producing briefs by hand in an AI assistant and want a saved, repeatable prompt sequence instead of ad-hoc requests</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You want intent classification and SERP analysis captured the same way every time, so quality survives staff turnover</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are proving the manual version of a content-brief automation before wiring up any workflow tooling</div><div class="kw-vol">&#10003;</div></div></div>
+    <p class="section-label"><span class="label-signal">Make it yours</span></p>
+    <h2 class="display" style="margin-bottom:8px">Fill in your values.</h2>
+    <p class="lead" style="max-width:720px">Everything you enter below is substituted live into the template — copy or download it and the file is already yours. Skip anything you're not sure of; unfilled fields stay as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{PLACEHOLDER}}</code> markers. Values save in your browser and carry across every template in the library.</p>
+    <div class="tpl-fields-panel">
+      <div class="tpl-fields-head"><b>Your values &middot; 19 fields</b><div class="tpl-fields-meta"><span id="tpl-fill-count" role="status"></span><button type="button" class="tpl-reset" id="tpl-reset">Clear all</button></div></div>
+      <div class="tpl-fields">
+        <div class="tpl-field"><label for="tf-PLACEHOLDER">Placeholder</label><input id="tf-PLACEHOLDER" type="text" data-token="PLACEHOLDER" placeholder="{{PLACEHOLDER}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-REVIEWER_NAME">Reviewer name</label><input id="tf-REVIEWER_NAME" type="text" data-token="REVIEWER_NAME" placeholder="the editor who
+  approves briefs" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_INTERNAL_LINKS">Max internal links</label><input id="tf-MAX_INTERNAL_LINKS" type="text" data-token="MAX_INTERNAL_LINKS" placeholder="max internal links proposed per brief" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_H2">Max h2</label><input id="tf-MAX_H2" type="text" data-token="MAX_H2" placeholder="max H2 sections in an outline" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TITLE_CHAR_CAP">Title char cap</label><input id="tf-TITLE_CHAR_CAP" type="text" data-token="TITLE_CHAR_CAP" placeholder="max title length you allow" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-META_CHAR_CAP">Meta char cap</label><input id="tf-META_CHAR_CAP" type="text" data-token="META_CHAR_CAP" placeholder="max meta description length you allow" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TARGET_KEYWORD">Target keyword</label><input id="tf-TARGET_KEYWORD" type="text" data-token="TARGET_KEYWORD" placeholder="the primary keyword this brief targets" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BRAND">Brand</label><input id="tf-BRAND" type="text" data-token="BRAND" placeholder="your brand or site name" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DOMAIN">Domain</label><input id="tf-DOMAIN" type="text" data-token="DOMAIN" placeholder="your domain, e.g. example.com" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SERP_TITLES">Serp titles</label><input id="tf-SERP_TITLES" type="text" data-token="SERP_TITLES" placeholder="paste the titles of the top 10 organic results, one per line" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUDIENCE">Audience</label><input id="tf-AUDIENCE" type="text" data-token="AUDIENCE" placeholder="one line: who you are writing for, e.g. &quot;B2B ops leads&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SEARCH_INTENT">Search intent</label><input id="tf-SEARCH_INTENT" type="text" data-token="SEARCH_INTENT" placeholder="the label from Prompt 1" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ANGLE">Angle</label><input id="tf-ANGLE" type="text" data-token="ANGLE" placeholder="the suggested angle from Prompt 1, edited if the editor changed it" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-WORD_COUNT_TARGET">Word count target</label><input id="tf-WORD_COUNT_TARGET" type="text" data-token="WORD_COUNT_TARGET" placeholder="the range from Prompt 1" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SERP_H2_THEMES">Serp h2 themes</label><input id="tf-SERP_H2_THEMES" type="text" data-token="SERP_H2_THEMES" placeholder="optional: recurring H2 themes you noted while scanning the SERP" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OUTLINE">Outline</label><input id="tf-OUTLINE" type="text" data-token="OUTLINE" placeholder="paste the full outline from Prompt 2" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-EXISTING_URLS">Existing urls</label><input id="tf-EXISTING_URLS" type="text" data-token="EXISTING_URLS" placeholder="paste your site's URL inventory, one per line, as
+  &quot;URL — page title or topic&quot;. Use a sit" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DATE">Date</label><input id="tf-DATE" type="text" data-token="DATE" placeholder="date the brief was assembled" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROMPT_VERSION">Prompt version</label><input id="tf-PROMPT_VERSION" type="text" data-token="PROMPT_VERSION" placeholder="the pack revision you
+           ran, e.g. v1" autocomplete="off" spellcheck="false"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section reveal">
     <p class="section-label"><span class="label-signal">The template</span></p>
-    <h2 class="display" style="margin-bottom:8px">Copy it. Fill the placeholders. Run it.</h2>
-    <p class="lead" style="max-width:720px">Everything in <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{UPPER_SNAKE}}</code> is a placeholder — replace it with your own values before use.</p>
+    <h2 class="display" style="margin-bottom:8px">Your copy, ready to run.</h2>
+    <p class="lead" style="max-width:720px">The preview below updates as you type. Copy it to your clipboard or download it as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">seo-brief-prompts.md</code>.</p>
     <div class="tpl-artifact">
-      <div class="tpl-artifact-bar"><b>SEO Brief Prompt Pack &middot; 298 lines</b><button type="button" class="tpl-copy" data-copy>Copy template</button></div>
+      <div class="tpl-artifact-bar"><b>SEO Brief Prompt Pack &middot; 298 lines</b><div style="display:flex;gap:10px"><button type="button" class="tpl-dl" data-download>Download seo-brief-prompts.md</button><button type="button" class="tpl-copy" data-copy>Copy template</button></div></div>
       <pre><code id="tpl-src"># SEO Brief Prompt Pack
 
 Five chained prompts that take one target keyword to a writer-ready SEO brief:
@@ -469,6 +509,13 @@ be regenerated against the exact data it was built from.</code></pre>
   </section>
 
   <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it is</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">A five-prompt pack that walks a target keyword all the way to a writer-ready SEO brief: keyword-to-intent analysis, an outline with heading hierarchy, an entity and subtopic coverage checklist, an internal-link plan drawn from your own URLs, and title/meta variants. Each prompt names exactly what to paste in and what shape the output takes, so the results drop straight into a standardized brief.</p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">It exists because briefing is a common bottleneck in content operations. The pack makes that step fast and repeatable without lowering the bar — every draft passes an editor before a writer ever sees it, and every run is logged so a brief can be traced and regenerated.</p>
+    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You have a target keyword and need a structured brief a writer can act on without guessing</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are producing briefs by hand in an AI assistant and want a saved, repeatable prompt sequence instead of ad-hoc requests</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You want intent classification and SERP analysis captured the same way every time, so quality survives staff turnover</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are proving the manual version of a content-brief automation before wiring up any workflow tooling</div><div class="kw-vol">&#10003;</div></div></div>
+  </section>
+
+  <section class="section reveal">
     <p class="section-label"><span class="label-signal">Make it yours</span></p>
     <div class="tpl-kv" style="margin-top:0"><div class="kw-row"><div class="kw-term">Set the caps ({{MAX_INTERNAL_LINKS}}, {{MAX_H2}}, {{TITLE_CHAR_CAP}}, {{META_CHAR_CAP}}) to your own house standards before first use — they are placeholders, not recommendations</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Swap the review gate: name a real {{REVIEWER_NAME}} and decide where DRAFT-&gt;BRIEFED status lives (a sheet column, a Slack approval, a tracker field)</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Adjust the intent labels in Prompt 1 if your team uses a different rubric (e.g. add 'Local' or 'Comparison')</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Point Prompt 4 at a fresh URL export each cycle so the internal-link plan reflects pages that actually exist</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Version the pack ({{PROMPT_VERSION}}) whenever you change prompt wording, so the audit line shows which revision produced which brief</div><div class="kw-vol">&rarr;</div></div></div>
     <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Used in practice by the <a href="/automations/content-brief" style="color:var(--signal)">Content Brief build guide</a> — the step-by-step build this template plugs into.</div>
@@ -540,15 +587,68 @@ be regenerated against the exact data it was built from.</code></pre>
 <script src="/js/main.js"></script>
 <script>
 (function(){
-  var btn=document.querySelector('[data-copy]');
   var src=document.getElementById('tpl-src');
-  if(!btn||!src)return;
-  btn.addEventListener('click',function(){
+  if(!src)return;
+  var PRISTINE=src.textContent;
+  var FNAME="seo-brief-prompts.md";
+  var LSKEY='ca_tpl_fields';
+  var inputs=[].slice.call(document.querySelectorAll('.tpl-field input[data-token]'));
+  var countEl=document.getElementById('tpl-fill-count');
+
+  function loadVals(){try{return JSON.parse(localStorage.getItem(LSKEY)||'{}')||{};}catch(e){return {};}}
+  function saveVals(v){try{localStorage.setItem(LSKEY,JSON.stringify(v));}catch(e){}}
+
+  /* substitute saved values into the preview; unfilled tokens stay visible */
+  function apply(){
+    var v=loadVals(), t=PRISTINE, filled=0;
+    inputs.forEach(function(inp){
+      var tok=inp.getAttribute('data-token');
+      var val=(v[tok]||'').trim();
+      inp.classList.toggle('filled',!!val);
+      if(val){filled++;t=t.split('{{'+tok+'}}').join(val);}
+    });
+    src.textContent=t;
+    if(countEl)countEl.textContent=filled+' of '+inputs.length+' filled';
+  }
+
+  /* prefill from localStorage (values carry across every template) */
+  (function(){var v=loadVals();inputs.forEach(function(inp){var tok=inp.getAttribute('data-token');if(v[tok])inp.value=v[tok];});})();
+  inputs.forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var v=loadVals();
+      var val=inp.value.trim();
+      if(val)v[inp.getAttribute('data-token')]=val; else delete v[inp.getAttribute('data-token')];
+      saveVals(v);apply();
+    });
+  });
+  var reset=document.getElementById('tpl-reset');
+  if(reset)reset.addEventListener('click',function(){
+    var v=loadVals();
+    inputs.forEach(function(inp){delete v[inp.getAttribute('data-token')];inp.value='';});
+    saveVals(v);apply();
+  });
+  apply();
+
+  var copyBtn=document.querySelector('[data-copy]');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
     var t=src.textContent;
-    function done(ok){btn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){btn.textContent='Copy template';},2200);}
+    function done(ok){copyBtn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){copyBtn.textContent='Copy template';},2200);}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){fallback();});}
     else fallback();
-    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
+  });
+
+  var dlBtn=document.querySelector('[data-download]');
+  if(dlBtn)dlBtn.addEventListener('click',function(){
+    var blob=new Blob([src.textContent],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=FNAME;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},300);
+    var orig=dlBtn.textContent;
+    dlBtn.textContent='Downloaded \u2713';
+    setTimeout(function(){dlBtn.textContent=orig;},2200);
   });
 })();
 </script>

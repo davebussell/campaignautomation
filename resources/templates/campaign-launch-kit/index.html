@@ -40,6 +40,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tpl-steps li:last-child{border-bottom:none}
   .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
   .tpl-steps li strong{color:var(--bone)}
+  .tpl-fields-panel{border:1px solid var(--signal-dim);border-radius:10px;background:rgba(200,241,53,.03);overflow:hidden;margin-top:22px}
+  .tpl-fields-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border)}
+  .tpl-fields-head b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
+  .tpl-fields-meta{display:flex;align-items:center;gap:16px}
+  #tpl-fill-count{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em}
+  .tpl-reset{background:none;border:none;font-family:var(--f-mono);font-size:11.5px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:0}
+  .tpl-reset:hover{color:var(--bone)}
+  .tpl-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px 18px;padding:18px 20px;max-height:420px;overflow-y:auto}
+  .tpl-field label{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist2);margin-bottom:5px}
+  .tpl-field input{width:100%;box-sizing:border-box;background:var(--slate2);border:1px solid var(--border);border-radius:5px;color:var(--bone);font-family:var(--f-body);font-size:13.5px;padding:9px 11px;outline:none;transition:border-color .15s}
+  .tpl-field input:focus{border-color:var(--signal)}
+  .tpl-field input.filled{border-color:var(--signal-dim)}
+  .tpl-dl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:transparent;color:var(--bone);border:1px solid var(--border);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-dl:hover{border-color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Campaign Launch Kit Template","description":"A Campaign Launch Kit template: brief, ad group structure, copy matrix, UTM plan, tracking and QA checklists, sign-off gate, and a first-week review schedule.","url":"https://campaignautomation.ai/resources/templates/campaign-launch-kit","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"},{"@type":"ListItem","position":3,"name":"Campaign Launch Kit Template","item":"https://campaignautomation.ai/resources/templates/campaign-launch-kit"}]}]}
@@ -155,17 +169,82 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <section class="section reveal">
-    <p class="section-label"><span class="label-signal">What it is</span></p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">The Campaign Launch Kit is the single document a team fills in for every paid campaign: brief, ad group and keyword structure, copy variants with character limits, UTM taxonomy, tracking verification, QA, sign-off, and a first-week review schedule. It exists because launch failures are usually process failures — a missing conversion tag, a hand-typed UTM, a campaign enabled that nobody approved. The kit turns each of those into a checklist line with an owner, and keeps every campaign paused until a named human signs off.</p>
-    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You are launching a new paid campaign and want structure, tracking, and approvals in one place</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Your launches each look slightly different and downstream reporting keeps breaking</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are handing launches to a new hire, an agency, or an AI agent and need the gates written down</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A past campaign spent before tracking was verified and you never want that again</div><div class="kw-vol">&#10003;</div></div></div>
+    <p class="section-label"><span class="label-signal">Make it yours</span></p>
+    <h2 class="display" style="margin-bottom:8px">Fill in your values.</h2>
+    <p class="lead" style="max-width:720px">Everything you enter below is substituted live into the template — copy or download it and the file is already yours. Skip anything you're not sure of; unfilled fields stay as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{PLACEHOLDER}}</code> markers. Values save in your browser and carry across every template in the library.</p>
+    <div class="tpl-fields-panel">
+      <div class="tpl-fields-head"><b>Your values &middot; 60 fields</b><div class="tpl-fields-meta"><span id="tpl-fill-count" role="status"></span><button type="button" class="tpl-reset" id="tpl-reset">Clear all</button></div></div>
+      <div class="tpl-fields">
+        <div class="tpl-field"><label for="tf-CAMPAIGN_NAME">Campaign name</label><input id="tf-CAMPAIGN_NAME" type="text" data-token="CAMPAIGN_NAME" placeholder="internal campaign name — build it from the naming convention in Section 5, never freehand" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CAMPAIGN_OWNER">Campaign owner</label><input id="tf-CAMPAIGN_OWNER" type="text" data-token="CAMPAIGN_OWNER" placeholder="the one person accountable for this launch end to end" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CHANNEL">Channel</label><input id="tf-CHANNEL" type="text" data-token="CHANNEL" placeholder="e.g. Google Search — duplicate this kit per channel rather than mixing channels in one" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KIT_DATE">Kit date</label><input id="tf-KIT_DATE" type="text" data-token="KIT_DATE" placeholder="update every time this document changes" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CAMPAIGN_GOAL">Campaign goal</label><input id="tf-CAMPAIGN_GOAL" type="text" data-token="CAMPAIGN_GOAL" placeholder="what this campaign exists to do, e.g. &quot;generate demo requests for the Q3 offer&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PRIMARY_KPI">Primary kpi</label><input id="tf-PRIMARY_KPI" type="text" data-token="PRIMARY_KPI" placeholder="the single number that defines success, and the system it is measured in" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SECONDARY_KPI">Secondary kpi</label><input id="tf-SECONDARY_KPI" type="text" data-token="SECONDARY_KPI" placeholder="supporting signal — leading indicator or quality check" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUDIENCE">Audience</label><input id="tf-AUDIENCE" type="text" data-token="AUDIENCE" placeholder="who, in one or two sentences — role, segment, geography" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OFFER">Offer</label><input id="tf-OFFER" type="text" data-token="OFFER" placeholder="the exact thing every ad promises: demo, guide, trial, discount" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LANDING_URL">Landing url</label><input id="tf-LANDING_URL" type="text" data-token="LANDING_URL" placeholder="final URL(s" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ANGLE">Angle</label><input id="tf-ANGLE" type="text" data-token="ANGLE" placeholder="why someone picks this offer over the obvious alternative" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DAILY_CAP">Daily cap</label><input id="tf-DAILY_CAP" type="text" data-token="DAILY_CAP" placeholder="a number you set and commit to — this is a placeholder, not a suggestion" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TOTAL_CAP">Total cap</label><input id="tf-TOTAL_CAP" type="text" data-token="TOTAL_CAP" placeholder="the maximum this campaign may spend across the full flight" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-START_DATE">Start date</label><input id="tf-START_DATE" type="text" data-token="START_DATE" placeholder="{{START_DATE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-END_DATE">End date</label><input id="tf-END_DATE" type="text" data-token="END_DATE" placeholder="{{END_DATE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-GEO_LANGUAGE">Geo language</label><input id="tf-GEO_LANGUAGE" type="text" data-token="GEO_LANGUAGE" placeholder="targeted locations and languages, plus explicit location exclusions" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-EXCLUSIONS">Exclusions</label><input id="tf-EXCLUSIONS" type="text" data-token="EXCLUSIONS" placeholder="audiences, placements, topics, or terms this campaign must avoid" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-APPROVER_NAME">Approver name</label><input id="tf-APPROVER_NAME" type="text" data-token="APPROVER_NAME" placeholder="the named human who enables spend — must not be the person who built the campaign" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KILL_SWITCH">Kill switch</label><input id="tf-KILL_SWITCH" type="text" data-token="KILL_SWITCH" placeholder="who can pause everything and the exact steps, e.g. &quot;owner pauses the campaign at campaign " autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADGROUP_PATTERN">Adgroup pattern</label><input id="tf-ADGROUP_PATTERN" type="text" data-token="ADGROUP_PATTERN" placeholder="e.g. theme–intent–matchtype; write the pattern here and follow it in every row" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADGROUP_1">Adgroup 1</label><input id="tf-ADGROUP_1" type="text" data-token="ADGROUP_1" placeholder="{{ADGROUP_1}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-THEME_1">Theme 1</label><input id="tf-THEME_1" type="text" data-token="THEME_1" placeholder="one theme only" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KEYWORDS_1">Keywords 1</label><input id="tf-KEYWORDS_1" type="text" data-token="KEYWORDS_1" placeholder="the seed list, one intent" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-NEGATIVES_1">Negatives 1</label><input id="tf-NEGATIVES_1" type="text" data-token="NEGATIVES_1" placeholder="negatives specific to this group" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LP_1">Lp 1</label><input id="tf-LP_1" type="text" data-token="LP_1" placeholder="this group's final URL" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADGROUP_2">Adgroup 2</label><input id="tf-ADGROUP_2" type="text" data-token="ADGROUP_2" placeholder="{{ADGROUP_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADGROUP_3">Adgroup 3</label><input id="tf-ADGROUP_3" type="text" data-token="ADGROUP_3" placeholder="{{ADGROUP_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADGROUP_4">Adgroup 4</label><input id="tf-ADGROUP_4" type="text" data-token="ADGROUP_4" placeholder="{{ADGROUP_4}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-NEGATIVE_LIST">Negative list</label><input id="tf-NEGATIVE_LIST" type="text" data-token="NEGATIVE_LIST" placeholder="shared negatives applied to the whole campaign — brand exclusions, irrelevant intents, exi" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_1">Headline 1</label><input id="tf-HEADLINE_1" type="text" data-token="HEADLINE_1" placeholder="lead with the offer or the intent behind the group's keywords" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_2">Headline 2</label><input id="tf-HEADLINE_2" type="text" data-token="HEADLINE_2" placeholder="{{HEADLINE_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_3">Headline 3</label><input id="tf-HEADLINE_3" type="text" data-token="HEADLINE_3" placeholder="{{HEADLINE_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_4">Headline 4</label><input id="tf-HEADLINE_4" type="text" data-token="HEADLINE_4" placeholder="{{HEADLINE_4}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_5">Headline 5</label><input id="tf-HEADLINE_5" type="text" data-token="HEADLINE_5" placeholder="{{HEADLINE_5}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_6">Headline 6</label><input id="tf-HEADLINE_6" type="text" data-token="HEADLINE_6" placeholder="{{HEADLINE_6}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_7">Headline 7</label><input id="tf-HEADLINE_7" type="text" data-token="HEADLINE_7" placeholder="{{HEADLINE_7}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HEADLINE_8">Headline 8</label><input id="tf-HEADLINE_8" type="text" data-token="HEADLINE_8" placeholder="{{HEADLINE_8}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DESCRIPTION_1">Description 1</label><input id="tf-DESCRIPTION_1" type="text" data-token="DESCRIPTION_1" placeholder="state the offer and the next step plainly" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DESCRIPTION_2">Description 2</label><input id="tf-DESCRIPTION_2" type="text" data-token="DESCRIPTION_2" placeholder="{{DESCRIPTION_2}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DESCRIPTION_3">Description 3</label><input id="tf-DESCRIPTION_3" type="text" data-token="DESCRIPTION_3" placeholder="{{DESCRIPTION_3}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DESCRIPTION_4">Description 4</label><input id="tf-DESCRIPTION_4" type="text" data-token="DESCRIPTION_4" placeholder="{{DESCRIPTION_4}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PATH_1">Path 1</label><input id="tf-PATH_1" type="text" data-token="PATH_1" placeholder="max 15 chars" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PATH_2">Path 2</label><input id="tf-PATH_2" type="text" data-token="PATH_2" placeholder="max 15 chars" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ANGLE_A">Angle a</label><input id="tf-ANGLE_A" type="text" data-token="ANGLE_A" placeholder="e.g. offer-led: what they get" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ANGLE_B">Angle b</label><input id="tf-ANGLE_B" type="text" data-token="ANGLE_B" placeholder="e.g. benefit-led: what changes for them" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ANGLE_C">Angle c</label><input id="tf-ANGLE_C" type="text" data-token="ANGLE_C" placeholder="e.g. proof-led: why believe it" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CLAIMS_SOURCE">Claims source</label><input id="tf-CLAIMS_SOURCE" type="text" data-token="CLAIMS_SOURCE" placeholder="doc or folder where proof lives" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SOURCE_VALUES">Source values</label><input id="tf-SOURCE_VALUES" type="text" data-token="SOURCE_VALUES" placeholder="closed list, e.g. google, bing, meta, linkedin" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MEDIUM_VALUES">Medium values</label><input id="tf-MEDIUM_VALUES" type="text" data-token="MEDIUM_VALUES" placeholder="closed list, e.g. cpc, paid-social, display" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CAMPAIGN_UTM_PATTERN">Campaign utm pattern</label><input id="tf-CAMPAIGN_UTM_PATTERN" type="text" data-token="CAMPAIGN_UTM_PATTERN" placeholder="your pattern, e.g. geo-product-intent-yyyymm" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONVERSION_ACTION">Conversion action</label><input id="tf-CONVERSION_ACTION" type="text" data-token="CONVERSION_ACTION" placeholder="e.g. demo form submit" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-FIRE_LOCATION">Fire location</label><input id="tf-FIRE_LOCATION" type="text" data-token="FIRE_LOCATION" placeholder="page or event that triggers it" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONVERSION_ACTION_2">Conversion action 2</label><input id="tf-CONVERSION_ACTION_2" type="text" data-token="CONVERSION_ACTION_2" placeholder="a secondary action, if any" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CHANNEL_SPECIFIC_WARNING">Channel specific warning</label><input id="tf-CHANNEL_SPECIFIC_WARNING" type="text" data-token="CHANNEL_SPECIFIC_WARNING" placeholder="add channel-specific items: extensions, placements, audience expansion settings" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HOURS_AFTER_ENABLE">Hours after enable</label><input id="tf-HOURS_AFTER_ENABLE" type="text" data-token="HOURS_AFTER_ENABLE" placeholder="how long after enable you first check, e.g. &quot;2–4 hours&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PACING_THRESHOLD">Pacing threshold</label><input id="tf-PACING_THRESHOLD" type="text" data-token="PACING_THRESHOLD" placeholder="your trigger, e.g. pacing to exceed the daily cap" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DAY3_THRESHOLD">Day3 threshold</label><input id="tf-DAY3_THRESHOLD" type="text" data-token="DAY3_THRESHOLD" placeholder="your trigger, e.g. share of irrelevant search terms" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TIMESTAMP">Timestamp</label><input id="tf-TIMESTAMP" type="text" data-token="TIMESTAMP" placeholder="date and time of the entry" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-UPLOAD_TOOL">Upload tool</label><input id="tf-UPLOAD_TOOL" type="text" data-token="UPLOAD_TOOL" placeholder="e.g. Google Ads Editor" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-INITIALS">Initials</label><input id="tf-INITIALS" type="text" data-token="INITIALS" placeholder="initials of the person logging" autocomplete="off" spellcheck="false"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section reveal">
     <p class="section-label"><span class="label-signal">The template</span></p>
-    <h2 class="display" style="margin-bottom:8px">Copy it. Fill the placeholders. Run it.</h2>
-    <p class="lead" style="max-width:720px">Everything in <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{UPPER_SNAKE}}</code> is a placeholder — replace it with your own values before use.</p>
+    <h2 class="display" style="margin-bottom:8px">Your copy, ready to run.</h2>
+    <p class="lead" style="max-width:720px">The preview below updates as you type. Copy it to your clipboard or download it as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">campaign-launch-kit.md</code>.</p>
     <div class="tpl-artifact">
-      <div class="tpl-artifact-bar"><b>Campaign Launch Kit Template &middot; 242 lines</b><button type="button" class="tpl-copy" data-copy>Copy template</button></div>
+      <div class="tpl-artifact-bar"><b>Campaign Launch Kit Template &middot; 242 lines</b><div style="display:flex;gap:10px"><button type="button" class="tpl-dl" data-download>Download campaign-launch-kit.md</button><button type="button" class="tpl-copy" data-copy>Copy template</button></div></div>
       <pre><code id="tpl-src"># CAMPAIGN LAUNCH KIT
 
 Campaign: {{CAMPAIGN_NAME}} (internal campaign name — build it from the naming convention in Section 5, never freehand)
@@ -412,6 +491,12 @@ Filing: when the flight ends, complete the log, mark the kit status, and archive
   </section>
 
   <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it is</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">The Campaign Launch Kit is the single document a team fills in for every paid campaign: brief, ad group and keyword structure, copy variants with character limits, UTM taxonomy, tracking verification, QA, sign-off, and a first-week review schedule. It exists because launch failures are usually process failures — a missing conversion tag, a hand-typed UTM, a campaign enabled that nobody approved. The kit turns each of those into a checklist line with an owner, and keeps every campaign paused until a named human signs off.</p>
+    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You are launching a new paid campaign and want structure, tracking, and approvals in one place</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Your launches each look slightly different and downstream reporting keeps breaking</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are handing launches to a new hire, an agency, or an AI agent and need the gates written down</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A past campaign spent before tracking was verified and you never want that again</div><div class="kw-vol">&#10003;</div></div></div>
+  </section>
+
+  <section class="section reveal">
     <p class="section-label"><span class="label-signal">Make it yours</span></p>
     <div class="tpl-kv" style="margin-top:0"><div class="kw-row"><div class="kw-term">Swap the Google RSA character limits in Section 4 for your channel's limits (Meta, LinkedIn, Microsoft)</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Replace the UTM convention table with your existing taxonomy, then build every URL from it by formula</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Move the tables into a spreadsheet and encode naming patterns as data-validation rules</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Set your own cap and threshold values — every number in the kit is a placeholder, not a benchmark</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Add channel-specific QA lines (extensions, placements, audience expansion) to Section 7 warnings</div><div class="kw-vol">&rarr;</div></div></div>
     <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Used in practice by the <a href="/automations/campaign-launch-kit" style="color:var(--signal)">Campaign Launch Kit build guide</a> — the step-by-step build this template plugs into.</div>
@@ -483,15 +568,68 @@ Filing: when the flight ends, complete the log, mark the kit status, and archive
 <script src="/js/main.js"></script>
 <script>
 (function(){
-  var btn=document.querySelector('[data-copy]');
   var src=document.getElementById('tpl-src');
-  if(!btn||!src)return;
-  btn.addEventListener('click',function(){
+  if(!src)return;
+  var PRISTINE=src.textContent;
+  var FNAME="campaign-launch-kit.md";
+  var LSKEY='ca_tpl_fields';
+  var inputs=[].slice.call(document.querySelectorAll('.tpl-field input[data-token]'));
+  var countEl=document.getElementById('tpl-fill-count');
+
+  function loadVals(){try{return JSON.parse(localStorage.getItem(LSKEY)||'{}')||{};}catch(e){return {};}}
+  function saveVals(v){try{localStorage.setItem(LSKEY,JSON.stringify(v));}catch(e){}}
+
+  /* substitute saved values into the preview; unfilled tokens stay visible */
+  function apply(){
+    var v=loadVals(), t=PRISTINE, filled=0;
+    inputs.forEach(function(inp){
+      var tok=inp.getAttribute('data-token');
+      var val=(v[tok]||'').trim();
+      inp.classList.toggle('filled',!!val);
+      if(val){filled++;t=t.split('{{'+tok+'}}').join(val);}
+    });
+    src.textContent=t;
+    if(countEl)countEl.textContent=filled+' of '+inputs.length+' filled';
+  }
+
+  /* prefill from localStorage (values carry across every template) */
+  (function(){var v=loadVals();inputs.forEach(function(inp){var tok=inp.getAttribute('data-token');if(v[tok])inp.value=v[tok];});})();
+  inputs.forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var v=loadVals();
+      var val=inp.value.trim();
+      if(val)v[inp.getAttribute('data-token')]=val; else delete v[inp.getAttribute('data-token')];
+      saveVals(v);apply();
+    });
+  });
+  var reset=document.getElementById('tpl-reset');
+  if(reset)reset.addEventListener('click',function(){
+    var v=loadVals();
+    inputs.forEach(function(inp){delete v[inp.getAttribute('data-token')];inp.value='';});
+    saveVals(v);apply();
+  });
+  apply();
+
+  var copyBtn=document.querySelector('[data-copy]');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
     var t=src.textContent;
-    function done(ok){btn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){btn.textContent='Copy template';},2200);}
+    function done(ok){copyBtn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){copyBtn.textContent='Copy template';},2200);}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){fallback();});}
     else fallback();
-    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
+  });
+
+  var dlBtn=document.querySelector('[data-download]');
+  if(dlBtn)dlBtn.addEventListener('click',function(){
+    var blob=new Blob([src.textContent],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=FNAME;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},300);
+    var orig=dlBtn.textContent;
+    dlBtn.textContent='Downloaded \u2713';
+    setTimeout(function(){dlBtn.textContent=orig;},2200);
   });
 })();
 </script>

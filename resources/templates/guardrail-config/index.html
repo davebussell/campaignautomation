@@ -40,6 +40,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tpl-steps li:last-child{border-bottom:none}
   .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
   .tpl-steps li strong{color:var(--bone)}
+  .tpl-fields-panel{border:1px solid var(--signal-dim);border-radius:10px;background:rgba(200,241,53,.03);overflow:hidden;margin-top:22px}
+  .tpl-fields-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border)}
+  .tpl-fields-head b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
+  .tpl-fields-meta{display:flex;align-items:center;gap:16px}
+  #tpl-fill-count{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em}
+  .tpl-reset{background:none;border:none;font-family:var(--f-mono);font-size:11.5px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:0}
+  .tpl-reset:hover{color:var(--bone)}
+  .tpl-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px 18px;padding:18px 20px;max-height:420px;overflow-y:auto}
+  .tpl-field label{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist2);margin-bottom:5px}
+  .tpl-field input{width:100%;box-sizing:border-box;background:var(--slate2);border:1px solid var(--border);border-radius:5px;color:var(--bone);font-family:var(--f-body);font-size:13.5px;padding:9px 11px;outline:none;transition:border-color .15s}
+  .tpl-field input:focus{border-color:var(--signal)}
+  .tpl-field input.filled{border-color:var(--signal-dim)}
+  .tpl-dl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:transparent;color:var(--bone);border:1px solid var(--border);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-dl:hover{border-color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Guardrail Configuration Template","description":"A copy-paste guardrail config for AI marketing automations: budget caps, change ceilings, approval thresholds, kill-switch rules, and an audit-log standard.","url":"https://campaignautomation.ai/resources/templates/guardrail-config","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"},{"@type":"ListItem","position":3,"name":"Guardrail Configuration Template","item":"https://campaignautomation.ai/resources/templates/guardrail-config"}]}]}
@@ -155,17 +169,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <section class="section reveal">
-    <p class="section-label"><span class="label-signal">What it is</span></p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">A single config file that defines what your marketing automation is allowed to do before it runs: budget caps, per-run change ceilings, approval thresholds, protected lists, pause and kill-switch conditions, a rollback rule, and an audit-log standard. It exists because the limits that would have prevented most automation incidents are usually the ones nobody wrote down. Fill the placeholders, get the named owner's sign-off, and every agent, script, and rule you add afterward inherits the same boundaries.</p>
-    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">Before an AI agent or automated rule gets write access to any ad account, CRM, or budget</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">When an agency needs a per-client guardrail agreement the client can read and sign</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">After an automation incident, to replace verbal limits with written, checkable policy</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">When scaling from one automation to many and each new rule needs gates it can inherit</div><div class="kw-vol">&#10003;</div></div></div>
+    <p class="section-label"><span class="label-signal">Make it yours</span></p>
+    <h2 class="display" style="margin-bottom:8px">Fill in your values.</h2>
+    <p class="lead" style="max-width:720px">Everything you enter below is substituted live into the template — copy or download it and the file is already yours. Skip anything you're not sure of; unfilled fields stay as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{PLACEHOLDER}}</code> markers. Values save in your browser and carry across every template in the library.</p>
+    <div class="tpl-fields-panel">
+      <div class="tpl-fields-head"><b>Your values &middot; 55 fields</b><div class="tpl-fields-meta"><span id="tpl-fill-count" role="status"></span><button type="button" class="tpl-reset" id="tpl-reset">Clear all</button></div></div>
+      <div class="tpl-fields">
+        <div class="tpl-field"><label for="tf-ACCOUNT_OR_CLIENT_NAME">Account or client name</label><input id="tf-ACCOUNT_OR_CLIENT_NAME" type="text" data-token="ACCOUNT_OR_CLIENT_NAME" placeholder="the account, client, or brand this config governs" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PLACEHOLDER">Placeholder</label><input id="tf-PLACEHOLDER" type="text" data-token="PLACEHOLDER" placeholder="{{PLACEHOLDER}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-YYYY">Yyyy</label><input id="tf-YYYY" type="text" data-token="YYYY" placeholder="{{YYYY}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-NN">Nn</label><input id="tf-NN" type="text" data-token="NN" placeholder="year + sequence number, e.g. GC-2026-01" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OWNER_NAME">Owner name</label><input id="tf-OWNER_NAME" type="text" data-token="OWNER_NAME" placeholder="the one named person with authority to approve or block changes" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SECOND_APPROVER">Second approver</label><input id="tf-SECOND_APPROVER" type="text" data-token="SECOND_APPROVER" placeholder="required for changes above the escalation threshold in section 2" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-SYSTEMS_LIST">Systems list</label><input id="tf-SYSTEMS_LIST" type="text" data-token="SYSTEMS_LIST" placeholder="every platform this config governs, e.g. Google Ads, Meta Ads, workflow tools" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACCOUNT_IDS">Account ids</label><input id="tf-ACCOUNT_IDS" type="text" data-token="ACCOUNT_IDS" placeholder="exact account/CID numbers — anything not listed is out of scope and read-only" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AGENT_NAME">Agent name</label><input id="tf-AGENT_NAME" type="text" data-token="AGENT_NAME" placeholder="the named agent, script, or workflow this config binds" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-EFFECTIVE_DATE">Effective date</label><input id="tf-EFFECTIVE_DATE" type="text" data-token="EFFECTIVE_DATE" placeholder="{{EFFECTIVE_DATE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-WRITE_ACTION_TYPES">Write action types</label><input id="tf-WRITE_ACTION_TYPES" type="text" data-token="WRITE_ACTION_TYPES" placeholder="{{WRITE_ACTION_TYPES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CREDENTIAL_SCOPE">Credential scope</label><input id="tf-CREDENTIAL_SCOPE" type="text" data-token="CREDENTIAL_SCOPE" placeholder="{{CREDENTIAL_SCOPE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACCOUNT_DAILY_CAP">Account daily cap</label><input id="tf-ACCOUNT_DAILY_CAP" type="text" data-token="ACCOUNT_DAILY_CAP" placeholder="{{ACCOUNT_DAILY_CAP}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACCOUNT_MONTHLY_CAP">Account monthly cap</label><input id="tf-ACCOUNT_MONTHLY_CAP" type="text" data-token="ACCOUNT_MONTHLY_CAP" placeholder="{{ACCOUNT_MONTHLY_CAP}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CAMPAIGN_DAILY_CAP">Campaign daily cap</label><input id="tf-CAMPAIGN_DAILY_CAP" type="text" data-token="CAMPAIGN_DAILY_CAP" placeholder="{{CAMPAIGN_DAILY_CAP}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DAILY_MOVE_CAP">Daily move cap</label><input id="tf-DAILY_MOVE_CAP" type="text" data-token="DAILY_MOVE_CAP" placeholder="{{DAILY_MOVE_CAP}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_BID_SHIFT_PCT">Max bid shift pct</label><input id="tf-MAX_BID_SHIFT_PCT" type="text" data-token="MAX_BID_SHIFT_PCT" placeholder="{{MAX_BID_SHIFT_PCT}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_BUDGET_SHIFT_PCT">Max budget shift pct</label><input id="tf-MAX_BUDGET_SHIFT_PCT" type="text" data-token="MAX_BUDGET_SHIFT_PCT" placeholder="{{MAX_BUDGET_SHIFT_PCT}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_ENTITIES_PER_RUN">Max entities per run</label><input id="tf-MAX_ENTITIES_PER_RUN" type="text" data-token="MAX_ENTITIES_PER_RUN" placeholder="{{MAX_ENTITIES_PER_RUN}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_RUNS_PER_DAY">Max runs per day</label><input id="tf-MAX_RUNS_PER_DAY" type="text" data-token="MAX_RUNS_PER_DAY" placeholder="{{MAX_RUNS_PER_DAY}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COOLDOWN_PERIOD">Cooldown period</label><input id="tf-COOLDOWN_PERIOD" type="text" data-token="COOLDOWN_PERIOD" placeholder="{{COOLDOWN_PERIOD}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MIN_DATA_THRESHOLD">Min data threshold</label><input id="tf-MIN_DATA_THRESHOLD" type="text" data-token="MIN_DATA_THRESHOLD" placeholder="{{MIN_DATA_THRESHOLD}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUTO_APPLY_THRESHOLD">Auto apply threshold</label><input id="tf-AUTO_APPLY_THRESHOLD" type="text" data-token="AUTO_APPLY_THRESHOLD" placeholder="{{AUTO_APPLY_THRESHOLD}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-HUMAN_QUEUE_THRESHOLD">Human queue threshold</label><input id="tf-HUMAN_QUEUE_THRESHOLD" type="text" data-token="HUMAN_QUEUE_THRESHOLD" placeholder="{{HUMAN_QUEUE_THRESHOLD}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ESCALATION_THRESHOLD">Escalation threshold</label><input id="tf-ESCALATION_THRESHOLD" type="text" data-token="ESCALATION_THRESHOLD" placeholder="{{ESCALATION_THRESHOLD}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADDITIONAL_ALWAYS_HUMAN">Additional always human</label><input id="tf-ADDITIONAL_ALWAYS_HUMAN" type="text" data-token="ADDITIONAL_ALWAYS_HUMAN" placeholder="{{ADDITIONAL_ALWAYS_HUMAN}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-APPROVAL_CHANNEL">Approval channel</label><input id="tf-APPROVAL_CHANNEL" type="text" data-token="APPROVAL_CHANNEL" placeholder="{{APPROVAL_CHANNEL}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-APPROVAL_EXPIRY">Approval expiry</label><input id="tf-APPROVAL_EXPIRY" type="text" data-token="APPROVAL_EXPIRY" placeholder="{{APPROVAL_EXPIRY}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROTECTED_CAMPAIGNS">Protected campaigns</label><input id="tf-PROTECTED_CAMPAIGNS" type="text" data-token="PROTECTED_CAMPAIGNS" placeholder="{{PROTECTED_CAMPAIGNS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROTECTED_KEYWORDS">Protected keywords</label><input id="tf-PROTECTED_KEYWORDS" type="text" data-token="PROTECTED_KEYWORDS" placeholder="{{PROTECTED_KEYWORDS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROTECTED_AUDIENCES">Protected audiences</label><input id="tf-PROTECTED_AUDIENCES" type="text" data-token="PROTECTED_AUDIENCES" placeholder="{{PROTECTED_AUDIENCES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BRAND_EXCLUSION_FILES">Brand exclusion files</label><input id="tf-BRAND_EXCLUSION_FILES" type="text" data-token="BRAND_EXCLUSION_FILES" placeholder="{{BRAND_EXCLUSION_FILES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PAUSE_SPEND_LEVEL">Pause spend level</label><input id="tf-PAUSE_SPEND_LEVEL" type="text" data-token="PAUSE_SPEND_LEVEL" placeholder="{{PAUSE_SPEND_LEVEL}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_CONSECUTIVE_FAILURES">Max consecutive failures</label><input id="tf-MAX_CONSECUTIVE_FAILURES" type="text" data-token="MAX_CONSECUTIVE_FAILURES" placeholder="{{MAX_CONSECUTIVE_FAILURES}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CUSTOM_PAUSE_CONDITION">Custom pause condition</label><input id="tf-CUSTOM_PAUSE_CONDITION" type="text" data-token="CUSTOM_PAUSE_CONDITION" placeholder="{{CUSTOM_PAUSE_CONDITION}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KILL_SWITCH_HOLDERS">Kill switch holders</label><input id="tf-KILL_SWITCH_HOLDERS" type="text" data-token="KILL_SWITCH_HOLDERS" placeholder="{{KILL_SWITCH_HOLDERS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-KILL_SWITCH_MECHANISM">Kill switch mechanism</label><input id="tf-KILL_SWITCH_MECHANISM" type="text" data-token="KILL_SWITCH_MECHANISM" placeholder="{{KILL_SWITCH_MECHANISM}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ROLLBACK_EXECUTOR">Rollback executor</label><input id="tf-ROLLBACK_EXECUTOR" type="text" data-token="ROLLBACK_EXECUTOR" placeholder="{{ROLLBACK_EXECUTOR}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ROLLBACK_SLA">Rollback sla</label><input id="tf-ROLLBACK_SLA" type="text" data-token="ROLLBACK_SLA" placeholder="{{ROLLBACK_SLA}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LOG_LOCATION">Log location</label><input id="tf-LOG_LOCATION" type="text" data-token="LOG_LOCATION" placeholder="{{LOG_LOCATION}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LOG_RETENTION">Log retention</label><input id="tf-LOG_RETENTION" type="text" data-token="LOG_RETENTION" placeholder="{{LOG_RETENTION}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONFLICT_RULE">Conflict rule</label><input id="tf-CONFLICT_RULE" type="text" data-token="CONFLICT_RULE" placeholder="{{CONFLICT_RULE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUDIT_CADENCE">Audit cadence</label><input id="tf-AUDIT_CADENCE" type="text" data-token="AUDIT_CADENCE" placeholder="{{AUDIT_CADENCE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUDIT_OWNER">Audit owner</label><input id="tf-AUDIT_OWNER" type="text" data-token="AUDIT_OWNER" placeholder="{{AUDIT_OWNER}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONFIG_REVIEW_CADENCE">Config review cadence</label><input id="tf-CONFIG_REVIEW_CADENCE" type="text" data-token="CONFIG_REVIEW_CADENCE" placeholder="{{CONFIG_REVIEW_CADENCE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TIMESTAMP">Timestamp</label><input id="tf-TIMESTAMP" type="text" data-token="TIMESTAMP" placeholder="{{TIMESTAMP}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACTION_ID">Action id</label><input id="tf-ACTION_ID" type="text" data-token="ACTION_ID" placeholder="{{ACTION_ID}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TRIGGER_NAME">Trigger name</label><input id="tf-TRIGGER_NAME" type="text" data-token="TRIGGER_NAME" placeholder="{{TRIGGER_NAME}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PASS_FAIL_QUEUED">Pass fail queued</label><input id="tf-PASS_FAIL_QUEUED" type="text" data-token="PASS_FAIL_QUEUED" placeholder="{{PASS_FAIL_QUEUED}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACTION_OR_NO_ACTION">Action or no action</label><input id="tf-ACTION_OR_NO_ACTION" type="text" data-token="ACTION_OR_NO_ACTION" placeholder="{{ACTION_OR_NO_ACTION}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BEFORE_VALUE">Before value</label><input id="tf-BEFORE_VALUE" type="text" data-token="BEFORE_VALUE" placeholder="{{BEFORE_VALUE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AFTER_VALUE">After value</label><input id="tf-AFTER_VALUE" type="text" data-token="AFTER_VALUE" placeholder="{{AFTER_VALUE}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AUTO_OR_NAME">Auto or name</label><input id="tf-AUTO_OR_NAME" type="text" data-token="AUTO_OR_NAME" placeholder="{{AUTO_OR_NAME}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ROLLBACK_STEP_REF">Rollback step ref</label><input id="tf-ROLLBACK_STEP_REF" type="text" data-token="ROLLBACK_STEP_REF" placeholder="{{ROLLBACK_STEP_REF}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACCOUNT_LEAD">Account lead</label><input id="tf-ACCOUNT_LEAD" type="text" data-token="ACCOUNT_LEAD" placeholder="whoever operates the accounts daily and will see the automation's effects first" autocomplete="off" spellcheck="false"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section reveal">
     <p class="section-label"><span class="label-signal">The template</span></p>
-    <h2 class="display" style="margin-bottom:8px">Copy it. Fill the placeholders. Run it.</h2>
-    <p class="lead" style="max-width:720px">Everything in <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{UPPER_SNAKE}}</code> is a placeholder — replace it with your own values before use.</p>
+    <h2 class="display" style="margin-bottom:8px">Your copy, ready to run.</h2>
+    <p class="lead" style="max-width:720px">The preview below updates as you type. Copy it to your clipboard or download it as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">guardrail-config.md</code>.</p>
     <div class="tpl-artifact">
-      <div class="tpl-artifact-bar"><b>Guardrail Configuration Template &middot; 218 lines</b><button type="button" class="tpl-copy" data-copy>Copy template</button></div>
+      <div class="tpl-artifact-bar"><b>Guardrail Configuration Template &middot; 218 lines</b><div style="display:flex;gap:10px"><button type="button" class="tpl-dl" data-download>Download guardrail-config.md</button><button type="button" class="tpl-copy" data-copy>Copy template</button></div></div>
       <pre><code id="tpl-src"># Guardrail Configuration — {{ACCOUNT_OR_CLIENT_NAME}} (the account, client, or brand this config governs)
 
 &gt; **Rule zero: no automation runs until this document is signed.**
@@ -388,6 +462,12 @@ Changes to this document follow its own approval path (owner + second approver, 
   </section>
 
   <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it is</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">A single config file that defines what your marketing automation is allowed to do before it runs: budget caps, per-run change ceilings, approval thresholds, protected lists, pause and kill-switch conditions, a rollback rule, and an audit-log standard. It exists because the limits that would have prevented most automation incidents are usually the ones nobody wrote down. Fill the placeholders, get the named owner's sign-off, and every agent, script, and rule you add afterward inherits the same boundaries.</p>
+    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">Before an AI agent or automated rule gets write access to any ad account, CRM, or budget</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">When an agency needs a per-client guardrail agreement the client can read and sign</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">After an automation incident, to replace verbal limits with written, checkable policy</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">When scaling from one automation to many and each new rule needs gates it can inherit</div><div class="kw-vol">&#10003;</div></div></div>
+  </section>
+
+  <section class="section reveal">
     <p class="section-label"><span class="label-signal">Make it yours</span></p>
     <div class="tpl-kv" style="margin-top:0"><div class="kw-row"><div class="kw-term">Set every cap and threshold to your own numbers — the fields are deliberately blank because limits belong to the budget owner, not a template.</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Agencies: duplicate the file per client, keep field names identical so audits compare cleanly across accounts.</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Running spreadsheet-based governance? Keep the YAML as the signed policy and mirror sections 2-3 as tabs in your register sheet.</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Running an MCP-connected agent? Store this file where the agent reads it every run, mirror its caps into your Campaign AGENTS.md, and keep the signed copy under version control.</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Trim the approval matrix rows to the action types you actually granted in access.write_access_granted_for — unused rows invite scope creep.</div><div class="kw-vol">&rarr;</div></div></div>
     <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Used in practice by the <a href="/automations/automation-governance" style="color:var(--signal)">Automation Governance build guide</a> — the step-by-step build this template plugs into.</div>
@@ -459,15 +539,68 @@ Changes to this document follow its own approval path (owner + second approver, 
 <script src="/js/main.js"></script>
 <script>
 (function(){
-  var btn=document.querySelector('[data-copy]');
   var src=document.getElementById('tpl-src');
-  if(!btn||!src)return;
-  btn.addEventListener('click',function(){
+  if(!src)return;
+  var PRISTINE=src.textContent;
+  var FNAME="guardrail-config.md";
+  var LSKEY='ca_tpl_fields';
+  var inputs=[].slice.call(document.querySelectorAll('.tpl-field input[data-token]'));
+  var countEl=document.getElementById('tpl-fill-count');
+
+  function loadVals(){try{return JSON.parse(localStorage.getItem(LSKEY)||'{}')||{};}catch(e){return {};}}
+  function saveVals(v){try{localStorage.setItem(LSKEY,JSON.stringify(v));}catch(e){}}
+
+  /* substitute saved values into the preview; unfilled tokens stay visible */
+  function apply(){
+    var v=loadVals(), t=PRISTINE, filled=0;
+    inputs.forEach(function(inp){
+      var tok=inp.getAttribute('data-token');
+      var val=(v[tok]||'').trim();
+      inp.classList.toggle('filled',!!val);
+      if(val){filled++;t=t.split('{{'+tok+'}}').join(val);}
+    });
+    src.textContent=t;
+    if(countEl)countEl.textContent=filled+' of '+inputs.length+' filled';
+  }
+
+  /* prefill from localStorage (values carry across every template) */
+  (function(){var v=loadVals();inputs.forEach(function(inp){var tok=inp.getAttribute('data-token');if(v[tok])inp.value=v[tok];});})();
+  inputs.forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var v=loadVals();
+      var val=inp.value.trim();
+      if(val)v[inp.getAttribute('data-token')]=val; else delete v[inp.getAttribute('data-token')];
+      saveVals(v);apply();
+    });
+  });
+  var reset=document.getElementById('tpl-reset');
+  if(reset)reset.addEventListener('click',function(){
+    var v=loadVals();
+    inputs.forEach(function(inp){delete v[inp.getAttribute('data-token')];inp.value='';});
+    saveVals(v);apply();
+  });
+  apply();
+
+  var copyBtn=document.querySelector('[data-copy]');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
     var t=src.textContent;
-    function done(ok){btn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){btn.textContent='Copy template';},2200);}
+    function done(ok){copyBtn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){copyBtn.textContent='Copy template';},2200);}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){fallback();});}
     else fallback();
-    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
+  });
+
+  var dlBtn=document.querySelector('[data-download]');
+  if(dlBtn)dlBtn.addEventListener('click',function(){
+    var blob=new Blob([src.textContent],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=FNAME;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},300);
+    var orig=dlBtn.textContent;
+    dlBtn.textContent='Downloaded \u2713';
+    setTimeout(function(){dlBtn.textContent=orig;},2200);
   });
 })();
 </script>

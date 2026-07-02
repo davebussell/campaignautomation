@@ -40,6 +40,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tpl-steps li:last-child{border-bottom:none}
   .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
   .tpl-steps li strong{color:var(--bone)}
+  .tpl-fields-panel{border:1px solid var(--signal-dim);border-radius:10px;background:rgba(200,241,53,.03);overflow:hidden;margin-top:22px}
+  .tpl-fields-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border)}
+  .tpl-fields-head b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
+  .tpl-fields-meta{display:flex;align-items:center;gap:16px}
+  #tpl-fill-count{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em}
+  .tpl-reset{background:none;border:none;font-family:var(--f-mono);font-size:11.5px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:0}
+  .tpl-reset:hover{color:var(--bone)}
+  .tpl-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px 18px;padding:18px 20px;max-height:420px;overflow-y:auto}
+  .tpl-field label{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist2);margin-bottom:5px}
+  .tpl-field input{width:100%;box-sizing:border-box;background:var(--slate2);border:1px solid var(--border);border-radius:5px;color:var(--bone);font-family:var(--f-body);font-size:13.5px;padding:9px 11px;outline:none;transition:border-color .15s}
+  .tpl-field input:focus{border-color:var(--signal)}
+  .tpl-field input.filled{border-color:var(--signal-dim)}
+  .tpl-dl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:transparent;color:var(--bone);border:1px solid var(--border);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-dl:hover{border-color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"PPC Audit Prompt Pack","description":"Six copy-paste AI prompts to audit a Google Ads account from CSV exports: waste mining, budget misalignment, Quality Score gaps, and a stakeholder readout.","url":"https://campaignautomation.ai/resources/templates/ppc-audit-prompt-pack","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"},{"@type":"ListItem","position":3,"name":"PPC Audit Prompt Pack","item":"https://campaignautomation.ai/resources/templates/ppc-audit-prompt-pack"}]}]}
@@ -155,18 +169,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <section class="section reveal">
-    <p class="section-label"><span class="label-signal">What it is</span></p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">A copy-paste audit kit for paid-search accounts you can only see through exports. Six prompts take the CSVs any read-only user can pull — search terms, campaign performance, keywords with Quality Score, ads — and turn them into ranked negative-keyword candidates, a budget realignment proposal, message-match fixes, a structure review, a stakeholder readout, and a governed change plan.</p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">Everything is recommendation-only by design: nothing in this pack applies a change. Named approvers sign each row, the caps are yours to set, and every change that eventually ships carries a Trigger / Action / Impact log entry so it can be audited and reversed.</p>
-    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">Auditing a prospect's or new client's account before you have (or want) login access</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Running a quarterly hygiene pass on your own account without wiring up any APIs</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Producing an evidence-based readout a stakeholder can approve line by line</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Proving the audit discipline manually before automating it as a governed workflow</div><div class="kw-vol">&#10003;</div></div></div>
+    <p class="section-label"><span class="label-signal">Make it yours</span></p>
+    <h2 class="display" style="margin-bottom:8px">Fill in your values.</h2>
+    <p class="lead" style="max-width:720px">Everything you enter below is substituted live into the template — copy or download it and the file is already yours. Skip anything you're not sure of; unfilled fields stay as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{PLACEHOLDER}}</code> markers. Values save in your browser and carry across every template in the library.</p>
+    <div class="tpl-fields-panel">
+      <div class="tpl-fields-head"><b>Your values &middot; 22 fields</b><div class="tpl-fields-meta"><span id="tpl-fill-count" role="status"></span><button type="button" class="tpl-reset" id="tpl-reset">Clear all</button></div></div>
+      <div class="tpl-fields">
+        <div class="tpl-field"><label for="tf-TARGET_CPA_OR_ROAS">Target cpa or roas</label><input id="tf-TARGET_CPA_OR_ROAS" type="text" data-token="TARGET_CPA_OR_ROAS" placeholder="your agreed CPA or ROAS target" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DATE_RANGE">Date range</label><input id="tf-DATE_RANGE" type="text" data-token="DATE_RANGE" placeholder="the window your exports cover, e.g. &quot;the last 90 days&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BUSINESS_DESCRIPTION">Business description</label><input id="tf-BUSINESS_DESCRIPTION" type="text" data-token="BUSINESS_DESCRIPTION" placeholder="one or two sentences on what the business
+  sells and to whom" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BRAND_TERMS">Brand terms</label><input id="tf-BRAND_TERMS" type="text" data-token="BRAND_TERMS" placeholder="your brand and
+  product names" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COMPETITOR_NAMES">Competitor names</label><input id="tf-COMPETITOR_NAMES" type="text" data-token="COMPETITOR_NAMES" placeholder="competitor names that may appear in
+  queries" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONVERSION_DEFINITION">Conversion definition</label><input id="tf-CONVERSION_DEFINITION" type="text" data-token="CONVERSION_DEFINITION" placeholder="what a conversion means in
+  this account" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CURRENCY">Currency</label><input id="tf-CURRENCY" type="text" data-token="CURRENCY" placeholder="account currency, e.g. CAD" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MIN_TERM_SPEND">Min term spend</label><input id="tf-MIN_TERM_SPEND" type="text" data-token="MIN_TERM_SPEND" placeholder="a per-term spend floor
+   you set, below which a term is not worth acting on" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TOTAL_MONTHLY_BUDGET">Total monthly budget</label><input id="tf-TOTAL_MONTHLY_BUDGET" type="text" data-token="TOTAL_MONTHLY_BUDGET" placeholder="the figure the budget owner
+  recognizes" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_SHIFT_PCT">Max shift pct</label><input id="tf-MAX_SHIFT_PCT" type="text" data-token="MAX_SHIFT_PCT" placeholder="a
+  per-campaign ceiling you set yourself — a placeholder, not a benchmark" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LANDING_PAGE_COPY_OR_URLS">Landing page copy or urls</label><input id="tf-LANDING_PAGE_COPY_OR_URLS" type="text" data-token="LANDING_PAGE_COPY_OR_URLS" placeholder="paste the visible copy of
+  each major landing page under its final URL; list bare URLs on" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACCOUNT_NAME">Account name</label><input id="tf-ACCOUNT_NAME" type="text" data-token="ACCOUNT_NAME" placeholder="the account or client name" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-NAMING_CONVENTION">Naming convention</label><input id="tf-NAMING_CONVENTION" type="text" data-token="NAMING_CONVENTION" placeholder="paste it, or write
+  &quot;none&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-STAKEHOLDER_ROLE">Stakeholder role</label><input id="tf-STAKEHOLDER_ROLE" type="text" data-token="STAKEHOLDER_ROLE" placeholder="who will read
+this — e.g. &quot;the client's marketing director&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROMPT_1_OUTPUT">Prompt 1 output</label><input id="tf-PROMPT_1_OUTPUT" type="text" data-token="PROMPT_1_OUTPUT" placeholder="paste the full output of Prompt 1" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROMPT_2_OUTPUT">Prompt 2 output</label><input id="tf-PROMPT_2_OUTPUT" type="text" data-token="PROMPT_2_OUTPUT" placeholder="paste the full output of Prompt 2" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROMPT_3_OUTPUT">Prompt 3 output</label><input id="tf-PROMPT_3_OUTPUT" type="text" data-token="PROMPT_3_OUTPUT" placeholder="paste the full output of Prompt 3" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROMPT_4_OUTPUT">Prompt 4 output</label><input id="tf-PROMPT_4_OUTPUT" type="text" data-token="PROMPT_4_OUTPUT" placeholder="paste the full output of Prompt 4" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-APPROVED_FINDINGS">Approved findings</label><input id="tf-APPROVED_FINDINGS" type="text" data-token="APPROVED_FINDINGS" placeholder="paste only the readout rows the
+  owners approved, each with its approver's name" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-IMPLEMENTER_NAME">Implementer name</label><input id="tf-IMPLEMENTER_NAME" type="text" data-token="IMPLEMENTER_NAME" placeholder="the person who will apply each batch" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LIST_NAMING_PATTERN">List naming pattern</label><input id="tf-LIST_NAMING_PATTERN" type="text" data-token="LIST_NAMING_PATTERN" placeholder="e.g. &quot;NEG - account - YYYY-MM-DD&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-REVIEW_DATE">Review date</label><input id="tf-REVIEW_DATE" type="text" data-token="REVIEW_DATE" placeholder="when
+     the implementer verifies the change did what the trigger implied" autocomplete="off" spellcheck="false"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section reveal">
     <p class="section-label"><span class="label-signal">The template</span></p>
-    <h2 class="display" style="margin-bottom:8px">Copy it. Fill the placeholders. Run it.</h2>
-    <p class="lead" style="max-width:720px">Everything in <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{UPPER_SNAKE}}</code> is a placeholder — replace it with your own values before use.</p>
+    <h2 class="display" style="margin-bottom:8px">Your copy, ready to run.</h2>
+    <p class="lead" style="max-width:720px">The preview below updates as you type. Copy it to your clipboard or download it as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">ppc-audit-prompts.md</code>.</p>
     <div class="tpl-artifact">
-      <div class="tpl-artifact-bar"><b>PPC Audit Prompt Pack &middot; 417 lines</b><button type="button" class="tpl-copy" data-copy>Copy template</button></div>
+      <div class="tpl-artifact-bar"><b>PPC Audit Prompt Pack &middot; 417 lines</b><div style="display:flex;gap:10px"><button type="button" class="tpl-dl" data-download>Download ppc-audit-prompts.md</button><button type="button" class="tpl-copy" data-copy>Copy template</button></div></div>
       <pre><code id="tpl-src"># PPC Audit Prompt Pack
 
 Audit a paid-search account from exports alone. No API access, no account login —
@@ -588,6 +640,13 @@ a signed Guardrail Configuration first — the same discipline, made standing.</
   </section>
 
   <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it is</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">A copy-paste audit kit for paid-search accounts you can only see through exports. Six prompts take the CSVs any read-only user can pull — search terms, campaign performance, keywords with Quality Score, ads — and turn them into ranked negative-keyword candidates, a budget realignment proposal, message-match fixes, a structure review, a stakeholder readout, and a governed change plan.</p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">Everything is recommendation-only by design: nothing in this pack applies a change. Named approvers sign each row, the caps are yours to set, and every change that eventually ships carries a Trigger / Action / Impact log entry so it can be audited and reversed.</p>
+    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">Auditing a prospect's or new client's account before you have (or want) login access</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Running a quarterly hygiene pass on your own account without wiring up any APIs</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Producing an evidence-based readout a stakeholder can approve line by line</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Proving the audit discipline manually before automating it as a governed workflow</div><div class="kw-vol">&#10003;</div></div></div>
+  </section>
+
+  <section class="section reveal">
     <p class="section-label"><span class="label-signal">Make it yours</span></p>
     <div class="tpl-kv" style="margin-top:0"><div class="kw-row"><div class="kw-term">Swap Google Ads column names for Microsoft Ads equivalents — the audit logic is platform-agnostic</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Set {{MIN_TERM_SPEND}} and {{MAX_SHIFT_PCT}} to your own risk tolerance; they are caps you choose, not benchmarks</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Paste landing-page copy into Prompt 3 directly when your AI tool cannot fetch URLs</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Feed last cycle's decision log back into Prompt 1 so rejected candidates are not re-flagged</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Reshape the Prompt 5 readout to your stakeholder's format — slide bullets, email, or one-pager</div><div class="kw-vol">&rarr;</div></div></div>
     <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Used in practice by the <a href="/automations/ppc-intelligence" style="color:var(--signal)">PPC Intelligence build guide</a> — the step-by-step build this template plugs into.</div>
@@ -659,15 +718,68 @@ a signed Guardrail Configuration first — the same discipline, made standing.</
 <script src="/js/main.js"></script>
 <script>
 (function(){
-  var btn=document.querySelector('[data-copy]');
   var src=document.getElementById('tpl-src');
-  if(!btn||!src)return;
-  btn.addEventListener('click',function(){
+  if(!src)return;
+  var PRISTINE=src.textContent;
+  var FNAME="ppc-audit-prompts.md";
+  var LSKEY='ca_tpl_fields';
+  var inputs=[].slice.call(document.querySelectorAll('.tpl-field input[data-token]'));
+  var countEl=document.getElementById('tpl-fill-count');
+
+  function loadVals(){try{return JSON.parse(localStorage.getItem(LSKEY)||'{}')||{};}catch(e){return {};}}
+  function saveVals(v){try{localStorage.setItem(LSKEY,JSON.stringify(v));}catch(e){}}
+
+  /* substitute saved values into the preview; unfilled tokens stay visible */
+  function apply(){
+    var v=loadVals(), t=PRISTINE, filled=0;
+    inputs.forEach(function(inp){
+      var tok=inp.getAttribute('data-token');
+      var val=(v[tok]||'').trim();
+      inp.classList.toggle('filled',!!val);
+      if(val){filled++;t=t.split('{{'+tok+'}}').join(val);}
+    });
+    src.textContent=t;
+    if(countEl)countEl.textContent=filled+' of '+inputs.length+' filled';
+  }
+
+  /* prefill from localStorage (values carry across every template) */
+  (function(){var v=loadVals();inputs.forEach(function(inp){var tok=inp.getAttribute('data-token');if(v[tok])inp.value=v[tok];});})();
+  inputs.forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var v=loadVals();
+      var val=inp.value.trim();
+      if(val)v[inp.getAttribute('data-token')]=val; else delete v[inp.getAttribute('data-token')];
+      saveVals(v);apply();
+    });
+  });
+  var reset=document.getElementById('tpl-reset');
+  if(reset)reset.addEventListener('click',function(){
+    var v=loadVals();
+    inputs.forEach(function(inp){delete v[inp.getAttribute('data-token')];inp.value='';});
+    saveVals(v);apply();
+  });
+  apply();
+
+  var copyBtn=document.querySelector('[data-copy]');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
     var t=src.textContent;
-    function done(ok){btn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){btn.textContent='Copy template';},2200);}
+    function done(ok){copyBtn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){copyBtn.textContent='Copy template';},2200);}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){fallback();});}
     else fallback();
-    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
+  });
+
+  var dlBtn=document.querySelector('[data-download]');
+  if(dlBtn)dlBtn.addEventListener('click',function(){
+    var blob=new Blob([src.textContent],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=FNAME;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},300);
+    var orig=dlBtn.textContent;
+    dlBtn.textContent='Downloaded \u2713';
+    setTimeout(function(){dlBtn.textContent=orig;},2200);
   });
 })();
 </script>

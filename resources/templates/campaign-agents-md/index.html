@@ -40,6 +40,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tpl-steps li:last-child{border-bottom:none}
   .tpl-steps li::before{content:"0" counter(tp);position:absolute;left:0;top:18px;font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--slate2)}
   .tpl-steps li strong{color:var(--bone)}
+  .tpl-fields-panel{border:1px solid var(--signal-dim);border-radius:10px;background:rgba(200,241,53,.03);overflow:hidden;margin-top:22px}
+  .tpl-fields-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border)}
+  .tpl-fields-head b{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
+  .tpl-fields-meta{display:flex;align-items:center;gap:16px}
+  #tpl-fill-count{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em}
+  .tpl-reset{background:none;border:none;font-family:var(--f-mono);font-size:11.5px;color:var(--mist);cursor:pointer;text-decoration:underline;padding:0}
+  .tpl-reset:hover{color:var(--bone)}
+  .tpl-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px 18px;padding:18px 20px;max-height:420px;overflow-y:auto}
+  .tpl-field label{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist2);margin-bottom:5px}
+  .tpl-field input{width:100%;box-sizing:border-box;background:var(--slate2);border:1px solid var(--border);border-radius:5px;color:var(--bone);font-family:var(--f-body);font-size:13.5px;padding:9px 11px;outline:none;transition:border-color .15s}
+  .tpl-field input:focus{border-color:var(--signal)}
+  .tpl-field input.filled{border-color:var(--signal-dim)}
+  .tpl-dl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;background:transparent;color:var(--bone);border:1px solid var(--border);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .tpl-dl:hover{border-color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Campaign AGENTS.md","description":"A copy-paste AGENTS.md template giving your AI marketing agent bounded autonomy: scope, read-only rules, spend caps, approval gates, and TAI logging.","url":"https://campaignautomation.ai/resources/templates/campaign-agents-md","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Templates & Prompt Packs","item":"https://campaignautomation.ai/resources/templates"},{"@type":"ListItem","position":3,"name":"Campaign AGENTS.md","item":"https://campaignautomation.ai/resources/templates/campaign-agents-md"}]}]}
@@ -155,17 +169,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <section class="section reveal">
-    <p class="section-label"><span class="label-signal">What it is</span></p>
-    <p class="lead" style="max-width:720px;margin-bottom:14px">An AGENTS.md is the standing rulebook an AI agent loads before every session of campaign work: what it may touch, what it may only read, the caps and thresholds it can never cross, and how it must log every action. Without one, "the AI manages our ads" means whatever the model decided that morning. With one, every cycle runs the same bounded loop — trigger, guardrail check, action, logged impact — and any teammate can open one file and see exactly what the agent is allowed to do and who signs off.</p>
-    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You are connecting an AI agent to ad platforms, analytics, or a CRM via MCP or API for the first time</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">An agent already runs campaign tasks but its limits live in scattered prompts instead of one reviewable file</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A client, boss, or compliance team asks what exactly the AI is allowed to change, and where that is written down</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are handing an automation to a teammate or agency and need the operating rules to travel with it</div><div class="kw-vol">&#10003;</div></div></div>
+    <p class="section-label"><span class="label-signal">Make it yours</span></p>
+    <h2 class="display" style="margin-bottom:8px">Fill in your values.</h2>
+    <p class="lead" style="max-width:720px">Everything you enter below is substituted live into the template — copy or download it and the file is already yours. Skip anything you're not sure of; unfilled fields stay as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{PLACEHOLDER}}</code> markers. Values save in your browser and carry across every template in the library.</p>
+    <div class="tpl-fields-panel">
+      <div class="tpl-fields-head"><b>Your values &middot; 41 fields</b><div class="tpl-fields-meta"><span id="tpl-fill-count" role="status"></span><button type="button" class="tpl-reset" id="tpl-reset">Clear all</button></div></div>
+      <div class="tpl-fields">
+        <div class="tpl-field"><label for="tf-PLACEHOLDER">Placeholder</label><input id="tf-PLACEHOLDER" type="text" data-token="PLACEHOLDER" placeholder="{{PLACEHOLDER}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OWNER_NAME">Owner name</label><input id="tf-OWNER_NAME" type="text" data-token="OWNER_NAME" placeholder="the one named human who approves changes and owns this file" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OWNER_CONTACT">Owner contact</label><input id="tf-OWNER_CONTACT" type="text" data-token="OWNER_CONTACT" placeholder="Slack handle or email where approval requests go" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BACKUP_APPROVER">Backup approver</label><input id="tf-BACKUP_APPROVER" type="text" data-token="BACKUP_APPROVER" placeholder="who approves when the owner is unavailable" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACCOUNT_LIST">Account list</label><input id="tf-ACCOUNT_LIST" type="text" data-token="ACCOUNT_LIST" placeholder="exact account names and IDs, e.g. &quot;Google Ads 123-456-7890; Meta act_XXXX&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CHECK_SCHEDULE">Check schedule</label><input id="tf-CHECK_SCHEDULE" type="text" data-token="CHECK_SCHEDULE" placeholder="when the agent wakes and checks triggers, e.g. &quot;daily at 06:00, account timezone&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-REVIEW_DATE">Review date</label><input id="tf-REVIEW_DATE" type="text" data-token="REVIEW_DATE" placeholder="update this date every time a human edits this file" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-GUARDRAIL_CONFIG_PATH">Guardrail config path</label><input id="tf-GUARDRAIL_CONFIG_PATH" type="text" data-token="GUARDRAIL_CONFIG_PATH" placeholder="path to the signed Guardrail Configuration Template for this account" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CLAUDE_MD_PATH">Claude md path</label><input id="tf-CLAUDE_MD_PATH" type="text" data-token="CLAUDE_MD_PATH" placeholder="path to the Campaign CLAUDE.md brand context file" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-AGENT_MISSION">Agent mission</label><input id="tf-AGENT_MISSION" type="text" data-token="AGENT_MISSION" placeholder="one sentence, e.g. &quot;monitor paid search
+performance in the accounts listed above and keep " autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DATA_FRESHNESS_LIMIT">Data freshness limit</label><input id="tf-DATA_FRESHNESS_LIMIT" type="text" data-token="DATA_FRESHNESS_LIMIT" placeholder="max age of data you may
+  act on, e.g. &quot;24 hours&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADS_CONNECTION_1">Ads connection 1</label><input id="tf-ADS_CONNECTION_1" type="text" data-token="ADS_CONNECTION_1" placeholder="how you connect, e.g. &quot;Google Ads MCP server, read scope&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ADS_CONNECTION_2">Ads connection 2</label><input id="tf-ADS_CONNECTION_2" type="text" data-token="ADS_CONNECTION_2" placeholder="e.g. &quot;Meta Ads API, read scope&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ANALYTICS_CONNECTION">Analytics connection</label><input id="tf-ANALYTICS_CONNECTION" type="text" data-token="ANALYTICS_CONNECTION" placeholder="e.g. &quot;GA4 API&quot; or &quot;weekly CSV export in /data&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CRM_CONNECTION">Crm connection</label><input id="tf-CRM_CONNECTION" type="text" data-token="CRM_CONNECTION" placeholder="e.g. &quot;HubSpot MCP, read scope&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-LOG_LOCATION">Log location</label><input id="tf-LOG_LOCATION" type="text" data-token="LOG_LOCATION" placeholder="where the Trigger / Action / Impact log lives, e.g. &quot;Google Sheet: CA-Activity-Log&quot; or &quot;/l" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-DAILY_SPEND_CAP">Daily spend cap</label><input id="tf-DAILY_SPEND_CAP" type="text" data-token="DAILY_SPEND_CAP" placeholder="currency amount" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MONTHLY_SPEND_CAP">Monthly spend cap</label><input id="tf-MONTHLY_SPEND_CAP" type="text" data-token="MONTHLY_SPEND_CAP" placeholder="{{MONTHLY_SPEND_CAP}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_SINGLE_REALLOCATION">Max single reallocation</label><input id="tf-MAX_SINGLE_REALLOCATION" type="text" data-token="MAX_SINGLE_REALLOCATION" placeholder="{{MAX_SINGLE_REALLOCATION}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_BID_CHANGE_PCT">Max bid change pct</label><input id="tf-MAX_BID_CHANGE_PCT" type="text" data-token="MAX_BID_CHANGE_PCT" placeholder="percentage" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_BUDGET_CHANGE_PCT">Max budget change pct</label><input id="tf-MAX_BUDGET_CHANGE_PCT" type="text" data-token="MAX_BUDGET_CHANGE_PCT" placeholder="{{MAX_BUDGET_CHANGE_PCT}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_ENTITIES_PER_ACTION">Max entities per action</label><input id="tf-MAX_ENTITIES_PER_ACTION" type="text" data-token="MAX_ENTITIES_PER_ACTION" placeholder="{{MAX_ENTITIES_PER_ACTION}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_ACTIONS_PER_DAY">Max actions per day</label><input id="tf-MAX_ACTIONS_PER_DAY" type="text" data-token="MAX_ACTIONS_PER_DAY" placeholder="{{MAX_ACTIONS_PER_DAY}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-COOLDOWN_PERIOD">Cooldown period</label><input id="tf-COOLDOWN_PERIOD" type="text" data-token="COOLDOWN_PERIOD" placeholder="e.g. &quot;72 hours&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MIN_CONVERSIONS">Min conversions</label><input id="tf-MIN_CONVERSIONS" type="text" data-token="MIN_CONVERSIONS" placeholder="{{MIN_CONVERSIONS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-APPROVAL_THRESHOLD_BUDGET">Approval threshold budget</label><input id="tf-APPROVAL_THRESHOLD_BUDGET" type="text" data-token="APPROVAL_THRESHOLD_BUDGET" placeholder="amount or percentage that always needs sign-off" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PROTECTED_ENTITIES">Protected entities</label><input id="tf-PROTECTED_ENTITIES" type="text" data-token="PROTECTED_ENTITIES" placeholder="campaigns that may never be auto-paused, e.g. brand campaigns" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-APPROVAL_TIMEOUT">Approval timeout</label><input id="tf-APPROVAL_TIMEOUT" type="text" data-token="APPROVAL_TIMEOUT" placeholder="how long you wait for
+a yes, e.g. &quot;24 hours&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-BRAND_EXCLUSION_LIST">Brand exclusion list</label><input id="tf-BRAND_EXCLUSION_LIST" type="text" data-token="BRAND_EXCLUSION_LIST" placeholder="file or sheet of
+  excluded terms, competitors, placements" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MESSAGING_MATRIX">Messaging matrix</label><input id="tf-MESSAGING_MATRIX" type="text" data-token="MESSAGING_MATRIX" placeholder="approved claims and
+  tone document" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-CONFLICT_PROTOCOL">Conflict protocol</label><input id="tf-CONFLICT_PROTOCOL" type="text" data-token="CONFLICT_PROTOCOL" placeholder="your priority rule, e.g. &quot;spend-protection actions
+first&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TIER_PAUSE">Tier pause</label><input id="tf-TIER_PAUSE" type="text" data-token="TIER_PAUSE" placeholder="choose: RECOMMEND / ACT WITH APPROVAL / ACT AND LOG" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TIER_BID">Tier bid</label><input id="tf-TIER_BID" type="text" data-token="TIER_BID" placeholder="same three choices" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TIER_BUDGET">Tier budget</label><input id="tf-TIER_BUDGET" type="text" data-token="TIER_BUDGET" placeholder="same three choices" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-TIER_NEGATIVES">Tier negatives</label><input id="tf-TIER_NEGATIVES" type="text" data-token="TIER_NEGATIVES" placeholder="same three choices" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-PILOT_PERIOD">Pilot period</label><input id="tf-PILOT_PERIOD" type="text" data-token="PILOT_PERIOD" placeholder="e.g.
+&quot;two weeks&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-OBSERVATION_WINDOW">Observation window</label><input id="tf-OBSERVATION_WINDOW" type="text" data-token="OBSERVATION_WINDOW" placeholder="{{OBSERVATION_WINDOW}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-MAX_REPEAT_TRIGGERS">Max repeat triggers</label><input id="tf-MAX_REPEAT_TRIGGERS" type="text" data-token="MAX_REPEAT_TRIGGERS" placeholder="{{MAX_REPEAT_TRIGGERS}}" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ESCALATION_TIMEOUT">Escalation timeout</label><input id="tf-ESCALATION_TIMEOUT" type="text" data-token="ESCALATION_TIMEOUT" placeholder="e.g. &quot;4 business hours&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-ACCOUNT_CURRENCY">Account currency</label><input id="tf-ACCOUNT_CURRENCY" type="text" data-token="ACCOUNT_CURRENCY" placeholder="e.g. &quot;CAD&quot;" autocomplete="off" spellcheck="false"></div>
+        <div class="tpl-field"><label for="tf-REPORTING_TIMEZONE">Reporting timezone</label><input id="tf-REPORTING_TIMEZONE" type="text" data-token="REPORTING_TIMEZONE" placeholder="e.g. &quot;America/Toronto&quot;" autocomplete="off" spellcheck="false"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section reveal">
     <p class="section-label"><span class="label-signal">The template</span></p>
-    <h2 class="display" style="margin-bottom:8px">Copy it. Fill the placeholders. Run it.</h2>
-    <p class="lead" style="max-width:720px">Everything in <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">{{UPPER_SNAKE}}</code> is a placeholder — replace it with your own values before use.</p>
+    <h2 class="display" style="margin-bottom:8px">Your copy, ready to run.</h2>
+    <p class="lead" style="max-width:720px">The preview below updates as you type. Copy it to your clipboard or download it as <code style="font-family:var(--f-mono);font-size:14px;color:var(--signal)">AGENTS.md</code>.</p>
     <div class="tpl-artifact">
-      <div class="tpl-artifact-bar"><b>Campaign AGENTS.md &middot; 275 lines</b><button type="button" class="tpl-copy" data-copy>Copy template</button></div>
+      <div class="tpl-artifact-bar"><b>Campaign AGENTS.md &middot; 275 lines</b><div style="display:flex;gap:10px"><button type="button" class="tpl-dl" data-download>Download AGENTS.md</button><button type="button" class="tpl-copy" data-copy>Copy template</button></div></div>
       <pre><code id="tpl-src"># AGENTS.md — Campaign Agent Instructions
 
 &gt; HOW TO USE THIS FILE
@@ -445,6 +512,12 @@ Humans only. The agent never writes to this section.
   </section>
 
   <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it is</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">An AGENTS.md is the standing rulebook an AI agent loads before every session of campaign work: what it may touch, what it may only read, the caps and thresholds it can never cross, and how it must log every action. Without one, "the AI manages our ads" means whatever the model decided that morning. With one, every cycle runs the same bounded loop — trigger, guardrail check, action, logged impact — and any teammate can open one file and see exactly what the agent is allowed to do and who signs off.</p>
+    <div class="tpl-kv"><div class="kw-row"><div class="kw-term">You are connecting an AI agent to ad platforms, analytics, or a CRM via MCP or API for the first time</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">An agent already runs campaign tasks but its limits live in scattered prompts instead of one reviewable file</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A client, boss, or compliance team asks what exactly the AI is allowed to change, and where that is written down</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">You are handing an automation to a teammate or agency and need the operating rules to travel with it</div><div class="kw-vol">&#10003;</div></div></div>
+  </section>
+
+  <section class="section reveal">
     <p class="section-label"><span class="label-signal">Make it yours</span></p>
     <div class="tpl-kv" style="margin-top:0"><div class="kw-row"><div class="kw-term">Set every cap and threshold in Section 3 from your own account history — they are ceilings you choose, not benchmarks to copy</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Assign a tier to each {{TIER_*}} action type in Section 4; start everything at RECOMMEND and promote one action type at a time</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Point {{LOG_LOCATION}} at wherever your team already looks — a Google Sheet, a repo file, or a BigQuery table all work</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Trim the data-sources table to the systems you actually connect; delete rows rather than leaving unconfigured ones</div><div class="kw-vol">&rarr;</div></div><div class="kw-row"><div class="kw-term">Agencies: duplicate the file per client so each account carries its own owner, caps, and protected-entity list</div><div class="kw-vol">&rarr;</div></div></div>
     <div style="border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65">Used in practice by the <a href="/automations/automation-governance" style="color:var(--signal)">Automation Governance build guide</a> — the step-by-step build this template plugs into.</div>
@@ -516,15 +589,68 @@ Humans only. The agent never writes to this section.
 <script src="/js/main.js"></script>
 <script>
 (function(){
-  var btn=document.querySelector('[data-copy]');
   var src=document.getElementById('tpl-src');
-  if(!btn||!src)return;
-  btn.addEventListener('click',function(){
+  if(!src)return;
+  var PRISTINE=src.textContent;
+  var FNAME="AGENTS.md";
+  var LSKEY='ca_tpl_fields';
+  var inputs=[].slice.call(document.querySelectorAll('.tpl-field input[data-token]'));
+  var countEl=document.getElementById('tpl-fill-count');
+
+  function loadVals(){try{return JSON.parse(localStorage.getItem(LSKEY)||'{}')||{};}catch(e){return {};}}
+  function saveVals(v){try{localStorage.setItem(LSKEY,JSON.stringify(v));}catch(e){}}
+
+  /* substitute saved values into the preview; unfilled tokens stay visible */
+  function apply(){
+    var v=loadVals(), t=PRISTINE, filled=0;
+    inputs.forEach(function(inp){
+      var tok=inp.getAttribute('data-token');
+      var val=(v[tok]||'').trim();
+      inp.classList.toggle('filled',!!val);
+      if(val){filled++;t=t.split('{{'+tok+'}}').join(val);}
+    });
+    src.textContent=t;
+    if(countEl)countEl.textContent=filled+' of '+inputs.length+' filled';
+  }
+
+  /* prefill from localStorage (values carry across every template) */
+  (function(){var v=loadVals();inputs.forEach(function(inp){var tok=inp.getAttribute('data-token');if(v[tok])inp.value=v[tok];});})();
+  inputs.forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var v=loadVals();
+      var val=inp.value.trim();
+      if(val)v[inp.getAttribute('data-token')]=val; else delete v[inp.getAttribute('data-token')];
+      saveVals(v);apply();
+    });
+  });
+  var reset=document.getElementById('tpl-reset');
+  if(reset)reset.addEventListener('click',function(){
+    var v=loadVals();
+    inputs.forEach(function(inp){delete v[inp.getAttribute('data-token')];inp.value='';});
+    saveVals(v);apply();
+  });
+  apply();
+
+  var copyBtn=document.querySelector('[data-copy]');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
     var t=src.textContent;
-    function done(ok){btn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){btn.textContent='Copy template';},2200);}
+    function done(ok){copyBtn.textContent=ok?'Copied \u2713':'Select & copy manually';setTimeout(function(){copyBtn.textContent='Copy template';},2200);}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){fallback();});}
     else fallback();
-    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done(true);}catch(e){done(false);}}
+  });
+
+  var dlBtn=document.querySelector('[data-download]');
+  if(dlBtn)dlBtn.addEventListener('click',function(){
+    var blob=new Blob([src.textContent],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=FNAME;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},300);
+    var orig=dlBtn.textContent;
+    dlBtn.textContent='Downloaded \u2713';
+    setTimeout(function(){dlBtn.textContent=orig;},2200);
   });
 })();
 </script>
