@@ -2,3 +2,20 @@
 /learn      /resources  301
 /learn/     /resources  301
 /learn/*    /resources  301
+
+# Sprints repositioned as the Automations library (301)
+/solutions/sprints/content-brief      /automations/content-brief  301
+/solutions/sprints/content-brief/     /automations/content-brief  301
+/solutions/sprints/campaign-launch      /automations/campaign-launch-kit  301
+/solutions/sprints/campaign-launch/     /automations/campaign-launch-kit  301
+/solutions/sprints/ppc-intelligence      /automations/ppc-intelligence  301
+/solutions/sprints/ppc-intelligence/     /automations/ppc-intelligence  301
+/solutions/sprints/seo-ppc      /automations/seo-ppc-opportunity  301
+/solutions/sprints/seo-ppc/     /automations/seo-ppc-opportunity  301
+/solutions/sprints/event-followup      /automations/event-followup  301
+/solutions/sprints/event-followup/     /automations/event-followup  301
+/solutions/sprints/lead-reactivation      /automations/lead-reactivation  301
+/solutions/sprints/lead-reactivation/     /automations/lead-reactivation  301
+/solutions/sprints/*        /automations  301
+/solutions/automation-sprints        /automations  301
+/solutions/automation-sprints/*      /automations  301

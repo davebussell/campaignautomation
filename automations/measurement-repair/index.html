@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<!-- Google consent mode v2 default (denied until the visitor chooses) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TD5GPWN5');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measurement Repair — Build Guide (Manual or MCP) | Campaign Automation AI</title>
+<meta name="description" content="Measurement Repair build guide: audit and rebuild GA4, Google Ads, and Meta conversion tracking — a manual spreadsheet path or a governed MCP agent path.">
+<link rel="canonical" href="https://campaignautomation.ai/automations/measurement-repair">
+<link rel="alternate" hreflang="en-CA" href="https://campaignautomation.ai/automations/measurement-repair">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .au-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .au-chip{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist2);border:1px solid var(--border);border-radius:4px;padding:5px 10px}
+  .au-chip.sig{color:var(--signal);border-color:var(--signal-dim)}
+  .au-outcome{border-left:4px solid var(--signal);border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 20px;max-width:720px;margin-top:22px;font-size:15px;color:var(--mist2);line-height:1.6}
+  .au-steps{list-style:none;padding:0;margin:26px 0 0;counter-reset:au}
+  .au-steps li{position:relative;padding:18px 0 18px 64px;border-bottom:1px solid var(--border);counter-increment:au}
+  .au-steps li:last-child{border-bottom:none}
+  .au-steps li::before{content:"0" counter(au);position:absolute;left:0;top:20px;font-family:var(--f-display);font-size:26px;font-weight:800;color:var(--slate2);letter-spacing:-.02em}
+  .au-steps h3{font-family:var(--f-display);font-size:16.5px;font-weight:700;color:var(--bone);margin:0 0 6px;letter-spacing:-.01em}
+  .au-steps p{font-size:14px;color:var(--mist2);line-height:1.65;margin:0;max-width:680px}
+  .section.bone .au-steps li{border-color:var(--border-bone,#ddd8cc)}
+  .section.bone .au-steps h3{color:var(--ink)}
+  .section.bone .au-steps p{color:#444}
+  .section.bone .au-steps li::before{color:#d8d4c8}
+  .au-note{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.03em;margin-top:18px}
+  .section.bone .au-note{color:#666}
+  .au-kv{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:22px;max-width:760px}
+  .au-kv .kw-row{padding:13px 18px}
+  .au-guard{border:1px solid var(--signal-dim);background:rgba(200,241,53,.04);border-radius:8px;padding:22px 24px;max-width:760px;margin-top:22px}
+  .au-guard ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .au-guard li{position:relative;padding-left:24px;color:var(--mist2);font-size:14px;line-height:1.6}
+  .au-guard li::before{content:'\2713';position:absolute;left:0;color:var(--signal)}
+  .au-setup-box{border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65}
+  .au-setup-box a{color:var(--signal)}
+  .au-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .au-card{border:1px solid var(--border);border-radius:10px;padding:24px;background:var(--slate);display:flex;flex-direction:column;gap:12px;min-width:0;text-decoration:none;transition:border-color .15s,transform .15s}
+  .au-card:hover{border-color:var(--signal-dim);transform:translateY(-2px)}
+  .au-card h3{font-family:var(--f-display);font-size:17px;font-weight:700;color:var(--bone);margin:0;line-height:1.25;letter-spacing:-.01em}
+  .au-card p{font-size:13.5px;color:var(--mist2);line-height:1.6;margin:0;flex:1}
+  .au-card .au-go{font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.03em}
+  .au-bar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 16px}
+  .au-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .au-fchip{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;background:transparent;color:var(--mist2);border:1px solid var(--border);padding:8px 12px;cursor:pointer;transition:all .13s;border-radius:3px;white-space:nowrap}
+  .au-fchip:hover{border-color:var(--mist2);color:var(--bone)}
+  .au-fchip.on{background:var(--signal);color:var(--ink);border-color:var(--signal);font-weight:600}
+  .au-count{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.04em;margin:0 0 18px}
+  .au-count b{color:var(--signal)}
+  .au-paths{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;max-width:760px}
+  .au-path{border:1px solid var(--border);border-radius:8px;padding:18px 20px}
+  .au-path b{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
+  .au-path p{font-size:13.5px;color:var(--mist2);line-height:1.6;margin:0}
+  @media(max-width:760px){.au-paths{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"HowTo","name":"How to build Measurement Repair","description":"Measurement Repair build guide: audit and rebuild GA4, Google Ads, and Meta conversion tracking — a manual spreadsheet path or a governed MCP agent path.","url":"https://campaignautomation.ai/automations/measurement-repair","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Automations","item":"https://campaignautomation.ai/automations"},{"@type":"ListItem","position":3,"name":"Measurement Repair","item":"https://campaignautomation.ai/automations/measurement-repair"}]}]}
+</script>
+<script defer src="/js/consent.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD5GPWN5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown mega" role="group" aria-label="Solutions">
+        <div class="mega-grid cols-2">
+          <div class="mega-col">
+            <span class="dropdown-label">Offerings</span>
+            <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
+            <a href="/automations" aria-current="page"><span class="mega-t">Automations</span><span class="mega-d">Build guides — stand each one up yourself or with us</span></a>
+            <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Who we help</span>
+            <a href="/who-we-help/agencies"><span class="mega-t">Agencies</span><span class="mega-d">White-label, per-client guardrails</span></a>
+            <a href="/who-we-help/in-house"><span class="mega-t">In-house teams</span><span class="mega-d">Automate one workflow, own it</span></a>
+            <a href="/who-we-help/executives"><span class="mega-t">Executives</span><span class="mega-d">Board-ready, auditable AI adoption</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown mega mega-right" role="group" aria-label="Resources">
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <span class="dropdown-label">Browse</span>
+            <a href="/resources/articles"><span class="mega-t">Articles</span><span class="mega-d">100+ guides, filterable &amp; searchable</span></a>
+            <a href="/resources/glossary"><span class="mega-t">Glossary</span><span class="mega-d">355 automation &amp; AI terms defined</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Topics</span>
+            <a href="/paid-advertising-automation"><span class="mega-t">Paid Advertising</span></a>
+            <a href="/ai-strategy"><span class="mega-t">AI Strategy</span></a>
+            <a href="/workflow-automation"><span class="mega-t">Workflow Automation</span></a>
+            <a href="/revenue-operations"><span class="mega-t">Revenue Operations</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Tools &amp; downloads</span>
+            <a href="/tools/readiness-score"><span class="mega-t">Readiness Score ✦ Free</span><span class="mega-d">Your score in 4 minutes, no login</span></a>
+            <a href="/resources/templates"><span class="mega-t">Templates &amp; Prompt Packs</span></a>
+            <a href="/resources/ai-automation-pricing"><span class="mega-t">Pricing guide</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Automation Audit</a>
+    <a href="/automations">Automations</a>
+    <a href="/training">Automation Training</a>
+    <a href="/who-we-help/agencies">Agencies</a>
+    <a href="/who-we-help/in-house">In-house teams</a>
+    <a href="/who-we-help/executives">Executives</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Resources</h2>
+    <a href="/resources/articles">Articles</a>
+    <a href="/resources/glossary">Glossary</a>
+    <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+    <a href="/resources/ai-automation-pricing">Pricing guide</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Topics</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score &rarr;</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/automations">Automations</a><span aria-hidden="true">/</span><span class="current">Measurement Repair</span></nav>
+
+  <div class="page-hero">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Foundation &middot; build guide</p>
+    <h1>Measurement Repair</h1>
+    <p>Fix conversion tracking across GA4, Google Ads, and Meta before automation touches spend</p>
+    <div class="au-meta">
+      <span class="au-chip sig">Path A &middot; Manual extracts</span>
+      <span class="au-chip sig">Path B &middot; MCP integration</span>
+      <span class="au-chip">Guardrail-first</span>
+    </div>
+  </div>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it does</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">Measurement Repair is a full audit and rebuild of your conversion tracking across GA4, Google Ads, and Meta. You inventory every conversion event, reconcile counts across platforms, trace the events that disagree, fix deduplication, validate attribution settings, and document everything in an event dictionary that anyone touching the account can check.</p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">It sits in the Foundation category because every automation downstream optimizes toward whatever your conversion data says. If events double-count or silently drop, Smart Bidding and every rule you add will confidently scale the wrong thing. Repair measurement once and each new automation inherits data it can trust; skip it and each new automation amplifies the error.</p>
+    <div class="au-outcome"><strong style="color:var(--bone)">What it moves:</strong> Conversion tracking that Smart Bidding and any rule you automate can optimize toward revenue instead of noise — deduplicated, attribution-validated, and documented event by event.</div>
+    <div class="au-paths">
+      <div class="au-path"><b>Path A &middot; Manual</b><p>You run the whole repair with platform exports, tag-manager preview tools, and one spreadsheet. It suits a marketer with admin access and a couple of hours a day for two weeks — no engineering help needed beyond publishing tag changes.</p></div>
+      <div class="au-path"><b>Path B &middot; Integrated</b><p>The same audit runs as a standing loop: read-scoped API connections feed an agent that reconciles counts daily, traces discrepancies, and stages fixes for your approval. It suits teams whose site changes often enough that tracking breaks between manual audits — and who want the repair to stay repaired.</p></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">Before you start</span></p>
+    <h2 class="display" style="margin-bottom:8px">Prerequisites.</h2>
+    <div class="au-kv"><div class="kw-row"><div class="kw-term">Admin access to Google Tag Manager (or whichever tag manager runs your site)</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Admin or editor access to GA4, Google Ads conversion settings, and Meta Events Manager</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">An agreed definition of what counts as a conversion and what revenue value it carries</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A way to fire test conversions without polluting live data (a test payment mode or filtered test events)</div><div class="kw-vol">&#10003;</div></div></div>
+    <div class="au-setup-box">New to the stack? Set up your environment first — data access, workspace, integration platforms, and the agent layer are covered once in <a href="/automations/setup">Environments &amp; tooling</a>.</div>
+  </section>
+
+  <section class="section bone reveal">
+    <p class="section-label"><span class="label-signal">Path A</span></p>
+    <h2 class="display" style="color:var(--ink);margin-bottom:8px">Build it with manual data extracts.</h2>
+    <p class="lead" style="max-width:720px">You run the whole repair with platform exports, tag-manager preview tools, and one spreadsheet. It suits a marketer with admin access and a couple of hours a day for two weeks — no engineering help needed beyond publishing tag changes.</p>
+    <ol class="au-steps"><li><h3>Build the event inventory</h3><p>Open GA4's key events list, the Google Ads conversion actions page, and Meta Events Manager, and list every conversion event in one spreadsheet tab. For each event, record where it fires from (GTM tag, hardcoded, imported), its counting method, and the value it carries. This tab becomes your event dictionary — the deliverable everything else feeds.</p></li><li><h3>Export and reconcile counts</h3><p>Export the last 30 days of daily conversion counts and values from each platform into separate tabs, then build a reconciliation tab that lines the same event up across sources. Flag any event where platforms disagree by more than a margin you choose, plus anything reporting zero or roughly double what you'd expect.</p></li><li><h3>Trace every flagged event</h3><p>Use GTM preview mode and Tag Assistant to fire a test conversion and watch which tags fire, how many times, and with what values; on the Meta side, use the test events tool in Events Manager. Record the failure mode for each flagged event: duplicate fires, missing dedupe keys like transaction ID or event ID, wrong values, or tags installed both hardcoded and in GTM.</p></li><li><h3>Fix one change at a time</h3><p>Make each fix in a fresh GTM workspace: add transaction IDs to dedupe purchases, remove double-installed tags, correct counting settings, repair value parameters. Publish one change per version and log it in a change-log tab with the date, what changed, and why — that's what makes any fix reversible.</p></li><li><h3>Validate attribution and primary conversions</h3><p>In Google Ads, confirm which conversion actions are primary (used for bidding) versus secondary (observation only), and that Smart Bidding optimizes toward one deduplicated revenue event rather than a mix of overlapping ones. Check GA4-imported versus native-tag conversions so the same purchase isn't counted twice.</p></li><li><h3>Re-reconcile and publish the dictionary</h3><p>After a week of clean data, re-run the exports and confirm the platforms now agree within your margin. Finish the event dictionary and put it where anyone building a rule or report will find it. From here, nothing gets automated on an event that isn't in the dictionary.</p></li></ol>
+    <p class="au-note">Cadence: The initial repair takes about two weeks; after that, re-run the export-and-reconcile pass monthly and after any site release or tag change — roughly an hour per cycle.</p>
+  </section>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">Path B</span></p>
+    <h2 class="display" style="margin-bottom:8px">Integrate it with MCP connections.</h2>
+    <p class="lead" style="max-width:720px">The same audit runs as a standing loop: read-scoped API connections feed an agent that reconciles counts daily, traces discrepancies, and stages fixes for your approval. It suits teams whose site changes often enough that tracking breaks between manual audits — and who want the repair to stay repaired.</p>
+    <div class="au-kv"><div class="kw-row"><div class="kw-term">GA4 — read-only reporting access via the Data API or an MCP server for GA4</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Google Ads — read access to conversion actions and stats via the API or an MCP server</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Meta — read access to Events Manager and ad account stats via the Marketing API</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Google Tag Manager — API access scoped to drafting workspace versions; publishing stays behind human approval</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Google Sheets or BigQuery — home for the event dictionary, discrepancy reports, and change log</div><div class="kw-vol">&#10003;</div></div></div>
+    <ol class="au-steps"><li><h3>Grant read access; keep publishing locked</h3><p>Connect GA4, the Google Ads API, and the Meta marketing API through MCP servers or direct API credentials, all read-only to start. Add Google Tag Manager API access with permission to create workspace versions but not to publish. Credentials live in your automation platform — n8n, Make, or Claude with MCP servers — never in the spreadsheet.</p></li><li><h3>Let the agent build the live event map</h3><p>The agent enumerates every GTM tag and trigger, every Google Ads conversion action, and every GA4 and Meta event, then writes the combined inventory to an event dictionary in Google Sheets or BigQuery. Unlike a manual inventory, this one regenerates on schedule, so the dictionary can't quietly go stale.</p></li><li><h3>Schedule the reconciliation loop</h3><p>A daily job pulls conversion counts and values from all three platforms, compares matching events, and flags divergence beyond a threshold you set. Each flag ships as a short discrepancy report with the suspected cause — duplicate tag, missing event ID, value mismatch — and a link to the evidence.</p></li><li><h3>Stage fixes behind an approval gate</h3><p>For each confirmed issue, the agent drafts the exact fix as an unpublished GTM workspace version and posts the diff for review. You approve, the agent publishes, and the change log records before and after. Conversion settings inside Google Ads and Meta — counting methods, primary versus secondary, attribution — stay human-only: the agent recommends, you click.</p></li><li><h3>Keep watching for drift</h3><p>Once counts agree, the loop keeps running and alerts you the day a release breaks tracking, instead of you finding out from a bad month of Smart Bidding. Alerting is the default action; auto-applied fixes stay off unless you deliberately allow a narrow class of change, and even those remain reversible through GTM version history.</p></li></ol>
+  </section>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">Tools &amp; guardrails</span></p>
+    <h2 class="display" style="margin-bottom:8px">Run it safely.</h2>
+    <div class="au-kv"><div class="kw-row"><div class="kw-term">Google Tag Manager — where most conversion tags live and where every fix is staged and versioned</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">GA4 — the reporting backbone; its exports anchor the reconciliation</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Tag Assistant and GTM preview mode — trace exactly which tags fire on a test conversion</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Meta Events Manager — test events and event-ID deduplication on the Meta side</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Google Sheets or BigQuery — reconciliation workbook, event dictionary, and change log</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">n8n, Make, or Claude with MCP servers — runs the scheduled reconciliation loop on the integrated path</div><div class="kw-vol">&#10003;</div></div></div>
+    <div class="au-guard"><ul><li>One change per GTM workspace version, published only after human review — every fix reversible in one click via version history</li><li>Conversion settings in Google Ads and Meta (counting method, primary/secondary, attribution) are human-only; the agent proposes, never edits</li><li>Every discrepancy report, staged fix, and publish lands in the change log with before/after values and who approved it</li><li>The agent never deletes events or tags — deprecated items are paused and documented so history stays intact</li></ul></div>
+  </section>
+
+  <section class="section reveal" style="text-align:center">
+    <div style="border:2px solid var(--signal);border-radius:8px;padding:36px;max-width:680px;margin:0 auto">
+      <h3 class="display" style="margin-bottom:12px">Prefer it built for you?</h3>
+      <p style="max-width:520px;margin:0 auto 22px;color:var(--mist2)">We stand this automation up as a governed sprint — scoped, built, and handed over with the guardrails configured.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="/solutions/campaign-audit" class="btn-primary">Start with the Audit &rarr;</a>
+        <a href="/request-proposals?sprints=found-measurement" class="btn-ghost">Request proposals &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Build it once.<br><span>It runs every cycle.</span></p>
+    <div class="tf-explore"><p class="tf-explore-label">Related automations</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/automations/data-access-dashboards"><span class="tf-x-cat">Foundation</span><span class="tf-x-title">Data Access &amp; Dashboards</span></a><a class="tf-explore-card" href="/automations/data-pipeline-integration"><span class="tf-x-cat">Foundation</span><span class="tf-x-title">Data Pipeline &amp; Integration</span></a><a class="tf-explore-card" href="/automations/ai-brief-machine"><span class="tf-x-cat">Content</span><span class="tf-x-title">AI Brief Machine</span></a></div><a class="tf-explore-all" href="/automations">All automations &rarr;</a></div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/automations">Automations</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Topics</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/builders">Builders</a>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -175,7 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="mega-col">
             <span class="dropdown-label">Offerings</span>
             <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
-            <a href="/solutions/automation-sprints"><span class="mega-t">Automation Sprints</span><span class="mega-d">Build one governed workflow in 2–4 weeks</span></a>
+            <a href="/automations"><span class="mega-t">Automations</span><span class="mega-d">Build guides — stand each one up yourself or with us</span></a>
             <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
           </div>
           <div class="mega-col">
@@ -225,7 +225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="mobile-section">
     <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
     <a href="/solutions/campaign-audit">Automation Audit</a>
-    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/automations">Automations</a>
     <a href="/training">Automation Training</a>
     <a href="/who-we-help/agencies">Agencies</a>
     <a href="/who-we-help/in-house">In-house teams</a>
@@ -380,7 +380,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <nav class="footer-col" aria-label="Solutions links">
         <h3>Solutions</h3>
         <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
-        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/automations">Automations</a>
         <a href="/platform">Campaign Strategy Portal</a>
         <a href="/request-proposals">Request proposals</a>
       </nav>
@@ -433,12 +433,12 @@ function clearPlan() { PLAN.clear(); renderPlanTray(); renderRecGrid(); }
 /* ── RECOMMENDED ENGAGEMENTS DATA ── */
 const ENGAGEMENTS = [
   // Sprints
-  {id:'content-brief',   type:'sprint',   name:'Content Brief Automation',         price:'$4k–$6k',  timeline:'2 weeks',  minScore:0,  tiers:['siloed','emerging','operational','agentic'], industries:['agency','b2b_saas','b2b_svc'],   tags:['AI writing','Brief generation','Prompt packs'],    href:'/solutions/automation-sprints'},
-  {id:'ppc-intelligence',type:'sprint',   name:'PPC Intelligence Sprint',          price:'$5k–$8k',  timeline:'2 weeks',  minScore:50, tiers:['emerging','operational','agentic'],            industries:['ecom','b2b_saas','local'],       tags:['Google Ads','Search terms','Automation'],          href:'/solutions/automation-sprints'},
-  {id:'launch-kit',      type:'sprint',   name:'Campaign Launch Kit',              price:'$4k–$7k',  timeline:'2 weeks',  minScore:0,  tiers:['siloed','emerging','operational'],              industries:['ecom','agency','local','b2b_svc'],tags:['QA templates','Launch checklist','Naming'],        href:'/solutions/automation-sprints'},
-  {id:'seo-ppc',         type:'sprint',   name:'SEO/PPC Opportunity Sprint',       price:'$5k–$9k',  timeline:'3 weeks',  minScore:55, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','agency','ecom'],      tags:['Search Console','Keyword gaps','Cross-channel'],   href:'/solutions/automation-sprints'},
-  {id:'lead-reactivation',type:'sprint',  name:'Lead Reactivation Sprint',         price:'$6k–$10k', timeline:'3 weeks',  minScore:60, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','b2b_svc'],            tags:['CRM integration','Email automation','Lead scoring'],href:'/solutions/automation-sprints'},
-  {id:'event-followup',  type:'sprint',   name:'Event Follow-up Automation',       price:'$5k–$8k',  timeline:'2 weeks',  minScore:55, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','b2b_svc','local'],    tags:['Event triggers','Follow-up sequences','CRM'],      href:'/solutions/automation-sprints'},
+  {id:'content-brief',   type:'sprint',   name:'Content Brief Automation',         price:'$4k–$6k',  timeline:'2 weeks',  minScore:0,  tiers:['siloed','emerging','operational','agentic'], industries:['agency','b2b_saas','b2b_svc'],   tags:['AI writing','Brief generation','Prompt packs'],    href:'/automations'},
+  {id:'ppc-intelligence',type:'sprint',   name:'PPC Intelligence Sprint',          price:'$5k–$8k',  timeline:'2 weeks',  minScore:50, tiers:['emerging','operational','agentic'],            industries:['ecom','b2b_saas','local'],       tags:['Google Ads','Search terms','Automation'],          href:'/automations'},
+  {id:'launch-kit',      type:'sprint',   name:'Campaign Launch Kit',              price:'$4k–$7k',  timeline:'2 weeks',  minScore:0,  tiers:['siloed','emerging','operational'],              industries:['ecom','agency','local','b2b_svc'],tags:['QA templates','Launch checklist','Naming'],        href:'/automations'},
+  {id:'seo-ppc',         type:'sprint',   name:'SEO/PPC Opportunity Sprint',       price:'$5k–$9k',  timeline:'3 weeks',  minScore:55, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','agency','ecom'],      tags:['Search Console','Keyword gaps','Cross-channel'],   href:'/automations'},
+  {id:'lead-reactivation',type:'sprint',  name:'Lead Reactivation Sprint',         price:'$6k–$10k', timeline:'3 weeks',  minScore:60, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','b2b_svc'],            tags:['CRM integration','Email automation','Lead scoring'],href:'/automations'},
+  {id:'event-followup',  type:'sprint',   name:'Event Follow-up Automation',       price:'$5k–$8k',  timeline:'2 weeks',  minScore:55, tiers:['emerging','operational','agentic'],            industries:['b2b_saas','b2b_svc','local'],    tags:['Event triggers','Follow-up sequences','CRM'],      href:'/automations'},
   // Services
   {id:'audit',           type:'service',  name:'Campaign Automation Audit',        price:'Free',timeline:'1 week',  minScore:0,  tiers:['siloed','emerging'],                          industries:['ecom','b2b_saas','b2b_svc','agency','local','other'], tags:['PPC analysis','Roadmap','30-day plan'], href:'/solutions/campaign-audit'},
   {id:'training',        type:'training', name:'AI Marketing Training Programme',  price:'From $500', timeline:'Ongoing',  minScore:0,  tiers:['siloed'],                                      industries:['ecom','b2b_saas','b2b_svc','agency','local','other'], tags:['Team enablement','Data literacy','AI fundamentals'], href:'/training'},

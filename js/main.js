@@ -216,7 +216,7 @@ const TIER_COPY = {
     name: 'Emerging',
     heroSub: 'You have the foundation — now systematize it. Connect your campaign data, eliminate manual handoffs, and build automation that compounds across every channel.',
     heroCta: 'Build on Your Foundation →',
-    heroCtaHref: '/solutions/automation-sprints',
+    heroCtaHref: '/automations',
     chipTagline: 'Ready to systematize',
     sprintInsert: 'Foundation sprints are available for your score. The Audit will confirm which workflow delivers the fastest ROI and prevent you from building on a shaky base.',
   },
@@ -224,7 +224,7 @@ const TIER_COPY = {
     name: 'Operational',
     heroSub: 'You\'re running well. The next layer is optimization — close the gaps between your tools, reduce manual overhead, and compound your automation advantages across every campaign.',
     heroCta: 'Unlock the Next Level →',
-    heroCtaHref: '/solutions/automation-sprints',
+    heroCtaHref: '/automations',
     chipTagline: 'Optimize for compounding leverage',
     sprintInsert: 'All sprints are unlocked for your score. Recommended options are highlighted based on your industry profile.',
   },
@@ -277,7 +277,7 @@ const FUNNEL = {
     const tier = getTierKey(score.score);
     if (d.proposalSubmitted)                              return 'contractor';
     if (v.includes('request-proposals')||d.sprintsSelected) return 'proposals';
-    if (v.includes('automation-sprints'))                 return 'proposals';
+    if (v.includes('automations'))                 return 'proposals';
     if (v.includes('sprint-prep')||v.includes('training')) return 'sprints';
     if (tier==='siloed')                                  return 'training';
     return 'prep';
@@ -288,7 +288,7 @@ const FUNNEL = {
       audit:       { label:'Get your free score →',     href:'/tools/readiness-score',        next:null },
       training:    { label:'Explore Training →',         href:'/training',                     next:'training' },
       prep:        { label:'Build Sprint Foundation →',  href:'/resources/sprint-prep',        next:'sprint-prep' },
-      sprints:     { label:'Browse Sprints →',           href:'/solutions/automation-sprints', next:'automation-sprints' },
+      sprints:     { label:'Browse Automations →',           href:'/automations', next:'automations' },
       proposals:   { label:'Get Proposals →',            href:'/request-proposals',            next:'request-proposals' },
       contractor:  { label:'Track Proposals →',          href:'/request-proposals',            next:null },
     };
@@ -507,7 +507,7 @@ const FUNNEL = {
 })();
 
 /* (Removed legacy .sprint-card proposal multi-select + stage-filter IIFEs and
-   their SPRINT_META map. The unified catalog at /solutions/automation-sprints
+   their SPRINT_META map. The unified catalog at /automations
    ships its own inline application filter and ca_plan proposal tray.) */
 
 /* ── PARALLAX — hero only, desktop only ──────────────────── */

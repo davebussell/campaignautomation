@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<!-- Google consent mode v2 default (denied until the visitor chooses) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TD5GPWN5');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Pipeline &amp; Integration — Build Guide (Manual or MCP) | Campaign Automation AI</title>
+<meta name="description" content="Build a Data Pipeline &amp; Integration workflow two ways: a manual path with scheduled exports and one master sheet, or an MCP-connected agent with guardrails.">
+<link rel="canonical" href="https://campaignautomation.ai/automations/data-pipeline-integration">
+<link rel="alternate" hreflang="en-CA" href="https://campaignautomation.ai/automations/data-pipeline-integration">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .au-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .au-chip{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist2);border:1px solid var(--border);border-radius:4px;padding:5px 10px}
+  .au-chip.sig{color:var(--signal);border-color:var(--signal-dim)}
+  .au-outcome{border-left:4px solid var(--signal);border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 20px;max-width:720px;margin-top:22px;font-size:15px;color:var(--mist2);line-height:1.6}
+  .au-steps{list-style:none;padding:0;margin:26px 0 0;counter-reset:au}
+  .au-steps li{position:relative;padding:18px 0 18px 64px;border-bottom:1px solid var(--border);counter-increment:au}
+  .au-steps li:last-child{border-bottom:none}
+  .au-steps li::before{content:"0" counter(au);position:absolute;left:0;top:20px;font-family:var(--f-display);font-size:26px;font-weight:800;color:var(--slate2);letter-spacing:-.02em}
+  .au-steps h3{font-family:var(--f-display);font-size:16.5px;font-weight:700;color:var(--bone);margin:0 0 6px;letter-spacing:-.01em}
+  .au-steps p{font-size:14px;color:var(--mist2);line-height:1.65;margin:0;max-width:680px}
+  .section.bone .au-steps li{border-color:var(--border-bone,#ddd8cc)}
+  .section.bone .au-steps h3{color:var(--ink)}
+  .section.bone .au-steps p{color:#444}
+  .section.bone .au-steps li::before{color:#d8d4c8}
+  .au-note{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.03em;margin-top:18px}
+  .section.bone .au-note{color:#666}
+  .au-kv{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:22px;max-width:760px}
+  .au-kv .kw-row{padding:13px 18px}
+  .au-guard{border:1px solid var(--signal-dim);background:rgba(200,241,53,.04);border-radius:8px;padding:22px 24px;max-width:760px;margin-top:22px}
+  .au-guard ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .au-guard li{position:relative;padding-left:24px;color:var(--mist2);font-size:14px;line-height:1.6}
+  .au-guard li::before{content:'\2713';position:absolute;left:0;color:var(--signal)}
+  .au-setup-box{border:1px solid var(--border);border-left:4px solid var(--signal);padding:18px 22px;max-width:760px;margin-top:26px;font-size:14px;color:var(--mist2);line-height:1.65}
+  .au-setup-box a{color:var(--signal)}
+  .au-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .au-card{border:1px solid var(--border);border-radius:10px;padding:24px;background:var(--slate);display:flex;flex-direction:column;gap:12px;min-width:0;text-decoration:none;transition:border-color .15s,transform .15s}
+  .au-card:hover{border-color:var(--signal-dim);transform:translateY(-2px)}
+  .au-card h3{font-family:var(--f-display);font-size:17px;font-weight:700;color:var(--bone);margin:0;line-height:1.25;letter-spacing:-.01em}
+  .au-card p{font-size:13.5px;color:var(--mist2);line-height:1.6;margin:0;flex:1}
+  .au-card .au-go{font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.03em}
+  .au-bar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 16px}
+  .au-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .au-fchip{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;background:transparent;color:var(--mist2);border:1px solid var(--border);padding:8px 12px;cursor:pointer;transition:all .13s;border-radius:3px;white-space:nowrap}
+  .au-fchip:hover{border-color:var(--mist2);color:var(--bone)}
+  .au-fchip.on{background:var(--signal);color:var(--ink);border-color:var(--signal);font-weight:600}
+  .au-count{font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.04em;margin:0 0 18px}
+  .au-count b{color:var(--signal)}
+  .au-paths{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;max-width:760px}
+  .au-path{border:1px solid var(--border);border-radius:8px;padding:18px 20px}
+  .au-path b{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
+  .au-path p{font-size:13.5px;color:var(--mist2);line-height:1.6;margin:0}
+  @media(max-width:760px){.au-paths{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"HowTo","name":"How to build Data Pipeline & Integration","description":"Build a Data Pipeline & Integration workflow two ways: a manual path with scheduled exports and one master sheet, or an MCP-connected agent with guardrails.","url":"https://campaignautomation.ai/automations/data-pipeline-integration","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Automations","item":"https://campaignautomation.ai/automations"},{"@type":"ListItem","position":3,"name":"Data Pipeline & Integration","item":"https://campaignautomation.ai/automations/data-pipeline-integration"}]}]}
+</script>
+<script defer src="/js/consent.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD5GPWN5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown mega" role="group" aria-label="Solutions">
+        <div class="mega-grid cols-2">
+          <div class="mega-col">
+            <span class="dropdown-label">Offerings</span>
+            <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
+            <a href="/automations" aria-current="page"><span class="mega-t">Automations</span><span class="mega-d">Build guides — stand each one up yourself or with us</span></a>
+            <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Who we help</span>
+            <a href="/who-we-help/agencies"><span class="mega-t">Agencies</span><span class="mega-d">White-label, per-client guardrails</span></a>
+            <a href="/who-we-help/in-house"><span class="mega-t">In-house teams</span><span class="mega-d">Automate one workflow, own it</span></a>
+            <a href="/who-we-help/executives"><span class="mega-t">Executives</span><span class="mega-d">Board-ready, auditable AI adoption</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown mega mega-right" role="group" aria-label="Resources">
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <span class="dropdown-label">Browse</span>
+            <a href="/resources/articles"><span class="mega-t">Articles</span><span class="mega-d">100+ guides, filterable &amp; searchable</span></a>
+            <a href="/resources/glossary"><span class="mega-t">Glossary</span><span class="mega-d">355 automation &amp; AI terms defined</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Topics</span>
+            <a href="/paid-advertising-automation"><span class="mega-t">Paid Advertising</span></a>
+            <a href="/ai-strategy"><span class="mega-t">AI Strategy</span></a>
+            <a href="/workflow-automation"><span class="mega-t">Workflow Automation</span></a>
+            <a href="/revenue-operations"><span class="mega-t">Revenue Operations</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Tools &amp; downloads</span>
+            <a href="/tools/readiness-score"><span class="mega-t">Readiness Score ✦ Free</span><span class="mega-d">Your score in 4 minutes, no login</span></a>
+            <a href="/resources/templates"><span class="mega-t">Templates &amp; Prompt Packs</span></a>
+            <a href="/resources/ai-automation-pricing"><span class="mega-t">Pricing guide</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Automation Audit</a>
+    <a href="/automations">Automations</a>
+    <a href="/training">Automation Training</a>
+    <a href="/who-we-help/agencies">Agencies</a>
+    <a href="/who-we-help/in-house">In-house teams</a>
+    <a href="/who-we-help/executives">Executives</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Resources</h2>
+    <a href="/resources/articles">Articles</a>
+    <a href="/resources/glossary">Glossary</a>
+    <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+    <a href="/resources/ai-automation-pricing">Pricing guide</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Topics</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score &rarr;</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/automations">Automations</a><span aria-hidden="true">/</span><span class="current">Data Pipeline &amp; Integration</span></nav>
+
+  <div class="page-hero">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Foundation &middot; build guide</p>
+    <h1>Data Pipeline &amp; Integration</h1>
+    <p>Wire ads, analytics, and CRM into one governed pipeline so nothing runs on stale CSVs.</p>
+    <div class="au-meta">
+      <span class="au-chip sig">Path A &middot; Manual extracts</span>
+      <span class="au-chip sig">Path B &middot; MCP integration</span>
+      <span class="au-chip">Guardrail-first</span>
+    </div>
+  </div>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">What it does</span></p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">Data Pipeline &amp; Integration replaces manual CSV exports and disconnected tools with one connected pipeline. Your ad platforms (Google Ads, Meta), analytics (GA4), and CRM feed a single destination on a schedule, with consistent naming, shared join keys, and a freshness check on every load. Reports and automations read from that one dataset instead of whatever someone last downloaded.</p>
+    <p class="lead" style="max-width:720px;margin-bottom:14px">The compounding is structural: everything downstream inherits the same signal. Budget rules, alerts, dashboards, and any automation you add later work from complete, current data instead of a stale spreadsheet — and a fix made once at the pipeline level propagates everywhere. If your workflows are manual today, this is the piece to build first.</p>
+    <div class="au-outcome"><strong style="color:var(--bone)">What it moves:</strong> Every downstream automation and report works from a complete, current signal instead of a stale spreadsheet — closing the tooling and integration gap this sprint exists to fix.</div>
+    <div class="au-paths">
+      <div class="au-path"><b>Path A &middot; Manual</b><p>You build a disciplined export routine into one master workbook: same reports, same date ranges, same destination tabs, on a fixed schedule. It suits a marketer with a small stack who needs one trustworthy dataset now, before investing in connectors — and the schema you define here carries straight over to the connected build later.</p></div>
+      <div class="au-path"><b>Path B &middot; Integrated</b><p>Your platforms connect directly via API or MCP servers, scheduled syncs land data in a warehouse automatically, and an agent watches pipeline health — reconciling totals, catching schema drift, and drafting fixes. All connections are read-scoped on the source side, every run is logged, and schema changes wait for a human. Suits teams ready to retire exports entirely.</p></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">Before you start</span></p>
+    <h2 class="display" style="margin-bottom:8px">Prerequisites.</h2>
+    <div class="au-kv"><div class="kw-row"><div class="kw-term">Connector or API access to the platforms you want linked</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Read access to Google Ads, Meta Ads, GA4, and your CRM (HubSpot or Salesforce)</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A destination for the data: Google Sheets for the manual path, BigQuery or a similar warehouse for the connected path</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A named owner who checks pipeline health and signs off on schema changes</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">A short list of the reports and automations that will consume the data, with the fields and join keys they need</div><div class="kw-vol">&#10003;</div></div></div>
+    <div class="au-setup-box">New to the stack? Set up your environment first — data access, workspace, integration platforms, and the agent layer are covered once in <a href="/automations/setup">Environments &amp; tooling</a>.</div>
+  </section>
+
+  <section class="section bone reveal">
+    <p class="section-label"><span class="label-signal">Path A</span></p>
+    <h2 class="display" style="color:var(--ink);margin-bottom:8px">Build it with manual data extracts.</h2>
+    <p class="lead" style="max-width:720px">You build a disciplined export routine into one master workbook: same reports, same date ranges, same destination tabs, on a fixed schedule. It suits a marketer with a small stack who needs one trustworthy dataset now, before investing in connectors — and the schema you define here carries straight over to the connected build later.</p>
+    <ol class="au-steps"><li><h3>Inventory sources and define one schema</h3><p>List every platform your reporting touches: Google Ads, Meta, GA4, your CRM. For each, pick the fields you actually use and define the join keys that link them — date, campaign name or ID, and UTM parameters. Write it up as a one-page data dictionary. This document is the pipeline; everything else is plumbing.</p></li><li><h3>Build the master workbook</h3><p>Create a Google Sheets workbook with one raw tab per source, a mapping tab that translates each platform's naming into your standard, and a combined tab that joins everything on date plus campaign key using lookups. Downstream reports read only from the combined tab.</p></li><li><h3>Set the export routine</h3><p>Schedule the same exports every cycle: a saved report from Google Ads, a saved report from Meta Ads Manager, a GA4 export, and a CRM report with matching date ranges. Use consistent filenames with the date in them so you always know what a file contains and when it was pulled.</p></li><li><h3>Paste, then reconcile before you trust it</h3><p>Append each export to its raw tab, then run three checks: row counts against the previous cycle, spend totals against what the platform UI shows, and a filter for blank join keys. Anything that fails gets fixed at the source before the combined tab updates.</p></li><li><h3>Add a freshness flag</h3><p>Keep a status tab listing each source's last-updated date. Any source older than your cadence shows red, so anyone reading the workbook can see at a glance whether the signal is current or stale.</p></li><li><h3>Point reporting at the combined tab only</h3><p>Connect Looker Studio or your reporting template to the combined tab, and retire the loose CSVs floating around in email and downloads folders. One dataset in, one dataset out.</p></li></ol>
+    <p class="au-note">Cadence: Weekly exports work for most accounts; a full cycle takes about an hour once the workbook and saved reports are set up.</p>
+  </section>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">Path B</span></p>
+    <h2 class="display" style="margin-bottom:8px">Integrate it with MCP connections.</h2>
+    <p class="lead" style="max-width:720px">Your platforms connect directly via API or MCP servers, scheduled syncs land data in a warehouse automatically, and an agent watches pipeline health — reconciling totals, catching schema drift, and drafting fixes. All connections are read-scoped on the source side, every run is logged, and schema changes wait for a human. Suits teams ready to retire exports entirely.</p>
+    <div class="au-kv"><div class="kw-row"><div class="kw-term">Google Ads and Meta Ads (read-only API access or an MCP server for each)</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">GA4 (scheduled BigQuery export or read-scoped API access)</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Your CRM — HubSpot or Salesforce (read-scoped API access)</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">BigQuery or Google Sheets as the destination the pipeline writes to</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">n8n, Make, or Zapier for scheduled syncs, plus Claude with MCP servers for the health-check agent</div><div class="kw-vol">&#10003;</div></div></div>
+    <ol class="au-steps"><li><h3>Connect every source read-only</h3><p>Create read-scoped credentials for Google Ads, Meta, GA4, and your CRM — via their APIs or an MCP server for each. The pipeline can read from these systems but can never write back to them. Store credentials in your workflow tool's credential manager, not in the flows themselves.</p></li><li><h3>Stand up scheduled syncs into raw tables</h3><p>Build one sync flow per source in n8n, Make, or Zapier — or use a native connector such as GA4's scheduled export to BigQuery. Each flow lands data in its own raw table daily and writes a run log entry: timestamp, row count, and pass or fail status.</p></li><li><h3>Model one joined layer on top</h3><p>Create views that apply your naming standard and join sources on date, campaign key, and UTMs — the same schema from your data dictionary. Dashboards and downstream automations read only from this layer, never from raw tables, so you can fix a mapping once without touching every consumer.</p></li><li><h3>Put an agent on pipeline health</h3><p>Connect Claude via MCP servers to the run logs and the warehouse. Each day it verifies every source synced, reconciles spend totals against platform-reported figures, and flags missing days, schema drift, or broken join keys. For anything it finds, it drafts the specific fix with the evidence attached.</p></li><li><h3>Gate changes behind human approval</h3><p>The agent may re-run a failed sync on its own — that is its full autonomous scope. Any schema change, new field mapping, or historical backfill goes to the named owner as a proposal with a diff and the relevant log lines. Nothing structural changes without sign-off.</p></li><li><h3>Cut over downstream consumers</h3><p>Repoint Looker Studio dashboards and any existing automations at the joined layer, run the manual workbook in parallel for a couple of cycles to confirm the numbers match, then retire the export routine.</p></li></ol>
+  </section>
+
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">Tools &amp; guardrails</span></p>
+    <h2 class="display" style="margin-bottom:8px">Run it safely.</h2>
+    <div class="au-kv"><div class="kw-row"><div class="kw-term">Google Sheets — the manual path's master workbook: raw tabs, mapping tab, and one combined output</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">BigQuery — durable destination for raw tables and the joined layer on the connected path</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">n8n, Make, or Zapier — scheduled sync flows that land each source and write run logs</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Claude with MCP servers — the agent that reconciles totals, catches drift, and drafts fixes for approval</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">Looker Studio — dashboards that read from the one governed dataset instead of loose files</div><div class="kw-vol">&#10003;</div></div><div class="kw-row"><div class="kw-term">HubSpot or Salesforce APIs — read-scoped connection that brings CRM outcomes into the same joined layer</div><div class="kw-vol">&#10003;</div></div></div>
+    <div class="au-guard"><ul><li>All source connections are read-scoped: the pipeline reads ad platforms, analytics, and CRM but can never write back to them.</li><li>The agent's autonomous scope is re-running failed syncs; schema changes, new field mappings, and backfills require named-owner approval with the diff attached.</li><li>Every sync run is logged with timestamp, row count, and status, and spend totals are reconciled against platform figures before data is marked fresh.</li><li>Raw tables and exports are retained unmodified, so any load or transformation can be rolled back without losing data.</li></ul></div>
+  </section>
+
+  <section class="section reveal" style="text-align:center">
+    <div style="border:2px solid var(--signal);border-radius:8px;padding:36px;max-width:680px;margin:0 auto">
+      <h3 class="display" style="margin-bottom:12px">Prefer it built for you?</h3>
+      <p style="max-width:520px;margin:0 auto 22px;color:var(--mist2)">We stand this automation up as a governed sprint — scoped, built, and handed over with the guardrails configured.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="/solutions/campaign-audit" class="btn-primary">Start with the Audit &rarr;</a>
+        <a href="/request-proposals?sprints=found-data-pipeline" class="btn-ghost">Request proposals &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Build it once.<br><span>It runs every cycle.</span></p>
+    <div class="tf-explore"><p class="tf-explore-label">Related automations</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/automations/data-access-dashboards"><span class="tf-x-cat">Foundation</span><span class="tf-x-title">Data Access &amp; Dashboards</span></a><a class="tf-explore-card" href="/automations/measurement-repair"><span class="tf-x-cat">Foundation</span><span class="tf-x-title">Measurement Repair</span></a><a class="tf-explore-card" href="/automations/ai-brief-machine"><span class="tf-x-cat">Content</span><span class="tf-x-title">AI Brief Machine</span></a></div><a class="tf-explore-all" href="/automations">All automations &rarr;</a></div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/automations">Automations</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Topics</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/builders">Builders</a>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

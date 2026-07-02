@@ -368,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="mega-col">
             <span class="dropdown-label">Offerings</span>
             <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
-            <a href="/solutions/automation-sprints"><span class="mega-t">Automation Sprints</span><span class="mega-d">Build one governed workflow in 2–4 weeks</span></a>
+            <a href="/automations"><span class="mega-t">Automations</span><span class="mega-d">Build guides — stand each one up yourself or with us</span></a>
             <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
           </div>
           <div class="mega-col">
@@ -418,7 +418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="mobile-section">
     <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
     <a href="/solutions/campaign-audit">Automation Audit</a>
-    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/automations">Automations</a>
     <a href="/training">Automation Training</a>
     <a href="/who-we-help/agencies">Agencies</a>
     <a href="/who-we-help/in-house">In-house teams</a>
@@ -566,7 +566,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <nav class="footer-col" aria-label="Solutions links">
         <h3>Solutions</h3>
         <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
-        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/automations">Automations</a>
         <a href="/platform">Campaign Strategy Portal</a>
         <a href="/request-proposals">Request proposals</a>
       </nav>
@@ -1052,11 +1052,11 @@ function getGuardrails(score, dims) {
 const DIM_WEIGHTS = {demo:'30%', instr:'20%', std:'20%', gov:'20%', tooling:'10%'};
 
 const DIM_SERVICES = {
-  demo:    {label:'Data Democratization Guide', href:'/resources/democratization/',   sprint:'Data Access &amp; Dashboards Sprint →',     sprintHref:'/solutions/automation-sprints#sprint-data-access'},
-  instr:   {label:'Instrumentation &amp; Tracking Guide', href:'/resources/instrumentation/', sprint:'Measurement Repair Sprint →',         sprintHref:'/solutions/automation-sprints#sprint-measurement'},
-  std:     {label:'Campaign Standardization Guide', href:'/resources/standardization/', sprint:'Campaign Structure &amp; Naming Sprint →', sprintHref:'/solutions/automation-sprints#sprint-structure'},
-  gov:     {label:'Governance Framework Guide', href:'/resources/governance/',          sprint:'Automation Governance Sprint →',      sprintHref:'/solutions/automation-sprints#sprint-governance'},
-  tooling: {label:'Team &amp; Tooling Guide', href:'/resources/team-tooling/',         sprint:'Data Pipeline &amp; Integration Sprint →', sprintHref:'/solutions/automation-sprints#sprint-data-pipeline'},
+  demo:    {label:'Data Democratization Guide', href:'/resources/democratization/',   sprint:'Data Access &amp; Dashboards Sprint →',     sprintHref:'/automations#sprint-data-access'},
+  instr:   {label:'Instrumentation &amp; Tracking Guide', href:'/resources/instrumentation/', sprint:'Measurement Repair Sprint →',         sprintHref:'/automations#sprint-measurement'},
+  std:     {label:'Campaign Standardization Guide', href:'/resources/standardization/', sprint:'Campaign Structure &amp; Naming Sprint →', sprintHref:'/automations#sprint-structure'},
+  gov:     {label:'Governance Framework Guide', href:'/resources/governance/',          sprint:'Automation Governance Sprint →',      sprintHref:'/automations#sprint-governance'},
+  tooling: {label:'Team &amp; Tooling Guide', href:'/resources/team-tooling/',         sprint:'Data Pipeline &amp; Integration Sprint →', sprintHref:'/automations#sprint-data-pipeline'},
 };
 
 const DIM_PITCH_GAPS = {
@@ -1071,22 +1071,22 @@ const PITCH_SPRINT_RECS = {
   Siloed:[
     {text:'Campaign Automation Audit — map every gap, identify the highest-ROI opportunity, and deliver a 30-day action plan',href:'/solutions/campaign-audit'},
     {text:'AI Marketing Training — close the data literacy gap that limits every automation layer above it',href:'/training'},
-    {text:'Campaign Launch Kit Sprint — build the standardized template every campaign passes through so structure becomes automatic',href:'/solutions/automation-sprints'},
+    {text:'Campaign Launch Kit Sprint — build the standardized template every campaign passes through so structure becomes automatic',href:'/automations'},
   ],
   Emerging:[
-    {text:'PPC Intelligence Sprint — surface search terms, bidding inefficiencies, and budget opportunities that platform dashboards hide',href:'/solutions/automation-sprints'},
-    {text:'Content Brief Automation Sprint — reduce brief production from hours to minutes with AI-generated, structured campaign briefs',href:'/solutions/automation-sprints'},
-    {text:'Campaign Launch Kit Sprint — templated launch QA that catches structure errors before they cost budget',href:'/solutions/automation-sprints'},
+    {text:'PPC Intelligence Sprint — surface search terms, bidding inefficiencies, and budget opportunities that platform dashboards hide',href:'/automations'},
+    {text:'Content Brief Automation Sprint — reduce brief production from hours to minutes with AI-generated, structured campaign briefs',href:'/automations'},
+    {text:'Campaign Launch Kit Sprint — templated launch QA that catches structure errors before they cost budget',href:'/automations'},
   ],
   Operational:[
-    {text:'SEO/PPC Opportunity Sprint — connect Search Console to paid search and surface keyword gaps automatically on a weekly cadence',href:'/solutions/automation-sprints'},
-    {text:'Lead Reactivation Sprint — trigger-based sequences that re-engage high-intent leads within minutes, not days',href:'/solutions/automation-sprints'},
+    {text:'SEO/PPC Opportunity Sprint — connect Search Console to paid search and surface keyword gaps automatically on a weekly cadence',href:'/automations'},
+    {text:'Lead Reactivation Sprint — trigger-based sequences that re-engage high-intent leads within minutes, not days',href:'/automations'},
     {text:'Campaign Strategy Portal — monthly AI-generated strategy and intelligence built from our live data, delivered on a schedule',href:'/platform'},
   ],
   Agentic:[
     {text:'Campaign Strategy Portal — ongoing AI intelligence layer with monthly recommended budget moves, strategy briefs, and performance analysis',href:'/platform'},
-    {text:'Event Follow-Up Automation Sprint — trigger-based follow-up within minutes of any form, booking, or conversion event',href:'/solutions/automation-sprints'},
-    {text:'Lead Reactivation Sprint — fully automated re-engagement for your highest-intent dormant leads',href:'/solutions/automation-sprints'},
+    {text:'Event Follow-Up Automation Sprint — trigger-based follow-up within minutes of any form, booking, or conversion event',href:'/automations'},
+    {text:'Lead Reactivation Sprint — fully automated re-engagement for your highest-intent dormant leads',href:'/automations'},
   ],
 };
 
@@ -1137,10 +1137,10 @@ function getPitchContent(finalScore, tier, dims) {
   };
 
   const links = {
-    Siloed:      [{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'},{t:'AI Marketing Training',h:'/training'},{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'}],
-    Emerging:    [{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'},{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'},{t:'Readiness Guides',h:'/resources'}],
-    Operational: [{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'},{t:'Campaign Strategy Portal',h:'/platform'},{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'}],
-    Agentic:     [{t:'Campaign Strategy Portal',h:'/platform'},{t:'Automation Sprints Catalog',h:'/solutions/automation-sprints'},{t:'Results & Case Studies',h:'/results'}],
+    Siloed:      [{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'},{t:'AI Marketing Training',h:'/training'},{t:'Automation Sprints Catalog',h:'/automations'}],
+    Emerging:    [{t:'Automation Sprints Catalog',h:'/automations'},{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'},{t:'Readiness Guides',h:'/resources'}],
+    Operational: [{t:'Automation Sprints Catalog',h:'/automations'},{t:'Campaign Strategy Portal',h:'/platform'},{t:'Campaign Automation Audit',h:'/solutions/campaign-audit'}],
+    Agentic:     [{t:'Campaign Strategy Portal',h:'/platform'},{t:'Automation Sprints Catalog',h:'/automations'},{t:'Results & Case Studies',h:'/results'}],
   };
 
   return { score:finalScore, tier:tier.name, gaps, urgency:urgency[tier.name]||urgency.Siloed, nextSteps:nextSteps[tier.name]||nextSteps.Siloed, links:links[tier.name]||links.Siloed };
