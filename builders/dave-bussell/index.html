@@ -23,27 +23,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .bld-av{border-radius:16px;flex:0 0 auto}
   .bld-tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.02em;color:var(--mist2);border:1px solid var(--border);border-radius:4px;padding:4px 8px;white-space:nowrap}
   .bld-tag.sig{color:var(--signal);border-color:var(--signal-dim)}
-  .bld-badge{display:inline-block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--signal);border:1px solid var(--signal-dim);border-radius:3px;padding:3px 8px;align-self:flex-start}
-  .bld-badge.founder{color:var(--ink);background:var(--signal);border-color:var(--signal)}
+  .bld-badge{display:inline-block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ink);background:var(--signal);border-radius:3px;padding:3px 8px}
   .bd-back{font-family:var(--f-mono);font-size:12px;color:var(--mist);text-decoration:none;letter-spacing:.03em}
   .bd-back:hover{color:var(--signal)}
   .bd-hero{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:18px}
   .bd-h1{font-family:var(--f-display);font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.02em;color:var(--bone);margin:0;line-height:1.04}
   .bd-role{color:var(--signal);font-size:16px;font-weight:500;margin-top:7px}
   .bd-meta{font-family:var(--f-mono);font-size:12px;color:var(--mist);margin-top:9px;letter-spacing:.03em}
-  .bd-headline{font-family:var(--f-display);font-size:clamp(18px,2.2vw,24px);color:var(--mist2);line-height:1.4;font-weight:300;max-width:700px;margin:26px 0 0}
-  .bd-note{border-left:3px solid var(--signal);background:rgba(200,241,53,.05);border-radius:0 6px 6px 0;padding:14px 18px;margin:24px 0 0;font-size:13.5px;color:var(--mist2);line-height:1.6;max-width:760px}
-  .bd-note a{color:var(--signal)}
   .bd-about p{color:var(--mist2);line-height:1.75;font-size:15px;margin:0 0 16px;max-width:720px}
   .bd-about p:last-child{margin-bottom:0}
-  .bd-builds{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .bd-build{border:1px solid var(--border);border-radius:8px;padding:20px;background:var(--slate);min-width:0}
-  .bd-build h4{font-family:var(--f-display);font-size:15px;color:var(--bone);margin:0 0 6px;letter-spacing:-.01em}
-  .bd-build p{font-size:13.5px;color:var(--mist2);line-height:1.55;margin:0}
   .bd-focus{display:flex;flex-wrap:wrap;gap:8px}
   .bd-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
   .bd-links a{font-family:var(--f-mono);font-size:13px;color:var(--signal);text-decoration:none}
-  @media(max-width:760px){.bd-builds{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","url":"https://campaignautomation.ai/builders/dave-bussell","mainEntity":{"@type":"Person","name":"Dave Bussell","jobTitle":"Founder","worksFor":{"@type":"Organization","name":"Campaign Automation AI","url":"https://campaignautomation.ai"},"sameAs":["https://www.linkedin.com/in/davebussell/"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Builders","item":"https://campaignautomation.ai/builders"},{"@type":"ListItem","position":3,"name":"Dave Bussell","item":"https://campaignautomation.ai/builders/dave-bussell"}]}]}
@@ -154,13 +145,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="page-hero">
     <a class="bd-back" href="/builders">&larr; All builders</a>
-    <div style="margin:14px 0 0"><span class="bld-badge founder">Founding builder</span></div>
+    <div style="margin:14px 0 0"><span class="bld-badge">Founding builder</span></div>
     <div class="bd-hero"><svg class="bld-av" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Dave Bussell"><defs><linearGradient id="fbd0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F766E"/><stop offset="1" stop-color="#C8F135"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#fbd0)"/><text x="50" y="50" dy=".34em" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="38" font-weight="600" fill="#fff" fill-opacity=".96">DB</text></svg><div><h1 class="bd-h1">Dave Bussell</h1><div class="bd-role">Founder &amp; Founding Builder</div><div class="bd-meta">Ottawa region, Canada</div>
       <div class="bd-links"><a href="https://www.linkedin.com/in/davebussell/" target="_blank" rel="noopener">LinkedIn &#8599;</a></div></div></div>
   </div>
 
-  <section class="section">
-    <p class="section-label">About</p>
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">About</span></p>
     <div class="bd-about">
         <p>Dave Bussell founded Campaign Automation AI to build the kind of governed, sprint-based automation he kept wishing agencies offered: AI that moves fast but stays accountable.</p>
         <p>His background spans digital marketing leadership, revenue operations, and performance marketing — the disciplines behind demand, pipeline, and measurable growth. Across those roles the throughline has been the same: adopt new technology aggressively, but never at the cost of the guardrails that make it safe to trust.</p>
@@ -168,8 +159,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <section class="section">
-    <p class="section-label">Focus areas</p>
+  <section class="section reveal">
+    <p class="section-label"><span class="label-signal">Focus areas</span></p>
     <div class="bd-focus"><span class="bld-tag sig">Growth &amp; RevOps strategy</span><span class="bld-tag sig">Performance marketing</span><span class="bld-tag sig">AI adoption &amp; change</span><span class="bld-tag sig">Guardrail-first automation</span><span class="bld-tag sig">Building the builder network</span></div>
   </section>
 
