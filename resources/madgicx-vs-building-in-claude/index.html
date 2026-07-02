@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<!-- Google consent mode v2 default (denied until the visitor chooses) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TD5GPWN5');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madgicx vs. Building the Same Automations in Claude | Campaign Automation AI</title>
+<meta name="description" content="Madgicx packages Meta connectors, decision logic, API execution, and a UI. How each layer maps to a direct build in Claude and Cursor — and when buying wins.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/madgicx-vs-building-in-claude">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/madgicx-vs-building-in-claude">
+<meta property="og:title" content="Madgicx vs. Building the Same Automations in Claude and Cursor">
+<meta property="og:description" content="Every paid-media platform is four layers — connectors, decision logic, execution, UI. How each maps to a direct build with Claude, Cursor, and MCP servers — and when buying still wins.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Madgicx vs. Building the Same Automations in Claude and Cursor">
+<meta name="twitter:description" content="Every paid-media platform is four layers — connectors, decision logic, execution, UI. How each maps to a direct build with Claude, Cursor, and MCP servers — and when buying still wins.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Madgicx vs. Building the Same Automations in Claude",
+      "description": "Madgicx packages Meta connectors, decision logic, API execution, and a UI. How each layer maps to a direct build in Claude and Cursor — and when buying wins.",
+      "url": "https://campaignautomation.ai/resources/madgicx-vs-building-in-claude",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/madgicx-vs-building-in-claude"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources/articles"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Madgicx vs Claude",
+          "item": "https://campaignautomation.ai/resources/madgicx-vs-building-in-claude"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script defer src="/js/consent.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD5GPWN5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown mega" role="group" aria-label="Solutions">
+        <div class="mega-grid cols-2">
+          <div class="mega-col">
+            <span class="dropdown-label">Offerings</span>
+            <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
+            <a href="/automations"><span class="mega-t">Automation Sprints</span><span class="mega-d">Build one governed workflow in 2–4 weeks</span></a>
+            <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Who we help</span>
+            <a href="/who-we-help/agencies"><span class="mega-t">Agencies</span><span class="mega-d">White-label, per-client guardrails</span></a>
+            <a href="/who-we-help/in-house"><span class="mega-t">In-house teams</span><span class="mega-d">Automate one workflow, own it</span></a>
+            <a href="/who-we-help/executives"><span class="mega-t">Executives</span><span class="mega-d">Board-ready, auditable AI adoption</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown mega mega-right" role="group" aria-label="Resources">
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <span class="dropdown-label">Browse</span>
+            <a href="/resources/articles"><span class="mega-t">Articles</span><span class="mega-d">100+ guides, filterable &amp; searchable</span></a>
+            <a href="/resources/glossary"><span class="mega-t">Glossary</span><span class="mega-d">355 automation &amp; AI terms defined</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Topics</span>
+            <a href="/paid-advertising-automation"><span class="mega-t">Paid Advertising</span></a>
+            <a href="/ai-strategy"><span class="mega-t">AI Strategy</span></a>
+            <a href="/workflow-automation"><span class="mega-t">Workflow Automation</span></a>
+            <a href="/revenue-operations"><span class="mega-t">Revenue Operations</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Tools &amp; downloads</span>
+            <a href="/tools/readiness-score"><span class="mega-t">Readiness Score ✦ Free</span><span class="mega-d">Your score in 4 minutes, no login</span></a>
+            <a href="/resources/templates"><span class="mega-t">Templates &amp; Prompt Packs</span></a>
+            <a href="/resources/ai-automation-pricing"><span class="mega-t">Pricing guide</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Automation Audit</a>
+    <a href="/automations">Automation Sprints</a>
+    <a href="/training">Automation Training</a>
+    <a href="/who-we-help/agencies">Agencies</a>
+    <a href="/who-we-help/in-house">In-house teams</a>
+    <a href="/who-we-help/executives">Executives</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Resources</h2>
+    <a href="/resources/articles">Articles</a>
+    <a href="/resources/glossary">Glossary</a>
+    <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+    <a href="/resources/ai-automation-pricing">Pricing guide</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Topics</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources/articles">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">Madgicx vs Claude</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Build vs buy</div>
+      <h1>Madgicx vs. building the same automations in Claude</h1>
+      <p>Madgicx is a capable Meta-first ad platform — and, architecturally, four components you can now assemble directly with Claude, Cursor, and MCP servers. Here is the honest build-vs-buy case, and why AI has moved the line.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+<p>Line Madgicx up against Smartly or Bïrch and you get a feature-grid shootout. This page runs a different comparison — the one a technical team should run first in 2026: Madgicx against the automations you could assemble directly, with Claude reading your ad accounts through <a href="/resources/glossary#mcp" class="gloss-link" title="Glossary: MCP">MCP</a> servers, Cursor writing the scripts, and n8n, Google Sheets, or BigQuery doing the plumbing. Two years ago that alternative barely existed. Today it belongs in the same procurement doc as the subscription quote.</p>
+<p style="font-size:13px;color:var(--mist)">Last reviewed July 2026. Platform capabilities change — verify against Madgicx's current documentation.</p>
+</section>
+
+<section class="article-section">
+<h2>What Madgicx actually is: four layers</h2>
+<p>Start with what the product gets right. Madgicx is a polished Meta-first platform and an official Meta Business Partner. Its AI Marketer runs continuous account audits and surfaces one-click optimization recommendations; an Autonomous Budget Optimizer shifts budget toward stronger ad sets; agent tools cover ads rotation, creative refresh, and ad-fatigue detection; an AI Audience Studio assembles custom and lookalike audiences; and a One-Click Report pulls Meta, Google Ads, GA4, TikTok, Shopify, and Klaviyo into a single reporting view. Its recommend-then-approve design — the AI prepares the change, a person clicks Launch — is a sensible answer to the trust problem. None of what follows disputes any of that.</p>
+<p>Now set the feature list aside and look at the frame underneath. Madgicx, like every paid-media automation platform, resolves into four components:</p>
+<ul>
+<li><strong>Data connectors</strong> that pull performance data out of the ad platforms</li>
+<li><strong>Decision logic</strong> — rules and models — that decides what should change</li>
+<li><strong>Execution calls</strong> back through the same ad-platform APIs to make the change</li>
+<li><strong>A UI</strong> where your team watches, approves, and reports</li>
+</ul>
+<p>Calling that a wrapper is a description, not a put-down — all software wraps something. The detail worth pausing on is the execution layer: Madgicx acts on your account through Meta's Marketing API, the same documented API any developer can register for. There are no privileged endpoints. What the subscription buys is assembly, upkeep, and polish — worth a great deal when assembly took an engineering team, worth less now that a general-purpose model can handle three of the four layers.</p>
+</section>
+
+<section class="article-section">
+<h2>Each layer, mapped to a direct build</h2>
+<table class="cmp-table">
+  <thead><tr><th>Layer</th><th>What Madgicx provides</th><th>The direct build</th></tr></thead>
+  <tbody>
+    <tr><td class="rowh">Data connectors</td><td>Prebuilt, vendor-maintained connections to Meta, Google Ads, GA4, Shopify, Klaviyo, TikTok</td><td>MCP servers on the same APIs, or scheduled extracts into Sheets/BigQuery via n8n — see the <a href="/automations/data-pipeline-integration">data pipeline guide</a></td></tr>
+    <tr><td class="rowh">Decision logic</td><td>The AI Marketer's audits and recommendations, plus an automated rules engine</td><td>Your playbook in plain language; Claude applies the logic you would brief a media buyer on</td></tr>
+    <tr><td class="rowh">Execution</td><td>One-click Launch and automated rules acting through Meta's Marketing API</td><td>Scripts built in Cursor calling the same API, gated by approval thresholds you set</td></tr>
+    <tr><td class="rowh">Interface</td><td>A polished dashboard the whole team can log into on day one</td><td>A chat session, a Sheet, or a lightweight dashboard you assemble — functional, not polished</td></tr>
+  </tbody>
+</table>
+<p>Take one concrete case: ad-fatigue detection. Inside Madgicx it is a packaged agent tool. Built directly, it is a scheduled pull of creative-level frequency and CTR history, a plain-language rule ("flag any ad whose CTR has declined three weeks running while frequency climbs"), and a Slack digest — an afternoon's work on the manual path. The <a href="/automations/data-access-dashboards">data access and dashboards guide</a> rebuilds the reporting view, <a href="/automations/ppc-intelligence">PPC intelligence</a> is the audit-and-recommend loop platforms in this class are typically bought for, and <a href="/automations/automation-governance">automation governance</a> is the guardrail layer that decides what the system may touch. <a href="/automations/setup">The setup guide</a> covers the environment once; every later build reuses it. Each guide in the <a href="/automations">automations library</a> ships a manual-extracts route (CSV exports, working the same afternoon) and an MCP route (live account access).</p>
+<p>The fourth table row is the honest gap. A built system's interface stays functional rather than polished. If ten media buyers need to open the same tool every morning and see the same screens, a vendor UI earns its fee — that advantage belongs in the buy column, not under the rug.</p>
+</section>
+
+<section class="article-section">
+<h2>Build vs. buy is still a real decision</h2>
+<p><strong>Buying wins</strong> when:</p>
+<ul>
+<li>A large team needs a polished, shared interface from day one</li>
+<li>Time-to-value matters more than fit — a platform works the week you connect it</li>
+<li>You want vendor support, with someone else absorbing every Meta API change</li>
+<li>Nobody on your team wants to own a workflow, even a well-documented one</li>
+</ul>
+<p><strong>Building wins</strong> on:</p>
+<ul>
+<li>Adaptability — your margins, seasonality, and approval chains become the logic itself, not a configuration option</li>
+<li>Data ownership — extracts land in your warehouse, not a vendor's</li>
+<li>Cost structure — no subscription that grows with your team or spend</li>
+<li>Roadmap control — the missing feature is a prompt away, not a vote on a vendor's board</li>
+<li>Guardrails you define — spend caps, exclusions, and thresholds written by you, enforced in code you can read</li>
+</ul>
+<p>Neither list embarrasses the other. What changed is that the second column used to demand an engineering team and a permanent maintenance budget — and no longer does.</p>
+</section>
+
+<section class="article-section">
+<h2>The advice AI flipped</h2>
+<p>For roughly two decades, enterprise software vendors — with Salesforce the most influential voice — told customers to stay out of the code: use the out-of-the-box functionality, customize sparingly. That advice was right for its era. Custom work cost quarters to build, broke at upgrade time, and outlived the consultant who understood it. So businesses bent their processes to fit their software, and "best practice" quietly became "whatever the platform does by default."</p>
+<p>AI inverted the economics underneath the doctrine. Adaptation is now cheap to produce and — the part that matters — cheap to keep, because the logic lives in readable prompts and small scripts the same tools can revise. When shaping software to your business costs an afternoon instead of a quarter, unique fit stops being a liability and becomes the edge. A platform necessarily encodes the average advertiser. Your business is not the average advertiser, and it no longer has to run on logic built for one.</p>
+</section>
+
+<section class="article-section">
+<h2>Where the business logic is going</h2>
+<p><a href="/builders/dave-bussell">Dave Bussell</a>, the founder of Campaign Automation AI, put the wider argument in his October 2025 essay "Musk's Law and Ellison's Silence | Is Business Ecosystem Overhaul Imminent?" (published on <a href="https://www.linkedin.com/in/davebussell/" rel="noopener">LinkedIn</a>), written after watching Larry Ellison's Oracle AI World keynote sketch a future of agents, ledgers, and RAG with barely a mention of Oracle's existing product line.</p>
+<p>His central claim: "the location of business logic is shifting, from structured systems to intelligent agents." Business applications — CRMs, ERPs, and by extension marketing platforms — trend toward "passive data stores — ledgers of record — while AI agents and RAG interfaces take over the active work." The consequence he draws lands squarely here: "current technology infrastructure will no longer be a differentiator." What remains differentiating is the part no platform can sell you — your customer relationships and your judgment.</p>
+<p>Read against this comparison, a Meta ads platform is a snapshot of the old arrangement: logic and data fused inside a vendor's application. The build path is the new one — the ad platforms as ledgers of spend, your warehouse as the ledger of record, and an agent running your logic doing the active work. The general case is argued in full in our <a href="/resources/build-vs-buy-ai-marketing-automation">build-vs-buy framework piece</a>.</p>
+</section>
+
+<section class="article-section">
+<h2>The path if you build</h2>
+<p>You do not start from a blank page. The <a href="/automations">automations library</a> documents each build end to end — the data to pull, the decision logic in plain language, the guardrails, and both on-ramps. Begin with <a href="/automations/setup">the environment setup</a>, then pick the workflow closest to what you would have bought Madgicx for.</p>
+<p>Two ways to run it: follow the guides yourself — they are written to be followed cold — or we build it with you, starting with a <a href="/solutions/campaign-audit">Campaign Automation Audit</a> to find the highest-value workflow, then governed sprints that ship one automation at a time, with Trigger/Action/Impact logging and guardrails you set. You own everything at the end.</p>
+</section>
+
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Want the build-vs-buy answer for your own accounts?</h3>
+  <p style="margin-bottom:20px">Before you sign for a platform or open Cursor, find out what your accounts are actually ready to automate. The free Readiness Score takes four minutes with no login, and points you at the fastest first build.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+    <li><a href="/resources/build-vs-buy-ai-marketing-automation" style="color:var(--signal)">Build vs. buy in AI marketing automation</a> — the framework piece this comparison applies.</li>
+    <li><a href="/resources/campaignautomation-vs-madgicx" style="color:var(--signal)">campaignautomation.ai vs. Madgicx</a> — the head-to-head if you are weighing a governed, done-with-you build against the platform.</li>
+    <li><a href="/resources/madgicx-vs-governed-automation" style="color:var(--signal)">Madgicx vs. the governed-automation approach</a> — recommend-and-approve versus bounded and audited.</li>
+    <li><a href="/resources/madgicx-alternatives" style="color:var(--signal)">Madgicx alternatives</a> — the wider field if a platform is still the right call for you.</li>
+  </ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <div class="tf-explore"><p class="tf-explore-label">Related reading</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/resources/madgicx-vs-smartly-io"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">Madgicx vs. Smartly.io: Meta-First vs. Cross-Channel</span></a><a class="tf-explore-card" href="/resources/madgicx-vs-governed-automation"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">Madgicx vs. the Governed-Automation Approach: Meta Depth vs. Auditable Control</span></a><a class="tf-explore-card" href="/resources/marin-software-alternatives"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">Marin Software Alternatives for Unified Paid Media (2026)</span></a></div><a class="tf-explore-all" href="/resources/articles">Browse all articles &rarr;</a></div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/automations">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Topics</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/builders">Builders</a>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

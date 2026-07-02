@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<!-- Google consent mode v2 default (denied until the visitor chooses) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TD5GPWN5');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albert AI vs. Building the Same Automations in Claude | Campaign Automation AI</title>
+<meta name="description" content="What Albert by Zoomd automates, what its four layers are made of, and how to assemble the same loop with Claude, Cursor, and data you own. An honest ledger.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/albert-ai-vs-building-in-claude">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/albert-ai-vs-building-in-claude">
+<meta property="og:title" content="Albert AI vs. Building the Same Automations in Claude">
+<meta property="og:description" content="What Albert by Zoomd genuinely does well, what it is architecturally made of, and how each layer maps to a direct build with Claude, Cursor, and your own data.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Albert AI vs. Building the Same Automations in Claude">
+<meta name="twitter:description" content="What Albert by Zoomd genuinely does well, what it is architecturally made of, and how each layer maps to a direct build with Claude, Cursor, and your own data.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Albert AI vs. Building the Same Automations in Claude",
+      "description": "What Albert by Zoomd automates, what its four layers are made of, and how to assemble the same loop with Claude, Cursor, and data you own. An honest ledger.",
+      "url": "https://campaignautomation.ai/resources/albert-ai-vs-building-in-claude",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/albert-ai-vs-building-in-claude"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources/articles"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Albert AI vs Claude",
+          "item": "https://campaignautomation.ai/resources/albert-ai-vs-building-in-claude"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script defer src="/js/consent.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD5GPWN5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown mega" role="group" aria-label="Solutions">
+        <div class="mega-grid cols-2">
+          <div class="mega-col">
+            <span class="dropdown-label">Offerings</span>
+            <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
+            <a href="/automations"><span class="mega-t">Automation Sprints</span><span class="mega-d">Build one governed workflow in 2–4 weeks</span></a>
+            <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Who we help</span>
+            <a href="/who-we-help/agencies"><span class="mega-t">Agencies</span><span class="mega-d">White-label, per-client guardrails</span></a>
+            <a href="/who-we-help/in-house"><span class="mega-t">In-house teams</span><span class="mega-d">Automate one workflow, own it</span></a>
+            <a href="/who-we-help/executives"><span class="mega-t">Executives</span><span class="mega-d">Board-ready, auditable AI adoption</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown mega mega-right" role="group" aria-label="Resources">
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <span class="dropdown-label">Browse</span>
+            <a href="/resources/articles"><span class="mega-t">Articles</span><span class="mega-d">100+ guides, filterable &amp; searchable</span></a>
+            <a href="/resources/glossary"><span class="mega-t">Glossary</span><span class="mega-d">355 automation &amp; AI terms defined</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Topics</span>
+            <a href="/paid-advertising-automation"><span class="mega-t">Paid Advertising</span></a>
+            <a href="/ai-strategy"><span class="mega-t">AI Strategy</span></a>
+            <a href="/workflow-automation"><span class="mega-t">Workflow Automation</span></a>
+            <a href="/revenue-operations"><span class="mega-t">Revenue Operations</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Tools &amp; downloads</span>
+            <a href="/tools/readiness-score"><span class="mega-t">Readiness Score ✦ Free</span><span class="mega-d">Your score in 4 minutes, no login</span></a>
+            <a href="/resources/templates"><span class="mega-t">Templates &amp; Prompt Packs</span></a>
+            <a href="/resources/ai-automation-pricing"><span class="mega-t">Pricing guide</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Automation Audit</a>
+    <a href="/automations">Automation Sprints</a>
+    <a href="/training">Automation Training</a>
+    <a href="/who-we-help/agencies">Agencies</a>
+    <a href="/who-we-help/in-house">In-house teams</a>
+    <a href="/who-we-help/executives">Executives</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Resources</h2>
+    <a href="/resources/articles">Articles</a>
+    <a href="/resources/glossary">Glossary</a>
+    <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+    <a href="/resources/ai-automation-pricing">Pricing guide</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Topics</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources/articles">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">Albert AI vs Claude</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Build vs buy</div>
+      <h1>Albert AI vs. building the same automations in Claude</h1>
+      <p>Albert by Zoomd sells an autonomous campaign platform. Architecturally, it is four layers — connectors, decision logic, API execution, and a UI — and every one can now be assembled directly in Claude and Cursor. Here is the honest version of that trade.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+<p>Albert's pitch has always been distinctive in this category: not a dashboard that helps you optimize, but a system that does the optimizing itself — planning, setup, budget shifts, creative rotation, reporting — while your team supervises. If that pitch appeals to you, notice what you are actually endorsing: the idea that an AI agent, given access to your accounts and a mandate, can run the day-to-day of paid media. Because if an agent can do that from inside a vendor's platform, the next question writes itself — could an agent you run directly do the same job, on your accounts, under your rules?</p>
+<p>Until recently the answer was no, for lack of tooling rather than lack of logic. That has changed: Claude with MCP servers for the agent loop, Cursor for the scripts, n8n or BigQuery for the plumbing. This page works through the trade honestly — what Albert does well, what it is made of, and where each path wins.</p>
+<p style="font-family:var(--f-mono);font-size:12px;color:var(--mist)">Details reviewed July 2026; capabilities move quickly, so check Albert's own materials before deciding.</p>
+</section>
+
+<section class="article-section">
+<h2>What Albert is — and what it's made of</h2>
+<p>The capability is real. Albert (formerly Albert.ai, part of Zoomd since 2022, with a lineage running back to Adgorithms, founded in 2010) manages paid media across Google, Bing, Facebook, Instagram, TikTok, YouTube, and DV360 — what its own materials describe as roughly 90% of the biddable universe. It automates planning, setup, optimization, reporting, and media execution, allocates budget in real time, optimizes creative against live performance, and deploys inside your existing ad accounts on a "weeks, not months" timeline. Reported customers include Harley-Davidson, TUMI, Cosabella, and Dole. A decade-plus of decision logic refined on live spend is not a trivial thing.</p>
+<p>Anatomically, though, Albert is the same four-part assembly as every platform in this cluster:</p>
+<ul>
+<li><strong>Data connectors.</strong> Scheduled reads from the ad platforms' reporting APIs into the vendor's own store.</li>
+<li><strong>Decision logic.</strong> The models that decide what to change: shift this budget, pause that ad, rotate this creative.</li>
+<li><strong>Execution.</strong> Write calls back through the same publicly documented ad-platform APIs — Albert accesses them on the terms any developer does.</li>
+<li><strong>A user interface.</strong> Onboarding, approvals, and reporting that make the other three usable on day one.</li>
+</ul>
+<p>None of those layers rests on proprietary infrastructure the way a search index or a social graph does. The ad platforms own the data and the APIs; every vendor — and you — rents access on identical terms. And since Albert's public materials do not disclose its underlying model architectures, the structural trade is plain: you buy the outputs of the decision logic. You never own the logic itself.</p>
+</section>
+
+<section class="article-section">
+<h2>Assembling the same loop yourself</h2>
+<ul>
+<li><strong>Connectors → extracts or MCP servers.</strong> Performance data reaches your own store either as scheduled CSV/API extracts into Sheets or BigQuery, or live through MCP servers that let Claude query the accounts directly. The <a href="/automations/data-pipeline-integration">data pipeline integration</a> guide builds this layer; every guide in the library offers both the extract route and the live route.</li>
+<li><strong>Decision logic → an agent loop you can read.</strong> In place of undisclosed models, Claude reasons over your performance data with rules stated in plain language — margin thresholds, seasonal calendars, brand exclusions, the judgment calls only your team knows. <a href="/automations/ppc-intelligence">PPC intelligence</a> and <a href="/automations/search-term-intelligence">search term intelligence</a> cover the optimization analysis an Albert-class platform is typically bought for.</li>
+<li><strong>Execution → the same APIs, your guardrails.</strong> Changes go back through the ad-platform APIs via scripts written in Cursor and scheduled with n8n or Zapier — behind spend caps, change ceilings, and approval gates from the <a href="/automations/automation-governance">automation governance</a> guide, with a change log that makes every action explainable.</li>
+<li><strong>UI → plainer, and usually enough.</strong> The <a href="/automations/data-access-dashboards">data access and dashboards</a> guide gets reporting out of platform logins and into views your whole team can read. Your dashboard will look more modest than Albert's; whether that matters depends on who has to look at it.</li>
+</ul>
+<p>No engineering department required — but an environment is. API access, a data store, an agent with the right connections: <a href="/automations/setup">the setup guide</a> stands that up once, ahead of any individual automation.</p>
+</section>
+
+<section class="article-section">
+<h2>Where each side wins</h2>
+<p>Buying Albert-class software is the better call when:</p>
+<ul>
+<li><strong>A big team needs mature software now.</strong> A platform's interface has been refined by every customer it ever had; yours serves one team.</li>
+<li><strong>This month matters.</strong> Albert deploys inside existing accounts in weeks. A build produces useful output fast, but the full loop takes longer to harden.</li>
+<li><strong>You want a vendor on the hook.</strong> When a connector fails at 2 a.m., it is someone else's pager.</li>
+<li><strong>Ownership has no takers.</strong> A workflow needs an owner. If nobody wants the job, renting is the honest answer.</li>
+</ul>
+<p>Building is the better call when:</p>
+<ul>
+<li><strong>Your edge is your logic.</strong> A platform's decision layer is, by design, shared across its customer base. An agent you build encodes what only you know.</li>
+<li><strong>You want your data where you can query it.</strong> Extracts land in your warehouse and stay after any tool change — no export request, no offboarding cliff.</li>
+<li><strong>Recurring fees grate.</strong> A build is mostly up-front effort plus tooling you already pay for.</li>
+<li><strong>Next quarter's feature can't wait.</strong> It becomes a working session instead of a request in a vendor queue.</li>
+<li><strong>You set the guardrails.</strong> Caps, gates, and logs are whatever you decide — not the subset a vendor exposes.</li>
+</ul>
+<p>The historic tiebreaker was maintenance: builds rotted, so buying won by default. That variable is the one AI rewrote.</p>
+</section>
+
+<section class="article-section">
+<h2>The doctrine that expired</h2>
+<p>Enterprise software spent twenty years teaching a single lesson — configure, don't code. Salesforce built an ecosystem on it. And the lesson was sound while it lasted, because custom work was slow to ship, fragile in production, and a standing tax at every upgrade.</p>
+<p>What expired is the premise. An agent that encodes your margin rules, seasonal calendar, and brand exclusions is a few working sessions now, and revising it later is a conversation rather than a change request. Once fitting software to your business is cheap, the fit itself becomes the asset — and the generic platform, identical for every customer that licenses it, starts to look like the commodity in the room.</p>
+</section>
+
+<section class="article-section">
+<h2>Where business logic is going</h2>
+<p><a href="/builders/dave-bussell">Dave Bussell</a>, founder of Campaign Automation AI, made the ecosystem-scale version of this argument in "Musk's Law and Ellison's Silence" (<a href="https://www.linkedin.com/in/davebussell/">LinkedIn</a>, October 2025). The essay opens at Oracle's AI World keynote, where Larry Ellison presented a slide he called Musk's Law: "Modernizing an entire ecosystem is easier than doing it one piece at a time." Bussell's thesis follows from what that keynote chose to emphasize: "the location of business logic is shifting, from structured systems to intelligent agents," with business applications settling into the role of data stores while agents take over the active work. One line lands squarely on this comparison — as AI-native approaches spread, "mom-and-pop shops will have access to the same capabilities as global enterprises."</p>
+<p>Albert, read through that lens, is a structured system that holds the decision layer on the vendor's side. The build path moves that layer into an agent you own, and treats the ad platforms as what they already are: the ledgers of record for your spend and results. If the thesis is even directionally right, the layer worth owning is the agent, not the wrapper. The full framework — including when that logic favors buying — is in our <a href="/resources/build-vs-buy-ai-marketing-automation">build-vs-buy anchor piece</a>.</p>
+</section>
+
+<section class="article-section">
+<h2>The path: use the guides, or build with us</h2>
+<p>The <a href="/automations">automations library</a> documents this build one workflow at a time, each guide with two on-ramps — same-day CSV extracts, or a live MCP connection once the logic has earned it. Start with the guides closest to what Albert-class platforms are bought for: <a href="/automations/ppc-intelligence">PPC intelligence</a> for the optimization loop, <a href="/automations/data-pipeline-integration">data pipeline integration</a> for the connectors, the <a href="/automations/campaign-launch-kit">campaign launch kit</a> for setup work. Prefer company over solo building? A <a href="/solutions/campaign-audit">Campaign Automation Audit</a> finds the highest-value workflow first, and governed sprints ship one automation at a time with guardrails and a full change log — <a href="/request-proposals">request a proposal</a> to start. Either way, the result is yours.</p>
+</section>
+
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Not sure whether to buy the platform or build the workflow?</h3>
+  <p style="margin-bottom:20px">Start with where your accounts actually stand. The free Readiness Score — four minutes, nothing to install, no login — tells you which automation is worth building or buying first.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+    <li><a href="/resources/campaignautomation-vs-albert-ai" style="color:var(--signal)">campaignautomation.ai vs. Albert.ai</a> — the head-to-head if you're weighing governed automation against Albert's full autonomy.</li>
+    <li><a href="/resources/albert-vs-governed-automation" style="color:var(--signal)">Albert vs. the governed-automation approach</a> — the two models of autonomy, compared on explain, bound, and reverse.</li>
+    <li><a href="/resources/albert-ai-alternatives" style="color:var(--signal)">Albert.ai alternatives</a> — the platform field guide if buying still fits better.</li>
+    <li><a href="/resources/bounded-autonomy-buyers-guide" style="color:var(--signal)">The bounded-autonomy buyer's guide</a> — the checklist to run against any tool, bought or built.</li>
+  </ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <div class="tf-explore"><p class="tf-explore-label">Related reading</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/resources/albert-ai-alternatives"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">Albert.ai Alternatives: Autonomous Ad Platforms Compared (2026)</span></a><a class="tf-explore-card" href="/resources/albert-vs-governed-automation"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">Albert.ai vs. the Governed-Automation Approach: Black-Box vs. Auditable</span></a><a class="tf-explore-card" href="/resources/trapica-alternatives"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">Best Trapica Alternatives in 2026 (and How to Choose)</span></a></div><a class="tf-explore-all" href="/resources/articles">Browse all articles &rarr;</a></div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/automations">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Topics</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/builders">Builders</a>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

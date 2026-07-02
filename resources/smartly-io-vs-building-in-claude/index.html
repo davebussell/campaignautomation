@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<!-- Google consent mode v2 default (denied until the visitor chooses) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TD5GPWN5');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smartly.io vs. Building the Same Automations in Claude &amp; Cursor | Campaign Automation AI</title>
+<meta name="description" content="Smartly's media automation maps to a direct build in Claude and Cursor; its creative engine mostly does not. An honest layer-by-layer build-vs-buy guide.">
+<link rel="canonical" href="https://campaignautomation.ai/resources/smartly-io-vs-building-in-claude">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://campaignautomation.ai/resources/smartly-io-vs-building-in-claude">
+<meta property="og:title" content="Smartly.io vs. Building the Same Automations in Claude and Cursor">
+<meta property="og:description" content="Every ad-automation platform is data connectors, decision logic, API execution, and a UI. See how each layer maps to a direct build in Claude and Cursor — and where Smartly's creative engine still wins.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Smartly.io vs. Building the Same Automations in Claude and Cursor">
+<meta name="twitter:description" content="Every ad-automation platform is data connectors, decision logic, API execution, and a UI. See how each layer maps to a direct build in Claude and Cursor — and where Smartly's creative engine still wins.">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Smartly.io vs. Building the Same Automations in Claude & Cursor",
+      "description": "Smartly's media automation maps to a direct build in Claude and Cursor; its creative engine mostly does not. An honest layer-by-layer build-vs-buy guide.",
+      "url": "https://campaignautomation.ai/resources/smartly-io-vs-building-in-claude",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://campaignautomation.ai/resources/smartly-io-vs-building-in-claude"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Campaign Automation AI",
+        "url": "https://campaignautomation.ai"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://campaignautomation.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://campaignautomation.ai/resources/articles"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "vs Building in Claude",
+          "item": "https://campaignautomation.ai/resources/smartly-io-vs-building-in-claude"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script defer src="/js/consent.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD5GPWN5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/" aria-label="Campaign Automation AI — home">CA<span>.</span>AI</a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <a href="/solutions">Solutions</a>
+      <div class="dropdown mega" role="group" aria-label="Solutions">
+        <div class="mega-grid cols-2">
+          <div class="mega-col">
+            <span class="dropdown-label">Offerings</span>
+            <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
+            <a href="/automations"><span class="mega-t">Automation Sprints</span><span class="mega-d">Build one governed workflow in 2–4 weeks</span></a>
+            <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Who we help</span>
+            <a href="/who-we-help/agencies"><span class="mega-t">Agencies</span><span class="mega-d">White-label, per-client guardrails</span></a>
+            <a href="/who-we-help/in-house"><span class="mega-t">In-house teams</span><span class="mega-d">Automate one workflow, own it</span></a>
+            <a href="/who-we-help/executives"><span class="mega-t">Executives</span><span class="mega-d">Board-ready, auditable AI adoption</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <div class="nav-item">
+      <a href="/resources">Resources</a>
+      <div class="dropdown mega mega-right" role="group" aria-label="Resources">
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <span class="dropdown-label">Browse</span>
+            <a href="/resources/articles"><span class="mega-t">Articles</span><span class="mega-d">100+ guides, filterable &amp; searchable</span></a>
+            <a href="/resources/glossary"><span class="mega-t">Glossary</span><span class="mega-d">355 automation &amp; AI terms defined</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Topics</span>
+            <a href="/paid-advertising-automation"><span class="mega-t">Paid Advertising</span></a>
+            <a href="/ai-strategy"><span class="mega-t">AI Strategy</span></a>
+            <a href="/workflow-automation"><span class="mega-t">Workflow Automation</span></a>
+            <a href="/revenue-operations"><span class="mega-t">Revenue Operations</span></a>
+          </div>
+          <div class="mega-col">
+            <span class="dropdown-label">Tools &amp; downloads</span>
+            <a href="/tools/readiness-score"><span class="mega-t">Readiness Score ✦ Free</span><span class="mega-d">Your score in 4 minutes, no login</span></a>
+            <a href="/resources/templates"><span class="mega-t">Templates &amp; Prompt Packs</span></a>
+            <a href="/resources/ai-automation-pricing"><span class="mega-t">Pricing guide</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/campaign-audit">Automation Audit</a>
+    <a href="/automations">Automation Sprints</a>
+    <a href="/training">Automation Training</a>
+    <a href="/who-we-help/agencies">Agencies</a>
+    <a href="/who-we-help/in-house">In-house teams</a>
+    <a href="/who-we-help/executives">Executives</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Resources</h2>
+    <a href="/resources/articles">Articles</a>
+    <a href="/resources/glossary">Glossary</a>
+    <a href="/resources/templates">Templates &amp; Prompt Packs</a>
+    <a href="/resources/ai-automation-pricing">Pricing guide</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Topics</h2>
+    <a href="/paid-advertising-automation">Paid Advertising Automation</a>
+    <a href="/ai-strategy">AI Strategy &amp; Agentic Intelligence</a>
+    <a href="/workflow-automation">Workflow Automation</a>
+    <a href="/revenue-operations">Revenue Operations</a>
+  </div>
+  <div class="mobile-section">
+    <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Company</h2>
+    <a href="/results">Results</a>
+    <a href="/results/trigger-action-impact">Framework</a>
+    <a href="/builders">Builders</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
+</nav>
+
+<div class="page-wrap">
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/resources/articles">Articles</a><span aria-hidden="true">/</span>
+    <span class="current">vs Building in Claude</span>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:8px 24px 0">
+    <div class="page-hero" style="padding:24px 0 36px">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Build vs buy</div>
+      <h1>Smartly.io vs. building the same automations in Claude and Cursor</h1>
+      <p>Smartly is a genuinely strong enterprise ad platform — and, architecturally, it is four components you can now assemble directly in general-purpose AI tools. Here is the honest build-vs-buy comparison, layer by layer, including the one layer that doesn't map.</p>
+    </div>
+
+    <article class="article-wrap">
+<section class="article-section">
+<p>Smartly (formerly branded Smartly.io) is one of the strongest enterprise advertising platforms on the market, and this page will not pretend otherwise. The question here is narrower and more useful: of the things you would actually buy Smartly for — the data pulls, the budget logic, the scheduled optimizations, the reporting, the creative production — which could a technical marketing team now build directly, with Claude on MCP servers, Cursor writing the scripts, and n8n and BigQuery as plumbing? The answer, it turns out, splits the platform in two.</p>
+<p style="font-family:var(--f-mono);font-size:12px;color:var(--mist)">Facts checked July 2026 — treat every vendor capability below as a claim to re-verify at decision time.</p>
+</section>
+
+<section class="article-section">
+<h2>What Smartly does well</h2>
+<p>Smartly organizes its platform into three suites: Creative (AI-assisted ad production), Media (budget allocation and cross-channel deployment), and Intelligence (unified reporting). On social it manages Meta, TikTok, Pinterest, Snapchat, Reddit, and YouTube from one interface, extending to Google, the programmatic open web, and Connected TV. It holds official Marketing Partner status with Meta and Google. Its creative templates scale one concept across channels, auto-adapting to each platform's specs with automated production and pre-launch QA. Named clients include Samsung, Spotify, Uber Eats, and Ralph Lauren — this is mature software aimed at enterprise advertisers with the volume to justify custom contracts.</p>
+<p>Its framing of autonomy is honest, too: AI handles budget allocation, performance prediction, and identifying winning creatives while marketers keep the final call — "AI does the heavy lifting. You make smarter decisions."</p>
+</section>
+
+<section class="article-section">
+<h2>The four-component skeleton</h2>
+<p>Underneath the suites sits the same skeleton as every platform in this category — worth naming because for a decade, assembling it well was exactly what the fee bought:</p>
+<ul>
+<li><strong>Data connectors</strong> normalizing spend, conversions, and creative metrics from Meta, Google, TikTok, and the rest into one model.</li>
+<li><strong>Decision logic</strong> reading that data and deciding: shift budget here, pause that ad set, flag this creative as fatigued.</li>
+<li><strong>Execution</strong> pushing decisions back through the ad platforms' own APIs. Buyers routinely miss this detail: marketing APIs are public interfaces open to any developer. Partner status earns depth and platform alignment — it does not create private roads into your ad account.</li>
+<li><strong>A user interface</strong> — dashboards, approval buttons, template editors.</li>
+</ul>
+<p>Connectors once took months of engineering; decision logic needed data scientists; a usable interface needed a product team. Buying was rational because building any single piece was expensive. Each piece can now be assembled by a marketer working with an AI agent, in days rather than quarters — the case we make in full in <a href="/resources/build-vs-buy-ai-marketing-automation">the build-vs-buy framework piece</a> that anchors this series.</p>
+</section>
+
+<section class="article-section">
+<h2>Layer by layer — and the layer that doesn't map</h2>
+<ul>
+<li><strong>Connectors → MCP servers and scheduled exports.</strong> MCP gives Claude credentialed access to sources like Google Ads, GA4, Sheets, and BigQuery; where a live connector doesn't exist, scheduled exports do the job with a delay. <a href="/automations/data-pipeline-integration">Data pipeline integration</a> wires the sources into one queryable layer; <a href="/automations/data-access-dashboards">data access and dashboards</a> builds the daily view your team reads.</li>
+<li><strong>Decision logic → your rules, stated plainly.</strong> Rather than compressing your business into a vendor's configuration options, you write the actual logic — margin thresholds by product line, seasonality rules, brand exclusions — as instructions an agent reasons over. <a href="/automations/ppc-intelligence">PPC intelligence</a> shows the shape: pull the data, apply your logic, produce ranked actions with the reasoning attached.</li>
+<li><strong>Execution → owned scripts inside governance.</strong> Cursor turns recurring decisions into small scripts against the same APIs; n8n or Zapier schedules them; <a href="/automations/automation-governance">automation governance</a> decides what runs unattended and what waits for a human.</li>
+<li><strong>Interface → mostly already on your desk.</strong> A shared dashboard, a change log, and a Slack or email digest cover most of what a team actually uses in a platform UI — shaped around your workflow instead of the vendor's.</li>
+</ul>
+<p>Now the exception, stated without hedging: creative production at Smartly's scale does not map to a direct build. Generating, adapting, and QA-ing thousands of channel-specific variations across six social platforms and CTV is a genuine moat. A build covers the surrounding workflow — an <a href="/automations/ai-brief-machine">AI brief machine</a> for creative direction, a <a href="/automations/campaign-launch-kit">campaign launch kit</a> for structured deployment — but if high-volume creative automation is the thing you are buying, Smartly remains the right purchase, and this whole comparison reduces to buying it for the right layer.</p>
+</section>
+
+<section class="article-section">
+<h2>The honest split decision</h2>
+<p>Buy when: a large team needs a polished, multi-seat interface with permissions today; time-to-value beats fit this quarter; you want a vendor accountable when an API changes underneath you; or — per the above — creative volume is the actual purchase.</p>
+<p>Build when: your edge is unusual business logic that platform configuration flattens; you want to own your data and the system acting on it; pricing that scales with your growth grates; you're tired of waiting on a roadmap for capabilities you could script in an afternoon; or you want guardrails you define rather than the subset a platform exposes.</p>
+<p>Two competitors on the same platform, with the same features and defaults, converge on the same playbook. The team running logic no platform ships — because it is theirs — does not. That asymmetry is the quiet argument for the build column.</p>
+</section>
+
+<section class="article-section">
+<h2>How "don't customize" became bad advice</h2>
+<p>The strange thing about the old consensus — preached most influentially by Salesforce — is how completely it depended on one economic fact. Customization was discouraged not because fit was worthless but because fit was ruinously expensive: slow to write, brittle at upgrade time, orphaned when its author left. Businesses reshaped processes to match their software because the alternative cost too much.</p>
+<p>Delete the fact and the advice deletes itself. An agent writes the integration in an afternoon and — decisively — maintains it, because when an API shifts the fix is a conversation rather than a ticket in a vendor's queue. With adaptation nearly free, generic software stops being the safe choice and starts being the undifferentiated one.</p>
+</section>
+
+<section class="article-section">
+<h2>The bigger migration</h2>
+<p><a href="/builders/dave-bussell">Dave Bussell</a>, founder of Campaign Automation AI, took this argument beyond ad tech in his October 2025 essay "Musk's Law and Ellison's Silence | Is Business Ecosystem Overhaul Imminent?" (on <a href="https://www.linkedin.com/in/davebussell/" rel="noopener">LinkedIn</a>). His thesis: "the location of business logic is shifting, from structured systems to intelligent agents," with CRMs, ERPs — and by extension marketing platforms — trending toward "passive data stores — ledgers of record — while AI agents and RAG interfaces take over the active work."</p>
+<p>Translated to paid media: your ad accounts are the ledger, and the decision layer — the part you used to buy a platform for — is what is migrating into agents you can run yourself. The consequence Bussell draws is blunt: as AI-native approaches spread, "mom-and-pop shops will have access to the same capabilities as global enterprises." What separates teams then is how precisely the automation fits the business — and what the team does with the hours it hands back.</p>
+</section>
+
+<section class="article-section">
+<h2>The path, if you build</h2>
+<p>The <a href="/automations">automation library</a> documents each workflow end to end, with a spreadsheet-first route and a live MCP route, and <a href="/automations/setup">the setup guide</a> handles the environment once — Claude, MCP servers, credentials, permissions. A sensible first build is <a href="/automations/measurement-repair">measurement repair</a>, since everything downstream is only as good as the data underneath it. Prefer to build alongside us? A <a href="/solutions/campaign-audit">Campaign Automation Audit</a> opens the engagement, and governed sprints ship one logged, reversible automation at a time on accounts you own.</p>
+</section>
+
+<section class="article-section" style="border:2px solid var(--signal);padding:28px;margin-bottom:40px;padding-bottom:28px">
+  <div style="font-family:var(--f-mono);font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Start here</div>
+  <h3 style="margin:0 0 10px">Find out what you could safely build first</h3>
+  <p style="margin-bottom:20px">Before a platform contract or a Cursor session, see where your accounts stand. Four minutes, no login: the free Readiness Score shows which workflows are ready to automate — bought or built.</p>
+  <a href="/tools/readiness-score" class="btn-primary">Get your free Readiness Score →</a>
+</section>
+
+<section class="article-section" style="border-bottom:none;margin-bottom:0">
+  <h2 style="font-size:22px">Keep reading</h2>
+  <ul>
+    <li><a href="/resources/campaignautomation-vs-smartly-io" style="color:var(--signal)">campaignautomation.ai vs. Smartly.io</a> — the head-to-head if a governed, done-with-you build is on your shortlist.</li>
+    <li><a href="/resources/madgicx-vs-smartly-io" style="color:var(--signal)">Madgicx vs. Smartly.io</a> — the two Meta-centric platforms compared directly.</li>
+    <li><a href="/resources/smartly-vs-governed-automation" style="color:var(--signal)">Smartly.io vs. the governed-automation approach</a> — creative scale versus reversible control, compared as models.</li>
+    <li><a href="/resources/smartly-io-alternatives" style="color:var(--signal)">Smartly.io alternatives</a> — the wider platform field if buying still fits better.</li>
+  </ul>
+</section>
+    </article>
+  </div>
+
+  <div class="tagline-footer" style="text-align:center">
+    <p>Move quickly.<br><span>Do big things.</span></p>
+    <div class="tf-explore"><p class="tf-explore-label">Related reading</p><div class="tf-explore-grid"><a class="tf-explore-card" href="/resources/smartly-vs-governed-automation"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">Smartly.io vs. the Governed-Automation Approach: Creative Scale vs. Reversible Control</span></a><a class="tf-explore-card" href="/resources/top-marketing-automation-ai-compared"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">The AI Features of the Top Marketing Automation Platforms, Compared (2026)</span></a><a class="tf-explore-card" href="/resources/best-autonomous-ad-optimization-platforms"><span class="tf-x-cat">Comparisons &amp; alternatives</span><span class="tf-x-title">The Best Autonomous Ad Optimization Platforms in 2026</span></a></div><a class="tf-explore-all" href="/resources/articles">Browse all articles &rarr;</a></div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="footer-watermark" aria-hidden="true">CA<span>.</span>AI</div>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <div class="footer-cta-eyebrow">Start here</div>
+        <h2 class="footer-cta-h">Find your fastest win in four minutes.</h2>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/tools/readiness-score" class="footer-cta-btn">Get your free Readiness Score &rarr;</a>
+        <a href="/solutions/campaign-audit" class="footer-cta-link">or start with the Audit &rarr;</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand" aria-label="Campaign Automation AI — home">Campaign Automation<span>.</span>AI</a>
+        <p class="footer-desc">AI-powered campaign automation for teams that need strategy, assets, workflows, and measurable execution. One workflow at a time.</p>
+        <a href="mailto:hello@campaignautomation.ai" class="footer-contact">hello@campaignautomation.ai</a>
+      </div>
+      <nav class="footer-col" aria-label="Solutions links">
+        <h3>Solutions</h3>
+        <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
+        <a href="/automations">Automation Sprints</a>
+        <a href="/platform">Campaign Strategy Portal</a>
+        <a href="/request-proposals">Request proposals</a>
+      </nav>
+      <nav class="footer-col" aria-label="Learn links">
+        <h3>Topics</h3>
+        <a href="/paid-advertising-automation">Paid Advertising</a>
+        <a href="/ai-strategy">AI Strategy</a>
+        <a href="/workflow-automation">Workflow Automation</a>
+        <a href="/revenue-operations">Revenue Operations</a>
+      </nav>
+      <nav class="footer-col" aria-label="Resources links">
+        <h3>Resources</h3>
+        <a href="/tools/readiness-score">Readiness Score</a>
+        <a href="/results/trigger-action-impact">TAI Framework</a>
+        <a href="/resources/templates">Templates &amp; Prompts</a>
+        <a href="/resources/ai-automation-pricing">Pricing guide</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h3>Company</h3>
+        <a href="/builders">Builders</a>
+        <a href="/results">Results</a>
+        <a href="/training">Training</a>
+        <a href="/resources/glossary">Glossary</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 campaignautomation.ai &middot; Ottawa &middot; Toronto &middot; Victoria &middot; New Jersey &middot; San Jose</div>
+      <div class="footer-tagline">Move quickly. Do big things<span class="blink-dot" aria-hidden="true">.</span></div>
+      <button class="footer-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
