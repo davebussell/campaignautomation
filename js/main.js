@@ -105,12 +105,14 @@ if (prefersReducedMotion) {
 
 /* ── COUNTER ANIMATION (restarts on every re-entry) ─────── */
 function animateCounter(el) {
+  if (el.dataset.noCount !== undefined) return; // opt-out for ranges like "2–4 wk"
   const raw = el.dataset.original || el.textContent.trim();
   el.dataset.original = raw; // cache so we always re-read the true value
   const prefix = raw.match(/^[^\d]*/)?.[0] ?? '';
   const suffix = raw.match(/[^\d.]*$/)?.[0] ?? '';
   const num = parseFloat(raw.replace(/[^\d.]/g, ''));
-  if (isNaN(num) || prefersReducedMotion) return;
+  // Ranges/ratios ("2–4", "24/7") would count to a mashed number — leave them static.
+  if (isNaN(num) || /\d\s*[–—\/]\s*\d/.test(raw) || prefersReducedMotion) return;
 
   const duration = 1200;
   const start = performance.now();
