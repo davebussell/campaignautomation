@@ -529,6 +529,31 @@ if (heroSection && !prefersReducedMotion) {
   window.addEventListener('scroll', onParallaxScroll, { passive: true });
 }
 
+/* ── SCROLL SNAP ARMING ──────────────────────────────────────
+   CSS scopes scroll-snap behind html.snap-on. Arming only after the full
+   load event stops the browser from snapping the viewport to a mid-page
+   section while fonts/SVG/100vh layouts are still settling — which used to
+   land first-time visitors halfway down the page. If the viewport drifted
+   during load on a fresh visit (no hash, no user scroll), restore the top. */
+(function armScrollSnap() {
+  let userScrolled = false;
+  const noteScroll = () => { userScrolled = true; };
+  ['wheel', 'touchstart', 'keydown'].forEach(e =>
+    window.addEventListener(e, noteScroll, { passive: true, once: true }));
+
+  const arm = () => {
+    const navEntry = performance.getEntriesByType('navigation')[0];
+    const navType = navEntry ? navEntry.type : 'navigate';
+    // Fresh navigation only — reload/back-forward keep the browser's restored position.
+    if (navType === 'navigate' && !location.hash && !userScrolled && window.scrollY > 0) {
+      window.scrollTo(0, 0);
+    }
+    document.documentElement.classList.add('snap-on');
+  };
+  if (document.readyState === 'complete') setTimeout(arm, 60);
+  else window.addEventListener('load', () => setTimeout(arm, 60), { once: true });
+})();
+
 /* ── SCROLL SNAP INDICATOR ───────────────────────────────── */
 if (window.innerWidth >= 900) {
   const snapSections = document.querySelectorAll('.snap-sec');

@@ -1102,8 +1102,11 @@ p.lead{font-size:clamp(16px,1.5vw,18px);color:var(--mist2);line-height:1.7;font-
 /* ── SCROLL SNAP (desktop only) ──────────────────────── */
 @media(min-width:900px){
   /* proximity (not mandatory): snaps near a section but never traps the user
-     above the footer — mandatory was yanking the page back off the footer */
-  html{scroll-snap-type:y proximity}
+     above the footer — mandatory was yanking the page back off the footer.
+     .snap-on is added by main.js AFTER full load: snapping during initial
+     layout (font swap, 100vh sections settling) could land first-time
+     visitors mid-page instead of at the top. */
+  html.snap-on{scroll-snap-type:y proximity}
   .snap-sec{
     scroll-snap-align:start;
     scroll-snap-stop:always;
