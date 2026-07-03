@@ -1,0 +1,497 @@
+{
+  "priya-raghunathan": {
+    "slug": "priya-raghunathan",
+    "name": "Priya Raghunathan",
+    "headline": "Paid search that holds CPA in-band, no daily babysitting",
+    "about": "Priya spent eleven years in paid media, most of it running $40M+/yr in paid search at a Toronto agency before going independent. That scale taught her where Smart Bidding quietly drifts and where one stray broad-match query drains a month's budget. She builds the automations that catch both.\n\nHer work is plain: budget-pacing and negative-keyword systems on Google Ads and Meta Ads that keep CPA inside a defined band, with GA4 as the source of truth for what actually converted. Nothing runs unsupervised past a threshold. Pacing logic throttles rather than slamming spend off, every bid change is logged, and anything outside the guardrail pauses for a human instead of guessing.\n\nBounded autonomy matters here because a misread Smart Bidding signal can burn real money overnight before anyone logs in. Priya's automations do the watching so accounts stay on target without a manual daily sweep, and every move stays reviewable after the fact.",
+    "builds": [
+      {
+        "title": "CPA-guardrail budget pacer for Google Ads",
+        "desc": "Throttles daily spend across campaigns when projected CPA breaches a set band, easing budgets down instead of hard-pausing and logging each change for review."
+      },
+      {
+        "title": "Automated negative-keyword harvester",
+        "desc": "Mines Google Ads search-term reports for waste and queues negatives behind an approval threshold so high-spend additions get a human check before they go live."
+      },
+      {
+        "title": "Smart Bidding drift monitor",
+        "desc": "Watches tROAS and tCPA targets against GA4 conversion data and flags or pauses campaigns when Smart Bidding strays outside guardrails overnight."
+      },
+      {
+        "title": "Cross-channel pacing sync for Meta and Search",
+        "desc": "Reconciles Meta Ads and Google Ads spend against a shared monthly target, reallocating headroom within limits and escalating anything past the cap."
+      }
+    ],
+    "focus": [
+      "Budget pacing automation",
+      "Negative-keyword management",
+      "Smart Bidding guardrails",
+      "GA4 conversion tracking",
+      "CPA and tROAS control",
+      "Approval-gated bid changes"
+    ],
+    "metaDescription": "Priya Raghunathan is a Toronto paid media architect building governed Google Ads, Meta Ads, and Smart Bidding automations that hold CPA inside guardrails."
+  },
+  "tomas-rivera": {
+    "slug": "tomas-rivera",
+    "name": "Tomás Rivera",
+    "headline": "Bid scripts that decide like a strategist, log like an auditor",
+    "about": "Tomás Rivera writes the bid and budget scripts that take guesswork out of paid search. After eleven years in the channel, he stopped trusting rule-of-thumb account management and started encoding the rules instead, in Google Ads Scripts that read from GA4, surface decisions, and leave a paper trail behind every change.\n\nHe builds for advertisers who want the lift of automated bidding without handing the account to a black box. His scripts work as Smart Bidding alternatives: explicit logic, thresholds you set, and a record of what moved and why. Big shifts pause for approval; small ones proceed and get logged.\n\nThe guardrails are not optional, because an unwatched script can drain a daily budget before lunch. Tomás caps how far automation can swing in a single run, writes every adjustment to a Looker dashboard, and keeps each action reversible, so the account stays accountable to a human, not just efficient.",
+    "builds": [
+      {
+        "title": "Threshold-gated bid adjustment script",
+        "desc": "A Google Ads Script that shifts bids within set bands, holds any change above your limit for approval, and writes every move to a log."
+      },
+      {
+        "title": "GA4-driven budget pacing monitor",
+        "desc": "Pulls conversion and spend signals from GA4 to flag overpacing campaigns and throttle budgets before a daily cap is blown."
+      },
+      {
+        "title": "Smart Bidding alternative with audit trail",
+        "desc": "Rules-based bidding logic that replaces opaque automated strategies with explicit conditions and a full record of each adjustment."
+      },
+      {
+        "title": "Looker change-and-decision dashboard",
+        "desc": "A Looker view that surfaces every automated bid and budget action, what triggered it, and a one-click reference to reverse it."
+      }
+    ],
+    "focus": [
+      "Google Ads Scripts development",
+      "Rules-based bid automation",
+      "GA4 conversion signals",
+      "Budget pacing controls",
+      "Approval thresholds and reversibility",
+      "Looker reporting and audit logs"
+    ],
+    "metaDescription": "Tomás Rivera builds governed paid-media automation — Google Ads Scripts and bid automation with GA4 signals and Looker audit logs, as Smart Bidding alternatives."
+  },
+  "aisha-okonkwo": {
+    "slug": "aisha-okonkwo",
+    "name": "Aïsha Okonkwo",
+    "headline": "Scales paid social hard, inside spend caps that never slip",
+    "about": "Aïsha runs paid social with tight tolerances and fast rotations. Across seven years on Meta Ads and TikTok she learned that the failure mode of automated scaling isn't bad targeting; it's a runaway budget chasing a fatigued creative at 2 a.m. while no one is watching. So she builds the watching in.\n\nHer Smartly.io setups treat every rule as a guardrail, not a gas pedal. Creative rotation and audience tests run automatically, but budget only follows a winner once it clears a real significance bar, and total spend stays inside hard caps that can't be argued up mid-flight. Every scale-up and pause writes to an audit log, so you can see exactly why a campaign moved and roll it back if the signal was noise.\n\nThe result is paid social that compounds instead of combusting: winners surface fast, losers die cheap, and the creative library stays fresh because nothing gets flogged past the point of return.",
+    "builds": [
+      {
+        "title": "Creative rotation with fatigue-triggered swaps",
+        "desc": "A Smartly.io rule set that retires Meta and TikTok creatives the moment frequency or CTR crosses a fatigue threshold, swapping in queued variants so spend never rides a tired ad."
+      },
+      {
+        "title": "Winner-follows-budget escalation with hard caps",
+        "desc": "Budget shifts toward proven creatives automatically once they clear a statistical-significance gate, scaling in bounded steps that stay under a non-negotiable daily spend ceiling."
+      },
+      {
+        "title": "Structured creative testing matrix",
+        "desc": "A standing Meta and TikTok test framework that rotates hooks, formats, and audiences in controlled cells, surfacing real winners instead of letting one lucky impression spike decide."
+      },
+      {
+        "title": "Audit-logged scale and rollback controls",
+        "desc": "Every automated pause, scale, and budget move is logged with its trigger reason, so any change can be reviewed and reversed before a misread signal eats the week's budget."
+      }
+    ],
+    "focus": [
+      "Meta Ads scaling",
+      "TikTok creative testing",
+      "Smartly.io automation",
+      "Creative fatigue management",
+      "Audience testing frameworks",
+      "Spend-cap governance"
+    ],
+    "metaDescription": "Aïsha Okonkwo, Toronto paid social specialist, automates Meta Ads and TikTok creative testing in Smartly.io — scaling winners fast inside hard spend caps."
+  },
+  "sofia-mendes": {
+    "slug": "sofia-mendes",
+    "name": "Sofía Mendes",
+    "headline": "Pillar-to-engine content systems that hold E-E-A-T at volume",
+    "about": "Sofía Mendes runs SEO and content operations for teams that want AI to draft at scale without watching quality slide. With eight years in technical SEO, she treats a single pillar asset as raw material: one authoritative page becomes a structured cluster of briefs, supporting articles, and internal links that all point back to a defensible topic model.\n\nHer method is rules before output. Every AI draft enters through a brief that fixes the angle, the Clearscope target, and the entities that must appear, then exits through QA gates that check accuracy, sourcing, and E-E-A-T signals before anything reaches a CMS. Nothing publishes unreviewed.\n\nIn SEO, ungoverned volume is its own penalty. Sofía builds the linking logic and approval checkpoints so output stays auditable, and she reads GA4 to confirm the engine is earning rankings and engagement rather than just filling a sitemap. The result is throughput a human team alone could not match, kept inside guardrails that protect the domain.",
+    "builds": [
+      {
+        "title": "Pillar atomization pipeline with brief templates",
+        "desc": "Decomposes one pillar asset into a cluster of AI-ready briefs that fix angle, entities, and Clearscope targets before a single draft is written."
+      },
+      {
+        "title": "Internal-linking ruleset and orphan guard",
+        "desc": "Codifies anchor logic and cluster-to-pillar linking so AI-generated pages reinforce the topic model instead of creating orphaned or cannibalizing URLs."
+      },
+      {
+        "title": "E-E-A-T QA gate before CMS publish",
+        "desc": "A mandatory checkpoint that scores drafts for sourcing, accuracy, and experience signals, blocking anything that fails from reaching the live site."
+      },
+      {
+        "title": "GA4 content-decay and performance review loop",
+        "desc": "Tracks rankings, engagement, and decay in GA4 so underperforming AI output gets flagged for refresh or pruning on a set cadence."
+      }
+    ],
+    "focus": [
+      "Technical SEO",
+      "Content atomization",
+      "Internal-linking architecture",
+      "Clearscope optimization",
+      "E-E-A-T QA gates",
+      "GA4 performance analysis"
+    ],
+    "metaDescription": "Sofía Mendes, SEO & Content Ops Lead, builds governed content engines from pillar assets using technical SEO, Clearscope, and GA4 to scale AI drafts safely."
+  },
+  "hassan-mahmoud": {
+    "slug": "hassan-mahmoud",
+    "name": "Hassan Mahmoud",
+    "headline": "Crawl-log forensics and schema that deploys itself, safely",
+    "about": "Hassan Mahmoud reads server logs the way most people read dashboards. Nine years deep in technical SEO, he treats crawl behavior, indexation, and structured data as an engineering problem, something you measure, version, and automate rather than audit once a quarter and forget.\n\nHis work centers on Screaming Frog crawls, Python pipelines, and schema markup that stays valid as templates change. The point is scale: monitoring thousands of URLs and pushing structured data across a site outgrows any spreadsheet, so he builds the tooling that watches it for him.\n\nAutomation that edits production markup needs brakes. Hassan wires guardrails into every pipeline: schema and meta changes get validated and staged for approval before they ship, log-anomaly alerts flag drops instead of acting on them blind, and every deployment is logged and reversible. The crawler runs constantly; nothing reaches live pages without a human signing off on the diff.",
+    "builds": [
+      {
+        "title": "Scheduled Screaming Frog crawl diff monitor",
+        "desc": "Recurring crawls that diff against the last snapshot and flag new broken links, indexation drops, and redirect chains for review before anyone is paged."
+      },
+      {
+        "title": "Validated schema deployment pipeline",
+        "desc": "Python generates and validates JSON-LD schema against templates, then stages every markup change for human approval before it reaches production."
+      },
+      {
+        "title": "Crawl-log anomaly alerting",
+        "desc": "Parses server log files in Python to surface Googlebot crawl-budget shifts and sudden status-code spikes as alerts, never as silent auto-fixes."
+      },
+      {
+        "title": "Structured-data audit log and rollback",
+        "desc": "Every schema and meta deployment is versioned with a recorded diff, so a bad change can be traced and reverted in one step."
+      }
+    ],
+    "focus": [
+      "Technical SEO automation",
+      "Structured data and JSON-LD schema",
+      "Screaming Frog crawl orchestration",
+      "Python log-file analysis",
+      "Indexation and crawl-budget monitoring",
+      "Approval-gated markup deployment"
+    ],
+    "metaDescription": "Hassan Mahmoud, technical SEO engineer in Calgary, automates site-health monitoring and schema deployment with Screaming Frog and Python — guardrails included."
+  },
+  "marcus-adeyemi": {
+    "slug": "marcus-adeyemi",
+    "name": "Marcus Adeyemi",
+    "headline": "Self-healing lead routing that ships with a rollback",
+    "about": "Marcus started out as a HubSpot solutions architect, the role where he learned that most CRM automation quietly rots: routing rules drift, lifecycle stages desync, and nobody notices until a quarter of leads land in the wrong rep's queue. Nine years in, he builds RevOps systems that catch and correct themselves before that happens.\n\nHis work lives where HubSpot and Salesforce meet n8n. He wires lead routing, lifecycle-stage logic, and ownership rules into workflows that detect their own breakage, repair it, and log every move. That governed approach is deliberate: in a CRM, a bad bulk update can reassign thousands of records in seconds, so every automation he ships carries an approval threshold, an audit trail, and a one-click rollback.\n\nMarcus treats CRM hygiene as infrastructure, not cleanup. The goal is a routing layer the RevOps team can trust unattended, and unwind in minutes when something looks off.",
+    "builds": [
+      {
+        "title": "Self-healing lead routing with rollback",
+        "desc": "An n8n-orchestrated layer that scores and assigns inbound leads across HubSpot and Salesforce, re-checks its own assignments, and rolls back any misroute from a logged snapshot."
+      },
+      {
+        "title": "Lifecycle-stage sync guardian",
+        "desc": "A workflow that keeps HubSpot lifecycle stages and Salesforce opportunity phases aligned, flagging conflicting transitions for approval instead of silently overwriting them."
+      },
+      {
+        "title": "CRM hygiene watchdog with audit log",
+        "desc": "Scheduled n8n jobs that detect duplicates, stale owners, and malformed records, then propose fixes above a set threshold for human sign-off — every change captured in an audit trail."
+      },
+      {
+        "title": "Round-robin routing with reversibility",
+        "desc": "Territory and round-robin assignment in Salesforce and HubSpot that respects capacity caps and can reverse a batch reassignment in a single click."
+      }
+    ],
+    "focus": [
+      "Lead routing & assignment logic",
+      "Lifecycle-stage orchestration",
+      "CRM data hygiene",
+      "HubSpot–Salesforce sync",
+      "n8n workflow design",
+      "Audit logging & rollback"
+    ],
+    "metaDescription": "Marcus Adeyemi, RevOps & CRM automation lead in Newark, builds self-healing HubSpot and Salesforce lead routing on n8n — each shipped with audit logs and rollback."
+  },
+  "kwame-mensah": {
+    "slug": "kwame-mensah",
+    "name": "Kwame Mensah",
+    "headline": "Account-based plumbing that never spams a suppression list",
+    "about": "Kwame Mensah is an ABM and demand gen engineer in Toronto with nine years building the connective tissue behind account-based programs. His work lives where intent data, enrichment, and outreach meet: 6sense scoring feeding HubSpot lifecycle stages, Clay waterfalls cleaning records before they reach a rep, and Outreach sequences that fire only when an account actually warrants a touch.\n\nHe treats orchestration as infrastructure, not a growth hack. Every signal that triggers an action runs through suppression checks, ownership rules, and frequency caps first, so personalization at scale never tips into noise or a do-not-contact violation.\n\nThis discipline earns its keep because account-based motions move real contacts into live sequences automatically. Kwame builds approval thresholds, audit logs, and clean rollback paths into the plumbing itself, so a bad enrichment batch or a mis-scored account gets caught and reversed before it ever sends.",
+    "builds": [
+      {
+        "title": "6sense intent to HubSpot routing with suppression",
+        "desc": "Translates 6sense account scores into HubSpot lifecycle changes and rep assignment, gating every route through do-not-contact and ownership checks."
+      },
+      {
+        "title": "Clay enrichment waterfall with audit trail",
+        "desc": "Runs a multi-provider Clay waterfall that fills and verifies firmographic gaps, logging every source and overwrite so records stay traceable."
+      },
+      {
+        "title": "Outreach sequence triggers with frequency caps",
+        "desc": "Launches Outreach sequences off qualified intent signals only, enforcing per-contact frequency caps and approval thresholds before any send."
+      },
+      {
+        "title": "Closed-loop ABM signal QA in HubSpot",
+        "desc": "Builds reversible HubSpot workflows that flag mis-scored or stale accounts for human review instead of silently pushing them into outreach."
+      }
+    ],
+    "focus": [
+      "Intent-signal orchestration",
+      "CRM data hygiene and enrichment",
+      "Suppression and do-not-contact governance",
+      "Lifecycle and lead routing",
+      "Account-based sequencing at scale",
+      "Audit logging and rollback design"
+    ],
+    "metaDescription": "Kwame Mensah, Toronto ABM and demand gen engineer specializing in RevOps and CRM. Builds governed 6sense, HubSpot, Outreach, and Clay account-based plumbing."
+  },
+  "mei-ling-chen": {
+    "slug": "mei-ling-chen",
+    "name": "Mei-Ling Chen",
+    "headline": "Claude agents with scoped MCP tools, logged and reversible",
+    "about": "Mei-Ling Chen builds AI agents that act inside marketing systems without becoming a liability. Working in Python on Claude with the Model Context Protocol, she gives each agent a narrow set of scoped tools rather than open access: every action is logged, every change can be rolled back, and anything past a set threshold waits for a human to approve it.\n\nHer instinct for this came from fintech, where \"the model decided\" was never a defense anyone could give a regulator or a customer. She carried that standard into agent work. An agent that can send, spend, or publish needs the same controls as a person doing the same thing, plus a clean record of what it did and why.\n\nOn Azure she ships agents that handle real campaign operations — drafting, segmenting, routing — while keeping the dangerous edges behind guardrails and an approval queue. The result is automation a team can actually hand work to, because they can see and undo every move it makes.",
+    "builds": [
+      {
+        "title": "Scoped MCP toolset for a marketing agent",
+        "desc": "Defines a minimal set of MCP tools per agent so it can only touch the systems and actions its job requires, with every call logged."
+      },
+      {
+        "title": "Approval-gated send and spend workflows",
+        "desc": "Routes any agent action above a configured threshold — budget, audience size, external send — into a human approval queue before it executes."
+      },
+      {
+        "title": "Reversible campaign operations on Azure",
+        "desc": "Wraps drafting, segmentation, and routing agents in Python with undo paths and full audit trails deployed on Azure."
+      },
+      {
+        "title": "Guardrail layer for autonomous actions",
+        "desc": "Builds validation and policy checks that sit between the Claude agent and its tools, blocking out-of-bounds actions before they run."
+      }
+    ],
+    "focus": [
+      "Claude agent design",
+      "Scoped MCP tool access",
+      "Approval thresholds & gating",
+      "Audit logging & reversibility",
+      "Python agent engineering",
+      "Azure deployment"
+    ],
+    "metaDescription": "Mei-Ling Chen, AI Agent Engineer specializing in AI agents & MCP, builds scoped, approval-gated Claude agents in Python on Azure — logged and reversible."
+  },
+  "omar-haddad": {
+    "slug": "omar-haddad",
+    "name": "Omar Haddad",
+    "headline": "Copilot agents your IT department actually approves",
+    "about": "Omar Haddad has spent nine years in the Microsoft stack, the last several building Copilot agents that live where enterprise IT can see them. Working remotely from Montréal, he sits at the seam between marketing teams who want autonomy and security teams who answer for every data flow, and he speaks both languages fluently.\n\nHis specialty is AI agents and MCP wired into real systems: Copilot Studio agents, Power Automate flows, and Dataverse, all grounded in Azure data. The guardrails are not an afterthought. Role-based access, DLP policies, and connector boundaries are designed in from the first sketch, so an agent can only touch the campaign data and actions it has been granted, and every step is logged.\n\nThat discipline is why his work clears review. In a Copilot deployment, the difference between a pilot and a production rollout is usually whether IT trusts the permission model. Omar builds so that they do, with approval gates and reversible actions baked into each flow.",
+    "builds": [
+      {
+        "title": "Governed Copilot Studio marketing agent",
+        "desc": "A Copilot Studio agent that answers campaign questions and drafts actions against Dataverse, scoped by role-based access so it only reads and writes what each user is permitted to."
+      },
+      {
+        "title": "Approval-gated Power Automate campaign flows",
+        "desc": "Power Automate flows that route content launches and budget changes through human approval thresholds before anything publishes, with full run history retained."
+      },
+      {
+        "title": "Azure-grounded, DLP-compliant data connectors",
+        "desc": "Connector layers that ground Copilot agents in Azure marketing data while DLP policies block any path that would move regulated fields outside approved boundaries."
+      },
+      {
+        "title": "Reversible MCP action toolkit",
+        "desc": "MCP-based agent tools where each marketing action is bounded, logged in Dataverse, and reversible, so a wrong call can be traced and rolled back cleanly."
+      }
+    ],
+    "focus": [
+      "Copilot Studio agent design",
+      "Power Automate flow orchestration",
+      "MCP tool integration",
+      "Role-based access & DLP policy",
+      "Azure & Dataverse data grounding",
+      "Approval gates and audit logging"
+    ],
+    "metaDescription": "Omar Haddad, Microsoft Copilot Architect specializing in AI agents and MCP — governed Copilot Studio and Power Automate flows on Azure that enterprise IT signs off on."
+  },
+  "diego-fuentes": {
+    "slug": "diego-fuentes",
+    "name": "Diego Fuentes",
+    "headline": "Lifecycle journeys in Marketo and Braze a junior can run",
+    "about": "Diego Fuentes has spent twelve years building cross-channel lifecycle programs in Marketo and Braze, the kind that span onboarding, re-engagement, and win-back without the wires getting crossed. He starts where most teams stall: turning vague lifecycle requirements into a documented journey map, so the logic lives somewhere other than one person's head.\n\nHis method is governance by design. Every send path carries entry criteria, exit rules, and frequency caps; every trigger fires from GTM events that are named and validated before they ever drive a campaign. Approval thresholds gate the segments that touch the most contacts, and audit logs record who changed what and when.\n\nIn lifecycle marketing the failure mode is quiet: a broken trigger keeps emailing churned users for weeks. Diego's guardrail-first builds make those failures loud and reversible, and they hand off clean enough that a junior can own the program on day one rather than reverse-engineering it.",
+    "builds": [
+      {
+        "title": "Governed onboarding journey in Marketo",
+        "desc": "A multi-step welcome and activation flow with entry criteria, frequency caps, and exit rules documented on a journey map a new hire can read and run."
+      },
+      {
+        "title": "Braze re-engagement with approval gates",
+        "desc": "Lifecycle win-back campaigns where any segment above a contact threshold pauses for human approval before send, logged for later audit."
+      },
+      {
+        "title": "GTM event layer for trigger integrity",
+        "desc": "A validated, consistently named GTM event schema so every behavioral trigger feeds Marketo and Braze from clean, verifiable signals."
+      },
+      {
+        "title": "Reversible lifecycle change controls",
+        "desc": "Versioned journey logic with audit trails and rollback paths, so a broken automation can be caught, traced, and reverted without re-querying the whole program."
+      }
+    ],
+    "focus": [
+      "Cross-channel journey design",
+      "Marketo lifecycle orchestration",
+      "Braze campaign automation",
+      "GTM event tracking and validation",
+      "Approval thresholds and audit logging",
+      "Documentation for clean handoff"
+    ],
+    "metaDescription": "Diego Fuentes, Marketing Automation Strategist in Ottawa, builds governed lifecycle and journey automation in Marketo and Braze that a junior can run on day one."
+  },
+  "elena-petrova": {
+    "slug": "elena-petrova",
+    "name": "Elena Petrova",
+    "headline": "Lifecycle email that scales without burning your sender rep",
+    "about": "Elena Petrova works the quiet side of email: the suppression rules, the frequency caps, the deliverability math that decides whether a campaign lands in the inbox or the spam folder. Across seven years and now remote from Vancouver, she leads lifecycle and automation programs in Klaviyo, Braze, and Customer.io, with Liquid doing the heavy lifting for personalization.\n\nHer order of operations is deliberate: guardrails first, clever automation second. Before a single send goes out, she defines who gets excluded, how often anyone can be touched, and what happens when engagement drops. Only then does she layer on the segmentation and branching.\n\nThat sequence matters in lifecycle, where one misfired loop can email a customer twenty times in a day and quietly tank the sender reputation for everyone else. Elena builds programs that behave under load: capped, suppressed, observable, and safe to expand. The automation gets ambitious because the safety rails came first.",
+    "builds": [
+      {
+        "title": "Global frequency-cap and suppression layer",
+        "desc": "A cross-channel governor in Braze or Customer.io that enforces send limits and exclusion rules across every campaign before any individual flow can fire."
+      },
+      {
+        "title": "Engagement-tiered re-engagement and sunset flow",
+        "desc": "A Klaviyo program that steps down send frequency as opens decay and cleanly suppresses unresponsive contacts to protect list health and deliverability."
+      },
+      {
+        "title": "Liquid-personalized lifecycle journeys",
+        "desc": "Welcome, onboarding, and post-purchase sequences driven by Liquid logic with fallback handling so missing data never produces a broken or embarrassing send."
+      },
+      {
+        "title": "Deliverability guardrail and warmup framework",
+        "desc": "Domain reputation monitoring, throttled volume ramps, and alert thresholds that flag inbox-placement risk before a send schedule scales up."
+      }
+    ],
+    "focus": [
+      "Suppression and exclusion logic",
+      "Frequency capping",
+      "Deliverability and sender reputation",
+      "Lifecycle journey design",
+      "Liquid personalization",
+      "List health and engagement decay"
+    ],
+    "metaDescription": "Elena Petrova builds governed lifecycle and email automation in Klaviyo and Braze — suppression logic, frequency caps, and deliverability guardrails first."
+  },
+  "yuki-tanaka": {
+    "slug": "yuki-tanaka",
+    "name": "Yuki Tanaka",
+    "headline": "If it isn't instrumented, it doesn't get automated",
+    "about": "Yuki Tanaka builds the measurement layer that automation actually runs on. Over ten years they have specialized in the foundation most teams rush past: server-side GTM containers, clean event schemas, and GA4 setups that report the same number twice in a row. Based in Victoria, BC, they treat instrumentation as the precondition for any automated decision, not an afterthought.\n\nThe work starts with definitions. Yuki maps every event, parameter, and conversion before a single tag fires, then pipes raw streams into BigQuery so attribution can be recomputed and audited rather than taken on faith. When numbers are questioned in a board meeting, the lineage is already there to defend them.\n\nThat discipline is exactly why guardrails matter here. An automation that optimizes toward a broken conversion event will spend budget confidently in the wrong direction. Yuki refuses to let a system act on data it cannot trace, so every signal feeding an automated rule is validated, versioned, and reversible first.",
+    "builds": [
+      {
+        "title": "Server-side GTM container with consent gating",
+        "desc": "Stands up a server-side GTM setup that strips PII, enforces consent state, and forwards clean events to GA4 and ad platforms with full request logging."
+      },
+      {
+        "title": "Versioned event schema and naming contract",
+        "desc": "Defines a documented event and parameter taxonomy enforced at the tag layer, so every team logs the same action the same way and schema changes are reviewed before they ship."
+      },
+      {
+        "title": "BigQuery attribution model you can audit",
+        "desc": "Exports raw GA4 event data into BigQuery and rebuilds attribution as queryable SQL, so any reported number can be traced back to source touchpoints and recomputed on demand."
+      },
+      {
+        "title": "Automation-readiness data quality checks",
+        "desc": "Adds scheduled validation in BigQuery that flags missing conversions, duplicate events, and tracking drift before any number is allowed to drive an automated bidding or budget rule."
+      }
+    ],
+    "focus": [
+      "Server-side GTM architecture",
+      "GA4 event schema design",
+      "BigQuery data modeling",
+      "Multi-touch attribution",
+      "Consent and PII handling",
+      "Tracking QA and data validation"
+    ],
+    "metaDescription": "Yuki Tanaka is a data and analytics engineer building defensible measurement with GA4, BigQuery, and server-side GTM, plus attribution you can audit."
+  },
+  "rahul-verma": {
+    "slug": "rahul-verma",
+    "name": "Rahul Verma",
+    "headline": "Warehouse-modeled data, synced to ad and CRM tools with tests gating it",
+    "about": "Rahul Verma is a Marketing Data Engineer in San Jose with eight years spent on the layer most automation skips: the pipeline. He starts in the warehouse, modeling audience and conversion data in dbt on BigQuery so that what flows downstream is defined once, documented, and reproducible rather than stitched together across a dozen tool UIs.\n\nHis rule is simple: nothing syncs until the data earns it. dbt tests run on every model, and a failing test stops the push before bad segments or stale revenue numbers reach the ad platforms or CRM. That guardrail matters because reverse ETL hands automation real money decisions, and a silent null or a duplicated row becomes wasted spend or a misfired campaign.\n\nRahul builds those guarantees with Hightouch handling activation, so marketing teams sync confidently and keep an audit trail of exactly what moved, when, and why.",
+    "builds": [
+      {
+        "title": "dbt-tested audience models on BigQuery",
+        "desc": "Defines segments as version-controlled dbt models in BigQuery with schema and freshness tests that must pass before any audience is eligible to sync."
+      },
+      {
+        "title": "Test-gated reverse ETL with Hightouch",
+        "desc": "Wires Hightouch syncs to dbt test status so a failed assertion blocks the push to ad and CRM tools instead of shipping bad rows downstream."
+      },
+      {
+        "title": "Auditable warehouse-to-CRM sync logs",
+        "desc": "Instruments every Hightouch sync with run-level logging that records which records changed, the model version behind them, and the trigger."
+      },
+      {
+        "title": "Reversible activation with staged rollback",
+        "desc": "Builds reverse ETL flows that snapshot prior synced state so a faulty audience push can be rolled back to the last known-good model run."
+      }
+    ],
+    "focus": [
+      "dbt data modeling and testing",
+      "BigQuery warehouse engineering",
+      "Reverse ETL activation",
+      "Hightouch sync pipelines",
+      "Data quality gating and validation",
+      "Audit-ready sync logging"
+    ],
+    "metaDescription": "Rahul Verma, Marketing Data Engineer in San Jose specializing in data and analytics, builds dbt-tested BigQuery models synced via Hightouch reverse ETL."
+  },
+  "fatima-al-rashid": {
+    "slug": "fatima-al-rashid",
+    "name": "Fatima Al-Rashid",
+    "headline": "The kill-switch and approval thresholds behind bounded autonomy",
+    "about": "Fatima Al-Rashid spent thirteen years inside regulated marketing, the kind where a careless send draws a regulator's letter, not just an unsubscribe. That history shapes how she treats AI: useful, but never trusted by default. From Ottawa, she designs the governance layer that lets teams put automation to work without handing it the keys.\n\nHer method is plain. Before a single agent runs, she maps where it can act on its own, where a human signs off, and what spend or audience size trips a hard stop. Every action lands in an audit trail you can hand to legal or compliance and actually defend. When something goes wrong, a kill-switch halts it and the log shows exactly what happened and why.\n\nShe works against the rules a domain already lives under — consent regimes, retention limits, disclosure duties — so guardrails reflect real obligations, not generic best practice. The result is bounded autonomy: AI that moves fast inside lines someone deliberately drew, and stops cold at the edges.",
+    "builds": [
+      {
+        "title": "Tiered approval thresholds for AI actions",
+        "desc": "Defines spend, audience-size, and content-sensitivity tiers that route low-risk actions to auto-execute and high-risk ones to named human sign-off before anything ships."
+      },
+      {
+        "title": "Defensible audit trail for every AI decision",
+        "desc": "Builds immutable, queryable logs capturing what the AI did, the inputs behind it, and who approved it — formatted to hand straight to legal or a regulator."
+      },
+      {
+        "title": "Kill-switch and rollback runbook",
+        "desc": "Wires a one-action halt that freezes running automations and pairs it with a reversibility plan so a bad campaign can be stopped and undone, not just regretted."
+      },
+      {
+        "title": "Compliance guardrail mapping for regulated sends",
+        "desc": "Translates consent, retention, and disclosure obligations into machine-enforced rules that block non-compliant AI outputs before they reach an audience."
+      }
+    ],
+    "focus": [
+      "Guardrail design",
+      "Approval threshold architecture",
+      "Audit trail and logging",
+      "Regulatory compliance mapping",
+      "AI risk assessment",
+      "Kill-switch and reversibility"
+    ],
+    "metaDescription": "Fatima Al-Rashid, AI Governance & Risk Lead in Ottawa. Guardrail design, audit trails, and compliance that let regulated teams adopt AI without losing control."
+  },
+  "grace-nguyen": {
+    "slug": "grace-nguyen",
+    "name": "Grace Nguyen",
+    "headline": "The integration layer where every automated action leaves a trail",
+    "about": "Grace Nguyen builds the wiring that makes separate marketing tools behave like one accountable system. Working from Victoria, BC, she spends her days inside Zapier, Make, and n8n, plus the custom API glue that commercial connectors never quite cover. Six years of integration work taught her the same lesson repeatedly: the multi-step automation that breaks at 2 a.m. is almost never the one with a human checkpoint in it.\n\nSo she designs the checkpoint in from the start. Before a Zap fires a campaign, a Make scenario pushes a contact, or an n8n flow updates a CRM, there is an approval gate and a log entry recording who or what allowed it. Her builds are bounded on purpose, with clear thresholds for what runs unattended and what waits for a person.\n\nThat discipline matters most in connective work, where one silent webhook can quietly corrupt data across five systems. Grace makes the trail visible, so a misfire is caught and reversed instead of compounding.",
+    "builds": [
+      {
+        "title": "Approval-gated multi-tool campaign pipelines",
+        "desc": "Chains Zapier and Make steps so any outbound send or data push pauses at a defined threshold for human sign-off before it executes."
+      },
+      {
+        "title": "Logged n8n CRM sync with rollback",
+        "desc": "Builds self-hosted n8n flows that record every record change to an audit log and can replay or reverse a bad sync cleanly."
+      },
+      {
+        "title": "Custom API middleware with guardrails",
+        "desc": "Writes the integration layer between tools that lack native connectors, enforcing rate limits, validation, and full request logging on each call."
+      },
+      {
+        "title": "Cross-platform error and exception routing",
+        "desc": "Wires failure handlers across Zapier, Make, and n8n so silent webhook breaks surface as alerts with the full context to debug and retry."
+      }
+    ],
+    "focus": [
+      "Multi-tool workflow integration",
+      "Approval gates & thresholds",
+      "Audit logging & traceability",
+      "Custom API middleware",
+      "Zapier / Make / n8n architecture",
+      "Reversible automation design"
+    ],
+    "metaDescription": "Grace Nguyen, Workflow Integration & Governance Consultant in Victoria, BC, builds Zapier, Make, n8n, and custom API automations with approval gates and audit logs baked in."
+  }
+}

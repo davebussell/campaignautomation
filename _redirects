@@ -1,3 +1,6 @@
+# Build sources are part of the repo but not the public site
+/_build/*    /404    404!
+
 # Retired /learn hub -> Resources (301)
 /learn      /resources  301
 /learn/     /resources  301

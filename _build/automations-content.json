@@ -1,0 +1,1507 @@
+{
+  "guides": [
+    {
+      "slug": "data-access-dashboards",
+      "name": "Data Access & Dashboards",
+      "tagline": "Google Ads, Meta, GA4, and your CRM in live dashboards your channel owners actually use",
+      "what": "Data Access & Dashboards connects Google Ads, Meta, GA4, and your CRM into live, self-serve dashboards your channel owners can actually use. You agree on one metric dictionary, land each platform's data in a shared layer on a schedule, and put a dashboard on top — so weekly performance questions get answered by opening a page, not by filing a request with an analyst.\n\nIt compounds because everything else sits on it. Budget shifts, bid changes, creative tests — every automation you add later reads from this same governed layer. That is why the Readiness Score weights data access most heavily: fix it once and every automation above it stops creating a bottleneck; skip it and each new workflow inherits the same stale, disconnected numbers.",
+      "outcome": "Channel owners can read the data without an analyst — closing the data-access gap the Readiness Score weights most heavily, so the automations above it stop creating a bottleneck.",
+      "prereqs": [
+        "Admin rights on Google Ads, Meta, and GA4 — enough to grant the read access everything else depends on",
+        "A CRM with reportable pipeline or revenue data (HubSpot, Salesforce, or similar)",
+        "One named owner for the metric dictionary who can sign off on definition changes",
+        "A Google account for Sheets and Looker Studio; for the MCP path, somewhere to run a scheduled agent loop"
+      ],
+      "manualPath": {
+        "overview": "You run this with scheduled exports and a spreadsheet — no APIs, no engineering. Each platform delivers a report on a schedule, you land it in Google Sheets in a consistent shape, and Looker Studio reads the Sheets. It suits a team where one person is willing to own a short weekly hygiene pass in exchange for everyone else getting self-serve answers.",
+        "steps": [
+          {
+            "title": "Write the metric dictionary first",
+            "body": "Before touching any export, agree what spend, conversions, and revenue mean — and which source wins when platforms disagree. Write it on one page with a named owner. Every dashboard number should trace back to this sheet, and it is what keeps this week's numbers comparable to last week's."
+          },
+          {
+            "title": "Schedule exports from each platform",
+            "body": "Set up Google Ads scheduled reports, Meta Ads Manager exports, GA4 report exports, and a saved CRM report. Put them all on the same date grain — daily rows — and the same delivery day, so every source covers the same complete week when you sit down to update."
+          },
+          {
+            "title": "Land everything in one Google Sheets file",
+            "body": "Create one tab per source with identical columns: date, account, campaign, spend, clicks, conversions, revenue. Paste or import each export into its tab and stop there — source tabs are never edited by hand beyond the import. Add a changes tab where you log anything you had to fix."
+          },
+          {
+            "title": "Blend and publish in Looker Studio",
+            "body": "Connect Looker Studio to the Sheet and build one page per channel plus a cross-channel summary, using the dictionary's definitions for every calculated field. Share view access with each channel owner so the answer to a performance question is a link, not a request."
+          },
+          {
+            "title": "Run the weekly hygiene pass",
+            "body": "Check that every tab has rows through the latest full week, that campaign naming hasn't drifted, and that CRM revenue roughly reconciles with platform-reported conversions. Note anything you corrected in the changes tab so the next person can see what moved and why."
+          }
+        ],
+        "cadence": "Weekly. Expect roughly an hour per cycle once the exports and templates exist; the initial build takes two to three weeks."
+      },
+      "mcpPath": {
+        "overview": "You connect the platforms over read-scoped APIs or MCP servers and let an agent run the refresh loop: pull, reconcile, update the data layer, flag anomalies. You approve definition changes and anomaly callouts; the agent never touches the source platforms. It suits a team ready to retire manual exports and maintain one small governed pipeline instead.",
+        "steps": [
+          {
+            "title": "Provision read-only access per platform",
+            "body": "Create read-scoped credentials for Google Ads, Meta, GA4, and your CRM. No edit scopes anywhere — this workflow only reads. Keep a list of exactly what was granted per platform so access can be reviewed and revoked cleanly."
+          },
+          {
+            "title": "Stand up the data layer the agent owns",
+            "body": "Create BigQuery datasets — or a structured Google Sheets file at small scale — with one table per source plus a run log. This is the only place the agent has write access. Dashboards read from here, and the source platforms stay untouched."
+          },
+          {
+            "title": "Wire the scheduled pull loop",
+            "body": "Use Claude with an MCP server per platform, or n8n, Make, or Zapier for the scheduled fetch. Each run pulls the latest daily rows, appends them to the source tables, and writes a run-log entry: what was pulled, row counts, timestamps. A failed pull should be visible in the log, not silent."
+          },
+          {
+            "title": "Add reconciliation and anomaly checks",
+            "body": "Have the agent compare platform-reported conversions against CRM outcomes on every run, and flag gaps or day-over-day swings beyond thresholds you set. Flags land in a review queue for a human — not on the team dashboard — so a tracking break gets caught before anyone plans against bad numbers."
+          },
+          {
+            "title": "Publish dashboards and a gated weekly digest",
+            "body": "Point Looker Studio at the data layer and have the agent draft a weekly summary including any anomalies it found. A human reviews and confirms flags before they go to channel owners, and any metric definition change goes through the dictionary's named approver first."
+          }
+        ],
+        "connections": [
+          "Google Ads (read-only API access or an MCP server)",
+          "Meta Ads (read-scoped API access or an MCP server)",
+          "GA4 (Data API read access, or its BigQuery export)",
+          "CRM — HubSpot or Salesforce (read-scoped API access)",
+          "BigQuery or Google Sheets (the single destination the agent can write to)"
+        ]
+      },
+      "tools": [
+        "Looker Studio — the dashboard layer channel owners actually open; reads Sheets or BigQuery directly",
+        "Google Sheets — landing zone for exports on the manual path, and a workable data layer at small scale",
+        "BigQuery — the durable data layer once history and volume outgrow a spreadsheet",
+        "Claude with MCP servers — the agent that pulls, reconciles across platforms, and drafts the weekly digest",
+        "n8n, Make, or Zapier — schedules the pull loop and routes anomaly flags into a review queue"
+      ],
+      "guardrails": [
+        "Read-only everywhere: no credential in this build carries edit scope on an ad platform or the CRM",
+        "The agent writes only to its own data layer, and every run appends to an audit log with row counts and timestamps",
+        "Metric definition changes require the named approver and a logged before/after, so numbers stay comparable week to week",
+        "Anomaly flags queue for human confirmation before they reach channel owners — nothing auto-publishes"
+      ],
+      "metaDescription": "Build Data Access & Dashboards two ways: manual exports into Sheets and Looker Studio, or MCP-connected agents on read-only scopes with a human gate."
+    },
+    {
+      "slug": "data-pipeline-integration",
+      "name": "Data Pipeline & Integration",
+      "tagline": "Wire ads, analytics, and CRM into one governed pipeline so nothing runs on stale CSVs.",
+      "what": "Data Pipeline & Integration replaces manual CSV exports and disconnected tools with one connected pipeline. Your ad platforms (Google Ads, Meta), analytics (GA4), and CRM feed a single destination on a schedule, with consistent naming, shared join keys, and a freshness check on every load. Reports and automations read from that one dataset instead of whatever someone last downloaded.\n\nThe compounding is structural: everything downstream inherits the same signal. Budget rules, alerts, dashboards, and any automation you add later work from complete, current data instead of a stale spreadsheet — and a fix made once at the pipeline level propagates everywhere. If your workflows are manual today, this is the piece to build first.",
+      "outcome": "Every downstream automation and report works from a complete, current signal instead of a stale spreadsheet — closing the tooling and integration gap this sprint exists to fix.",
+      "prereqs": [
+        "Connector or API access to the platforms you want linked",
+        "Read access to Google Ads, Meta Ads, GA4, and your CRM (HubSpot or Salesforce)",
+        "A destination for the data: Google Sheets for the manual path, BigQuery or a similar warehouse for the connected path",
+        "A named owner who checks pipeline health and signs off on schema changes",
+        "A short list of the reports and automations that will consume the data, with the fields and join keys they need"
+      ],
+      "manualPath": {
+        "overview": "You build a disciplined export routine into one master workbook: same reports, same date ranges, same destination tabs, on a fixed schedule. It suits a marketer with a small stack who needs one trustworthy dataset now, before investing in connectors — and the schema you define here carries straight over to the connected build later.",
+        "steps": [
+          {
+            "title": "Inventory sources and define one schema",
+            "body": "List every platform your reporting touches: Google Ads, Meta, GA4, your CRM. For each, pick the fields you actually use and define the join keys that link them — date, campaign name or ID, and UTM parameters. Write it up as a one-page data dictionary. This document is the pipeline; everything else is plumbing."
+          },
+          {
+            "title": "Build the master workbook",
+            "body": "Create a Google Sheets workbook with one raw tab per source, a mapping tab that translates each platform's naming into your standard, and a combined tab that joins everything on date plus campaign key using lookups. Downstream reports read only from the combined tab."
+          },
+          {
+            "title": "Set the export routine",
+            "body": "Schedule the same exports every cycle: a saved report from Google Ads, a saved report from Meta Ads Manager, a GA4 export, and a CRM report with matching date ranges. Use consistent filenames with the date in them so you always know what a file contains and when it was pulled."
+          },
+          {
+            "title": "Paste, then reconcile before you trust it",
+            "body": "Append each export to its raw tab, then run three checks: row counts against the previous cycle, spend totals against what the platform UI shows, and a filter for blank join keys. Anything that fails gets fixed at the source before the combined tab updates."
+          },
+          {
+            "title": "Add a freshness flag",
+            "body": "Keep a status tab listing each source's last-updated date. Any source older than your cadence shows red, so anyone reading the workbook can see at a glance whether the signal is current or stale."
+          },
+          {
+            "title": "Point reporting at the combined tab only",
+            "body": "Connect Looker Studio or your reporting template to the combined tab, and retire the loose CSVs floating around in email and downloads folders. One dataset in, one dataset out."
+          }
+        ],
+        "cadence": "Weekly exports work for most accounts; a full cycle takes about an hour once the workbook and saved reports are set up."
+      },
+      "mcpPath": {
+        "overview": "Your platforms connect directly via API or MCP servers, scheduled syncs land data in a warehouse automatically, and an agent watches pipeline health — reconciling totals, catching schema drift, and drafting fixes. All connections are read-scoped on the source side, every run is logged, and schema changes wait for a human. Suits teams ready to retire exports entirely.",
+        "steps": [
+          {
+            "title": "Connect every source read-only",
+            "body": "Create read-scoped credentials for Google Ads, Meta, GA4, and your CRM — via their APIs or an MCP server for each. The pipeline can read from these systems but can never write back to them. Store credentials in your workflow tool's credential manager, not in the flows themselves."
+          },
+          {
+            "title": "Stand up scheduled syncs into raw tables",
+            "body": "Build one sync flow per source in n8n, Make, or Zapier — or use a native connector such as GA4's scheduled export to BigQuery. Each flow lands data in its own raw table daily and writes a run log entry: timestamp, row count, and pass or fail status."
+          },
+          {
+            "title": "Model one joined layer on top",
+            "body": "Create views that apply your naming standard and join sources on date, campaign key, and UTMs — the same schema from your data dictionary. Dashboards and downstream automations read only from this layer, never from raw tables, so you can fix a mapping once without touching every consumer."
+          },
+          {
+            "title": "Put an agent on pipeline health",
+            "body": "Connect Claude via MCP servers to the run logs and the warehouse. Each day it verifies every source synced, reconciles spend totals against platform-reported figures, and flags missing days, schema drift, or broken join keys. For anything it finds, it drafts the specific fix with the evidence attached."
+          },
+          {
+            "title": "Gate changes behind human approval",
+            "body": "The agent may re-run a failed sync on its own — that is its full autonomous scope. Any schema change, new field mapping, or historical backfill goes to the named owner as a proposal with a diff and the relevant log lines. Nothing structural changes without sign-off."
+          },
+          {
+            "title": "Cut over downstream consumers",
+            "body": "Repoint Looker Studio dashboards and any existing automations at the joined layer, run the manual workbook in parallel for a couple of cycles to confirm the numbers match, then retire the export routine."
+          }
+        ],
+        "connections": [
+          "Google Ads and Meta Ads (read-only API access or an MCP server for each)",
+          "GA4 (scheduled BigQuery export or read-scoped API access)",
+          "Your CRM — HubSpot or Salesforce (read-scoped API access)",
+          "BigQuery or Google Sheets as the destination the pipeline writes to",
+          "n8n, Make, or Zapier for scheduled syncs, plus Claude with MCP servers for the health-check agent"
+        ]
+      },
+      "tools": [
+        "Google Sheets — the manual path's master workbook: raw tabs, mapping tab, and one combined output",
+        "BigQuery — durable destination for raw tables and the joined layer on the connected path",
+        "n8n, Make, or Zapier — scheduled sync flows that land each source and write run logs",
+        "Claude with MCP servers — the agent that reconciles totals, catches drift, and drafts fixes for approval",
+        "Looker Studio — dashboards that read from the one governed dataset instead of loose files",
+        "HubSpot or Salesforce APIs — read-scoped connection that brings CRM outcomes into the same joined layer"
+      ],
+      "guardrails": [
+        "All source connections are read-scoped: the pipeline reads ad platforms, analytics, and CRM but can never write back to them.",
+        "The agent's autonomous scope is re-running failed syncs; schema changes, new field mappings, and backfills require named-owner approval with the diff attached.",
+        "Every sync run is logged with timestamp, row count, and status, and spend totals are reconciled against platform figures before data is marked fresh.",
+        "Raw tables and exports are retained unmodified, so any load or transformation can be rolled back without losing data."
+      ],
+      "metaDescription": "Build a Data Pipeline & Integration workflow two ways: a manual path with scheduled exports and one master sheet, or an MCP-connected agent with guardrails."
+    },
+    {
+      "slug": "measurement-repair",
+      "name": "Measurement Repair",
+      "tagline": "Fix conversion tracking across GA4, Google Ads, and Meta before automation touches spend",
+      "what": "Measurement Repair is a full audit and rebuild of your conversion tracking across GA4, Google Ads, and Meta. You inventory every conversion event, reconcile counts across platforms, trace the events that disagree, fix deduplication, validate attribution settings, and document everything in an event dictionary that anyone touching the account can check.\n\nIt sits in the Foundation category because every automation downstream optimizes toward whatever your conversion data says. If events double-count or silently drop, Smart Bidding and every rule you add will confidently scale the wrong thing. Repair measurement once and each new automation inherits data it can trust; skip it and each new automation amplifies the error.",
+      "outcome": "Conversion tracking that Smart Bidding and any rule you automate can optimize toward revenue instead of noise — deduplicated, attribution-validated, and documented event by event.",
+      "prereqs": [
+        "Admin access to Google Tag Manager (or whichever tag manager runs your site)",
+        "Admin or editor access to GA4, Google Ads conversion settings, and Meta Events Manager",
+        "An agreed definition of what counts as a conversion and what revenue value it carries",
+        "A way to fire test conversions without polluting live data (a test payment mode or filtered test events)"
+      ],
+      "manualPath": {
+        "overview": "You run the whole repair with platform exports, tag-manager preview tools, and one spreadsheet. It suits a marketer with admin access and a couple of hours a day for two weeks — no engineering help needed beyond publishing tag changes.",
+        "steps": [
+          {
+            "title": "Build the event inventory",
+            "body": "Open GA4's key events list, the Google Ads conversion actions page, and Meta Events Manager, and list every conversion event in one spreadsheet tab. For each event, record where it fires from (GTM tag, hardcoded, imported), its counting method, and the value it carries. This tab becomes your event dictionary — the deliverable everything else feeds."
+          },
+          {
+            "title": "Export and reconcile counts",
+            "body": "Export the last 30 days of daily conversion counts and values from each platform into separate tabs, then build a reconciliation tab that lines the same event up across sources. Flag any event where platforms disagree by more than a margin you choose, plus anything reporting zero or roughly double what you'd expect."
+          },
+          {
+            "title": "Trace every flagged event",
+            "body": "Use GTM preview mode and Tag Assistant to fire a test conversion and watch which tags fire, how many times, and with what values; on the Meta side, use the test events tool in Events Manager. Record the failure mode for each flagged event: duplicate fires, missing dedupe keys like transaction ID or event ID, wrong values, or tags installed both hardcoded and in GTM."
+          },
+          {
+            "title": "Fix one change at a time",
+            "body": "Make each fix in a fresh GTM workspace: add transaction IDs to dedupe purchases, remove double-installed tags, correct counting settings, repair value parameters. Publish one change per version and log it in a change-log tab with the date, what changed, and why — that's what makes any fix reversible."
+          },
+          {
+            "title": "Validate attribution and primary conversions",
+            "body": "In Google Ads, confirm which conversion actions are primary (used for bidding) versus secondary (observation only), and that Smart Bidding optimizes toward one deduplicated revenue event rather than a mix of overlapping ones. Check GA4-imported versus native-tag conversions so the same purchase isn't counted twice."
+          },
+          {
+            "title": "Re-reconcile and publish the dictionary",
+            "body": "After a week of clean data, re-run the exports and confirm the platforms now agree within your margin. Finish the event dictionary and put it where anyone building a rule or report will find it. From here, nothing gets automated on an event that isn't in the dictionary."
+          }
+        ],
+        "cadence": "The initial repair takes about two weeks; after that, re-run the export-and-reconcile pass monthly and after any site release or tag change — roughly an hour per cycle."
+      },
+      "mcpPath": {
+        "overview": "The same audit runs as a standing loop: read-scoped API connections feed an agent that reconciles counts daily, traces discrepancies, and stages fixes for your approval. It suits teams whose site changes often enough that tracking breaks between manual audits — and who want the repair to stay repaired.",
+        "steps": [
+          {
+            "title": "Grant read access; keep publishing locked",
+            "body": "Connect GA4, the Google Ads API, and the Meta marketing API through MCP servers or direct API credentials, all read-only to start. Add Google Tag Manager API access with permission to create workspace versions but not to publish. Credentials live in your automation platform — n8n, Make, or Claude with MCP servers — never in the spreadsheet."
+          },
+          {
+            "title": "Let the agent build the live event map",
+            "body": "The agent enumerates every GTM tag and trigger, every Google Ads conversion action, and every GA4 and Meta event, then writes the combined inventory to an event dictionary in Google Sheets or BigQuery. Unlike a manual inventory, this one regenerates on schedule, so the dictionary can't quietly go stale."
+          },
+          {
+            "title": "Schedule the reconciliation loop",
+            "body": "A daily job pulls conversion counts and values from all three platforms, compares matching events, and flags divergence beyond a threshold you set. Each flag ships as a short discrepancy report with the suspected cause — duplicate tag, missing event ID, value mismatch — and a link to the evidence."
+          },
+          {
+            "title": "Stage fixes behind an approval gate",
+            "body": "For each confirmed issue, the agent drafts the exact fix as an unpublished GTM workspace version and posts the diff for review. You approve, the agent publishes, and the change log records before and after. Conversion settings inside Google Ads and Meta — counting methods, primary versus secondary, attribution — stay human-only: the agent recommends, you click."
+          },
+          {
+            "title": "Keep watching for drift",
+            "body": "Once counts agree, the loop keeps running and alerts you the day a release breaks tracking, instead of you finding out from a bad month of Smart Bidding. Alerting is the default action; auto-applied fixes stay off unless you deliberately allow a narrow class of change, and even those remain reversible through GTM version history."
+          }
+        ],
+        "connections": [
+          "GA4 — read-only reporting access via the Data API or an MCP server for GA4",
+          "Google Ads — read access to conversion actions and stats via the API or an MCP server",
+          "Meta — read access to Events Manager and ad account stats via the Marketing API",
+          "Google Tag Manager — API access scoped to drafting workspace versions; publishing stays behind human approval",
+          "Google Sheets or BigQuery — home for the event dictionary, discrepancy reports, and change log"
+        ]
+      },
+      "tools": [
+        "Google Tag Manager — where most conversion tags live and where every fix is staged and versioned",
+        "GA4 — the reporting backbone; its exports anchor the reconciliation",
+        "Tag Assistant and GTM preview mode — trace exactly which tags fire on a test conversion",
+        "Meta Events Manager — test events and event-ID deduplication on the Meta side",
+        "Google Sheets or BigQuery — reconciliation workbook, event dictionary, and change log",
+        "n8n, Make, or Claude with MCP servers — runs the scheduled reconciliation loop on the integrated path"
+      ],
+      "guardrails": [
+        "One change per GTM workspace version, published only after human review — every fix reversible in one click via version history",
+        "Conversion settings in Google Ads and Meta (counting method, primary/secondary, attribution) are human-only; the agent proposes, never edits",
+        "Every discrepancy report, staged fix, and publish lands in the change log with before/after values and who approved it",
+        "The agent never deletes events or tags — deprecated items are paused and documented so history stays intact"
+      ],
+      "metaDescription": "Measurement Repair build guide: audit and rebuild GA4, Google Ads, and Meta conversion tracking — a manual spreadsheet path or a governed MCP agent path."
+    },
+    {
+      "slug": "campaign-structure-naming",
+      "name": "Campaign Structure & Naming",
+      "tagline": "A naming convention, launch template, and audit loop that keep campaigns identifiable.",
+      "what": "Campaign Structure & Naming gives every campaign in your ad accounts one predictable name. You define a convention — platform, brand or non-brand, funnel stage, geo, and whatever else you report on — plus a launch template and a QA checklist that every new campaign passes through. A recurring audit then compares every live campaign against that convention, flags drift, and drives renames back to standard.\n\nThe compounding logic is simple: automation can only act on what it can reliably identify. Budget rules, pacing scripts, anomaly alerts, Looker Studio reports, and AI workflows all match on names; when names are consistent, all of them become dependable at scale. Fix structure once and every later automation inherits it instead of re-fighting the same mess.",
+      "outcome": "Every live campaign matches the convention and passes the launch QA checklist — the consistent structure that makes rules, scripts, and AI workflows dependable at scale.",
+      "prereqs": [
+        "Editor access to your ad accounts (Google Ads, Meta, and any other platform in scope)",
+        "Sign-off on the naming convention from whoever owns reporting, so names are not re-litigated later",
+        "A Google Sheet or similar workspace to hold the convention, audit results, and rename mapping",
+        "For the MCP path: API or MCP-server credentials for each ad platform, read-scoped to start"
+      ],
+      "manualPath": {
+        "overview": "This version runs entirely on exports and a spreadsheet: you pull campaign lists from Google Ads Editor and Meta Ads Manager on a schedule, validate every name with formulas, and apply renames yourself in bulk. It suits a single marketer or a small team on a handful of accounts, and it needs no API access or engineering time.",
+        "steps": [
+          {
+            "title": "Write the convention and launch template",
+            "body": "Decide the segments every campaign name carries — platform, brand vs non-brand, funnel stage, geo, match type — and fix one delimiter between them. List the allowed values for each segment in a reference tab of a Google Sheet. Turn the same rules into a launch template and a short QA checklist that every new campaign must pass before it goes live."
+          },
+          {
+            "title": "Export your live campaign inventory",
+            "body": "Export campaigns and ad groups to CSV from Google Ads Editor, and download the campaign list from Meta Ads Manager. Paste both into an audit tab in your sheet, keeping the platform's campaign ID in its own column. IDs are your stable key — never match on names alone."
+          },
+          {
+            "title": "Validate every name with formulas",
+            "body": "Split each name on your delimiter, then check segment count and each segment's value against the allowed lists with lookups. Flag every non-conforming row and classify it: a simple rename, or a structural problem like a campaign mixing brand and non-brand that needs rebuilding. The flags become your work queue."
+          },
+          {
+            "title": "Draft renames in a mapping table",
+            "body": "For each fixable row, write the new compliant name next to the old one, keyed by campaign ID. Before applying anything, note where reports, rules, or scripts filter on the old name so you can update those filters in the same pass. This table doubles as your change log and your rollback plan."
+          },
+          {
+            "title": "Apply in bulk, then gate new launches",
+            "body": "Paste the approved renames into Google Ads Editor, review the change preview, and post; make the Meta edits in Ads Manager. From now on, every new campaign gets its name from the launch template and passes the QA checklist before going live. Re-export next cycle to confirm drift is falling toward zero."
+          }
+        ],
+        "cadence": "Weekly while you clean up existing accounts, then monthly for drift checks; a cycle takes under an hour once the sheet is built."
+      },
+      "mcpPath": {
+        "overview": "This version connects your ad platforms to an agent through read-scoped APIs or MCP servers. The agent pulls the full campaign inventory on a schedule, audits every name against your spec, and packages proposed renames into batches that you approve before anything is written back. It suits teams running many accounts, or enough campaigns that a spreadsheet audit no longer keeps up.",
+        "steps": [
+          {
+            "title": "Encode the convention as a machine-readable spec",
+            "body": "Store the segments, delimiter, and allowed values in a Google Sheet or a small config file the agent reads on every run. This is the single source of truth: when the convention changes, you change it here and the next audit picks it up. Include the launch template so the agent can also generate compliant names for new campaigns."
+          },
+          {
+            "title": "Give the agent a read-only view",
+            "body": "Connect the Google Ads and Meta ads APIs — directly or through an MCP server for each platform — with read scope only. Schedule the inventory pull with n8n, Make, or Zapier, or let the agent run on its own timer. At this stage the agent can see everything and change nothing."
+          },
+          {
+            "title": "Run the audit loop",
+            "body": "On each run, the agent parses every campaign name against the spec and classifies it: conforming, fixable by rename, or needing restructure. It writes the results to an audit log with campaign IDs and drafts a compliant new name for every fixable row. Nothing is applied — the output is a proposal."
+          },
+          {
+            "title": "Batch renames for sign-off",
+            "body": "Proposed renames land as a batch in Slack, email, or a review tab in the sheet. Only after you approve a batch does the workflow use a write-scoped credential to apply it, and every applied change is logged old name, new name, and campaign ID. That log means any batch can be reversed in a single follow-up run."
+          },
+          {
+            "title": "Watch new launches for drift",
+            "body": "Each run, the agent also checks campaigns created since the last run against the launch template and flags any that skipped the checklist. These alerts are notify-only: the agent never pauses or blocks a live campaign. Structure violations get raised to a human, and the human decides."
+          }
+        ],
+        "connections": [
+          "Google Ads (read-scoped API access or an MCP server; write scope only inside the approval flow)",
+          "Meta ads API (read-scoped, same pattern)",
+          "Google Sheets — the naming spec, audit log, and rename mapping",
+          "n8n, Make, or Zapier — schedules the loop and routes approval batches",
+          "Slack or email — where rename batches and new-launch alerts land for sign-off"
+        ]
+      },
+      "tools": [
+        "Google Ads Editor — bulk export of the live account and bulk paste of approved renames",
+        "Google Sheets — holds the naming spec, audit formulas, and the old-to-new mapping table",
+        "Google Ads and Meta ads APIs — give the agent path a full read of campaign inventory",
+        "Claude with MCP servers — parses names against the spec and drafts compliant renames",
+        "n8n, Make, or Zapier — runs the audit on a schedule and routes batches for approval"
+      ],
+      "guardrails": [
+        "Every rename ships as a human-approved batch; the agent never renames anything unreviewed, even a one-character fix",
+        "Write scope covers names and labels only — the agent can never touch budgets, bids, targeting, or campaign status",
+        "Every change is logged old name, new name, campaign ID, so any batch is reversible in one pass",
+        "New-launch violations are notify-only alerts; nothing is paused or blocked automatically"
+      ],
+      "metaDescription": "Build a Campaign Structure & Naming automation two ways: a manual export-and-spreadsheet audit, or an MCP-connected agent that flags and fixes drift."
+    },
+    {
+      "slug": "automation-governance",
+      "name": "Automation Governance",
+      "tagline": "An owner, approval gates, spend caps, and a change log around every automated rule.",
+      "what": "Automation Governance puts a control layer around every rule, script, and workflow that can touch your ad accounts. You name a single automation owner, stand up an approval workflow, install a guardrail set — budget caps, conversion thresholds, brand exclusions — and start a change log, all before any rule touches live spend. The result is a register that can answer, at any moment: what is allowed to change what, and who signed off.\n\nGovernance compounds quietly: every automation you add afterward inherits the same gates. New rules launch faster because the approval path already exists, incidents shrink because every change carries a rollback step, and the register becomes the single place anyone checks before touching live spend.",
+      "outcome": "Closes the hole where one unchecked rule can burn a week of budget — every automated change is capped, logged, and approved before it reaches live spend.",
+      "prereqs": [
+        "A named automation owner with the authority to approve or block changes",
+        "Admin or editor access to every system that runs automations: ad platforms, scripts, and workflow tools like Zapier, Make, or n8n",
+        "A complete list of live automated rules, or the access needed to build one",
+        "A shared home for the register and change log — a Google Sheet is enough to start"
+      ],
+      "manualPath": {
+        "overview": "You run governance from a spreadsheet: a register of every automation, a change-log tab, and a weekly export-and-diff audit that the owner works through by hand. It suits teams with a manageable number of automations who want control installed this week, without touching an API.",
+        "steps": [
+          {
+            "title": "Inventory every live automation",
+            "body": "Export or copy out every automated rule you can find: the Rules and Scripts pages in Google Ads (Google Ads Editor helps with bulk export), Meta automated rules, and every Zapier, Make, or n8n scenario that touches marketing systems. Put one row per automation in a Google Sheet: what triggers it, what it can change, the most spend it could move, and who built it. This register is the backbone of everything that follows."
+          },
+          {
+            "title": "Name the owner and write the thresholds",
+            "body": "One person owns the register — the part most teams skip. On the first tab, write the approval rules in plain language: which changes anyone can make, which need the owner's sign-off, and which need a second approver. Pick the thresholds yourself — a percentage budget change, a new audience, a new rule going live — and keep them visible."
+          },
+          {
+            "title": "Install the guardrail set by hand",
+            "body": "In each platform, set account- and campaign-level budget caps, add conversion-threshold conditions to any bid or budget rule so it cannot act on thin data, and apply brand exclusion lists. Record each guardrail as a row in the register with the date it was set. These live in the ad platforms themselves, not in the spreadsheet, so they hold on their own."
+          },
+          {
+            "title": "Start the change log",
+            "body": "Add a second tab: date, system, rule, what changed, why, who approved, and the exact rollback step. Set one working rule for the team: no automation goes live or gets edited without a row here first. The rollback column is the discipline that matters — if you cannot write down how to undo a change, it is not ready to ship."
+          },
+          {
+            "title": "Run the weekly audit",
+            "body": "Once a week, re-export the rules from each platform and compare them against the register — a simple diff column in the sheet is enough. Anything live that is not registered, or changed without a log row, gets investigated and either logged or switched off. Note each audit pass in the log so there is a record that the check actually ran."
+          }
+        ],
+        "cadence": "Initial inventory and guardrail install takes about a week; after that, the weekly audit cycle is roughly an hour."
+      },
+      "mcpPath": {
+        "overview": "You connect your ad platforms and workflow tools to an agent through read-scoped API or MCP connections. The agent maintains the register and change log automatically, diffs live rules against the approved state on a schedule, and routes anything over threshold to the named owner for sign-off. It suits teams running enough automations that hand-diffing exports no longer keeps up.",
+        "steps": [
+          {
+            "title": "Wire read-only visibility into every system",
+            "body": "Set up read-only API access or MCP servers for Google Ads and Meta, plus your workflow tool's API for scenario inventory. The agent can see every rule, script, and scenario, but it cannot change any of them — enforcement of that boundary lives in the credentials, not in a prompt."
+          },
+          {
+            "title": "Let the agent build the register",
+            "body": "On its first run, the agent enumerates every automation it can see and drafts a register entry for each: trigger, scope, maximum spend it could move, and last-modified date. The owner reviews and corrects the draft — the agent proposes, the human confirms. The register lives in Google Sheets or BigQuery where the whole team can read it."
+          },
+          {
+            "title": "Encode the guardrails as checkable policy",
+            "body": "Write the budget caps, conversion thresholds, and brand exclusions into a policy file the agent evaluates on every run. Anything in the live accounts that does not match policy gets flagged, whether a human or another automation put it there. The platform-level caps stay set in the ad accounts too, as the backstop."
+          },
+          {
+            "title": "Run the scheduled audit loop",
+            "body": "On a schedule — n8n, Make, or Zapier triggering the agent — the agent pulls the current state of every rule, diffs it against the approved register, and writes findings to the change log. Clean runs get a one-line entry; drift gets a full report with before-and-after values."
+          },
+          {
+            "title": "Route over-threshold changes to the owner",
+            "body": "When the agent finds a new or modified automation, or a proposed change crosses a threshold, it sends an approval request to Slack or email with the diff and the rollback step attached. Approving updates the register; rejecting produces the exact revert instructions. Nothing is auto-approved, and the agent never applies changes to live rules itself."
+          },
+          {
+            "title": "Keep the log append-only",
+            "body": "Every detection, approval, and rejection is written with a timestamp, the actor, and before-and-after values. That makes any change reversible in one step and gives you a complete answer when someone asks what changed and who signed off."
+          }
+        ],
+        "connections": [
+          "Google Ads (read-only API access or an MCP server)",
+          "Meta Ads (read-only API access or an MCP server)",
+          "Your workflow tool's API — Zapier, Make, or n8n — for scenario inventory",
+          "Google Sheets or BigQuery for the register and change log",
+          "Slack or email for approval requests to the named owner"
+        ]
+      },
+      "tools": [
+        "Google Sheets — the register and change log, in a place the whole team can read",
+        "Google Ads Editor — bulk export of rules and settings for the manual audit",
+        "Google and Meta ads APIs — read-scoped pulls of live automated rules for diffing",
+        "Claude with MCP servers — the agent that diffs live state against the register and drafts log entries",
+        "n8n (or Zapier/Make) — schedules the audit loop and routes approval requests",
+        "Slack — where over-threshold changes wait for the owner's sign-off"
+      ],
+      "guardrails": [
+        "The agent's platform connections are read-scoped; only a human applies changes to live rules.",
+        "No automation goes live without a register entry, a budget cap, and the named owner's sign-off.",
+        "Every change is logged with before-and-after values and an explicit rollback step, so any change reverses in one edit.",
+        "Budget caps and brand exclusions are set in the ad platforms themselves, so they hold even if the governance workflow goes down."
+      ],
+      "metaDescription": "Automation Governance build guide: stand it up manually with exports and a spreadsheet register, or run it as an MCP-connected agent with approval gates."
+    },
+    {
+      "slug": "ai-brief-machine",
+      "name": "AI Brief Machine",
+      "tagline": "From one objective, keyword, or product to a full creative brief in under five minutes",
+      "what": "Give the AI Brief Machine a single input — a campaign objective, a keyword, a product — and its multi-step prompt chain returns a structured creative brief in under five minutes. The chain runs in stages: audience definition, angle, format, messaging hierarchy, and distribution notes, with each stage's output feeding the next so the brief stays internally consistent instead of reading like five disconnected paragraphs.\n\nThe chain itself is the compounding asset. Every run surfaces a weak prompt or a missing brand rule; you fix it once and every future brief improves. Over months you build a brief library your writers trust and a prompt chain tuned to your brand — not a blank chat window someone re-improvises each time.",
+      "outcome": "A complete, structured creative brief — audience definition, angle, format, messaging hierarchy, and distribution notes — from a single input in under five minutes.",
+      "prereqs": [
+        "A Claude workspace where the prompt chain can be saved and shared with the team",
+        "Brand basics written down: positioning, tone rules, banned claims, audience segments",
+        "A brief template your writers and production team already accept",
+        "One input per run — a campaign objective, keyword, or product; no external system connections required to start",
+        "A named owner who approves changes to the prompt chain"
+      ],
+      "manualPath": {
+        "overview": "This version runs entirely on a saved prompt chain, a Google Docs template, and an intake sheet — no API connections and no build tooling, matching the automation's core dependency: one input per run. It suits a team that wants consistent briefs this week and is fine running the chain by hand for each request.",
+        "steps": [
+          {
+            "title": "Lock the brief template first",
+            "body": "Create a Google Docs template with the five sections in fixed order: audience definition, angle, format, messaging hierarchy, distribution notes. Add a header block for the input, requester, date, and the prompt-chain revision that produced it. The chain writes into this shape, so agree on it with your writers before you build anything."
+          },
+          {
+            "title": "Build the prompt chain in Claude",
+            "body": "Write one saved prompt per stage, where each stage takes the previous stage's output as its input — audience feeds angle, angle feeds format, and so on. Store the chain in a shared Claude Project with your brand context (tone rules, banned claims, segments) loaded as project knowledge. Record the chain in a change log from day one so every later revision is traceable."
+          },
+          {
+            "title": "Set up an intake sheet",
+            "body": "Make a Google Sheet with columns for the input (objective, keyword, or product), audience notes, deadline, requester, and status. Optionally paste supporting rows from a search term or GA4 landing-page export into a context column — it sharpens the audience and angle stages, but the chain runs fine without it."
+          },
+          {
+            "title": "Run the chain per request",
+            "body": "Take the next intake row, run stage one, paste its output into stage two, and continue through all five. Paste the final output into the template. A run takes under five minutes; resist editing mid-chain — note weaknesses instead so they get fixed in the prompts."
+          },
+          {
+            "title": "Review, file, and log",
+            "body": "The owner checks the draft against brand rules, makes corrections in the doc, saves it to the brief library, and marks the intake row done. Log any correction that reveals a prompt gap — those notes are the raw material for the next chain revision."
+          },
+          {
+            "title": "Iterate the chain monthly",
+            "body": "Once a month, review the logged corrections, update the weakest prompts, and note the revision in the change log. Keep prior prompt wording so you can roll back if a revision makes briefs worse."
+          }
+        ],
+        "cadence": "On demand per campaign request — a run takes under five minutes plus a short review; batch the intake queue weekly if requests pile up, and revise the chain monthly."
+      },
+      "mcpPath": {
+        "overview": "This version wraps the same prompt chain in an agent: intake triggers a run automatically, the agent pulls read-scoped brand and performance context over MCP, drafts the brief, and parks it at a human gate before anything reaches production. It suits teams producing enough briefs per week that hand-running the chain has become the bottleneck.",
+        "steps": [
+          {
+            "title": "Encode the chain as an agent workflow",
+            "body": "Rebuild each stage as a step with structured output — named fields for audience, angle, format, messaging hierarchy, and distribution notes — in n8n, Make, or a Claude agent workflow. Store the prompts in version control or a versioned doc so every change is reviewable and reversible."
+          },
+          {
+            "title": "Wire intake as the trigger",
+            "body": "A new row in the intake sheet or a new ticket in your project tool starts a run — no one pastes anything by hand. Reject malformed intakes back to the requester with a note rather than letting the agent guess at missing inputs."
+          },
+          {
+            "title": "Connect read-scoped context",
+            "body": "Give the agent MCP connections to your brand guidelines folder and, optionally, performance data such as GA4 or Google Ads exports in BigQuery. All connections are read-only and scoped to specific folders and datasets; write access exists only for the briefs output folder."
+          },
+          {
+            "title": "Let the agent draft and self-check",
+            "body": "The agent runs the five stages, then validates the draft against your brand exclusion list — banned claims, restricted audiences, off-limits comparisons. Sections it can't ground in the provided context get flagged for the reviewer instead of filled with plausible-sounding filler."
+          },
+          {
+            "title": "Hold every brief at the human gate",
+            "body": "The finished draft lands in Google Docs and a Slack notification goes to the chain owner, showing the input and which sources the agent used. Only approved briefs move to the writers' queue. The agent recommends; it never publishes."
+          },
+          {
+            "title": "Keep the audit trail per run",
+            "body": "Each run writes input, prompt revision, sources read, output, approver, and timestamp to a log sheet or BigQuery table. When a brief goes wrong, the log tells you exactly which revision of the chain produced it — and rolling back is one change."
+          }
+        ],
+        "connections": [
+          "Claude with MCP servers — runs the multi-step chain and reads scoped context",
+          "An MCP server for Google Drive/Docs — brand guidelines in (read-only), finished briefs out (scoped to one folder)",
+          "Google Sheets or your project management tool — intake queue, status, and run log",
+          "BigQuery with GA4 or Google Ads exports (optional, read-only) — performance context for the audience and angle stages",
+          "Slack — approval notifications for the human gate"
+        ]
+      },
+      "tools": [
+        "Claude — runs the multi-step prompt chain that builds each brief section",
+        "Google Docs — the brief template and the growing finished-brief library",
+        "Google Sheets — intake queue, status tracking, and run log",
+        "n8n, Make, or Zapier — triggers runs from intake and routes drafts to approval on the MCP path",
+        "Claude with MCP servers — read-scoped access to brand docs and performance context on the MCP path",
+        "Slack — approval notifications and the human gate"
+      ],
+      "guardrails": [
+        "Every brief passes a named human approver before it reaches writers or production — the agent drafts, it never publishes",
+        "Agent access is read-only and scoped: brand-docs folder and performance datasets in, one briefs folder out, nothing else",
+        "The prompt chain is versioned and every run logs input, prompt revision, output, and approver — any bad brief traces to a revision and rolls back in one change",
+        "A brand exclusion list is checked on every run; flagged briefs route to the owner instead of the queue"
+      ],
+      "metaDescription": "Build the AI Brief Machine: a governed prompt pipeline that turns objectives into creative briefs — as a manual Claude workflow or an MCP-connected agent."
+    },
+    {
+      "slug": "search-term-intelligence",
+      "name": "Search Term Intelligence",
+      "tagline": "Turns your weekly search term report into ranked negative keywords and match-type fixes.",
+      "what": "Search Term Intelligence turns the raw Google Ads search terms report into a structured weekly decision: which queries get negated, which match types are leaking spend, and which converting terms deserve their own keywords. Instead of eyeballing thousands of rows, a structured Claude pipeline classifies every term, ranks negative keyword candidates by wasted spend, flags match type efficiency gaps, and hands you a short approval list.\n\nEach applied negative stops the same waste from recurring — that is where it compounds. The decision log becomes account memory: rejected candidates stop getting re-flagged, seasonal query patterns become visible, and match-type fixes tighten targeting over time. Platform matching keeps getting broader; this workflow is the governed counterweight — logged, capped, and reversible.",
+      "outcome": "Reduces wasted spend by converting each week's search term report into applied negative keywords and match-type fixes, tracked as the dollars flowing to non-converting queries week over week.",
+      "prereqs": [
+        "Google Ads account access sufficient to export the search terms report (read-only is enough for the manual path)",
+        "At least 30–90 days of search term history with cost, clicks, and conversion columns populated",
+        "An agreed conversion definition and target efficiency (CPA or ROAS) so \"wasted spend\" means the same thing to everyone",
+        "A Claude workspace for the analysis pipeline and a Google Sheet for the decision log",
+        "For the MCP path: authority to grant read-scoped Google Ads API access, plus a write path limited to negative keyword lists"
+      ],
+      "manualPath": {
+        "overview": "This is the zero-platform-access version: a weekly Google Ads CSV export, a structured Claude pipeline, and a spreadsheet where a human makes every call. It suits teams that can't or won't grant API access, agencies working inside a client's permission boundaries, and anyone who wants the intelligence before the integration.",
+        "steps": [
+          {
+            "title": "Standardize the weekly export",
+            "body": "In Google Ads, pull the search terms report for the trailing 30 days with a fixed column set: search term, matched keyword, match type, campaign, ad group, impressions, clicks, cost, conversions, and conversion value. Save it as a CSV with a dated filename. Keeping the columns identical every week is what makes the pipeline repeatable."
+          },
+          {
+            "title": "Build the Claude classification pipeline",
+            "body": "Write a structured prompt chain in Claude with three passes. Pass one classifies every term (irrelevant, competitor, research-stage, converting, ambiguous). Pass two ranks negative candidates by wasted spend and checks match type efficiency, flagging terms that leak through broad match while an exact variant performs. Pass three surfaces opportunity signals: converting queries that aren't yet keywords."
+          },
+          {
+            "title": "Run the CSV and generate the report",
+            "body": "Paste or attach the week's CSV and run the pipeline. The output is a three-section report: negative keyword candidates ranked by wasted spend, match type gaps with the evidence rows, and new keyword opportunities. Have Claude also propose the negative match type and level (ad group, campaign, or shared list) for each candidate."
+          },
+          {
+            "title": "Review every candidate in the decision sheet",
+            "body": "Move the report into a Google Sheet with an approve/reject column. You decide each negative — the pipeline never does. Rejections get a one-line reason so future runs stop re-flagging them. Watch for false positives: terms that look irrelevant but convert on longer windows."
+          },
+          {
+            "title": "Apply changes in Google Ads Editor",
+            "body": "Bulk-add approved negatives via Google Ads Editor into a dated shared negative list, and make any approved match-type changes at the same time. Using a dated list per week means one batch can be removed in a single action if something goes wrong."
+          },
+          {
+            "title": "Log and track week over week",
+            "body": "Record what was applied, the wasted-spend evidence, and the date in the log sheet. Track two numbers over time: total spend on non-converting queries (should trend down) and impression share on converting queries (should hold steady — if it drops, a negative is too aggressive)."
+          }
+        ],
+        "cadence": "Weekly; roughly an hour per cycle once the export format and pipeline prompts are locked in."
+      },
+      "mcpPath": {
+        "overview": "Here the systems are connected: a read-scoped Google Ads connection feeds an agent that runs the classification loop on schedule, stages low-risk negatives within a spend cap, and queues everything else for your approval. It suits teams that already trust the weekly report from the manual version and want the loop to run without the export step.",
+        "steps": [
+          {
+            "title": "Connect Google Ads with split scopes",
+            "body": "Set up read-only reporting access to Google Ads through the API or an MCP server for Google Ads — enough to query search terms, keywords, and existing negatives. Separately configure a constrained write path that can only add or remove entries in designated shared negative keyword lists. The agent never gets access to bids, budgets, ads, or settings."
+          },
+          {
+            "title": "Schedule the agent loop",
+            "body": "Using Claude with MCP servers, or an orchestrator like n8n, Zapier, or Make, run the loop weekly: pull the trailing search term data, dedupe against existing negatives and active keywords, and pass the remainder through the same three-pass classification — negative candidates ranked by wasted spend, match type gaps, and opportunity signals."
+          },
+          {
+            "title": "Split actions by your thresholds",
+            "body": "Define the caps up front. Clearly irrelevant, zero-conversion terms under your per-term spend threshold are staged automatically into the current dated shared negative list. Anything above the cap, anything ambiguous, and every match-type or keyword-addition recommendation goes to the approval queue instead. The agent recommends; it only acts inside the box you drew."
+          },
+          {
+            "title": "Approve from a weekly digest",
+            "body": "The agent posts a digest to Slack or email: what it staged within caps, what needs your sign-off, and the evidence rows behind each item. You approve or reject in one pass. Approved items are applied through the scoped write path; rejections are written back so they're never re-flagged."
+          },
+          {
+            "title": "Write everything to the audit log",
+            "body": "Every action — auto-staged or human-approved — lands in a Google Sheets or BigQuery log with the term, spend evidence, classification reason, who approved it, and a timestamp. The log is the source of truth for what the automation did and why, and it feeds the week-over-week wasted-spend trend."
+          },
+          {
+            "title": "Run the rollback check",
+            "body": "Once a week, review impression share and conversion volume on the queries you kept. If a negative is blocking converting traffic, remove it from the dated shared list — or remove the whole week's batch in one action. Reversibility is built into the list structure, not bolted on."
+          }
+        ],
+        "connections": [
+          "Google Ads reporting (read-only API access or an MCP server for Google Ads)",
+          "Google Ads negative keyword lists (write access scoped to designated shared lists only)",
+          "Google Sheets or BigQuery (audit log and week-over-week wasted-spend tracking)",
+          "Slack or email (approval queue and weekly digest)",
+          "Claude with MCP servers, or n8n/Zapier/Make as the scheduling and orchestration layer"
+        ]
+      },
+      "tools": [
+        "Google Ads search terms report — the raw input; exported as CSV on the manual path, queried via API on the MCP path",
+        "Claude — runs the structured classification pipeline that ranks negatives by wasted spend and flags match type gaps",
+        "Google Sheets — decision sheet, rejection memory, and the audit log both paths share",
+        "Google Ads Editor — bulk-applies approved negatives and match-type changes on the manual path",
+        "An MCP server for Google Ads — gives the agent read-scoped term data and a constrained write path to negative lists",
+        "n8n, Zapier, or Make — schedules the weekly loop and routes the approval digest"
+      ],
+      "guardrails": [
+        "Auto-apply only below the cap you set: zero-conversion, clearly irrelevant terms under your per-term spend threshold — everything else waits for human approval",
+        "Write scope is negatives only: the agent can never touch bids, budgets, ads, or campaign settings on either path",
+        "Every applied negative is logged with the term, spend evidence, classification reason, approver, and timestamp in a sheet you own",
+        "Each week's negatives go into a dated shared list, so any batch reverses in one action if it blocks converting traffic"
+      ],
+      "metaDescription": "Build Search Term Intelligence two ways: a weekly CSV-export spreadsheet workflow, or an MCP-connected agent that flags wasted spend for approval."
+    },
+    {
+      "slug": "competitive-intelligence",
+      "name": "Competitive Intelligence Engine",
+      "tagline": "Weekly gap analyses, keyword angles, and positioning briefs from public data only.",
+      "what": "The Competitive Intelligence Engine is a structured research-to-analysis pipeline that runs entirely on public data. You feed it competitor URLs, ad library creatives, job postings, and landing pages; it returns three artifacts on a defined weekly cadence: a gap analysis against your own positioning, keyword angle opportunities, and a creative positioning brief your PPC, SEO, and content teams can act on. No proprietary connections, no access to anyone's ad accounts.\n\nThe archive is what compounds. Every weekly capture is kept, so after a month you are not reading isolated pages — you are diffing them. New offers, messaging pivots, landing page tests, and hiring signals show up as changes against a baseline, and that is where the real intelligence lives.",
+      "outcome": "Puts a gap analysis, a set of keyword angle opportunities, and a creative positioning brief in front of your team on a defined weekly cadence, replacing ad-hoc competitor checks.",
+      "prereqs": [
+        "A named list of 3–10 competitors with their key URLs: homepage, pricing page, and top landing pages",
+        "Bookmarked public sources for each: Meta Ad Library and Google Ads Transparency Center listings, careers page or job board search",
+        "A statement of your own positioning and target keywords, so the gap analysis has something to compare against",
+        "Somewhere to store weekly output: Google Sheets for the tracker, Google Docs or Notion for briefs",
+        "Claude access; for the MCP path, an automation runner such as n8n, Make, or Zapier"
+      ],
+      "manualPath": {
+        "overview": "You run a weekly capture pass by hand, log everything in a spreadsheet, and push the captures through a fixed set of Claude prompts. No APIs, no connectors — just browser, screenshots, and a sheet. This suits a solo marketer or small team that wants the discipline of a weekly cadence without any infrastructure.",
+        "steps": [
+          {
+            "title": "Build the competitor tracker sheet",
+            "body": "Create a Google Sheet with one row per tracked source: competitor, URL, source type (landing page, ad library, job board), capture date, and notes. Add a second tab as an evidence log where every observation gets a source link and date. This sheet is the memory of the whole system."
+          },
+          {
+            "title": "Run the weekly capture pass",
+            "body": "Visit each bookmarked source in order. Screenshot active ads in the Meta Ad Library and Google Ads Transparency Center, copy key page text from landing and pricing pages, and note new job postings. Log each capture in the tracker with the date. Keep the pass mechanical — analysis comes next, not during."
+          },
+          {
+            "title": "Run the fixed Claude prompt pack",
+            "body": "Paste the week's captures into three saved prompts: one that produces a gap analysis against your positioning statement, one that extracts keyword angle opportunities, and one that drafts a creative positioning brief. Using the same prompts every week is what makes outputs comparable over time."
+          },
+          {
+            "title": "Diff against last week",
+            "body": "Give Claude this week's captures alongside last week's summary and ask for what changed: new offers, new landing pages, pulled ads, fresh hiring signals. Changes are the highest-value output — flag them at the top of the brief."
+          },
+          {
+            "title": "Review, then distribute",
+            "body": "Spot-check every claim in the brief against the logged source before anyone acts on it. Anything you cannot trace to a capture gets cut or marked unverified. Then share the brief with your PPC, SEO, and creative owners and file it with the date."
+          }
+        ],
+        "cadence": "Weekly; expect roughly 60–90 minutes per cycle once the tracker and prompt pack exist."
+      },
+      "mcpPath": {
+        "overview": "The collection and analysis loop runs on a schedule: read-scoped web access snapshots your tracked sources, Claude diffs them against prior weeks and drafts the three artifacts, and a human approves before anything circulates. This suits a team that wants the weekly cadence guaranteed rather than dependent on someone's calendar.",
+        "steps": [
+          {
+            "title": "Stand up the evidence store",
+            "body": "Create a Google Sheet or BigQuery table that holds one row per snapshot: source URL, capture timestamp, extracted text, and a content hash for change detection. Every downstream claim will point back to a row here, so get this in place before anything else."
+          },
+          {
+            "title": "Connect read-scoped collection",
+            "body": "Give Claude an MCP server for web fetch and search so it can read tracked competitor pages and public ad library listings — read access only, nothing that touches your own ad accounts. Schedule a weekly n8n, Make, or Zapier run that triggers the collection pass; a Screaming Frog crawl of tracked pages can feed the store as well."
+          },
+          {
+            "title": "Configure the weekly agent loop",
+            "body": "On each run the agent fetches the tracked sources, writes snapshots to the evidence store, and diffs them against the previous week. From the diffs it drafts the gap analysis, keyword angle opportunities, and creative positioning brief, with every claim carrying a source URL and capture date. The source list itself is fixed config the agent cannot edit."
+          },
+          {
+            "title": "Add the approval gate",
+            "body": "Drafts land in a Google Doc or Notion page and a summary posts to Slack or email for review. A named owner approves before the brief circulates to the team — the agent recommends, it does not publish. Requested additions to the competitor list also route through this gate."
+          },
+          {
+            "title": "Log every run and audit monthly",
+            "body": "The run log records what was fetched, what changed, what was flagged, and what failed — blocked pages and stale sources surface to the owner instead of silently disappearing. Once a month, review the log and a sample of briefs to confirm claims still trace cleanly to sources."
+          }
+        ],
+        "connections": [
+          "An MCP server for web fetch and search (read-only access to public pages and ad libraries)",
+          "Google Sheets or BigQuery (evidence store and change log)",
+          "Google Docs or Notion (brief drafts and the approval workspace)",
+          "Slack or email (weekly digest and approval requests)",
+          "n8n, Make, or Zapier (the weekly scheduler that kicks off the run)"
+        ]
+      },
+      "tools": [
+        "Claude with MCP servers — runs the structured analysis and drafts the gap analysis, keyword angles, and briefs",
+        "Google Sheets — competitor tracker, evidence log, and snapshot store",
+        "Meta Ad Library and Google Ads Transparency Center — public sources for competitor ad creative",
+        "Screaming Frog — scheduled crawls that detect changes on tracked competitor pages",
+        "n8n, Make, or Zapier — schedules the weekly run and routes drafts to the approval gate",
+        "Google Docs or Notion — where briefs are drafted, reviewed, and archived"
+      ],
+      "guardrails": [
+        "Public data only: the pipeline reads competitor sites, ad libraries, and job boards — it never connects to your ad accounts and never makes campaign changes",
+        "Every claim in a brief carries a source URL and capture date in the evidence log; anything unverifiable is flagged, not published",
+        "The tracked-source list is fixed configuration — the agent proposes additions, only a human applies them, and fetch frequency stays capped at the weekly schedule",
+        "Briefs are drafts until a named owner approves them; nothing auto-distributes to the team, and any brief can be retracted since the evidence trail shows exactly what it was based on"
+      ],
+      "metaDescription": "Build a Competitive Intelligence Engine two ways: a manual weekly capture-and-prompt workflow, or an MCP-connected agent with approval gates and source logs."
+    },
+    {
+      "slug": "content-atomization",
+      "name": "Content Atomization System",
+      "tagline": "One long-form piece becomes 12+ channel-ready assets, with a quality gate at every step",
+      "what": "Feed the Content Atomization System one long-form piece — a blog post, case study, or customer interview — and it produces 12+ channel-specific assets: social posts, email copy, ad creative variants, video scripts, and landing page bullets. It's built as a decision tree with quality gates: the pipeline first extracts the verifiable claims, quotes, and stats from your source, then drafts each channel asset against that extraction, so nothing gets invented along the way.\n\nThe economics compound because the expensive thinking happens once. Your voice rules, channel specs, and gate criteria get encoded into the pipeline, and every long-form piece you already own becomes raw material. Each run leaves an audit trail — which asset came from which source, and who approved it — so distribution scales without your review standards slipping.",
+      "outcome": "One long-form piece becomes 12+ channel-specific assets per run — social posts, email copy, ad creative variants, video scripts, and landing page bullets — each cleared through a quality gate before it ships.",
+      "prereqs": [
+        "A library of long-form source content (blog posts, case studies, or interview transcripts) you can copy out as plain text — no CMS integration needed",
+        "A brand voice and messaging guide, even one page, that gates can check drafts against",
+        "A channel list with format rules per channel: character limits, CTA conventions, tone shifts, banned phrases",
+        "Access to Claude (or the LLM your team already uses) for the extraction and drafting steps",
+        "A named owner for final publish approval on each channel"
+      ],
+      "manualPath": {
+        "overview": "You run the pipeline as a set of saved prompt templates plus a spreadsheet tracker — paste in the source text per run, no integrations at all. It suits a solo marketer or a small team that publishes long-form regularly but has no developer support.",
+        "steps": [
+          {
+            "title": "Build the atomization brief template",
+            "body": "Create one document that captures everything a run needs: the source piece pasted in full, target audience, the offer or CTA, your voice rules, banned phrases, and the list of channels to produce for. This brief travels with every run. Store it alongside a channel spec sheet listing format rules per channel."
+          },
+          {
+            "title": "Extract claims before drafting anything",
+            "body": "Run an extraction prompt against the source piece that pulls out every verifiable claim, quote, statistic, and proof point into a spreadsheet table — one row each, with the source sentence noted. All downstream drafting works from this table, not the raw article. This is what stops the pipeline from inventing facts."
+          },
+          {
+            "title": "Draft each channel from its own prompt branch",
+            "body": "For each channel, run a saved channel-specific prompt that takes the extraction table plus that channel's format spec and returns the assets: social posts, email copy, ad variants, video scripts, landing page bullets. Keep one prompt per channel rather than one mega-prompt — that's the decision tree, and it makes failures easy to isolate."
+          },
+          {
+            "title": "Score every asset against the quality gate checklist",
+            "body": "In the tracker, score each draft on three checks: on-message per your voice guide, every claim traceable to a row in the extraction table, and format compliance for the channel. Anything that fails gets exactly one revision pass; if it fails again, cut it rather than force it. Log pass/fail per asset."
+          },
+          {
+            "title": "Publish by hand and log the lineage",
+            "body": "Paste approved assets into your scheduler, email platform, and ad accounts yourself. In the tracker, record which source piece each asset came from, the date, and who approved it. Next cycle, export basic engagement stats per channel and note which asset types earned a repeat — that feedback tightens your prompts over time."
+          }
+        ],
+        "cadence": "Run once per long-form piece — about a half-day for your first run, then an hour or two per piece once the templates are stable; most teams batch it weekly."
+      },
+      "mcpPath": {
+        "overview": "An agent runs the same decision tree end to end: it reads a source piece from your document store, extracts claims, drafts every channel branch, self-checks against the gates, and stages everything as drafts for your approval. It suits teams with a steady long-form pipeline who want the mechanical work off their plate while keeping publish authority human.",
+        "steps": [
+          {
+            "title": "Connect sources read-only, outputs draft-only",
+            "body": "Point the agent at a 'ready to atomize' folder in Google Docs or Notion via a read-only connection — it can read sources but never edit them. On the output side, connect your scheduler or email platform with write access scoped to draft status only. The permission boundary is the architecture: read sources, write drafts, publish nothing."
+          },
+          {
+            "title": "Encode the decision tree as the agent's workflow",
+            "body": "Configure the run in Claude with MCP servers, or orchestrate it in n8n or Make: an extraction step writes the claims-and-quotes table to your tracker first, then each channel branch runs with its own prompt, format spec, and gate criteria. Voice rules and banned phrases live in one shared config the agent loads every run, so updating them once updates every channel."
+          },
+          {
+            "title": "Let the agent self-check at each gate",
+            "body": "After drafting, the agent verifies each asset: every claim must map to a row in the extraction table, and format rules for the channel must validate. A failing asset gets one automated revision attempt; a second failure flags it for human rewrite instead of retrying. Gate results are written to the tracker per asset."
+          },
+          {
+            "title": "Stage everything in a human review queue",
+            "body": "Passed assets land as drafts in your scheduler or email platform, grouped by source piece so you review a whole run at once. You approve or reject in batch — nothing goes live without your click. Rejections require a one-line reason, which the agent appends to that channel's prompt notes so the same miss doesn't recur."
+          },
+          {
+            "title": "Keep a complete audit log per asset",
+            "body": "Every asset row in the tracker records the source piece, prompt used, gate results, approver, and timestamp. When something published needs to come down or be corrected, the log tells you exactly where it came from and what else shipped from the same run. Review the log monthly to spot which channels' gates fail most — that's where the prompts need work."
+          }
+        ],
+        "connections": [
+          "Google Docs or Notion (read-only, via an MCP server for your document store) — where long-form source pieces live",
+          "Google Sheets or Airtable — extraction tables, gate scorecards, and the audit log",
+          "Your scheduler or email platform (e.g., the HubSpot API) — draft-only write scope, never direct publish",
+          "Claude with MCP servers, or n8n/Make — the orchestration layer that runs the decision tree"
+        ]
+      },
+      "tools": [
+        "Claude with MCP servers — runs the extraction step and each channel's drafting branch",
+        "Google Sheets or Airtable — holds the extraction table, quality-gate scorecard, and audit log",
+        "Google Docs or Notion — the source library the pipeline reads from",
+        "n8n, Zapier, or Make — moves assets between extraction, drafting, gating, and the review queue",
+        "HubSpot or your email/scheduling platform's API — receives approved assets as drafts only"
+      ],
+      "guardrails": [
+        "Nothing publishes automatically — every asset stops at draft status until a named human approves it",
+        "Every claim in an output asset must trace to a row in the extraction table; untraceable claims fail the gate",
+        "Failed assets get one automated revision pass, then a human flag — no unbounded retry loops",
+        "Each asset carries a full audit record (source piece, prompt used, gate result, approver, timestamp) so anything shipped can be traced and pulled"
+      ],
+      "metaDescription": "Content Atomization System build guide: manual prompts with spreadsheet gates, or an MCP-connected agent with draft-only publishing and human approval."
+    },
+    {
+      "slug": "content-brief",
+      "name": "Content Brief",
+      "tagline": "Writer-ready SEO briefs from a target keyword in under 20 minutes instead of three hours.",
+      "what": "Content Brief starts from a target keyword and ends with a complete, writer-ready SEO brief: search intent classification, audience and angle, a structured outline with a word-count target, internal link suggestions pulled from your own site, and a handoff prompt for Claude or Cursor. Every brief lands in the same standardized .md template, so writers stop guessing what a good brief looks like.\n\nBriefing is the bottleneck in most content operations, which is why this compounds. A brief that took a strategist around three hours now takes under 20 minutes, so the same team covers more of the keyword map without lowering the bar. And because every brief follows the same template and logs its sources, the process is inspectable, repeatable, and survives staff turnover.",
+      "outcome": "Brief production time drops from roughly three hours to under 20 minutes per brief, so a keyword can go from queue to writer-ready the same day.",
+      "prereqs": [
+        "A keyword research tool you already use (Semrush, Ahrefs, or similar) with export or API access",
+        "A documented content process: who requests briefs, who writes, who approves",
+        "An inventory of your site's URLs (sitemap or a Screaming Frog crawl) for internal-link suggestions",
+        "Read access to Google Search Console for your domain, to sanity-check intent against real queries"
+      ],
+      "manualPath": {
+        "overview": "This version runs on keyword exports, a Google Sheet, and a saved prompt pack in Claude — no APIs, no middleware. It suits teams producing a handful of briefs a week who want the templates and structure proven before wiring anything together. You gather the data; the prompts do the assembly; an editor signs off.",
+        "steps": [
+          {
+            "title": "Set up the brief template and intent rubric",
+            "body": "Create a .md brief template with fixed sections: audience, angle, outline, word-count target, internal links, and a handoff prompt block. Write a one-page rubric for classifying keywords as informational, commercial, or navigational. Get your writers to approve the template before anything else — it is the contract the whole workflow fills in."
+          },
+          {
+            "title": "Export your keyword queue",
+            "body": "Export target keywords from your keyword tool into a Google Sheet with volume and difficulty columns. Add a status column (queued, briefed, drafted, published) and an owner column. This sheet is now the single queue every brief comes from."
+          },
+          {
+            "title": "Capture the SERP by hand",
+            "body": "For each queued keyword, run the search and record the top 10 results in a SERP analysis tab: titles, recurring H2 themes, approximate word counts, and whether a featured snippet is present. Ten minutes of structured looking beats an hour of unstructured browsing."
+          },
+          {
+            "title": "Run the prompt pack in Claude",
+            "body": "Paste the keyword, your intent classification, and the SERP notes into a saved Claude prompt that outputs the brief in your exact template. Save the result as a .md file in a shared briefs folder. Keep the prompt wording in a dated doc so you can see which revision produced which brief."
+          },
+          {
+            "title": "Add internal links from your URL inventory",
+            "body": "Check your sitemap sheet or Screaming Frog crawl export and pick two or three genuinely relevant internal links. Paste them into the brief's internal-links section with one line of anchor guidance each."
+          },
+          {
+            "title": "Editor review and writer handoff",
+            "body": "An editor reads every brief before it reaches a writer — checking angle, outline, and links against the rubric. Log the date, keyword, prompt used, and approver in the tracking sheet, then flip the status to briefed and hand off with the Claude/Cursor prompt attached."
+          }
+        ],
+        "cadence": "Batch weekly against the keyword queue; expect roughly 20 minutes per brief once the template and prompt pack are settled."
+      },
+      "mcpPath": {
+        "overview": "Here the classify → SERP → outline → brief loop runs as an agent workflow. Keyword data, Search Console, and your site inventory connect through read-scoped API or MCP access, and the agent works a queue instead of waiting on a strategist. It suits teams briefing at volume that already have a documented content process and a real editorial gate.",
+        "steps": [
+          {
+            "title": "Wire the data sources, read-only",
+            "body": "Connect your keyword tool and Google Search Console to the agent using read-only credentials, and point it at a sheet or export of your site's URL inventory. The agent gets no CMS login and no publishing access of any kind — it reads data and writes brief files, nothing else."
+          },
+          {
+            "title": "Define the queue and the trigger",
+            "body": "The brief queue lives in a Google Sheet or your project tracker. A new row with status queued triggers a run — via n8n, Make, or Zapier, or on a scheduled agent check. Anyone on the team can request a brief by adding a keyword; nobody has to know how the machinery works."
+          },
+          {
+            "title": "Let the agent run the brief loop",
+            "body": "For each queued keyword the agent classifies intent, pulls SERP and keyword data, checks Search Console for related queries you already rank for, generates the outline and word-count target, and selects internal links from your URL inventory. It writes the finished brief into your .md template in the shared briefs folder."
+          },
+          {
+            "title": "Record every run",
+            "body": "Each run appends an audit entry: keyword, data sources pulled, prompt used, timestamp, and output file location. If a brief looks off, you can trace exactly what the agent saw and regenerate it against the same inputs."
+          },
+          {
+            "title": "Hold the approval gate",
+            "body": "The agent posts each finished brief as pending — a Slack message or a status flip in the queue. An editor approves it or sends it back with notes; only approved briefs move to writer handoff with the Claude/Cursor prompt attached. The agent never advances a brief past the gate on its own."
+          }
+        ],
+        "connections": [
+          "Your keyword research tool (read-only API access or an MCP server for it)",
+          "Google Search Console (read-only) for query and ranking data",
+          "Google Sheets or your project tracker — the brief queue and audit log",
+          "Google Drive or your docs store, where finished .md briefs land",
+          "Slack or email for pending-approval notifications"
+        ]
+      },
+      "tools": [
+        "Google Sheets — the keyword queue, status tracking, and SERP worksheet in the manual path",
+        "Claude — runs the prompt pack by hand, or the full agent loop via MCP servers",
+        "Semrush or Ahrefs — keyword volume, difficulty, and SERP data by export or API",
+        "Screaming Frog — crawls your site to build the internal-link inventory",
+        "Google Search Console — real query data to validate intent classification",
+        "n8n, Make, or Zapier — triggers the agent when a keyword enters the queue"
+      ],
+      "guardrails": [
+        "No CMS access, period: the agent reads keyword, SERP, and Search Console data and writes only brief files — no publishing scope of any kind",
+        "Every brief passes an editor approval gate before writer handoff — nothing enters the content calendar unreviewed",
+        "Per-run audit log records keyword, data sources, prompt used, and output file, so any brief can be traced and regenerated",
+        "Fully reversible: briefs are files in a pending folder — rejecting one discards a document, never published content"
+      ],
+      "metaDescription": "How to build the Content Brief automation: a manual keyword-export and spreadsheet path, or an MCP-connected agent that drafts SEO briefs with human approval."
+    },
+    {
+      "slug": "campaign-launch-kit",
+      "name": "Campaign Launch Kit",
+      "tagline": "Brief in, ready-to-launch campaign kit out — and nothing spends until you approve it.",
+      "what": "Campaign Launch Kit assembles a complete, ready-to-upload campaign from a one-page brief: a strategic brief, an ad group structure organized by theme, intent tier, and match type, three copy variants per ad group, landing page outlines mapped to each group's intent, a documented UTM taxonomy, and a pre-launch QA checklist covering tracking, copy, targeting, budget, and landing page parity. Everything arrives paused — no spend starts until a human enables it.\n\nEvery launch feeds the same templates and a persistent instruction file that records your offer, audience, naming conventions, and guardrails — so kit two is faster and more consistent than kit one. Setup drops from days to hours, and clean UTMs from day one mean every downstream report can be trusted.",
+      "outcome": "Campaign setup time drops from days to hours, with every launch shipping a consistent structure, clean UTMs, and a passed QA checklist.",
+      "prereqs": [
+        "A documented launch process — the steps and sign-offs your team already follows; the automation encodes it, it can't invent it",
+        "Consistent naming conventions for campaigns, ad groups, and UTMs",
+        "Offer, audience/ICP, and brand tone-of-voice documentation the kit generator can draw from",
+        "A project management tool where launch requests live (needed for the MCP path)",
+        "Access to your ad account — Google Ads Editor for the manual path, API access for the MCP path"
+      ],
+      "manualPath": {
+        "overview": "You run the kit from templates: a brief document, a Google Sheets workbook, and Claude in a chat window. There are no system connections — you paste the brief in, paste the kit out, and upload through Google Ads Editor yourself. It suits teams launching a campaign or two a month who want the speed without granting any API access.",
+        "steps": [
+          {
+            "title": "Fix the one-page brief format",
+            "body": "Create a one-page brief document with fixed fields: offer, audience and ICP, intent clusters, competitive angle, and success metrics. Fill one out per campaign. A complete brief is the input contract — if a field is blank, the kit will be vague, so treat blanks as blockers."
+          },
+          {
+            "title": "Set up the kit workbook",
+            "body": "Create a Google Sheets workbook with one tab each for ad group structure, copy variants, landing page outline, UTM builder, and QA checklist. Encode your naming conventions as data-validation rules or formulas so a wrongly named campaign shows up red before it ever reaches the account."
+          },
+          {
+            "title": "Generate the kit with Claude",
+            "body": "Paste the brief and your naming conventions into Claude and ask for the ad group structure organized by theme, intent tier, and match type, plus three copy variants per ad group and a landing page outline mapped to each group's intent. Paste the output into the workbook tabs. Edit in the sheet, not in the chat — the workbook is the source of truth."
+          },
+          {
+            "title": "Build UTMs in the sheet",
+            "body": "The UTM tab constructs final URLs by formula from your documented convention — source, medium, campaign, content, term. Nobody hand-types a UTM. Copy the finished URLs into the copy tab so every ad row carries its tracking."
+          },
+          {
+            "title": "Run the QA checklist",
+            "body": "Work the checklist tab row by row: tracking in place, copy within character limits, targeting matches the brief, budget matches the plan, landing page matches the ad's promise. Any blocker stops the launch until it is resolved; warnings get a note for the reviewer."
+          },
+          {
+            "title": "Upload paused via Google Ads Editor",
+            "body": "Import the structure and copy through Google Ads Editor with every campaign paused. A second person reviews in-account against the workbook, then enables. Because the upload is paused, backing out is as simple as deleting the draft — nothing has spent."
+          }
+        ],
+        "cadence": "Run once per campaign launch; with templates in place, a full cycle takes hours instead of the days a hand-built campaign takes."
+      },
+      "mcpPath": {
+        "overview": "Your project management tool, ad account, and asset storage connect to an agent that runs the whole kit on a trigger: a launch-request task goes in, a paused and QA'd campaign comes out. The agent acts within hard caps and logs every step; you approve before anything spends. It suits teams launching often enough that copy-paste is the bottleneck.",
+        "steps": [
+          {
+            "title": "Connect the systems",
+            "body": "Give the agent your project management tool for launch tasks and approvals, the Google Ads API (or an MCP server for Google Ads) scoped to creating campaigns in a paused state, Google Sheets or Drive for the kit archive, and GA4 read-only for tracking checks. Wire the trigger with n8n, Zapier, Make, or Claude with MCP servers directly."
+          },
+          {
+            "title": "Encode your launch process as the agent's instructions",
+            "body": "Write a persistent instruction file holding your offer, audience, naming conventions, budget caps, and required QA gates. This file is the governance layer: the agent refuses to build from an incomplete brief and cannot act outside what the file permits. It carries forward, so every future launch starts from the same guardrails."
+          },
+          {
+            "title": "Agent assembles the kit",
+            "body": "When a launch task is tagged in your PM tool, the agent reads the brief fields and generates the strategic brief, ad group structure by theme, intent tier, and match type, three copy variants per group, landing page outlines, and UTMs built strictly from your taxonomy. Everything is written to the workbook archive before anything touches the ad account."
+          },
+          {
+            "title": "Agent runs automated QA",
+            "body": "The agent validates every name against your convention, checks UTM parity between ads and landing pages, confirms budgets sit within cap, and verifies via GA4 that tracking is in place. Blockers halt the run; warnings are collected for the reviewer rather than silently cleared."
+          },
+          {
+            "title": "Paused upload and approval gate",
+            "body": "The agent creates the campaigns through the ads API in a paused state with the capped daily budget already set, then posts the QA results and a summary of exactly what was built to the PM task. A named approver reviews and enables in-account. Nothing spends on the agent's authority alone."
+          },
+          {
+            "title": "Log and improve",
+            "body": "Every run appends to the audit log: inputs, generated assets, QA outcomes, who approved, and when spend was enabled. After launch, feed what worked back into the instruction file so the next kit starts smarter without loosening any guardrail."
+          }
+        ],
+        "connections": [
+          "Project management tool (Asana, Jira, or similar — API access or an MCP server) for launch requests and approvals",
+          "Google Ads API (or an MCP server for Google Ads), scoped to creating campaigns in a paused state",
+          "Google Sheets or Drive for the kit archive and audit log",
+          "GA4 (read-only) to verify tracking fires and UTM data lands correctly"
+        ]
+      },
+      "tools": [
+        "Claude with MCP servers — generates the brief, structure, and copy, and runs the QA loop on the connected path",
+        "Google Sheets — the kit workbook, formula-driven UTM builder, and QA checklist on both paths",
+        "Google Ads Editor — bulk paused uploads on the manual path, fully reversible before anything runs",
+        "Google Ads API — programmatic paused campaign creation on the MCP path",
+        "n8n, Zapier, or Make — wires the PM-tool launch trigger to the agent run",
+        "GA4 — confirms tracking fires and UTM data arrives clean"
+      ],
+      "guardrails": [
+        "Every campaign is created paused; only a named human approver enables spend",
+        "Daily budget caps are set at creation and the agent cannot exceed them — raising a cap is a human-only change",
+        "QA must pass with zero blockers before an approval request goes out; warnings are surfaced to the reviewer, never cleared silently",
+        "Every run writes an audit log — inputs, generated assets, QA results, approver, enable time — and a paused upload can be deleted with nothing spent"
+      ],
+      "metaDescription": "Build the Campaign Launch Kit two ways: a manual spreadsheet workflow or an MCP-connected agent that assembles and QAs campaigns, paused until you approve."
+    },
+    {
+      "slug": "ppc-intelligence",
+      "name": "PPC Intelligence",
+      "tagline": "Classifies every search term by intent, drafts negatives, and shifts budget to what works.",
+      "what": "PPC Intelligence watches what your ad spend actually buys. It classifies every search term that triggered your ads by intent, flags terms burning budget with zero conversions, builds negative keyword lists across match types, and drafts a budget reallocation plan that moves spend from underperforming campaigns to high-intent ones. A weekly digest tells you what changed, what it recommends next, and what needs your sign-off.\n\nCompounding here looks like hygiene: the account gets cleaner every cycle. Negative lists keep bad traffic out permanently, the classification rules sharpen each time you correct an edge case, and the audit log becomes a memory of every decision — so each weekly pass starts from a better baseline than the last.",
+      "outcome": "Less budget leaks to zero-conversion search terms and more flows to high-intent campaigns — the sample sprint audit projects +34% conversion volume at the same monthly spend.",
+      "prereqs": [
+        "A Google Ads account with clean conversion tracking — conversions fire reliably and map to real business outcomes",
+        "Google Ads API access for the MCP path, or export permissions for the manual path",
+        "Search terms report history — a few months is enough to see the waste patterns",
+        "GA4 landing page performance data; Search Console access is optional but recommended",
+        "A named budget owner who signs off on reallocations and sets the spend caps"
+      ],
+      "manualPath": {
+        "overview": "You run the loop yourself on scheduled exports: pull the reports, classify terms in a spreadsheet, and apply every change by hand through Google Ads Editor. It suits a marketer managing one or a few accounts who wants the discipline of the system working before wiring up any APIs.",
+        "steps": [
+          {
+            "title": "Export your reports on a fixed day",
+            "body": "Each week, download the Google Ads campaign export (CSV), the search terms report, and GA4 landing page performance. Add Search Console data if you have it. Drop everything into a dated folder so each cycle is comparable to the last."
+          },
+          {
+            "title": "Classify search terms in a spreadsheet",
+            "body": "Pivot the search terms report by spend and conversions. Tag each meaningful term as converting, informational, competitor, or irrelevant. You can paste batches into Claude to pre-classify, but you verify every tag before it drives a change."
+          },
+          {
+            "title": "Build the negative keyword list",
+            "body": "Turn irrelevant and informational terms into exact and phrase negatives on a dedicated tab. Group them into shared campaign-level lists so one decision protects the whole account, not one ad group."
+          },
+          {
+            "title": "Draft the budget reallocation plan",
+            "body": "Rank campaigns by cost per conversion and conversion volume. Propose shifting budget from the worst performers toward high-intent campaigns, and get sign-off from the budget owner before touching anything in the account."
+          },
+          {
+            "title": "Apply changes with Google Ads Editor",
+            "body": "Upload the negative lists and budget edits in one batch. Record every change — date, entity, before and after value — in a change-log tab so any edit can be reversed later."
+          },
+          {
+            "title": "Set guardrail rules in the platform",
+            "body": "Configure Google Ads automated rules as your safety net: pause a keyword when CPA exceeds your threshold for a set window, alert on sharp week-over-week CTR drops, and cap daily spend per campaign."
+          }
+        ],
+        "cadence": "Weekly for the export-classify-apply cycle (an hour or two once the workbook is built); monthly for the deeper budget reallocation pass."
+      },
+      "mcpPath": {
+        "overview": "The same loop runs as a scheduled agent workflow: read-scoped connections pull the data, the agent classifies terms and drafts changes inside written guardrails, and only small, reversible actions ship without you. It suits teams with clean conversion tracking who are done copy-pasting CSVs every Monday.",
+        "steps": [
+          {
+            "title": "Schedule the read-scoped pulls",
+            "body": "Wire the agent — Claude with MCP servers, orchestrated by n8n or Make — to pull search terms, campaign performance, and GA4 landing page data on a weekly schedule. Reads and writes use separate credentials, so the write scope stays as narrow as possible."
+          },
+          {
+            "title": "Write the guardrails file",
+            "body": "Codify the rules in a persistent AGENTS.md instruction file: the classification taxonomy, negative match-type policy, spend caps, CPA thresholds, and exactly which actions require human approval."
+          },
+          {
+            "title": "Run the classification loop",
+            "body": "Each week the agent classifies new search terms, scores waste by spend against conversions, drafts negatives, and models budget shifts. It logs its reasoning against the taxonomy, so you can audit why any term got tagged the way it did."
+          },
+          {
+            "title": "Act within caps, queue the rest",
+            "body": "Negative keyword additions under your agreed weekly limit are applied automatically into shared lists and logged. Budget changes, campaign pauses, and anything above threshold are queued as approval requests with the projected impact attached."
+          },
+          {
+            "title": "Digest, approve, revert",
+            "body": "A weekly digest lands in Slack or email: what was applied, what awaits your approval, what was flagged. Every applied change carries before-and-after values in the audit log, so a bad call is one revert away."
+          }
+        ],
+        "connections": [
+          "Google Ads (read-scoped API access or an MCP server for Google Ads; a separate, narrowly scoped write path for negatives and budgets)",
+          "GA4 (read-only API export or an MCP server for GA4)",
+          "Google Sheets or BigQuery — where the classification history and audit log live",
+          "Slack or email — where the weekly digest and approval requests land"
+        ]
+      },
+      "tools": [
+        "Google Ads Editor — bulk-applies negatives and budget edits on the manual path",
+        "Google Sheets — the classification workbook, reallocation model, and change log",
+        "Claude with MCP servers — classifies search terms by intent and drafts the digest and recommendations",
+        "n8n or Make — schedules the data pulls, runs the loop, and routes approval requests",
+        "BigQuery — optional history store when the account outgrows a spreadsheet",
+        "Google Ads automated rules — platform-native spend caps and anomaly alerts that run independently of the agent"
+      ],
+      "guardrails": [
+        "Negatives auto-apply only up to an agreed weekly count, and only into shared campaign-level lists; larger batches wait for approval",
+        "Every budget reallocation and campaign pause requires explicit human approval — the agent only auto-applies negatives",
+        "Hard daily spend caps run as native Google Ads automated rules, independent of the agent, so a failed workflow can never overspend",
+        "Every action is written to an audit log with before-and-after values, so any change can be reversed from the log"
+      ],
+      "metaDescription": "PPC Intelligence build guide: run search term classification and budget reallocation via spreadsheet exports or an MCP-connected agent under spend caps."
+    },
+    {
+      "slug": "seo-ppc-opportunity",
+      "name": "SEO/PPC Opportunity",
+      "tagline": "Finds queries you pay for but already rank for — and flags where budget should move.",
+      "what": "On a set cadence, this automation joins your Google Ads search terms, Search Console queries, and GA4 landing page data, then sorts every query into three lists: cannibalization (you pay for clicks you already earn organically), content gaps (high-intent paid queries with no organic coverage), and budget reallocation candidates. Each run ends in an action pack — a negative keyword list, landing page briefs for the top gaps, and a proposed budget shift — not just a dashboard.\n\nThe reason to run it on a cadence is drift: paid and organic pull apart every month as new search terms appear, rankings move, and seasons change. A one-off overlap audit decays; a recurring one keeps catching the overlap as it re-forms, and the accumulated negative list and brief backlog become a channel split you actually govern.",
+      "outcome": "Cuts paid spend on queries where organic already wins — the clicks you are paying for but could earn for free — and redirects that budget to genuine content gaps.",
+      "prereqs": [
+        "Standard or admin access to the Google Ads account, with Google Ads Editor installed for batch changes",
+        "A verified Search Console property with at least 3 months of query history",
+        "A GA4 property with conversion tracking on the landing pages that matter",
+        "An agreed cross-channel baseline: one shared answer to which conversions count as SEO vs. PPC"
+      ],
+      "manualPath": {
+        "overview": "This version runs entirely on scheduled exports and one spreadsheet — no API work beyond your normal logins. It suits a marketer who owns both channels and can give the analysis part of a day each month. Every change is applied by hand, so the approval gate is you.",
+        "steps": [
+          {
+            "title": "Pull the three exports",
+            "body": "Export the Google Ads search terms report, the Search Console query report, and GA4 landing page performance, all for the same 3-month window. Drop each into its own tab of one workbook. If you track competitors, keep the domain list in a fourth tab for context."
+          },
+          {
+            "title": "Normalize and join the queries",
+            "body": "Lowercase everything, strip match-type noise and near-duplicates, then join paid search terms against Search Console queries. For each matched query, line up paid clicks, cost, and conversions next to organic position, clicks, and CTR."
+          },
+          {
+            "title": "Classify every query into three lists",
+            "body": "Cannibalization: strong organic position and you are still paying for the click. Gaps: paid queries that convert but have no organic coverage. Reallocation: spend concentrated where organic already carries the intent. Score each row by cost so the biggest overlaps rise to the top."
+          },
+          {
+            "title": "Draft the action pack",
+            "body": "Turn the cannibalization list into a negative keyword list. Write short landing page briefs for the top gap queries — target query, intent, page angle. Add a one-paragraph budget note: what you would pause, what you would fund instead."
+          },
+          {
+            "title": "Apply by hand with a change log",
+            "body": "Apply the negatives through Google Ads Editor as one reviewable batch. Log every change with the date and before/after values so you can reverse the whole batch if organic traffic does not pick up the slack. Next cycle, compare lists against this one — that trend becomes your channel attribution baseline."
+          }
+        ],
+        "cadence": "Monthly; a cycle takes roughly half a day once the workbook template exists."
+      },
+      "mcpPath": {
+        "overview": "The same loop, run by an agent over live connections: read-scoped access to Google Ads, Search Console, and GA4, a scheduled job that joins and classifies queries, and an approval gate before anything touches the account. It suits teams with clean conversion tracking that want the cadence enforced by the system, not the calendar.",
+        "steps": [
+          {
+            "title": "Connect and reconcile the three sources",
+            "body": "Wire up Search Console, GA4, and Google Ads with read-only credentials. Before trusting the loop, run one pull and reconcile it against the reports you already use — if the numbers do not match your dashboards, fix that first."
+          },
+          {
+            "title": "Write down the cross-channel baseline",
+            "body": "Agree which conversions belong to SEO and which to PPC, and encode that rule in the agent's instructions. Every recommendation gets scored against this shared model, so neither channel claims the other's wins."
+          },
+          {
+            "title": "Schedule the gap-analysis run",
+            "body": "The orchestrator pulls the three datasets on your cadence, normalizes and joins the queries, and classifies each into cannibalization, gap, or reallocation. The agent drafts the negative keyword list, the gap briefs, and a proposed budget shift with the evidence rows attached."
+          },
+          {
+            "title": "Hold recommendations for sign-off",
+            "body": "Each run posts a digest — to a Sheet, Slack, or email — listing proposed negatives, briefs, and budget moves with the data behind them. Nothing is applied until a human approves the batch. Rejected items are logged with a reason so the agent learns your thresholds."
+          },
+          {
+            "title": "Apply within caps, log everything",
+            "body": "Approved negatives go live as one staged batch, via the API write path or exported to Google Ads Editor. Budget shifts above your per-cycle cap always escalate. Every applied change lands in an audit log with timestamp and before/after values, reversible as a batch."
+          },
+          {
+            "title": "Review the loop monthly",
+            "body": "Sample the audit log, check the attribution baseline still holds, and tighten or loosen the classification thresholds. The overlap trend across runs is your evidence that the split between channels is actually improving."
+          }
+        ],
+        "connections": [
+          "Google Ads (read-only API access or an MCP server; a scoped write path only for approved negative-keyword batches)",
+          "Google Search Console (API or an MCP server, read-only)",
+          "GA4 (Data API or a BigQuery export, read-only)",
+          "Google Sheets or Looker Studio (approval digest and audit log)",
+          "An orchestrator: n8n, Make, Zapier, or Claude with MCP servers"
+        ]
+      },
+      "tools": [
+        "Google Ads Editor — batch-apply approved negative keywords as one reviewable, reversible change set",
+        "Google Search Console — organic queries, positions, and CTR for the overlap join",
+        "GA4 — landing page and conversion data to weight each opportunity by value",
+        "Google Sheets — the overlap workbook, approval digest, and change log",
+        "Claude with MCP servers — runs the join, classify, and recommend loop on the integrated path",
+        "n8n, Zapier, or Make — schedules the pulls and routes the approval digest"
+      ],
+      "guardrails": [
+        "No auto-apply: negative keywords and budget moves ship only as an approved, staged batch — the agent recommends, a human releases",
+        "Set a per-cycle cap on budget reallocation; any proposed shift above it escalates for explicit sign-off",
+        "Every applied change is logged with timestamp and before/after values, and each batch is reversible in one step via Google Ads Editor or change history",
+        "Read-only scopes on Search Console and GA4 at all times; Google Ads write access limited to the negative-keyword path"
+      ],
+      "metaDescription": "SEO/PPC Opportunity build guide: run paid/organic gap analysis two ways — manual exports and spreadsheets, or an MCP-connected agent with approval gates."
+    },
+    {
+      "slug": "event-followup",
+      "name": "Event Follow-Up",
+      "tagline": "Attendee list to segmented, personalized first touch within 24 hours — not 3–5 days.",
+      "what": "Event Follow-Up puts the attendee list from a trade show, webinar, or field event to work while the conversations are still warm. Badge scans or registration exports land in your CRM, get enriched with company, title, and LinkedIn data, are segmented by role, company size, and session attended — and each segment gets a personalized three-touch sequence, with the first touch out within 24 hours instead of the 3–5 days manual processing usually takes.\n\nReuse is the compounding here: the segmentation rules, sequence templates, and routing logic you build for one event carry straight to the next. Each run leaves cleaner CRM data and sharper segments, so every subsequent event starts closer to done.",
+      "outcome": "Speed to first touch: event leads receive a personalized first email within 24 hours instead of going cold over the 3–5 days manual processing takes.",
+      "prereqs": [
+        "An attendee export you can get fast: badge scan file or event registration CSV",
+        "CRM access (HubSpot or Salesforce) with a field mapping you can write down",
+        "Email platform API access for loading sequences and enrolling contacts",
+        "A defined lead routing process — who counts as sales-ready, who goes to nurture",
+        "An ICP definition so segments and sequence copy have something to aim at"
+      ],
+      "manualPath": {
+        "overview": "You work from the attendee export the event hands you — no live integrations required. Everything happens in a spreadsheet plus the CRM and email tools you already have, and you apply every change by hand. It suits teams that run a handful of events a year and want the discipline in place before the plumbing.",
+        "steps": [
+          {
+            "title": "Export and clean the attendee list",
+            "body": "The morning after the event closes, pull the badge scan file or registration CSV. Dedupe it against a fresh CRM contact export, normalize the columns you need — name, email, company, title, session attended — and drop obvious junk rows. This cleaned sheet is your working file for the whole cycle."
+          },
+          {
+            "title": "Segment in the spreadsheet",
+            "body": "Add columns for role tier, company size, and session attended, then use filters and formulas to bucket every lead into a segment that maps to your ICP. Flag rows with missing company or title data and fill the gaps with a quick manual pass — the company website and LinkedIn cover most of them."
+          },
+          {
+            "title": "Draft a three-touch sequence per segment",
+            "body": "For each segment, paste its profile — role, company size, what they attended — plus your ICP definition into Claude and draft a three-touch follow-up sequence. Edit until it sounds like you. Keep the approved copy in one doc so the next event starts from templates, not a blank page."
+          },
+          {
+            "title": "Import leads and load sequences",
+            "body": "Import the segmented list into your CRM with an event tag and segment tags, then load each sequence into your email platform and enroll the matching segment. You press send — nothing goes out that you have not read."
+          },
+          {
+            "title": "Route by hand and log it",
+            "body": "Apply your lead routing rules: sales-ready leads go to reps with a context note, nurture leads to the marketing list, unqualified contacts get suppressed. Record who went where in a routing tab of the working file so you have an audit trail and a baseline to tune against next event."
+          }
+        ],
+        "cadence": "Once per event. Start the morning after the event closes and first touches can go out the same day — inside the 24-hour window; budget roughly half a working day per event."
+      },
+      "mcpPath": {
+        "overview": "Your CRM, email platform, and enrichment source are connected by API, and an agent runs the capture-to-route loop continuously: leads arrive from a badge scan or form fill and come out enriched, segmented, and enrolled, with a human approving copy and anything above threshold. It suits teams running frequent events that need the 24-hour first touch without a person handling every row.",
+        "steps": [
+          {
+            "title": "Wire the capture trigger",
+            "body": "Set up a webhook from your badge scan app or registration form through n8n, Zapier, or Make that pushes each new lead into the CRM within minutes of collection. Every record is tagged with an event ID and a run ID, so the agent knows exactly which contacts belong to this run."
+          },
+          {
+            "title": "Enrich and segment automatically",
+            "body": "The agent picks up each new record, calls a data enrichment API to append company, title, and LinkedIn data, then applies your segmentation rules — role, company size, session attended. Segment tags are written back to the CRM, and every write is logged against the run ID."
+          },
+          {
+            "title": "Generate copy, gate the send",
+            "body": "The agent drafts a three-touch sequence per segment from your ICP definition and loads it into the email platform as drafts. A human reviews and approves each segment's copy once per event before anything sends. This gate is not optional — the agent enrolls contacts, but you release the sequences."
+          },
+          {
+            "title": "Route within caps",
+            "body": "Routing rules run automatically: sales-ready leads land in rep queues with context, nurture leads join the marketing list, unqualified contacts are suppressed. A daily cap limits how many leads can be auto-marked sales-ready; anything over the cap or ambiguous goes to a holding queue for human triage."
+          },
+          {
+            "title": "Audit and roll back",
+            "body": "Every enrichment write, enrollment, and routing decision lands in an audit log keyed to the run ID, so a bad run can be reversed by tag in one pass. Review the log after each event, check where the agent hesitated or misrouted, and tighten the rules before the next one."
+          }
+        ],
+        "connections": [
+          "CRM (an MCP server for HubSpot or Salesforce, or the native API) — read contacts, write only scoped fields and tags",
+          "Email platform API — create sequence drafts and enroll contacts, sends gated on approval",
+          "A data enrichment API — append company, title, and LinkedIn data to new leads",
+          "n8n, Zapier, or Make — carries the badge-scan or registration webhook into the CRM"
+        ]
+      },
+      "tools": [
+        "Google Sheets — the manual path's working surface for dedupe, segmentation, and the routing log",
+        "HubSpot or Salesforce APIs — where leads live; both paths read from and write back to the CRM",
+        "n8n, Zapier, or Make — moves the badge-scan or form webhook into the CRM in near real time",
+        "Claude with MCP servers — drafts per-segment sequence copy and, on the MCP path, runs the enrich-segment-route loop",
+        "Your email platform's API — loads sequences and enrolls segments, with sends held for approval"
+      ],
+      "guardrails": [
+        "No email sends without a human approving each segment's sequence copy — the agent drafts, you release",
+        "Daily cap on leads auto-routed as sales-ready; anything over the cap queues for human review",
+        "Every CRM write is tagged with a run ID and logged, so a bad run reverses by tag in one pass",
+        "Agent scope is limited to contacts on the event list — it cannot touch or email the rest of your database"
+      ],
+      "metaDescription": "Event Follow-Up: get event leads a first touch in 24 hours. Build it manually with exports and sheets, or as a governed agent via MCP connections."
+    },
+    {
+      "slug": "lead-reactivation",
+      "name": "Lead Reactivation",
+      "tagline": "Scores dormant CRM leads, personalizes outreach, and routes engaged replies to sales.",
+      "what": "Lead Reactivation works the pipeline you already paid for. It pulls every CRM contact with 90-plus days of no activity, scores each one on recency, source, and ICP fit, and sorts them into three tracks: high-ICP re-engagement, mid-fit value reintroduction, and long-dormant win-back-or-suppress. Each track gets its own 4–6 touch sequence, with industry, role, and original lead source shaping the subject line, pain hook, and call to action.\n\nBecause the loop feeds itself, the returns stack. Engaged leads route straight to sales, non-responders move to nurture or a suppression list, and every send, open, and routing decision lands in a trigger/action/impact log. Each cycle leaves your list cleaner and your scoring sharper — which matters, because most companies are sitting on 12–18 months of leads nobody ever properly followed up on.",
+      "outcome": "Turns contacts dormant 90+ days into active sales conversations, recovering the 12–18 months of unworked leads most CRMs are holding.",
+      "prereqs": [
+        "CRM read/write access (HubSpot, Salesforce, or similar) with permission to add tags and update lead status",
+        "Structured lead data on most records: last activity date, lead source, and basic firmographics",
+        "A written ICP definition — the firmographic and behavioural signals you can score against",
+        "An email platform that supports segmented sequences and suppression lists",
+        "Historical email performance (opens, clicks, bounces) for a deliverability baseline"
+      ],
+      "manualPath": {
+        "overview": "Run the whole loop on a monthly CRM export and a scoring spreadsheet — no integrations required. You do the scoring in Google Sheets, load sequences into your email platform by hand, and route engaged leads yourself. It suits teams with one CRM, a few thousand dormant leads, and no engineering support.",
+        "steps": [
+          {
+            "title": "Export your dormant leads",
+            "body": "In your CRM, filter for contacts with no activity in 90+ days and export to CSV. Include last activity date, lead source, campaign attribution, firmographics, and email engagement history. This file is the raw input for everything that follows."
+          },
+          {
+            "title": "Score and segment in a spreadsheet",
+            "body": "Build scoring columns for recency band, source quality, and ICP fit (industry and role match against your written ICP). Bucket leads into three segments: high-ICP and recently dormant, mid-fit, and long-dormant or low-fit. Before anything else, flag hard bounces and prior unsubscribes into a suppression tab so they never enter a sequence."
+          },
+          {
+            "title": "Draft three sequences, review every message",
+            "body": "Write a 4–6 touch sequence per segment. Use Claude to draft variants keyed to segment attributes — an industry pain hook, a role-specific CTA, a subject line that references the original source. You read and approve every message before anything ships; nothing goes out unreviewed."
+          },
+          {
+            "title": "Load segments and send in capped batches",
+            "body": "Import each segment into your email platform as a static list and schedule the sequence. Cap daily sends to protect deliverability rather than blasting the whole list at once. Tag every imported lead in the CRM so you can identify — and undo — everything this workflow touched."
+          },
+          {
+            "title": "Review engagement weekly and route by hand",
+            "body": "Export opens, clicks, and replies back into the sheet. Anyone who clicked gets a CRM task assigned to sales. Opened-but-no-click after three sends moves to your nurture list. No opens after the full sequence gets a suppressed tag for list hygiene."
+          },
+          {
+            "title": "Keep a trigger/action/impact log",
+            "body": "Maintain a running tab: date, segment, action taken, result. That log is your audit trail, your report to leadership, and the input that improves next month's scoring weights."
+          }
+        ],
+        "cadence": "Monthly export-and-score cycle; once sequences are live, the weekly engagement review takes about an hour."
+      },
+      "mcpPath": {
+        "overview": "Connect your CRM and email platform to an agent via MCP so the loop runs continuously instead of monthly. The agent scores newly dormant leads, drafts personalized touches from an approved rules engine, and routes engaged replies — while you approve copy and anything above the caps. It suits teams with API access to their stack and a steady flow of leads going cold.",
+        "steps": [
+          {
+            "title": "Connect read-scoped first, grant narrow writes later",
+            "body": "Start with read-only connections to your CRM and email platform and let the agent score leads without touching anything. Once you've validated its scoring against a sample you check by hand, grant write scope limited to three things: tags, sequence enrollment, and suppression status. Nothing broader."
+          },
+          {
+            "title": "Encode the scoring and personalization rules",
+            "body": "The segmentation model and personalization rules live in a versioned config the agent reads — recency bands, ICP signals, and the mappings from segment attributes to message variables. The agent can propose rule changes with evidence from the log, but it cannot change its own rules silently."
+          },
+          {
+            "title": "Run the loop on a schedule",
+            "body": "On a daily or weekly schedule (n8n, Zapier, or Make works as the scheduler), the agent pulls contacts that just crossed the 90-day dormancy line, scores them, assigns a segment, drafts touches from your approved templates, and enrolls them — always inside the daily send cap."
+          },
+          {
+            "title": "Gate what matters, auto-approve what's safe",
+            "body": "New copy variants, any enrollment batch above your threshold, and any change to routing rules land in Slack or email for your sign-off before execution. Conservative actions — suppressing bounced addresses, tagging for list hygiene — are pre-approved because they only ever shrink risk."
+          },
+          {
+            "title": "Route and log automatically",
+            "body": "A click routes the lead to the sales queue as a high-priority CRM task. Opens with no click after three sends move the lead to nurture. Every trigger, action, and outcome writes to the impact log with a timestamp and the specific rule that fired."
+          },
+          {
+            "title": "Review weekly, tighten, and stay reversible",
+            "body": "You review the impact log, spot-check routed leads, and adjust scoring weights or caps. Because every write the agent makes carries an automation tag, any batch of enrollments or routings can be isolated with one filter and rolled back."
+          }
+        ],
+        "connections": [
+          "CRM (an MCP server for HubSpot or Salesforce, or their APIs) — read contacts and activity; write tags, enrollment, and routing status",
+          "Email platform API — enroll leads in sequences; read opens, clicks, replies, and bounces",
+          "Google Sheets or BigQuery — the trigger/action/impact log and scoring history",
+          "n8n, Zapier, or Make — schedules the loop and delivers approval requests",
+          "Slack or email — the human approval channel"
+        ]
+      },
+      "tools": [
+        "HubSpot or Salesforce APIs — the system of record for leads, tags, and routing status",
+        "Google Sheets — the scoring model and trigger/action/impact log on the manual path",
+        "Claude with MCP servers — drafts segment-personalized copy and runs the scoring loop on the agent path",
+        "n8n, Zapier, or Make — schedules the loop and carries approval requests to Slack or email",
+        "BigQuery — engagement history at a scale a spreadsheet can't hold",
+        "Looker Studio — a simple dashboard over the impact log for the weekly review"
+      ],
+      "guardrails": [
+        "Approval gate: new sequence copy and any enrollment batch larger than the threshold you set (a few hundred leads is a sane default) require human sign-off before sending",
+        "Send caps: a daily send ceiling protects deliverability — the agent queues sends, it never bursts the full list",
+        "Reversibility: every CRM write carries an automation tag, so any batch of tags, enrollments, or routings can be filtered out and rolled back in one pass",
+        "Audit log: every trigger, action, and routing outcome is recorded with a timestamp and the rule that fired — nothing moves without a record"
+      ],
+      "metaDescription": "Build a Lead Reactivation automation two ways: a manual CRM-export and spreadsheet workflow, or an MCP-connected agent with approval gates and send caps."
+    }
+  ],
+  "hub": {
+    "intro": "Every guide in this library assumes the same foundation: access to your data, a place to work on it, and rules decided before anything runs. Set it up once and every build starts at the interesting part instead of a week of access requests — with governance built into the environment, not bolted onto each workflow afterwards.\n\nEach guide ships two build paths. The manual path runs on exports and a spreadsheet — you are the automation, and it genuinely works. The MCP path connects Claude to your stack through read-scoped connections that act within caps you set, log everything, and wait for your approval. The layers below serve both.",
+    "sections": [
+      {
+        "id": "data-access-and-exports",
+        "title": "Data access & exports",
+        "body": "Everything downstream depends on clean, repeatable access to your ad platforms, analytics, and CRM. Start read-only everywhere: you can diagnose, plan, and build an entire workflow before anything needs permission to change an account. Write access comes later, per workflow, with caps attached.",
+        "items": [
+          {
+            "name": "Google Ads",
+            "desc": "Install Google Ads Editor and download your campaigns for offline review, or pull search terms and performance reports from the web interface. The step that matters: create a dedicated read-only user on the account instead of sharing an admin login — you can widen its access later, and every guide here starts from what that user can see."
+          },
+          {
+            "name": "Meta Ads",
+            "desc": "Grant analyst-level (read) access through Business settings rather than adding another admin, then export campaign and ad-set reports from Ads Manager. Confirm the export includes the conversion columns you actually optimize against before you build anything on top of it."
+          },
+          {
+            "name": "GA4",
+            "desc": "Grant Viewer access on the property and export the reports your workflows need — landing pages, conversions, traffic sources. Before you trust any export, verify your key conversion events are firing; an automation built on a broken event fires confidently in the wrong direction."
+          },
+          {
+            "name": "CRM (HubSpot, Salesforce)",
+            "desc": "Set up a read-only user or profile and export the lists and reports your workflows draw on — lifecycle stage, source, last activity. Agree on which fields are canonical first, so every workflow reads the same definition of a lead."
+          },
+          {
+            "name": "API credentials (when a guide calls for them)",
+            "desc": "Some builds use the Google or Meta ads APIs directly. Request read scopes first, store the credentials in your integration platform's credential store — never in a spreadsheet or a chat thread — and record who holds them."
+          }
+        ]
+      },
+      {
+        "id": "spreadsheet-workspace",
+        "title": "The spreadsheet workspace",
+        "body": "The manual path of every guide runs in a spreadsheet, and a well-structured one is a legitimate automation environment — it just runs on your schedule instead of a trigger. Set the structure once and every export drops into the same shape.",
+        "items": [
+          {
+            "name": "One Google Sheet per workflow",
+            "desc": "Resist the mega-spreadsheet. One file per workflow keeps each build portable, shareable, and safe to hand to a teammate. Name files by workflow and date range, not \"final-final\"."
+          },
+          {
+            "name": "A standard tab structure",
+            "desc": "Raw, Working, Output, Log — in that order. Paste exports only into Raw tabs and build formulas only in Working tabs, so a fresh import never overwrites a month of logic."
+          },
+          {
+            "name": "A change-log tab",
+            "desc": "Date, what changed, who approved it. This is the manual version of the audit log the agent path keeps automatically, and it is the habit that makes the upgrade painless — you already know what a good log looks like."
+          },
+          {
+            "name": "Looker Studio for the shared view",
+            "desc": "When someone else needs to see results, connect Looker Studio to the Output tab only. Stakeholders get a live dashboard; your working formulas stay untouched."
+          }
+        ]
+      },
+      {
+        "id": "integration-platforms",
+        "title": "Integration platforms",
+        "body": "When a workflow proves itself manually, an integration platform runs it on a schedule. You need one, not all three — pick based on how much control you want over complexity and where your data lives, and set up alerting before the first run, not after the first silent failure.",
+        "items": [
+          {
+            "name": "Zapier",
+            "desc": "The fastest route for simple, linear connections — a new lead lands, a row gets added, a notification fires. Set it up under a team account with shared ownership, not someone's personal login that leaves when they do."
+          },
+          {
+            "name": "Make",
+            "desc": "Visual scenarios with real branching and error routes, a good fit once workflows have conditions and multiple outcomes. Turn on error notifications for every scenario before you activate it — a workflow that fails quietly is worse than no workflow."
+          },
+          {
+            "name": "n8n",
+            "desc": "Self-hostable, which means full control over where your data flows and sits — often the deciding factor for agencies handling client data or teams with data-residency requirements. Decide who hosts it and who can edit workflows before you build the first one."
+          },
+          {
+            "name": "Shared credentials, wherever you land",
+            "desc": "Store every platform connection in the tool's credential store under the read-only users you created in the first layer. When a workflow later needs write access, that becomes a deliberate, visible upgrade — not a default."
+          }
+        ]
+      },
+      {
+        "id": "lightweight-warehouse",
+        "title": "A lightweight warehouse",
+        "body": "You do not need a data warehouse to start — a well-kept Sheet is one. But there is a predictable moment when you outgrow it, and knowing the growth path in advance means you never rebuild from scratch.",
+        "items": [
+          {
+            "name": "Google Sheets as warehouse zero",
+            "desc": "For a single workflow reading a weekly export, a Raw tab is your warehouse. It stops being enough when multiple workflows need the same data, or the export outgrows what a spreadsheet handles comfortably."
+          },
+          {
+            "name": "BigQuery as the growth path",
+            "desc": "GA4 links natively to BigQuery, landing raw event data you can query directly. Set up the link early even if you will not query it for months — the export begins the day you connect it, and you cannot backfill what was never collected."
+          },
+          {
+            "name": "Scheduled loads for everything else",
+            "desc": "Ad platform and CRM exports can flow into BigQuery on a schedule through your integration platform or available connectors. One load, many workflows reading from it — instead of the same export pasted into three sheets."
+          },
+          {
+            "name": "The graduation signal",
+            "desc": "When you catch yourself pasting the same export into more than one spreadsheet, or manually joining two exports every week, that is the signal. Move that dataset to BigQuery and point the sheets at it."
+          }
+        ]
+      },
+      {
+        "id": "agent-layer",
+        "title": "The agent layer",
+        "body": "This is where the MCP path in each guide runs: Claude connected to your stack, reading real data and either recommending actions or taking them inside limits you define. It is autonomous within bounds, not a black box — the governance pieces here are not optional extras, they are the setup.",
+        "items": [
+          {
+            "name": "Claude with MCP servers",
+            "desc": "Connect Claude to each data source through an MCP server — one per ad platform, one for analytics, one for your CRM. Start every connection read-scoped: the agent can read live data, diagnose problems, and draft recommendations without the ability to change anything."
+          },
+          {
+            "name": "An AGENTS.md instruction file",
+            "desc": "A plain-text file that defines what the agent may do, what it must never touch, and where its thresholds sit. Write it before you grant any write scope, and keep it in version control so changes to the rules are as visible as changes to the accounts they govern."
+          },
+          {
+            "name": "Approval gates",
+            "desc": "Decide up front which actions execute automatically and which queue for a human — by dollar amount, by percentage change, by action type. A sensible starting posture: the agent recommends everything and executes nothing until you have watched its judgment for a few cycles."
+          },
+          {
+            "name": "Spend caps and scope limits",
+            "desc": "When you do grant write access, attach hard limits at the same moment: a daily spend cap, a maximum change per run, a bounded set of accounts or campaigns it may touch. Caps live in the environment, so no single workflow can quietly exceed them."
+          },
+          {
+            "name": "The action log",
+            "desc": "Every recommendation and every action gets recorded — what triggered it, what was done, what changed as a result. Put the log somewhere the whole team can read without asking. If an action is not in the log, it did not happen inside the system."
+          }
+        ]
+      },
+      {
+        "id": "scheduling-and-monitoring",
+        "title": "Scheduling & monitoring",
+        "body": "A workflow you cannot see and cannot stop is not automated — it is unattended. The last layer makes every workflow observable and reversible, which is what lets you extend its autonomy with confidence rather than hope.",
+        "items": [
+          {
+            "name": "Cadence that matches the decision",
+            "desc": "Schedule each workflow to the rhythm of the decision it supports, not \"as often as possible.\" Faster than the decision cycle just generates noise nobody reads; each guide names its own cadence."
+          },
+          {
+            "name": "Alerts on failure and on silence",
+            "desc": "Route errors and threshold breaches to a channel someone actually watches. Then alert on silence too: a workflow that stops running produces no errors, and its absence is the failure you will notice last."
+          },
+          {
+            "name": "A kill-switch you have tested",
+            "desc": "One documented step that stops everything — deactivate the scenario, revoke the credential, pause the agent. Test it before go-live and make sure more than one person can pull it. Reversibility is what makes bounded autonomy safe to extend."
+          },
+          {
+            "name": "A standing log review",
+            "desc": "Put fifteen minutes on the calendar each week to read the action log: what ran, what it changed, what queued for approval. This is how thresholds earn loosening — the agent gets more room because the log shows it deserves it."
+          }
+        ]
+      }
+    ],
+    "metaDescription": "Set up the shared environment behind every build guide: read-only data access, a spreadsheet workspace, integration platforms, and a governed agent layer."
+  }
+}
