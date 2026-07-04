@@ -27,7 +27,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
           <div class="mega-col">
             <span class="dropdown-label">Offerings</span>
             <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
-            <a href="/solutions/automation-sprints"><span class="mega-t">Automation Sprints</span><span class="mega-d">Build one governed workflow in 2–4 weeks</span></a>
+            <a href="/automations"><span class="mega-t">Automations</span><span class="mega-d">Build guides — stand each one up yourself or with us</span></a>
             <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
           </div>
           <div class="mega-col">
@@ -77,7 +77,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
   <div class="mobile-section">
     <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
     <a href="/solutions/campaign-audit">Automation Audit</a>
-    <a href="/solutions/automation-sprints">Automation Sprints</a>
+    <a href="/automations">Automations</a>
     <a href="/training">Automation Training</a>
     <a href="/who-we-help/agencies">Agencies</a>
     <a href="/who-we-help/in-house">In-house teams</a>
@@ -129,7 +129,7 @@ const FOOTER = `<footer class="site-footer" role="contentinfo" aria-label="Site 
       <nav class="footer-col" aria-label="Solutions links">
         <h3>Solutions</h3>
         <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
-        <a href="/solutions/automation-sprints">Automation Sprints</a>
+        <a href="/automations">Automations</a>
         <a href="/platform">Campaign Strategy Portal</a>
         <a href="/request-proposals">Request proposals</a>
       </nav>
@@ -154,6 +154,7 @@ const FOOTER = `<footer class="site-footer" role="contentinfo" aria-label="Site 
         <a href="/training">Training</a>
         <a href="/resources/glossary">Glossary</a>
         <a href="/about">About</a>
+        <a href="https://auditdemand.com/?utm_source=campaignautomation.ai&utm_medium=referral&utm_campaign=footer" target="_blank" rel="noopener">AuditDemand &#8599;</a>
       </nav>
     </div>
     <div class="footer-bottom">

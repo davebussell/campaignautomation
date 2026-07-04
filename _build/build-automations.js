@@ -31,6 +31,8 @@ const CAT = {
   'search-term-intelligence': 'Paid media', 'campaign-launch-kit': 'Paid media', 'ppc-intelligence': 'Paid media', 'seo-ppc-opportunity': 'Paid media',
   'competitive-intelligence': 'Research', 'event-followup': 'RevOps', 'lead-reactivation': 'RevOps',
 };
+// guides where an automated AuditDemand audit is the natural first step
+const AUDITDEMAND_SLUGS = new Set(['ppc-intelligence', 'search-term-intelligence', 'seo-ppc-opportunity', 'measurement-repair']);
 // old detail-page path -> new slug (for link sweep + redirects)
 const OLD_DETAIL = {
   '/solutions/sprints/content-brief': 'content-brief', '/solutions/sprints/campaign-launch': 'campaign-launch-kit',
@@ -38,9 +40,13 @@ const OLD_DETAIL = {
   '/solutions/sprints/event-followup': 'event-followup', '/solutions/sprints/lead-reactivation': 'lead-reactivation',
 };
 
-function walk(d) { let o = []; for (const e of fs.readdirSync(d, { withFileTypes: true })) { if (['node_modules', '.git'].includes(e.name)) continue; const p = path.join(d, e.name); if (e.isDirectory()) o = o.concat(walk(p)); else if (/\.(html|js)$/.test(e.name)) o.push(p); } return o; }
+// NOTE: '_build' is excluded so the sweep can never rewrite these scripts' own
+// source strings (that self-sweep happened once, 2026-07-03, after the move into
+// the repo — the historical from-strings below were restored by hand).
+function walk(d) { let o = []; for (const e of fs.readdirSync(d, { withFileTypes: true })) { if (['node_modules', '.git', '_build'].includes(e.name)) continue; const p = path.join(d, e.name); if (e.isDirectory()) o = o.concat(walk(p)); else if (/\.(html|js)$/.test(e.name)) o.push(p); } return o; }
 
-/* ── 1) SITEWIDE SWEEP (labels + links; runs before chrome extraction) ── */
+/* ── 1) SITEWIDE SWEEP (labels + links; historical migration — already applied
+       to the whole tree on 2026-07-02; harmless no-op on the current tree) ── */
 let swept = 0;
 for (const f of walk(ROOT)) {
   let s = fs.readFileSync(f, 'utf8'); const b = s;
@@ -240,7 +246,7 @@ for (const g of GUIDES) {
     <p class="section-label"><span class="label-signal">Before you start</span></p>
     <h2 class="display" style="margin-bottom:8px">Prerequisites.</h2>
     ${kwRows(g.prereqs)}
-    <div class="au-setup-box">New to the stack? Set up your environment first — data access, workspace, integration platforms, and the agent layer are covered once in <a href="/automations/setup">Environments &amp; tooling</a>.</div>
+    <div class="au-setup-box">New to the stack? Set up your environment first — data access, workspace, integration platforms, and the agent layer are covered once in <a href="/automations/setup">Environments &amp; tooling</a>.${AUDITDEMAND_SLUGS.has(g.slug) ? ' Not sure where the waste is yet? An automated <a href="https://auditdemand.com/?utm_source=campaignautomation.ai&amp;utm_medium=referral&amp;utm_campaign=build-guide" target="_blank" rel="noopener">AuditDemand audit&nbsp;&#8599;</a> quantifies it before you build.' : ''}</div>
   </section>
 
   <section class="section bone reveal">
