@@ -41,6 +41,7 @@ const EXPLICIT = {
   'ai-account-access-marketing-tools':'strategy','ai-marketing-approval-thresholds':'strategy','ai-marketing-audit-trail':'strategy',
   'ai-spend-caps-budget-guardrails':'strategy','ai-agents-in-your-crm':'strategy',
   'autonomous-optimization-company':'strategy',
+  'starbucks-tank-day-ai-marketing':'strategy','cultural-context-marketing-ai':'strategy','risk-aware-guardrails-ai-creative':'strategy',
   // Buyer guides
   'evaluate-ai-marketing-automation-platforms':'guides','how-to-evaluate-autonomous-marketing-ai':'guides','ai-marketing-automation-guide':'guides',
   'ai-marketing-automation-governance-checklist':'guides','ai-marketing-automation-glossary-terms':'guides','ai-marketing-automation-roi':'guides',
