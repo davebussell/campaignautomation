@@ -336,7 +336,7 @@ for (const g of GUIDES) {
   <section class="section reveal" style="text-align:center">
     <div style="border:2px solid var(--signal);border-radius:8px;padding:36px;max-width:680px;margin:0 auto">
       <h3 class="display" style="margin-bottom:12px">Prefer it built for you?</h3>
-      <p style="max-width:520px;margin:0 auto 22px;color:var(--mist2)">We stand this automation up as a governed sprint — scoped, built, and handed over with the guardrails configured.</p>
+      <p style="max-width:520px;margin:0 auto 22px;color:var(--mist2)">We stand this automation up as a governed sprint on the stack you already run — scoped, built, and handed over with the guardrails configured. No new platform, no migration.</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="/solutions/campaign-audit" class="btn-ghost">Start with the Audit &rarr;</a>
         <a href="/request-proposals?sprints=${pid}" class="btn-ghost">Request proposals &rarr;</a>
@@ -408,6 +408,7 @@ console.log('Wrote ' + nPages + ' build guides');
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Setup &middot; read this first</p>
     <h1>Environments &amp; tooling.</h1>
     ${HUB.intro.split(/\n\n+/).map(p => '<p>' + esc(p) + '</p>').join('\n    ')}
+    <p>Everything here assembles around the tools you already run — nothing below asks you to replace your stack.</p>
   </div>
 ${secs}
 
@@ -440,10 +441,11 @@ ${secs}
   <div class="page-hero">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span>The automation library</p>
     <h1>Automations you can actually stand up.</h1>
-    <p>Every automation below ships with a full build guide: a manual path that runs on data extracts and spreadsheets, and an integrated path that connects your systems through MCP with guardrails on. Build it yourself, or have us build it with you. The guides are free to unlock — one name and email opens all ${GUIDES.length}.</p>
+    <p>Every automation below runs on the stack you already have — a manual path built on data extracts and spreadsheets, and an integrated path that connects your existing systems through MCP with guardrails on. No new platform, no migration: faster builds, less red tape, one less vendor to manage. Build it yourself, or have us build it with you. The guides are free to unlock — one name and email opens all ${GUIDES.length}.</p>
     <div class="au-meta">
       <span class="au-chip sig">${GUIDES.length} automations</span>
-      <span class="au-chip sig">2 build paths each</span>
+      <span class="au-chip sig">Your existing stack</span>
+      <span class="au-chip">2 build paths each</span>
       <span class="au-chip">100% guardrail-first</span>
     </div>
   </div>
