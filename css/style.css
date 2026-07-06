@@ -1065,8 +1065,7 @@ p.lead{font-size:clamp(16px,1.5vw,18px);color:var(--mist2);line-height:1.7;font-
 .hero-typed .htc{opacity:0}
 .hero-typed .htc.on{opacity:1}
 .hero h1 em.neon{color:var(--neon);text-shadow:0 0 24px rgba(57,255,20,.35)}
-.hero h1 em.neon::after{background:var(--neon);opacity:0;transition:opacity .5s ease .15s}
-.hero-typed.ht-done em.neon::after{opacity:.55}
+.hero h1 em.neon::after{display:none} /* no underline on the neon word */
 .ht-caret{
   display:inline-block;width:.06em;height:.74em;background:currentColor;
   margin:0 .01em 0 .045em;transform:translateY(.06em);
