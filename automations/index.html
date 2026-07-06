@@ -62,6 +62,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .au-path b{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
   .au-path p{font-size:13.5px;color:var(--mist2);line-height:1.6;margin:0}
   @media(max-width:760px){.au-paths{grid-template-columns:1fr}}
+  .au-gate{border:2px solid var(--signal);border-radius:10px;padding:34px 32px;max-width:760px;margin-top:22px;box-shadow:0 0 60px rgba(200,241,53,.07)}
+  .au-gate h2{font-family:var(--f-display);font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.01em;color:var(--bone);margin:0 0 10px}
+  .au-gate-sub{font-size:14.5px;color:var(--mist2);line-height:1.65;margin:0 0 8px;max-width:640px}
+  .au-gate-list{list-style:none;padding:0;margin:14px 0 22px;display:grid;gap:8px}
+  .au-gate-list li{position:relative;padding-left:24px;color:var(--mist2);font-size:14px;line-height:1.55}
+  .au-gate-list li::before{content:'\2713';position:absolute;left:0;color:var(--signal)}
+  .au-gate-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .au-gate-fields label{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+  .au-gate-fields input{width:100%;margin-top:6px;background:var(--slate2);border:1px solid var(--border);color:var(--bone);font-family:var(--f-body);font-size:14.5px;padding:11px 12px;border-radius:4px;outline:none;transition:border-color .15s;box-sizing:border-box}
+  .au-gate-fields input:focus{border-color:var(--signal)}
+  .au-gate-consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--mist2);line-height:1.55;margin:0 0 16px;cursor:pointer;max-width:640px}
+  .au-gate-consent input{margin-top:3px;accent-color:var(--signal);flex-shrink:0}
+  .au-gate-captcha{margin:0 0 16px}
+  .au-gate-fine{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.03em;line-height:1.6;margin:14px 0 0}
+  .au-gate-fine a{color:var(--mist2)}
+  .au-gated{display:none}
+  .au-unlocked-note{display:none;border:1px solid var(--signal-dim);background:rgba(200,241,53,.05);border-radius:6px;padding:14px 18px;max-width:760px;margin-top:22px;font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.04em}
+  html.au-open .au-gated{display:block}
+  html.au-open .au-gate{display:none}
+  html.au-open .au-unlocked-note{display:block}
+  @media(max-width:560px){.au-gate-fields{grid-template-columns:1fr}.au-gate{padding:26px 20px}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Automations","description":"Fifteen marketing automations with full build guides — manual extracts or MCP integration.","url":"https://campaignautomation.ai/automations","isPartOf":{"@type":"WebSite","name":"Campaign Automation AI","url":"https://campaignautomation.ai"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://campaignautomation.ai/"},{"@type":"ListItem","position":2,"name":"Automations","item":"https://campaignautomation.ai/automations"}]}]}
@@ -173,7 +194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="page-hero">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span>The automation library</p>
     <h1>Automations you can actually stand up.</h1>
-    <p>Every automation below ships with a full build guide: a manual path that runs on data extracts and spreadsheets, and an integrated path that connects your systems through MCP with guardrails on. Build it yourself, or have us build it with you.</p>
+    <p>Every automation below ships with a full build guide: a manual path that runs on data extracts and spreadsheets, and an integrated path that connects your systems through MCP with guardrails on. Build it yourself, or have us build it with you. The guides are free to unlock — one name and email opens all 15.</p>
     <div class="au-meta">
       <span class="au-chip sig">15 automations</span>
       <span class="au-chip sig">2 build paths each</span>
