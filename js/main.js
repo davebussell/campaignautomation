@@ -75,15 +75,69 @@ window.addEventListener('pageshow', () => {
   document.body.style.animation = '';
 });
 
-/* ── WORD-BY-WORD HERO REVEAL ────────────────────────────── */
-const heroWords = document.querySelectorAll('.hero-word');
-if (heroWords.length) {
-  if (prefersReducedMotion) {
-    heroWords.forEach(w => w.classList.add('revealed'));
+/* ── HERO TYPEWRITER (two-stage) ─────────────────────────── */
+/* The full headline lives in the static HTML (SEO + no-JS safe);
+   JS wraps each character and reveals them in order, so layout
+   never shifts. Screen readers get the sentence once via aria-label. */
+const heroTyped = document.querySelector('.hero-typed');
+if (heroTyped) {
+  const lines = Array.from(heroTyped.querySelectorAll('.ht-line'));
+  heroTyped.setAttribute('aria-label', heroTyped.textContent.replace(/\s+/g, ' ').trim());
+  lines.forEach(l => l.setAttribute('aria-hidden', 'true'));
+
+  if (prefersReducedMotion || !lines.length) {
+    heroTyped.classList.add('ht-done');
   } else {
-    heroWords.forEach((word, i) => {
-      setTimeout(() => word.classList.add('revealed'), 100 + i * 70);
+    const chars = [];
+    lines.forEach(line => {
+      (function wrap(node) {
+        Array.from(node.childNodes).forEach(n => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            for (const ch of n.textContent) {
+              const s = document.createElement('span');
+              s.className = 'htc';
+              s.textContent = ch;
+              frag.appendChild(s);
+              chars.push(s);
+            }
+            node.replaceChild(frag, n);
+          } else if (n.nodeType === 1 && !n.classList.contains('blink-dot')) {
+            wrap(n);
+          }
+        });
+      })(line);
     });
+
+    const heroDot = heroTyped.querySelector('.blink-dot');
+    if (heroDot) heroDot.style.visibility = 'hidden';
+    const caret = document.createElement('span');
+    caret.className = 'ht-caret';
+    caret.setAttribute('aria-hidden', 'true');
+    lines[0].insertBefore(caret, lines[0].firstChild);
+
+    let htIndex = 0;
+    function finishHero() {
+      chars.forEach(c => c.classList.add('on'));
+      caret.remove();
+      if (heroDot) heroDot.style.visibility = '';
+      heroTyped.classList.add('ht-done');
+    }
+    function typeHero() {
+      // Hidden tab = throttled timers and no audience — show the finished headline.
+      if (htIndex >= chars.length || document.hidden) {
+        finishHero();
+        return;
+      }
+      const c = chars[htIndex];
+      c.classList.add('on');
+      c.parentNode.insertBefore(caret, c.nextSibling);
+      htIndex++;
+      const lineBreak = htIndex < chars.length &&
+        chars[htIndex].closest('.ht-line') !== c.closest('.ht-line');
+      setTimeout(typeHero, lineBreak ? 700 : 34 + Math.random() * 38);
+    }
+    setTimeout(typeHero, 450);
   }
 }
 

@@ -40,6 +40,7 @@ const EXPLICIT = {
   'ai-marketing-guardrails':'strategy','human-in-the-loop-marketing-automation':'strategy','reversible-ai-marketing-changes':'strategy',
   'ai-account-access-marketing-tools':'strategy','ai-marketing-approval-thresholds':'strategy','ai-marketing-audit-trail':'strategy',
   'ai-spend-caps-budget-guardrails':'strategy','ai-agents-in-your-crm':'strategy',
+  'autonomous-optimization-company':'strategy',
   // Buyer guides
   'evaluate-ai-marketing-automation-platforms':'guides','how-to-evaluate-autonomous-marketing-ai':'guides','ai-marketing-automation-guide':'guides',
   'ai-marketing-automation-governance-checklist':'guides','ai-marketing-automation-glossary-terms':'guides','ai-marketing-automation-roi':'guides',
@@ -72,7 +73,7 @@ function metaOf(idx){
   const tm = html.match(/<title>([^<]*)<\/title>/);
   const dm = html.match(/<meta name="description" content="([^"]*)"/);
   if(!tm) return null;
-  let title = decode(tm[1].replace(/\s*\|\s*Campaign Automation AI\s*$/,'').trim());
+  let title = decode(tm[1].replace(/\s*\|\s*(Campaign Automation AI|CA\.AI)\s*$/,'').trim());
   let desc = dm ? decode(dm[1]).trim() : '';
   if(desc.length>150){ desc=desc.slice(0,148); desc=desc.slice(0,desc.lastIndexOf(' '))+'…'; }
   return {title,desc};

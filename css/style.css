@@ -5,6 +5,7 @@
   --signal:#C8F135;
   --signal-dim:rgba(200,241,53,.12);
   --signal-glow:rgba(200,241,53,.25);
+  --neon:#39FF14;
   --slate:#1E1E1E;
   --slate2:#2A2A2A;
   --mist:#888;        /* upgraded from #6B6B6B — passes WCAG AA on dark bg */
@@ -869,7 +870,7 @@ p.lead{font-size:clamp(16px,1.5vw,18px);color:var(--mist2);line-height:1.7;font-
 .footer-desc{font-size:14px;color:var(--mist2);line-height:1.65;max-width:300px;margin:0 0 18px}
 .footer-contact{font-family:var(--f-mono);font-size:13px;color:var(--mist2);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .15s,border-color .15s}
 .footer-contact:hover{color:var(--signal);border-color:var(--signal)}
-.footer-col h3{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin:0 0 14px}
+.footer-col h3,.footer-col-label{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin:0 0 14px}
 .footer-col a{display:block;font-size:14px;color:var(--mist2);text-decoration:none;padding:6px 0;transition:color .15s,padding-left .15s}
 .footer-col a:visited{color:var(--mist2)}
 .footer-col a:hover{color:var(--signal);padding-left:5px}
@@ -1052,16 +1053,23 @@ p.lead{font-size:clamp(16px,1.5vw,18px);color:var(--mist2);line-height:1.7;font-
    ENHANCED VISUAL SYSTEM — v2.0
 ═══════════════════════════════════════════════════════════ */
 
-/* ── WORD-BY-WORD HERO REVEAL ────────────────────────── */
-.word-reveal-h1{overflow:visible;line-height:1.0}
-.hero-word{
-  display:inline-block;
-  clip-path:inset(0 100% 0 0);
-  opacity:0;
-  transition:clip-path 280ms ease-out,opacity 280ms ease-out;
+/* ── HERO TYPEWRITER ──────────────────────────────────── */
+.hero-typed{line-height:1.04}
+.hero-typed .ht-line{display:block}
+.hero-typed .ht-l2{font-size:.6em;margin-top:22px;letter-spacing:-.015em}
+.hero-typed .signal-word{color:var(--signal)}
+.hero-typed .htc{opacity:0}
+.hero-typed .htc.on{opacity:1}
+.hero h1 em.neon{color:var(--neon);text-shadow:0 0 24px rgba(57,255,20,.35)}
+.hero h1 em.neon::after{background:var(--neon);opacity:0;transition:opacity .5s ease .15s}
+.hero-typed.ht-done em.neon::after{opacity:.55}
+.ht-caret{
+  display:inline-block;width:.06em;height:.74em;background:currentColor;
+  margin:0 .01em 0 .045em;transform:translateY(.06em);
+  animation:dot-blink 1.1s step-end infinite;
 }
-.hero-word.revealed{clip-path:inset(0 0% 0 0);opacity:1}
-.hero-word.signal{color:var(--signal)}
+.hero-sub a{color:var(--bone);text-decoration:underline;text-decoration-color:rgba(200,241,53,.45);text-underline-offset:3px;transition:color .15s}
+.hero-sub a:hover{color:var(--signal)}
 
 /* ── GRADIENT ORBS ───────────────────────────────────── */
 .orb{
