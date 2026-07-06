@@ -1056,7 +1056,11 @@ p.lead{font-size:clamp(16px,1.5vw,18px);color:var(--mist2);line-height:1.7;font-
 /* ── HERO TYPEWRITER ──────────────────────────────────── */
 .hero-typed{line-height:1.04}
 .hero-typed .ht-line{display:block}
-.hero-typed .ht-l2{font-size:.6em;margin-top:22px;letter-spacing:-.015em}
+.hero-typed .ht-l2{margin-top:22px} /* no-JS fallback: both lines stacked */
+.hero-typed.ht-swap{display:grid} /* JS: lines share one cell — line 2 replaces line 1 */
+.hero-typed.ht-swap .ht-line{grid-area:1/1;margin:0}
+.hero-typed.ht-final .ht-line:not(.ht-l2){display:none} /* reduced motion: finished headline only */
+.hero-typed.ht-final .ht-l2{margin-top:0}
 .hero-typed .signal-word{color:var(--signal)}
 .hero-typed .htc{opacity:0}
 .hero-typed .htc.on{opacity:1}

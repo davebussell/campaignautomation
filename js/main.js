@@ -75,21 +75,24 @@ window.addEventListener('pageshow', () => {
   document.body.style.animation = '';
 });
 
-/* ── HERO TYPEWRITER (two-stage) ─────────────────────────── */
-/* The full headline lives in the static HTML (SEO + no-JS safe);
-   JS wraps each character and reveals them in order, so layout
-   never shifts. Screen readers get the sentence once via aria-label. */
+/* ── HERO TYPEWRITER (type → erase → replace) ────────────── */
+/* Both headline lines live in the static HTML (SEO + no-JS safe;
+   no-JS shows them stacked). JS overlays them in one grid cell,
+   types line 1, backspaces it away, then types line 2 in its
+   place at full size. Screen readers get the sentence once via
+   aria-label. */
 const heroTyped = document.querySelector('.hero-typed');
 if (heroTyped) {
   const lines = Array.from(heroTyped.querySelectorAll('.ht-line'));
   heroTyped.setAttribute('aria-label', heroTyped.textContent.replace(/\s+/g, ' ').trim());
   lines.forEach(l => l.setAttribute('aria-hidden', 'true'));
 
-  if (prefersReducedMotion || !lines.length) {
-    heroTyped.classList.add('ht-done');
+  if (prefersReducedMotion || lines.length < 2) {
+    heroTyped.classList.add('ht-final', 'ht-done');
   } else {
-    const chars = [];
-    lines.forEach(line => {
+    heroTyped.classList.add('ht-swap');
+    const wrapChars = line => {
+      const out = [];
       (function wrap(node) {
         Array.from(node.childNodes).forEach(n => {
           if (n.nodeType === 3) {
@@ -99,7 +102,7 @@ if (heroTyped) {
               s.className = 'htc';
               s.textContent = ch;
               frag.appendChild(s);
-              chars.push(s);
+              out.push(s);
             }
             node.replaceChild(frag, n);
           } else if (n.nodeType === 1 && !n.classList.contains('blink-dot')) {
@@ -107,7 +110,10 @@ if (heroTyped) {
           }
         });
       })(line);
-    });
+      return out;
+    };
+    const l1 = wrapChars(lines[0]);
+    const l2 = wrapChars(lines[1]);
 
     const heroDot = heroTyped.querySelector('.blink-dot');
     if (heroDot) heroDot.style.visibility = 'hidden';
@@ -116,26 +122,53 @@ if (heroTyped) {
     caret.setAttribute('aria-hidden', 'true');
     lines[0].insertBefore(caret, lines[0].firstChild);
 
-    let htIndex = 0;
     function finishHero() {
-      chars.forEach(c => c.classList.add('on'));
+      // Line 1 keeps its (invisible) space so the hero never shifts height.
+      l1.forEach(c => c.classList.remove('on'));
+      l2.forEach(c => c.classList.add('on'));
       caret.remove();
       if (heroDot) heroDot.style.visibility = '';
       heroTyped.classList.add('ht-done');
     }
+
+    let phase = 'type1', i = 0;
     function typeHero() {
       // Hidden tab = throttled timers and no audience — show the finished headline.
-      if (htIndex >= chars.length || document.hidden) {
-        finishHero();
-        return;
+      if (document.hidden) { finishHero(); return; }
+      let delay;
+      if (phase === 'type1') {
+        if (i < l1.length) {
+          l1[i].classList.add('on');
+          l1[i].parentNode.insertBefore(caret, l1[i].nextSibling);
+          i++;
+          delay = 34 + Math.random() * 38;
+        } else {
+          phase = 'erase'; i = l1.length - 1;
+          delay = 950;
+        }
+      } else if (phase === 'erase') {
+        if (i >= 0) {
+          l1[i].classList.remove('on');
+          l1[i].parentNode.insertBefore(caret, l1[i]);
+          i--;
+          delay = 18 + Math.random() * 16;
+        } else {
+          phase = 'type2'; i = 0;
+          lines[1].insertBefore(caret, lines[1].firstChild);
+          delay = 280;
+        }
+      } else {
+        if (i < l2.length) {
+          l2[i].classList.add('on');
+          l2[i].parentNode.insertBefore(caret, l2[i].nextSibling);
+          i++;
+          delay = 34 + Math.random() * 38;
+        } else {
+          finishHero();
+          return;
+        }
       }
-      const c = chars[htIndex];
-      c.classList.add('on');
-      c.parentNode.insertBefore(caret, c.nextSibling);
-      htIndex++;
-      const lineBreak = htIndex < chars.length &&
-        chars[htIndex].closest('.ht-line') !== c.closest('.ht-line');
-      setTimeout(typeHero, lineBreak ? 700 : 34 + Math.random() * 38);
+      setTimeout(typeHero, delay);
     }
     setTimeout(typeHero, 450);
   }
