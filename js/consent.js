@@ -101,19 +101,25 @@
     });
   }
 
-  function show(openPanel) {
+  function show(openPanel, focusFirst) {
     if (!banner) build();
     var cur = read();
     elAnalytics.checked = cur ? !!cur.analytics : false;
     elAds.checked = cur ? !!cur.ads : false;
     banner.style.display = '';
     banner.classList.toggle('cac-show-panel', !!openPanel);
-    var f = banner.querySelector('.cac-accept'); if (f) f.focus();
+    // Focus only on user-initiated opens — autofocusing the auto-shown banner
+    // during page load made browsers scroll to the bottom of the document
+    // (the banner sits at the end of the DOM) and steals focus from the page.
+    if (focusFirst) {
+      var f = banner.querySelector('.cac-accept');
+      if (f) { try { f.focus({ preventScroll: true }); } catch (e) { f.focus(); } }
+    }
   }
   function hide() { if (banner) banner.style.display = 'none'; }
 
   // Public API for the footer "Cookie settings" link.
-  window.caConsent = { open: function () { show(true); }, reset: function () { try { localStorage.removeItem(KEY); } catch (e) {} } };
+  window.caConsent = { open: function () { show(true, true); }, reset: function () { try { localStorage.removeItem(KEY); } catch (e) {} } };
 
   function injectFooterLink() {
     if (document.querySelector('.cac-footer-link')) return;
@@ -124,7 +130,7 @@
     btn.type = 'button';
     btn.className = 'cac-footer-link';
     btn.textContent = 'Cookie settings';
-    btn.addEventListener('click', function () { show(true); });
+    btn.addEventListener('click', function () { show(true, true); });
     host.appendChild(sep);
     host.appendChild(btn);
   }
