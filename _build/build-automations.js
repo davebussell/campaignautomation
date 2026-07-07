@@ -441,7 +441,7 @@ ${secs}
   <div class="page-hero">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span>The automation library</p>
     <h1>Automations you can actually stand up.</h1>
-    <p>Every automation below runs on the stack you already have — a manual path built on data extracts and spreadsheets, and an integrated path that connects your existing systems through MCP with guardrails on. No new platform, no migration: faster builds, less red tape, one less vendor to manage. Build it yourself, or have us build it with you. The guides are free to unlock — one name and email opens all ${GUIDES.length}.</p>
+    <p>Every automation below runs on the stack you already have — a manual path built on data extracts and spreadsheets, and an integrated path that connects your existing systems through MCP with guardrails on. No new platform, no migration: faster builds, less red tape, one less vendor to manage. Build it yourself, or have us build it with you. The guides are free to unlock — one name and email opens all ${GUIDES.length}. Stacked together, they are how we deliver <a href="/solutions/automated-campaign-optimization">automated campaign optimization</a> — our core service.</p>
     <div class="au-meta">
       <span class="au-chip sig">${GUIDES.length} automations</span>
       <span class="au-chip sig">Your existing stack</span>

@@ -26,6 +26,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
         <div class="mega-grid cols-2">
           <div class="mega-col">
             <span class="dropdown-label">Offerings</span>
+            <a href="/solutions/automated-campaign-optimization"><span class="mega-t">Automated Campaign Optimization</span><span class="mega-d">Our core service — always-on optimization loops</span></a>
             <a href="/solutions/campaign-audit"><span class="mega-t">Automation Audit</span><span class="mega-d">The first sprint — find the waste and the plan</span></a>
             <a href="/automations"><span class="mega-t">Automations</span><span class="mega-d">Build guides — stand each one up yourself or with us</span></a>
             <a href="/training"><span class="mega-t">Automation Training</span><span class="mega-d">Upskill your team to run AI workflows</span></a>
@@ -76,6 +77,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
   <div class="mobile-section">
     <h2 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px">Solutions</h2>
+    <a href="/solutions/automated-campaign-optimization">Automated Campaign Optimization</a>
     <a href="/solutions/campaign-audit">Automation Audit</a>
     <a href="/automations">Automations</a>
     <a href="/training">Automation Training</a>
@@ -128,6 +130,7 @@ const FOOTER = `<footer class="site-footer" role="contentinfo" aria-label="Site 
       </div>
       <nav class="footer-col" aria-label="Solutions links">
         <h3>Solutions</h3>
+        <a href="/solutions/automated-campaign-optimization">Automated Campaign Optimization</a>
         <a href="/solutions/campaign-audit">Campaign Automation Audit</a>
         <a href="/automations">Automations</a>
         <a href="/platform">Campaign Strategy Portal</a>

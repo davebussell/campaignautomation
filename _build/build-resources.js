@@ -42,6 +42,7 @@ const EXPLICIT = {
   'ai-spend-caps-budget-guardrails':'strategy','ai-agents-in-your-crm':'strategy',
   'autonomous-optimization-company':'strategy',
   'starbucks-tank-day-ai-marketing':'strategy','cultural-context-marketing-ai':'strategy','risk-aware-guardrails-ai-creative':'strategy',
+  'what-is-automated-campaign-optimization':'strategy','manual-vs-automated-campaign-optimization':'strategy','automated-campaign-optimization-roadmap':'strategy',
   // Buyer guides
   'evaluate-ai-marketing-automation-platforms':'guides','how-to-evaluate-autonomous-marketing-ai':'guides','ai-marketing-automation-guide':'guides',
   'ai-marketing-automation-governance-checklist':'guides','ai-marketing-automation-glossary-terms':'guides','ai-marketing-automation-roi':'guides',

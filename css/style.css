@@ -1073,6 +1073,9 @@ p.lead{font-size:clamp(16px,1.5vw,18px);color:var(--mist2);line-height:1.7;font-
 }
 .hero-sub a{color:var(--bone);text-decoration:underline;text-decoration-color:rgba(200,241,53,.45);text-underline-offset:3px;transition:color .15s}
 .hero-sub a:hover{color:var(--signal)}
+/* metric footnote links — promoted from per-page inline styles (audit + executives used it undefined) */
+.metric-how{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--signal);text-decoration:none;opacity:.85;transition:opacity .15s}
+.metric-how:hover{opacity:1;text-decoration:underline}
 
 /* ── GRADIENT ORBS ───────────────────────────────────── */
 .orb{
