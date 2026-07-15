@@ -30,6 +30,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 @media(max-width:400px){.includes-list{grid-template-columns:1fr}}
 </style>
 <script defer src="/js/consent.js"></script>
+<!-- ca-prelaunch gate -->
+<script>(function(){try{var d=document.documentElement;if(localStorage.getItem('ca_preview')==='1'){d.className+=' site-unlocked';return;}d.className+=' site-locked';var p=location.pathname||'/';if(p.slice(-10)==='index.html')p=p.slice(0,-10);while(p.length>1&&p.charAt(p.length-1)==='/')p=p.slice(0,-1);if(!p)p='/';var EX=['/tools/readiness-score','/resources/ai-automation-pricing','/results'];var PRE=['/solutions','/automations','/who-we-help','/builders','/request-proposals','/training','/platform','/get-started'];var g=EX.indexOf(p)>-1;if(!g){for(var i=0;i<PRE.length;i++){if(p===PRE[i]||p.indexOf(PRE[i]+'/')===0){g=true;break;}}}if(g)d.className+=' site-gated-page';}catch(e){}})();</script>
+<noscript><style>html.site-gated-page body{visibility:visible!important}</style></noscript>
+<script defer src="/js/prelaunch.js"></script>
+<!-- /ca-prelaunch -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->

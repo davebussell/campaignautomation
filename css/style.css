@@ -1516,3 +1516,48 @@ nav.mobile-menu a.nav-next-step::before{content:"→ ";font-size:.9em}
 /* glossary cross-links inside articles */
 .gloss-link{color:inherit;text-decoration:none;border-bottom:1px dotted var(--mist);transition:border-color .15s,color .15s}
 .gloss-link:hover{color:var(--signal);border-bottom-color:var(--signal)}
+
+/* ── PRE-LAUNCH GATE ─────────────────────────────────────────
+   Soft, client-side. Classes set pre-paint by an inline <head>
+   snippet; UI built by /js/prelaunch.js. See that file's header. */
+/* Commercial PAGES: hide the whole body pre-paint so sales content
+   never flashes; the JS overlay (own visibility) paints over it. */
+html.site-gated-page body{visibility:hidden}
+/* Next-step / inquiry elements hidden on every locked page.
+   NB: main.js renames a.nav-cta → a.nav-cta-yellow at runtime and injects
+   .score-chip / .rs-sprints-banner — all listed so nothing leaks post-JS. */
+html.site-locked .btn-primary,
+html.site-locked .nav-cta,
+html.site-locked .nav-cta-yellow,
+html.site-locked .mobile-cta,
+html.site-locked .hero-actions,
+html.site-locked .footer-cta,
+html.site-locked .footer-contact,
+html.site-locked .score-chip,
+html.site-locked .rs-sprints-banner,
+html.site-locked form[data-netlify],
+html.site-locked form[name],
+html.site-locked a[href^="mailto:"],
+html.site-locked a[href="/request-proposals"],
+html.site-locked a[href^="/request-proposals?"]{display:none!important}
+/* Preview pill (public locked pages) */
+.ca-preview-pill{visibility:visible;position:fixed;top:74px;right:16px;z-index:1200;display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--signal);border:none;border-radius:999px;padding:9px 15px;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.4);transition:filter .15s,transform .15s}
+.ca-preview-pill:hover{filter:brightness(1.06);transform:translateY(-1px)}
+@media(max-width:900px){.ca-preview-pill{top:64px;right:10px;font-size:10px;padding:7px 12px}}
+/* Coming-soon overlay (gated pages, or pill click) */
+.ca-coming{visibility:visible;position:fixed;inset:0;z-index:100000;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;background-image:radial-gradient(circle at 1px 1px,rgba(200,241,53,.06) 1px,transparent 0);background-size:38px 38px}
+.ca-coming-card{max-width:520px;width:100%}
+.ca-coming-logo{font-family:var(--f-display);font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--bone);margin-bottom:26px}
+.ca-coming-logo span{color:var(--signal)}
+.ca-coming-eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
+.ca-coming-title{font-family:var(--f-display);font-size:clamp(30px,5vw,46px);font-weight:800;line-height:1.05;letter-spacing:-.025em;color:var(--bone);margin:0 0 14px}
+.ca-coming-sub{font-size:15px;color:var(--mist2);line-height:1.65;max-width:420px;margin:0 auto 28px}
+.ca-coming-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.ca-coming-input{flex:1;min-width:200px;max-width:280px;background:var(--slate2);border:1px solid var(--border);color:var(--bone);font-family:var(--f-body);font-size:15px;padding:12px 14px;border-radius:6px;outline:none;transition:border-color .15s}
+.ca-coming-input:focus{border-color:var(--signal)}
+.ca-coming-btn{background:var(--signal);color:var(--ink);border:none;font-family:var(--f-mono);font-size:13px;font-weight:700;letter-spacing:.03em;padding:12px 20px;border-radius:6px;cursor:pointer;transition:filter .15s}
+.ca-coming-btn:hover{filter:brightness(1.06)}
+.ca-coming-err{font-size:13px;color:#E05A4E;margin:0 0 14px}
+.ca-coming-home{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:var(--mist2);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+.ca-coming-home:hover{color:var(--signal);border-bottom-color:var(--signal)}
+@media(max-width:480px){.ca-coming-form{flex-direction:column;align-items:stretch}.ca-coming-input{max-width:none}}
