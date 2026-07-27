@@ -1,7 +1,4 @@
-# Pre-launch: campaignautomation.ai is not open to the public yet.
-# Disallow crawling while in preview/pre-launch mode.
-# AT LAUNCH: restore "Allow: /" and the Sitemap line below.
 User-agent: *
-Disallow: /
+Allow: /
 
-# Sitemap: https://campaignautomation.ai/sitemap.xml
+Sitemap: https://campaignautomation.ai/sitemap.xml
