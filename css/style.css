@@ -567,6 +567,8 @@ p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--mist2);line-height:1.7;font-
 .bone-card h4{color:var(--ink)}
 .card p{font-size:16px;color:var(--mist2);line-height:1.65}
 .bone-card p{color:#444}
+/* workflow-card eyebrow — promoted from the old homepage inline styles */
+.wf-metric{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-bottom:10px}
 .card-arrow{font-size:18px;color:var(--signal);margin-top:20px;display:block;transition:transform .2s}
 .card:hover .card-arrow{transform:translateX(4px)}
 .card-link{text-decoration:none;display:block}

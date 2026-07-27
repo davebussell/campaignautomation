@@ -191,6 +191,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Guardrail-driven automation sits deliberately between two failure modes. On one side is human approval at every step, which is just a slower manual process wearing an automation badge. On the other is black-box AI, where the agent acts and you find out what it did from the invoice. The middle path keeps the agent autonomous inside hard boundaries and keeps a human in the loop where judgment actually matters.</p>
         </section>
 
+        <section class="article-section" id="agent-log">
+          <h2>Autonomous within bounds — what a run actually looks like</h2>
+          <p>The abstract version of this argument is easy to nod along to, so here is the concrete one. Every automation we build runs inside a guardrail layer your team defines and controls, and every action it takes is written to a log in the same shape: what triggered it, what it changed, and what moved as a result. Nothing is invisible, and you can edit, override, or pause any rule at any time.</p>
+          <div class="terminal terminal-float reveal reveal-delay-2" data-animate style="background:#111;border-color:#2a2a2a;color:#aaa;margin:28px 0" role="region" aria-label="AI agent log example" aria-live="off">
+            <div class="scanline" aria-hidden="true"></div>
+            <div data-type class="t-dim"># Agent run — Google Ads · PPC Intelligence Sprint</div>
+            <div data-type>✓ Trigger: CPA above threshold ($42 → $58)</div>
+            <div data-type>✓ Action: Pause 3 underperforming ad groups</div>
+            <div data-type>✓ Action: Reallocate $840 to top converter</div>
+            <div data-type>✓ Guardrail: Daily spend cap respected ($2,400)</div>
+            <div data-type>✓ Guardrail: Brand exclusions applied (47 terms)</div>
+            <div data-type class="t-dim" style="margin-top:8px"># Impact logged · trigger/action/impact schema</div>
+            <div data-type>CPA delta: -22% over 72h window</div>
+            <div data-type>Human approval required: 0</div>
+            <div data-type class="t-dim" style="margin-top:8px">Agent standing by <span class="cursor" aria-hidden="true"></span></div>
+          </div>
+          <p>Read the log from the bottom up and you can reconstruct the reasoning: the agent acted on its own, but only inside a spend cap and an exclusion list set in advance, and the outcome was measured rather than assumed. That is the whole idea — autonomy where it compounds, boundaries where it matters. <a href="/results/trigger-action-impact">The Trigger-Action-Impact framework →</a></p>
+        </section>
+
         <section class="article-section" id="guardrail-types">
           <h2>The guardrail types</h2>
           <p>A guardrail is a rule your team defines and the system enforces. Most useful automation layers combine several types, because each one catches a different class of mistake:</p>

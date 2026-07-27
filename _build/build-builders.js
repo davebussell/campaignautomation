@@ -446,11 +446,16 @@ console.log('Retired ' + removed + ' persona pages');
     </div>
   </section>
   <!-- /builders-band -->`;
+  // The band was removed from the homepage in the 2026-07 declutter (builder
+  // content now lives on /builders and /about). We only refresh it if the
+  // markers are still there — we never re-add it to a homepage that dropped it.
   let home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   const bandRe = /[ \t]*<!-- builders-band -->[\s\S]*?<!-- \/builders-band -->/;
-  if (bandRe.test(home)) home = home.replace(bandRe, BAND);
-  else home = home.replace('  <!-- GUARDRAIL TERMINAL -->', BAND + '\n\n  <!-- GUARDRAIL TERMINAL -->');
-  fs.writeFileSync(path.join(ROOT, 'index.html'), home, 'utf8');
-  console.log('Homepage builders band updated (roles version)');
+  if (bandRe.test(home)) {
+    fs.writeFileSync(path.join(ROOT, 'index.html'), home.replace(bandRe, BAND), 'utf8');
+    console.log('Homepage builders band updated (roles version)');
+  } else {
+    console.log('Homepage builders band absent by design — skipped (see /builders)');
+  }
 }
 console.log('DONE');
