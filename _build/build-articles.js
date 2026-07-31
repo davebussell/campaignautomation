@@ -105,6 +105,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
     <a href="/results/trigger-action-impact">Framework</a>
     <a href="/builders">Builders</a>
     <a href="/about">About</a>
+        <a href="/trust">Trust &amp; compliance</a>
   </div>
   <a href="/tools/readiness-score" class="mobile-cta">Get your free Readiness Score →</a>
 </nav>`;
@@ -157,6 +158,7 @@ const FOOTER = `<footer class="site-footer" role="contentinfo" aria-label="Site 
         <a href="/training">Training</a>
         <a href="/resources/glossary">Glossary</a>
         <a href="/about">About</a>
+        <a href="/trust">Trust &amp; compliance</a>
         <a href="https://auditdemand.com/?utm_source=campaignautomation.ai&utm_medium=referral&utm_campaign=footer" target="_blank" rel="noopener">AuditDemand &#8599;</a>
       </nav>
     </div>

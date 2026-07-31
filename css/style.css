@@ -1075,6 +1075,10 @@ p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--mist2);line-height:1.7;font-
 }
 .hero-sub a{color:var(--bone);text-decoration:underline;text-decoration-color:rgba(200,241,53,.45);text-underline-offset:3px;transition:color .15s}
 .hero-sub a:hover{color:var(--signal)}
+/* hero trust line — the guardrails promise, one line under the CTAs */
+.hero-trust{margin-top:26px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.03em;color:var(--mist);line-height:1.7;animation:fade-up .7s cubic-bezier(.16,1,.3,1) .4s both}
+.hero-trust a{color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(200,241,53,.3)}
+.hero-trust a:hover{border-bottom-color:var(--signal)}
 /* metric footnote links — promoted from per-page inline styles (audit + executives used it undefined) */
 .metric-how{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--signal);text-decoration:none;opacity:.85;transition:opacity .15s}
 .metric-how:hover{opacity:1;text-decoration:underline}
