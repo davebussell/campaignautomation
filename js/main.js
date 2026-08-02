@@ -87,10 +87,13 @@ if (heroTyped) {
   heroTyped.setAttribute('aria-label', heroTyped.textContent.replace(/\s+/g, ' ').trim());
   lines.forEach(l => l.setAttribute('aria-hidden', 'true'));
 
-  if (prefersReducedMotion || lines.length < 2) {
+  if (prefersReducedMotion || !lines.length) {
     heroTyped.classList.add('ht-final', 'ht-done');
   } else {
-    heroTyped.classList.add('ht-swap');
+    // Two lines = type line 1, erase it, type line 2 in its place.
+    // One line = just type it once and let it stand.
+    const swap = lines.length >= 2;
+    if (swap) heroTyped.classList.add('ht-swap');
     const wrapChars = line => {
       const out = [];
       (function wrap(node) {
@@ -112,8 +115,9 @@ if (heroTyped) {
       })(line);
       return out;
     };
-    const l1 = wrapChars(lines[0]);
-    const l2 = wrapChars(lines[1]);
+    const l1 = swap ? wrapChars(lines[0]) : [];
+    const l2 = wrapChars(swap ? lines[1] : lines[0]);
+    const finalLine = swap ? lines[1] : lines[0];
 
     const heroDot = heroTyped.querySelector('.blink-dot');
     if (heroDot) heroDot.style.visibility = 'hidden';
@@ -131,7 +135,7 @@ if (heroTyped) {
       heroTyped.classList.add('ht-done');
     }
 
-    let phase = 'type1', i = 0;
+    let phase = swap ? 'type1' : 'type2', i = 0;
     function typeHero() {
       // Hidden tab = throttled timers and no audience — show the finished headline.
       if (document.hidden) { finishHero(); return; }
@@ -154,7 +158,7 @@ if (heroTyped) {
           delay = 18 + Math.random() * 16;
         } else {
           phase = 'type2'; i = 0;
-          lines[1].insertBefore(caret, lines[1].firstChild);
+          finalLine.insertBefore(caret, finalLine.firstChild);
           delay = 280;
         }
       } else {
