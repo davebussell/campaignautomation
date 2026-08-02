@@ -174,6 +174,48 @@ if (heroTyped) {
   }
 }
 
+/* ── PHOTO BANDS: parallax + progressive reveal ───────────
+   The frame opens as it enters view and the image drifts against
+   the scroll, so the full composition only resolves once you move.
+   Transform-only, rAF-throttled, and skipped entirely for anyone
+   who asked for reduced motion (they get the finished frame). */
+(function initPhotoBands() {
+  const bands = Array.from(document.querySelectorAll('.photo-band'));
+  if (!bands.length) return;
+  if (prefersReducedMotion) {
+    bands.forEach(b => b.classList.add('pb-open'));
+    return;
+  }
+  bands.forEach(b => b.classList.add('pb-armed'));
+
+  const opener = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('pb-open'); opener.unobserve(e.target); }
+    });
+  }, { threshold: 0.2 });
+  bands.forEach(b => opener.observe(b));
+
+  let ticking = false;
+  function drift() {
+    ticking = false;
+    const vh = window.innerHeight;
+    for (const b of bands) {
+      const r = b.getBoundingClientRect();
+      if (r.bottom < -80 || r.top > vh + 80) continue;
+      const media = b.querySelector('.pb-media');
+      if (!media) continue;
+      // -1 (entering from below) .. 1 (leaving at top)
+      const p = ((r.top + r.height / 2) - vh / 2) / ((vh + r.height) / 2);
+      media.style.transform = 'translate3d(0,' + (p * 5).toFixed(2) + '%,0)';
+    }
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(drift); }
+  }, { passive: true });
+  window.addEventListener('resize', drift, { passive: true });
+  drift();
+})();
+
 /* ── SCROLL REVEAL ───────────────────────────────────────── */
 if (prefersReducedMotion) {
   document.querySelectorAll('.reveal, .reveal-left').forEach(el => el.classList.add('is-visible'));
