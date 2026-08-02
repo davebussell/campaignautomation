@@ -445,6 +445,7 @@ const page = `<!DOCTYPE html>
 <link rel="canonical" href="https://campaignautomation.ai/resources/glossary">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/css/style.css">
 ${styles}
 <script type="application/ld+json">

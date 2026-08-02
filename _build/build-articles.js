@@ -221,6 +221,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escAttr(a.ogTitle)}">
 <meta name="twitter:description" content="${escAttr(a.ogDescription)}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/css/style.css">
 <script type="application/ld+json">
 ${JSON.stringify(ld, null, 2)}
