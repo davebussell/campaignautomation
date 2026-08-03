@@ -1066,7 +1066,7 @@ p.lead{font-size:clamp(16px,1.4vw,19px);color:var(--mist2);line-height:1.7;font-
 .hero-typed .signal-word{color:var(--signal)}
 .hero-typed .htc{opacity:0}
 .hero-typed .htc.on{opacity:1}
-.hero h1 em.neon{color:var(--neon);text-shadow:0 0 24px rgba(255,214,10,.35)}
+.hero h1 em.neon{color:var(--signal);text-shadow:0 0 24px rgba(200,241,53,.35)} /* matches the CTA button */
 .hero h1 em.neon::after{display:none} /* no underline on the neon word */
 
 /* ── SPORT MOTIF ───────────────────────────────────────────
