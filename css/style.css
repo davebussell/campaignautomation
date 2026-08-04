@@ -18,6 +18,53 @@
   --focus-ring:0 0 0 3px rgba(200,241,53,.6);
 }
 html{scroll-behavior:smooth}
+
+/* ── LUXURY LAYER ──────────────────────────────────────────
+   Small details most sites skip. Every one degrades gracefully
+   and respects prefers-reduced-motion. */
+
+/* brand-coloured text selection */
+::selection{background:var(--signal);color:var(--ink)}
+::-moz-selection{background:var(--signal);color:var(--ink)}
+
+/* cross-document page transitions (progressive: Chrome/Edge/Safari 18+) */
+@view-transition{navigation:auto}
+@media(prefers-reduced-motion:no-preference){
+  ::view-transition-old(root){animation:vt-out .18s ease both}
+  ::view-transition-new(root){animation:vt-in .22s ease both}
+}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0}}
+
+/* pointer-tracked spotlight on cards (set via --mx/--my from main.js) */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .card,.pillar-card,.au-card,.buyer-card{position:relative;overflow:hidden}
+  .card::after,.pillar-card::after,.au-card::after,.buyer-card::after{
+    content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+    opacity:0;transition:opacity .35s ease;
+    background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(200,241,53,.08),transparent 62%);
+  }
+  .card:hover::after,.pillar-card:hover::after,.au-card:hover::after,.buyer-card:hover::after{opacity:1}
+  .bone-card:hover::after{background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(13,13,13,.05),transparent 62%)}
+}
+
+/* magnetic primary CTA (transform set from main.js, tiny pull) */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .btn-primary{will-change:transform}
+}
+
+/* live agent ticker in the hero */
+.hero-ticker{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;color:var(--mist);
+  animation:fade-up .7s cubic-bezier(.16,1,.3,1) .5s both;
+}
+.hero-ticker .tick-dot{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:signal-pulse 2s ease-in-out infinite;flex:0 0 auto}
+.hero-ticker time{color:var(--mist2);font-variant-numeric:tabular-nums}
+.hero-ticker .tick-ok{color:var(--signal)}
+
+/* terminal decode effect on section labels (chars swapped by main.js) */
+.label-signal{font-variant-numeric:tabular-nums}
 /* screen-reader-only utility — global because main.js injects .sr-only live
    regions on any page with a terminal, and pages without a local copy were
    rendering them as full-width empty blocks */

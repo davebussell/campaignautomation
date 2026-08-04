@@ -220,6 +220,97 @@ if (heroTyped) {
   drift();
 })();
 
+/* ── LUXURY LAYER ─────────────────────────────────────────
+   Micro-details: card spotlight, magnetic CTA, hover prefetch,
+   label decode, live ticker. All rAF-throttled / passive, all
+   skipped under prefers-reduced-motion where motion applies. */
+
+/* Card spotlight — one delegated listener feeds --mx/--my */
+if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
+  document.addEventListener('pointermove', e => {
+    const card = e.target.closest && e.target.closest('.card,.pillar-card,.au-card,.buyer-card');
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+  }, { passive: true });
+
+  /* Magnetic primary CTA — a 3px lean toward the pointer */
+  document.addEventListener('pointermove', e => {
+    const btn = e.target.closest && e.target.closest('.btn-primary');
+    if (!btn) return;
+    const r = btn.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+    const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+    btn.style.transform = 'translate(' + (dx * 3).toFixed(1) + 'px,' + (dy * 3).toFixed(1) + 'px)';
+  }, { passive: true });
+  document.addEventListener('pointerout', e => {
+    const btn = e.target.closest && e.target.closest('.btn-primary');
+    if (btn) btn.style.transform = '';
+  }, { passive: true });
+}
+
+/* Hover prefetch — internal pages start loading before the click */
+(function initPrefetch() {
+  const done = new Set();
+  const prefetch = href => {
+    if (done.has(href)) return;
+    done.add(href);
+    const l = document.createElement('link');
+    l.rel = 'prefetch';
+    l.href = href;
+    document.head.appendChild(l);
+  };
+  ['pointerover', 'touchstart', 'focusin'].forEach(evt =>
+    document.addEventListener(evt, e => {
+      const a = e.target.closest && e.target.closest('a[href^="/"]');
+      if (!a) return;
+      const href = a.getAttribute('href').split('#')[0];
+      if (href && href !== location.pathname) prefetch(href);
+    }, { passive: true }));
+})();
+
+/* Section-label decode — mono labels resolve like a terminal, once */
+if (!prefersReducedMotion) {
+  const GLYPHS = '01<>/\\|=+*#$%&';
+  const decode = el => {
+    const final = el.textContent;
+    if (!final || final.length > 60 || el.dataset.decoded) return;
+    el.dataset.decoded = '1';
+    let frame = 0;
+    const total = Math.min(18, final.length + 6);
+    const timer = setInterval(() => {
+      frame++;
+      const solved = Math.floor(final.length * frame / total);
+      let out = final.slice(0, solved);
+      for (let i = solved; i < final.length; i++) {
+        out += final[i] === ' ' ? ' ' : GLYPHS[(Math.random() * GLYPHS.length) | 0];
+      }
+      el.textContent = out;
+      if (frame >= total) { clearInterval(timer); el.textContent = final; }
+    }, 34);
+  };
+  const labelObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { decode(en.target); labelObs.unobserve(en.target); }
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.section-label .label-signal').forEach(l => labelObs.observe(l));
+}
+
+/* Live agent ticker — a clock that actually ticks */
+(function initTicker() {
+  const t = document.querySelector('.hero-ticker time');
+  if (!t) return;
+  const pad = n => String(n).padStart(2, '0');
+  const set = () => {
+    const d = new Date();
+    t.textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+  };
+  set();
+  setInterval(set, 1000);
+})();
+
 /* ── SCROLL REVEAL ───────────────────────────────────────── */
 if (prefersReducedMotion) {
   document.querySelectorAll('.reveal, .reveal-left').forEach(el => el.classList.add('is-visible'));
