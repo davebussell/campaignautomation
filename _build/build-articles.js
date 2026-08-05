@@ -40,6 +40,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
         </div>
       </div>
     </div>
+    <a href="/learn">Learn</a>
     <a href="/results">Results</a>
     <a href="/results/trigger-action-impact">Framework</a>
     <a href="/builders">Builders</a>
@@ -87,6 +88,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
   </div>
   <div class="mobile-section">
     <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px;font-weight:700">Resources</div>
+    <a href="/learn">Free training path</a>
     <a href="/resources/articles">Articles</a>
     <a href="/resources/glossary">Glossary</a>
     <a href="/resources/templates">Templates &amp; Prompt Packs</a>
@@ -101,6 +103,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
   </div>
   <div class="mobile-section">
     <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:8px;font-weight:700">Company</div>
+    <a href="/learn">Learn</a>
     <a href="/results">Results</a>
     <a href="/results/trigger-action-impact">Framework</a>
     <a href="/builders">Builders</a>
@@ -146,6 +149,7 @@ const FOOTER = `<footer class="site-footer" role="contentinfo" aria-label="Site 
       </nav>
       <nav class="footer-col" aria-label="Resources links">
         <div class="footer-col-label">Resources</div>
+        <a href="/learn">Free training path</a>
         <a href="/tools/readiness-score">Readiness Score</a>
         <a href="/results/trigger-action-impact">TAI Framework</a>
         <a href="/resources/templates">Templates &amp; Prompts</a>
@@ -154,7 +158,8 @@ const FOOTER = `<footer class="site-footer" role="contentinfo" aria-label="Site 
       <nav class="footer-col" aria-label="Company links">
         <div class="footer-col-label">Company</div>
         <a href="/builders">Builders</a>
-        <a href="/results">Results</a>
+        <a href="/learn">Learn</a>
+    <a href="/results">Results</a>
         <a href="/training">Training</a>
         <a href="/resources/glossary">Glossary</a>
         <a href="/about">About</a>
@@ -239,6 +244,7 @@ ${NAV}
 <main id="main-content">
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/learn">Free training path</a>
     <a href="/resources/articles">Articles</a><span aria-hidden="true">/</span>
     <span class="current">${escText(a.breadcrumbShort)}</span>
   </nav>

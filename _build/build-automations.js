@@ -182,11 +182,6 @@ const AUTO_CSS = `  .au-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18p
   .au-gate-captcha{margin:0 0 16px}
   .au-gate-fine{font-family:var(--f-mono);font-size:11px;color:var(--mist);letter-spacing:.03em;line-height:1.6;margin:14px 0 0}
   .au-gate-fine a{color:var(--mist2)}
-  .au-gated{display:none}
-  .au-unlocked-note{display:none;border:1px solid var(--signal-dim);background:rgba(200,241,53,.05);border-radius:6px;padding:14px 18px;max-width:760px;margin-top:22px;font-family:var(--f-mono);font-size:12px;color:var(--signal);letter-spacing:.04em}
-  html.au-open .au-gated{display:block}
-  html.au-open .au-gate{display:none}
-  html.au-open .au-unlocked-note{display:block}
   @media(max-width:560px){.au-gate-fields{grid-template-columns:1fr}.au-gate{padding:26px 20px}}`;
 
 function head(o) {
@@ -230,15 +225,9 @@ const ld = (name, desc, url, extra) => JSON.stringify({ '@context': 'https://sch
 const steps = arr => '<ol class="au-steps">' + arr.map(s => '<li><h3>' + esc(s.title) + '</h3><p>' + esc(s.body) + '</p></li>').join('') + '</ol>';
 const kwRows = arr => '<div class="au-kv">' + arr.map(x => '<div class="kw-row"><div class="kw-term">' + esc(x) + '</div><div class="kw-vol">&#10003;</div></div>').join('') + '</div>';
 
-/* Lead gate: build content is free but requires name+email+consent once
-   (Netlify form `guide-access` with built-in reCAPTCHA). Unlock is stored in
-   localStorage `ca_guides_unlocked` and opens every guide. The head script
-   runs before first paint so unlocked visitors never see the gate flash;
-   noscript users (and crawlers without JS) get the open content — the gated
-   part is declared via paywall markup (isAccessibleForFree:false + hasPart). */
-const UNLOCK_HEAD = `<script>(function(){function u(){try{if(localStorage.getItem('ca_guides_unlocked'))document.documentElement.classList.add('au-open')}catch(e){}}u();window.addEventListener('pageshow',function(e){if(e.persisted)u()})})();</script>
-<noscript><style>.au-gated{display:block}.au-gate{display:none}.reveal{opacity:1;transform:none}</style></noscript>
-`;
+/* Guides are FREE and ungated (2026-08 enablement pivot). The `guide-access`
+   Netlify form remains at the end of each guide as an OPTIONAL subscribe —
+   it never blocks content. */
 
 let nPages = 0;
 for (const g of GUIDES) {
@@ -249,8 +238,7 @@ for (const g of GUIDES) {
   const page = head({
     title: esc(g.name) + ' — Build Guide (Manual or MCP) | Campaign Automation AI',
     desc: g.metaDescription, path: '/automations/' + g.slug,
-    ld: ld(g.name, g.metaDescription, '/automations/' + g.slug, { '@type': 'HowTo', name: 'How to build ' + g.name, isAccessibleForFree: false, hasPart: { '@type': 'WebPageElement', isAccessibleForFree: false, cssSelector: '.au-gated' } }),
-    extraHead: UNLOCK_HEAD
+    ld: ld(g.name, g.metaDescription, '/automations/' + g.slug, { '@type': 'HowTo', name: 'How to build ' + g.name, isAccessibleForFree: true })
   }) + `
   ${crumb([['Home', '/'], ['Automations', '/automations'], [esc(g.name), null]])}
 
@@ -282,34 +270,6 @@ for (const g of GUIDES) {
     <div class="au-setup-box">New to the stack? Set up your environment first — data access, workspace, integration platforms, and the agent layer are covered once in <a href="/automations/setup">Environments &amp; tooling</a>.${AUDITDEMAND_SLUGS.has(g.slug) ? ' Not sure where the waste is yet? An automated <a href="https://auditdemand.com/?utm_source=campaignautomation.ai&amp;utm_medium=referral&amp;utm_campaign=build-guide" target="_blank" rel="noopener">AuditDemand audit&nbsp;&#8599;</a> quantifies it before you build.' : ''}</div>
   </section>
 
-  <section class="section reveal" id="unlock">
-    <p class="section-label"><span class="label-signal">The build guide</span></p>
-    <div class="au-unlocked-note">&#10003; Unlocked — every build guide on the site is open on this device.</div>
-    <div class="au-gate">
-      <h2>The full build guide is free — unlock it once.</h2>
-      <p class="au-gate-sub">Tell us who's building and every guide in the library opens up, this one included:</p>
-      <ul class="au-gate-list">
-        <li>Path A &middot; build it with manual data extracts (${g.manualPath.steps.length} steps)</li>
-        <li>Path B &middot; integrate it through MCP connections (${g.mcpPath.steps.length} steps)</li>
-        <li>The tools-and-guardrails checklist to run it safely</li>
-      </ul>
-      <form name="guide-access" method="POST" action="/automations/unlocked" data-netlify="true" data-netlify-recaptcha="true" data-netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="guide-access">
-        <input type="hidden" name="guide" value="${g.slug}">
-        <p style="display:none" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-        <div class="au-gate-fields">
-          <label>Name<input type="text" name="name" required autocomplete="name" placeholder="Your name"></label>
-          <label>Work email<input type="email" name="email" required autocomplete="email" placeholder="you@company.com"></label>
-        </div>
-        <label class="au-gate-consent"><input type="checkbox" name="marketing-consent" value="yes" required>Email me occasional, practical automation content from Campaign Automation AI — including when new build guides ship. Opting in is part of the unlock; unsubscribe anytime, one click.</label>
-        <div class="au-gate-captcha" data-netlify-recaptcha="true"></div>
-        <button type="submit" class="btn-primary">Unlock all ${GUIDES.length} build guides &rarr;</button>
-        <p class="au-gate-fine">One unlock opens every guide on this device. We only email when there's something worth building — every email has a one-click unsubscribe, and you can withdraw consent anytime. Consent requested by Campaign Automation AI, Caledon, Ontario &middot; <a href="mailto:hello@campaignautomation.ai">hello@campaignautomation.ai</a>.</p>
-      </form>
-    </div>
-  </section>
-
-  <div class="au-gated">
   <section class="section bone reveal">
     <p class="section-label"><span class="label-signal">Path A</span></p>
     <h2 class="display" style="color:var(--ink);margin-bottom:8px">Build it with manual data extracts.</h2>
@@ -332,7 +292,26 @@ for (const g of GUIDES) {
     ${kwRows(g.tools)}
     <div class="au-guard"><ul>${g.guardrails.map(x => '<li>' + esc(x) + '</li>').join('')}</ul></div>
   </section>
-  </div>
+
+  <section class="section reveal">
+    <div class="au-gate" style="margin-top:0">
+      <h2 style="font-size:clamp(19px,2.2vw,24px)">Want new build guides as they ship?</h2>
+      <p class="au-gate-sub">Optional — every guide on this site is free either way. Leave your details and we'll email you when new automations join the library, nothing else.</p>
+      <form name="guide-access" method="POST" action="/automations/unlocked" data-netlify="true" data-netlify-recaptcha="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="guide-access">
+        <input type="hidden" name="guide" value="${g.slug}">
+        <p style="display:none" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="au-gate-fields">
+          <label>Name<input type="text" name="name" required autocomplete="name" placeholder="Your name"></label>
+          <label>Work email<input type="email" name="email" required autocomplete="email" placeholder="you@company.com"></label>
+        </div>
+        <label class="au-gate-consent"><input type="checkbox" name="marketing-consent" value="yes" required>Email me when new build guides and practical automation content ship. Unsubscribe anytime, one click.</label>
+        <div class="au-gate-captcha" data-netlify-recaptcha="true"></div>
+        <button type="submit" class="btn-primary">Keep me posted &rarr;</button>
+        <p class="au-gate-fine">We only email when there's something worth building — every email has a one-click unsubscribe, and you can withdraw consent anytime. Consent requested by Campaign Automation AI, Caledon, Ontario &middot; <a href="mailto:hello@campaignautomation.ai">hello@campaignautomation.ai</a>.</p>
+      </form>
+    </div>
+  </section>
 
   <section class="section reveal" style="text-align:center">
     <div style="border:2px solid var(--signal);border-radius:8px;padding:36px;max-width:680px;margin:0 auto">
@@ -360,27 +339,27 @@ for (const g of GUIDES) {
 }
 console.log('Wrote ' + nPages + ' build guides');
 
-/* ── 3b) UNLOCK SUCCESS PAGE (Netlify form `action` target; noindex) ── */
+/* ── 3b) SUBSCRIBE THANK-YOU PAGE (Netlify form `action` target; noindex) ── */
 {
   const page = head({
-    title: 'Unlocked — All Build Guides Open | Campaign Automation AI',
-    desc: 'Access confirmed: every automation build guide on the site is now open on this device.',
+    title: 'You&rsquo;re on the List | Campaign Automation AI',
+    desc: 'Thanks — we will email you when new automation build guides ship. Every guide on the site is free either way.',
     path: '/automations/unlocked',
-    ld: ld('Build guides unlocked', 'Access confirmed: every automation build guide is now open on this device.', '/automations/unlocked'),
+    ld: ld('You’re on the list', 'We will email you when new automation build guides ship. Every guide on the site is free either way.', '/automations/unlocked'),
     extraHead: '<meta name="robots" content="noindex,nofollow">\n'
   }) + `
-  ${crumb([['Home', '/'], ['Automations', '/automations'], ['Unlocked', null]])}
+  ${crumb([['Home', '/'], ['Automations', '/automations'], ['Subscribed', null]])}
 
   <div class="page-hero">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Access confirmed</p>
-    <h1>You're in<span class="blink-dot" aria-hidden="true">.</span></h1>
-    <p>All ${GUIDES.length} build guides are now open on this device — every Path A, every Path B, and every guardrail checklist. If you opted in, we'll email you when new automations join the library.</p>
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Subscribed</p>
+    <h1>You're on the list<span class="blink-dot" aria-hidden="true">.</span></h1>
+    <p>We'll email you when new automations join the library — and only then. Every build guide on this site stays free and open either way, so keep building.</p>
     <div class="hero-actions" style="margin-top:28px">
       <a href="/automations" class="btn-primary" id="au-resume">Browse the automations &rarr;</a>
       <a href="/automations/setup" class="btn-ghost">Set up your environment &rarr;</a>
     </div>
   </div>
-  <script>(function(){try{localStorage.setItem('ca_guides_unlocked',String(Date.now()));var r=localStorage.getItem('ca_guide_return');if(r&&/^\\/automations\\//.test(r)){var a=document.getElementById('au-resume');a.href=r;a.innerHTML='Back to your guide &rarr;';localStorage.removeItem('ca_guide_return');}}catch(e){}})();</script>
+  <script>(function(){try{var r=localStorage.getItem('ca_guide_return');if(r&&/^\\/automations\\//.test(r)){var a=document.getElementById('au-resume');a.href=r;a.innerHTML='Back to your guide &rarr;';localStorage.removeItem('ca_guide_return');}}catch(e){}})();</script>
 ` + tail + `
 </body>
 </html>
@@ -442,7 +421,7 @@ ${secs}
   <div class="page-hero">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span>The automation library</p>
     <h1>Automations you can actually stand up.</h1>
-    <p>Every automation below runs on the stack you already have — a manual path built on data extracts and spreadsheets, and an integrated path that connects your existing systems through MCP with guardrails on. No new platform, no migration: faster builds, less red tape, one less vendor to manage. Build it yourself, or have us build it with you. The guides are free to unlock — one name and email opens all ${GUIDES.length}. Stacked together, they are how we deliver <a href="/solutions/automated-campaign-optimization">automated campaign optimization</a> — our core service.</p>
+    <p>Every automation below runs on the stack you already have — a manual path built on data extracts and spreadsheets, and an integrated path that connects your existing systems through MCP with guardrails on. No new platform, no migration: faster builds, less red tape, one less vendor to manage. Build it yourself, or have us build it with you. Every guide is free — no signup, no gate. Stacked together, they are how we deliver <a href="/solutions/automated-campaign-optimization">automated campaign optimization</a> — our core service.</p>
     <div class="au-meta">
       <span class="au-chip sig">${GUIDES.length} automations</span>
       <span class="au-chip sig">Your existing stack</span>

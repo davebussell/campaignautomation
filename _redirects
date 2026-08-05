@@ -1,11 +1,6 @@
 # Build sources are part of the repo but not the public site
 /_build/*    /404.html    404!
 
-# Retired /learn hub -> Resources (301)
-/learn      /resources  301
-/learn/     /resources  301
-/learn/*    /resources  301
-
 # Sprints repositioned as the Automations library (301)
 /solutions/sprints/content-brief      /automations/content-brief  301
 /solutions/sprints/content-brief/     /automations/content-brief  301
