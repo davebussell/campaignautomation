@@ -28,6 +28,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="Everything you need to automate and optimize marketing workflows, free: concepts, setup, 15 build guides, templates, guardrails, measurement.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+  .kw-row.lp-done>div:first-child{opacity:.6}
+  .kw-row.lp-done .kw-vol{color:var(--signal)}
+  .lp-chip{font-family:var(--f-mono);font-size:10px;color:var(--signal);letter-spacing:.06em;margin-left:10px}
+  .lp-progress{margin-top:22px;max-width:520px}
+  .lp-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+  .lp-bar i{display:block;height:100%;background:var(--signal);border-radius:2px}
+  .lp-progress p{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);letter-spacing:.03em;margin-top:8px;line-height:1.7}
+  .lp-progress b{color:var(--bone);font-weight:600}
+  .lp-reset{background:none;border:none;color:var(--mist);font-family:inherit;font-size:inherit;letter-spacing:inherit;text-decoration:underline;cursor:pointer;padding:0}
+  .lp-reset:hover{color:var(--bone)}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -257,6 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
       </div>
       <div>
+        <a class="kw-row" href="/learn/worked-example" style="padding:14px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;text-decoration:none"><div><div style="font-family:var(--f-display);font-size:16px;font-weight:700;color:var(--bone)">Read the worked example first</div><div style="font-size:14px;color:var(--mist2);line-height:1.6;margin-top:3px">One real dataset end to end — export → analysis → judgment → guardrails → weekly loop.</div></div><div class="kw-vol" aria-hidden="true" style="color:var(--signal)">→</div></a>
         <a class="kw-row" href="/automations/content-brief" style="padding:14px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;text-decoration:none"><div><div style="font-family:var(--f-display);font-size:16px;font-weight:700;color:var(--bone)">Content Brief</div><div style="font-size:14px;color:var(--mist2);line-height:1.6;margin-top:3px">The gentlest start — a brief generator, live in an afternoon.</div></div><div class="kw-vol" aria-hidden="true" style="color:var(--signal)">→</div></a>
         <a class="kw-row" href="/automations/ppc-intelligence" style="padding:14px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;text-decoration:none"><div><div style="font-family:var(--f-display);font-size:16px;font-weight:700;color:var(--bone)">PPC Intelligence</div><div style="font-size:14px;color:var(--mist2);line-height:1.6;margin-top:3px">The classic first loop: waste analysis → negatives → budget moves.</div></div><div class="kw-vol" aria-hidden="true" style="color:var(--signal)">→</div></a>
         <a class="kw-row" href="/automations/campaign-launch-kit" style="padding:14px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;text-decoration:none"><div><div style="font-family:var(--f-display);font-size:16px;font-weight:700;color:var(--bone)">Campaign Launch Kit</div><div style="font-size:14px;color:var(--mist2);line-height:1.6;margin-top:3px">Brief to QA checklist — ship campaigns faster at higher quality.</div></div><div class="kw-vol" aria-hidden="true" style="color:var(--signal)">→</div></a>
@@ -383,5 +396,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 </div>
 <script src="/js/main.js"></script>
+<script>
+(function(){
+  try{
+    var KEY='ca_learn_prog';
+    var rows=[].slice.call(document.querySelectorAll('section[id^="stage-"] a.kw-row'));
+    if(!rows.length)return;
+    var st={};
+    try{st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){st={}}
+    function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+    var opened=0,firstUnopened=null;
+    rows.forEach(function(a){
+      var href=a.getAttribute('href');
+      a.addEventListener('click',function(){if(!st[href]){st[href]=1;save();}});
+      if(st[href]){
+        opened++;
+        a.classList.add('lp-done');
+        var v=a.querySelector('.kw-vol');if(v)v.textContent='\u2713';
+        var t=a.firstElementChild&&a.firstElementChild.firstElementChild;
+        if(t){var s=document.createElement('span');s.className='sr-only';s.textContent=' (opened)';t.appendChild(s);}
+      }else if(!firstUnopened){firstUnopened=a;}
+    });
+    if(!opened)return;
+    [].slice.call(document.querySelectorAll('section[id^="stage-"]')).forEach(function(sec){
+      var rs=[].slice.call(sec.querySelectorAll('a.kw-row'));
+      var n=rs.filter(function(a){return st[a.getAttribute('href')]}).length;
+      if(!n)return;
+      var lab=sec.querySelector('.label-signal');
+      if(lab&&!lab.querySelector('.lp-chip')){
+        var c=document.createElement('span');c.className='lp-chip';
+        c.textContent=n+'/'+rs.length+(n===rs.length?' \u2713':'');
+        lab.appendChild(c);
+      }
+    });
+    var hero=document.querySelector('.page-hero');
+    if(hero){
+      var pct=Math.round(opened/rows.length*100);
+      var wrap=document.createElement('div');
+      wrap.className='lp-progress';
+      wrap.innerHTML='<div class="lp-bar" aria-hidden="true"><i style="width:'+pct+'%"></i></div>'+
+        '<p>You\u2019ve opened <b>'+opened+' of '+rows.length+'</b> resources on this path \u00b7 saved in this browser only \u00b7 <button type="button" class="lp-reset">reset</button></p>';
+      hero.appendChild(wrap);
+      wrap.querySelector('.lp-reset').addEventListener('click',function(){
+        try{localStorage.removeItem(KEY)}catch(e){}
+        location.reload();
+      });
+    }
+    var cta=document.querySelector('.hero-actions .btn-primary');
+    if(cta){
+      if(firstUnopened){
+        var sec=firstUnopened.closest('section');
+        if(sec&&sec.id){cta.setAttribute('href','#'+sec.id);cta.textContent='Pick up where you left off \u2193';}
+      }else{
+        cta.textContent='All '+rows.length+' opened \u2014 revisit any stage \u2193';
+      }
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
