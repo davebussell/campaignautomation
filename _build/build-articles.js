@@ -70,7 +70,7 @@ const NAV = `<a href="#main-content" class="skip-nav">Skip to main content</a>
         </div>
       </div>
     </div>
-    <a href="/tools/readiness-score" class="nav-cta">Get your free score →</a>
+    <a href="/tools/readiness-score" class="nav-cta-yellow">Get your free score →</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
     <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
