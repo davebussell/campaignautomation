@@ -468,8 +468,8 @@ console.log('Wrote /resources/index.html (landing)');
 // ---- 6) Sitemap: ensure /resources/articles is present ----
 const smPath = path.join(ROOT,'sitemap.xml');
 let sm = fs.readFileSync(smPath,'utf8');
-if(!sm.includes('<loc>https://campaignautomation.ai/resources/articles</loc>')){
-  const entry = `  <url>\n    <loc>https://campaignautomation.ai/resources/articles</loc>\n    <lastmod>2026-06-27</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+if(!sm.includes('https://campaignautomation.ai/resources/articles/')){
+  const entry = `  <url>\n    <loc>https://campaignautomation.ai/resources/articles/</loc>\n    <lastmod>2026-06-27</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
   sm = sm.replace('</urlset>', entry+'</urlset>');
   fs.writeFileSync(smPath, sm, 'utf8');
   console.log('Sitemap: added /resources/articles');

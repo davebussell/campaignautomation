@@ -192,17 +192,6 @@ ${GTMHEAD}
 <title>${o.title}</title>
 <meta name="description" content="${escAttr(o.desc)}">
 <link rel="canonical" href="https://campaignautomation.ai${o.path}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://campaignautomation.ai${o.path}">
-<meta property="og:title" content="${escAttr(o.ogTitle||o.title.replace(/ | Campaign Automation AI| | CA.AI/g,""))}">
-<meta property="og:description" content="${escAttr(o.desc)}">
-<meta property="og:image" content="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?w=1200&amp;h=630&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;auto=format">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?w=1200&amp;h=630&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;auto=format">
-<meta name="twitter:title" content="${escAttr(o.ogTitle||o.title.replace(/ | Campaign Automation AI| | CA.AI/g,""))}">
-<meta name="twitter:description" content="${escAttr(o.desc)}">
 <link rel="alternate" hreflang="en-CA" href="https://campaignautomation.ai${o.path}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -516,10 +505,10 @@ ${secs}
   // drop old entries
   sm = sm.replace(/\s*<url>\s*<loc>https:\/\/campaignautomation\.ai\/(?:solutions\/automation-sprints|solutions\/sprints\/[a-z-]+)\/?<\/loc>[\s\S]*?<\/url>/g, '');
   let added = 0;
-  const urls = ['/automations', '/automations/setup'].concat(GUIDES.map(g => '/automations/' + g.slug));
+  const urls = ['/automations/', '/automations/setup/'].concat(GUIDES.map(g => '/automations/' + g.slug + '/'));
   for (const u of urls) {
     const loc = 'https://campaignautomation.ai' + u;
-    if (!sm.includes('<loc>' + loc + '</loc>')) { sm = sm.replace('</urlset>', '  <url>\n    <loc>' + loc + '</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n</urlset>'); added++; }
+    if (!sm.includes(loc)) { sm = sm.replace('</urlset>', '  <url>\n    <loc>' + loc + '</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n</urlset>'); added++; }
   }
   fs.writeFileSync(smPath, sm, 'utf8');
   console.log('Sitemap: removed old sprint URLs, added ' + added + ' automation URLs');

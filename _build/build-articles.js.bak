@@ -305,8 +305,8 @@ let sm = fs.readFileSync(smPath, 'utf8');
 let entries = '';
 for (const a of articles) {
   if (!a || !a.slug) continue;
-  const loc = `https://campaignautomation.ai/resources/${a.slug}`;
-  if (sm.includes(`<loc>${loc}</loc>`)) continue; // idempotent
+  const loc = `https://campaignautomation.ai/resources/${a.slug}/`;
+  if (sm.includes(loc)) continue; // idempotent
   entries += `  <url>
     <loc>${loc}</loc>
     <lastmod>2026-06-26</lastmod>

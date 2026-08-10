@@ -391,8 +391,8 @@ ${catSections}
   let sm = fs.readFileSync(smPath, 'utf8');
   let added = 0;
   for (const it of ITEMS) {
-    const loc = 'https://campaignautomation.ai/resources/templates/' + it.slug;
-    if (!sm.includes('<loc>' + loc + '</loc>')) { sm = sm.replace('</urlset>', '  <url>\n    <loc>' + loc + '</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n</urlset>'); added++; }
+    const loc = 'https://campaignautomation.ai/resources/templates/' + it.slug + '/';
+    if (!sm.includes(loc)) { sm = sm.replace('</urlset>', '  <url>\n    <loc>' + loc + '</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n</urlset>'); added++; }
   }
   fs.writeFileSync(smPath, sm, 'utf8');
   console.log('Sitemap: +' + added + ' template URLs');
