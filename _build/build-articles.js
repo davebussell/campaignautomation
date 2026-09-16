@@ -228,7 +228,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="${url}">
 <meta property="og:title" content="${escAttr(a.ogTitle)}">
 <meta property="og:description" content="${escAttr(a.ogDescription)}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?w=1200&amp;h=630&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;auto=format">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?w=1200&amp;h=630&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;auto=format">
 <meta name="twitter:title" content="${escAttr(a.ogTitle)}">
 <meta name="twitter:description" content="${escAttr(a.ogDescription)}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
